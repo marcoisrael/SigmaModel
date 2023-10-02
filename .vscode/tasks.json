@@ -1,0 +1,28 @@
+{
+
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "compile_and_run",
+            "type": "shell",
+            "command": "bash run.sh",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                }
+            },
+        {
+        "label": "compile_for_debug",
+        "type": "shell",
+        "command": "gfortran",
+        "args": ["-g","-O0", "-Wall","-o","output/main", 
+                "functions.f90", 
+                "algorithm.f90.f90",
+                "main.f90.f90"
+                ],
+        "options": {
+            "cwd": "${workspaceFolder}",
+            }
+        }
+      
+    ]
+}
