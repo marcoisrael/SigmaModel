@@ -153,5 +153,4 @@ subroutine step_metropolis(s)
         values(4) = acceptance/VOLUME
     end if
 end subroutine
-
 end module
