@@ -7,12 +7,12 @@ integer :: N, thermalization, cycles
 character(60) path
 LENGTH = 8
 VOLUME = LENGTH*LENGTH
-thermalization = 1e2
-temperature = 1
+thermalization = 1e3
+temperature = 4
 beta = 1/temperature
 cycles = 200
 N = 100
-path = "output/file/therm.csv"
+path = "output/data/therm.csv"
 allocate(s(LENGTH,LENGTH,3))
 call hot_start(s)
 open(unit=1, file=trim(path))

@@ -116,6 +116,7 @@ subroutine step_cluster(s)
             end do
         end if
     end do 
+
     if (update_values) then
         values(1) = system_energy(s)
         values(2) = system_charge(s)
@@ -153,4 +154,37 @@ subroutine step_metropolis(s)
         values(4) = acceptance/VOLUME
     end if
 end subroutine
+
+
+subroutine get_bonds(s, group, bond)
+    real(8),dimension(LENGTH,LENGTH,3) :: s
+    integer,dimension(LENGTH,LENGTH) :: group, bond
+    real(8),dimension(3) :: sx, sx_rigth, sx_down, w
+    integer :: largest_label
+    w = random_vector()
+    largest_label = 0
+    bond(:,:) = 0
+    group(:,:) = 0
+    do i=1, LENGTH
+        do j=1, LENGTH
+            sx = s(i, j,:)
+            sx_rigth = s(modl(i+1),j,:)
+            sx_down = s(i,modl(j+1),:)
+            if (is_bond(sx,sx_rigth,w)) then
+                bond(i,j) = 10
+            end if
+            if (is_bond(sx,sx_down,w)) then
+                bond(i,j) = bond(i,j)+1
+            end if
+            call hoshen_kopelman(group, bond, i, j, largest_label)
+        end do
+    end do
+
+    do j=1, LENGTH
+        do i=1, LENGTH
+            call hoshen_kopelman(group, bond, i,j, largest_label)
+        end do
+    end do
+end subroutine
+
 end module
