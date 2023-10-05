@@ -54,31 +54,29 @@ end function
 
 function system_charge(s)
     real(8), dimension(LENGTH,LENGTH,3) :: s
-    real(8) system_charge, X, Y, T1, T2
+    real(8) system_charge, X1, Y1, X2, Y2
     real(8),dimension(3) :: e1, e2, e3, e4
+    integer :: k=1
     system_charge = 0
     do i=1, LENGTH
         do j=1, LENGTH
-            e1 = s(i,modl(j+1),:)
+            e1 = s(modl(i+1),j,:)
             e2 = s(modl(i+1),modl(j+1),:)
             e3 = s(i,j,:)
-            e4 = s(modl(i+1),j,:)
-            if (modulo(i+j,2)==0) then    
-                X = 1+dot_product(e1,e2)+dot_product(e2,e3)+dot_product(e3,e1)
-                Y = dot_product(e1, cross_product(e2,e3))
-                T1 = atan2(Y,X)
-                X = 1+dot_product(e2,e4)+dot_product(e4,e3)+dot_product(e3,e2)
-                Y = dot_product(e2, cross_product(e4,e3))
-                T2 = atan2(Y,X)
-            else
-                X = 1+dot_product(e1,e4)+dot_product(e4,e3)+dot_product(e3,e1)
-                Y = dot_product(e1,cross_product(e4,e3))
-                T1 = atan2(Y,X)
-                X = 1+dot_product(e1,e2)+dot_product(e2,e4)+dot_product(e4,e1)
-                Y = dot_product(e1,cross_product(e2,e4))
-                T2 = atan2(Y,X)
+            e4 = s(i,modl(j+1),:)
+            if (k>0) then    
+                X1 = 1+dot_product(e1,e2)+dot_product(e2,e3)+dot_product(e3,e1)
+                Y1 = dot_product(e1, cross_product(e2,e3))
+                X2 = 1+dot_product(e4,e3)+dot_product(e3,e2)+dot_product(e2,e4)
+                Y2 = dot_product(e4, cross_product(e3,e2))
+            else 
+                X1 = 1+dot_product(e1,e2)+dot_product(e2,e4)+dot_product(e4,e1)
+                Y1 = dot_product(e1,cross_product(e2,e4))
+                X2 = 1+dot_product(e1,e4)+dot_product(e4,e3)+dot_product(e3,e1)
+                Y2 = dot_product(e1,cross_product(e4,e3))
             end if
-            system_charge = system_charge+T1+T2
+            system_charge = system_charge+atan2(Y1,X1)+atan2(Y2,X2)
+            k =-k
         end do
     end do
     system_charge=0.5*system_charge/pi
