@@ -8,7 +8,7 @@ character(60) path
 LENGTH = 8
 VOLUME = LENGTH*LENGTH
 thermalization = 1e3
-temperature = 4
+temperature = 0.1
 beta = 1/temperature
 cycles = 100
 N = 10

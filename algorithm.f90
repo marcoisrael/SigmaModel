@@ -141,7 +141,11 @@ subroutine step_metropolis(s)
             h1 = -dot_product(sx, sx_rigth)-dot_product(sx, sx_down)-dot_product(sx,sx_left)-dot_product(sx,sx_up)
             h2 = -dot_product(r, sx_rigth)-dot_product(r, sx_down)-dot_product(r,sx_left)-dot_product(r,sx_up)
             delta = h2-h1
-            p = exp(min(0., -beta*delta))
+            if (delta<0) then
+                p = 1
+            else
+                p = exp(-beta*delta)
+            end if
             acceptance = acceptance+p
             if (random()<=p) then
                 s(i,j,:) = r
