@@ -1,6 +1,7 @@
 module functions
 real(8) ::  pi=4.0*datan(1.0d0), beta
-real(8), dimension(4) :: values, med, var, obs
+real(8), dimension(4) :: values 
+real(8) :: med, var, obs
 logical :: update_values=.false.
 integer :: LENGTH, VOLUME
 ! logical :: save
@@ -143,7 +144,21 @@ function char_to_int(i)
         style = "(I2)"
     end if
     write(char_to_int, style) i
-    
 end function
 
+function random_integer(i)
+    real r
+    integer i, random_integer
+    call random_number(r)
+    random_integer = ceiling(i*r)
+end function
+
+function linspace(a, b, n)
+    integer n, i
+    real(8), dimension(n) :: linspace
+    real(8) a, b
+    do i=1, n
+        linspace(i) = a+(b-a)*(i-1)/(n-1)
+    end do
+end function
 end module

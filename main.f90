@@ -4,29 +4,99 @@ use functions
 real(8), allocatable, dimension(:,:,:) :: s
 real(8) :: temperature
 integer :: N, thermalization, cycles
-character(60) path
+! character(60) path
 LENGTH = 8
 VOLUME = LENGTH*LENGTH
 thermalization = 1e3
-temperature = 0.1
+temperature = 4.
 beta = 1/temperature
 cycles = 100
-N = 10
-path = "output/data/therm.csv"
+N = 2e5
 allocate(s(LENGTH,LENGTH,3))
+
+! Metropolis
+med = 0
+var = 0
 call hot_start(s)
-open(unit=1, file=trim(path))
-do i=1, cycles
-    med(1) = 0
-    var(1) = 0
-    do j=1, N
-        obs(1) = system_energy(s)
-        med(1) = med(1)+obs(1)
-        var(1) = var(1)+obs(1)**2
-        call step_metropolis(s)
-    end do
-    med(1) = med(1)/N
-    var(1) = (var(1)-N*med(1)**2)/(N-1)
-    write(1,"(2(f0.16,:,','))") med(1), sqrt(var(1)/N)
+do i=1, thermalization
+    call metropolis(s)
 end do
+do i=1, N
+    obs = system_charge(s)**2
+    med = med+obs
+    var = var+obs**2
+    call metropolis(s)
+end do
+med = med/N
+var = (var-N*med**2)/(N-1)
+print "((A20),*(f20.16))", "Metropolis", med, sqrt(var/N)  
+
+! Random metropolis
+med = 0
+var = 0
+call hot_start(s)
+do i=1, thermalization
+    call random_metropolis(s)
+end do
+do i=1, N
+    obs = system_charge(s)**2
+    med = med+obs
+    var = var+obs**2
+    call random_metropolis(s)
+end do
+med = med/N
+var = (var-N*med**2)/(N-1)
+print "((A20),*(f20.16))", "Random Metropolis", med, sqrt(var/N) 
+
+! Glauber
+med = 0
+var = 0
+call hot_start(s)
+do i=1, thermalization
+    call glauber(s)
+end do
+do i=1, N
+    obs = system_charge(s)**2
+    med = med+obs
+    var = var+obs**2
+    call glauber(s)
+end do
+med = med/N
+var = (var-N*med**2)/(N-1)
+print "((A20),*(f20.16))", "Glauber", med, sqrt(var/N) 
+
+! Random Glauber
+med = 0
+var = 0
+call hot_start(s)
+do i=1, thermalization
+    call random_glauber(s)
+end do
+do i=1, N
+    obs = system_charge(s)**2
+    med = med+obs
+    var = var+obs**2
+    call random_glauber(s)
+end do
+med = med/N
+var = (var-N*med**2)/(N-1)
+print "((A20),*(f20.16))", "Random Glauber", med, sqrt(var/N) 
+
+! Cluster
+med = 0
+var = 0
+call hot_start(s)
+do i=1, thermalization
+    call cluster(s)
+end do
+do i=1, N
+    obs = system_charge(s)**2
+    med = med+obs
+    var = var+obs**2
+    call cluster(s)
+end do
+med = med/N
+var = (var-N*med**2)/(N-1)
+print "((A20),*(f20.16))", "Cluster", med, sqrt(var/N) 
+
 end program

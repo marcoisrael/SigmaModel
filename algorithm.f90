@@ -76,7 +76,7 @@ subroutine hoshen_kopelman(group, bond, i, j, largest_label)
     end if
 end subroutine
 
-subroutine step_cluster(s)
+subroutine cluster(s)
     real(8),dimension(LENGTH,LENGTH,3) :: s
     integer,dimension(LENGTH,LENGTH) :: group, bond
     real(8),dimension(3) :: sx, sx_rigth, sx_down, w
@@ -125,7 +125,7 @@ subroutine step_cluster(s)
 end subroutine
 
 
-subroutine step_metropolis(s)
+subroutine metropolis(s)
     real(8),dimension(LENGTH,LENGTH,3) :: s
     real(8),dimension(3) :: sx, sx_rigth, sx_down, sx_left, sx_up, r
     real(8) :: h1, h2, delta, p, acceptance
@@ -138,8 +138,10 @@ subroutine step_metropolis(s)
             sx_left = s(modl(i-1),j,:)
             sx_up = s(i,modl(j-1),:)
             r = random_vector()
-            h1 = -dot_product(sx, sx_rigth)-dot_product(sx, sx_down)-dot_product(sx,sx_left)-dot_product(sx,sx_up)
-            h2 = -dot_product(r, sx_rigth)-dot_product(r, sx_down)-dot_product(r,sx_left)-dot_product(r,sx_up)
+            h1 = -dot_product(sx, sx_rigth)-dot_product(sx, sx_down) &
+                -dot_product(sx,sx_left)-dot_product(sx,sx_up)
+            h2 = -dot_product(r, sx_rigth)-dot_product(r, sx_down) &
+                -dot_product(r,sx_left)-dot_product(r,sx_up)
             delta = h2-h1
             if (delta<0) then
                 p = 1
@@ -159,6 +161,113 @@ subroutine step_metropolis(s)
     end if
 end subroutine
 
+subroutine random_metropolis(s)
+    real(8),dimension(LENGTH,LENGTH,3) :: s
+    real(8),dimension(3) :: sx, sx_rigth, sx_down, sx_left, sx_up, r
+    real(8) :: h1, h2, delta, p, acceptance
+    integer :: i, j, i1, j1
+    acceptance = 0.
+    do i1=1, LENGTH
+        do j1=1, LENGTH
+            i = random_integer(LENGTH)
+            j = random_integer(LENGTH)
+            sx = s(i, j,:)
+            sx_rigth = s(modl(i+1),j,:)
+            sx_down = s(i,modl(j+1),:)
+            sx_left = s(modl(i-1),j,:)
+            sx_up = s(i,modl(j-1),:)
+            r = random_vector()
+            h1 = -dot_product(sx, sx_rigth)-dot_product(sx, sx_down) &
+                -dot_product(sx,sx_left)-dot_product(sx,sx_up)
+            h2 = -dot_product(r, sx_rigth)-dot_product(r, sx_down) &
+                -dot_product(r,sx_left)-dot_product(r,sx_up)
+            delta = h2-h1
+            if (delta<0) then
+                p = 1
+            else
+                p = exp(-beta*delta)
+            end if
+            acceptance = acceptance+p
+            if (random()<=p) then
+                s(i,j,:) = r
+            end if
+        end do
+    end do
+    if (update_values) then
+        values(1) = system_energy(s)
+        values(2) = system_charge(s)
+        values(4) = acceptance/VOLUME
+    end if
+end subroutine
+
+subroutine glauber(s)
+    real(8),dimension(LENGTH,LENGTH,3) :: s
+    real(8),dimension(3) :: sx, sx_rigth, sx_down, sx_left, sx_up, r
+    real(8) :: h1, h2, delta, p, acceptance
+    acceptance = 0.
+    do i=1, LENGTH
+        do j=1, LENGTH
+            sx = s(i, j,:)
+            sx_rigth = s(modl(i+1),j,:)
+            sx_down = s(i,modl(j+1),:)
+            sx_left = s(modl(i-1),j,:)
+            sx_up = s(i,modl(j-1),:)
+            r = random_vector()
+            h1 = -dot_product(sx, sx_rigth)-dot_product(sx, sx_down) &
+                -dot_product(sx,sx_left)-dot_product(sx,sx_up)
+            h2 = -dot_product(r, sx_rigth)-dot_product(r, sx_down) &
+                -dot_product(r,sx_left)-dot_product(r,sx_up)
+            delta = h2-h1
+            p = exp(-beta*delta)
+            p = p/(1+p)
+            acceptance = acceptance+p
+            if (random()<=p) then
+                s(i,j,:) = r
+            end if
+        end do
+    end do
+    if (update_values) then
+        values(1) = system_energy(s)
+        values(2) = system_charge(s)
+        values(4) = acceptance/VOLUME
+    end if
+end subroutine
+
+subroutine random_glauber(s)
+    real(8),dimension(LENGTH,LENGTH,3) :: s
+    real(8),dimension(3) :: sx, sx_rigth, sx_down, sx_left, sx_up, r
+    real(8) :: h1, h2, delta, p, acceptance
+    integer :: i, j
+    acceptance = 0.
+    do i1=1, LENGTH
+        do j1=1, LENGTH
+            i = random_integer(LENGTH)
+            j = random_integer(LENGTH)
+            sx = s(i, j,:)
+            sx_rigth = s(modl(i+1),j,:)
+            sx_down = s(i,modl(j+1),:)
+            sx_left = s(modl(i-1),j,:)
+            sx_up = s(i,modl(j-1),:)
+            r = random_vector()
+            h1 = -dot_product(sx, sx_rigth)-dot_product(sx, sx_down) &
+                -dot_product(sx,sx_left)-dot_product(sx,sx_up)
+            h2 = -dot_product(r, sx_rigth)-dot_product(r, sx_down) &
+                -dot_product(r,sx_left)-dot_product(r,sx_up)
+            delta = h2-h1
+            p = exp(-beta*delta)
+            p = p/(1+p)
+            acceptance = acceptance+p
+            if (random()<=p) then
+                s(i,j,:) = r
+            end if
+        end do
+    end do
+    if (update_values) then
+        values(1) = system_energy(s)
+        values(2) = system_charge(s)
+        values(4) = acceptance/VOLUME
+    end if
+end subroutine
 
 subroutine get_bonds(s, group, bond)
     real(8),dimension(LENGTH,LENGTH,3) :: s
@@ -183,7 +292,6 @@ subroutine get_bonds(s, group, bond)
             call hoshen_kopelman(group, bond, i, j, largest_label)
         end do
     end do
-
     do j=1, LENGTH
         do i=1, LENGTH
             call hoshen_kopelman(group, bond, i,j, largest_label)
