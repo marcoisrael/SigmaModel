@@ -1,0 +1,3 @@
+1. Check topological charge for test confs
+2. For T=4 , V=8x8, measure and compare <E> to high precision.
+3. Gut used to using the ICN cluster.
