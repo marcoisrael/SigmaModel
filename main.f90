@@ -2,101 +2,56 @@ program main
 use algorithm
 use functions
 real(8), allocatable, dimension(:,:,:) :: s
-real(8) :: temperature
-integer :: N, thermalization, cycles
+real(8), allocatable, dimension(:) ::  Smp, medSmp, serie
+real(8) :: temperature, medJK, varJK
+integer :: N, thermalization, packages, sizeJk
 ! character(60) path
 LENGTH = 8
 VOLUME = LENGTH*LENGTH
-thermalization = 1e3
+thermalization = 30
 temperature = 4.
 beta = 1/temperature
-cycles = 100
-N = 2e5
-allocate(s(LENGTH,LENGTH,3))
+N = 1e3
+packages = 100
+allocate(s(LENGTH,LENGTH,3), Smp(packages), medSmp(packages), serie(N))
 
-! Metropolis
-med = 0
-var = 0
-call hot_start(s)
-do i=1, thermalization
-    call metropolis(s)
-end do
-do i=1, N
-    obs = system_charge(s)**2
-    med = med+obs
-    var = var+obs**2
-    call metropolis(s)
-end do
-med = med/N
-var = (var-N*med**2)/(N-1)
-print "((A20),*(f20.16))", "Metropolis", med, sqrt(var/N)  
 
-! Random metropolis
-med = 0
-var = 0
-call hot_start(s)
-do i=1, thermalization
-    call random_metropolis(s)
-end do
-do i=1, N
-    obs = system_charge(s)**2
-    med = med+obs
-    var = var+obs**2
-    call random_metropolis(s)
-end do
-med = med/N
-var = (var-N*med**2)/(N-1)
-print "((A20),*(f20.16))", "Random Metropolis", med, sqrt(var/N) 
-
-! Glauber
-med = 0
-var = 0
-call hot_start(s)
-do i=1, thermalization
-    call glauber(s)
-end do
-do i=1, N
-    obs = system_charge(s)**2
-    med = med+obs
-    var = var+obs**2
-    call glauber(s)
-end do
-med = med/N
-var = (var-N*med**2)/(N-1)
-print "((A20),*(f20.16))", "Glauber", med, sqrt(var/N) 
-
-! Random Glauber
-med = 0
-var = 0
-call hot_start(s)
-do i=1, thermalization
-    call random_glauber(s)
-end do
-do i=1, N
-    obs = system_charge(s)**2
-    med = med+obs
-    var = var+obs**2
-    call random_glauber(s)
-end do
-med = med/N
-var = (var-N*med**2)/(N-1)
-print "((A20),*(f20.16))", "Random Glauber", med, sqrt(var/N) 
-
-! Cluster
-med = 0
-var = 0
 call hot_start(s)
 do i=1, thermalization
     call cluster(s)
 end do
-do i=1, N
-    obs = system_charge(s)**2
-    med = med+obs
-    var = var+obs**2
-    call cluster(s)
+
+sizeJk = N/packages
+medSmp(:) = 0
+
+do i=1, packages
+    do j=1, sizeJk
+        Smp(i) = Smp(i)+system_charge(s)**2
+        call metropolis(s)
+    end do
+    Smp(i) = Smp(i)/sizeJk
 end do
-med = med/N
-var = (var-N*med**2)/(N-1)
-print "((A20),*(f20.16))", "Cluster", med, sqrt(var/N) 
+
+medJK = 0
+varJK = 0
+
+do i=1, packages
+    do j=1, packages
+        if (i/=j) then
+            medSmp(i) = medSmp(i)+Smp(j)
+        end if
+    end do
+    medSmp(i) = medSmp(i)/(packages-1)
+    medJK = medJK+medSmp(i)
+end do
+medJK = medJK/packages
+
+do i=1, packages
+    varJK = varJK+(medSmp(i)-medJK)**2
+end do
+varJK = varJK*(packages-1)
+
+print "((A20),*(f25.16))", "Metropolis", medJK, sqrt(varJK/packages)
+
 
 end program

@@ -1,7 +1,6 @@
 module functions
 real(8) ::  pi=4.0*datan(1.0d0), beta
 real(8), dimension(4) :: values 
-real(8) :: med, var, obs
 logical :: update_values=.false.
 integer :: LENGTH, VOLUME
 ! logical :: save
