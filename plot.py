@@ -1,11 +1,10 @@
 #!/bin/python3
 import numpy as np
 import matplotlib.pyplot as plt
-data = np.loadtxt('output/data/therm.csv', delimiter=',')
-y, yerr = data.transpose()
-sweeps = np.arange(1,y.size+1)
-plt.errorbar(sweeps, y, yerr=yerr, marker='.', ls='')
-plt.plot(sweeps, np.zeros_like(y)+np.mean(y[40:]))
-plt.xlabel('#sweeps')
-plt.ylabel('Energy density')
-plt.savefig('output/plot/therm.png')
+for i in [20, 40, 80]:
+    data = np.loadtxt(f"output/susceptibility/{i}.tsv", skiprows=1)
+    step, temp,sucept, suceptError = data.transpose()
+    plt.errorbar(step, sucept, yerr=suceptError, marker='.', ls='', label=r'$\tau_Q=$'+str(i))
+    plt.xlabel('#sweeps')
+    plt.ylabel('susceptibility')
+plt.savefig('output/plot/metropolis.png')
