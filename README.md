@@ -1,6 +1,7 @@
-# Sigma Model
-Rountimes for  solve SO(2) sigma model.
-The syestem is an two-dimensional grid. Each point in the gird is a spin and his state is an vector in the $S^2$ unitary sphere.
+# Two dimensional sigma Model SO(3)
 
-Energy is definded.
+Two dimensional sigma model SO(3) is a gird in that each point contain a spin and each spin is in the group of all rotations about the origin of three dimensional Euclidean space \mathbb{R}^{3}.
+Rountimes for  solve SO(2) sigma model.
+
+Energy is definded by.
 $$H=-\beta \sum_{<x,y>} s_x \cdot s_y$$
