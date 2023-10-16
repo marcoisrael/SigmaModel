@@ -1,4 +1,4 @@
-program main
+program cooling
     use algorithm
     use functions
     use m_progress_bar
@@ -7,17 +7,23 @@ program main
     real(8), allocatable, dimension(:) :: interval
     real(8) :: medJK, varJK, startTemp, endTemp
     integer :: N, thermalization, packages, sizeJk, TQ, j,k
-    character(60) path
+    character(60) path, arg1, arg2, arg3, arg4, arg5
+    call get_command_argument(1,arg1)   
+    call get_command_argument(2,arg2)  
+    call get_command_argument(3,arg3)   
+    call get_command_argument(4,arg4)   
+    call get_command_argument(5,arg5)   
+
     LENGTH = 8
     VOLUME = LENGTH*LENGTH
     thermalization = 30
-    startTemp = 4.
-    endTemp = 0. 
+    startTemp = real(string2int(arg4))
+    endTemp = real(string2int(arg5)) 
     packages = 100
-    N = 1e6
-    TQ = 20
+    TQ = string2int(arg2)
+    N = string2int(arg3)
 
-    path = "output/susceptibility/10.tsv"
+    path = "output/susceptibility/"//trim(arg1)//"_"//trim(arg2)//".tsv"
     open(unit=1, file=path)
     allocate(s(LENGTH,LENGTH,3))
     allocate(interval(TQ), Smp(TQ,packages), medSmp(TQ,packages))
@@ -37,7 +43,7 @@ program main
 
             do k=1, TQ
                 beta = 1/interval(k)
-                call metropolis(s)
+                call step(s, arg1)
                 Smp(k,i) = Smp(k,i)+system_charge(s)**2
             end do
         end do

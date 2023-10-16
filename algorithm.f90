@@ -115,14 +115,47 @@ module algorithm
                 end do
             end if
         end do 
-
-        if (update_values) then
-            values(1) = system_energy(s)
-            values(2) = system_charge(s)
-            values(3) = largest_label
-        end if
     end subroutine
 
+
+    subroutine single_cluster(s)
+        real(8),dimension(LENGTH,LENGTH,3) :: s
+        integer,dimension(LENGTH,LENGTH) :: group, bond
+        real(8),dimension(3) :: sx, sx_rigth, sx_down, w
+        integer :: largest_label, k, i1, j1
+        w = random_vector()
+        largest_label = 0
+        bond(:,:) = 0
+        group(:,:) = 0
+        do j=1, LENGTH
+            do i=1, LENGTH
+                sx = s(i, j,:)
+                sx_rigth = s(modl(i+1),j,:)
+                sx_down = s(i,modl(j+1),:)
+                if (is_bond(sx,sx_rigth,w)) then
+                    bond(i,j) = 10
+                end if
+                if (is_bond(sx,sx_down,w)) then
+                    bond(i,j) = bond(i,j)+1
+                end if
+                call hoshen_kopelman(group, bond, i, j, largest_label)
+            end do
+        end do
+        do j=1, LENGTH
+            do i=1, LENGTH
+                call hoshen_kopelman(group, bond, i,j, largest_label)
+            end do
+        end do
+        i1 = random_integer(LENGTH)
+        j1 = random_integer(LENGTH)
+        do j=1, LENGTH
+            do i=1, LENGTH
+                if (group(i,j)==group(i1,j1)) then
+                    s(i,j,:) = wolff_reflection(s(i,j,:),w)
+                end if
+            end do
+        end do
+    end subroutine
 
     subroutine metropolis(s)
         real(8),dimension(LENGTH,LENGTH,3) :: s
@@ -153,11 +186,6 @@ module algorithm
                 end if
             end do
         end do
-        if (update_values) then
-            values(1) = system_energy(s)
-            values(2) = system_charge(s)
-            values(4) = acceptance/VOLUME
-        end if
     end subroutine
 
     subroutine random_metropolis(s)
@@ -192,11 +220,6 @@ module algorithm
                 end if
             end do
         end do
-        if (update_values) then
-            values(1) = system_energy(s)
-            values(2) = system_charge(s)
-            values(4) = acceptance/VOLUME
-        end if
     end subroutine
 
     subroutine glauber(s)
@@ -225,11 +248,6 @@ module algorithm
                 end if
             end do
         end do
-        if (update_values) then
-            values(1) = system_energy(s)
-            values(2) = system_charge(s)
-            values(4) = acceptance/VOLUME
-        end if
     end subroutine
 
     subroutine random_glauber(s)
@@ -261,11 +279,6 @@ module algorithm
                 end if
             end do
         end do
-        if (update_values) then
-            values(1) = system_energy(s)
-            values(2) = system_charge(s)
-            values(4) = acceptance/VOLUME
-        end if
     end subroutine
 
     subroutine get_bonds(s, group, bond)
@@ -296,5 +309,23 @@ module algorithm
                 call hoshen_kopelman(group, bond, i,j, largest_label)
             end do
         end do
+    end subroutine
+
+    subroutine step(s, key)
+        real(8),dimension(LENGTH,LENGTH,3) :: s
+        character(60) :: key
+        if (key=="metropolis") then
+            call metropolis(s)
+        else if (key=="random_metropolis") then
+            call random_metropolis(s)
+        else if (key=="glauber") then
+            call glauber(s)
+        else if (key=="random_glauber") then
+            call random_glauber(s)
+        else if (key=="cluster") then
+            call cluster(s)
+        else if (key=="single_cluster") then
+            call single_cluster(s)
+        end if
     end subroutine
 end module

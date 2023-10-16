@@ -134,15 +134,23 @@ module functions
         end if
     end subroutine
 
-    function char_to_int(i)
-        character(20) :: style, char_to_int
+    function int2string(i)
+        character(4) :: style, int2string
         integer :: i
-        if (i<10) then
-            style = "(I1)"
-        else
+        if (i<100) then
+            style = "(I3)"
+        else if (i<10) then
             style = "(I2)"
+        else
+            style = '(I1)'
         end if
-        write(char_to_int, style) i
+        write(int2string, style) i
+    end function
+
+    function string2int(string)
+        character(10) :: string
+        integer :: string2int
+        read (string,'(I10)') string2int
     end function
 
     function random_integer(i)
