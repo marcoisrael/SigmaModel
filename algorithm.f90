@@ -122,7 +122,7 @@ module algorithm
         real(8),dimension(LENGTH,LENGTH,3) :: s
         integer,dimension(LENGTH,LENGTH) :: group, bond
         real(8),dimension(3) :: sx, sx_rigth, sx_down, w
-        integer :: largest_label, k, i1, j1
+        integer :: largest_label, i1, j1
         w = random_vector()
         largest_label = 0
         bond(:,:) = 0
