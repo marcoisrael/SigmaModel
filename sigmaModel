@@ -1,28 +1,46 @@
 #!/bin/python3
-
 import os, argparse
-parser = argparse.ArgumentParser()
-parser.add_argument('-co','--cooling', type=str, default="4:0")
-parser.add_argument('-st','--step', type=str, default='metropolis')
-parser.add_argument('-n','--statistics', type=float, default=1000)
-parser.add_argument('-tq','--spacing', type=NotImplementedError, default=10)
-
+parser = argparse.ArgumentParser(prog="SigmaModel")
+parser.add_argument('-cool','--cooling',
+                    help="SigmaModel --cooling=startTemp,endTemp,steps \
+                        It perfomed a cooling fom start_temp to end_temp in n steps")
+parser.add_argument('-a','--algorithm', default='metropolis',
+                    help='--algorithm={metropolis, cluster, glauber, random_metropolis,\
+                          random_glauber, single_cluster}')
+parser.add_argument('-c','--cycles', type=float, default=1000,
+                    help='--cycles={N}')
+parser.add_argument('-n','--name')
 args = parser.parse_args()
-
-# performance
 
 cmd_compile = ["gfortran", "-ofast", 
                "-floop-parallelize-all",
                "-o", "output/main m_progress_bar.f90", 
                 "functions.f90", "algorithm.f90"]
-if len(args.cooling)>2:
-    cmd_compile.append('cooling.f90')
-    rangeTemp = args.cooling.split(':')
-    cmd_run = ["./output/main", args.step, f"{args.spacing}" ,
-                f"{int(args.statistics)}", f"{rangeTemp[0]}", f"{rangeTemp[1]}"]
 
-# debug
+if not os.path.isdir('output'):
+    os.mkdir('output')
+
+if args.cooling is not None:
+    folder = f'output/cooling/{args.name}/'
+    cmd_compile.append('cooling.f90')
+    start_temp, end_temp, tq = args.cooling.split(',')
+    cmd_run = ["./output/main", args.algorithm, f"{tq}" ,
+                f"{int(args.cycles)}", f"{start_temp}", f"{end_temp}", folder]
+    print('starting cooling')
+    print(f'start_temp={start_temp}, end_temp={end_temp}, tQ={tq}') 
+    print(f'algorithm = {args.algorithm}')
+    print(" ".join(cmd_run))
+    if not os.path.isdir('output/cooling'):
+        os.mkdir('output/cooling')
+    if not os.path.isdir(folder):
+        os.mkdir(folder)
+
+    os.system(" ".join(cmd_compile))
+    os.system(" ".join(cmd_run))
+
+    # print(" ".join(cmd_run))
+
+# flags for debug
 # gfortran -g -O0 -Wall -o output/main m_progress_bar.f90 functions.f90 algorithm.f90 main.f90
 
-os.system(" ".join(cmd_compile))
-os.system(" ".join(cmd_run))
+

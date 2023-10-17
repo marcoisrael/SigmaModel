@@ -153,6 +153,12 @@ module functions
         read (string,'(I10)') string2int
     end function
 
+    function string2real(string)
+        character(10) :: string
+        real(8) :: string2real
+        read (string,*) string2real
+    end function
+
     function random_integer(i)
         real r
         integer i, random_integer
