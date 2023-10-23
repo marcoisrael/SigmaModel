@@ -1,46 +1,73 @@
 #!/bin/python3
-import os, argparse
+import os, argparse, time
 parser = argparse.ArgumentParser(prog="SigmaModel")
 parser.add_argument('-cool','--cooling',
                     help="SigmaModel --cooling=startTemp,endTemp,steps \
                         It perfomed a cooling fom start_temp to end_temp in n steps")
-parser.add_argument('-a','--algorithm', default='metropolis',
-                    help='--algorithm={metropolis, cluster, glauber, random_metropolis,\
-                          random_glauber, single_cluster}')
+parser.add_argument('-alg','--algorithm', default='random,metropolis',
+                    help='--algorithm={random, lexic, single|metropolis, cluster, glauber}')
 parser.add_argument('-c','--cycles', type=float, default=1000,
                     help='--cycles={N}')
-parser.add_argument('-n','--name')
+parser.add_argument('-n','--name',default="data0")
+parser.add_argument('-t','--temp')
+parser.add_argument('--test', action='store_true')
 args = parser.parse_args()
 
-cmd_compile = ["gfortran", "-ofast", 
-               "-floop-parallelize-all",
-               "-o", "output/main m_progress_bar.f90", 
-                "functions.f90", "algorithm.f90"]
-
-if not os.path.isdir('output'):
-    os.mkdir('output')
+def showTime(start_time, end_time):
+    elapsed_time = end_time-start_time
+    hours, rem = divmod(elapsed_time, 3600)
+    minutes, seconds = divmod(rem, 60)
+    stringTime = f"{int(hours):0>2}:{int(minutes):0>2}:{seconds:0>2.2f}"
+    print(f"{'Elapsed time':>25}{stringTime:>25}")
 
 if args.cooling is not None:
+    start_time =  time.perf_counter()
+    key, alg = args.algorithm.split(',')
     folder = f'output/cooling/{args.name}/'
-    cmd_compile.append('cooling.f90')
-    start_temp, end_temp, tq = args.cooling.split(',')
-    cmd_run = ["./output/main", args.algorithm, f"{tq}" ,
-                f"{int(args.cycles)}", f"{start_temp}", f"{end_temp}", folder]
-    print('starting cooling')
-    print(f'start_temp={start_temp}, end_temp={end_temp}, tQ={tq}') 
-    print(f'algorithm = {args.algorithm}')
-    print(" ".join(cmd_run))
-    if not os.path.isdir('output/cooling'):
-        os.mkdir('output/cooling')
     if not os.path.isdir(folder):
-        os.mkdir(folder)
-
+        os.makedirs(folder)
+    start_temp, end_temp, tq = args.cooling.split(',')
+    cmd_compile = ["gfortran","-ofast","-o","output/main",
+                   "functions.f90","algorithm.f90","m_progress_bar.f90","cooling.f90"]
+    cmd_run = ["./output/main",f"{start_temp}", f"{end_temp}",f"{tq}",
+               f"{int(args.cycles)}", folder,key,alg]
+    stringTemp = f"{start_temp}-{end_temp}"
+    print(75*"-")
+    print(f'{"Temp":>25}{stringTemp:>25}')
+    print(f'{"TQ":>25}{tq:>25}')
+    print(f'{"algorithm":>25}{args.algorithm:>25}')
+    print(f'{"cycles":>25}{int(args.cycles):>25}')
+    print(75*"-")
     os.system(" ".join(cmd_compile))
     os.system(" ".join(cmd_run))
+    end_time =  time.perf_counter() 
+    # print(75*"-")
+    showTime(start_time, end_time)
 
-    # print(" ".join(cmd_run))
 
-# flags for debug
-# gfortran -g -O0 -Wall -o output/main m_progress_bar.f90 functions.f90 algorithm.f90 main.f90
+if args.temp is not None:
+    start_time =  time.perf_counter()
+    key, alg = args.algorithm.split(',')
+    cmd_compile = ["gfortran","-ofast","-o","output/main",
+                   "functions.f90","algorithm.f90","temp.f90"]
+    cmd_run = ["./output/main",f"{args.temp}",f"{int(args.cycles)}",key,alg]
+    print(75*"-")
+    print(f'{"Temp":>25}{args.temp:>25}')
+    print(f'{"algorithm":>25}{args.algorithm:>25}')
+    print(f'{"cycles":>25}{int(args.cycles):>25}')
+    print(75*"-")
+    os.system(" ".join(cmd_compile))
+    os.system(" ".join(cmd_run))
+    end_time =  time.perf_counter() 
+    # print(75*"-")
+    showTime(start_time, end_time)
+
+
+if args.test:
+    cmd_compile = ["gfortran","-ofast","-o","output/main",
+                   "functions.f90","test.f90"]
+    if os.path.isfile('test.f90'):    
+        os.system(" ".join(cmd_compile))
+        os.system("./output/main")
 
 

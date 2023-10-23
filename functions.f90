@@ -1,5 +1,5 @@
 module functions
-    real(8) ::  pi=4.0*datan(1.0d0), beta
+    real(8) ::  pi=4.0*datan(1.0d0), beta, temp
     real(8), dimension(4) :: values 
     logical :: update_values=.false.
     integer :: LENGTH, VOLUME
@@ -101,9 +101,18 @@ module functions
     function is_bond(sx, sy, w)
         logical :: is_bond
         real(8), dimension(3) :: sx, sy, w
-        real(8) :: delta
+        real(8) :: delta, p
         delta = -dot_product(wolff_reflection(sx, w), sy)+dot_product(sx, sy)
-        if (random()<=1-exp(min(0.,-beta*delta))) then
+        if (delta<=0) then
+            p = 0
+        else
+            if (temp<=0.) then
+                p = 1
+            else 
+                p = 1-exp(-beta*delta)
+            end if
+        end if
+        if (random()<=p) then
             is_bond = .true.
         else
             is_bond = .false.
@@ -135,7 +144,7 @@ module functions
     end subroutine
 
     function int2string(i)
-        character(4) :: style, int2string
+        character(30) :: style, int2string
         integer :: i
         if (i<100) then
             style = "(I3)"
@@ -148,13 +157,13 @@ module functions
     end function
 
     function string2int(string)
-        character(10) :: string
+        character(30) :: string
         integer :: string2int
         read (string,'(I10)') string2int
     end function
 
     function string2real(string)
-        character(10) :: string
+        character(30) :: string
         real(8) :: string2real
         read (string,*) string2real
     end function
@@ -168,10 +177,10 @@ module functions
 
     function linspace(a, b, n)
         integer n, i
-        real(8), dimension(n) :: linspace
+        real(8), dimension(0:n) :: linspace
         real(8) a, b
-        do i=1, n
-            linspace(i) = a+(b-a)*(i-1)/(n-1)
+        do i=0, n
+            linspace(i) = a+(b-a)*i/n
         end do
     end function
 end module

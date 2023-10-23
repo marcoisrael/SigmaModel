@@ -75,11 +75,12 @@ module algorithm
         end if
     end subroutine
 
-    subroutine cluster(s)
+    subroutine cluster(s, key)
         real(8),dimension(LENGTH,LENGTH,3) :: s
         integer,dimension(LENGTH,LENGTH) :: group, bond
         real(8),dimension(3) :: sx, sx_rigth, sx_down, w
         integer :: largest_label, k
+        character(30) :: key
         w = random_vector()
         largest_label = 0
         bond(:,:) = 0
@@ -104,100 +105,45 @@ module algorithm
                 call hoshen_kopelman(group, bond, i,j, largest_label)
             end do
         end do
-        do k=1, largest_label
-            if (random()<=0.5) then
+        if (key=='single') then
+            k = group(random_integer(LENGTH), random_integer(LENGTH))
+            do i=1 , LENGTH
                 do j=1, LENGTH
-                    do i=1, LENGTH
-                        if (group(i,j)==k) then
-                            s(i,j,:) = wolff_reflection(s(i,j,:),w)
-                        end if
-                    end do
+                    if (group(i,j)==k) then
+                        s(i,j,:) = wolff_reflection(s(i,j,:),w)
+                    end if
                 end do
-            end if
-        end do 
+            end do
+        else if (key=='multi') then
+            do k=1, largest_label
+                if (random()<=0.5) then
+                    do j=1, LENGTH
+                        do i=1, LENGTH
+                            if (group(i,j)==k) then
+                                s(i,j,:) = wolff_reflection(s(i,j,:),w)
+                            end if
+                        end do
+                    end do
+                end if
+            end do
+        end if 
     end subroutine
 
-
-    subroutine single_cluster(s)
-        real(8),dimension(LENGTH,LENGTH,3) :: s
-        integer,dimension(LENGTH,LENGTH) :: group, bond
-        real(8),dimension(3) :: sx, sx_rigth, sx_down, w
-        integer :: largest_label, i1, j1
-        w = random_vector()
-        largest_label = 0
-        bond(:,:) = 0
-        group(:,:) = 0
-        do j=1, LENGTH
-            do i=1, LENGTH
-                sx = s(i, j,:)
-                sx_rigth = s(modl(i+1),j,:)
-                sx_down = s(i,modl(j+1),:)
-                if (is_bond(sx,sx_rigth,w)) then
-                    bond(i,j) = 10
-                end if
-                if (is_bond(sx,sx_down,w)) then
-                    bond(i,j) = bond(i,j)+1
-                end if
-                call hoshen_kopelman(group, bond, i, j, largest_label)
-            end do
-        end do
-        do j=1, LENGTH
-            do i=1, LENGTH
-                call hoshen_kopelman(group, bond, i,j, largest_label)
-            end do
-        end do
-        i1 = random_integer(LENGTH)
-        j1 = random_integer(LENGTH)
-        do j=1, LENGTH
-            do i=1, LENGTH
-                if (group(i,j)==group(i1,j1)) then
-                    s(i,j,:) = wolff_reflection(s(i,j,:),w)
-                end if
-            end do
-        end do
-    end subroutine
-
-    subroutine metropolis(s)
+    subroutine metropolis(s, key)
         real(8),dimension(LENGTH,LENGTH,3) :: s
         real(8),dimension(3) :: sx, sx_rigth, sx_down, sx_left, sx_up, r
-        real(8) :: h1, h2, delta, p, acceptance
-        acceptance = 0.
-        do i=1, LENGTH
-            do j=1, LENGTH
-                sx = s(i, j,:)
-                sx_rigth = s(modl(i+1),j,:)
-                sx_down = s(i,modl(j+1),:)
-                sx_left = s(modl(i-1),j,:)
-                sx_up = s(i,modl(j-1),:)
-                r = random_vector()
-                h1 = -dot_product(sx, sx_rigth)-dot_product(sx, sx_down) &
-                    -dot_product(sx,sx_left)-dot_product(sx,sx_up)
-                h2 = -dot_product(r, sx_rigth)-dot_product(r, sx_down) &
-                    -dot_product(r,sx_left)-dot_product(r,sx_up)
-                delta = h2-h1
-                if (delta<0) then
-                    p = 1
-                else
-                    p = exp(-beta*delta)
-                end if
-                acceptance = acceptance+p
-                if (random()<=p) then
-                    s(i,j,:) = r
-                end if
-            end do
-        end do
-    end subroutine
-
-    subroutine random_metropolis(s)
-        real(8),dimension(LENGTH,LENGTH,3) :: s
-        real(8),dimension(3) :: sx, sx_rigth, sx_down, sx_left, sx_up, r
-        real(8) :: h1, h2, delta, p, acceptance
-        integer :: i, j, i1, j1
-        acceptance = 0.
+        real(8) :: h1, h2, delta, p
+        integer :: i, j, i1 , j1
+        character(30) :: key
         do i1=1, LENGTH
             do j1=1, LENGTH
-                i = random_integer(LENGTH)
-                j = random_integer(LENGTH)
+                if (key=='random') then
+                    i = random_integer(LENGTH)
+                    j = random_integer(LENGTH)
+                else if (key=='lexic') then
+                    i = i1
+                    j = j1
+                end if
                 sx = s(i, j,:)
                 sx_rigth = s(modl(i+1),j,:)
                 sx_down = s(i,modl(j+1),:)
@@ -209,12 +155,15 @@ module algorithm
                 h2 = -dot_product(r, sx_rigth)-dot_product(r, sx_down) &
                     -dot_product(r,sx_left)-dot_product(r,sx_up)
                 delta = h2-h1
-                if (delta<0) then
+                if (delta<=0) then
                     p = 1
                 else
-                    p = exp(-beta*delta)
+                    if (temp<=0.) then
+                        p = 0
+                    else 
+                        p = exp(-beta*delta)
+                    end if
                 end if
-                acceptance = acceptance+p
                 if (random()<=p) then
                     s(i,j,:) = r
                 end if
@@ -222,44 +171,21 @@ module algorithm
         end do
     end subroutine
 
-    subroutine glauber(s)
+    subroutine glauber(s, key)
         real(8),dimension(LENGTH,LENGTH,3) :: s
         real(8),dimension(3) :: sx, sx_rigth, sx_down, sx_left, sx_up, r
-        real(8) :: h1, h2, delta, p, acceptance
-        acceptance = 0.
-        do i=1, LENGTH
-            do j=1, LENGTH
-                sx = s(i, j,:)
-                sx_rigth = s(modl(i+1),j,:)
-                sx_down = s(i,modl(j+1),:)
-                sx_left = s(modl(i-1),j,:)
-                sx_up = s(i,modl(j-1),:)
-                r = random_vector()
-                h1 = -dot_product(sx, sx_rigth)-dot_product(sx, sx_down) &
-                    -dot_product(sx,sx_left)-dot_product(sx,sx_up)
-                h2 = -dot_product(r, sx_rigth)-dot_product(r, sx_down) &
-                    -dot_product(r,sx_left)-dot_product(r,sx_up)
-                delta = h2-h1
-                p = exp(-beta*delta)
-                p = p/(1+p)
-                acceptance = acceptance+p
-                if (random()<=p) then
-                    s(i,j,:) = r
-                end if
-            end do
-        end do
-    end subroutine
-
-    subroutine random_glauber(s)
-        real(8),dimension(LENGTH,LENGTH,3) :: s
-        real(8),dimension(3) :: sx, sx_rigth, sx_down, sx_left, sx_up, r
-        real(8) :: h1, h2, delta, p, acceptance
-        integer :: i, j
-        acceptance = 0.
+        real(8) :: h1, h2, delta, p
+        integer :: i, j, i1 , j1
+        character(30) :: key
         do i1=1, LENGTH
             do j1=1, LENGTH
-                i = random_integer(LENGTH)
-                j = random_integer(LENGTH)
+                if (key=='random') then
+                    i = random_integer(LENGTH)
+                    j = random_integer(LENGTH)
+                else if (key=='lexic') then
+                    i = i1
+                    j = j1
+                end if
                 sx = s(i, j,:)
                 sx_rigth = s(modl(i+1),j,:)
                 sx_down = s(i,modl(j+1),:)
@@ -271,9 +197,12 @@ module algorithm
                 h2 = -dot_product(r, sx_rigth)-dot_product(r, sx_down) &
                     -dot_product(r,sx_left)-dot_product(r,sx_up)
                 delta = h2-h1
-                p = exp(-beta*delta)
-                p = p/(1+p)
-                acceptance = acceptance+p
+                if (temp<=0.) then
+                    p = 0
+                else
+                    p = exp(-beta*delta)
+                    p = p/(1+p)
+                end if
                 if (random()<=p) then
                     s(i,j,:) = r
                 end if
@@ -281,51 +210,15 @@ module algorithm
         end do
     end subroutine
 
-    subroutine get_bonds(s, group, bond)
+    subroutine step(s, key, alg)
         real(8),dimension(LENGTH,LENGTH,3) :: s
-        integer,dimension(LENGTH,LENGTH) :: group, bond
-        real(8),dimension(3) :: sx, sx_rigth, sx_down, w
-        integer :: largest_label
-        w = random_vector()
-        largest_label = 0
-        bond(:,:) = 0
-        group(:,:) = 0
-        do i=1, LENGTH
-            do j=1, LENGTH
-                sx = s(i, j,:)
-                sx_rigth = s(modl(i+1),j,:)
-                sx_down = s(i,modl(j+1),:)
-                if (is_bond(sx,sx_rigth,w)) then
-                    bond(i,j) = 10
-                end if
-                if (is_bond(sx,sx_down,w)) then
-                    bond(i,j) = bond(i,j)+1
-                end if
-                call hoshen_kopelman(group, bond, i, j, largest_label)
-            end do
-        end do
-        do j=1, LENGTH
-            do i=1, LENGTH
-                call hoshen_kopelman(group, bond, i,j, largest_label)
-            end do
-        end do
-    end subroutine
-
-    subroutine step(s, key)
-        real(8),dimension(LENGTH,LENGTH,3) :: s
-        character(60) :: key
-        if (key=="metropolis") then
-            call metropolis(s)
-        else if (key=="random_metropolis") then
-            call random_metropolis(s)
-        else if (key=="glauber") then
-            call glauber(s)
-        else if (key=="random_glauber") then
-            call random_glauber(s)
-        else if (key=="cluster") then
-            call cluster(s)
-        else if (key=="single_cluster") then
-            call single_cluster(s)
+        character(30) :: alg, key
+        if (alg=="metropolis") then
+            call metropolis(s, key)
+        else if (alg=="glauber") then
+            call glauber(s, key)
+        else if (alg=="cluster") then
+            call cluster(s, key)
         end if
     end subroutine
 end module

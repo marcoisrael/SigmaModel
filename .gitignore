@@ -1,5 +1,5 @@
 *.mod
 main
 test*
-old.txt
 *.json
+output

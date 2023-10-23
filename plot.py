@@ -1,12 +1,22 @@
 #!/bin/python3
 import numpy as np
 import matplotlib.pyplot as plt
-for i in [20, 40, 80]:
-    data = np.loadtxt(f"output/susceptibility/{i}.tsv", skiprows=1)
-    step, temp,sucept, suceptError = data.transpose()
-    plt.errorbar(step, sucept, yerr=suceptError, marker='.', ls='', label=r'$\tau_Q=$'+str(i))
-plt.grid()
-plt.legend()
-plt.xlabel('#sweeps')
-plt.ylabel('susceptibility')
-plt.savefig('output/plot/metropolis.png')
+import os
+folder = "output/cooling/plot"
+names = ['lexic_metropolis','random_metropolis','lexic_glauber', 'random_glauber','single_cluster']
+words = {'lexic':'Lexicographic'}
+fig, ax = plt.subplots()
+if not os.path.isdir(folder):
+	os.makedirs(folder)
+for name in names:
+	key, alg = name.split('_') 
+	# ax.set_title(f'{alg}')
+	ax.set_xlabel('#sweeps')
+	ax.set_ylabel(r'$\left<Q^2\right>$')
+	for i in [10,20,30,40]:
+		data = np.loadtxt(f"output/cooling/data0/{alg} {i}.tsv", skiprows=1)
+		step, temp,sucept, suceptError ,absSucept, absSucepError= data.transpose()
+		
+		ax.errorbar(step, sucept, yerr=suceptError, marker='.', label=r'$\tau_Q=$'+str(i))
+	ax.legend()
+	fig.savefig(f'{folder}/{alg}.png')
