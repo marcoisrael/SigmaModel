@@ -1,14 +1,14 @@
 program cooling
     use algorithm
     use functions
-    use m_progress_bar
+    ! use m_progress_bar
     real(8), allocatable, dimension(:,:,:) :: s, Smp, medSmp
     real(8), allocatable, dimension(:) :: interval
     real(8), dimension(2) :: medJK, varJK
     real(8) ::  startTemp, endTemp, x
     integer :: N, thermalization, packages, sizeJk, TQ, i, j, k
     character(60)  :: path
-    character(30) :: arg1, arg2, arg3, arg4, arg5, arg6, arg7
+    character(30) :: arg1, arg2, arg3, arg4, arg5, arg6, arg7, str1="multi"
     call get_command_argument(1,arg1)   
     call get_command_argument(2,arg2)  
     call get_command_argument(3,arg3)   
@@ -40,7 +40,7 @@ program cooling
             temp = interval(0)
             beta = 1/temp
             do k=1, thermalization
-                call cluster(s, arg6)
+                call cluster(s, str1)
             end do
 
             do k=0, TQ
@@ -52,7 +52,7 @@ program cooling
                 Smp(2,k,i) = Smp(2,k,i)+abs(x)
             end do
         end do
-        call progress_bar(i, packages)
+        ! call progress_bar(i, packages)
     end do
     Smp(:,:,:)= Smp(:,:,:)/sizeJk
 
