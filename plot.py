@@ -14,7 +14,7 @@ for name in names:
 	ax.set_xlabel('#sweeps')
 	ax.set_ylabel(r'$\left<Q^2\right>$')
 	for i in [10,20,30,40]:
-		data = np.loadtxt(f"output/cooling/data0/{alg} {i}.tsv", skiprows=1)
+		data = np.loadtxt(f"output/cooling/data0/{name} {i}.tsv", skiprows=1)
 		step, temp,sucept, suceptError ,absSucept, absSucepError= data.transpose()
 		
 		ax.errorbar(step, sucept, yerr=suceptError, marker='.', label=r'$\tau_Q=$'+str(i))
