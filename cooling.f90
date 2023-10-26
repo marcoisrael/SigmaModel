@@ -1,7 +1,7 @@
 program cooling
     use algorithm
     use functions
-    ! use m_progress_bar
+    use m_progress_bar
     real(8), allocatable, dimension(:,:,:) :: s, Smp, medSmp
     real(8), allocatable, dimension(:) :: interval
     real(8), dimension(2) :: medJK, varJK
@@ -22,7 +22,7 @@ program cooling
     thermalization = 100
     startTemp = string2real(arg1)
     endTemp = string2real(arg2)
-    packages = 10
+    packages = 25
     TQ = string2int(arg3)
     N = string2int(arg4)
     path = trim(arg5)//trim(arg6)//"_"//trim(arg7)//" "//trim(arg3)//".tsv"
@@ -52,7 +52,7 @@ program cooling
                 Smp(2,k,i) = Smp(2,k,i)+abs(x)
             end do
         end do
-        ! call progress_bar(i, packages)
+        call progress_bar(i, packages)
     end do
     Smp(:,:,:)= Smp(:,:,:)/sizeJk
 

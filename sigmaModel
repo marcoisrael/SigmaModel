@@ -27,7 +27,7 @@ if args.cooling is not None:
     if not os.path.isdir(folder):
         os.makedirs(folder)
     start_temp, end_temp, tq = args.cooling.split(',')
-    cmd_compile = ["gfortran","-ofast","-o","output/main",
+    cmd_compile = ["gfortran","-o","output/main",
                    "functions.f90","algorithm.f90","m_progress_bar.f90","cooling.f90"]
     cmd_run = ["./output/main",f"{start_temp}", f"{end_temp}",f"{tq}",
                f"{int(args.cycles)}", folder,key,alg]
@@ -64,7 +64,7 @@ if args.temp is not None:
 
 
 if args.test:
-    cmd_compile = ["gfortran","-ofast","-o","output/main",
+    cmd_compile = ["gfortran","-o","output/main",
                    "functions.f90","test.f90"]
     if os.path.isfile('test.f90'):    
         os.system(" ".join(cmd_compile))

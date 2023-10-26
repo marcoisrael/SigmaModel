@@ -198,7 +198,11 @@ module algorithm
                     -dot_product(r,sx_left)-dot_product(r,sx_up)
                 delta = h2-h1
                 if (temp<=0.) then
-                    p = 0
+                    if (delta>0) then
+                        p = 0
+                    else
+                        p = 1
+                    end if
                 else
                     p = exp(-beta*delta)
                     p = p/(1+p)

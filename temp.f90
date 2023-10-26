@@ -5,7 +5,7 @@ program cooling
     real(8), allocatable, dimension(:,:) :: Smp, medSmp
     real(8), dimension(2) :: medJK, varJK
     integer :: N, thermalization, packages, sizeJk, i, j
-    character(30) arg1, arg2, arg3, arg4
+    character(30) :: arg1, arg2, arg3, arg4, str1="multi"
     call get_command_argument(1,arg1)   
     call get_command_argument(2,arg2)  
     call get_command_argument(3,arg3) 
@@ -14,7 +14,7 @@ program cooling
    
     LENGTH = 8
     VOLUME = LENGTH*LENGTH
-    thermalization = 100
+    thermalization = 1000
     Temp = string2real(arg1)
     N = string2int(arg2)
     packages = 25
@@ -28,7 +28,7 @@ program cooling
     call hot_start(s)
     beta = 1/Temp
     do i=1, thermalization
-        call cluster(s, arg3)
+        call cluster(s, str1)
     end do
     do i=1, packages
         do j=1, sizeJk
