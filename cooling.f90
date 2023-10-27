@@ -1,7 +1,7 @@
 program cooling
     use algorithm
     use functions
-    use m_progress_bar
+    ! use m_progress_bar
     real(8), allocatable, dimension(:,:,:) :: s, Smp, medSmp
     real(8), allocatable, dimension(:) :: interval
     real(8), dimension(2) :: medJK, varJK
@@ -52,7 +52,7 @@ program cooling
                 Smp(2,k,i) = Smp(2,k,i)+abs(x)
             end do
         end do
-        call progress_bar(i, packages)
+        ! call progress_bar(i, packages)
     end do
     Smp(:,:,:)= Smp(:,:,:)/sizeJk
 

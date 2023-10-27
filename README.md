@@ -1,7 +1,9 @@
-# 2-d  model SO(3)
+# The 2-d O(3) model
 
-Two dimensional sigma model SO(3) is a gird in that each point contain a spin and each spin is in the group of all rotations about the origin of three dimensional Euclidean space \mathbb{R}^{3}.
-Rountimes for  solve 2-d SO(3) model.
+In the 2-d O(3) model $\vec{e_{x}}\in S{{}^2}$ is a 3-component unit vector field defined at each point in a 2-dimensional euclidean spacetime. Lattice action is defined by eq (1) and Q is the topological charge defined by eq (2).
 
-Energy is definded by.
-$$H=-\beta \sum_{<x,y>} s_x \cdot s_y$$
+$$S[\vec{e}]=-\beta\sum\vec{e}_{x}\cdot\vec{e}_{y} \tag{1}$$
+
+$$Q[\vec{e}]=\frac{1}{4\pi}\sum_{t_{xyz}}A_{xyz}\in\mathbb{Z} \tag{2}$$
+
+We consider the 2-d O(3) model using numerical simulations as lattice action. We'll use five different algorithms. Lexicographical Metropolis, Random Metropolis, Lexicographical Glauber, Random Glauber and Single Cluster. I performed $10^{5}$ cooling simulations for $\tau_{Q}\in\{20,30,40\}$ for $V=64$ and $T=4$ to $T=0$ in each algorithm.
