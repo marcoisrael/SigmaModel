@@ -48,7 +48,7 @@ if args.cooling is not None:
 if args.temp is not None:
     start_time =  time.perf_counter()
     key, alg = args.algorithm.split(',')
-    cmd_compile = ["gfortran","-ofast","-o","output/main",
+    cmd_compile = ["gfortran","-o","output/main",
                    "functions.f90","algorithm.f90","temp.f90"]
     cmd_run = ["./output/main",f"{args.temp}",f"{int(args.cycles)}",key,alg]
     print(75*"-")

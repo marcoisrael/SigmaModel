@@ -1,7 +1,6 @@
 program cooling
     use algorithm
     use functions
-    ! use m_progress_bar
     real(8), allocatable, dimension(:,:,:) :: s, Smp, medSmp
     real(8), allocatable, dimension(:) :: interval
     real(8), dimension(2) :: medJK, varJK
