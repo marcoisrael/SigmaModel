@@ -25,11 +25,11 @@ program cooling
     packages = 25
     TQ = string2int(arg3)
     N = string2int(arg4)
-    path = trim(arg5)//trim(arg6)//"_"//trim(arg7)//" "//trim(arg3)//".tsv"
+    path = trim(arg5)//trim(arg6)//"_"//trim(arg7)//" "//trim(arg3)//".csv"
     open(unit=1, file=path)
     allocate(s(LENGTH,LENGTH,3))
     allocate(interval(0:TQ), Smp(2,0:TQ,packages), medSmp(2,0:TQ,packages))
-    write(1, "((A4),*(A25))") 'TQ', 'Temp', 'charge', 'error', 'chargeAbs', 'error'
+    write(1, '(*(g0,:,","))') 'tau_Q', 'T', '<Q^2>', 'Error <Q^2>', '<|Q|>', 'Error <|Q|>'
     sizeJk = N/packages
     Smp(:,:,:) = 0
     medSmp(:,:,:) = 0
@@ -75,6 +75,6 @@ program cooling
         end do
         varJK(:) = varJK(:)*(packages-1)
 
-        write(1, "((I4),*(f25.16))") k, interval(k), medJK(1), sqrt(varJK(1)/packages),medJK(2), sqrt(varJK(2)/packages)
+        write(1, '((I0,:,","),*(f0.16,:,","))') k, interval(k), medJK(1), sqrt(varJK(1)/packages),medJK(2), sqrt(varJK(2)/packages)
     end do
 end program
