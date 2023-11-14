@@ -114,6 +114,7 @@ module algorithm
                     end if
                 end do
             end do
+        control_param=dble(1)/largest_label
         else if (key=='multi') then
             do k=1, largest_label
                 if (random()<=0.5) then
@@ -132,9 +133,10 @@ module algorithm
     subroutine metropolis(s, key)
         real(8),dimension(LENGTH,LENGTH,3) :: s
         real(8),dimension(3) :: sx, sx_rigth, sx_down, sx_left, sx_up, r
-        real(8) :: h1, h2, delta, p
+        real(8) :: h1, h2, delta, p, ar
         integer :: i, j, i1 , j1
         character(30) :: key
+        ar=0
         do i1=1, LENGTH
             do j1=1, LENGTH
                 if (key=='random') then
@@ -164,11 +166,13 @@ module algorithm
                         p = exp(-beta*delta)
                     end if
                 end if
+                ar = ar+p
                 if (random()<=p) then
                     s(i,j,:) = r
                 end if
             end do
         end do
+        control_param = ar/VOLUME
     end subroutine
 
     subroutine glauber(s, key)

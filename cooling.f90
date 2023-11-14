@@ -1,79 +1,63 @@
 program cooling
     use algorithm
     use functions
-    real(8), allocatable, dimension(:,:,:) :: s, Smp, medSmp
+    real(8), allocatable, dimension(:,:,:) :: s,s0
     real(8), allocatable, dimension(:) :: interval
-    real(8), dimension(2) :: medJK, varJK
-    real(8) ::  startTemp, endTemp, x
-    integer :: N, thermalization, packages, sizeJk, TQ, i, j, k
-    character(60)  :: path
-    character(30) :: arg1, arg2, arg3, arg4, arg5, arg6, arg7, str1="multi"
-    call get_command_argument(1,arg1)   
-    call get_command_argument(2,arg2)  
-    call get_command_argument(3,arg3)   
-    call get_command_argument(4,arg4)   
-    call get_command_argument(5,arg5)   
-    call get_command_argument(6,arg6)
-    call get_command_argument(7,arg7)      
-
-    LENGTH = 8
+    real(8), allocatable, dimension(:,:) :: med, var
+    real(8), dimension(2) :: obs
+    real(8) ::  startTemp, endTemp
+    integer :: N, thermalization, TQ, i, k
+    character(30), dimension(8) :: arg
+    character(60) :: path
+    call get_command_argument(1,arg(1))   
+    call get_command_argument(2,arg(2))  
+    call get_command_argument(3,arg(3))   
+    call get_command_argument(4,arg(4))   
+    call get_command_argument(5,arg(5))   
+    call get_command_argument(6,arg(6))
+    call get_command_argument(7,arg(7))      
+    arg(8) = "multi"
+    LENGTH = 64
     VOLUME = LENGTH*LENGTH
-    thermalization = 100
-    startTemp = string2real(arg1)
-    endTemp = string2real(arg2)
-    packages = 25
-    TQ = string2int(arg3)
-    N = string2int(arg4)
-    path = trim(arg5)//trim(arg6)//"_"//trim(arg7)//" "//trim(arg3)//".csv"
+    thermalization = 1000
+    startTemp = string2real(arg(1))
+    endTemp = string2real(arg(2))
+    TQ = string2int(arg(3))
+    N = string2int(arg(4))
+    path = trim(arg(5))//trim(arg(6))//"_"//trim(arg(7))//" "//trim(arg(3))//".csv"
     open(unit=1, file=path)
-    allocate(s(LENGTH,LENGTH,3))
-    allocate(interval(0:TQ), Smp(2,0:TQ,packages), medSmp(2,0:TQ,packages))
-    write(1, '(*(g0,:,","))') 'tau_Q', 'T', '<Q^2>', 'Error <Q^2>', '<|Q|>', 'Error <|Q|>'
-    sizeJk = N/packages
-    Smp(:,:,:) = 0
-    medSmp(:,:,:) = 0
-    do i=1, packages
-        do j=1, sizeJk
-            interval = linspace(startTemp, endTemp, TQ)
-            call hot_start(s)
-            temp = interval(0)
-            beta = 1/temp
-            do k=1, thermalization
-                call cluster(s, str1)
-            end do
-
-            do k=0, TQ
-                temp = interval(k)
-                beta = 1/temp
-                call step(s, arg6, arg7)
-                x = system_charge(s)
-                Smp(1,k,i) = Smp(1,k,i)+x**2
-                Smp(2,k,i) = Smp(2,k,i)+abs(x)
-            end do
-        end do
-        ! call progress_bar(i, packages)
+    allocate(s(LENGTH,LENGTH,3), s0(LENGTH,LENGTH,3))
+    allocate(interval(0:TQ), med(0:TQ,2), var(0:TQ,2))
+    write(1, '(*(g0,:,","))') 'tau_Q', 'T', '<Q^2>', 'Error <Q^2>','AR|CS','Error AR|CS'
+    med(:,:)=0
+    var(:,:)=0
+    temp = startTemp
+    beta = 1/startTemp
+    call hot_start(s0)
+    do i=1, thermalization
+        call cluster(s0, arg(8))
     end do
-    Smp(:,:,:)= Smp(:,:,:)/sizeJk
-
-    do k=0, TQ
-        medJK(:) = 0
-        varJK(:) = 0
-        do i=1, packages
-            do j=1, packages
-                if (i/=j) then
-                    medSmp(:,k,i) = medSmp(:,k,i)+Smp(:,k,j)
-                end if
-            end do
-            medSmp(:,k,i) = medSmp(:,k,i)/(packages-1)
-            medJK(:) = medJK+medSmp(:,k,i)
+    do i=1, N
+        interval = linspace(startTemp, endTemp, TQ)
+        temp = startTemp
+        beta = 1/startTemp
+        s = s0
+        do k=1, 20
+            call cluster(s, arg(8))
         end do
-        medJK(:) = medJK(:)/packages
 
-        do i=1, packages
-            varJK(:) = varJK(:)+(medSmp(:,k,i)-medJK)**2
+        do k=0, TQ
+            temp = interval(k)
+            beta = 1/temp
+            call step(s, arg(6), arg(7))
+            obs = [system_charge(s)**2/VOLUME,control_param]
+            med(k,:)=med(k,:)+obs
+            var(k,:)=var(k,:)+obs(:)**2
         end do
-        varJK(:) = varJK(:)*(packages-1)
-
-        write(1, '((I0,:,","),*(f0.16,:,","))') k, interval(k), medJK(1), sqrt(varJK(1)/packages),medJK(2), sqrt(varJK(2)/packages)
+    end do
+    med(:,:)=med(:,:)/N
+    var(:,:)=(var(:,:)-N*med(:,:)**2)/(N-1)
+    do k=1,TQ
+        write(1, '((I0,:,","),*(f0.16,:,","))') k, interval(k), med(k,1), sqrt(var(k,1)/N), med(k,2), sqrt(var(k,2)/N)
     end do
 end program

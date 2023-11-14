@@ -6,8 +6,8 @@ parser.add_argument('-cool','--cooling',
                         It perfomed a cooling fom start_temp to end_temp in n steps")
 parser.add_argument('-alg','--algorithm', default='random,metropolis',
                     help='--algorithm={random, lexic, single|metropolis, cluster, glauber}')
-parser.add_argument('-c','--cycles', type=float, default=1000,
-                    help='--cycles={N}')
+parser.add_argument('-s','--steps', type=float, default=1e4,
+                    help='--steps={N}')
 parser.add_argument('-n','--name',default="data0")
 parser.add_argument('-t','--temp')
 parser.add_argument('--test', action='store_true')
@@ -30,14 +30,14 @@ if args.cooling is not None:
     cmd_compile = ["gfortran","-o","output/main",
                    "functions.f90","algorithm.f90","cooling.f90"]
     cmd_run = ["./output/main",f"{start_temp}", f"{end_temp}",f"{tq}",
-               f"{int(args.cycles)}", folder,key,alg]
+               f"{int(args.steps)}", folder,key,alg]
     stringTemp = f"{start_temp}-{end_temp}"
     print(75*"-")
     print(f'{"Temp":>25}{stringTemp:>25}')
     print(f'{"TQ":>25}{tq:>25}')
     print(f'{"algorithm":>25}{args.algorithm:>25}')
-    print(f'{"cycles":>25}{int(args.cycles):>25}')
-    print(75*"-")
+    print(f'{"steps":>25}{int(args.steps):>25}')
+    #print(75*"-")
     os.system(" ".join(cmd_compile))
     os.system(" ".join(cmd_run))
     end_time =  time.perf_counter() 
@@ -50,12 +50,13 @@ if args.temp is not None:
     key, alg = args.algorithm.split(',')
     cmd_compile = ["gfortran","-o","output/main",
                    "functions.f90","algorithm.f90","temp.f90"]
-    cmd_run = ["./output/main",f"{args.temp}",f"{int(args.cycles)}",key,alg]
+    cmd_run = ["./output/main",f"{args.temp}",f"{int(args.steps)}",key,alg]
     print(75*"-")
     print(f'{"Temp":>25}{args.temp:>25}')
     print(f'{"algorithm":>25}{args.algorithm:>25}')
-    print(f'{"cycles":>25}{int(args.cycles):>25}')
-    print(75*"-")
+    print(f'{"steps":>25}{int(args.steps):>25}')
+    print(f'{"spacing":>25}{"10":>25}')
+    #print(75*"-")
     os.system(" ".join(cmd_compile))
     os.system(" ".join(cmd_run))
     end_time =  time.perf_counter() 
