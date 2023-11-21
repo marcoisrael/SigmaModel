@@ -4,3 +4,6 @@ test*
 *.json
 *.py
 m_progress_bar.f90
+output
+bin
+logs

@@ -8,9 +8,9 @@
 module load lamod/gcc/12.2
 hostname;date
 N="1e4"
-alg="random,metropolis"
+alg="random,glauber"
 name="v64x64t4-2"
-./sigmaModel -cool "4,2,${SLURM_ARRAY_TASK_ID}"  -s "$N" -alg "$alg" -n "$name"
+./sigmaModel -cool "4,2,${SLURM_ARRAY_TASK_ID}" -s "$N" -alg "$alg" -n "$name"
 
 
 

@@ -27,9 +27,11 @@ if args.cooling is not None:
     if not os.path.isdir(folder):
         os.makedirs(folder)
     start_temp, end_temp, tq = args.cooling.split(',')
-    cmd_compile = ["gfortran","-o","output/main",
+    binary = f"bin/{args.algorithm}_{tq}"
+
+    cmd_compile = ["gfortran","-o",binary,
                    "functions.f90","algorithm.f90","cooling.f90"]
-    cmd_run = ["./output/main",f"{start_temp}", f"{end_temp}",f"{tq}",
+    cmd_run = [f"./{binary}",f"{start_temp}", f"{end_temp}",f"{tq}",
                f"{int(args.steps)}", folder,key,alg]
     stringTemp = f"{start_temp}-{end_temp}"
     print(75*"-")
