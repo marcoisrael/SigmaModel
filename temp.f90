@@ -11,7 +11,7 @@ program cooling
     call get_command_argument(4,arg4)  
  
    
-    LENGTH = 64
+    LENGTH = 8
     VOLUME = LENGTH*LENGTH
     thermalization = 1000
     Temp = string2real(arg1)

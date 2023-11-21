@@ -107,24 +107,16 @@ module algorithm
         end do
         if (key=='single') then
             k = group(random_integer(LENGTH), random_integer(LENGTH))
-            do i=1 , LENGTH
-                do j=1, LENGTH
-                    if (group(i,j)==k) then
-                        s(i,j,:) = wolff_reflection(s(i,j,:),w)
-                    end if
-                end do
-            end do
+            forall(i=1:LENGTH,j=1:LENGTH, group(i,j)==k)
+                s(i,j,:) = s(i,j,:)-2*dot_product(s(i,j,:),w)*w
+            end forall
         else if (key=='multi') then
             do k=1, largest_label
                 if (random()<=0.5) then
-                    do j=1, LENGTH
-                        do i=1, LENGTH
-                            if (group(i,j)==k) then
-                                s(i,j,:) = wolff_reflection(s(i,j,:),w)
-                            end if
-                        end do
-                    end do
-                end if
+                    forall(i=1:LENGTH,j=1:LENGTH, group(i,j)==k)
+                        s(i,j,:) = s(i,j,:)-2*dot_product(s(i,j,:),w)*w
+                    end forall
+                end if 
             end do
         end if 
         control_param=dble(VOLUME)/largest_label
@@ -181,7 +173,7 @@ module algorithm
         real(8) :: h1, h2, delta, p, ar
         integer :: i, j, i1 , j1
         character(30) :: key
-	ar=0
+        ar=0
         do i1=1, LENGTH
             do j1=1, LENGTH
                 if (key=='random') then
@@ -212,13 +204,13 @@ module algorithm
                     p = exp(-beta*delta)
                     p = p/(1+p)
                 end if
-		ar = ar+p
+                ar = ar+p
                 if (random()<=p) then
                     s(i,j,:) = r
                 end if
             end do
         end do
-	control_param=ar/VOLUME
+        control_param=ar/VOLUME
     end subroutine
 
     subroutine step(s, key, alg)
