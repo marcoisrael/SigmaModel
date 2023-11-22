@@ -1,5 +1,4 @@
 *.mod
-main
 test*
 *.json
 *.py

@@ -19,8 +19,11 @@ def showTime(start_time, end_time):
     minutes, seconds = divmod(rem, 60)
     stringTime = f"{int(hours):0>2}:{int(minutes):0>2}:{seconds:0>2.2f}"
     print(f"{'Elapsed time':>25}{stringTime:>25}")
-if not os.path("bin/"):
-    os.mkdir("bin/")
+
+if not os.path.isdir("bin/"):
+    os.mkdir("bin")
+if not os.path.isdir("logs/"):
+    os.mkdir("logs")
 if args.cooling is not None:
     start_time =  time.perf_counter()
     key, alg = args.algorithm.split(',')
