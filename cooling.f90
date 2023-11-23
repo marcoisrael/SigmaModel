@@ -17,7 +17,7 @@ program cooling
     call get_command_argument(6,arg(6))
     call get_command_argument(7,arg(7))      
     arg(8) = "multi"
-    LENGTH = 8
+    LENGTH = 64
     VOLUME = LENGTH*LENGTH
     thermalization = 1000
     startTemp = string2real(arg(1))
@@ -33,12 +33,12 @@ program cooling
     var(:,:)=0
     temp = startTemp
     beta = 1/startTemp
+    interval = linspace(startTemp, endTemp, TQ)
     call hot_start(s0)
     do i=1, thermalization
         call cluster(s0, arg(8))
     end do
     do i=1, N
-        interval = linspace(startTemp, endTemp, TQ)
         temp = startTemp
         beta = 1/startTemp
         s = s0
@@ -58,7 +58,7 @@ program cooling
     end do
     med(:,:)=med(:,:)/N
     var(:,:)=(var(:,:)-N*med(:,:)**2)/(N-1)
-    do k=1,TQ
+    do k=0,TQ
         write(1, '((I0,:,","),*(f0.16,:,","))') k, interval(k), med(k,1), sqrt(var(k,1)/N), med(k,2), sqrt(var(k,2)/N)
     end do
 end program

@@ -20,10 +20,6 @@ def showTime(start_time, end_time):
     stringTime = f"{int(hours):0>2}:{int(minutes):0>2}:{seconds:0>2.2f}"
     print(f"{'Elapsed time':>25}{stringTime:>25}")
 
-if not os.path.isdir("bin/"):
-    os.mkdir("bin")
-if not os.path.isdir("logs/"):
-    os.mkdir("logs")
 if args.cooling is not None:
     start_time =  time.perf_counter()
     key, alg = args.algorithm.split(',')
@@ -31,12 +27,11 @@ if args.cooling is not None:
     if not os.path.isdir(folder):
         os.makedirs(folder)
     start_temp, end_temp, tq = args.cooling.split(',')
-    binary = f"bin/{args.algorithm}_{tq}"
-
+    binary = f"bin/main"
     cmd_compile = ["gfortran","-o",binary,
                    "functions.f90","algorithm.f90","cooling.f90"]
-    cmd_run = ["./"+binary,f"{start_temp}", f"{end_temp}",f"{tq}",
-               f"{int(args.steps)}", folder,key,alg]
+    cmd_run = ["./bin/main",f"{start_temp}", f"{end_temp}",f"{tq}",
+               f"{int(args.steps)}",folder,key,alg]
     stringTemp = f"{start_temp}-{end_temp}"
     print(75*"-")
     print(f'{"Temp":>25}{stringTemp:>25}')
@@ -44,7 +39,8 @@ if args.cooling is not None:
     print(f'{"algorithm":>25}{args.algorithm:>25}')
     print(f'{"steps":>25}{int(args.steps):>25}')
     #print(75*"-")
-    os.system(" ".join(cmd_compile))
+    #os.system(" ".join(cmd_compile))
+    print(" ".join(cmd_run))
     os.system(" ".join(cmd_run))
     end_time =  time.perf_counter() 
     # print(75*"-")

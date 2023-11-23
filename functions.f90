@@ -172,7 +172,7 @@ module functions
         real r
         integer i, random_integer
         call random_number(r)
-        random_integer = ceiling(i*r)
+        random_integer = 1+floor(i*r)
     end function
 
     function linspace(a, b, n)
