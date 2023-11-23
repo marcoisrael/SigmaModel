@@ -26,7 +26,7 @@ program cooling
     N = string2int(arg(4))
     path = trim(arg(5))//trim(arg(6))//"_"//trim(arg(7))//" "//trim(arg(3))//".csv"
     open(unit=1, file=path)
-    allocate(s(LENGTH,LENGTH,3), s0(LENGTH,LENGTH,3))
+    allocate(s(0:LENGTH-1,0:LENGTH-1,3), s0(0:LENGTH-1,0:LENGTH-1,3))
     allocate(interval(0:TQ), med(0:TQ,2), var(0:TQ,2))
     write(1, '(*(g0,:,","))') 'tau_Q', 'T', '<Q^2>', 'Error <Q^2>','AR|CS','Error AR|CS'
     med(:,:)=0

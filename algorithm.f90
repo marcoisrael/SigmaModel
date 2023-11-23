@@ -3,7 +3,7 @@ module algorithm
     contains
 
     subroutine hoshen_kopelman(group, bond, i, j, largest_label)
-        integer, dimension(LENGTH,LENGTH) :: group, bond
+        integer, dimension(0:LENGTH-1,0:LENGTH-1) :: group, bond
         integer ::  largest_label
         i1 = modl(i+1)
         j1 = modl(j+1)
@@ -76,8 +76,8 @@ module algorithm
     end subroutine
 
     subroutine cluster(s, key)
-        real(8),dimension(LENGTH,LENGTH,3) :: s
-        integer,dimension(LENGTH,LENGTH) :: group, bond
+        real(8),dimension(0:LENGTH-1,0:LENGTH-1,3) :: s
+        integer,dimension(0:LENGTH-1,0:LENGTH-1) :: group, bond
         real(8),dimension(3) :: sx, sx_rigth, sx_down, w
         integer :: largest_label, k
         character(30) :: key
@@ -85,8 +85,8 @@ module algorithm
         largest_label = 0
         bond(:,:) = 0
         group(:,:) = 0
-        do j=1, LENGTH
-            do i=1, LENGTH
+        do j=0, LENGTH-1
+            do i=0, LENGTH-1
                 sx = s(i, j,:)
                 sx_rigth = s(modl(i+1),j,:)
                 sx_down = s(i,modl(j+1),:)
@@ -100,22 +100,30 @@ module algorithm
             end do
         end do
 
-        do j=1, LENGTH
-            do i=1, LENGTH
+        do j=0, LENGTH-1
+            do i=0, LENGTH-1
                 call hoshen_kopelman(group, bond, i,j, largest_label)
             end do
         end do
         if (key=='single') then
             k = group(random_integer(LENGTH), random_integer(LENGTH))
-            forall(i=1:LENGTH,j=1:LENGTH, group(i,j)==k)
-                s(i,j,:) = s(i,j,:)-2*dot_product(s(i,j,:),w)*w
-            end forall
+            do i=0, LENGTH-1
+                do j=0,LENGTH-1
+                    if (group(i,j)==k) then
+                        s(i,j,:) = s(i,j,:)-2*dot_product(s(i,j,:),w)*w
+                    end if
+                end do
+            end do
         else if (key=='multi') then
             do k=1, largest_label
                 if (random()<=0.5) then
-                    forall(i=1:LENGTH,j=1:LENGTH, group(i,j)==k)
-                        s(i,j,:) = s(i,j,:)-2*dot_product(s(i,j,:),w)*w
-                    end forall
+                    do i=0, LENGTH-1
+                        do j=0,LENGTH-1
+                            if (group(i,j)==k) then
+                                s(i,j,:) = s(i,j,:)-2*dot_product(s(i,j,:),w)*w
+                            end if
+                        end do
+                    end do
                 end if 
             end do
         end if 
@@ -123,17 +131,17 @@ module algorithm
     end subroutine
 
     subroutine metropolis(s, key)
-        real(8),dimension(LENGTH,LENGTH,3) :: s
+        real(8),dimension(0:LENGTH-1,0:LENGTH-1,3) :: s
         real(8),dimension(3) :: sx, sx_rigth, sx_down, sx_left, sx_up, r
         real(8) :: h1, h2, delta, p, ar
         integer :: i, j, i1 , j1
         character(30) :: key
         ar=0
-        do i1=1, LENGTH
-            do j1=1, LENGTH
+        do i1=0, LENGTH-1
+            do j1=0, LENGTH-1
                 if (key=='random') then
-                    i = random_integer(LENGTH)
-                    j = random_integer(LENGTH)
+                    i = random_integer(LENGTH-1)
+                    j = random_integer(LENGTH-1)
                 else if (key=='lexic') then
                     i = i1
                     j = j1
@@ -149,15 +157,16 @@ module algorithm
                 h2 = -dot_product(r, sx_rigth)-dot_product(r, sx_down) &
                     -dot_product(r,sx_left)-dot_product(r,sx_up)
                 delta = h2-h1
-                if (delta<=0) then
-                    p = 1
-                else
-                    if (temp<=0.) then
-                        p = 0
-                    else 
-                        p = exp(-beta*delta)
-                    end if
-                end if
+                p = exp(min(0d0,-beta*delta))
+                ! if (delta<=0) then
+                !     p = 1
+                ! else
+                !     if (temp<=0.) then
+                !         p = 0
+                !     else 
+                !         p = exp(-beta*delta)
+                !     end if
+                ! end if
                 ar = ar+p
                 if (random()<=p) then
                     s(i,j,:) = r
@@ -168,17 +177,17 @@ module algorithm
     end subroutine
 
     subroutine glauber(s, key)
-        real(8),dimension(LENGTH,LENGTH,3) :: s
+        real(8),dimension(0:LENGTH-1,0:LENGTH-1,3) :: s
         real(8),dimension(3) :: sx, sx_rigth, sx_down, sx_left, sx_up, r
         real(8) :: h1, h2, delta, p, ar
         integer :: i, j, i1 , j1
         character(30) :: key
         ar=0
-        do i1=1, LENGTH
-            do j1=1, LENGTH
+        do i1=0, LENGTH-1
+            do j1=0, LENGTH-1
                 if (key=='random') then
-                    i = random_integer(LENGTH)
-                    j = random_integer(LENGTH)
+                    i = random_integer(LENGTH-1)
+                    j = random_integer(LENGTH-1)
                 else if (key=='lexic') then
                     i = i1
                     j = j1
@@ -194,16 +203,22 @@ module algorithm
                 h2 = -dot_product(r, sx_rigth)-dot_product(r, sx_down) &
                     -dot_product(r,sx_left)-dot_product(r,sx_up)
                 delta = h2-h1
-                if (temp<=0.) then
-                    if (delta>0) then
-                        p = 0
-                    else
-                        p = 1
-                    end if
+                if (delta>0.) then
+                    p = 0
                 else
-                    p = exp(-beta*delta)
+                    p = exp(min(0d0,-beta*delta))
                     p = p/(1+p)
                 end if
+                ! if (temp<=0.) then
+                !     if (delta>0) then
+                !         p = 0
+                !     else
+                !         p = 1
+                !     end if
+                ! else
+                !     p = exp(-beta*delta)
+                !     p = p/(1+p)
+                ! end if
                 ar = ar+p
                 if (random()<=p) then
                     s(i,j,:) = r
@@ -214,7 +229,7 @@ module algorithm
     end subroutine
 
     subroutine step(s, key, alg)
-        real(8),dimension(LENGTH,LENGTH,3) :: s
+        real(8),dimension(0:LENGTH-1,0:LENGTH-1,3) :: s
         character(30) :: alg, key
         if (alg=="metropolis") then
             call metropolis(s, key)

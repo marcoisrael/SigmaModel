@@ -18,7 +18,7 @@ program cooling
     steps = string2int(arg2)
     spacing = 10
     N = int(steps/spacing)
-    allocate(s(LENGTH,LENGTH,3))
+    allocate(s(0:LENGTH-1,0:LENGTH-1,3))
     call hot_start(s)
     beta = 1/Temp
     do i=1, thermalization

@@ -7,8 +7,8 @@ module functions
     contains
 
     subroutine hot_start(s)
-        real(8), dimension(LENGTH,LENGTH) :: theta, phi, r
-        real(8), dimension(LENGTH,LENGTH,3) :: s
+        real(8), dimension(0:LENGTH-1,0:LENGTH-1) :: theta, phi, r
+        real(8), dimension(0:LENGTH-1,0:LENGTH-1,3) :: s
         call random_number(r)
         call random_number(phi)
         theta = acos(1-2*r)
@@ -32,11 +32,8 @@ module functions
     end function
 
     function modl(i)
-        integer i, modL
+        integer modL
         modl = modulo(i, LENGTH)
-        if (modl==0) then
-            modl = LENGTH
-        end if
     end function
 
     function wolff_reflection(v, w)
@@ -53,13 +50,13 @@ module functions
     end function
 
     function system_charge(s)
-        real(8), dimension(LENGTH,LENGTH,3) :: s
+        real(8), dimension(0:LENGTH-1,0:LENGTH-1,3) :: s
         real(8) system_charge, X1, Y1, X2, Y2
         real(8),dimension(3) :: e1, e2, e3, e4
         integer :: k=1
         system_charge = 0
-        do i=1, LENGTH
-            do j=1, LENGTH
+        do i=0, LENGTH-1
+            do j=0, LENGTH-1
                 e1 = s(modl(i+1),j,:)
                 e2 = s(modl(i+1),modl(j+1),:)
                 e3 = s(i,j,:)
@@ -83,12 +80,12 @@ module functions
     end function
 
     function system_energy(s)
-        real(8),dimension(LENGTH,LENGTH,3) :: s
+        real(8),dimension(0:LENGTH-1,0:LENGTH-1,3) :: s
         real(8), dimension(3) :: sx, sx_right, sx_down
         real(8) :: system_energy
         system_energy = 0
-        do i=1, LENGTH
-            do j=1, LENGTH
+        do i=0, LENGTH-1
+            do j=0, LENGTH-1
                 sx = s(i,j,:)
                 sx_right = s(modl(i+1),j,:)
                 sx_down = s(i,modl(j+1),:)
@@ -103,15 +100,16 @@ module functions
         real(8), dimension(3) :: sx, sy, w
         real(8) :: delta, p
         delta = -dot_product(wolff_reflection(sx, w), sy)+dot_product(sx, sy)
-        if (delta<=0) then
-            p = 0
-        else
-            if (temp<=0.) then
-                p = 1
-            else 
-                p = 1-exp(-beta*delta)
-            end if
-        end if
+        p = 1-exp(min(0d0,-beta*delta))
+        ! if (delta<=0) then
+        !     p = 0
+        ! else
+        !     if (temp<=0.) then
+        !         p = 1
+        !     else 
+        !         p = 1-exp(-beta*delta)
+        !     end if
+        ! end if
         if (random()<=p) then
             is_bond = .true.
         else
@@ -120,7 +118,7 @@ module functions
     end function
 
     subroutine join(group, label1, label2, largest_label)
-        integer, dimension(LENGTH,LENGTH) :: group
+        integer, dimension(0:LENGTH-1,0:LENGTH-1) :: group
         integer :: label1, label2, label_min, label_max
         if (label1/=label2) then
             if (label1<label2) then
@@ -130,8 +128,8 @@ module functions
                 label_max = label1
                 label_min = label2
             end if
-            do i=1, LENGTH
-                do j=1, LENGTH
+            do i=0, LENGTH-1
+                do j=0, LENGTH-1
                     if (group(i,j)==label_max) then
                         group(i,j) = label_min
                     else if (group(i,j)>label_max) then
@@ -172,7 +170,7 @@ module functions
         real r
         integer i, random_integer
         call random_number(r)
-        random_integer = 1+floor(i*r)
+        random_integer = floor(i*r)
     end function
 
     function linspace(a, b, n)
