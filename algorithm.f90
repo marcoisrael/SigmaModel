@@ -78,7 +78,7 @@ module algorithm
     subroutine cluster(s, key)
         real(8),dimension(0:LENGTH-1,0:LENGTH-1,3) :: s
         integer,dimension(0:LENGTH-1,0:LENGTH-1) :: group, bond
-        real(8),dimension(3) :: sx, sx_rigth, sx_down, w
+        real(8),dimension(3) :: sx, right, down, w
         integer :: largest_label, k
         character(30) :: key
         w = random_vector()
@@ -88,12 +88,12 @@ module algorithm
         do j=0, LENGTH-1
             do i=0, LENGTH-1
                 sx = s(i, j,:)
-                sx_rigth = s(modl(i+1),j,:)
-                sx_down = s(i,modl(j+1),:)
-                if (is_bond(sx,sx_rigth,w)) then
+                right = s(modl(i+1),j,:)
+                down = s(i,modl(j+1),:)
+                if (is_bond(sx,right,w)) then
                     bond(i,j) = 10
                 end if
-                if (is_bond(sx,sx_down,w)) then
+                if (is_bond(sx,down,w)) then
                     bond(i,j) = bond(i,j)+1
                 end if
                 call hoshen_kopelman(group, bond, i, j, largest_label)
@@ -132,7 +132,7 @@ module algorithm
 
     subroutine metropolis(s, key)
         real(8),dimension(0:LENGTH-1,0:LENGTH-1,3) :: s
-        real(8),dimension(3) :: sx, sx_rigth, sx_down, sx_left, sx_up, r
+        real(8),dimension(3) :: sx, right, down, left, up, r
         real(8) :: h1, h2, delta, p, ar
         integer :: i, j, i1 , j1
         character(30) :: key
@@ -147,15 +147,15 @@ module algorithm
                     j = j1
                 end if
                 sx = s(i, j,:)
-                sx_rigth = s(modl(i+1),j,:)
-                sx_down = s(i,modl(j+1),:)
-                sx_left = s(modl(i-1),j,:)
-                sx_up = s(i,modl(j-1),:)
+                right = s(modl(i+1),j,:)
+                down = s(i,modl(j+1),:)
+                left = s(modl(i-1),j,:)
+                up = s(i,modl(j-1),:)
                 r = random_vector()
-                h1 = -dot_product(sx, sx_rigth)-dot_product(sx, sx_down) &
-                    -dot_product(sx,sx_left)-dot_product(sx,sx_up)
-                h2 = -dot_product(r, sx_rigth)-dot_product(r, sx_down) &
-                    -dot_product(r,sx_left)-dot_product(r,sx_up)
+                h1 = -dot_product(sx, right)-dot_product(sx, down) &
+                    -dot_product(sx,left)-dot_product(sx,up)
+                h2 = -dot_product(r, right)-dot_product(r, down) &
+                    -dot_product(r,left)-dot_product(r,up)
                 delta = h2-h1
                 p = exp(min(0d0,-beta*delta))
                 ! if (delta<=0) then
@@ -178,7 +178,7 @@ module algorithm
 
     subroutine glauber(s, key)
         real(8),dimension(0:LENGTH-1,0:LENGTH-1,3) :: s
-        real(8),dimension(3) :: sx, sx_rigth, sx_down, sx_left, sx_up, r
+        real(8),dimension(3) :: sx, right, down, left, up, r
         real(8) :: h1, h2, delta, p, ar
         integer :: i, j, i1 , j1
         character(30) :: key
@@ -193,15 +193,15 @@ module algorithm
                     j = j1
                 end if
                 sx = s(i, j,:)
-                sx_rigth = s(modl(i+1),j,:)
-                sx_down = s(i,modl(j+1),:)
-                sx_left = s(modl(i-1),j,:)
-                sx_up = s(i,modl(j-1),:)
+                right = s(modl(i+1),j,:)
+                down = s(i,modl(j+1),:)
+                left = s(modl(i-1),j,:)
+                up = s(i,modl(j-1),:)
                 r = random_vector()
-                h1 = -dot_product(sx, sx_rigth)-dot_product(sx, sx_down) &
-                    -dot_product(sx,sx_left)-dot_product(sx,sx_up)
-                h2 = -dot_product(r, sx_rigth)-dot_product(r, sx_down) &
-                    -dot_product(r,sx_left)-dot_product(r,sx_up)
+                h1 = -dot_product(sx, right)-dot_product(sx, down) &
+                    -dot_product(sx,left)-dot_product(sx,up)
+                h2 = -dot_product(r, right)-dot_product(r, down) &
+                    -dot_product(r,left)-dot_product(r,up)
                 delta = h2-h1
                 if (delta>0.) then
                     p = 0
