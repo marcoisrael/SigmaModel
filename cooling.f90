@@ -1,9 +1,7 @@
 program cooling
     use algorithm
     use functions
-    real(8), allocatable, dimension(:,:,:) :: s,s0
-    real(8), allocatable, dimension(:) :: interval
-    real(8), allocatable, dimension(:,:) :: med, var
+    real(8), allocatable :: s(:,:),s0(:,:), med(:,:), var(:,:), interval(:)
     real(8), dimension(2) :: obs
     real(8) ::  startTemp, endTemp
     integer :: N, thermalization, TQ, i, k
@@ -24,11 +22,8 @@ program cooling
     endTemp = string2real(arg(2))
     TQ = string2int(arg(3))
     N = string2int(arg(4))
-    path = trim(arg(5))//trim(arg(6))//"_"//trim(arg(7))//" "//trim(arg(3))//".csv"
-    open(unit=1, file=path)
-    allocate(s(0:LENGTH-1,0:LENGTH-1,3), s0(0:LENGTH-1,0:LENGTH-1,3))
+    allocate(s(VOLUME,3), s0(VOLUME,3))
     allocate(interval(0:TQ), med(0:TQ,2), var(0:TQ,2))
-    write(1, '(*(g0,:,","))') 'tau_Q', 'T', '<Q^2>', 'Error <Q^2>','AR|CS','Error AR|CS'
     med(:,:)=0
     var(:,:)=0
     temp = startTemp
@@ -46,7 +41,6 @@ program cooling
             call cluster(s, arg(8))
         end do
         s0 = s
-
         do k=0, TQ
             temp = interval(k)
             beta = 1/temp
@@ -58,7 +52,11 @@ program cooling
     end do
     med(:,:)=med(:,:)/N
     var(:,:)=(var(:,:)-N*med(:,:)**2)/(N-1)
+    path = trim(arg(5))//trim(arg(6))//"_"//trim(arg(7))//" "//trim(arg(3))//".csv"
+    open(unit=1, file=path)
+    write(1, '(*(g0,:,","))') 'tau_Q', 'T', '<Q^2>', 'Error <Q^2>','AR|CS','Error AR|CS'
     do k=0,TQ
-        write(1, '((I0,:,","),*(f0.16,:,","))') k, interval(k), med(k,1), sqrt(var(k,1)/N), med(k,2), sqrt(var(k,2)/N)
+        write(1, '((I0,:,","),*(f0.16,:,","))') k, interval(k), med(k,1) , &
+        sqrt(var(k,1)/N), med(k,2), sqrt(var(k,2)/N)
     end do
 end program
