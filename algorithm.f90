@@ -85,8 +85,8 @@ module algorithm
         do i1=1, LENGTH
             do j1=1, LENGTH
                 if (key=='random') then
-                    i = random_integer(LENGTH-1)
-                    j = random_integer(LENGTH-1)
+                    i = random_integer(LENGTH)
+                    j = random_integer(LENGTH)
                 else if (key=='lexic') then
                     i = i1
                     j = j1
@@ -122,8 +122,8 @@ module algorithm
         do i1=1, LENGTH
             do j1=1, LENGTH
                 if (key=='random') then
-                    i = random_integer(LENGTH-1)
-                    j = random_integer(LENGTH-1)
+                    i = random_integer(LENGTH)
+                    j = random_integer(LENGTH)
                 else if (key=='lexic') then
                     i = i1
                     j = j1

@@ -32,7 +32,7 @@ module functions
             index = min(m,n)
             largest_label = largest_label-1
             labels(index)%cluster = [labels(m)%cluster, labels(n)%cluster]
-            do i=index+1, largest_label
+            do i=max(m,n), largest_label
                 labels(i)%cluster = labels(i+1)%cluster
             end do
         end if
