@@ -17,7 +17,7 @@ program cooling
     call get_command_argument(6,arg(6))
     call get_command_argument(7,arg(7))      
     arg(8) = "multi"
-    LENGTH = 64
+    LENGTH = 8
     VOLUME = LENGTH*LENGTH
     thermalization = 1000
     startTemp = string2real(arg(1))
