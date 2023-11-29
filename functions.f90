@@ -16,26 +16,25 @@ module functions
     subroutine join(x, y, largest_label, labels, bond)
         integer :: x(2), y(2), index,largest_label, m, n, i, bond(VOLUME,2)
         type(labelType) :: labels(VOLUME)
-        m = bond(getindex(x(1),x(2)), 2)
-        n = bond(getindex(y(1),y(2)), 2)
-        if (m==0 .and. n==0) then
+        n = bond(getindex(x(1),x(2)), 2)
+        m = bond(getindex(y(1),y(2)), 2)
+        if (n==0 .and. m==0) then
             largest_label = largest_label+1
             index = largest_label
             labels(index)%cluster = [getindex(x(1),x(2)), getindex(y(1),y(2))]
-        else if (m>0 .and. n==0) then
-            index = m
-            labels(m)%cluster = [labels(m)%cluster, getindex(y(1),y(2))]
-        else if (m==0 .and. n>0) then
+        else if (n>0 .and. m==0) then
             index = n
-            labels(n)%cluster = [labels(n)%cluster, getindex(x(1),x(2))]
-        else
+            labels(n)%cluster = [labels(n)%cluster, getindex(y(1),y(2))]
+        else if (n==0 .and. m>0) then
+            index = m
+            labels(m)%cluster = [labels(m)%cluster, getindex(x(1),x(2))]
+        else if (n/=m) then
             index = min(m,n)
             largest_label = largest_label-1
             labels(index)%cluster = [labels(m)%cluster, labels(n)%cluster]
             do i=index+1, largest_label
                 labels(i)%cluster = labels(i+1)%cluster
             end do
-            labels(largest_label+1)%cluster = [0]
         end if
         bond(labels(index)%cluster,2) = index
     end subroutine  
