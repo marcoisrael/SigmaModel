@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=SigmaModelLG
-#SBATCH --output=logs/SigmaModelLG_%j.out
+#SBATCH --output=logs/SigmaModelLG/SigmaModelLG_%j.out
 #SBATCH --nodes=1
 #SBATCH --mem-per-cpu=100mb
 #SBATCH --time=1:00:00
