@@ -1,7 +1,8 @@
 *.mod
 *test*
 *.json
-*.py
+csplot.py
 bin
 logs
-data0
+data*
+plot

@@ -1,21 +1,53 @@
 module functions
+
+    type :: labelType
+        integer, allocatable :: cluster(:)
+    end type labelType
+
     real(8) ::  pi=4.0*datan(1.0d0), beta, temp, control_param
     real(8), dimension(4) :: values 
     logical :: update_values=.false.
     integer :: LENGTH, VOLUME
-    ! logical :: save
     contains
-
+    function getindex(i, j)
+        integer i, j, getindex
+        getindex = j+(i-1)*LENGTH
+    end function
+    subroutine join(x, y, largest_label, labels, bond)
+        integer :: x(2), y(2), index,largest_label, m, n, i, bond(VOLUME,2)
+        type(labelType) :: labels(VOLUME)
+        n = bond(getindex(x(1),x(2)), 2)
+        m = bond(getindex(y(1),y(2)), 2)
+        if (n==0 .and. m==0) then
+            largest_label = largest_label+1
+            index = largest_label
+            labels(index)%cluster = [getindex(x(1),x(2)), getindex(y(1),y(2))]
+        else if (n>0 .and. m==0) then
+            index = n
+            labels(n)%cluster = [labels(n)%cluster, getindex(y(1),y(2))]
+        else if (n==0 .and. m>0) then
+            index = m
+            labels(m)%cluster = [labels(m)%cluster, getindex(x(1),x(2))]
+        else if (n/=m) then
+            index = min(m,n)
+            largest_label = largest_label-1
+            labels(index)%cluster = [labels(m)%cluster, labels(n)%cluster]
+            do i=max(m,n), largest_label
+                labels(i)%cluster = labels(i+1)%cluster
+            end do
+        end if
+        bond(labels(index)%cluster,2) = index
+    end subroutine  
     subroutine hot_start(s)
-        real(8), dimension(0:LENGTH-1,0:LENGTH-1) :: theta, phi, r
-        real(8), dimension(0:LENGTH-1,0:LENGTH-1,3) :: s
+        real(8), dimension(VOLUME) :: theta, phi, r
+        real(8), allocatable :: s(:,:)
         call random_number(r)
         call random_number(phi)
         theta = acos(1-2*r)
         phi = 2*pi*phi
-        s(:,:, 1) = sin(theta)*cos(phi)
-        s(:,:, 2) = sin(theta)*sin(phi)
-        s(:,:, 3) = cos(theta)
+        s(:, 1) = sin(theta)*cos(phi)
+        s(:, 2) = sin(theta)*sin(phi)
+        s(:, 3) = cos(theta)
     end subroutine
 
     function random()
@@ -34,11 +66,9 @@ module functions
     function modl(i)
         integer modL
         modl = modulo(i, LENGTH)
-    end function
-
-    function wolff_reflection(v, w)
-        real(8), dimension(3) :: v, w, wolff_reflection
-        wolff_reflection = v-2*dot_product(v, w)*w
+        if (modl==0) then
+            modl = LENGTH
+        end if
     end function
 
     function cross_product(a, b)
@@ -50,17 +80,17 @@ module functions
     end function
 
     function system_charge(s)
-        real(8), dimension(0:LENGTH-1,0:LENGTH-1,3) :: s
+        real(8), allocatable :: s(:,:)
         real(8) system_charge, X1, Y1, X2, Y2
         real(8),dimension(3) :: e1, e2, e3, e4
         integer :: k=1
         system_charge = 0
-        do i=0, LENGTH-1
-            do j=0, LENGTH-1
-                e1 = s(modl(i+1),j,:)
-                e2 = s(modl(i+1),modl(j+1),:)
-                e3 = s(i,j,:)
-                e4 = s(i,modl(j+1),:)
+        do i=1, LENGTH
+            do j=1, LENGTH
+                e1 = s(getindex(modl(i+1),j),:)
+                e2 = s(getindex(modl(i+1),modl(j+1)),:)
+                e3 = s(getindex(i,j),:)
+                e4 = s(getindex(i,modl(j+1)),:)
                 if (k>0) then    
                     X1 = 1+dot_product(e1,e2)+dot_product(e2,e3)+dot_product(e3,e1)
                     Y1 = dot_product(e1, cross_product(e2,e3))
@@ -80,16 +110,18 @@ module functions
     end function
 
     function system_energy(s)
-        real(8),dimension(0:LENGTH-1,0:LENGTH-1,3) :: s
-        real(8), dimension(3) :: sx, sx_right, sx_down
+        real(8), allocatable :: s(:,:)
+        real(8), dimension(3) :: sx, right, down
         real(8) :: system_energy
+        integer :: index
         system_energy = 0
-        do i=0, LENGTH-1
-            do j=0, LENGTH-1
-                sx = s(i,j,:)
-                sx_right = s(modl(i+1),j,:)
-                sx_down = s(i,modl(j+1),:)
-                system_energy = system_energy-dot_product(sx,sx_right)-dot_product(sx,sx_down)
+        do i=1, LENGTH
+            do j=1, LENGTH
+                index = getindex(i,j)
+                sx = s(getindex(i,j),:)
+                right = s(getindex(modl(i+1),j),:)
+                down = s(getindex(i,modl(j+1)),:)
+                system_energy = system_energy-dot_product(sx,right)-dot_product(sx,down)
             end do
         end do
         system_energy = system_energy/VOLUME
@@ -99,47 +131,14 @@ module functions
         logical :: is_bond
         real(8), dimension(3) :: sx, sy, w
         real(8) :: delta, p
-        delta = -dot_product(wolff_reflection(sx, w), sy)+dot_product(sx, sy)
+        delta = -dot_product(sx-2*dot_product(sx, w)*w, sy)+dot_product(sx, sy)
         p = 1-exp(min(0d0,-beta*delta))
-        ! if (delta<=0) then
-        !     p = 0
-        ! else
-        !     if (temp<=0.) then
-        !         p = 1
-        !     else 
-        !         p = 1-exp(-beta*delta)
-        !     end if
-        ! end if
         if (random()<=p) then
             is_bond = .true.
         else
             is_bond = .false.
         end if
     end function
-
-    subroutine join(group, label1, label2, largest_label)
-        integer, dimension(0:LENGTH-1,0:LENGTH-1) :: group
-        integer :: label1, label2, label_min, label_max
-        if (label1/=label2) then
-            if (label1<label2) then
-                label_max = label2
-                label_min = label1
-            else
-                label_max = label1
-                label_min = label2
-            end if
-            do i=0, LENGTH-1
-                do j=0, LENGTH-1
-                    if (group(i,j)==label_max) then
-                        group(i,j) = label_min
-                    else if (group(i,j)>label_max) then
-                        group(i,j) = group(i,j)-1
-                    end if
-                end do
-            end do
-            largest_label = largest_label-1
-        end if
-    end subroutine
 
     function int2string(i)
         character(30) :: style, int2string
@@ -170,7 +169,7 @@ module functions
         real r
         integer i, random_integer
         call random_number(r)
-        random_integer = floor(i*r)
+        random_integer = 1+floor(i*r)
     end function
 
     function linspace(a, b, n)
