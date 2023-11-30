@@ -9,5 +9,5 @@ module load lamod/gcc/12.2
 echo $USER;hostname;date
 N="1e4"
 alg="lexic,metropolis"
-name="v64x64/4p0-0p5"
-./sigmaModel -cool "4,0.5,${SLURM_ARRAY_TASK_ID}" -s "$N" -alg "$alg" -n "$name"
+name="v64x64/4p0-1p0"
+./sigmaModel -cool "4,1,${SLURM_ARRAY_TASK_ID}" -s "$N" -alg "$alg" -n "$name"
