@@ -10,4 +10,4 @@ echo $USER;hostname;date
 N="1e4"
 alg="lexic,glauber"
 name="v64x64/4p0-0p0"
-./sigmaModel -cool "4,0,${SLURM_ARRAY_TASK_ID}"  -s "$N" -alg "$alg" -n "$name"
+./sigmaModel -cool "4,0,${SLURM_ARRAY_TASK_ID}" -s "$N" -alg "$alg" -n "$name"

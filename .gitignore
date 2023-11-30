@@ -4,5 +4,5 @@
 csplot.py
 bin
 logs
-data
+data*
 plot

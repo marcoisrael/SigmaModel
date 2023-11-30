@@ -12,7 +12,7 @@ program cooling
    
     LENGTH = 64
     VOLUME = LENGTH*LENGTH
-    thermalization = 1000
+    thermalization = 100
     Temp = string2real(arg1)
     steps = string2int(arg2)
     spacing = 10
@@ -22,7 +22,7 @@ program cooling
 
     beta = 1/Temp
     do i=1, thermalization
-        call cluster(s, str1)
+        call step(s, arg3, arg4)
     end do
 
     do i=1, N
