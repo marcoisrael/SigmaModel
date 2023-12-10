@@ -54,7 +54,7 @@ program cooling
     var(:,:)=(var(:,:)-N*med(:,:)**2)/(N-1)
     path = trim(arg(5))//trim(arg(6))//"_"//trim(arg(7))//" "//trim(arg(3))//".csv"
     open(unit=1, file=path)
-    write(1, '(*(g0,:,","))') 'tau_Q', 'T', '<Q^2>', 'Error <Q^2>','AR|CS','Error AR|CS'
+    write(1, '(*(g0,:,","))') 'tau_Q', 'T', 'chi_t', 'Error chi_t','AR|CS','Error AR|CS'
     do k=0,TQ
         write(1, '((I0,:,","),*(f0.16,:,","))') k, interval(k), med(k,1) , &
         sqrt(var(k,1)/N), med(k,2), sqrt(var(k,2)/N)

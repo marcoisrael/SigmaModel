@@ -45,6 +45,7 @@ module algorithm
                 if (is_bond(sx,down,w)) then
                     bond(getindex(i,j),1) = bond(getindex(i,j),1)+1
                 end if
+                call hoshen_kopelman(labels, bond, i,j, largest_label)
             end do
         end do
 

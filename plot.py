@@ -2,15 +2,17 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import os
+ti = 4
+tf = 0
 
 text_kwargs = dict(ha='center', va='center', fontsize=14)
 def fit(x,y):
     cof = np.polyfit(x, y, deg=1, cov=True)
     error = np.sqrt(cof[1][0][0]/5), np.sqrt(cof[1][1][1]/5)
     return cof[0],error
-tf="0p0"
-name = f"4p0-{tf}/"
-folder = f"output/cooling/v64x64/{name}"
+
+name = f"{ti}-{tf}/"
+folder = f"output/cooling/L64/{name}"
 dest = f"output/plot/v64x64/{name}"
 algorithm = ['lexic_glauber','lexic_metropolis','random_glauber','random_metropolis']
 for alg in algorithm:
