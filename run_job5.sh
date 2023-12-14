@@ -3,11 +3,12 @@
 #SBATCH --output=logs/SigmaModelMC/SigmaModelMC_%j.out
 #SBATCH --nodes=1
 #SBATCH --mem-per-cpu=100mb
-#SBATCH --time=1:00:00
+#SBATCH --time=1:30:00
 #SBATCH --array=3-15:3
 module load lamod/gcc/12.2
 echo $USER;hostname;date
 N="1e4"
 alg="multi,cluster"
-name="L64/4-0"
-./sigmaModel -cool "4,0,${SLURM_ARRAY_TASK_ID}" -s "$N" -alg "$alg" -n "$name"
+endTemp="1.5"
+name="L64/4-${endTemp}"
+./sigmaModel -cool "4,${endTemp},${SLURM_ARRAY_TASK_ID}" -s "$N" -alg "$alg" -n "$name"
