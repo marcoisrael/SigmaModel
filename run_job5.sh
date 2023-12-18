@@ -9,6 +9,6 @@ module load lamod/gcc/12.2
 echo $USER;hostname;date
 N="1e4"
 alg="multi,cluster"
-endTemp="1.5"
+endTemp="0"
 name="L64/4-${endTemp}"
 ./sigmaModel -cool "4,${endTemp},${SLURM_ARRAY_TASK_ID}" -s "$N" -alg "$alg" -n "$name"
