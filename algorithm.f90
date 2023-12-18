@@ -48,15 +48,7 @@ module algorithm
                 call hoshen_kopelman(labels, bond, i,j, largest_label)
             end do
         end do
-
-        do i=1, LENGTH
-            do j=1, LENGTH
-                call hoshen_kopelman(labels, bond, i,j, largest_label)
-            end do
-        end do
-        ! do i=1, VOLUME
-        !     print*, i, labels(i)%cluster
-        ! end do
+			
         if (key=='single') then
             k = random_integer(largest_label) 
             do j=1, size(labels(k)%cluster)

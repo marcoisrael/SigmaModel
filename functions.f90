@@ -30,11 +30,14 @@ module functions
             labels(m)%cluster = [labels(m)%cluster, getindex(x(1),x(2))]
         else if (n/=m) then
             index = min(m,n)
-            largest_label = largest_label-1
             labels(index)%cluster = [labels(m)%cluster, labels(n)%cluster]
-            do i=max(m,n), largest_label
-                labels(i)%cluster = labels(i+1)%cluster
-            end do
+            if (max(m,n)<VOLUME) then
+		        do i=max(m,n), largest_label-1
+		            labels(i)%cluster = labels(i+1)%cluster
+		            bond(labels(i)%cluster,2) = i
+		        end do
+	        end if
+            largest_label = largest_label-1
         end if
         bond(labels(index)%cluster,2) = index
     end subroutine  
@@ -87,10 +90,10 @@ module functions
         system_charge = 0
         do i=1, LENGTH
             do j=1, LENGTH
-                e1 = s(getindex(modl(i+1),j),:)
+                e1 = s(getindex(i,modl(j+1)),:)
                 e2 = s(getindex(modl(i+1),modl(j+1)),:)
                 e3 = s(getindex(i,j),:)
-                e4 = s(getindex(i,modl(j+1)),:)
+                e4 = s(getindex(modl(i+1),j),:)
                 if (k>0) then    
                     X1 = 1+dot_product(e1,e2)+dot_product(e2,e3)+dot_product(e3,e1)
                     Y1 = dot_product(e1, cross_product(e2,e3))
@@ -127,11 +130,11 @@ module functions
         system_energy = system_energy/VOLUME
     end function
 
-    function is_bond(sx, sy, w)
+    function is_bond(ex, ey, w)
         logical :: is_bond
-        real(8), dimension(3) :: sx, sy, w
+        real(8), dimension(3) :: ex, ey, w
         real(8) :: delta, p
-        delta = -dot_product(sx-2*dot_product(sx, w)*w, sy)+dot_product(sx, sy)
+        delta = -dot_product(ex-2*dot_product(ex, w)*w, ey)+dot_product(ex, ey)
         p = 1-exp(min(0d0,-beta*delta))
         if (random()<=p) then
             is_bond = .true.
