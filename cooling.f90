@@ -17,7 +17,7 @@ program cooling
     arg(8) = "multi"
     LENGTH = 64
     VOLUME = LENGTH*LENGTH
-    thermalization = 1000
+    thermalization = 2000
     startTemp = string2real(arg(1))
     endTemp = string2real(arg(2))
     TQ = string2int(arg(3))
