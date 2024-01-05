@@ -4,7 +4,7 @@ program cooling
     real(8), allocatable :: s(:,:)
     real(8), dimension(3) :: med, var, obs
     integer :: N, steps, thermalization, spacing, i, j
-    character(30) :: arg1, arg2, arg3, arg4, str1="multi"
+    character(30) :: arg1, arg2, arg3, arg4 , str1="multi"
     call get_command_argument(1,arg1)   
     call get_command_argument(2,arg2)  
     call get_command_argument(3,arg3) 
@@ -23,6 +23,7 @@ program cooling
     beta = 1/Temp
     do i=1, thermalization
         call step(s, arg3, arg4)
+        !call cluster(s, str1)
     end do
 
     do i=1, N

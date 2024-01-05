@@ -136,15 +136,14 @@ module algorithm
                 h2 = -dot_product(r, right)-dot_product(r, down) &
                     -dot_product(r,left)-dot_product(r,up)
                 delta = h2-h1
-                if (temp<=0.) then
+                if (temp==0.) then
                     if (delta>0) then
                         p = 0
                     else
                         p = 1
                     end if
                 else
-                    p = exp(-beta*delta)
-                    p = p/(1+p)
+                    p = exp(-beta*delta)/(1+exp(-beta*delta))
                 end if
                 ar = ar+p
                 if (random()<=p) then

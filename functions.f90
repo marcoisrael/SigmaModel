@@ -32,11 +32,11 @@ module functions
             index = min(m,n)
             labels(index)%cluster = [labels(m)%cluster, labels(n)%cluster]
             if (max(m,n)<VOLUME) then
-		        do i=max(m,n), largest_label-1
-		            labels(i)%cluster = labels(i+1)%cluster
-		            bond(labels(i)%cluster,2) = i
-		        end do
-	        end if
+                do i=max(m,n), largest_label-1
+                    labels(i)%cluster = labels(i+1)%cluster
+                    bond(labels(i)%cluster,2) = i
+                end do
+            end if
             largest_label = largest_label-1
         end if
         bond(labels(index)%cluster,2) = index
@@ -133,13 +133,16 @@ module functions
     function is_bond(ex, ey, w)
         logical :: is_bond
         real(8), dimension(3) :: ex, ey, w
-        real(8) :: delta, p
+        real(8) :: delta
         delta = -dot_product(ex-2*dot_product(ex, w)*w, ey)+dot_product(ex, ey)
-        p = 1-exp(min(0d0,-beta*delta))
-        if (random()<=p) then
-            is_bond = .true.
+        if (delta<=0) then 
+            is_bond=.false.
         else
-            is_bond = .false.
+            if (random()<1-exp(-beta*delta)) then
+                is_bond=.true.
+            else 
+                is_bond=.false.
+            end if
         end if
     end function
 
