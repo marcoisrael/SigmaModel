@@ -62,7 +62,7 @@ if args.temp is not None:
     print(f'{"Temp":>25}{args.temp:>25}')
     print(f'{"algorithm":>25}{args.algorithm:>25}')
     print(f'{"steps":>25}{int(args.steps):>25}')
-    print(f'{"spacing":>25}{"10":>25}')
+    print(f'{"spacing":>25}{"25":>25}')
     #print(75*"-")
     os.system(" ".join(cmd_compile))
     os.system(" ".join(cmd_run))

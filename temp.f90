@@ -12,10 +12,10 @@ program cooling
    
     LENGTH = 64
     VOLUME = LENGTH*LENGTH
-    thermalization = 1000
+    thermalization = 1e3
     Temp = string2real(arg1)
     steps = string2int(arg2)
-    spacing = 10
+    spacing = 25
     N = int(steps/spacing)
     allocate(s(VOLUME,3))
     call hot_start(s)

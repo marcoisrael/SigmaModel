@@ -95,7 +95,11 @@ module algorithm
                 h2 = -dot_product(r, right)-dot_product(r, down) &
                     -dot_product(r,left)-dot_product(r,up)
                 delta = h2-h1
-                p = exp(min(0d0,-beta*delta))
+                if (delta<=0) then
+                    p = 1
+                else
+                    p = exp(-beta*delta)
+                end if
                 ar = ar+p
                 if (random()<=p) then
                     s(getindex(i,j),:) = r

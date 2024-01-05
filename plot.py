@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 from loaddata import *
 startTemp = 4
-for endTemp in [0,.5]:
+for endTemp in [0]:
     path = f"output/cooling/L64/{startTemp}-{endTemp}"
     dest = f"output/plot/L64/{startTemp}-{endTemp}"
     dt = loadData("Multi", "Cluster", startTemp, endTemp, path, dest)
