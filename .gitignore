@@ -1,0 +1,6 @@
+*.mod
+*test*
+bin
+logs
+*cpython*
+output
