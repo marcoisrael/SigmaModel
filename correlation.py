@@ -29,7 +29,7 @@ for alg in alg_list:
 	bbox = dict(boxstyle='round', fc='blanchedalmond', ec='orange', alpha=0.5)
 	ax1.text(0.95, 0.8, stats, fontsize=12, bbox=bbox,transform=ax1.transAxes, horizontalalignment='right')
 	ax1.set_xlabel("t")
-	ax1.set_ylabel(f"$C_{E,E}(t)$")
+	ax1.set_ylabel(r"$C_{E,E}(t)$")
 	ax1.set_title("Energy density")
 
 	opt, cov = curve_fit(f, t, ac["chi_t"])
@@ -40,7 +40,7 @@ for alg in alg_list:
 	bbox = dict(boxstyle='round', fc='blanchedalmond', ec='orange', alpha=0.5)
 	ax2.text(0.95, 0.8, stats, fontsize=12, bbox=bbox,transform=ax2.transAxes, horizontalalignment='right')
 	ax2.set_xlabel("t")
-	ax2.set_ylabel(f"$C_{Q,Q}(t)$")
+	ax2.set_ylabel(r"$C_{Q,Q}(t)$")
 	ax2.set_title("Topological charge")
 	
 	opt, cov = curve_fit(f, t, ac["chi_m"])
@@ -51,7 +51,7 @@ for alg in alg_list:
 	bbox = dict(boxstyle='round', fc='blanchedalmond', ec='orange', alpha=0.5)
 	ax3.text(0.95, 0.8, stats, fontsize=12, bbox=bbox,transform=ax3.transAxes, horizontalalignment='right')
 	ax3.set_xlabel("t")
-	ax3.set_ylabel(f"$C_{M,M}(t)$")
+	ax3.set_ylabel(r"$C_{M,M}(t)$")
 	ax3.set_title("Magnetization")
 	title = " ".join(alg.split("_"))
 	fig.suptitle(title,fontsize=14)
