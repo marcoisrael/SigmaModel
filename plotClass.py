@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
@@ -57,6 +58,7 @@ class loadData:
 	def chi2(self):
 		x, O = self.tauq, self.chitf
 		E = f(x,*self.opt)
+		# chit=\sum 
 		return np.sum((self.chitf*(O-E)/self.chitfErr)**2)/(x.size-2)
 		
 	def plot(self):
@@ -69,10 +71,9 @@ class loadData:
 		ax3.plot(x,f(x,*self.opt),linewidth=0.6)
 		ax3.fill_between(x, f(x,*self.opt)+self.zetaErr,f(x,*self.opt)-self.zetaErr, alpha=0.3)
 		ax3.errorbar(self.tauq, self.chitf, yerr=self.chitfErr,ls="",marker=".",markersize=2)
-		text = "".join([r"$\chi_t(\tau)=A\cdot\exp(-\alpha\tau)$", "\n", r"$\alpha=$", f"{self.opt[1].round(4)}\n", r"$\chi^2 =" f"$ {self.chi2().round(4)}"])
-		stats = (text)
+		stats = "".join([r"$\chi_t(\tau)=C\cdot\exp(-\zeta\cdot\tau)$", "\n", r"$\zeta=$", f"{self.opt[1].round(4)}\n", r"$\chi^2 =" f"$ {self.chi2().round(4)}"])
 		bbox = dict(boxstyle='round', fc='blanchedalmond', ec='orange', alpha=0.5)
-		ax3.text(0.95, 0.7, stats, fontsize=11, bbox=bbox,transform=ax3.transAxes, horizontalalignment='right')
+		ax3.text(0.95, 0.7, stats, fontsize=14, bbox=bbox,transform=ax3.transAxes, horizontalalignment='right')
 		lines_labels = [ax.get_legend_handles_labels() for ax in fig.axes]
 		lines, labels = [sum(lol, []) for lol in zip(*lines_labels)]
 		fig.legend(lines, labels)
@@ -83,6 +84,7 @@ class loadData:
 			ax.set_xlabel(select[self.alg][i][1], fontsize=15)
 		if not os.path.isdir(self.dest):
 			os.makedirs(self.dest)
+		print(self.opt)
 		fig.savefig(f'{self.dest}/{self.name}.png')
 	def curves(self):
 		def f(x, a, b, c, d):
