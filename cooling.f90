@@ -40,7 +40,7 @@ program cooling
 			temp = startTemp
 			beta = 1/startTemp
 			s = s0
-			do k=1, 50
+			do k=1, 10
 				call cluster(s, arg(8))
 			end do
 			s0 = s

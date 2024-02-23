@@ -4,8 +4,8 @@ import numpy as np
 import os
 from scipy.optimize import curve_fit
 
-label1 = [[r"$\chi_t$", "Sweep"],[r"$\chi_t$", r"$T$"],[r"$\log(\chi_{t_f})$", r"$\log(\tau_Q)$"],["Acceptance rate", "T"]]
-label2 = [[r"$\chi_t$", "Update"],[r"$\chi_t$", r"$T$"],[r"$\log(\chi_{t_f})$", r"$\log(\tau_Q)$"],["Cluster size", "T"]]
+label1 = [[r"$\chi_t$", "Sweep"],[r"$\chi_t$", r"$T$"],[r"$\chi_t\left(\tau_Q\right)$", r"$\tau_Q$"],["Acceptance rate", "T"]]
+label2 = [[r"$\chi_t$", "Update"],[r"$\chi_t$", r"$T$"],[r"$\chi_t\left(\tau_Q\right)$", r"$\tau_Q$"],["Cluster size", "T"]]
 select = {"Metropolis":label1,"Glauber":label1,"Cluster":label2}
 
 def fix(x,dx):
@@ -20,9 +20,8 @@ def fix(x,dx):
 	if i>len(str(y).split('.')[1]):
 		y = f"{y}{'0'*(i-len(str(y).split('.')[1]))}"
 	return f"{y}({val})"
-def f(x, a, b, c, d):
-	# ~ return a/(1+np.exp(x-b))+c
-	return a*x**3+b*x**2+c*x+d
+def f(x, a, b, c):
+	return a*np.exp(-b*x)+c
 class loadData:
 	def __init__(self,algVar, alg, startTemp, endTemp, path, dest,tauq):
 		self.alg = alg
@@ -45,7 +44,7 @@ class loadData:
 			self.chitf = np.append(self.chitf, d.iloc[-1]["chi_t"],)
 			self.chitfErr = np.append(self.chitfErr, d.iloc[-1]["Error chi_t"],)
 
-		x, y = np.log(self.tauq), np.log(self.chitf)
+		x, y = self.tauq, self.chitf
 		self.opt, self.pcov = curve_fit(f, x, y)
 		e = f(x,*self.opt)
 		self.zeta = abs(self.opt[0])
@@ -56,7 +55,7 @@ class loadData:
 		print(f"{self.algVar} {self.alg} done")
 		
 	def chi2(self):
-		x, O = np.log(self.tauq), np.log(self.chitf)
+		x, O = self.tauq, self.chitf
 		E = f(x,*self.opt)
 		return np.sum((self.chitf*(O-E)/self.chitfErr)**2)/(x.size-2)
 		
@@ -67,22 +66,21 @@ class loadData:
 			ax2.errorbar(d["T"],d["chi_t"],yerr=d["Error chi_t"],linewidth=0.6,marker='.',markersize=2)
 			ax4.errorbar(d["T"],d["AR|CS"],yerr=d["Error AR|CS"],linewidth=0.6,marker='.',markersize=2)
 		x = np.linspace(self.tauq[0],self.tauq[-1])
-		x = np.log(x)
 		ax3.plot(x,f(x,*self.opt),linewidth=0.6)
 		ax3.fill_between(x, f(x,*self.opt)+self.zetaErr,f(x,*self.opt)-self.zetaErr, alpha=0.3)
-		ax3.errorbar(np.log(self.tauq), np.log(self.chitf), yerr=self.chitfErr/self.chitf,ls="",marker=".",markersize=2)
-		# ~ stats = (f"$\zeta$ = {fix(self.zeta,self.zetaErr)}\n$\chi^2 = $ {self.chi2().round(4)}")
-		stats = (f"$\chi^2 = $ {self.chi2().round(4)}")
+		ax3.errorbar(self.tauq, self.chitf, yerr=self.chitfErr,ls="",marker=".",markersize=2)
+		text = "".join([r"$\chi_t(\tau)=A\cdot\exp(-\alpha\tau)$", "\n", r"$\alpha=$", f"{self.opt[1].round(4)}\n", r"$\chi^2 =" f"$ {self.chi2().round(4)}"])
+		stats = (text)
 		bbox = dict(boxstyle='round', fc='blanchedalmond', ec='orange', alpha=0.5)
-		ax3.text(0.95, 0.8, stats, fontsize=9, bbox=bbox,transform=ax3.transAxes, horizontalalignment='right')
+		ax3.text(0.95, 0.7, stats, fontsize=11, bbox=bbox,transform=ax3.transAxes, horizontalalignment='right')
 		lines_labels = [ax.get_legend_handles_labels() for ax in fig.axes]
 		lines, labels = [sum(lol, []) for lol in zip(*lines_labels)]
 		fig.legend(lines, labels)
 		title = f"{self.algVar} {self.alg}"+r", $V=64 \times 64$"+ f", $T \in ({self.startTemp},{self.endTemp})$"
-		fig.suptitle(title,fontsize=14)
+		fig.suptitle(title,fontsize=16)
 		for i, ax in zip([0,1,2,3],[ax1,ax2,ax3,ax4]):
-			ax.set_ylabel(select[self.alg][i][0])
-			ax.set_xlabel(select[self.alg][i][1])
+			ax.set_ylabel(select[self.alg][i][0], fontsize=15)
+			ax.set_xlabel(select[self.alg][i][1], fontsize=15)
 		if not os.path.isdir(self.dest):
 			os.makedirs(self.dest)
 		fig.savefig(f'{self.dest}/{self.name}.png')

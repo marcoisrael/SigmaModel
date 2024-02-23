@@ -24,6 +24,8 @@ def showTime(start_time, end_time):
 binary = f"bin/main"
 cmd_compile = ["gfortran","-o",binary,
                    "functions.f90","algorithm.f90","cooling.f90"]
+if not os.path.isdir("bin"):
+    os.makedirs("bin")
 if args.compile:
     os.system(" ".join(cmd_compile))
     
