@@ -32,11 +32,11 @@ if args.compile:
 if args.cooling is not None:
     start_time =  time.perf_counter()
     key, alg = args.algorithm.split(',')
-    folder = f'output/cooling/{args.name}/'
+    
+    start_temp, end_temp, tq = args.cooling.split(',')
+    folder = f'output/cooling/{args.name}/{start_temp}-{end_temp}'
     if not os.path.isdir(folder):
         os.makedirs(folder)
-    start_temp, end_temp, tq = args.cooling.split(',')
-    
     cmd_run = ["./bin/main",f"{start_temp}", f"{end_temp}",f"{tq}",
                f"{int(args.steps)}",folder,key,alg]
     stringTemp = f"{start_temp}-{end_temp}"
@@ -59,6 +59,9 @@ if args.temp is not None:
     key, alg = args.algorithm.split(',')
     cmd_compile = ["gfortran","-o","bin/main0","functions.f90","algorithm.f90","temp.f90"]
     cmd_run = ["./bin/main0",f"{args.temp}",f"{int(args.steps)}",key,alg]
+    folder = f'output/thermalized/{args.endTemp}'
+    if not os.path.isdir(folder):
+        os.makedirs(folder)
     print(75*"-")
     print(f'{"Temp":>25}{args.temp:>25}')
     print(f'{"algorithm":>25}{args.algorithm:>25}')

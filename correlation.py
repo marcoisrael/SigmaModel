@@ -48,7 +48,7 @@ for alg in alg_list:
 	ax3 = fig.add_subplot(gs[1,0])
 	ax3.plot(x,f(x, *opt))
 	ax3.plot(t, ac["chi_m"],color="orange", label=f"$\chi_m$",ls="", marker=".")
-	stats = "".join([r"$c(\tau)=C\cdot\exp(-\alpha\cdot\tau)$","\n", r"$\alpha =$",f"{opt[1].round(4)}"])
+	stats = "".join([r"$c(\tau)=C\cdot\exp(-\alpha\cdot\tau)+k$","\n", r"$\alpha =$",f"{opt[1].round(4)}"])
 	bbox = dict(boxstyle='round', fc='blanchedalmond', ec='orange', alpha=0.5)
 	ax3.text(0.95, 0.8, stats, fontsize=14, bbox=bbox,transform=ax3.transAxes, horizontalalignment='right')
 	ax3.set_xlabel("t",fontsize=15)

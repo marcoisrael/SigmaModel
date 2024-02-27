@@ -22,7 +22,7 @@ def fix(x,dx):
 		y = f"{y}{'0'*(i-len(str(y).split('.')[1]))}"
 	return f"{y}({val})"
 def f(x, a, b, c):
-	return a*np.exp(-b*x)+c
+	return -a*np.log(b*x)+c
 class loadData:
 	def __init__(self,algVar, alg, startTemp, endTemp, path, dest,tauq):
 		self.alg = alg
@@ -46,20 +46,20 @@ class loadData:
 			self.chitfErr = np.append(self.chitfErr, d.iloc[-1]["Error chi_t"],)
 
 		x, y = self.tauq, self.chitf
-		self.opt, self.pcov = curve_fit(f, x, y)
+		# d = {"tau_Qf":x, "chi_tf":y}
+		# df = pd.DataFrame(d)
+		# df.to_csv(f"output/data_{self.alg}.csv")
+		self.opt, self.cov = curve_fit(f, x, y)
 		e = f(x,*self.opt)
-		self.zeta = abs(self.opt[0])
+		self.zeta = abs(self.opt[1])
 		self.zetaErr = np.sqrt(np.sum((e-y)**2)/(x.size-self.opt.size))
-		# ~ print(r"$\zeta$ =",self.zeta,r"$\pm$",self.zetaErr) 
-		# ~ print(r"$\chi^2$ =",self.chi2())
-		# ~ print(self.opt)
 		print(f"{self.algVar} {self.alg} done")
 		
 	def chi2(self):
-		x, O = self.tauq, self.chitf
-		E = f(x,*self.opt)
-		# chit=\sum 
-		return np.sum((self.chitf*(O-E)/self.chitfErr)**2)/(x.size-2)
+		x, y = self.tauq, self.chitf
+		yerr = self.chitfErr
+		y0 = f(x,*self.opt)
+		return np.sum(((y-y0)/yerr)**2)/(y.size-self.opt.size)
 		
 	def plot(self):
 		fig, ((ax1,ax2),(ax3,ax4)) = plt.subplots(2,2,dpi=140,figsize=(16,9))
@@ -71,7 +71,7 @@ class loadData:
 		ax3.plot(x,f(x,*self.opt),linewidth=0.6)
 		ax3.fill_between(x, f(x,*self.opt)+self.zetaErr,f(x,*self.opt)-self.zetaErr, alpha=0.3)
 		ax3.errorbar(self.tauq, self.chitf, yerr=self.chitfErr,ls="",marker=".",markersize=2)
-		stats = "".join([r"$\chi_t(\tau)=C\cdot\exp(-\zeta\cdot\tau)$", "\n", r"$\zeta=$", f"{self.opt[1].round(4)}\n", r"$\chi^2 =" f"$ {self.chi2().round(4)}"])
+		stats = "".join([r"$\chi_t(\tau_Q)=C\cdot\exp(-\alpha\cdot\tau_Q)$", "\n", r"$\alpha=$", f"{self.opt[1].round(4)}\n", r"$\chi^2\left/dog\right. =" f"$ {self.chi2().round(4)}"])
 		bbox = dict(boxstyle='round', fc='blanchedalmond', ec='orange', alpha=0.5)
 		ax3.text(0.95, 0.7, stats, fontsize=14, bbox=bbox,transform=ax3.transAxes, horizontalalignment='right')
 		lines_labels = [ax.get_legend_handles_labels() for ax in fig.axes]
@@ -85,17 +85,4 @@ class loadData:
 		if not os.path.isdir(self.dest):
 			os.makedirs(self.dest)
 		print(self.opt)
-		fig.savefig(f'{self.dest}/{self.name}.png')
-	def curves(self):
-		def f(x, a, b, c, d):
-			return a/(1+np.exp(x-b))+c
-		
-		fig, ax = plt.subplots()
-		for d in self.data[4:]:
-			x, y = d["tau_Q"],d["chi_t"]
-			opt, cov = curve_fit(f, x, y)
-			# ~ ax.plot(d["tau_Q"],d["chi_t"], ls='', marker=".",markersize=2)
-			x = np.linspace(1,20)
-			ax.plot(x, f(x, *opt))
-		plt.show()
-		
+		fig.savefig(f'{self.dest}/{self.name}.png')		
