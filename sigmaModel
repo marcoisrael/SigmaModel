@@ -21,31 +21,25 @@ def showTime(start_time, end_time):
     stringTime = f"{int(hours):0>2}:{int(minutes):0>2}:{seconds:0>2.2f}"
     print(f"{'Elapsed time':>25}{stringTime:>25}")
 
-binary = f"bin/main"
-cmd_compile = ["gfortran","-o",binary,
-                   "functions.f90","algorithm.f90","cooling.f90"]
 if not os.path.isdir("bin"):
     os.makedirs("bin")
+
 if args.compile:
-    os.system(" ".join(cmd_compile))
-    
+    os.system(" ".join(["gfortran","-o","bin/main","functions.f90","algorithm.f90","cooling.f90"]))
+    os.system(" ".join(["gfortran","-o","bin/main0","functions.f90","algorithm.f90","temp.f90"]))
+
 if args.cooling is not None:
     start_time =  time.perf_counter()
     key, alg = args.algorithm.split(',')
-<<<<<<< HEAD
-=======
-    
->>>>>>> bf858406cde5a5e8be44158ea1dc63e6abbf2662
+
     start_temp, end_temp, tq = args.cooling.split(',')
     folder = f'output/cooling/{args.name}/{start_temp}-{end_temp}'
     if not os.path.isdir(folder):
         os.makedirs(folder)
-<<<<<<< HEAD
-    
-=======
->>>>>>> bf858406cde5a5e8be44158ea1dc63e6abbf2662
+
     cmd_run = ["./bin/main",f"{start_temp}", f"{end_temp}",f"{tq}",
                f"{int(args.steps)}",folder,key,alg]
+
     stringTemp = f"{start_temp}-{end_temp}"
     print(" ".join(cmd_run))
     print(75*"-")
@@ -64,15 +58,10 @@ if args.temp is not None:
     folder = f'output/thermalized/{args.temp}'
     if not os.path.isdir(folder):
         os.makedirs(folder) 
-    cmd_compile = ["gfortran","-o","bin/main0","functions.f90","algorithm.f90","temp.f90"]
+
     cmd_run = ["./bin/main0",f"{args.temp}",f"{int(args.steps)}",key,alg]
-<<<<<<< HEAD
+
     print(" ".join(cmd_run))
-=======
-    folder = f'output/thermalized/{args.endTemp}'
-    if not os.path.isdir(folder):
-        os.makedirs(folder)
->>>>>>> bf858406cde5a5e8be44158ea1dc63e6abbf2662
     print(75*"-")
     print(f'{"Temp":>25}{args.temp:>25}')
     print(f'{"algorithm":>25}{args.algorithm:>25}')
@@ -81,12 +70,3 @@ if args.temp is not None:
     os.system(" ".join(cmd_run))
     end_time =  time.perf_counter() 
     showTime(start_time, end_time)
-
-if args.test:
-    cmd_compile = ["gfortran","-o","output/main",
-                   "functions.f90","test.f90"]
-    if os.path.isfile('test.f90'):    
-        os.system(" ".join(cmd_compile))
-        os.system("./output/main")
-
-
