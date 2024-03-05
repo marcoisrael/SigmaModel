@@ -7,7 +7,7 @@ import os
 tmax = 30
 alg_list = ["lexic_metropolis", "lexic_glauber", "random_metropolis", "random_glauber", "multi_cluster"]
 # ~ alg_list = ["single_cluster"]
-for temp in [0.5,1,2]:
+for temp in [2]:
 	for alg in alg_list:
 		data = pd.read_csv(f"output/thermalized/{temp}/{alg}.csv")
 
