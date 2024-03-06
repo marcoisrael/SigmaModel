@@ -2,7 +2,7 @@ program thermalized
     use algorithm
     use functions
     real(8), allocatable :: s(:,:)
-    real(8), dimension(3) :: obs
+    real(8), dimension(4) :: obs
     integer :: N, steps, thermalization, i, j
     character(30) :: arg1, arg2, arg3, arg4, str1="multi"
     character(60) :: path
@@ -28,7 +28,7 @@ program thermalized
     write(1, '(*(g0,:,","))') 'H/V', 'chi_t', 'chi_m'
     do i=1, N
         call step(s, arg3, arg4)
-        obs = [system_energy(s), system_charge(s), system_magnetization(s)]
+        obs = [system_energy(s), system_charge(s), system_magnetization(s), control_param]
         obs(:) = obs(:)/VOLUME
         write(1, '(*(f0.16,:,","))') obs
 
