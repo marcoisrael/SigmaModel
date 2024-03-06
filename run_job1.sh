@@ -8,4 +8,4 @@ module load lamod/gcc/12.2
 echo $USER;hostname;date
 N="1e6"
 temp=0.5
-./sigmaModel -t $temp -s "$N" -alg "$1"
+./sigmaModel -t $temp -s "$N" -alg "$1" --timeline
