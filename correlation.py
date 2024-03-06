@@ -6,22 +6,20 @@ from scipy.optimize import curve_fit
 import os	
 alg_list = ["lexic_metropolis", "lexic_glauber", "random_metropolis", "random_glauber", "multi_cluster"]
 tmax = 30
-alg_list = ["lexic_metropolis", "lexic_glauber", "random_metropolis", "random_glauber", "multi_cluster"]
-# ~ alg_list = ["single_cluster"]
 for temp in [0.5,1,2,3,4]:
 	for alg in alg_list:
 		data = pd.read_csv(f"output/thermalized/{temp}/{alg}.csv")
 
-		ac = (data**2).mean()- data.mean()**2
-		for t in np.arange(1,tmax):
+		ac = (data*data.shift(1)).dropna().mean()-data.mean()**2
+		for t in np.arange(2,tmax):
 			ac = pd.concat([ac,(data*data.shift(t)).dropna().mean()-data.mean()**2],axis=1)
 
 		ac = ac.transpose()
 		t = np.arange(0,tmax)
 		fig = plt.figure(dpi=140,figsize=(16,9))
 		gs = fig.add_gridspec(2, 2,  width_ratios=(1,1))
-		def f(x, a, b):
-			return a*np.exp(-x/b)
+		def f(x, a, b, c):
+			return c+a/(x+b)
 		x = np.linspace(0,tmax)
 		opt, cov = curve_fit(f, t, ac["H/V"])
 		ax1 = fig.add_subplot(gs[0,0])
