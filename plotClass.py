@@ -21,8 +21,8 @@ def fix(x,dx):
 	if i>len(str(y).split('.')[1]):
 		y = f"{y}{'0'*(i-len(str(y).split('.')[1]))}"
 	return f"{y}({val})"
-def f(x, a, b, c):
-	return -a*np.log(b*x)+c
+def f(x, a, b,c):
+	return c+a/(x+b)
 class loadData:
 	def __init__(self,algVar, alg, startTemp, endTemp, path, dest,tauq):
 		self.alg = alg
@@ -71,7 +71,7 @@ class loadData:
 		ax3.plot(x,f(x,*self.opt),linewidth=0.6)
 		ax3.fill_between(x, f(x,*self.opt)+self.zetaErr,f(x,*self.opt)-self.zetaErr, alpha=0.3)
 		ax3.errorbar(self.tauq, self.chitf, yerr=self.chitfErr,ls="",marker=".",markersize=2)
-		stats = "".join([r"$\chi_t(\tau_Q)=C\cdot\exp(-\alpha\cdot\tau_Q)$", "\n", r"$\alpha=$", f"{self.opt[1].round(4)}\n", r"$\chi^2\left/dog\right. =" f"$ {self.chi2().round(4)}"])
+		stats = "".join([r"$\chi_t(\tau_Q)=C\cdot\exp(-\alpha\cdot\tau_Q)+k$", "\n", r"$\alpha=$", f"{self.opt[1].round(4)}\n", r"$\chi^2\left/dog\right. =" f"$ {self.chi2().round(4)}"])
 		bbox = dict(boxstyle='round', fc='blanchedalmond', ec='orange', alpha=0.5)
 		ax3.text(0.95, 0.7, stats, fontsize=14, bbox=bbox,transform=ax3.transAxes, horizontalalignment='right')
 		lines_labels = [ax.get_legend_handles_labels() for ax in fig.axes]

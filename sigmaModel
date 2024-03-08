@@ -21,29 +21,25 @@ def showTime(start_time, end_time):
 	stringTime = f"{int(hours):0>2}:{int(minutes):0>2}:{seconds:0>2.2f}"
 	print(f"{'Elapsed time':>25}{stringTime:>25}")
 
-cmd_compile = ["gfortran","-o","bin/main", "functions.f90","algorithm.f90","cooling.f90"]
+
+if not os.path.isdir("bin"):
+	os.makedirs("bin")
 
 if args.compile:
-	if not os.path.isdir("bin"):
-		os.makedirs("bin")
-	os.system(" ".join(cmd_compile))
-	print(" ".join(cmd_compile))
-	cmd_compile[2]="bin/main0"
-	cmd_compile[5]="temp.f90"
-	os.system(" ".join(cmd_compile))
-	print(" ".join(cmd_compile))
-	
+	os.system(" ".join(["gfortran","-o","bin/main","functions.f90","algorithm.f90","cooling.f90"]))
+	os.system(" ".join(["gfortran","-o","bin/main0","functions.f90","algorithm.f90","temp.f90"]))
+
 if args.cooling is not None:
 	start_time =  time.perf_counter()
 	key, alg = args.algorithm.split(',')
-	
+
 	start_temp, end_temp, tq = args.cooling.split(',')
 	folder = f'output/cooling/{args.name}/{start_temp}-{end_temp}'
 	if not os.path.isdir(folder):
 		os.makedirs(folder)
-	
-	cmd_run = ["./bin/main",f"{start_temp}", f"{end_temp}",f"{tq}",
-			   f"{int(args.steps)}",folder,key,alg]
+
+	cmd_run = ["./bin/main",f"{start_temp}", f"{end_temp}",f"{tq}",f"{int(args.steps)}",folder,key,alg]
+
 	stringTemp = f"{start_temp}-{end_temp}"
 	print(" ".join(cmd_run))
 	print(75*"-")
@@ -62,22 +58,15 @@ if args.temp is not None:
 	folder = f'output/thermalized/{args.temp}'
 	if not os.path.isdir(folder):
 		os.makedirs(folder) 
-	
+
 	cmd_run = ["./bin/main0",f"{args.temp}",f"{int(args.steps)}",key,alg]
+
 	print(" ".join(cmd_run))
 	print(75*"-")
 	print(f'{"Temp":>25}{args.temp:>25}')
 	print(f'{"algorithm":>25}{args.algorithm:>25}')
 	print(f'{"steps":>25}{int(args.steps):>25}')
+	# os.system(" ".join(cmd_compile))
 	os.system(" ".join(cmd_run))
 	end_time =	time.perf_counter() 
 	showTime(start_time, end_time)
-
-if args.test:
-	cmd_compile = ["gfortran","-o","output/main",
-				   "functions.f90","test.f90"]
-	if os.path.isfile('test.f90'):	  
-		os.system(" ".join(cmd_compile))
-		os.system("./output/main")
-
-
