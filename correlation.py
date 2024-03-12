@@ -6,10 +6,9 @@ from scipy.optimize import curve_fit
 import os	
 alg_list = ["lexic_metropolis", "lexic_glauber", "random_metropolis", "random_glauber"]
 tmax = 30
-for temp in [3,4]:
+for temp in [4]:
 	for alg in alg_list:
 		data = pd.read_csv(f"output/thermalized/{temp}/{alg}.csv")
-
 		ac = (data*data).mean()-data.mean()**2
 		for t in np.arange(1,tmax):
 			ac = pd.concat([ac,(data*data.shift(t)).dropna().mean()-data.mean()**2],axis=1)
@@ -30,7 +29,7 @@ for temp in [3,4]:
 		bbox = dict(boxstyle='round', fc='blanchedalmond', ec='orange', alpha=0.5)
 		ax1.text(0.95, 0.8, stats, fontsize=14, bbox=bbox,transform=ax1.transAxes, horizontalalignment='right')
 		ax1.set_xlabel("t", fontsize=15)
-		ax1.set_ylabel(r"$C_{E,E}(\tau)$",fontsize=15)
+		ax1.set_ylabel(r"$C_{E,E}(t)$",fontsize=15)
 		ax1.set_title("Energy density",fontsize=15)
 
 		opt, cov = curve_fit(f, t, ac["chi_t"])
@@ -41,7 +40,7 @@ for temp in [3,4]:
 		bbox = dict(boxstyle='round', fc='blanchedalmond', ec='orange', alpha=0.5)
 		ax2.text(0.95, 0.8, stats, fontsize=14, bbox=bbox,transform=ax2.transAxes, horizontalalignment='right')
 		ax2.set_xlabel("t",fontsize=15)
-		ax2.set_ylabel(r"$C_{Q,Q}(\tau)$",fontsize=15)
+		ax2.set_ylabel(r"$C_{Q,Q}(t)$",fontsize=15)
 		ax2.set_title("Topological charge",fontsize=15)
 
 		opt, cov = curve_fit(f, t, ac["chi_m"])
@@ -52,7 +51,7 @@ for temp in [3,4]:
 		bbox = dict(boxstyle='round', fc='blanchedalmond', ec='orange', alpha=0.5)
 		ax3.text(0.95, 0.8, stats, fontsize=14, bbox=bbox,transform=ax3.transAxes, horizontalalignment='right')
 		ax3.set_xlabel("t",fontsize=15)
-		ax3.set_ylabel(r"$C_{M,M}(\tau)$",fontsize=15)
+		ax3.set_ylabel(r"$C_{M,M}(t)$",fontsize=15)
 		ax3.set_title("Magnetization",fontsize=15)
 		title = " ".join(alg.split("_"))
 		fig.suptitle(title,fontsize=16)

@@ -40,7 +40,8 @@ module functions
             largest_label = largest_label-1
         end if
         bond(labels(index)%cluster,2) = index
-    end subroutine  
+    end subroutine 
+
     subroutine hot_start(s)
         real(8), dimension(VOLUME) :: theta, phi, r
         real(8), allocatable :: s(:,:)
@@ -64,6 +65,17 @@ module functions
         theta = acos(1-2*random())
         phi = 2*pi*random()
         random_vector = [sin(theta)*cos(phi), sin(theta)*sin(phi), cos(theta)]
+    end function
+
+    function random_vector_cone(v)
+        real(8), dimension(3) :: random_vector_cone, r, k, v
+        real(8) :: delta, phi
+        r = random_vector()
+        k = cross_product(r, v)
+        delta = 1
+        phi = sqrt(delta*random())
+        random_vector_cone = v*cos(phi)+cross_product(k, v)*sin(phi)+k*dot_product(k, v)*(1-cos(phi))
+        random_vector_cone = random_vector_cone/sqrt(dot_product(random_vector_cone, random_vector_cone))
     end function
 
     function modl(i)
@@ -125,7 +137,6 @@ module functions
                 system_energy = system_energy-dot_product(sx,right)-dot_product(sx,down)
             end do
         end do
-        system_energy = system_energy
     end function
 
     function system_magnetization(s)
