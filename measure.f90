@@ -13,7 +13,7 @@ program measure
    
     LENGTH = 64
     VOLUME = LENGTH*LENGTH
-    thermalization = 1e3
+    thermalization = 1e4
     Temp = string2real(arg1)
     steps = string2int(arg2)
     N = steps
