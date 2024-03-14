@@ -77,9 +77,6 @@ if args.record:
 if args.measure:
 	start_time =  time.perf_counter()
 	key, alg = args.algorithm.split(',')
-	folder = f'output/thermalized/{args.temp}'
-	if not os.path.isdir(folder):
-		os.makedirs(folder) 
 
 	cmd_run = ["./bin/main1",f"{args.temp}",f"{int(args.steps)}",key,alg]
 
