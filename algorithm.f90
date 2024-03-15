@@ -136,7 +136,7 @@ module algorithm
                 down = s(getindex(i,modl(j+1)),:)
                 left = s(getindex(modl(i-1),j),:)
                 up = s(getindex(i,modl(j-1)),:)
-                r = random_vector()
+                r = random_vector_cone(sx)
                 h1 = -dot_product(sx, right)-dot_product(sx, down) &
                     -dot_product(sx,left)-dot_product(sx,up)
                 h2 = -dot_product(r, right)-dot_product(r, down) &

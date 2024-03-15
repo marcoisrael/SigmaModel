@@ -48,7 +48,7 @@ def plot(X, st):
 	ax.set_xlabel(st["xlabel"], fontsize=14)
 	ax.set_ylabel(st["ylabel"], fontsize=14)
 	ax.set_title(st["title"], fontsize=14)
-	x = np.linspace(t_min, t_max, 200)
+	x = np.linspace(st["T"][temp][0], st["T"][temp][1], 200)
 	ax.errorbar(X[0], X[1], yerr=X[2], ls="", marker=".")
 	ax.plot(x, f(x,*opt))
 	if False: 
@@ -59,37 +59,44 @@ def plot(X, st):
 	bbox = dict(boxstyle='round', fc='blanchedalmond', ec='orange', alpha=0.5)
 	ax.text(0.95, 0.6, stats, fontsize=12, bbox=bbox,transform=ax.transAxes, horizontalalignment='right')
 
+TQ = {0.5:[40,4000,40], 1.5:[1,30,1], 2:[0,30,1], 2.5:[0,30,1], 3:[0,30,1], 3.5:[0,30,1], 4:[0,30,1]}
+TM = {0.5:[100,20000,200], 1.5:[3,30,1], 2:[3,30,1], 2.5:[1,30,1], 3:[0,30,1], 3.5:[0,30,1], 4:[0,30,1]}
+TE = {0.5:[20,2000,20],1:[6,100,1], 1.5:[3,30,1], 2:[3,30,1], 2.5:[0,30,1], 3:[0,30,1], 3.5:[0,30,1], 4:[0,30,1]}
+
+#TQ = {0.5:[0,30,1],1:[0,30,1], 1.5:[0,30,1], 2:[0,30,1], 2.5:[0,30,1], 3:[0,30,1], 3.5:[0,30,1], 4:[0,30,1]}
+#TM = {0.5:[3,80,1],1:[2,60,1], 1.5:[1,30,1], 2:[1,30,1], 2.5:[0,30,1], 3:[0,30,1], 3.5:[0,30,1], 4:[0,30,1]}
+#TE = {0.5:[4,80,1],1:[4,80,1], 1.5:[3,60,1], 2:[0,30,1], 2.5:[0,30,1], 3:[0,30,1], 3.5:[0,30,1], 4:[0,30,1]}
+
+
 name = "record-0"
-temp = 2.5
-Algs = ["lexic_metropolis", "random_metropolis", "lexic_glauber", "random_glauber", "multi_cluster"]
-# Algs = ["multi_cluster"]
-t_min, t_max, sep = 0, 200, 1
+Algs = ["lexic_metropolis", "random_metropolis", "lexic_glauber", "random_glauber"]
+#Algs = ["multi_cluster"]
 
-if not os.path.isdir(f"output/plot/{name}/{temp}"):
-	os.makedirs(f"output/plot/{name}/{temp}")
+for temp in [0.5]:#[1,1.5,2,2.5,3,3.5,4]:
+	if not os.path.isdir(f"output/plot/{name}/{temp}"):
+		os.makedirs(f"output/plot/{name}/{temp}")
+	for alg in Algs:
+		path = f"output/{name}/{temp}/{alg}.csv"
+		data = np.loadtxt(path, delimiter=",", skiprows=1).transpose()
 
-for alg in Algs:
-	path = f"output/{name}/{temp}/{alg}.csv"
-	data = np.loadtxt(path, delimiter=",", skiprows=1).transpose()
+		fig = plt.figure(figsize=(16,9))
+		gs = fig.add_gridspec(2, 2)	
 
-	fig = plt.figure(figsize=(16,9))
-	gs = fig.add_gridspec(2, 2)	
+		st = {"xlabel":r"$t$", "ylabel":r"$C_{E,E}(t)$", "title":"Energy density", "gsx":1, "gsy":0, "T":TE}
+		X, opt, cov, chi2_by_dog = fit(data[0], TE[temp][0], TE[temp][1], TE[temp][2])
+		plot(X, st)
 
-	st = {"xlabel":r"$t$", "ylabel":r"$C_{E,E}(t)$", "title":"Energy density", "gsx":1, "gsy":0}
-	X, opt, cov, chi2_by_dog = fit(data[0], t_min, t_max, sep)
-	plot(X, st)
+		st = {"xlabel":r"$t$", "ylabel":r"$C_{Q,Q}(t)$", "title":"Topological charge", "gsx":0, "gsy":0, "T":TQ}
+		X, opt, cov, chi2_by_dog = fit(data[1], TQ[temp][0], TQ[temp][1], TQ[temp][2])
+		plot(X, st)
 
-	st = {"xlabel":r"$t$", "ylabel":r"$C_{Q,Q}(t)$", "title":"Topological charge", "gsx":0, "gsy":0}
-	X, opt, cov, chi2_by_dog = fit(data[1], t_min, t_max, sep)
-	plot(X, st)
-
-	st = {"xlabel":r"$t$", "ylabel":r"$C_{M,M}(t)$", "title":"Magnetization density", "gsx":0, "gsy":1}
-	X, opt, cov, chi2_by_dog = fit(data[2], t_min, t_max, sep)
-	plot(X, st)
-	# plt.tight_layout()
-	fig.suptitle(alg,fontsize=16)
-	plt.subplots_adjust(hspace=0.3, wspace=0.2)
-	plot_name = f"output/plot/{name}/{temp}/{alg}.png"
-	fig.savefig(plot_name)
-	print(plot_name, "finished")
-	del fig, data
+		st = {"xlabel":r"$t$", "ylabel":r"$C_{M,M}(t)$", "title":"Magnetization density", "gsx":0, "gsy":1, "T":TM}
+		X, opt, cov, chi2_by_dog = fit(data[2], TM[temp][0], TM[temp][1], TM[temp][2])
+		plot(X, st)
+		# plt.tight_layout()
+		fig.suptitle(alg,fontsize=16)
+		plt.subplots_adjust(hspace=0.3, wspace=0.2)
+		plot_name = f"output/plot/{name}/{temp}/{alg}.png"
+		fig.savefig(plot_name)
+		print(plot_name, "finished")
+		del fig, data
