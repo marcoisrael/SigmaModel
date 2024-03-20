@@ -48,12 +48,6 @@ module algorithm
                 call hoshen_kopelman(labels, bond, i,j, largest_label)
             end do
         end do
-		
-        ! do i=1, LENGTH
-        !    do j=1, LENGTH
-        !        write(1, '(*(I0,:,","))') i, j, bond(getindex(i,j),1), bond(getindex(i,j),2)
-        !    end do
-        ! end do
         
         if (key=='single') then
             k = random_integer(largest_label) 
@@ -95,7 +89,7 @@ module algorithm
                 down = s(getindex(i,modl(j+1)),:)
                 left = s(getindex(modl(i-1),j),:)
                 up = s(getindex(i,modl(j-1)),:)
-                r = random_vector_cone(sx)
+                r = random_vector()
                 h1 = -dot_product(sx, right)-dot_product(sx, down) &
                     -dot_product(sx,left)-dot_product(sx,up)
                 h2 = -dot_product(r, right)-dot_product(r, down) &
@@ -136,7 +130,7 @@ module algorithm
                 down = s(getindex(i,modl(j+1)),:)
                 left = s(getindex(modl(i-1),j),:)
                 up = s(getindex(i,modl(j-1)),:)
-                r = random_vector_cone(sx)
+                r = random_vector()
                 h1 = -dot_product(sx, right)-dot_product(sx, down) &
                     -dot_product(sx,left)-dot_product(sx,up)
                 h2 = -dot_product(r, right)-dot_product(r, down) &

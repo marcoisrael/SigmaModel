@@ -67,15 +67,15 @@ module functions
         random_vector = [sin(theta)*cos(phi), sin(theta)*sin(phi), cos(theta)]
     end function
 
-    function random_vector_cone(v)
-        real(8), dimension(3) :: random_vector_cone, r, k, v
-        real(8) :: delta, phi
+    function random_vector_cone(s)
+        real(8), dimension(3) :: random_vector_cone, r, k, s
+        real(8) :: delta, alpha
         r = random_vector()
-        k = cross_product(r, v)
-        delta = 1
-        phi = sqrt(delta*random())
-        random_vector_cone = v*cos(phi)+cross_product(k, v)*sin(phi)+k*dot_product(k, v)*(1-cos(phi))
-        random_vector_cone = random_vector_cone/sqrt(dot_product(random_vector_cone, random_vector_cone))
+        k = cross_product(s, r)
+        delta = 0.1
+        alpha = acos(1-2*delta*random())
+        random_vector_cone = s*cos(alpha)+cross_product(k, s)*sin(alpha)
+        random_vector_cone = random_vector_cone/sqrt(dot_product(random_vector_cone,random_vector_cone))
     end function
 
     function modl(i)

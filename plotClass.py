@@ -9,6 +9,38 @@ label1 = [[r"$\chi_t$", "Sweep"],[r"$\chi_t$", r"$T$"],[r"$\chi_t\left(\tau_Q\ri
 label2 = [[r"$\chi_t$", "Update"],[r"$\chi_t$", r"$T$"],[r"$\chi_t\left(\tau_Q\right)$", r"$\tau_Q$"],["Cluster size", "T"]]
 select = {"Metropolis":label1,"Glauber":label1,"Cluster":label2}
 
+
+T_RANGE_METROPOLIS = {
+	"Energy":{0.5:[100,1000],1:[2,100],1.5:[1,30],2:[0,30],2.5:[0,30],3:[0,30],3.5:[0,30],4:[0,30]},
+	"Charge":{0.5:[2,100],1:[2,30],1.5:[1,30],2:[0,30],2.5:[0,30],3:[0,30],3.5:[0,30],4:[0,30]},
+	"Magnet":{0.5:[100,1000],1:[10,100],1.5:[3,30],2:[3,30],2.5:[1,30],3:[0,30],3.5:[0,30],4:[0,30]},
+	"max":{0.5:1000,1:100,1.5:30,2:30,2.5:30,3:30,3.5:30,4:30},
+}
+
+T_RANGE_CLUSER = {
+	"Energy":{0.5:[4,80],1:[4,80,1],1.5:[3,60,1],2:[0,30,1],2.5:[0,30,1],3:[0,30,1],3.5:[0,30,1],4:[0,30,1]},
+	"Charge":{0.5:[0,30],1:[0,30],1.5:[0,30,1],2:[0,30,1],2.5:[0,30,1],3:[0,30,1],3.5:[0,30,1],4:[0,30,1]},
+	"Magnet":{0.5:[3,80],1:[2,60],1.5:[1,30,1],2:[1,30,1],2.5:[0,30,1],3:[0,30,1],3.5:[0,30,1],4:[0,30,1]},
+	"max":{0.5:80,1:80,1.5:60,2:30,2.5:30,3:30,3.5:30,4:30},
+}
+
+def correlation(X, t):
+	X_mean = X.mean(axis=0)
+	N = X.shape[0]-t
+	if t==0:
+		C = (X-X_mean)**2
+	else:
+		C = (X[0:-t]-X_mean)*(X[t:]-X_mean)
+	C_mean = C.mean(axis=0)
+	Var = ((C-C_mean)**2).sum(axis=0)/(N-1)
+	Error = np.sqrt(Var/N)
+	return t,C_mean[0],Error[0],C_mean[1],Error[1],C_mean[2],Error[2]
+	
+
+def chi2_by_dog(y0, y, yerr, dog):
+	ss = (y-y0)**2/yerr
+	return ss.sum()/dog
+
 def fix(x,dx):
 	before, after = str(dx).split('.')
 	i = 0
@@ -21,8 +53,26 @@ def fix(x,dx):
 	if i>len(str(y).split('.')[1]):
 		y = f"{y}{'0'*(i-len(str(y).split('.')[1]))}"
 	return f"{y}({val})"
+
 def f(x, a, b,c):
 	return c+a/(x+b)
+
+class fit:
+	def __init__(self, xdata, ydata, yerr):
+		self.xdata = xdata
+		self.ydata = ydata
+		self.yerr = yerr
+	def fiting(self, func):
+		self.func = func
+		self.opt, self.cov = curve_fit(func, self.xdata, self.ydata)
+		r = self.ydata-func(self.xdata, *self.opt)
+		chisq = ((r/self.yerr)**2).sum()
+		dog = self.xdata.size-self.opt.size
+		self.chisq_by_dog = chisq/dog
+		self.error = np.sqrt(self.cov.diagonal())
+
+
+
 class loadData:
 	def __init__(self,algVar, alg, startTemp, endTemp, path, dest,tauq):
 		self.alg = alg
