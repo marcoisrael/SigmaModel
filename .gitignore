@@ -4,3 +4,4 @@ bin
 logs
 *cpython*
 output
+*pycache*

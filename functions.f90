@@ -72,10 +72,10 @@ module functions
         real(8) :: delta, alpha
         r = random_vector()
         k = cross_product(s, r)
+        k = k/sqrt(dot_product(k,k))
         delta = 0.1
         alpha = acos(1-2*delta*random())
         random_vector_cone = s*cos(alpha)+cross_product(k, s)*sin(alpha)
-        random_vector_cone = random_vector_cone/sqrt(dot_product(random_vector_cone,random_vector_cone))
     end function
 
     function modl(i)
