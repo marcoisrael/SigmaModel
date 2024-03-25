@@ -4,19 +4,20 @@ program therm
     real(8), allocatable :: s(:,:)
     real(8), dimension(3) :: obs
     integer :: N, steps, thermalization, i, j
-    character(30) :: arg1, arg2, arg3, arg4, str1="multi"
+    character(30) :: arg1, arg2, arg3, arg4, arg5, str1="multi"
     character(60) :: path
     call get_command_argument(1,arg1)   
     call get_command_argument(2,arg2)  
     call get_command_argument(3,arg3) 
     call get_command_argument(4,arg4)  
-   
+    call get_command_argument(5,arg5)
+
     LENGTH = 64
     VOLUME = LENGTH*LENGTH
     thermalization = 1e4
     Temp = string2real(arg1)
-    steps = string2int(arg2)
-    N = steps
+    delta_step = string2real(arg5)
+    N = string2int(arg2)
     allocate(s(VOLUME,3))
     call hot_start(s)
     beta = 1/Temp

@@ -4,7 +4,7 @@ module functions
         integer, allocatable :: cluster(:)
     end type labelType
 
-    real(8) ::  pi=4.0*datan(1.0d0), beta, temp, control_param
+    real(8) ::  pi=4.0*datan(1.0d0), beta, temp, control_param, delta_step
     real(8), dimension(4) :: values 
     logical :: update_values=.false.
     integer :: LENGTH, VOLUME
@@ -69,12 +69,11 @@ module functions
 
     function random_vector_cone(s)
         real(8), dimension(3) :: random_vector_cone, r, k, s
-        real(8) :: delta, alpha
+        real(8) :: alpha
         r = random_vector()
         k = cross_product(s, r)
         k = k/sqrt(dot_product(k,k))
-        delta = 0.1
-        alpha = acos(1-2*delta*random())
+        alpha = acos(1-2*delta_step*random())
         random_vector_cone = s*cos(alpha)+cross_product(k, s)*sin(alpha)
     end function
 

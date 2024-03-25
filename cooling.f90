@@ -13,7 +13,8 @@ program cooling
     call get_command_argument(4,arg(4))   
     call get_command_argument(5,arg(5))   
     call get_command_argument(6,arg(6))
-    call get_command_argument(7,arg(7))      
+    call get_command_argument(7,arg(7))
+    call get_command_argument(8,arg(8))          
     arg(8) = "multi"
     LENGTH = 64
     VOLUME = LENGTH*LENGTH
@@ -22,6 +23,7 @@ program cooling
     endTemp = string2real(arg(2))
     TQ = string2int(arg(3))
     N = string2int(arg(4))
+    delta_step = string2real(arg(8))
     sample = N/100
     allocate(s(VOLUME,3), s0(VOLUME,3))
     allocate(interval(0:TQ), med(100,0:TQ,2))

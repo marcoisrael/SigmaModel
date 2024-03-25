@@ -10,6 +10,7 @@ parser.add_argument('-s','--steps', type=float, default=1e4,
 					help='--steps={N}')
 parser.add_argument('-n','--name',default="data0")
 parser.add_argument('-t','--temp')
+parser.add_argument('-d','--delta', default=1)
 parser.add_argument('-r','--record', action='store_true')
 parser.add_argument('-m','--measure', action='store_true')
 parser.add_argument('-c','--compile', action='store_true')
@@ -41,7 +42,7 @@ if args.cooling is not None:
 	if not os.path.isdir(folder):
 		os.makedirs(folder)
 
-	cmd_run = ["./bin/main",f"{start_temp}", f"{end_temp}",f"{tq}",f"{int(args.steps)}",folder,key,alg]
+	cmd_run = ["./bin/main",f"{start_temp}", f"{end_temp}",f"{tq}",f"{int(args.steps)}",folder,key,alg,args.delta]
 
 	stringTemp = f"{start_temp}-{end_temp}"
 	print(" ".join(cmd_run))
@@ -62,7 +63,7 @@ if args.record:
 	if not os.path.isdir(folder):
 		os.makedirs(folder) 
 
-	cmd_run = ["./bin/main0",f"{args.temp}",f"{int(args.steps)}",key,alg]
+	cmd_run = ["./bin/main0",f"{args.temp}",f"{int(args.steps)}",key,alg,args.delta]
 
 	print(" ".join(cmd_run))
 	print(75*"-")
@@ -78,7 +79,7 @@ if args.measure:
 	start_time =  time.perf_counter()
 	key, alg = args.algorithm.split(',')
 
-	cmd_run = ["./bin/main1",f"{args.temp}",f"{int(args.steps)}",key,alg]
+	cmd_run = ["./bin/main1",f"{args.temp}",f"{int(args.steps)}",key,alg,args.delta]
 
 	print(" ".join(cmd_run))
 	print(75*"-")
