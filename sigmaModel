@@ -10,7 +10,7 @@ parser.add_argument('-s','--steps', type=float, default=1e4,
 					help='--steps={N}')
 parser.add_argument('-n','--name',default="data0")
 parser.add_argument('-t','--temp')
-parser.add_argument('-d','--delta', default=1)
+parser.add_argument('-d','--delta', default="1")
 parser.add_argument('-r','--record', action='store_true')
 parser.add_argument('-m','--measure', action='store_true')
 parser.add_argument('-c','--compile', action='store_true')

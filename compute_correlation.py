@@ -5,10 +5,10 @@ from plotClass import correlation, fit
 Algs = ["lexic_metropolis", "random_metropolis", "lexic_glauber", "random_glauber", "multi_cluster"]
 Algs = ["lexic_metropolis"]
 for alg in Algs:
-	for temp in [0.5,0.75,1,1.5,2]:
+	for temp in [0.5]:
 		path = f"output/record-1/{temp}/{alg}.csv"
 		data = np.loadtxt(path, delimiter=",", skiprows=1)
-		T = np.arange(0,1000)
+		T = np.arange(0,6000)
 		X = []
 		for t in T:
 			X.append(correlation(data, t))

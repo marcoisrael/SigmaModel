@@ -151,7 +151,7 @@ module algorithm
                 end if
             end do
         end do
-        control_param=ar/VOLUME
+        control_param=ar
     end subroutine
 
     subroutine step(s, key, alg)
