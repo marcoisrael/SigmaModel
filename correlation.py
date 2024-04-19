@@ -4,15 +4,14 @@ from plotClass import fit
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 
-Algs = ["lexic_metropolis", "lexic_glauber", "random_metropolis", "random_glauber", "multi_cluster"]
+# Algs = ["lexic_metropolis", "lexic_glauber", "random_metropolis", "random_glauber", "multi_cluster"]
 Algs = ["lexic_metropolis"]
-f = lambda x,a,b:b*exp(-x/a)
-x = linspace(0.5,2,200)
+f = lambda x,a,b,c:b/(x**2+a)+c/(x+a)
+x = linspace(0.5,2.0,200)
 
 for alg in Algs:
 	path = f"output/correlation/{alg}.csv"
 	data = loadtxt(path, delimiter=",",skiprows=1)
-
 	fig = plt.figure(dpi=120)
 	ax = fig.add_subplot()
 
@@ -32,8 +31,8 @@ for alg in Algs:
 	ax.set_ylabel(r"$\tau$", fontsize=14)
 	ax.set_title(" ".join(alg.split("_")), fontsize=14)
 	ax.legend()
-
-	stats = "".join([r"$\tau=\exp(-T/\alpha)$"])
+	ax.set_yscale("log")
+	stats = "".join([r"$\tau=C\cdot\exp(-T/\alpha)$"])
 	bbox = dict(boxstyle='round', fc='blanchedalmond', ec='blue', alpha=0.3)
 	ax.text(0.95, 0.7, stats, fontsize=13, bbox=bbox,transform=ax.transAxes, horizontalalignment='right')
 
