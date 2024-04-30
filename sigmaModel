@@ -14,6 +14,8 @@ parser.add_argument('-d','--delta', default="1")
 parser.add_argument('-r','--record', action='store_true')
 parser.add_argument('-m','--measure', action='store_true')
 parser.add_argument('-c','--compile', action='store_true')
+parser.add_argument('-sp','--spacing', default="1")
+
 args = parser.parse_args()
 
 def showTime(start_time, end_time):
@@ -31,6 +33,7 @@ if args.compile:
 	os.system(" ".join(["gfortran","-o","bin/main","functions.f90","algorithm.f90","cooling.f90"]))
 	os.system(" ".join(["gfortran","-o","bin/main0","functions.f90","algorithm.f90","therm.f90"]))
 	os.system(" ".join(["gfortran","-o","bin/main1","functions.f90","algorithm.f90","measure.f90"]))
+	print("make binary")
 
 
 if args.cooling is not None:
@@ -59,11 +62,11 @@ if args.cooling is not None:
 if args.record:
 	start_time =  time.perf_counter()
 	key, alg = args.algorithm.split(',')
-	folder = f'output/thermalized/{args.temp}'
+	folder = f'output/record-1/{key}_{alg}/'
 	if not os.path.isdir(folder):
 		os.makedirs(folder) 
 
-	cmd_run = ["./bin/main0",f"{args.temp}",f"{int(args.steps)}",key,alg,args.delta]
+	cmd_run = ["./bin/main0",f"{args.temp}",f"{int(args.steps)}",key,alg,args.delta,args.spacing]
 
 	print(" ".join(cmd_run))
 	print(75*"-")
