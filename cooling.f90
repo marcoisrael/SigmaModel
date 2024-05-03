@@ -5,7 +5,7 @@ program cooling
     real(8) :: obs(2)
     real(8) ::  startTemp, endTemp
     integer :: N, sample,thermalization, TQ, i, j, k
-    character(30), dimension(8) :: arg
+    character(30), dimension(9) :: arg
     character(60) :: path
     call get_command_argument(1,arg(1))   
     call get_command_argument(2,arg(2))  
@@ -15,7 +15,7 @@ program cooling
     call get_command_argument(6,arg(6))
     call get_command_argument(7,arg(7))
     call get_command_argument(8,arg(8))          
-    arg(8) = "multi"
+    arg(9) = "multi"
     LENGTH = 64
     VOLUME = LENGTH*LENGTH
     thermalization = 1e4
@@ -35,7 +35,7 @@ program cooling
     interval = 1/sqrt(interval)
     call hot_start(s0)
     do i=1, thermalization
-        call cluster(s0, arg(8))
+        call cluster(s0, arg(9))
     end do
     do j=1, 100
 		do i=1, sample 
@@ -43,14 +43,15 @@ program cooling
 			beta = 1/startTemp
 			s = s0
 			do k=1, 10
-				call cluster(s, arg(8))
+				call cluster(s, arg(9))
 			end do
 			s0 = s
 			do k=0, TQ
 				temp = interval(k)
 				beta = 1/temp
 				call step(s, arg(6), arg(7))
-				obs = [system_charge(s)**2/VOLUME,control_param]
+				obs = [system_charge(s)**2,control_param]
+                obs = obs/VOLUME
 				med(j,k,:)=med(j,k,:)+obs
 			end do
 		end do

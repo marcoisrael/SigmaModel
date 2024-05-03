@@ -15,7 +15,7 @@ parser.add_argument('-r','--record', action='store_true')
 parser.add_argument('-m','--measure', action='store_true')
 parser.add_argument('-c','--compile', action='store_true')
 parser.add_argument('-sp','--spacing', default="1")
-
+parser.add_argument('-th','--therm',help="SigmaModel --therm=startTemp,endTemp,steps")
 args = parser.parse_args()
 
 def showTime(start_time, end_time):
@@ -31,15 +31,14 @@ if not os.path.isdir("bin"):
 
 if args.compile:
 	os.system(" ".join(["gfortran","-o","bin/main","functions.f90","algorithm.f90","cooling.f90"]))
-	os.system(" ".join(["gfortran","-o","bin/main0","functions.f90","algorithm.f90","therm.f90"]))
+	os.system(" ".join(["gfortran","-o","bin/main0","functions.f90","algorithm.f90","record.f90"]))
 	os.system(" ".join(["gfortran","-o","bin/main1","functions.f90","algorithm.f90","measure.f90"]))
+	os.system(" ".join(["gfortran","-o","bin/main2","functions.f90","algorithm.f90","therm.f90"]))
 	print("make binary")
-
 
 if args.cooling is not None:
 	start_time =  time.perf_counter()
 	key, alg = args.algorithm.split(',')
-
 	start_temp, end_temp, tq = args.cooling.split(',')
 	folder = f'output/cooling/{args.name}/{start_temp}-{end_temp}'
 	if not os.path.isdir(folder):
@@ -67,7 +66,6 @@ if args.record:
 		os.makedirs(folder) 
 
 	cmd_run = ["./bin/main0",f"{args.temp}",f"{int(args.steps)}",key,alg,args.delta,args.spacing]
-
 	print(" ".join(cmd_run))
 	print(75*"-")
 	print(f'{"Temp":>25}{args.temp:>25}')
@@ -83,10 +81,30 @@ if args.measure:
 	key, alg = args.algorithm.split(',')
 
 	cmd_run = ["./bin/main1",f"{args.temp}",f"{int(args.steps)}",key,alg,args.delta]
-
 	print(" ".join(cmd_run))
 	print(75*"-")
 	print(f'{"Temp":>25}{args.temp:>25}')
+	print(f'{"algorithm":>25}{args.algorithm:>25}')
+	print(f'{"steps":>25}{int(args.steps):>25}')
+	os.system(" ".join(cmd_run))
+	end_time =	time.perf_counter() 
+	showTime(start_time, end_time)
+
+
+if args.therm is not None:
+	start_time =  time.perf_counter()
+	key, alg = args.algorithm.split(',')
+	start_temp, end_temp, tq = args.therm.split(',')
+	folder = f'output/therm/{args.name}/{start_temp}-{end_temp}'
+	if not os.path.isdir(folder):
+		os.makedirs(folder)
+
+	cmd_run = ["./bin/main2",f"{start_temp}", f"{end_temp}",f"{tq}",f"{int(args.steps)}",folder,key,alg,args.delta]
+	stringTemp = f"{start_temp}-{end_temp}"
+	print(" ".join(cmd_run))
+	print(75*"-")
+	print(f'{"Temp":>25}{stringTemp:>25}')
+	print(f'{"TQ":>25}{tq:>25}')
 	print(f'{"algorithm":>25}{args.algorithm:>25}')
 	print(f'{"steps":>25}{int(args.steps):>25}')
 	os.system(" ".join(cmd_run))
