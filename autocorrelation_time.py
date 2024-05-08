@@ -5,21 +5,19 @@ from plotClass import *
 import matplotlib.colors as colors
 colors_list = list(colors._colors_full_map.values())
 import os
+make_temp_plots=True
 name = "charge"
-alg = "random_metropolis"
+alg = "lexic_metropolis"
 T = np.array([0.7,0.8,0.9,1.0,2.0,3.0,4.0])
-N = np.array([60,20,10,5,1,1,1])
-de = 10
+N = np.array([30,20,10,5,1,1,1])
 x = np.linspace(0.6,4.0,200)
 f = lambda x, b: np.exp(-x/b)
 obs = {"charge":{"label":r"$\frac{C_{Q,Q}(t)}{C_{Q,Q}(0)}$","index":1,"sym":"Q"},
 		"magnetization":{"label":r"$\frac{C_{M,M}(t)}{C_{M,M}(0)}$","index":1,"sym":"M"}}
-spacing = r"$t_{10}$"
-#fig, ax = plt.subplots(dpi=120,tight_layout=True)
+spacing = {30:r"$t_{30}$",20:r"$t_{20}$",10:r"$t_{10}$",5:r"$t_{5}$",1:r"$t$"}
 cor = []
 corErr = []
 for temp, n in zip(T,N):
-	#fig, ax = plt.subplots(dpi=120)
 	lb = obs[name]["sym"]
 	path = f"output/{name}/{alg}/{temp}_{lb}.csv"
 	data = np.loadtxt(path, delimiter=",", skiprows=1)
@@ -30,24 +28,26 @@ for temp, n in zip(T,N):
 	cor.append(n*xfit.opt[0])
 	corErr.append(n*xfit.error[0])
 	#print(n*xfit.opt[0],n*xfit.error[0])
-	"""
-	ax.plot(x, f(x, *xfit.opt), linewidth=0.8, color="black", label="Fitting")
-	ax.errorbar(t,q,qErr, fmt='o', capsize=1, elinewidth=1, markersize=1, color="blue", label="Data")
-	ax.text(0.5 ,0.9, r"$\tau_{exp}=$"+fix(de*xfit.opt[-1],de*xfit.error[-1])+"\n"+r"$\chi^2/dof=$"+f"{xfit.chisq_by_dof}", 
-		horizontalalignment='center', verticalalignment='center', transform=ax.transAxes)
-	ax.set_xlabel(spacing, fontsize=14)
-	ax.set_ylabel(obs[name]["label"], rotation="horizontal", fontsize=18, ha="right")
-	ax.grid(True)
-	ax.legend()
-	ax.set_title(f"{alg}, temp = {temp}", fontsize=15)
-	#print(temp, xfit.opt[-1])
-	if not os.path.isdir(f"output/plot/{name}/{alg}"):
-		os.makedirs(f"output/plot/{name}/{alg}")
-	fig.tight_layout()
-	fig.savefig(f"output/plot/{name}/{alg}/{alg}_{temp}.png")
-	print(f"output/plot/{name}/{alg}/{alg}_{temp}.png")
-	plt.close()
-	"""
+	if make_temp_plots:
+		fig, ax = plt.subplots(dpi=120,tight_layout=True)
+
+		ax.plot(x, f(x, *xfit.opt), linewidth=0.8, color="black", label="Fitting")
+		ax.errorbar(t,q,qErr, fmt='o', capsize=1, elinewidth=1, markersize=1, color="blue", label="Data")
+		ax.text(0.5 ,0.9, r"$\tau_{exp}=$"+fix(n*xfit.opt[0],n*xfit.error[0])+"\n"+r"$\chi^2/dof=$"+f"{xfit.chisq_by_dof}", 
+			horizontalalignment='center', verticalalignment='center', transform=ax.transAxes)
+		ax.set_xlabel(spacing[n], fontsize=14)
+		ax.set_ylabel(obs[name]["label"], rotation="horizontal", fontsize=18, ha="right")
+		ax.grid(True)
+		ax.legend()
+		ax.set_title(f"{alg}, temp = {temp}", fontsize=15)
+		#print(temp, xfit.opt[-1])
+		if not os.path.isdir(f"output/plot/{name}/{alg}"):
+			os.makedirs(f"output/plot/{name}/{alg}")
+		fig.tight_layout()
+		fig.savefig(f"output/plot/{name}/{alg}/{alg}_{temp}.png")
+		print(f"output/plot/{name}/{alg}/{alg}_{temp}.png")
+		plt.close()
+		del ax, fig
 f = lambda x, a, b:a*x**b
 fig, (ax1,ax2) = plt.subplots(1,2,dpi=120,figsize=(16,7))
 x = np.linspace(0.7,4.0,200)
@@ -69,7 +69,7 @@ path = f"output/cooling/jkL64/{startTemp}-{endTemp}"
 qmax = []
 qmaxErr = []
 x = np.linspace(0,1,100)
-f = lambda x, a, b, c:c+a*x**b
+f = lambda x, a, b, c: c+a*x**b
 for tmax in np.array([4,5,6,7]):
 	data = np.loadtxt(f"{path}/{alg} {tmax}.csv", delimiter=",", skiprows=1)[:-1]
 	tq, temp, q, qErr = data[:,0], data[:,1], data[:,2], data[:,3]
@@ -84,7 +84,7 @@ ax1.errorbar(tq/tq.max(), q, qErr, fmt='o', capsize=1, elinewidth=1, markersize=
 		label="Therm")
 xfit = fit(tq/tq.max(), q, qErr)
 
-xfit.fiting(f)
+xfit.fiting(f,args={"bounds":((0,np.inf))})
 ax1.plot(x, f(x,*xfit.opt), linewidth=0.8, color=colors_list[0])
 
 

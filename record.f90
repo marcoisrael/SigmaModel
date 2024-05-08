@@ -12,7 +12,7 @@ program record
     call get_command_argument(4,arg4)  
     call get_command_argument(5,arg5)
     call get_command_argument(6,arg6)
-    LENGTH = 64
+    LENGTH = 128
     VOLUME = LENGTH*LENGTH
     thermalization = 1e4
     Temp = string2real(arg1)
