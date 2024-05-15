@@ -39,8 +39,8 @@ program measure
     end do 
     
     med = med/N
-    
-    var = sqrt(var/N-med*med)
+    var = var/N
+    var = sqrt(var-med*med)
     print*, med
     print*, var/sqrt(dble(N))
 end program

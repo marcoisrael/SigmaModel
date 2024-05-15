@@ -71,7 +71,7 @@ module algorithm
     subroutine metropolis(s, key)
         real(8), allocatable :: s(:,:)
         real(8), dimension(3) :: sx, right, down, left, up, r
-        real(8) :: h1, h2, delta, p, ar
+        real(8) :: h1, h2, dH, p, ar
         integer :: i, j, i1 , j1
         character(30) :: key
         ar=0
@@ -94,12 +94,8 @@ module algorithm
                     -dot_product(sx,left)-dot_product(sx,up)
                 h2 = -dot_product(r, right)-dot_product(r, down) &
                     -dot_product(r,left)-dot_product(r,up)
-                delta = h2-h1
-                if (delta<=0) then
-                    p = 1
-                else
-                    p = exp(-beta*delta)
-                end if
+                dH = h2-h1
+                p = exp(dmin1(dble(0),-beta*dH))
                 ar = ar+p
                 if (random()<=p) then
                     s(getindex(i,j),:) = r
@@ -112,7 +108,7 @@ module algorithm
     subroutine glauber(s, key)
         real(8), allocatable :: s(:,:)
         real(8), dimension(3) :: sx, right, down, left, up, r
-        real(8) :: h1, h2, delta, p, ar
+        real(8) :: h1, h2, dH, p, ar
         integer :: i, j, i1 , j1
         character(30) :: key
         ar=0
@@ -135,16 +131,8 @@ module algorithm
                     -dot_product(sx,left)-dot_product(sx,up)
                 h2 = -dot_product(r, right)-dot_product(r, down) &
                     -dot_product(r,left)-dot_product(r,up)
-                delta = h2-h1
-                if (temp==0.) then
-                    if (delta>0) then
-                        p = 0
-                    else
-                        p = 1
-                    end if
-                else
-                    p = exp(-beta*delta)/(1+exp(-beta*delta))
-                end if
+                dH = h2-h1
+                p = 1/(1+exp(beta*dH))
                 ar = ar+p
                 if (random()<=p) then
                     s(getindex(i,j),:) = r

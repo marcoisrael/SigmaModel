@@ -155,17 +155,16 @@ module functions
     function is_bond(ex, ey, w)
         logical :: is_bond
         real(8), dimension(3) :: ex, ey, w
-        real(8) :: delta
-        delta = -dot_product(ex-2*dot_product(ex, w)*w, ey)+dot_product(ex, ey)
-        if (delta<=0) then 
-            is_bond=.false.
+        real(8) :: dH, p
+        dH = -dot_product(ex-2*dot_product(ex, w)*w, ey)+dot_product(ex, ey)
+        
+        p = 1-exp(dmin1(dble(0),-beta*dH))
+        
+        if (random()<p) then
+            is_bond = .true.
         else
-            if (random()<1-exp(-beta*delta)) then
-                is_bond=.true.
-            else 
-                is_bond=.false.
-            end if
-        end if
+            is_bond = .false.
+        end if    
     end function
 
     function int2string(i)
