@@ -99,11 +99,11 @@ if args.therm is not None:
 	start_time =  time.perf_counter()
 	key, alg = args.algorithm.split(',')
 	start_temp, end_temp, tq = args.therm.split(',')
-	folder = f'output/therm/{args.name}/{start_temp}-{end_temp}'
+	folder = f'output/therm/L{args.length}/{key}_{alg}/'
 	if not os.path.isdir(folder):
 		os.makedirs(folder)
 
-	cmd_run = ["./bin/main2",f"{start_temp}", f"{end_temp}",f"{tq}",f"{int(args.steps)}",folder,key,alg,args.delta]
+	cmd_run = ["./bin/main2",f"{start_temp}", f"{end_temp}",f"{tq}",f"{int(args.steps)}",folder,key,alg,args.delta,args.length]
 	stringTemp = f"{start_temp}-{end_temp}"
 	print(" ".join(cmd_run))
 	print(75*"-")

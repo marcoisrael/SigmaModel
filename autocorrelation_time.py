@@ -8,10 +8,9 @@ import os
 make_temp_plots=False
 name = "charge"
 alg = "lexic_metropolis"
-L = 64
+L = 32
 T = np.array([0.6,0.7,0.8,0.9,1.0,2.0,3.0,4.0])
 N = np.array([60,30,20,10,5,1,1,1])
-x = np.linspace(0.5,4.0,200)
 f = lambda x, b: np.exp(-x/b)
 obs = {"charge":{"label":r"$\frac{C_{Q,Q}(t)}{C_{Q,Q}(0)}$","index":1,"sym":"Q"},
 		"magnetization":{"label":r"$\frac{C_{M,M}(t)}{C_{M,M}(0)}$","index":1,"sym":"M"}}
@@ -57,19 +56,19 @@ for temp, n in zip(T,N):
 		print(f"output/plot/{name}/L{L}/{alg}/{alg}_{temp}.png")
 		plt.close()
 		del ax, fig
-f = lambda x, a, b:a*x**b
+f = lambda x, a, b:a*np.exp(-x/b)
 fig, (ax1,ax2) = plt.subplots(1,2,dpi=120,figsize=(16,7))
 x = np.linspace(0.6,4.0,200)
 cor = np.array(cor)
 corErr = np.array(corErr)
 xfit = fit(T,cor,corErr)
 xfit.fiting(f)
-print(L,xfit.opt[0], xfit.error[0], cor.max(), corErr.max())
+#print(f"{xfit.opt[0]}*exp(-x/{xfit.opt[1]}")
 ax2.errorbar(T,cor,corErr, fmt='o', capsize=3, elinewidth=1, markersize=2, label="data")
 ax2.plot(x, f(x,*xfit.opt), linewidth=0.8, label="fiting")
 
 ax2.set_xlabel(r"$T$",fontsize=16)
-ax2.set_ylabel(r"$t_{exp}$",fontsize=16)
+ax2.set_ylabel(r"$\tau$",fontsize=16)
 ax2.legend() 
 
 startTemp = 4
@@ -77,29 +76,32 @@ endTemp = 0
 path = f"output/cooling/jkL64/{startTemp}-{endTemp}"
 qmax = []
 qmaxErr = []
-x = np.linspace(0,1,100)
-f = lambda x, a, b, c: c+a*x**b
+x = np.linspace(0.5, 4.0,100)
+f = lambda x, a, b, c, d: a+b*x+c*x**2+d*x**3
 for tmax in np.array([4,5,6,7]):
 	data = np.loadtxt(f"{path}/{alg} {tmax}.csv", delimiter=",", skiprows=1)[:-1]
 	tq, temp, q, qErr = data[:,0], data[:,1], data[:,2], data[:,3]
-	ax1.errorbar(tq/tq.max(), q, qErr, fmt='o', capsize=1, elinewidth=1, markersize=2, color=colors_list[2*tmax+5],
-		label=r"$\tau_Q=$"+str(tq.max()))
-	xfit = fit(tq/tq.max(), q, qErr)
+	ax1.errorbar(temp, q, qErr, fmt='o', capsize=1, elinewidth=1, markersize=2, color=colors_list[2*tmax+5],
+		label=r"$\tau_Q=$"+str(int(tq.max())))
+	xfit = fit(temp, q, qErr)
 	xfit.fiting(f)
 	ax1.plot(x, f(x,*xfit.opt), linewidth=0.8, color=colors_list[2*tmax+5])
-data = np.loadtxt(f"output/therm/data0/4-0.5/multi_cluster 20.csv", delimiter=",", skiprows=1)[:-2]
+data = np.loadtxt(f"output/therm/L{L}/{alg}/4.0-0.6-30.csv", delimiter=",", skiprows=1)[:-2]
 tq, temp, q, qErr = data[:,0], data[:,1], data[:,2], data[:,3]
-ax1.errorbar(tq/tq.max(), q, qErr, fmt='o', capsize=1, elinewidth=1, markersize=2, color=colors_list[0], 
+ax1.errorbar(temp, q, qErr, fmt='o', capsize=1, elinewidth=1, markersize=2, color=colors_list[0], 
 		label="Therm")
-#xfit = fit(tq/tq.max(), q, qErr)
+#xfit = fit(temp, q, qErr)
+#f = lambda x, a, b: b*x**b
 
-#xfit.fiting(f,args={"bounds":((0,np.inf))})
+#xfit.fiting(f)
 #ax1.plot(x, f(x,*xfit.opt), linewidth=0.8, color=colors_list[0])
 
 
-ax1.set_xlabel(r"$sweep/\tau_{Qf}$",fontsize=16)
+ax1.set_xlabel(r"$T$",fontsize=16)
 ax1.set_ylabel(r"$\frac{\left<Q^2\right>_f}{V}$", rotation="horizontal", ha="right",fontsize=20)
 ax1.legend()
 #fig.tight_layout()
+#ax1.set_yscale("log")
 fig.suptitle(f"{alg}", fontsize=16)
 fig.savefig(f"output/{alg}L{L}.png")
+print(f"output/{alg}L{L}.png")

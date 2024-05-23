@@ -4,8 +4,8 @@ program therm
     real(8), allocatable :: s(:,:), med(:,:,:), x(:,:,:), interval(:), medjk(:,:), varjk(:,:)
     real(8) :: obs(2)
     real(8) ::  startTemp, endTemp
-    integer :: N, sample,thermalization, TQ, i, j, k
-    character(30), dimension(9) :: arg
+    integer :: N, sample,thermalization, TQ, i, j, k, sp, l
+    character(60), dimension(10) :: arg
     character(60) :: path
     call get_command_argument(1,arg(1))   
     call get_command_argument(2,arg(2))  
@@ -14,9 +14,10 @@ program therm
     call get_command_argument(5,arg(5))   
     call get_command_argument(6,arg(6))
     call get_command_argument(7,arg(7))
-    call get_command_argument(8,arg(8))          
-    arg(9) = "multi"
-    LENGTH = 64
+    call get_command_argument(8,arg(8))  
+    call get_command_argument(9,arg(9))        
+    arg(10) = "multi"
+    LENGTH = string2int(arg(9))
     VOLUME = LENGTH*LENGTH
     thermalization = 1e4
     startTemp = string2real(arg(1))
@@ -40,9 +41,14 @@ program therm
     do k=0, TQ
         temp = interval(k)
         beta = 1/temp
+        delta_step = dmin1(0.08419342-0.21964047*temp+0.3387236*temp*temp, dble(1))
+        sp = ceiling(915.43*exp(-temp/0.1644))
+
         do j=1, 100
     		do i=1, sample 	
-    			call step(s, arg(6), arg(7))
+                do l=1, sp
+                    call step(s, arg(6), arg(7))
+                end do
     			obs = [system_charge(s)**2,control_param]
                 obs = obs/VOLUME
     			med(j,k,:)=med(j,k,:)+obs
@@ -70,7 +76,7 @@ program therm
 		varjk(:,:)=varjk(:,:)+(x(i,:,:)-medjk(:,:))**2
 	end do
 	varjk(:,:) = sqrt(.99*varjk(:,:))
-    path = trim(arg(5))//"/"//trim(arg(6))//"_"//trim(arg(7))//" "//trim(arg(3))//".csv"
+    path = trim(arg(5))//"/"//trim(arg(1))//"-"//trim(arg(2))//"-"//trim(arg(3))//".csv"
     open(unit=1, file=path)
     write(1, '(*(g0,:,","))') 'tau_Q', 'T', 'chi_t', 'Error chi_t','AR|CS','Error AR|CS'
     do k=0,TQ
