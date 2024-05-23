@@ -11,7 +11,9 @@ parser.add_argument('-s','--steps', type=float, default=1e4,
 parser.add_argument('-n','--name',default="data0")
 parser.add_argument('-t','--temp')
 parser.add_argument('-d','--delta', default="1")
+parser.add_argument('-l','--length', default="64")
 parser.add_argument('-r','--record', action='store_true')
+parser.add_argument('-cl','--clength', action='store_true')
 parser.add_argument('-m','--measure', action='store_true')
 parser.add_argument('-c','--compile', action='store_true')
 parser.add_argument('-sp','--spacing', default="1")
@@ -34,6 +36,8 @@ if args.compile:
 	os.system(" ".join(["gfortran","-o","bin/main0","functions.f90","algorithm.f90","record.f90"]))
 	os.system(" ".join(["gfortran","-o","bin/main1","functions.f90","algorithm.f90","measure.f90"]))
 	os.system(" ".join(["gfortran","-o","bin/main2","functions.f90","algorithm.f90","therm.f90"]))
+	os.system(" ".join(["gfortran","-o","bin/main3","functions.f90","algorithm.f90","correlation_length.f90"]))
+	
 	print("make binary")
 
 if args.cooling is not None:
@@ -105,6 +109,23 @@ if args.therm is not None:
 	print(75*"-")
 	print(f'{"Temp":>25}{stringTemp:>25}')
 	print(f'{"TQ":>25}{tq:>25}')
+	print(f'{"algorithm":>25}{args.algorithm:>25}')
+	print(f'{"steps":>25}{int(args.steps):>25}')
+	os.system(" ".join(cmd_run))
+	end_time =	time.perf_counter() 
+	showTime(start_time, end_time)
+
+if args.clength:
+	start_time =  time.perf_counter()
+	key, alg = args.algorithm.split(',')
+	folder = f'output/correlation_length/L{args.length}/{key}_{alg}/'
+	if not os.path.isdir(folder):
+		os.makedirs(folder) 
+
+	cmd_run = ["./bin/main3",f"{args.temp}",f"{int(args.steps)}",key,alg,args.delta,args.spacing,args.length]
+	print(" ".join(cmd_run))
+	print(75*"-")
+	print(f'{"Temp":>25}{args.temp:>25}')
 	print(f'{"algorithm":>25}{args.algorithm:>25}')
 	print(f'{"steps":>25}{int(args.steps):>25}')
 	os.system(" ".join(cmd_run))

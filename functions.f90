@@ -170,12 +170,12 @@ module functions
     function int2string(i)
         character(30) :: style, int2string
         integer :: i
-        if (i<100) then
-            style = "(I3)"
-        else if (i<10) then
+        if (i<10) then
+            style = "(I1)"
+        else if (i<100) then
             style = "(I2)"
         else
-            style = '(I1)'
+            style = '(I3)'
         end if
         write(int2string, style) i
     end function
