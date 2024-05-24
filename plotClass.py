@@ -29,6 +29,7 @@ def chi2_by_dof(y0, y, yerr, dof):
 def fix(x,dx):
 	before, after = str(dx).split('.')
 	i = 0
+	val=0
 	for d in after:
 		i +=1
 		if  d != "0":

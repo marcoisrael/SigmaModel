@@ -4,7 +4,7 @@ program therm
     real(8), allocatable :: s(:,:), med(:,:,:), x(:,:,:), interval(:), medjk(:,:), varjk(:,:)
     real(8) :: obs(2)
     real(8) ::  startTemp, endTemp
-    integer :: N, sample,thermalization, TQ, i, j, k, sp, l
+    integer :: N, sample,thermalization, TQ, i, j, k, l
     character(60), dimension(10) :: arg
     character(60) :: path
     call get_command_argument(1,arg(1))   
@@ -36,19 +36,15 @@ program therm
     interval = linspace(startTemp, endTemp, TQ)
     call hot_start(s)
     do i=1, thermalization
-        call cluster(s, arg(9))
+        call cluster(s, arg(10))
     end do
     do k=0, TQ
         temp = interval(k)
         beta = 1/temp
         delta_step = dmin1(0.08419342-0.21964047*temp+0.3387236*temp*temp, dble(1))
-        sp = ceiling(915.43*exp(-temp/0.1644))
-
         do j=1, 100
     		do i=1, sample 	
-                do l=1, sp
-                    call step(s, arg(6), arg(7))
-                end do
+                call cluster(s, arg(10))
     			obs = [system_charge(s)**2,control_param]
                 obs = obs/VOLUME
     			med(j,k,:)=med(j,k,:)+obs

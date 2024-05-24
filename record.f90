@@ -12,13 +12,13 @@ program record
     call get_command_argument(4,arg4)  
     call get_command_argument(5,arg5)
     call get_command_argument(6,arg6)
-    LENGTH = 128
+    LENGTH = string2int(arg6)
     VOLUME = LENGTH*LENGTH
     thermalization = 1e4
     Temp = string2real(arg1)
     delta_step = string2real(arg5)
     N = string2int(arg2)
-    sp = string2int(arg6)
+    sp = ceiling(915.43*exp(-temp/0.1644))
     allocate(s(VOLUME,3))
     call hot_start(s)
     beta = 1/Temp

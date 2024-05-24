@@ -69,7 +69,7 @@ if args.record:
 	if not os.path.isdir(folder):
 		os.makedirs(folder) 
 
-	cmd_run = ["./bin/main0",f"{args.temp}",f"{int(args.steps)}",key,alg,args.delta,args.spacing]
+	cmd_run = ["./bin/main0",f"{args.temp}",f"{int(args.steps)}",key,alg,args.delta,args.length]
 	print(" ".join(cmd_run))
 	print(75*"-")
 	print(f'{"Temp":>25}{args.temp:>25}')
