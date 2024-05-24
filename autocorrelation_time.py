@@ -8,7 +8,7 @@ import os
 make_temp_plots=False
 name = "charge"
 alg = "lexic_metropolis"
-L = 64
+L = 128
 T = np.array([0.6,0.7,0.8,0.9,1.0,2.0,3.0,4.0])
 f = lambda x, b: np.exp(-x/b)
 obs = {"charge":{"label":r"$\frac{C_{Q,Q}(t)}{C_{Q,Q}(0)}$","index":1,"sym":"Q"},
@@ -71,15 +71,20 @@ cor2Err = np.array(cor2Err)
 f = lambda x, a, b:a*np.exp(-x/b)+0.5
 xfit = fit(T,cor,corErr)
 xfit.fiting(f)
-ax2.errorbar(T,cor,corErr, fmt='o', capsize=3, elinewidth=1, markersize=2, label="data", color="b")
-ax2.plot(x, f(x,*xfit.opt), linewidth=0.8, label="fiting", color="b")
+ax2.errorbar(T,cor,corErr, fmt='o', capsize=3, elinewidth=1, markersize=2, label=r"$\tau_{exp}$", color="b")
+ax2.plot(x, f(x,*xfit.opt), linewidth=0.8, color="b")
+ax2.text(0.5 ,0.9, r"$\alpha_{exp}=$"+fix(xfit.opt[1],xfit.error[1])+"\n"+r"$\chi^2/dof=$"+f"{xfit.chisq_by_dof}", 
+		horizontalalignment='center', verticalalignment='center', transform=ax2.transAxes, fontsize=12)
+
 xfit = fit(T,cor2,cor2Err)
 xfit.fiting(f)
-ax2.errorbar(T, cor2, cor2Err, fmt='o', capsize=3, elinewidth=1, markersize=2, label="data", color="r")
-ax2.plot(x, f(x,*xfit.opt), linewidth=0.8, label="fiting", color="r")
-print(xfit.opt)
+ax2.text(0.5 ,0.75, r"$\alpha_{int}=$"+fix(xfit.opt[1],xfit.error[1])+"\n"+r"$\chi^2/dof=$"+f"{xfit.chisq_by_dof}", 
+		horizontalalignment='center', verticalalignment='center', transform=ax2.transAxes, fontsize=12)
+
+ax2.errorbar(T, cor2, cor2Err, fmt='o', capsize=3, elinewidth=1, markersize=2, label=r"$\tau_{int}$", color="r")
+ax2.plot(x, f(x,*xfit.opt), linewidth=0.8, color="r")
 ax2.set_xlabel(r"$T$",fontsize=16)
-ax2.set_ylabel(r"$\tau$",fontsize=16)
+ax2.set_ylabel(r"$\tau$",fontsize=18)
 ax2.legend() 
 
 startTemp = 4
@@ -97,6 +102,7 @@ for tmax in np.array([4,5,6,7]):
 	xfit = fit(temp, q, qErr)
 	xfit.fiting(f)
 	ax1.plot(x, f(x,*xfit.opt), linewidth=0.8, color=colors_list[2*tmax+5])
+
 data = np.loadtxt(f"output/therm/L32/{alg}/4.0-0.6-30.csv", delimiter=",", skiprows=1)[:-2]
 tq, temp, q, qErr = data[:,0], data[:,1], data[:,2], data[:,3]
 ax1.errorbar(temp, q, qErr, fmt='o', capsize=1, elinewidth=1, markersize=2, color=colors_list[0], 
@@ -109,8 +115,10 @@ ax1.errorbar(temp, q, qErr, fmt='o', capsize=1, elinewidth=1, markersize=2, colo
 
 
 ax1.set_xlabel(r"$T$",fontsize=16)
-ax1.set_ylabel(r"$\frac{\left<Q^2\right>_f}{V}$", rotation="horizontal", ha="right",fontsize=20)
+ax1.set_ylabel(r"$\frac{\left<Q^2\right>_f}{V}$", rotation="horizontal", ha="right",fontsize=22)
 ax1.legend()
+ax1.grid(True)
+ax2.grid(True)
 #fig.tight_layout()
 #ax1.set_yscale("log")
 fig.suptitle(f"{alg}", fontsize=16)

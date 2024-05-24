@@ -16,9 +16,10 @@ program record
     VOLUME = LENGTH*LENGTH
     thermalization = 1e4
     Temp = string2real(arg1)
-    delta_step = string2real(arg5)
     N = string2int(arg2)
     sp = ceiling(915.43*exp(-temp/0.1644))
+    delta_step = dmin1(0.08419342-0.21964047*temp+0.3387236*temp*temp, dble(1))
+
     allocate(s(VOLUME,3))
     call hot_start(s)
     beta = 1/Temp
