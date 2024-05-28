@@ -5,5 +5,4 @@
 #SBATCH --mem-per-cpu=100mb
 #SBATCH --time=6:00:00
 echo $USER;hostname;date
-N="1e4"
-./sigmaModel -r -t "$1" -s "$N" -alg "$2" -d "$3" -sp "$4"
+./sigmaModel -r -s 1e5 -alg lexic,metropolis -t "$1"

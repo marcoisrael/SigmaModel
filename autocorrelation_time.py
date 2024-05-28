@@ -69,6 +69,7 @@ cor = np.array(cor)
 corErr = np.array(corErr)
 cor2Err = np.array(cor2Err)
 f = lambda x, a, b:a*np.exp(-x/b)+0.5
+f = lambda x, a, b:a*x**(-b)+0.5
 xfit = fit(T,cor,corErr)
 xfit.fiting(f)
 ax2.errorbar(T,cor,corErr, fmt='o', capsize=3, elinewidth=1, markersize=2, label=r"$\tau_{exp}$", color="b")
