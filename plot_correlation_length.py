@@ -2,28 +2,37 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from plotClass import *
+import os
 color = {32:"blue",64:"red",128:"black"}
-fig, ax = plt.subplots()
 h = 0
-for LENGTH in [32, 64,128]:
+if not os.path.isdir("output/plot/correlation_length/"):
+	os.makedirs("output/plot/correlation_length/")
+for LENGTH in [64]:
 	psi = []
 	psiErr = []
-	T = np.array([0.6,0.7,0.8,0.9,1.0])
+	T = np.array([0.85,0.9,0.95,1.0,2.0,3.0,4.0])
 	for temp in T:
+		fig, ax = plt.subplots()
 		path = f"output/correlation_length/L{LENGTH}/lexic_metropolis/{temp}.csv"
+		print(path)
 		data = np.loadtxt(path, delimiter=",", skiprows=1)
-		#ax.errorbar(data[:,0],data[:,1],yerr=data[:,2], fmt='o', capsize=1, elinewidth=1, markersize=1)
+		ax.errorbar(data[:,0],data[:,1],yerr=data[:,2], fmt='o', capsize=1, elinewidth=1, markersize=1)
+		f = lambda x, a, b: a*np.cosh((x-0.5*LENGTH)/b)
 		xfit = fit(data[:,0],data[:,1],data[:,2])
-		f = lambda x, a, b: a*np.cosh((x-LENGTH/2)/b)
 		xfit.fiting(f, args={"bounds":((0,np.inf))})
 		psi.append(xfit.opt[-1])
 		psiErr.append(xfit.error[-1])
-		#x = np.linspace(0,LENGTH,100)
-		#ax.plot(x, f(x,*xfit.opt),linewidth=0.8)
-		#fig.savefig("output/test.png")
+		x = np.linspace(0,LENGTH,100)
+		ax.plot(x, f(x,*xfit.opt),linewidth=0.8)
+		ax.set_yscale("log")
+		fig.savefig(f"output/plot/correlation_length/lexic_metropolis_L{LENGTH}_{temp}.png")
 		#print(xfit.error[-1])
 		#plt.show()
+		del ax, fig
+	exit()
 	psi = np.array(psi)
+	fig, ax = plt.subplots()
+
 	ax.errorbar(T, psi, psiErr, fmt='o', capsize=1, elinewidth=1, markersize=1, color=color[LENGTH], label=f"L={LENGTH}")
 	f = lambda x, a, b, c: a*np.exp(-x/b)+c
 	xfit = fit(T, psi, psiErr)
