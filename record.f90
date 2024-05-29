@@ -4,7 +4,7 @@ program record
     real(8), allocatable :: s(:,:)
     real(8), dimension(3) :: obs
     integer :: N, steps, thermalization, i, j, sp
-    character(30) :: arg1, arg2, arg3, arg4, arg5, arg6, str1="multi"
+    character(30) :: arg1, arg2, arg3, arg4, arg5, arg6, arg7, str1="multi"
     character(60) :: path
     call get_command_argument(1,arg1)   
     call get_command_argument(2,arg2)  
@@ -12,14 +12,14 @@ program record
     call get_command_argument(4,arg4)  
     call get_command_argument(5,arg5)
     call get_command_argument(6,arg6)
+    call get_command_argument(7,arg7)
     LENGTH = string2int(arg6)
     VOLUME = LENGTH*LENGTH
     thermalization = 1e4
     Temp = string2real(arg1)
     N = string2int(arg2)
-    sp = ceiling(915.43*exp(-temp/0.1644))
+    sp = string2int(arg7)
     delta_step = dmin1(0.08419342-0.21964047*temp+0.3387236*temp*temp, dble(1))
-
     allocate(s(VOLUME,3))
     call hot_start(s)
     beta = 1/Temp
