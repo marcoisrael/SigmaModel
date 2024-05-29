@@ -5,12 +5,12 @@ from plotClass import *
 import matplotlib.colors as colors
 colors_list = list(colors._colors_full_map.values())
 import os
-make_temp_plots=False
+make_temp_plots=True
 make_plt_sacaling_law=True
 name = "charge"
 alg = "lexic_metropolis"
 L = 64
-T = np.array([0.9,1.0,2.0,3.0,4.0])
+T = np.array([0.85,0.9,1.0,1.2,1.4,1.6,1.8,2.0])
 
 f = lambda x, b, A:A*np.exp(-x/b)
 obs = {"charge":{"label":r"$\frac{C_{Q,Q}(t)}{C_{Q,Q}(0)}$","index":1,"sym":"Q"},
@@ -25,7 +25,7 @@ for temp in T:
 	X = []
 	nmax = 3
 	var = 0
-	for t in np.arange(0,300):
+	for t in np.arange(0,100):
 		x = correlation(data[:,obs["charge"]["index"]],t)
 		X.append(x)
 		if x[1]>0 and var==0:
@@ -95,21 +95,21 @@ cor2 = np.array(cor2)
 cor = np.array(cor)
 corErr = np.array(corErr)
 cor2Err = np.array(cor2Err)
-#f = lambda x, a, b:a*np.exp(-x/b)+0.5
-f = lambda x, a, b, c:a*x**(-b)+c
+f = lambda x, a, b:a*x**(-b)
 xfit = fit(T,cor,corErr)
 xfit.fiting(f)
 ax2.errorbar(T,cor,corErr, fmt='o', capsize=3, elinewidth=1, markersize=2, label=r"$\tau_{exp}$", color="b")
 ax2.plot(x, f(x,*xfit.opt), linewidth=0.8, color="b")
-ax2.text(0.5 ,0.9, r"$\nu_{exp}=$"+fix(xfit.opt[1],xfit.error[1])+"\n"+r"$\chi^2/dof=$"+f"{xfit.chisq_by_dof}", 
-		horizontalalignment='center', verticalalignment='center', transform=ax2.transAxes, fontsize=12)
-xfit = fit(T,cor2,cor2Err)
-xfit.fiting(f)
-ax2.text(0.5 ,0.76, r"$\nu_{int}=$"+fix(xfit.opt[1],xfit.error[1])+"\n"+r"$\chi^2/dof=$"+f"{xfit.chisq_by_dof}", 
+ax2.text(0.5 ,0.9, r"$\nu=$"+fix(xfit.opt[1],xfit.error[1])+"\n"+r"$\chi^2/dof=$"+f"{xfit.chisq_by_dof}", 
 		horizontalalignment='center', verticalalignment='center', transform=ax2.transAxes, fontsize=12)
 
+#xfit = fit(T,cor2,cor2Err)
+#xfit.fiting(f)
+#ax2.text(0.5 ,0.76, r"$\nu_{int}=$"+fix(xfit.opt[1],xfit.error[1])+"\n"+r"$\chi^2/dof=$"+f"{xfit.chisq_by_dof}", 
+#		horizontalalignment='center', verticalalignment='center', transform=ax2.transAxes, fontsize=12)
+
 ax2.errorbar(T, cor2, cor2Err, fmt='o', capsize=3, elinewidth=1, markersize=2, label=r"$\tau_{int}$", color="r")
-ax2.plot(x, f(x,*xfit.opt), linewidth=0.8, color="r")
+#ax2.plot(x, f(x,*xfit.opt), linewidth=0.8, color="r")
 ax2.set_xlabel(r"$T$",fontsize=16)
 ax2.set_ylabel(r"$\tau$",fontsize=18)
 ax2.legend() 
@@ -121,7 +121,7 @@ qmax = []
 qmaxErr = []
 x = np.linspace(0.5, 4.0,100)
 f = lambda x, a, b, c, d: a+b*x+c*x**2+d*x**3
-for tmax in np.array([4,5,6,7]):
+for tmax in np.array([4,7,13]):
 	data = np.loadtxt(f"{path}/{alg} {tmax}.csv", delimiter=",", skiprows=1)[:-1]
 	tq, temp, q, qErr = data[:,0], data[:,1], data[:,2], data[:,3]
 	ax1.errorbar(temp, q, qErr, fmt='o', capsize=1, elinewidth=1, markersize=2, color=colors_list[2*tmax+5],
