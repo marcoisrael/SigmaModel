@@ -4,5 +4,8 @@
 #SBATCH --nodes=1
 #SBATCH --mem-per-cpu=100mb
 #SBATCH --time=6:00:00
+#SBATCH --array=0,1,2,3,4,5,6,7
+values="0.8 0.85 0.9 0.95 1.0 2.0 3.0 4.0"
+arr=($values)
 echo $USER;hostname;date
-./sigmaModel -cl -s 1e5 -t "$1" -alg lexic,metropolis
+./sigmaModel -cl -s 1e5 -alg lexic,metropolis -t ${arr[${SLURM_ARRAY_TASK_ID}]} -l "$1"
