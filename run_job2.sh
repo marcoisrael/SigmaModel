@@ -2,11 +2,8 @@
 #SBATCH --job-name=SigmaModel
 #SBATCH --output=logs/SigmaModel_%j.out
 #SBATCH --nodes=1
+#SBATCH --partition=QuantPhysMC
 #SBATCH --mem-per-cpu=100mb
-#SBATCH --time=2:00:00
-#SBATCH --array=1-20:1
-module load lamod/gcc/12.2
+#SBATCH --time=12:00:00
 echo $USER;hostname;date
-N="1e4"
-folder_name="test"
-./sigmaModel -cool "0,4,${SLURM_ARRAY_TASK_ID}" -s "$N" -alg "$1" -n "$folder_name"
+./sigmaModel --therm=4,0,30 -s 1e6 -alg lexic,metropolis
