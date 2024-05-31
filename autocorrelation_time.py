@@ -9,8 +9,8 @@ make_temp_plots=False
 make_plt_sacaling_law=True
 name = "charge"
 alg = "lexic_metropolis"
-L = 128
-T = np.array([0.9,1.0,1.2,1.4,1.6,1.8,2.0])
+L = 64
+T = np.array([0.85,0.9,1.0,1.2,1.4,1.6,1.8])
 
 f = lambda x, b, A:A*np.exp(-x/b)
 obs = {"charge":{"label":r"$\frac{C_{Q,Q}(t)}{C_{Q,Q}(0)}$","index":1,"sym":"Q"},
@@ -39,7 +39,7 @@ for temp in T:
 	xfit = fit(t[:nmax],q[:nmax],qErr[:nmax])
 	xfit.fiting(f, args={"bounds":((0,np.inf))})
 	nmin = 0
-	while xfit.chisq_by_dof>5:
+	while xfit.chisq_by_dof>4:
 		nmin+=1
 		xfit = fit(t[nmin:nmax],q[nmin:nmax],qErr[nmin:nmax])
 		xfit.fiting(f, args={"bounds":((0,np.inf))})
@@ -64,7 +64,7 @@ for temp in T:
 	cor.append(n*xfit.opt[0])
 	corErr.append(n*xfit.error[0])
 	
-	print(temp, n*xfit.opt[0], n*texp)
+	#print(temp, n*xfit.opt[0], n*texp)
 	
 	if make_temp_plots:
 		fig, ax = plt.subplots(dpi=120,tight_layout=True)
@@ -95,10 +95,10 @@ cor2 = np.array(cor2)
 cor = np.array(cor)
 corErr = np.array(corErr)
 cor2Err = np.array(cor2Err)
-f = lambda x, a, b:a*x**(-b)
+f = lambda x, a, b, c:a*(x+c)**(-b)
 xfit = fit(T,cor,corErr)
 xfit.fiting(f)
-print(xfit.opt)
+#print(xfit.opt)
 ax.errorbar(T,cor,corErr, fmt='o', capsize=3, elinewidth=1, markersize=2, label=r"$\tau_{exp}$", color="black")
 ax.plot(x, f(x,*xfit.opt), linewidth=0.8, color="black")
 ax.text(0.5 ,0.9, r"$z=$"+fix(xfit.opt[1],xfit.error[1])+"\n"+r"$\chi^2/dof=$"+f"{xfit.chisq_by_dof}", 
@@ -111,7 +111,9 @@ ax.set_ylabel(r"$\tau$",fontsize=14)
 ax.legend() 
 ax.grid(True)
 #fig.tight_layout()
-
+#data = np.array([T, cor, corErr]).transpose()
+#np.savetxt("output/send/autocorrelation_charge_LM_L128.csv", data, 
+#	delimiter=",",header="T,tau,tau_error",comments="", fmt="%16f")
 ax.set_title(f"Autocorrelation time, lexicographical Metropolis, L={L}", fontsize=12)
 fig.savefig(f"output/plot/autocorrelation_{alg}_L{L}.png")
 print(f"output/plot/autocorrelation_time{alg}_L{L}.png")
