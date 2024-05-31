@@ -51,7 +51,7 @@ if args.cooling is not None:
 	cmd_run = ["./bin/main",f"{start_temp}", f"{end_temp}",f"{tq}",f"{int(args.steps)}",folder,key,alg,args.delta]
 
 	stringTemp = f"{start_temp}-{end_temp}"
-	print(" ".join(cmd_run))
+	#print(" ".join(cmd_run))
 	print(75*"-")
 	print(f'{"Temp":>25}{stringTemp:>25}')
 	print(f'{"TQ":>25}{tq:>25}')
@@ -70,7 +70,7 @@ if args.record:
 		os.makedirs(folder) 
 
 	cmd_run = ["./bin/main0",f"{args.temp}",f"{int(args.steps)}",key,alg,args.delta,args.length,args.spacing]
-	print(" ".join(cmd_run))
+	#print(" ".join(cmd_run))
 	print(75*"-")
 	print(f'{"Temp":>25}{args.temp:>25}')
 	print(f'{"algorithm":>25}{args.algorithm:>25}')
@@ -85,7 +85,7 @@ if args.measure:
 	key, alg = args.algorithm.split(',')
 
 	cmd_run = ["./bin/main1",f"{args.temp}",f"{int(args.steps)}",key,alg,args.delta]
-	print(" ".join(cmd_run))
+	#print(" ".join(cmd_run))
 	print(75*"-")
 	print(f'{"Temp":>25}{args.temp:>25}')
 	print(f'{"algorithm":>25}{args.algorithm:>25}')
@@ -105,7 +105,7 @@ if args.therm is not None:
 
 	cmd_run = ["./bin/main2",f"{start_temp}", f"{end_temp}",f"{tq}",f"{int(args.steps)}",folder,key,alg,args.delta,args.length]
 	stringTemp = f"{start_temp}-{end_temp}"
-	print(" ".join(cmd_run))
+	#print(" ".join(cmd_run))
 	print(75*"-")
 	print(f'{"Temp":>25}{stringTemp:>25}')
 	print(f'{"TQ":>25}{tq:>25}')

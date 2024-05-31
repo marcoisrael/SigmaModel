@@ -5,28 +5,30 @@ from plotClass import *
 import matplotlib.colors as colors
 colors_list = list(colors._colors_full_map.values())
 import os
-make_temp_plots=False
+make_temp_plots=True
 make_plt_sacaling_law=True
-name = "charge"
+name = "magnetization"
 alg = "lexic_metropolis"
-L = 64
-T = np.array([0.85,0.9,1.0,1.2,1.4,1.6,1.8])
+L = 128
+T = np.array([0.8,0.85,0.9,1.0,1.2,1.4,1.6,1.8])
 
-f = lambda x, b, A:A*np.exp(-x/b)
+f = lambda x, b, A: A*np.exp(-x/b)
 obs = {"charge":{"label":r"$\frac{C_{Q,Q}(t)}{C_{Q,Q}(0)}$","index":1,"sym":"Q"},
-		"magnetization":{"label":r"$\frac{C_{M,M}(t)}{C_{M,M}(0)}$","index":2,"sym":"M"}}
+		"magnetization":{"label":r"$\frac{C_{M,M}(t)}{C_{M,M}(0)}$","index":2,"sym":"M"},
+		"energy":{"label":r"$\frac{C_{M,M}(t)}{C_{M,M}(0)}$","index":0,"sym":"E"}}
+
 cor = []
 corErr = []
 cor2 = []
 cor2Err = []
-for temp in T:	
+for temp, n in zip(T,N):	
 	path = f"output/record-1/L{L}/{alg}/{temp}.csv"
 	data = np.loadtxt(path, delimiter=",", skiprows=1)
 	X = []
 	nmax = 3
 	var = 0
-	for t in np.arange(0,200):
-		x = correlation(data[:,obs["charge"]["index"]],t)
+	for t in np.arange(0,800):
+		x = correlation(data[:,obs[name]["index"]],t)
 		X.append(x)
 		if x[1]>0 and var==0:
 			nmax+=1
@@ -39,7 +41,7 @@ for temp in T:
 	xfit = fit(t[:nmax],q[:nmax],qErr[:nmax])
 	xfit.fiting(f, args={"bounds":((0,np.inf))})
 	nmin = 0
-	while xfit.chisq_by_dof>4:
+	while xfit.chisq_by_dof>40:
 		nmin+=1
 		xfit = fit(t[nmin:nmax],q[nmin:nmax],qErr[nmin:nmax])
 		xfit.fiting(f, args={"bounds":((0,np.inf))})
@@ -51,12 +53,8 @@ for temp in T:
 		texp = texp+q[i]/q[nmin]
 		texpErr = texpErr+qErr[i]
 
-	xlabel = r"$t$"
-	n=1
-	
-	if temp<0.9:
-		xlabel = f"$t_{{2}}$"
-		n=2
+	xlabel = f"$t$"
+
 	x = np.linspace(t[nmin],t[nmax],500)
 
 	cor2.append(n*texp)
@@ -64,7 +62,7 @@ for temp in T:
 	cor.append(n*xfit.opt[0])
 	corErr.append(n*xfit.error[0])
 	
-	#print(temp, n*xfit.opt[0], n*texp)
+	print(n, temp, n*xfit.opt[0], n*texp)
 	
 	if make_temp_plots:
 		fig, ax = plt.subplots(dpi=120,tight_layout=True)
@@ -115,5 +113,6 @@ ax.grid(True)
 #np.savetxt("output/send/autocorrelation_charge_LM_L128.csv", data, 
 #	delimiter=",",header="T,tau,tau_error",comments="", fmt="%16f")
 ax.set_title(f"Autocorrelation time, lexicographical Metropolis, L={L}", fontsize=12)
-fig.savefig(f"output/plot/autocorrelation_{alg}_L{L}.png")
-print(f"output/plot/autocorrelation_time{alg}_L{L}.png")
+i = obs[name]["sym"]
+fig.savefig(f"output/plot/autocorrelation_{alg}_L{L}_{i}.png")
+print(f"output/plot/autocorrelation_time{alg}_L{L}_{i}.png")
