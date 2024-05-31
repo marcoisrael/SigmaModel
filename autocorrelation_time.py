@@ -11,6 +11,7 @@ name = "magnetization"
 alg = "lexic_metropolis"
 L = 128
 T = np.array([0.8,0.85,0.9,1.0,1.2,1.4,1.6,1.8])
+N = [3,2,1,1,1,1,1,1]
 
 f = lambda x, b, A: A*np.exp(-x/b)
 obs = {"charge":{"label":r"$\frac{C_{Q,Q}(t)}{C_{Q,Q}(0)}$","index":1,"sym":"Q"},
@@ -41,7 +42,7 @@ for temp, n in zip(T,N):
 	xfit = fit(t[:nmax],q[:nmax],qErr[:nmax])
 	xfit.fiting(f, args={"bounds":((0,np.inf))})
 	nmin = 0
-	while xfit.chisq_by_dof>40:
+	while xfit.chisq_by_dof>10:
 		nmin+=1
 		xfit = fit(t[nmin:nmax],q[nmin:nmax],qErr[nmin:nmax])
 		xfit.fiting(f, args={"bounds":((0,np.inf))})
@@ -53,7 +54,7 @@ for temp, n in zip(T,N):
 		texp = texp+q[i]/q[nmin]
 		texpErr = texpErr+qErr[i]
 
-	xlabel = f"$t$"
+	xlabel = f"$t_{n}$"
 
 	x = np.linspace(t[nmin],t[nmax],500)
 
@@ -114,5 +115,5 @@ ax.grid(True)
 #	delimiter=",",header="T,tau,tau_error",comments="", fmt="%16f")
 ax.set_title(f"Autocorrelation time, lexicographical Metropolis, L={L}", fontsize=12)
 i = obs[name]["sym"]
-fig.savefig(f"output/plot/autocorrelation_{alg}_L{L}_{i}.png")
-print(f"output/plot/autocorrelation_time{alg}_L{L}_{i}.png")
+fig.savefig(f"output/plot/{name}/autocorrelation_{alg}_L{L}_{i}.png")
+print(f"output/plot/{name}/autocorrelation_time{alg}_L{L}_{i}.png")

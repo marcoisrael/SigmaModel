@@ -30,7 +30,9 @@ program record
     open(unit=1, file=path)
     write(1, '(*(g0,:,","))') 'H/V', 'chi_t', 'chi_m'
     do i=1, N
-        call step(s, arg3, arg4)
+        do j=1, sp
+            call step(s, arg3, arg4)
+        end do
         obs = [system_energy(s), system_charge(s), system_magnetization(s)]
         obs(:) = obs(:)/VOLUME
         write(1, '(*(f0.16,:,","))') obs
