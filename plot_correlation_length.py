@@ -10,8 +10,9 @@ if not os.path.isdir("output/plot/correlation_length/"):
 	os.makedirs("output/plot/correlation_length/")
 psi = []
 psiErr = []
-LENGTH=32
-T = np.array([0.8,0.85,0.9,1.0,1.2,1.4,1.6,1.8,2.0])
+LENGTH=128
+name="charge"
+T = np.array([0.8,0.85,0.9,1.0,1.2,1.4,1.6,1.8,2.0,3.0])
 for temp in T:
 	path = f"output/correlation_length/L{LENGTH}/lexic_metropolis/{temp}.csv"
 	#print(path)
@@ -53,5 +54,5 @@ data = np.array([T,psi,psiErr]).transpose()
 np.savetxt("output/send/correlation_length_LM_L128.csv", data, 
 	delimiter=",",header="T,xi,xi_error",comments="", fmt="%16f")
 ax.set_title(f"Correlation length, lexicographical Metropolis, L={LENGTH}", fontsize=12)
-fig.savefig(f"output/plot/correlation_length_lexic_metropolis_L{LENGTH}.png")
-print(f"output/plot/correlation_length_lexic_metropolis_L{LENGTH}.png")
+fig.savefig(f"output/plot/{name}/correlation_length_lexic_metropolis_L{LENGTH}.png")
+print(f"output/plot/{name}/correlation_length_lexic_metropolis_L{LENGTH}.png")

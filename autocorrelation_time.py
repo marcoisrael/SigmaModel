@@ -10,8 +10,11 @@ make_plt_sacaling_law=True
 name = "magnetization"
 alg = "lexic_metropolis"
 L = 128
-T = np.array([0.8,0.85,0.9,1.0,1.2,1.4,1.6,1.8])
-N = [3,2,1,1,1,1,1,1]
+T = np.array([0.75,0.8,0.9,1.0,1.2,1.4,1.6,1.8,2.0])
+T = np.array([1.0,1.2,1.4,1.6,1.8,2.0])
+
+N = np.ones_like(T)
+#N[0], N[1] = 4, 3
 
 f = lambda x, b, A: A*np.exp(-x/b)
 obs = {"charge":{"label":r"$\frac{C_{Q,Q}(t)}{C_{Q,Q}(0)}$","index":1,"sym":"Q"},
@@ -42,10 +45,10 @@ for temp, n in zip(T,N):
 	xfit = fit(t[:nmax],q[:nmax],qErr[:nmax])
 	xfit.fiting(f, args={"bounds":((0,np.inf))})
 	nmin = 0
-	while xfit.chisq_by_dof>10:
+	while xfit.chisq_by_dof>20:
 		nmin+=1
 		xfit = fit(t[nmin:nmax],q[nmin:nmax],qErr[nmin:nmax])
-		xfit.fiting(f, args={"bounds":((0,np.inf))})
+		xfit.fiting(f)
 
 	texp = 0
 	texpErr = 0
@@ -104,16 +107,18 @@ ax.text(0.5 ,0.9, r"$z=$"+fix(xfit.opt[1],xfit.error[1])+"\n"+r"$\chi^2/dof=$"+f
 		horizontalalignment='center', verticalalignment='center', transform=ax.transAxes, fontsize=8)
 
 
-ax.errorbar(T, cor2, cor2Err, fmt='o', capsize=3, elinewidth=1, markersize=2, label=r"$\tau_{int}$", color="r")
+#ax.errorbar(T, cor2, cor2Err, fmt='o', capsize=3, elinewidth=1, markersize=2, label=r"$\tau_{int}$", color="r")
 ax.set_xlabel(r"$T$",fontsize=14)
 ax.set_ylabel(r"$\tau$",fontsize=14)
 ax.legend() 
 ax.grid(True)
 #fig.tight_layout()
-#data = np.array([T, cor, corErr]).transpose()
-#np.savetxt("output/send/autocorrelation_charge_LM_L128.csv", data, 
-#	delimiter=",",header="T,tau,tau_error",comments="", fmt="%16f")
+data = np.array([T, cor, corErr]).transpose()
+np.savetxt(f"output/send/autocorrelation_{name}_LM_L{L}.csv", data, 
+	delimiter=",",header="T,tau,tau_error",comments="", fmt="%16f")
 ax.set_title(f"Autocorrelation time, lexicographical Metropolis, L={L}", fontsize=12)
 i = obs[name]["sym"]
+if not os.path.isdir(f"output/plot/{name}/L{L}/{alg}"):
+	os.makedirs(f"output/plot/{name}/L{L}/{alg}")
 fig.savefig(f"output/plot/{name}/autocorrelation_{alg}_L{L}_{i}.png")
 print(f"output/plot/{name}/autocorrelation_time{alg}_L{L}_{i}.png")
