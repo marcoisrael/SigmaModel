@@ -5,8 +5,8 @@
 #SBATCH --partition=QuantPhysMC
 #SBATCH --mem-per-cpu=100mb
 #SBATCH --time=6:00:00
-#SBATCH --array=0,1,2,3,4,5,6,7
-values="0.8 0.85 0.9 0.95 1.0 2.0 3.0 4.0"
+#SBATCH --array=0
+values="0.75 0.8 0.85 0.9 0.95 1.0 2.0 3.0 4.0"
 arr=($values)
 echo $USER;hostname;date
 echo './sigmaModel -cl -s 1e5 -alg lexic,metropolis -t ${arr[${SLURM_ARRAY_TASK_ID}]} -l "$1"'

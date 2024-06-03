@@ -21,7 +21,7 @@ program measure
     Temp = string2real(arg(1))
     delta_step = string2real(arg(5))
     N = string2int(arg(2))
-    sp = 12 !ceiling(915.43*exp(-temp/0.1644))
+    sp = 20 !ceiling(915.43*exp(-temp/0.1644))
     delta_step = dmin1(0.08419342-0.21964047*temp+0.3387236*temp*temp, dble(1))
 
     allocate(s(VOLUME,3),cl(VOLUME,3))
