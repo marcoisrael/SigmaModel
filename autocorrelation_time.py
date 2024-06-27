@@ -5,16 +5,27 @@ from plotClass import *
 import matplotlib.colors as colors
 colors_list = list(colors._colors_full_map.values())
 import os
-make_temp_plots=True
+make_temp_plots=False
 make_plt_sacaling_law=True
-name = "magnetization"
-alg = "lexic_metropolis"
+name = "charge"
+alg = "multi_cluster"
 L = 128
+#T = np.array([0.5,0.75,0.8,0.9,1.0,1.2,1.4,1.6,1.8,2.0])
 T = np.array([0.75,0.8,0.9,1.0,1.2,1.4,1.6,1.8,2.0])
-T = np.array([1.0,1.2,1.4,1.6,1.8,2.0])
+tc = 0.74
 
 N = np.ones_like(T)
-#N[0], N[1] = 4, 3
+#T = np.array([0.5,0.6,0.8,0.9,1.0])
+
+N[0], N[1] = 4, 3
+
+Algs = {
+		"lexic_metropolis":"Lexicographical Metropolis",
+		"random_metropolis":"Random Metropolis",
+		"random_glauber":"Random Glauber",
+		"lexic_glauber":"Lexicographical Glauber",
+		"multi_cluster":"Multi Cluster",
+		}
 
 f = lambda x, b, A: A*np.exp(-x/b)
 obs = {"charge":{"label":r"$\frac{C_{Q,Q}(t)}{C_{Q,Q}(0)}$","index":1,"sym":"Q"},
@@ -31,7 +42,7 @@ for temp, n in zip(T,N):
 	X = []
 	nmax = 3
 	var = 0
-	for t in np.arange(0,800):
+	for t in np.arange(0,2000):
 		x = correlation(data[:,obs[name]["index"]],t)
 		X.append(x)
 		if x[1]>0 and var==0:
@@ -45,7 +56,7 @@ for temp, n in zip(T,N):
 	xfit = fit(t[:nmax],q[:nmax],qErr[:nmax])
 	xfit.fiting(f, args={"bounds":((0,np.inf))})
 	nmin = 0
-	while xfit.chisq_by_dof>20:
+	while xfit.chisq_by_dof>10:
 		nmin+=1
 		xfit = fit(t[nmin:nmax],q[nmin:nmax],qErr[nmin:nmax])
 		xfit.fiting(f)
@@ -72,9 +83,9 @@ for temp, n in zip(T,N):
 		fig, ax = plt.subplots(dpi=120,tight_layout=True)
 		ax.plot(x, f(x, *xfit.opt), linewidth=0.7, color="black", label="Fitting")
 		ax.errorbar(t[:nmax], q[:nmax], qErr[:nmax], fmt='o', capsize=1, elinewidth=1, markersize=1, color="blue", label="Data")
-		head=r"$\tau_{exp}=$"+fix(n*xfit.opt[0],n*xfit.error[0])+"\n"+r"$\tau_{int}=$"+fix(n*texp,n*texpErr)+"\n"+r"$\chi^2/dof=$"+f"{xfit.chisq_by_dof}"
+		head=r"$\tau_{exp}=$"+fix(n*xfit.opt[0],n*xfit.error[0])+"\n"+r"$\tau_{int}=$"+fix(n*texp,n*texpErr)
 		ax.text(0.5 ,0.9, head, horizontalalignment='center', verticalalignment='center', transform=ax.transAxes)
-		ax.set_xlabel(xlabel, fontsize=14)
+		ax.set_xlabel(xlabel, fontsize=30)
 		ax.set_ylabel(obs[name]["label"], rotation="horizontal", fontsize=18, ha="right")
 		ax.grid(True)
 		ax.legend()
@@ -97,28 +108,30 @@ cor2 = np.array(cor2)
 cor = np.array(cor)
 corErr = np.array(corErr)
 cor2Err = np.array(cor2Err)
-f = lambda x, a, b, c:a*(x+c)**(-b)
+f = lambda x, a, b:a*x**(-b)
+
 xfit = fit(T,cor,corErr)
-xfit.fiting(f)
+#xfit.fiting(f)
 #print(xfit.opt)
 ax.errorbar(T,cor,corErr, fmt='o', capsize=3, elinewidth=1, markersize=2, label=r"$\tau_{exp}$", color="black")
-ax.plot(x, f(x,*xfit.opt), linewidth=0.8, color="black")
-ax.text(0.5 ,0.9, r"$z=$"+fix(xfit.opt[1],xfit.error[1])+"\n"+r"$\chi^2/dof=$"+f"{xfit.chisq_by_dof}", 
-		horizontalalignment='center', verticalalignment='center', transform=ax.transAxes, fontsize=8)
+#ax.plot(x, f(x,*xfit.opt), linewidth=0.8, color="black")
+#ax.text(0.5 ,0.9, r"$z=$"+fix(xfit.opt[1],xfit.error[1]), 
+#		horizontalalignment='center', verticalalignment='center', transform=ax.transAxes, fontsize=16)
 
 
 #ax.errorbar(T, cor2, cor2Err, fmt='o', capsize=3, elinewidth=1, markersize=2, label=r"$\tau_{int}$", color="r")
 ax.set_xlabel(r"$T$",fontsize=14)
 ax.set_ylabel(r"$\tau$",fontsize=14)
-ax.legend() 
+#ax.legend() 
 ax.grid(True)
 #fig.tight_layout()
 data = np.array([T, cor, corErr]).transpose()
-np.savetxt(f"output/send/autocorrelation_{name}_LM_L{L}.csv", data, 
+np.savetxt(f"output/send/autocorrelation_{name}_{alg}.csv", data, 
 	delimiter=",",header="T,tau,tau_error",comments="", fmt="%16f")
-ax.set_title(f"Autocorrelation time, lexicographical Metropolis, L={L}", fontsize=12)
+title =Algs[alg]
+#ax.set_title(f"Autocorrelation time, {title}, L={L}", fontsize=12)
 i = obs[name]["sym"]
 if not os.path.isdir(f"output/plot/{name}/L{L}/{alg}"):
 	os.makedirs(f"output/plot/{name}/L{L}/{alg}")
 fig.savefig(f"output/plot/{name}/autocorrelation_{alg}_L{L}_{i}.png")
-print(f"output/plot/{name}/autocorrelation_time{alg}_L{L}_{i}.png")
+print(f"output/plot/{name}/autocorrelation_{alg}_L{L}_{i}.png")

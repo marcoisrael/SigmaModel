@@ -12,7 +12,7 @@ psi = []
 psiErr = []
 LENGTH=128
 name="charge"
-T = np.array([0.8,0.85,0.9,1.0,1.2,1.4,1.6,1.8,2.0,3.0])
+T = np.array([0.9,1.0,1.2,1.4,1.6,1.8,2.0])
 for temp in T:
 	path = f"output/correlation_length/L{LENGTH}/lexic_metropolis/{temp}.csv"
 	#print(path)
@@ -40,6 +40,8 @@ ax.errorbar(T, psi, psiErr, fmt='o', capsize=1, elinewidth=1, markersize=1, colo
 f = lambda x, a, b,c: a*(x+c)**(-b)
 xfit = fit(T, psi, psiErr)
 xfit.fiting(f)
+print(xfit.opt)
+print(xfit.error)
 ax.text(0.5 ,0.9-h, r"$\nu=$"+fix(xfit.opt[1],xfit.error[1])+"\n"+r"$\chi^2/dof=$"+f"{xfit.chisq_by_dof}", 
 		horizontalalignment='center', verticalalignment='center', transform=ax.transAxes, fontsize=8)
 h = h+0.12
@@ -47,12 +49,12 @@ x = np.linspace(T[0],T[-1],200)
 ax.plot(x, f(x,*xfit.opt), linewidth=0.8, color="black")
 ax.set_xlabel(r"$T$", fontsize=14)
 ax.set_ylabel(r"$\xi$", rotation="horizontal", fontsize=14, ha="right")
-ax.legend()
+#ax.legend()
 ax.grid(True)
 
 data = np.array([T,psi,psiErr]).transpose()
 np.savetxt("output/send/correlation_length_LM_L128.csv", data, 
 	delimiter=",",header="T,xi,xi_error",comments="", fmt="%16f")
-ax.set_title(f"Correlation length, lexicographical Metropolis, L={LENGTH}", fontsize=12)
+#ax.set_title(f"Correlation length, lexicographical Metropolis, L={LENGTH}", fontsize=12)
 fig.savefig(f"output/plot/{name}/correlation_length_lexic_metropolis_L{LENGTH}.png")
 print(f"output/plot/{name}/correlation_length_lexic_metropolis_L{LENGTH}.png")

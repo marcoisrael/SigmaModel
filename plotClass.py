@@ -50,7 +50,7 @@ class fit:
 		self.yerr = yerr
 	def fiting(self, func, args=dict()):
 		self.func = func
-		self.opt, self.cov = curve_fit(func, self.xdata, self.ydata, sigma = self.yerr, **args)
+		self.opt, self.cov = curve_fit(func, self.xdata, self.ydata, **args, sigma = self.yerr)
 		r = self.ydata-func(self.xdata, *self.opt)
 		chisq = ((r/self.yerr)**2).sum()
 		dof = self.xdata.size-self.opt.size
