@@ -7,4 +7,4 @@
 #SBATCH --time=24:00:00
 #SBATCH --array=2,4,8,16,20
 echo $USER;hostname;date
-./sigmaModel -s 1e6 -alg "$1" -n "FastCooling" --cooling=4,0,${sarr[${SLURM_ARRAY_TASK_ID}]} 
+./sigmaModel -s 1e6 -alg "$1" -n "FastCooling" --cooling=4,0,${SLURM_ARRAY_TASK_ID}
