@@ -1,8 +1,8 @@
 program cooling
     use algorithm
     use functions
-    real(8), allocatable :: s(:,:),s0(:,:), med(:,:,:), x(:,:,:), interval(:), medjk(:,:), varjk(:,:)
-    real(8) :: obs(2)
+    real(8), allocatable :: s(:,:),s0(:,:), med(:,:,:), x(:,:,:), rangeTemp(:), medjk(:,:), varjk(:,:)
+    real(8) :: obs(3)
     real(8) ::  startTemp, endTemp
     integer :: N, sample,thermalization, TQ, i, j, k
     character(30), dimension(9) :: arg
@@ -26,13 +26,13 @@ program cooling
     delta_step = string2real(arg(8))
     sample = N/100
     allocate(s(VOLUME,3), s0(VOLUME,3))
-    allocate(interval(0:TQ), med(100,0:TQ,2))
+    allocate(rangeTemp(0:TQ), med(100,0:TQ,2))
     allocate(x(100,0:TQ,2), medjk(0:TQ,2), varjk(0:TQ,2))
     med(:,:,:)=0
     temp = startTemp
     beta = 1/startTemp
-    interval = linspace(startTemp, endTemp, TQ)
-    interval = 1/sqrt(interval)
+    rangeTemp = linspace(startTemp, endTemp, TQ)
+    rangeTemp = 1/sqrt(rangeTemp)
     call hot_start(s0)
     do i=1, thermalization
         call cluster(s0, arg(9))
@@ -47,10 +47,10 @@ program cooling
 			end do
 			s0 = s
 			do k=0, TQ
-				temp = interval(k)
+				temp = rangeTemp(k)
 				beta = 1/temp
 				call step(s, arg(6), arg(7))
-				obs = [system_charge(s)**2,control_param]
+				obs = [system_charge(s)**2, system_energy(s), system_magnetization(s)]
                 obs = obs/VOLUME
 				med(j,k,:)=med(j,k,:)+obs
 			end do
@@ -76,9 +76,10 @@ program cooling
 	varjk(:,:) = sqrt(.99*varjk(:,:))
     path = trim(arg(5))//trim(arg(6))//"_"//trim(arg(7))//" "//trim(arg(3))//".csv"
     open(unit=1, file=path)
-    write(1, '(*(g0,:,","))') 'tau_Q', 'T', 'chi_t', 'Error chi_t','AR|CS','Error AR|CS'
+    write(1, '(*(g0,:,","))') 'tau_cool', 'temp', 'chi_t', 'error_chi_t', &
+            'energy_density', 'error_energy_density', 'magnetization', 'error_magnetization'
     do k=0,TQ
-        write(1, '((I0,:,","),*(f0.16,:,","))') k, interval(k), medjk(k,1) , &
-        varjk(k,1), medjk(k,2), varjk(k,2)
+        write(1, '((I0,:,","),*(f0.16,:,","))') k, rangeTemp(k), medjk(k,1) , &
+        varjk(k,1), medjk(k,2), varjk(k,2), medjk(k,3), varjk(k,3)
     end do
 end program
