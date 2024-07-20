@@ -26,13 +26,12 @@ program cooling
     delta_step = string2real(arg(8))
     sample = N/100
     allocate(s(VOLUME,3), s0(VOLUME,3))
-    allocate(rangeTemp(0:TQ), med(100,0:TQ,2))
-    allocate(x(100,0:TQ,2), medjk(0:TQ,2), varjk(0:TQ,2))
+    allocate(rangeTemp(0:TQ), med(100,0:TQ,3))
+    allocate(x(100,0:TQ,3), medjk(0:TQ,3), varjk(0:TQ,3))
     med(:,:,:)=0
     temp = startTemp
     beta = 1/startTemp
     rangeTemp = linspace(startTemp, endTemp, TQ)
-    rangeTemp = 1/sqrt(rangeTemp)
     call hot_start(s0)
     do i=1, thermalization
         call cluster(s0, arg(9))
@@ -74,7 +73,9 @@ program cooling
 		varjk(:,:)=varjk(:,:)+(x(i,:,:)-medjk(:,:))**2
 	end do
 	varjk(:,:) = sqrt(.99*varjk(:,:))
-    path = trim(arg(5))//trim(arg(6))//"_"//trim(arg(7))//" "//trim(arg(3))//".csv"
+
+    path = trim(arg(5))//"/"//trim(arg(6))//"_"//trim(arg(7))//" "//trim(arg(3))//".csv"
+    
     open(unit=1, file=path)
     write(1, '(*(g0,:,","))') 'tau_cool', 'temp', 'chi_t', 'error_chi_t', &
             'energy_density', 'error_energy_density', 'magnetization', 'error_magnetization'
