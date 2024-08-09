@@ -11,7 +11,6 @@ module algorithm
             if (bond(getindex(i,j),2)==0) then
                 largest_label = largest_label+1
                 bond(getindex(i,j),2) = largest_label
-                largest_label = largest_label
                 labels(largest_label)%cluster = [getindex(i,j)]
             end if
         else if (bond(getindex(i,j),1)==10) then

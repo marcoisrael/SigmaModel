@@ -2,12 +2,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-import os
 from scipy.optimize import curve_fit
-
-label1 = [[r"$\chi_t$", "Sweep"],[r"$\chi_t$", r"$T$"],[r"$\chi_t\left(\tau_Q\right)$", r"$\tau_Q$"],["Acceptance rate", "T"]]
-label2 = [[r"$\chi_t$", "Update"],[r"$\chi_t$", r"$T$"],[r"$\chi_t\left(\tau_Q\right)$", r"$\tau_Q$"],["Cluster size", "T"]]
-select = {"Metropolis":label1,"Glauber":label1,"Cluster":label2}
 
 def correlation(X, t):
 	X_mean = X.mean()
