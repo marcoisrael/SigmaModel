@@ -65,7 +65,7 @@ if args.cooling is not None:
 if args.record:
 	start_time =  time.perf_counter()
 	key, alg = args.algorithm.split(',')
-	folder = f'output/record-1/L{args.length}/{key}_{alg}/'
+	folder = f'output/{args.name}/L{args.length}/{key}_{alg}/'
 	if not os.path.isdir(folder):
 		os.makedirs(folder) 
 
