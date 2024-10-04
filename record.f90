@@ -26,7 +26,7 @@ program record
     do i=1, thermalization
         call cluster(s, str1)
     end do
-    path = 'output/record-1/L'//trim(int2string(LENGTH))//"/"//trim(arg3)//"_"//trim(arg4)//'/'//trim(arg1)//".csv"
+    path = 'output/record-3/L'//trim(int2string(LENGTH))//"/"//trim(arg3)//"_"//trim(arg4)//'/'//trim(arg1)//".csv"
     open(unit=1, file=path)
     write(1, '(*(g0,:,","))') 'H/V', 'chi_t', 'chi_m'
     do i=1, N
