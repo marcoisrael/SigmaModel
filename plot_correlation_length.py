@@ -56,5 +56,5 @@ data = np.array([T,psi,psiErr]).transpose()
 np.savetxt("output/send/correlation_length_LM_L128.csv", data, 
 	delimiter=",",header="T,xi,xi_error",comments="", fmt="%16f")
 #ax.set_title(f"Correlation length, lexicographical Metropolis, L={LENGTH}", fontsize=12)
-fig.savefig(f"output/plot/{name}/correlation_length_lexic_metropolis_L{LENGTH}.png")
+fig.savefig(f"output/plot/{name}/correlation_length_lexic_metropolis_L{LENGTH}.png",bbox_inches="tight")
 print(f"output/plot/{name}/correlation_length_lexic_metropolis_L{LENGTH}.png")

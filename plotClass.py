@@ -3,7 +3,16 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 from scipy.optimize import curve_fit
-
+Algs = {
+		"lexic_metropolis":"Lexicographical Metropolis",
+		"random_metropolis":"Random Metropolis",
+		"random_glauber":"Random Glauber",
+		"lexic_glauber":"Lexicographical Glauber",
+		"multi_cluster":"Multi Cluster",
+		}
+obs = {"charge":{"label":r"$C_{QQ}(t)/C_{QQ}(0)$","index":1,"sym":"Q"},
+		"magnetization":{"label":r"$\frac{C_{M}(t)}{C_{M}(0)}$","index":2,"sym":"M"},
+		"energy":{"label":r"$\frac{C_{\mathcal{H}}(t)}{C_{\mathcal{H}}(0)}$","index":0,"sym":"E"}}
 def correlation(X, t):
 	X_mean = X.mean()
 	N = X.size-t
