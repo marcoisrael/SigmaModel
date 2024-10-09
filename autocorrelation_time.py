@@ -3,29 +3,31 @@ import numpy as np
 import matplotlib.pyplot as plt
 from plotClass import *
 import matplotlib.colors as colors
+import os, argparse
+
+parser = argparse.ArgumentParser(prog="autocorrelation")
+parser.add_argument('-alg','--algorithm')
+args = parser.parse_args()
+
 colors_list = list(colors._colors_full_map.values())
 import os
 make_temp_plots=False
 name = "charge"
-alg = "random_glauber"
-L = 128
-#T = np.array([0.5,0.75,0.8,0.9,1.0,1.2,1.4,1.6,1.8,2.0])
-T = np.array([0.75,0.8,0.9,1.0,1.2,1.4,1.6,1.8,2.0])
-tc = 0.74
+alg = args.algorithm
+L = 64
+T = os.listdir(f"output/record-3/L64/{alg}")
+def convert(x):
+	return float(x.replace(".csv",""))
 
-N = np.ones_like(T).astype("int")
-T = np.array([1.0,1.2,1.4,1.6,1.8,2.0])
-
-#N[0], N[1] = 4, 3
+T = np.sort(np.array(list(map(convert, T))))
 
 f = lambda x, b, A: A*np.exp(-x/b)
-
 cor = []
 corErr = []
 cor2 = []
 cor2Err = []
-for temp, n in zip(T,N):	
-	path = f"output/record-1/L{L}/{alg}/{temp}.csv"
+for temp in T:	
+	path = f"output/record-3/L{L}/{alg}/{temp}.csv"
 	data = np.loadtxt(path, delimiter=",", skiprows=1)
 	X = []
 	nmax = 3
@@ -55,19 +57,14 @@ for temp, n in zip(T,N):
 		texp = texp+q[i]/q[nmin]
 		texpErr = texpErr+qErr[i]
 
-	if n==1:
-		xlabel=r"$t$"
-	else:
-		xlabel=f"$t_{n}$"
-
 	x = np.linspace(t[nmin],t[nmax],500)
 
-	cor2.append(n*texp)
-	cor2Err.append(n*texpErr)
-	cor.append(n*xfit.opt[0])
-	corErr.append(n*xfit.error[0])
+	cor2.append(texp)
+	cor2Err.append(texpErr)
+	cor.append(xfit.opt[0])
+	corErr.append(xfit.error[0])
 	
-	print(n, temp, n*xfit.opt[0], n*texp)
+	print(temp, xfit.opt[0], texp)
 	
 	if make_temp_plots:
 		fig, ax = plt.subplots(dpi=120,tight_layout=True)
@@ -75,7 +72,7 @@ for temp, n in zip(T,N):
 		ax.errorbar(t[:nmax], q[:nmax], qErr[:nmax], fmt='o', capsize=1, elinewidth=1, markersize=1, color="red", label="Data")
 		head=r"$\tau_{exp}=$"+fix(n*xfit.opt[0],n*xfit.error[0])+"\n"+r"$\tau_{int}=$"+fix(n*texp,n*texpErr)
 		ax.text(0.5 ,0.9, head, horizontalalignment='center', verticalalignment='center', transform=ax.transAxes)
-		ax.set_xlabel(xlabel, fontsize=18)
+		ax.set_xlabel(r"$t$", fontsize=18)
 		ax.set_ylabel(obs[name]["label"], fontsize=18)
 		#ax.grid(True)
 		ax.legend()
