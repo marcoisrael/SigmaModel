@@ -55,8 +55,8 @@ program cooling
     end do
    
     med = med/N
-    var = var
-    var = (var-N*med*med)/(N-1)
+    var = var/N
+    var = sqrt(var-med*med)/sqrt(dble(N))
 
     path = trim(arg(5))//"/"//trim(arg(6))//"_"//trim(arg(7))//" "//trim(arg(3))//".csv"
     
