@@ -53,7 +53,12 @@ module functions
         s(:, 2) = sin(theta)*sin(phi)
         s(:, 3) = cos(theta)
     end subroutine
-
+    subroutine cold_start(s)
+        real(8), allocatable :: s(:,:)
+        s(:, 1) = 0
+        s(:, 2) = 0
+        s(:, 3) = 1
+    end subroutine
     function random()
         real(8) :: random
         call random_number(random)

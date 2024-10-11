@@ -21,11 +21,13 @@ program record
     sp = string2int(arg7)
     delta_step = dmin1(0.08419342-0.21964047*temp+0.3387236*temp*temp, dble(1))
     allocate(s(VOLUME,3))
-    call hot_start(s)
+    !call hot_start(s)
+    call cold_start(s)
     beta = 1/Temp
     do i=1, thermalization
         call cluster(s, str1)
     end do
+    !path = "output/test/cold.csv"
     path = 'output/record-3/L'//trim(int2string(LENGTH))//"/"//trim(arg3)//"_"//trim(arg4)//'/'//trim(arg1)//".csv"
     open(unit=1, file=path)
     write(1, '(*(g0,:,","))') 'H/V', 'chi_t', 'chi_m'
