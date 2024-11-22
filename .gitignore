@@ -5,3 +5,5 @@ logs
 *cpython*
 output
 *pycache*
+*.lyx~
+*.lyx#
