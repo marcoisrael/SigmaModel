@@ -9,14 +9,14 @@ args = parser.parse_args()
 make_plots=False
 os.makedirs("output/plot/length/",exist_ok=True)
 if args.algorithm=="all":
-	algs = ["lexic_metropolis","lexic_glauber","random_metropolis","random_glauber","multi_cluster"]
+	algs = ["lexic_metropolis","lexic_glauber","random_metropolis","random_glauber"]
 else:
 	algs = args.algorithm.split(",")
 
 for alg in algs:
 	print(alg)
 	fig, ax = plt.subplots()
-	T = np.array([1.0,1.2,1.4,1.6,1.8,2.0])
+	T = np.array([0.6,0.7,0.8,0.9,1.0])
 	params = {
 			32:{"color":"red","line":(0,(3,3))},
 			64:{"color":"blue","line":(0,(3,3))},
@@ -39,26 +39,25 @@ for alg in algs:
 			if make_plots:
 				fig, ax = plt.subplots()
 				x = np.linspace(0,LENGTH,100)
-				ax.errorbar(data[:,0],data[:,1],yerr=data[:,2], fmt='o', capsize=1, elinewidth=1, markersize=1)
-				ax.plot(x, f(x,*xfit.opt),linewidth=0.8)
+				ax.errorbar(data[:,0],data[:,1],yerr=data[:,2], fmt='o', capsize=1, elinewidth=1, markersize=5)
+				ax.plot(x, f(x,*xfit.opt),linewidth=1.8)
 				fig.savefig(f"output/plot/correlation_length/lexic_metropolis_L{LENGTH}_{temp}.png")
 				print(temp, xfit.opt[1])
 				#plt.show()
 				plt.close()
 		
 		psi = np.array(psi)
-		ax.errorbar(T, psi, psiErr, fmt='o',capsize=1,elinewidth=1,markersize=1,color=params[LENGTH]["color"],)#label=f"Datos $(L={LENGTH})$")
+		ax.errorbar(T, psi, psiErr, fmt='o',capsize=1,elinewidth=1,markersize=5,color=params[LENGTH]["color"])
 		f = lambda x, a, b,c: c+a*x**-b
-		#f = lambda x, a, b,c:c/(1+np.exp((x-a)/b))
 		xfit = fit(T, psi, psiErr)
 		#xfit.fiting(f,{"bounds":((0,0),(np.inf,np.inf))})
 		xfit.fiting(f)
 		print(LENGTH,fix(xfit.opt[1],xfit.error[1]))
 		
 		x = np.linspace(T[0],T[-1],200)
-		ax.text(0.4,0.99-i,r"$\frac{\chi^2}{\mathrm{dof}}=$"+str(xfit.chisq_by_dof),fontsize=16,ha='left', va='top',transform=ax.transAxes)
-		i=i+0.15
-		ax.plot(x, f(x,*xfit.opt), linewidth=0.8,color=params[LENGTH]["color"],linestyle=params[LENGTH]["line"],label=f"$L={LENGTH}$")
+		ax.text(0.75,0.75-i,r"$\frac{\chi^2}{\mathrm{dof}}=$"+str(xfit.chisq_by_dof),fontsize=12,ha='left', va='top',transform=ax.transAxes)
+		i=i+0.1
+		ax.plot(x, f(x,*xfit.opt), linewidth=1.8,color=params[LENGTH]["color"],linestyle=params[LENGTH]["line"],label=f"$L={LENGTH}$")
 		ax.set_xlabel(r"$T$", fontsize=18)
 		ax.set_ylabel(r"$\xi$", fontsize=18)
 		ax.legend()

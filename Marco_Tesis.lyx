@@ -2367,7 +2367,7 @@ literal "false"
 .
  El algoritmo single-cluster consiste en generar un grupo de espines enlazados
  y cambiar la configuración de todos los espines, el algoritmo cluster evita
- la desaceleración cerca del punto critico, que es característica de los
+ la desaceleración cerca del punto crítico, que es característica de los
  algoritmos de actualización local.
  Se elije un espín aleatorio en la configuración 
 \begin_inset Formula $\vec{s}\in[s]$
@@ -2742,7 +2742,7 @@ y
 \begin_inset Formula $\nu$
 \end_inset
 
- es un exponente critico.
+ es un exponente crítico.
 \end_layout
 
 \begin_layout Standard
@@ -2948,7 +2948,7 @@ Renormalización
 \end_layout
 
 \begin_layout Standard
-La idea de que un punto critico puede ser mapeado en un punto fijo, eligiendo
+La idea de que un punto crítico puede ser mapeado en un punto fijo, eligiendo
  la transformación correcta del hamiltoniano del sistema.
  Es la motivación de los grupos de renormalización.
  Entre las ventajas de la renormalización.
@@ -3009,9 +3009,9 @@ Tiempo de auto-correlación
 \end_layout
 
 \begin_layout Standard
-La simulación de un sistema cerca de un punto critico un problema complicado,
+La simulación de un sistema cerca de un punto crítico un problema complicado,
  en general la dinámica de las simulaciones desacelera considerablemente
- cerca de un punto critico.
+ cerca de un punto crítico.
  La desaceleración es una complicación cuando se dispone de un tiempo de
  computo finito por lo que es de gran interés entender como cambia el sistema
  del sistema.
@@ -3077,7 +3077,7 @@ Donde
 \end_inset
 
 El tiempo de auto-correlación depende del algoritmo de Monte Carlo particular
- que se use y en general cerca de un punto critico diverge según la ecuación
+ que se use y en general cerca de un punto crítico diverge según la ecuación
 \begin_inset Formula 
 \begin{equation}
 \tau\propto\xi^{z}
@@ -3131,8 +3131,8 @@ En el modelo 2d O(
  a la vez que la temperatura aumenta la energía permitiendo configuraciones
  de mayor energía.
  En cada actualización la energía del sistema evoluciona hasta estabilizarse
- en una sucesión de configuración que fluctuá alrededor de una energía media
- constante.
+ en una sucesión de configuración que fluctuante alrededor de una energía
+ media constante.
  En la Figura 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -3167,8 +3167,8 @@ Cold start
 \begin_layout Standard
 Tanto la susceptibilidad topológica como la magnetización se comportan de
  forma similar a la densidad de energía.
- Por lo tanto las observables deben promediarse a partir de una configuración
- que ya este en equilibrio termodinámico.
+ Por lo que las observables se promedian a partir de una configuración que
+ ya este en equilibrio termodinámico.
 \end_layout
 
 \begin_layout Standard
@@ -3251,36 +3251,25 @@ Simular el modelo 2d O
 \end_layout
 
 \begin_layout Enumerate
-Se genera una configuración aleatoria de espines.
+Se genera una configuración en equilibrio termodinámico a temperatura 
+\begin_inset Formula $T$
+\end_inset
+
+.
  
 \end_layout
 
 \begin_layout Enumerate
-Se actualiza el sistema hasta alcanzar el equilibrio térmico a temperatura
- 
-\begin_inset Formula $T$
-\end_inset
-
-
-\shape italic
-.
+Se actualiza la configuración.
 \end_layout
 
 \begin_layout Enumerate
 Se miden las observables.
+ 
 \end_layout
 
 \begin_layout Enumerate
-Se actualiza el sistema hasta generar una configuración estadística-mente
- independiente.
-\end_layout
-
-\begin_layout Enumerate
-Se repiten 
-\begin_inset Formula $N-1$
-\end_inset
-
- veces los pasos 3 y 4.
+Regresa al paso 2.
 \end_layout
 
 \begin_layout Standard
@@ -3327,33 +3316,34 @@ Resultados
 \end_layout
 
 \begin_layout Standard
-Se realizo una serie de experimentos para determinar características generales
- del modelo 2d O(
+Se realizó una serie de experimentos n úmericos para determinar características
+ generales del modelo 2d O(
 \begin_inset Formula $3$
 \end_inset
 
 ).
- La longitud de correlación se cálculo en equilibrio térmico para las temperatur
-as 
-\begin_inset Formula $T\in\left\{ 0.75,0.8,0.85,0.9,0.95,1.0,1.2\right\} $
+ Se cálculo la longitud de correlación para las temperaturas 
+\begin_inset Formula $T\in\left\{ 0.7,0.8,0.9,1.0,1.4,1.6\right\} $
 \end_inset
 
-, para las retículas de longitud 
+, en retículas de longitud 
 \begin_inset Formula $L\in\left\{ 32,64,128\right\} $
 \end_inset
 
 .
- En todos los casos se partió de un hot start y se termalizo durante 
+ En todos los casos se partió de una configuracion 
+\begin_inset Quotes fld
+\end_inset
+
+hot start
+\begin_inset Quotes frd
+\end_inset
+
+ y se termalizo durante 
 \begin_inset Formula $10^{4}$
 \end_inset
 
  actualizaciones del algoritmo multi cluster.
- Finalmente se promedio sobre 
-\begin_inset Formula $10^{5}$
-\end_inset
-
- barridos del algoritmo de metrópolis lexicográfico.
- 
 \end_layout
 
 \begin_layout Standard
@@ -3640,7 +3630,7 @@ name "tab:lenght"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.1(1)$
+\begin_inset Formula $5.9(6)$
 \end_inset
 
 
@@ -3652,7 +3642,7 @@ name "tab:lenght"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.0(1)$
+\begin_inset Formula $6.1(5)$
 \end_inset
 
 
@@ -3664,7 +3654,7 @@ name "tab:lenght"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.1(2)$
+\begin_inset Formula $5.6(2)$
 \end_inset
 
 
@@ -3676,7 +3666,7 @@ name "tab:lenght"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.1(2)$
+\begin_inset Formula $5.9(4)$
 \end_inset
 
 
@@ -3702,7 +3692,7 @@ name "tab:lenght"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.0(1)$
+\begin_inset Formula $7.4(2)$
 \end_inset
 
 
@@ -3714,7 +3704,7 @@ name "tab:lenght"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.0(1)$
+\begin_inset Formula $7.9(4)$
 \end_inset
 
 
@@ -3726,7 +3716,7 @@ name "tab:lenght"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.0(2)$
+\begin_inset Formula $7.7(3)$
 \end_inset
 
 
@@ -3738,7 +3728,7 @@ name "tab:lenght"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.0(1)$
+\begin_inset Formula $7.31(7)$
 \end_inset
 
 
@@ -3764,7 +3754,7 @@ name "tab:lenght"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.0(2)$
+\begin_inset Formula $8.4(6)$
 \end_inset
 
 
@@ -3776,7 +3766,7 @@ name "tab:lenght"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $2.96(9)$
+\begin_inset Formula $8.0(6)$
 \end_inset
 
 
@@ -3788,7 +3778,7 @@ name "tab:lenght"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.0(2)$
+\begin_inset Formula $8.9(8)$
 \end_inset
 
 
@@ -3800,7 +3790,7 @@ name "tab:lenght"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $2.9(1)$
+\begin_inset Formula $8.1(3)$
 \end_inset
 
 
@@ -3844,7 +3834,7 @@ El tiempo de auto correlación se cálculo en equilibrio térmico para las
 \begin_inset Formula $10^{4}$
 \end_inset
 
- actualizaciones del algoritmo multi-cluster.
+ actualizaciones del algoritmo multi cluster.
  Finalmente se promedio sobre 
 \begin_inset Formula $10^{5}$
 \end_inset
@@ -4111,7 +4101,7 @@ Glauber aleatorio
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Exponente critico 
+Exponente crítico 
 \begin_inset Formula $z$
 \end_inset
 
@@ -4281,8 +4271,8 @@ Algoritmo de Gauber aleatorio.
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Tiempo de autocorrelación de la susceptibilidad topológica en función de
- la temperatura en una retícula de longitud 
+Tiempo de autocorrelación de la carga topológica en función de la temperatura
+ en una retícula de longitud 
 \begin_inset Formula $L=64$
 \end_inset
 
@@ -4634,15 +4624,14 @@ Metodología
 \end_layout
 
 \begin_layout Standard
-Para simular un enfriamiento rápido el algoritmo multi-cluster
+Para simular un enfriamiento rápido, el algoritmo multi cluster
 \emph on
  
 \emph default
 se vuelve inconveniente ya que genera configuraciones estadística-mente
- independientes muy rápido llevando el sistema al equilibrio térmico demasiado
- rápido, es por eso que en los enfriamiento emplearemos un enfoque distinto,
- en vez de promediar entre configuraciones sucesivas en equilibrio se realizan
- 
+ independientes en pocas actualizaciones.
+ Emplearemos un enfoque distinto: en vez de promediar entre configuraciones
+ sucesivas en equilibrio, se realiza un número 
 \begin_inset Formula $N$
 \end_inset
 
@@ -4666,7 +4655,7 @@ donde
 \begin_inset Formula $\tau_{\mathrm{cool}}$
 \end_inset
 
- es el el número de pasos para llegar desde la temperatura inicial 
+ es el número de pasos para llegar desde la temperatura inicial 
 \begin_inset Formula $T_{i}$
 \end_inset
 
@@ -4675,20 +4664,17 @@ donde
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Se define la temperatura 
-\begin_inset Formula $T$
+ Conforme avanza el tiempo de Markov en el rango 
+\begin_inset Formula $(t,\tau_{\mathrm{cool}})$
 \end_inset
 
-
+, la temperatura actual cambia linealmente siguiendo la ecuación
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-T\left(\tau\right)=T_{i}+\tau v_{\mathrm{coo}l}.\label{eq:temperatura}
+T\left(t\right)=T_{i}+tv_{\mathrm{coo}l}.\label{eq:temperatura}
 \end{equation}
 
 \end_inset
@@ -4698,32 +4684,27 @@ T\left(\tau\right)=T_{i}+\tau v_{\mathrm{coo}l}.\label{eq:temperatura}
 
 \begin_layout Standard
 Empezando desde 
-\begin_inset Formula $\tau=0$
+\begin_inset Formula $t=0$
 \end_inset
 
 , un enfriamiento consta de los siguientes pasos.
 \end_layout
 
 \begin_layout Enumerate
-Se genera una configuración aleatoria de espines.
+Se genera una configuración en equilibrio termodinámico a temperatura 
+\begin_inset Formula $T$
+\end_inset
+
+.
  
 \end_layout
 
 \begin_layout Enumerate
-Se usa el método 
-\shape italic
-\emph on
-multi-
-\shape default
-\emph default
-cluster para que la configuración alcance el equilibrio térmico a temperatura
- 
-\begin_inset Formula $T\left(\tau=0\right)$
+Se actualiza la configuración a temperatura 
+\begin_inset Formula $T(t)$
 \end_inset
 
 
-\shape italic
-.
 \end_layout
 
 \begin_layout Enumerate
@@ -4732,44 +4713,26 @@ Se miden las observables.
 \end_layout
 
 \begin_layout Enumerate
-Se define 
-\begin_inset Formula $i=\tau$
+Si 
+\begin_inset Formula $T<0$
 \end_inset
 
- y se redefine 
-\begin_inset Formula $\tau=i+1$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-Se realiza un barrido de la configuración a temperatura 
-\begin_inset Formula $T\left(\tau\right)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-Se repiten los pasos del el 2 al 6 si 
-\begin_inset Formula $\tau<\tau_{\mathrm{cool}}$
-\end_inset
-
-.
+, se regresa al paso 2.
 \end_layout
 
 \begin_layout Standard
 Al terminar el proceso se tiene una trayectoria para cada observable en
  función de la temperatura.
- Ya que se miden las observables fuera del equilibrio térmico estas trayectoria
- son diferentes en cada enfriamiento.
  Se realizan 
 \begin_inset Formula $N$
 \end_inset
 
- enfriamientos y se promedian las trayectorias para cada observable resultando
- en una trayectoria suave.
+ enfriamientos y se promedian las trayectorias, donde el promedio se refiere
+ a un instante fijo 
+\begin_inset Formula $t$
+\end_inset
+
+ de cada temperatura.
 \end_layout
 
 \begin_layout Section
@@ -6293,7 +6256,7 @@ Multi cluster
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Exponente critico 
+Exponente crítico dinamico 
 \begin_inset Formula $z$
 \end_inset
 
