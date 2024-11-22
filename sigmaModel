@@ -66,8 +66,7 @@ if args.record:
 	start_time =  time.perf_counter()
 	key, alg = args.algorithm.split(',')
 	folder = f'output/{args.name}/L{args.length}/{key}_{alg}/'
-	if not os.path.isdir(folder):
-		os.makedirs(folder) 
+	os.makedirs(folder, exist_ok=True) 
 
 	cmd_run = ["./bin/main0",f"{args.temp}",f"{int(args.steps)}",key,alg,args.delta,args.length,args.spacing]
 	#print(" ".join(cmd_run))

@@ -8,8 +8,9 @@ parser = argparse.ArgumentParser(prog="autocorrelation")
 parser.add_argument('-alg','--algorithm',default="lexic_metropolis")
 parser.add_argument("-o", "--observable", default="energy")
 args = parser.parse_args()
+os.makedirs("output/plot/cooling", exist_ok=True)
 if args.algorithm=="all":
-	algs = ["lexic_metropolis","lexic_glauber","random_metropolis","random_glauber"]
+	algs = ["lexic_metropolis","lexic_glauber","random_metropolis","random_glauber","multi_cluster"]
 else:
 	algs = args.algorithm.split(",")
 obs = args.observable
@@ -44,10 +45,9 @@ for alg in algs:
 	X = np.array(X).transpose()
 	#np.savetxt("test.csv",X.transpose(),delimiter=",",header="tauCool,obs,error")
 	fig2, ax2 = plt.subplots()
-	#X[1]=X[1]+7
 	ax2.errorbar(X[0],X[1],X[2], ls="",color="red",marker="o",markersize=5)
 	x = np.linspace(4,16)
-	f = lambda x, a, b:a*x**(-b)
+	f = lambda x, a, b:a*x**(-b)-18
 	xfit = fit(X[0],X[1],X[2])
 	xfit.fiting(f, args={"bounds":(0,np.inf)})
 	print(alg,fix(xfit.opt[1],xfit.error[1]))

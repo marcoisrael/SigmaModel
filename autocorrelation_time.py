@@ -22,7 +22,7 @@ T = np.sort(np.array(list(map(convert, T))))
 T = np.array([0.9,1.0,1.2,1.4,1.6,1.8])
 
 if args.algorithm=="all":
-	algs = ["lexic_metropolis","random_metropolis","lexic_glauber","random_glauber"]
+	algs = ["lexic_metropolis","random_metropolis","lexic_glauber","random_glauber","multi_cluster"]
 else:
 	algs = args.algorithm.split(",")
 for alg in algs:	
