@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 import numpy as np
 import matplotlib.pyplot as plt
-from plotClass import *
-import os, argparse
+from plotClass import fit, fix, Algs, obs
+import os
+import argparse
 
 parser = argparse.ArgumentParser(prog="plot_autocorrelation")
 parser.add_argument("-alg", "--algorithm", default="lexic_metropolis")
@@ -10,15 +11,26 @@ parser.add_argument("-o", "--observable", default="energy")
 args = parser.parse_args()
 name = args.observable
 if args.algorithm == "all":
-    algs = ["lexic_metropolis", "lexic_glauber", "random_metropolis", "random_glauber"]
+    algs = [
+            "lexic_metropolis",
+            "lexic_glauber",
+            "random_metropolis",
+            "random_glauber"
+            ]
 else:
     algs = args.algorithm.split(",")
 for alg in algs:
     L = 64
-    f = lambda x, a, b, c: a * x**-b + c
+
+    def f(x, a, b, c):
+        return a * x**-b + c
+
     data = np.loadtxt(
-        f"output/autocorrelation/{name}_{alg}.csv", skiprows=1, delimiter=","
-    ).transpose()
+            f"output/autocorrelation/{name}_{alg}.csv",
+            skiprows=1,
+            delimiter=","
+            )
+    data = data.transpose()
     x = np.linspace(data[0][0], data[0][-1], 200)
     xfit = fit(data[0], data[1], data[2])
     xfit.fiting(f)

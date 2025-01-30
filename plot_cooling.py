@@ -2,8 +2,8 @@
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from plotClass import *
-import os, argparse
+from plotClass import fit, fix
+import argparse
 
 parser = argparse.ArgumentParser(prog="autocorrelation")
 parser.add_argument("-alg", "--algorithm", default="lexic_metropolis")
@@ -16,15 +16,25 @@ if args.algorithm == "all":
         "lexic_glauber",
         "random_metropolis",
         "random_glauber",
-        "multi_cluster",
     ]
 else:
     algs = args.algorithm.split(",")
 obs = args.observable
+
+
+def f1(x, a, b, c):
+    return a*x**(-b)+c
+
+def f2(x, a, b, c):
+    return a*x**(-b)+c
+
+def f3(x, a, b, c):
+    return a*x**(b)+c
+
 params = {
-    "charge": {"index": 2, "ylabel": r"$\chi_t$"},
-    "energy": {"index": 4, "ylabel": r"$\rho_\mathcal{H}$"},
-    "magnet": {"index": 6, "ylabel": r"$\langle m\rangle $"},
+    "charge": {"index": 2, "ylabel": r"$\chi_t$", "func": f1},
+    "energy": {"index": 4, "ylabel": r"$\rho_\mathcal{H}$", "func": f2},
+    "magnet": {"index": 6, "ylabel": r"$\langle m\rangle $", "func": f3},
 }
 colors = {4: "red", 6: "blue", 8: "purple"}
 lines = {4: (0, (3, 3)), 6: (0, (5, 1)), 8: (0, (5, 5))}
@@ -37,8 +47,11 @@ for alg in algs:
     fig1, ax1 = plt.subplots()
     for i in indexes:
         data = np.loadtxt(
-            f"{path}/{alg} {i}.csv", delimiter=",", skiprows=1
-        ).transpose()
+                f"{path}/{alg} {i}.csv",
+                delimiter=",",
+                skiprows=1
+            )
+        data = data.transpose()
         X.append([i, data[ob][-1], data[ob + 1][-1]])
         if i in [4, 6, 8]:
             ax1.errorbar(
@@ -55,27 +68,29 @@ for alg in algs:
             # xfit = fit(data[0],data[ob],data[ob+1])
             # xfit.fiting(f)
             # x = np.linspace(0,i,200)
-            # ax1.plot(x, f(x,*xfit.opt), color=colors[i], linewidth=0.8, 
-			# linestyle=lines[i],label=f"$\\tau_{{\\mathrm{{cool}}}}={i}$")
+            # ax1.plot(x, f(x,*xfit.opt), color=colors[i], linewidth=0.8,
+            # linestyle=lines[i],label=f"$\\tau_{{\\mathrm{{cool}}}}={i}$")
     ax1.legend()
     ax1.set_xlabel(r"$t$", fontsize=18)
     ax1.set_ylabel(params[obs]["ylabel"], fontsize=18)
     fig1.savefig(
         f"output/plot/cooling/{obs}_{alg}.pdf", format="pdf", bbox_inches="tight"
     )
+
     X = np.array(X).transpose()
     # np.savetxt("test.csv",X.transpose(),delimiter=",",header="tauCool,obs,error")
     fig2, ax2 = plt.subplots()
     ax2.errorbar(X[0], X[1], X[2], ls="", color="red", marker="o", markersize=5)
     x = np.linspace(4, 16)
-    f = lambda x, a, b: a * x ** (-b) - 18
+
+    f = params[obs]["func"]
     xfit = fit(X[0], X[1], X[2])
-    xfit.fiting(f, args={"bounds": (0, np.inf)})
+    param_bounds = ((0, 0, -np.inf), (np.inf, np.inf, np.inf))
+    xfit.fiting(f, args={"bounds": param_bounds})
     print(alg, fix(xfit.opt[1], xfit.error[1]))
     ax2.text(
-        0.99,
-        0.99,
-        r"$\frac{\chi^2}{\mathrm{dof}}=$" + str(xfit.chisq_by_dof),
+        0.99, 0.99,
+        r"$\frac{\chi^2}{\mathrm{dof}}=$"+str(xfit.chisq_by_dof),
         fontsize=16,
         ha="right",
         va="top",

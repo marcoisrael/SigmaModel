@@ -4,7 +4,7 @@ parser = argparse.ArgumentParser(prog="SigmaModel")
 parser.add_argument('-cool','--cooling',
 					help="SigmaModel --cooling=startTemp,endTemp,steps \
 						It perfomed a cooling fom start_temp to end_temp in n steps")
-parser.add_argument('-alg','--algorithm', default='lexic,metropolis',
+parser.add_argument('-alg','--algorithm', default='lexic_metropolis',
 					help='--algorithm={random, lexic, single|metropolis, cluster, glauber}')
 parser.add_argument('-s','--steps', type=float, default=1e4,
 					help='--steps={N}')
@@ -42,7 +42,7 @@ if args.compile:
 
 if args.cooling is not None:
 	start_time =  time.perf_counter()
-	key, alg = args.algorithm.split(',')
+	key, alg = args.algorithm.split('_')
 	start_temp, end_temp, tq = args.cooling.split(',')
 	folder = f'output/cooling/{args.name}/{start_temp}-{end_temp}'
 	if not os.path.isdir(folder):
@@ -64,7 +64,7 @@ if args.cooling is not None:
 
 if args.record:
 	start_time =  time.perf_counter()
-	key, alg = args.algorithm.split(',')
+	key, alg = args.algorithm.split('_')
 	folder = f'output/{args.name}/L{args.length}/{key}_{alg}/'
 	os.makedirs(folder, exist_ok=True) 
 
@@ -81,7 +81,7 @@ if args.record:
 
 if args.measure:
 	start_time =  time.perf_counter()
-	key, alg = args.algorithm.split(',')
+	key, alg = args.algorithm.split('_')
 
 	cmd_run = ["./bin/main1",f"{args.temp}",f"{int(args.steps)}",key,alg,args.delta]
 	#print(" ".join(cmd_run))
@@ -96,7 +96,7 @@ if args.measure:
 
 if args.therm is not None:
 	start_time =  time.perf_counter()
-	key, alg = args.algorithm.split(',')
+	key, alg = args.algorithm.split('_')
 	start_temp, end_temp, tq = args.therm.split(',')
 	folder = f'output/therm/L{args.length}/{key}_{alg}/'
 	if not os.path.isdir(folder):
@@ -116,7 +116,7 @@ if args.therm is not None:
 
 if args.clength:
 	start_time =  time.perf_counter()
-	key, alg = args.algorithm.split(',')
+	key, alg = args.algorithm.split('_')
 	folder = f'output/correlation_length/L{args.length}/{key}_{alg}/'
 	if not os.path.isdir(folder):
 		os.makedirs(folder) 
