@@ -11,14 +11,14 @@ args = parser.parse_args()
 make_plots = False
 os.makedirs("output/plot/length/", exist_ok=True)
 if args.algorithm == "all":
-    algs = ["lexic_metropolis", "lexic_glauber", "random_metropolis", "random_glauber"]
+    algs = ["lexic_metropolis", "lexic_glauber", "random_metropolis", "random_glauber","multi_cluster"]
 else:
     algs = args.algorithm.split(",")
 
 for alg in algs:
     print(alg)
     fig, ax = plt.subplots()
-    T = np.array([0.6,0.65,0.7,0.75,0.8,0.9,1.0,1.2])
+    T = np.array([0.6,0.65,0.7,0.75,0.8,0.9,1.0])
     params = {
         32: {"color": "red", "line": "-", "marker": "^"},
         64: {"color": "blue", "line": "-", "marker": "*"},
@@ -73,8 +73,9 @@ for alg in algs:
             color=params[LENGTH]["color"],
         )
 
-        def f(x, a, b):
-            return a*x**-b+0.87
+        def f(x, a, b, c):
+            return a*x**-b+c 
+		#1.72+0.87
 
         xfit = fit(T, psi, psiErr)
         # ~ # xfit.fiting(f,{"bounds":((0,0,0.1),(np.inf,np.inf,10))})

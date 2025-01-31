@@ -974,52 +974,6 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-Definición: Espín clásico.
-\end_layout
-
-\begin_layout Plain Layout
-En el contexto de un sistema clásico, un espín es un vector unitario definido
- en un espacio abstracto de dimensión 
-\begin_inset Formula $n$
-\end_inset
-
-.
- Es decir es un elemento de la esfera 
-\begin_inset Formula $\mathcal{S}^{n-1}$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Box Shadowbox
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
 
 \series bold
 Definición: Retícula.
@@ -1049,12 +1003,18 @@ Definimos una retícula como un subgrupo discreto del espacio continuo
 
  Los modelos de retícula son ampliamente usados para modelar efectos colectivos.
  En la mayoría de los casos se usan retículas compuestas por repeticiones
- de estructuras simples.
- Un caso especial es la retícula cuadrada de dimensión 
+ de estructuras geométricas simples, algunos ejemplos en dos dimensiones
+ son estructuras cuadradas, triangulares, hexagonales, etc.
+ En este trabajo se empleo la estructura cuadrada.
+ Formada por hipercubos de dimensión 
 \begin_inset Formula $d$
 \end_inset
 
-, 
+, se define como el conjunto de sitios en el espacio de dimensión 
+\begin_inset Formula $d$
+\end_inset
+
+ cuyas posiciones son coordenadas enteras
 \end_layout
 
 \begin_layout Standard
@@ -1069,12 +1029,7 @@ Definimos una retícula como un subgrupo discreto del espacio continuo
 \end_layout
 
 \begin_layout Standard
-Es el conjunto de sitios en el espacio de dimensión 
-\begin_inset Formula $d$
-\end_inset
-
- cuyas posiciones son coordenadas enteras.
- En cada sito 
+En cada sito 
 \begin_inset Formula $\vec{x}\in\mathscr{R}^{d}$
 \end_inset
 
@@ -1082,9 +1037,13 @@ Es el conjunto de sitios en el espacio de dimensión
 \begin_inset Formula $2d$
 \end_inset
 
- sitios a una unidad de distancia (dos por cada dimensión).
- Se les llama los vecinos mas cercanos por ser los sitos mas cercanos a
- 
+ sitios ubicados a una unidad de distancia (dos por cada dimensión).
+ El resto de sitios se ubican a una distancia mayor a una unidad, por lo
+ que a esos 
+\begin_inset Formula $2d$
+\end_inset
+
+ sitios son los vecinos mas cercanos 
 \begin_inset Formula $\vec{x}$
 \end_inset
 
@@ -1205,11 +1164,58 @@ Modelo 2d O
 \end_layout
 
 \begin_layout Standard
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Definición: Espín clásico.
+\end_layout
+
+\begin_layout Plain Layout
+En el contexto de un sistema clásico, un espín es un vector unitario definido
+ en un espacio abstracto de dimensión 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Es decir es un elemento de la esfera 
+\begin_inset Formula $\mathcal{S}^{n-1}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 El modelo O(
 \begin_inset Formula $n$
 \end_inset
 
-) es un modelo de espines clásicos, cada espín 
+) es un modelo de espines clásicos.
+ Cada espín 
 \begin_inset Formula $\vec{s}$
 \end_inset
 
@@ -1221,7 +1227,23 @@ El modelo O(
 \begin_inset Formula $d$
 \end_inset
 
-, con un potencial de interacción magnética definido como
+.
+ Una configuración 
+\begin_inset Formula $[s]$
+\end_inset
+
+ es un arreglo de espines, donde cada espín puede apuntar hacia cualquier
+ dirección en el espacio de dimensión 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Consideramos una configuración 
+\begin_inset Formula $[s]$
+\end_inset
+
+, la energía depende del potencial de interacción magnética entre cada espín
+ es de la forma
 \begin_inset Formula 
 \begin{equation}
 \mathcal{H}[s]=-J\sum_{\langle x,y\rangle}\vec{s}_{x}\cdot\vec{s}_{y},\label{eq:hamiltoniano_o(n)}
@@ -1230,19 +1252,36 @@ El modelo O(
 \end_inset
 
  donde 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+ y 
+\begin_inset Formula $\vec{s}_{y}$
+\end_inset
+
+ son los espines ubicados en los sitios 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+ y 
+\begin_inset Formula $\vec{y}$
+\end_inset
+
+ .
+ 
 \begin_inset Formula $J$
 \end_inset
 
- es una constante de acoplamiento y corresponde a un termino de interacción
- magnética.
- Si bien las fuerzas de interacción magnética se propagan por el espacio
- hasta el infinito, decaen proporcionalmente al inverso del cuadrado de
- la distancia, por lo que es conveniente despreciar las interacciones entre
- espines mas lejanos que los vecinos mas cercanos 
+ es una constante de acoplamiento y 
 \begin_inset Formula $\langle x,y\rangle$
 \end_inset
 
- que refieren a los espines vecinos más cercanos.
+ se refiere a los espines vecinos más cercanos.
+ La interacción magnética decae proporcionalmente al inverso del cuadrado
+ de la distancia, resultando en que los espines vecinos mas cercanos son
+ los que mas se afectan.
+ Por lo que es conveniente despreciar las interacciones entre espines ubicados
+ a mas de una unidad de distancia.
  En la ecuación 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -1258,15 +1297,7 @@ noprefix "false"
 \end_inset
 
  es una configuración única de espines.
- Aunque cada espín puede apuntar hacia cualquier dirección en su propio
- espacio 
-\begin_inset Formula $n$
-\end_inset
-
--dimensional, una configuración depende de las diferencias relativas entre
- espines, es decir, una transformación que afecta a todos los espines de
- una configuración, pero mantiene los estados relativos entre espines, es
- una configuración equivalente y le corresponde la misma energía.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1622,6 +1653,13 @@ Si cada medición es estadísticamente independiente, conduce al valor esperado
 
 \begin_layout Subsection
 Energía
+\end_layout
+
+\begin_layout Standard
+La energía de una configuración depende de las diferencias relativas entre
+ espines, es decir, una transformación que afecta a todos los espines de
+ una configuración, pero mantiene los estados relativos entre espines, es
+ una configuración equivalente y le corresponde la misma energía.
 \end_layout
 
 \begin_layout Standard
@@ -3642,6 +3680,14 @@ status open
 \begin_layout Plain Layout
 \noindent
 \align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename output/plot/length/length_random_glauber.pdf
 	scale 50
@@ -3657,6 +3703,31 @@ status open
 
 \begin_layout Plain Layout
 Glauber aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename output/plot/length/length_multi_cluster.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Multi cluster
 \end_layout
 
 \end_inset
@@ -3718,8 +3789,9 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="5">
+<lyxtabular version="3" rows="4" columns="6">
 <features tabularvalignment="middle">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -3742,7 +3814,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\nu_{ML}$
+\begin_inset Formula $\nu_{\mathrm{ML}}$
 \end_inset
 
 
@@ -3754,7 +3826,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\nu_{MA}$
+\begin_inset Formula $\nu_{\mathrm{MA}}$
 \end_inset
 
 
@@ -3766,7 +3838,19 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\nu_{GL}$
+\begin_inset Formula $\nu_{\mathrm{GL}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nu_{\mathrm{GA}}$
 \end_inset
 
 
@@ -3778,7 +3862,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\nu_{GA}$
+\begin_inset Formula $\nu_{\mathrm{MC}}$
 \end_inset
 
 
@@ -3804,7 +3888,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $5.5(4)$
+\begin_inset Formula $5.1(7)$
 \end_inset
 
 
@@ -3816,7 +3900,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $5.6(4)$
+\begin_inset Formula $5.3(5)$
 \end_inset
 
 
@@ -3828,7 +3912,19 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $5.4(5)$
+\begin_inset Formula $5.2(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5.0(6)$
 \end_inset
 
 
@@ -3840,9 +3936,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $5.5(4)$
-\end_inset
-
 
 \end_layout
 
@@ -3866,7 +3959,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $7.0(9)$
+\begin_inset Formula $7.5(2)$
 \end_inset
 
 
@@ -3878,7 +3971,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $7.9(8)$
+\begin_inset Formula $8.7(9)$
 \end_inset
 
 
@@ -3890,7 +3983,19 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $7.6(7)$
+\begin_inset Formula $8.3(9)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $7.3(4)$
 \end_inset
 
 
@@ -3902,9 +4007,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $6.8(6)$
-\end_inset
-
 
 \end_layout
 
@@ -3928,7 +4030,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $8.1(6)$
+\begin_inset Formula $8.83(1)$
 \end_inset
 
 
@@ -3940,7 +4042,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $8.7(4)$
+\begin_inset Formula $9.3(5)$
 \end_inset
 
 
@@ -3952,7 +4054,19 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $8.9(8)$
+\begin_inset Formula $11.21(7)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9.4(2)$
 \end_inset
 
 
@@ -3964,9 +4078,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $8.16(6)$
-\end_inset
-
 
 \end_layout
 
