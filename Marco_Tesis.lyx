@@ -1103,7 +1103,7 @@ Vamos formar un cilindro juntando los dos extremos opuestos del cuadrado
  La retícula especial que definimos es
 \begin_inset Formula 
 \begin{equation}
-\mathscr{R}_{\mathrm{\mathrm{especial}}}^{2}=\left\{ \vec{x}\in\mathscr{R}_{\mathrm{cuad}}^{2}|(x_{1},x_{2})=(x_{1}+nL,x_{2}+mL),n,m\in\mathbb{N}\right\} .
+\mathscr{R}_{L}^{2}=\left\{ \vec{x}\in\mathscr{R}_{\mathrm{cuad}}^{2}|(x_{1},x_{2})=(x_{1}+nL,x_{2}+mL),n,m\in\mathbb{N}\right\} .\label{eq:reticula_especial}
 \end{equation}
 
 \end_inset
@@ -1220,11 +1220,11 @@ El modelo O(
 \end_inset
 
  ocupa un sitio 
-\begin_inset Formula $\vec{x}\in\mathscr{R}^{d}$
+\begin_inset Formula $\vec{x}$
 \end_inset
 
- en una retícula cuadrada de dimensión 
-\begin_inset Formula $d$
+ en la retícula 
+\begin_inset Formula $\mathscr{R}^{d}$
 \end_inset
 
 .
@@ -1232,9 +1232,17 @@ El modelo O(
 \begin_inset Formula $[s]$
 \end_inset
 
- es un arreglo de espines, donde cada espín puede apuntar hacia cualquier
- dirección en el espacio de dimensión 
-\begin_inset Formula $n$
+ es un arreglo de espines 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+, por ejemplo la configuración en la que todos los espines apuntan a la
+ misma dirección se conoce como 
+\begin_inset Quotes fld
+\end_inset
+
+cold start
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -1242,7 +1250,7 @@ El modelo O(
 \begin_inset Formula $[s]$
 \end_inset
 
-, la energía depende del potencial de interacción magnética entre cada espín
+, la energía depende del potencial de interacción magnética espín a espín,
  es de la forma
 \begin_inset Formula 
 \begin{equation}
@@ -1277,64 +1285,11 @@ El modelo O(
 \end_inset
 
  se refiere a los espines vecinos más cercanos.
- La interacción magnética decae proporcionalmente al inverso del cuadrado
- de la distancia, resultando en que los espines vecinos mas cercanos son
- los que mas se afectan.
- Por lo que es conveniente despreciar las interacciones entre espines ubicados
- a mas de una unidad de distancia.
- En la ecuación 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:hamiltoniano_o(n)"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- el termino 
-\begin_inset Formula $[s]$
-\end_inset
-
- es una configuración única de espines.
- 
-\end_layout
-
-\begin_layout Standard
-Para estudiar los efectos de distancia lejana en volúmenes finitos, considerarem
-os retículas finitas en superficies cerradas, una propuesta sencilla es
- usar condiciones de frontera periódicas defendido la retícula cuadrada
- de longitud 
-\begin_inset Formula $L$
-\end_inset
-
-
-\begin_inset Formula 
-\begin{equation}
-\mathscr{R}_{L}^{d}=\left\{ \vec{x}\in\mathbb{R}^{d}|\vec{x}=(x_{1}\dots,x_{d})\land x_{i}\in\mathbb{Z}_{L}\right\} ,
-\end{equation}
-
-\end_inset
-
-en donde 
-\begin_inset Formula $\mathbb{Z}_{L}$
-\end_inset
-
- son los enteros modulo 
-\begin_inset Formula $L$
-\end_inset
-
-.
- En dos dimensiones espaciales, para la retícula 
-\begin_inset Formula $\mathscr{R}_{L}^{2}$
-\end_inset
-
- las condiciones de frontera son 
-\begin_inset Formula $\vec{s}_{i,j}=\vec{s}_{i+L,j}=\vec{s}_{i,j+L}$
-\end_inset
-
- y corresponden a la topología de una superficie toroidal.
- 
+ Como la interacción magnética decae proporcionalmente al inverso del cuadrado
+ de la distancia, la contribución mas grande se da entre los vecinos mas
+ cercanos.
+ Es conveniente despreciar las interacciones entre espines a mas de una
+ unidad de distancia.
 \end_layout
 
 \begin_layout Standard
@@ -1380,33 +1335,79 @@ Espín en el modelo O(
 \end_layout
 
 \begin_layout Standard
-Consideremos la retícula cuadrada 
+El caso de interés en este trabajo es el modelo 
+\begin_inset Formula $2d$
+\end_inset
+
+ O
+\begin_inset Formula $(3)$
+\end_inset
+
+, un modelo de espines en la esfera 
+\begin_inset Formula $\mathcal{S}^{2}$
+\end_inset
+
+ y una retícula bidimensional.
+ Ya que se realizaran simulaciones en volúmenes finitos se usara la retícula
+ toroidal 
 \begin_inset Formula $\mathscr{R}_{L}^{2}$
 \end_inset
 
- y condiciones de frontera periódicas modulo 
+ de longitud 
 \begin_inset Formula $L$
 \end_inset
 
-.
- Las posiciones de los espines son pares enteros del la forma (
-\begin_inset Formula $i,j)\in\mathbb{Z}_{L}^{2}$
+ definida en la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:reticula_especial"
+plural "false"
+caps "false"
+noprefix "false"
+
 \end_inset
 
-, la notación para un espín en el sitio 
+.
+\end_layout
+
+\begin_layout Standard
+Las posiciones de los espines son pares enteros del la forma (
+\begin_inset Formula $i,j)$
+\end_inset
+
+ tales que 
+\begin_inset Formula $i,j\in(1,\dots,L)$
+\end_inset
+
+.
+ Ya que las posiciones de los espines están dadas por dos coordenadas, es
+ conveniente definir la notación para un espín en el sitio 
 \begin_inset Formula $(i,j)$
 \end_inset
 
-es 
+ como 
 \begin_inset Formula $\vec{s}_{i,j}$
 \end_inset
 
-, además las condiciones de frontera implican 
-\begin_inset Formula $\vec{s}_{i,j}=\vec{s}_{i+L,j}=\vec{s}_{i,j+L}$
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Un espín 
+\begin_inset Formula $\vec{s}_{i,j}$
 \end_inset
 
-.
- Un espín O(3) esta definido por tres componentes espaciales
+ de dimensión 
+\begin_inset Formula $3$
+\end_inset
+
+ restringido a las esfera 
+\begin_inset Formula $\mathcal{S}^{2}$
+\end_inset
+
+ esta definido por tres coordenadas 
 \begin_inset Formula 
 \begin{equation}
 \vec{s}_{i,j}=\left(\sin\theta_{i,j}\cos\text{\ensuremath{\phi_{i,j}},\ensuremath{\sin\theta_{i,j}\sin\phi_{i,j}},\ensuremath{\cos\theta_{i,j}}}\right).
@@ -1422,147 +1423,32 @@ En donde
 \begin_inset Formula $\phi_{i,j}\in\left(0,2\pi\right)$
 \end_inset
 
-.
- Cada espín es vecino más cercano de otros cuatro espines.
- Reescribiendo el hamiltoniano 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:hamiltoniano_o(n)"
-plural "false"
-caps "false"
-noprefix "false"
-
+, en algunos casos como la generación de configuraciones es ventajoso trabajar
+ con coordenadas esféricas 
+\begin_inset Formula $(\theta,\phi)$
 \end_inset
 
- en términos de 
-\begin_inset Formula $i,j$
+, en otros casos como el calculo del producto escalar es mas conveniente
+ usar las componentes 
+\begin_inset Formula $(x,y,z)$
 \end_inset
 
- se tiene la forma explicita del hamitoniano
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\begin{aligned}\mathcal{H}\left[s\right]= & -\frac{J}{2}\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\left(\vec{s}_{i+1,j}+\vec{s}_{i,j+1}+\vec{s}_{i-1,j}+\vec{s}_{i,j-1}\right),\\
-= & -\frac{J}{2}\sum_{i=1}^{L}\sum_{j=1}^{L}\left(\vec{s}_{i,j}\cdot\vec{s}_{i+1,j}+\vec{s}_{i,j}\cdot\vec{s}_{i,j+1}+\vec{s}_{i,j}\cdot\vec{s}_{i-1,j}+\vec{s}_{i,j}\cdot\vec{s}_{i,j-1}\right).
-\end{aligned}
-\label{eq:hamiltoniano_2dO3}
-\end{equation}
-
-\end_inset
-
-Intercambiando los índices en el tercer termino de la ec.
- 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:hamiltoniano_2dO3"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i-1,j}=\sum_{j=1}^{L}\sum_{i=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i-1,j}=\sum_{j=1}^{L}\sum_{i=0}^{L-1}\vec{s}_{i+1,j}\cdot\vec{s}_{i,j}.
-\end{equation}
-
-\end_inset
-
-Reordenando los índices
-\begin_inset Formula 
-\begin{equation}
-\sum_{j=1}^{L}\sum_{i=0}^{L-1}\vec{s}_{i+1,j}\cdot\vec{s}_{i,j}=\sum_{j=1}^{L}\sum_{i=1}^{L}\vec{s}_{i+1,j}\cdot\vec{s}_{i,j}+\sum_{j=1}^{L}\left(\vec{s}_{1,j}\cdot\vec{s}_{0,j}-\vec{s}_{L+1,j}\cdot\vec{s}_{L,j}\right).
-\end{equation}
-
-\end_inset
-
-Por las condiciones de frontera 
-\begin_inset Formula $\vec{s}_{i,j}=\vec{s}_{i+L,j}=\vec{s}_{i,j+L}$
-\end_inset
-
- , reordenando términos se tiene
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i-1,j}=\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i+1,j}.\label{eq:equiv1}
-\end{equation}
-
-\end_inset
-
-De forma análoga para el cuarto termino de la ec.
- 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:hamiltoniano_2dO3"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i,j-1}=\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i,j+1}.\label{eq:equiv2}
-\end{equation}
-
-\end_inset
-
-Remplazando los términos 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:equiv1"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:equiv2"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- en la ec.
- 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:hamiltoniano_2dO3"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- y simplificando se llega a la forma del hamiltonoano
-\begin_inset Formula 
-\begin{equation}
-\mathcal{H}\left[s\right]=-J\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\left(\vec{s}_{i+1,j}+\vec{s}_{i,j+1}\right).\label{eq:hamiltoniano_simplificado}
-\end{equation}
-
-\end_inset
-
-
+ por lo que usaremos ambas descripciones en los casos que mas convenga.
 \end_layout
 
 \begin_layout Section
 Observables
+\end_layout
+
+\begin_layout Standard
+Las propiedades macroscópicas de una amplia gama de materiales, pueden describir
+se mediante modelos de espines.
+ Hay propiedades importantes como la energía y al magnetización que se deben
+ medir para obtener información de estos sistemas.
+ A lo largo de la carrera de física se realizan muchas mediciones en experimento
+s usado diferentes mediante instrumentos y métodos directos o indirectos.
+ En el caso los experimentos simulados hay que aplicar un enfoque estadístico.
+ Empecemos por lo básico.
 \end_layout
 
 \begin_layout Standard
@@ -1604,7 +1490,16 @@ Consideremos el tiempo de Markov
 \begin_inset Formula $i\in\{1,\dots,N\}$
 \end_inset
 
-, el promedio aproximado de la evolución temporal de una observable es
+ y 
+\begin_inset Formula $O[s]_{i}$
+\end_inset
+
+ es el valor de la observable en el instante 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+, el promedio aproximado de la observable en el intervalo temporal medido
+ es
 \begin_inset Formula 
 \begin{equation}
 \expval{O}\approx\frac{1}{N}\sum_{i=1}^{N}O[s]_{i},
@@ -1656,26 +1551,323 @@ Energía
 \end_layout
 
 \begin_layout Standard
-La energía de una configuración depende de las diferencias relativas entre
- espines, es decir, una transformación que afecta a todos los espines de
- una configuración, pero mantiene los estados relativos entre espines, es
- una configuración equivalente y le corresponde la misma energía.
+En los modelos O
+\begin_inset Formula $(n)$
+\end_inset
+
+ la energía esta dada por el hamiltonaino 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:hamiltoniano_o(n)"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, veamos en detalle el caso de interés de este trabajo, el modelo 
+\begin_inset Formula $2d$
+\end_inset
+
+ O
+\begin_inset Formula $(3)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-La energía es una propiedad fundamental en los sistemas físicos.
- En un que evoluciona en el tiempo de Markov.
- Cada configuración tiene una energía asociada.
- El promedio de la energía es
+En este modelo cada espín 
+\begin_inset Formula $\vec{s}_{i,j}$
+\end_inset
+
+ es vecino más cercano de cuatro espines 
+\begin_inset Formula $\{\vec{s}_{i,+1j},\vec{s}_{i,j+1},\vec{s}_{i-1,j},\vec{s}_{i,j-1}\}$
+\end_inset
+
+.
+ Usando la notación para el caso bidimensional se puede reescribir el hamiltonia
+no en términos de sumas compactas sobre 
+\begin_inset Formula $i,j$
+\end_inset
+
+ (La suma total se divide para compensar que cada termino se ha sumado dos
+ veces por la simetría de las sumas dobles) conduciendo a la ecuación
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\expval{\mathcal{H}}\approx\frac{1}{N}\sum_{i=1}^{N}\mathcal{H}_{i}.
+\mathcal{H}\left[s\right]=-\frac{J}{2}\sum_{i=1}^{L}\sum_{j=1}^{L}\left(\vec{s}_{i,j}\cdot\vec{s}_{i+1,j}+\vec{s}_{i,j}\cdot\vec{s}_{i,j+1}+\vec{s}_{i,j}\cdot\vec{s}_{i-1,j}+\vec{s}_{i,j}\cdot\vec{s}_{i,j-1}\right).\label{eq:hamiltoniano_2dO3}
 \end{equation}
 
 \end_inset
 
-El promedio de la energía es el promedio aproximado mas la incertidumbre
- asociada
+Aunque es una ecuación sencilla de manejar es posible simplificarla intercambian
+do y recorriendo índices en el tercer termino de la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:hamiltoniano_2dO3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, se tiene
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i-1,j}=\sum_{j=1}^{L}\sum_{i=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i-1,j}=\sum_{j=1}^{L}\sum_{i=0}^{L-1}\vec{s}_{i+1,j}\cdot\vec{s}_{i,j}.
+\end{equation}
+
+\end_inset
+
+Separando términos se tiene
+\begin_inset Formula 
+\begin{equation}
+\sum_{j=1}^{L}\sum_{i=0}^{L-1}\vec{s}_{i+1,j}\cdot\vec{s}_{i,j}=\sum_{j=1}^{L}\sum_{i=1}^{L}\vec{s}_{i+1,j}\cdot\vec{s}_{i,j}+\sum_{j=1}^{L}\left(\vec{s}_{1,j}\cdot\vec{s}_{0,j}-\vec{s}_{L+1,j}\cdot\vec{s}_{L,j}\right).
+\end{equation}
+
+\end_inset
+
+Por las condiciones de frontera 
+\begin_inset Formula $\vec{s}_{1,j}=\vec{s}_{L+1}$
+\end_inset
+
+ y 
+\begin_inset Formula $\vec{s}_{0,j}=\vec{s}_{L,j}$
+\end_inset
+
+, por lo que 
+\begin_inset Formula 
+\begin{equation}
+\sum_{j=1}^{L}\left(\vec{s}_{1,j}\cdot\vec{s}_{0,j}-\vec{s}_{L+1,j}\cdot\vec{s}_{L,j}\right)=0
+\end{equation}
+
+\end_inset
+
+Entonces
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i-1,j}=\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i+1,j}.\label{eq:equiv1}
+\end{equation}
+
+\end_inset
+
+De forma análoga para el cuarto termino de la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:hamiltoniano_2dO3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Intercambiando y recorriendo índices en el tercer termino de la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:hamiltoniano_2dO3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ se tiene
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i,j-1}=\sum_{i=1}^{L}\sum_{j=0}^{L-1}\vec{s}_{i,j+1}\cdot\vec{s}_{i,j}.
+\end{equation}
+
+\end_inset
+
+Separando términos se tiene
+\begin_inset Formula 
+\begin{equation}
+\sum_{i=1}^{L}\sum_{j=0}^{L-1}\vec{s}_{i,j}\cdot\vec{s}_{i,j+1}=\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i,j+1}+\sum_{i=1}^{L}\left(\vec{s}_{i,0}\cdot\vec{s}_{i,1}-\vec{s}_{i,L}\cdot\vec{s}_{i,L+1}\right).
+\end{equation}
+
+\end_inset
+
+Por las condiciones de frontera 
+\begin_inset Formula $\vec{s}_{i,0}=\vec{s}_{i,L}$
+\end_inset
+
+ y 
+\begin_inset Formula $\vec{s}_{i,1}=\vec{s}_{i,L+1}$
+\end_inset
+
+, por lo que se tiene 
+\begin_inset Formula 
+\begin{equation}
+\sum_{i=1}^{L}\left(\vec{s}_{i,0}\cdot\vec{s}_{i,1}-\vec{s}_{i,L}\cdot\vec{s}_{i,L+1}\right).
+\end{equation}
+
+\end_inset
+
+Entonces
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i,j-1}=\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i,j+1}.\label{eq:equiv2}
+\end{equation}
+
+\end_inset
+
+Remplazando los términos 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:equiv1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:equiv2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ en la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:hamiltoniano_2dO3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y simplificando términos se llega a la forma compacta del hamiltonoano
+\begin_inset Formula 
+\begin{equation}
+\mathcal{H}\left[s\right]=-J\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\left(\vec{s}_{i+1,j}+\vec{s}_{i,j+1}\right).\label{eq:hamiltoniano_simplificado}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La energía de una configuración depende de las diferencias relativas entre
+ espines vecinos.
+ Pensemos en una configuración 
+\begin_inset Formula $[s]$
+\end_inset
+
+ a la que se aplica una rotación por una ángulo 
+\begin_inset Formula $\phi$
+\end_inset
+
+ en la misma dirección a todos los espines en 
+\begin_inset Formula $[s]$
+\end_inset
+
+, la transformación mantiene las diferencias relativas entre espines, por
+ lo tanto, la nueva configuración 
+\begin_inset Formula $[s']$
+\end_inset
+
+ es una configuración equivalente asociada a la misma energía que 
+\begin_inset Formula $[s]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Definición: Tiempo de Markov.
+\end_layout
+
+\begin_layout Plain Layout
+En un sistema estocástico, un conjunto de eventos sucesivos forman una cadena
+ de Markov.
+ El tiempo de Markov es un paramento que indica en que evento se encuentra
+ el sistema.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pensemos en una configuración como un evento y en un conjunto de configuraciones
+ como una cadena de Markov.
+ El tiempo de Markov 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ indica la configuración del sistema en el ese instante.
+ Como cada configuración tiene una energía asociada, la energía asociada
+ alas configuraciones es diferente en cada valor de 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+.
+ Una posible forma de  determinar la energía en un intervalo temporal, es
+ calcular el promedio de las energías asociadas a las configuraciones en
+ ese intervalo.
+ Resultando en la energía aproximada
+\begin_inset Formula 
+\begin{equation}
+\expval{\mathcal{H}}_{\mathrm{aprox}}=\frac{1}{N}\sum_{i=1}^{N}\mathcal{H}_{i}.
+\end{equation}
+
+\end_inset
+
+La energía real asociada a ese intervalo es el promedio aproximado mas la
+ incertidumbre asociada
 \begin_inset Formula 
 \begin{equation}
 \expval{\mathcal{H}}\simeq\expval{\mathcal{H}}_{\mathrm{aprox}}\pm\mathrm{error}(\mathcal{H}).
@@ -1683,8 +1875,8 @@ El promedio de la energía es el promedio aproximado mas la incertidumbre
 
 \end_inset
 
- La energía es una propiedad extensiva, por lo que es útil usar la densidad
- de energía.
+ La energía es una propiedad extensiva, para comparar resultados en retículas
+ de diferentes tamaños es importante considerar la densidad de energía.
  Se define como el valor esperado de la energía dividida por el volumen
 \begin_inset Formula 
 \begin{equation}
@@ -1701,24 +1893,17 @@ Magnetización
 \end_layout
 
 \begin_layout Standard
-Las propiedades macroscópicas de una amplia gama de materiales, puede describirs
-e mediante un modelo de espines.
- En el modelo 
-\begin_inset Formula $2$
+En modelos de espines clásicos, la magnetización 
+\begin_inset Formula $m$
 \end_inset
 
--d O(
-\begin_inset Formula $3$
+ es un escalar que depende de la alineación de los espines de una configuración.
+ Se define como la magnitud de la suma de los espines de una configuración
+ dividido por en numero de espines 
+\begin_inset Formula $V$
 \end_inset
 
-), cada espín clásico puede apuntar en cualquier dirección en la esfera
- untaría 
-\begin_inset Formula $\mathcal{S}^{2}$
-\end_inset
 
-.
- La magnetización de una configuración es la magnitud de la suma de los
- espines por unidad de volumen
 \begin_inset Formula 
 \begin{equation}
 m=\frac{1}{V}\abs{\sum_{i,j}\vec{s}_{i,j}}.
@@ -1726,53 +1911,30 @@ m=\frac{1}{V}\abs{\sum_{i,j}\vec{s}_{i,j}}.
 
 \end_inset
 
-En la ec.
- 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:hamiltoniano_o(n)"
-plural "false"
-caps "false"
-noprefix "false"
+Ya que los espines son unitarios se tiene que en una configuración de espines
+ alineados a la misma dirección tiene magnetización
+\begin_inset Formula 
+\begin{equation}
+m=\frac{\abs{V\vec{s}}}{V}=\abs{\vec{s}}=1
+\end{equation}
 
 \end_inset
 
- el termino 
-\begin_inset Formula $J$
-\end_inset
 
- es la constante de acoplamiento del sistema.
- Si 
-\begin_inset Formula $J>0$
-\end_inset
+\end_layout
 
- la energía mínima negativa, y ocurre si para cada uno de los espines 
-\begin_inset Formula $\vec{s}_{i,j}$
-\end_inset
-
-, los espines vecinos 
-\begin_inset Formula $\vec{s}_{k,l}$
-\end_inset
-
- cumplen la condición 
-\begin_inset Formula $\vec{s}_{i,j}\cdot\vec{s}_{k,l}=1$
-\end_inset
-
-.
- En este caso se favorece el alineamiento de los espines, y se alcanza la
- magnetización máxima 
-\begin_inset Formula $m=1$
-\end_inset
-
-.
- 
+\begin_layout Standard
+Igual que con la energía un conjunto de configuraciones tiene un conjunto
+ de configuraciones es una cadena de Markov y se puede medir la magnetizaron
+ de aproximada en un intervalo temporal calculando el promedio de las magnetizac
+iones en ese intervalo
 \end_layout
 
 \begin_layout Standard
 El promedio aproximado de la magnetización es 
 \begin_inset Formula 
 \begin{equation}
-\expval{m}\approx\frac{1}{N}\sum_{i=1}^{N}m_{i}.
+\expval{m}_{\mathrm{aprox}}=\frac{1}{N}\sum_{i=1}^{N}m_{i}.
 \end{equation}
 
 \end_inset
@@ -1982,7 +2144,7 @@ Al ser una esfera unitaria, el área del triangulo esférico esta dada por
 
 \end_inset
 
-Para los triangulos 
+Para los triángulos 
 \begin_inset Formula $b$
 \end_inset
 
@@ -2120,18 +2282,18 @@ Diagonal ascendente.
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "triangles"
-
-\end_inset
-
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Orientaciones de posibles de los triángulos formados en la retícula.
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "triangles"
 
 \end_inset
 
@@ -2182,7 +2344,7 @@ Métodos de Monte Carlo
 \end_layout
 
 \begin_layout Standard
-Es un proceso con probabilidades de transición estacionarias 
+En un proceso con probabilidades de transición estacionarias 
 \begin_inset Formula $p_{i,j}$
 \end_inset
 
@@ -2224,16 +2386,16 @@ Si se puede pasar de un estado
 \end_inset
 
 .
- Una cadena de Markov es irreducible si cualquier estado es accesible desde
+ 
+\end_layout
+
+\begin_layout Standard
+Una cadena de Markov es irreducible si cualquier estado es accesible desde
  cualquier otro estado.
 \end_layout
 
 \begin_layout Standard
-La matriz 
-\begin_inset Formula $p_{i,j}$
-\end_inset
 
- es la matriz de probabilidad de transición 
 \end_layout
 
 \begin_layout Standard
@@ -3680,6 +3842,36 @@ status open
 \begin_layout Plain Layout
 \noindent
 \align center
+\begin_inset Graphics
+	filename output/plot/length/length_multi_cluster.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Multi cluster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -3703,31 +3895,6 @@ status open
 
 \begin_layout Plain Layout
 Glauber aleatorio
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename output/plot/length/length_multi_cluster.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Multi cluster
 \end_layout
 
 \end_inset
@@ -3936,6 +4103,9 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $5.0(4)$
+\end_inset
+
 
 \end_layout
 
@@ -4007,6 +4177,9 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $8.0(3)$
+\end_inset
+
 
 \end_layout
 
@@ -4078,6 +4251,9 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $9.7(7)$
+\end_inset
+
 
 \end_layout
 
@@ -4142,7 +4318,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="4">
+<lyxtabular version="3" rows="6" columns="4">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -4233,7 +4409,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.81(9)$
+\begin_inset Formula $6.4(2)$
 \end_inset
 
 
@@ -4280,7 +4456,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.2(2)$
+\begin_inset Formula $6.3(4)$
 \end_inset
 
 
@@ -4327,7 +4503,54 @@ Glauber lexicografico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.3(4)$
+\begin_inset Formula $6.6(3)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Glauber aleatorio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.6(3)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.8(1)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $6.7(5)$
 \end_inset
 
 
@@ -4341,7 +4564,7 @@ Glauber lexicografico
 \begin_inset Text
 
 \begin_layout Plain Layout
-Glauber aleatorio
+Multi cluster
 \end_layout
 
 \end_inset
@@ -4350,10 +4573,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.6(3)$
-\end_inset
-
-
+-
 \end_layout
 
 \end_inset
@@ -4362,10 +4582,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.8(1)$
-\end_inset
-
-
+-
 \end_layout
 
 \end_inset
@@ -4374,7 +4591,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.9(5)$
+\begin_inset Formula $11.2(7)$
 \end_inset
 
 
@@ -4561,6 +4778,39 @@ Algoritmo de Gauber aleatorio.
 \end_layout
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/charge/autocorrelation_multi_cluster_L64_Q.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Multi cluster.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -4692,6 +4942,10 @@ Algoritmo de Glauber lexicográfico.
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -4711,6 +4965,39 @@ status open
 
 \begin_layout Plain Layout
 Algoritmo de Gauber aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/energy/autocorrelation_multi_cluster_L64_E.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Multi cluster.
 \end_layout
 
 \end_inset
@@ -4874,6 +5161,39 @@ status open
 
 \begin_layout Plain Layout
 Algoritmo de Gauber aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/magnetization/autocorrelation_multi_cluster_L64_M.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Multi cluster.
 \end_layout
 
 \end_inset

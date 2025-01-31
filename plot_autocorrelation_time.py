@@ -15,7 +15,8 @@ if args.algorithm == "all":
             "lexic_metropolis",
             "lexic_glauber",
             "random_metropolis",
-            "random_glauber"
+            "random_glauber",
+            "multi_cluster"
             ]
 else:
     algs = args.algorithm.split(",")
@@ -23,7 +24,7 @@ for alg in algs:
     L = 64
 
     def f(x, a, b, c):
-        return a * x**-b + c
+        return a*x**-b+c
 
     data = np.loadtxt(
             f"output/autocorrelation/{name}_{alg}.csv",

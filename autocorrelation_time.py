@@ -21,8 +21,8 @@ L = 64
 # 	return float(x.replace(".csv",""))
 # T = np.sort(np.array(list(map(convert, T))))
 
-T = np.array([0.9, 1.0, 1.2, 1.4, 1.6])
-
+# ~ T = np.array([0.9, 1.0, 1.2, 1.4, 1.6])
+T = np.array([0.6,0.7,0.8,0.9,1.0,1.2])
 if args.algorithm == "all":
     algs = [
         "lexic_metropolis",
