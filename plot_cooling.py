@@ -16,25 +16,26 @@ if args.algorithm == "all":
         "lexic_glauber",
         "random_metropolis",
         "random_glauber",
+        "multi_cluster",
     ]
 else:
     algs = args.algorithm.split(",")
 obs = args.observable
 
 
-def f1(x, a, b, c):
-    return a*x**(-b)+c
+def f1(x, a, b):
+    return a*x**(-b)
 
-def f2(x, a, b, c):
-    return a*x**(-b)+c
+def f2(x, a, b):
+    return a*(x-4)**(-b)
 
-def f3(x, a, b, c):
-    return a*x**(b)+c
+def f3(x, a, b):
+    return a*x**(b)
 
 params = {
     "charge": {"index": 2, "ylabel": r"$\chi_t$", "func": f1},
     "energy": {"index": 4, "ylabel": r"$\rho_\mathcal{H}$", "func": f2},
-    "magnet": {"index": 6, "ylabel": r"$\langle m\rangle $", "func": f3},
+    "magnet": {"index": 6, "ylabel": r"$\langle m\rangle $", "func": f1},
 }
 colors = {4: "red", 6: "blue", 8: "purple"}
 lines = {4: (0, (3, 3)), 6: (0, (5, 1)), 8: (0, (5, 5))}
@@ -78,14 +79,14 @@ for alg in algs:
     )
 
     X = np.array(X).transpose()
-    # np.savetxt("test.csv",X.transpose(),delimiter=",",header="tauCool,obs,error")
+    # ~ np.savetxt(f"output/cooling/scaling_law_{obs}_{alg}.csv",X.transpose(),delimiter=",",header="tauCool,obs,error")
     fig2, ax2 = plt.subplots()
     ax2.errorbar(X[0], X[1], X[2], ls="", color="red", marker="o", markersize=5)
     x = np.linspace(4, 16)
 
     f = params[obs]["func"]
     xfit = fit(X[0], X[1], X[2])
-    param_bounds = ((0, 0, -np.inf), (np.inf, np.inf, np.inf))
+    param_bounds = ((0, 0), (np.inf, np.inf))
     xfit.fiting(f, args={"bounds": param_bounds})
     print(alg, fix(xfit.opt[1], xfit.error[1]))
     ax2.text(
@@ -99,6 +100,7 @@ for alg in algs:
     ax2.plot(x, f(x, *xfit.opt), linewidth=1.8, color="blue", linestyle=(0, (3, 3)))
     ax2.set_ylabel(params[obs]["ylabel"], fontsize=18)
     ax2.set_xlabel(r"$\tau_{\mathrm{cool}}$", fontsize=18)
+    ax2.set_yscale("linear")
     fig2.savefig(
         f"output/plot/cooling/scaling_law_{obs}_{alg}.pdf",
         format="pdf",

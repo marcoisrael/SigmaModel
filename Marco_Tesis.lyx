@@ -1245,7 +1245,8 @@ cold start
 \begin_inset Quotes frd
 \end_inset
 
-.
+, esta configuración tiene la particularidad de ser la configuración de
+ menor energía.
  Consideramos una configuración 
 \begin_inset Formula $[s]$
 \end_inset
@@ -1502,7 +1503,7 @@ Consideremos el tiempo de Markov
  es
 \begin_inset Formula 
 \begin{equation}
-\expval{O}\approx\frac{1}{N}\sum_{i=1}^{N}O[s]_{i},
+\expval{O}_{\mathrm{aprox}}=\frac{1}{N}\sum_{i=1}^{N}O[s]_{i},
 \end{equation}
 
 \end_inset
@@ -2392,10 +2393,6 @@ Si se puede pasar de un estado
 \begin_layout Standard
 Una cadena de Markov es irreducible si cualquier estado es accesible desde
  cualquier otro estado.
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Standard

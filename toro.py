@@ -18,7 +18,7 @@ R, r = 2, 1
 x = (R+r*cos(u))*cos(v)
 y = (R+r*cos(u))*sin(v)
 z = r*sin(u)
-ax.plot_surface(x, y, z, color="white")
+ax.plot_wireframe(x, y, z, color="red",rstride=2, cstride=2, linewidth=0.7)
 
 ax.set_aspect("equal")
 ax.view_init(32, -122)
