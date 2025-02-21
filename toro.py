@@ -21,7 +21,7 @@ z = r*sin(u)
 ax.plot_wireframe(x, y, z, color="red",rstride=2, cstride=2, linewidth=0.7)
 
 ax.set_aspect("equal")
-ax.view_init(32, -122)
+ax.view_init(35, 0)
 ax.axis("off")
 # plt.show()
 fig.savefig("output/toro.pdf", format="pdf", bbox_inches="tight")

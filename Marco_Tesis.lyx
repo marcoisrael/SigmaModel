@@ -1005,7 +1005,6 @@ Definimos una retícula como un subgrupo discreto del espacio continuo
  En la mayoría de los casos se usan retículas compuestas por repeticiones
  de estructuras geométricas simples, algunos ejemplos en dos dimensiones
  son estructuras cuadradas, triangulares, hexagonales, etc.
- En este trabajo se empleo la estructura cuadrada.
  Formada por hipercubos de dimensión 
 \begin_inset Formula $d$
 \end_inset
@@ -1051,19 +1050,18 @@ En cada sito
 \end_layout
 
 \begin_layout Standard
-En una simulación no es posible definir retículas infinitas por lo que hay
- que tomar un trozo finito.
- Consideremos el caso 
+En este trabajo se empleo la estructura cuadrada, caso 
 \begin_inset Formula $d=2$
 \end_inset
 
-, en este caso la retícula esta definida en un plano, y tomemos un cuadrado
- 
+ donde la retícula esta definida en un plano.
+ Como en una simulación no es posible definir retículas infinitas hay que
+ tomar un trozo finito.
+ Tomando un cuadrado 
 \begin_inset Formula $L\times L$
 \end_inset
 
-.
- Se obtiene la retícula cuadrada de dimensión 
+, se obtiene la retícula cuadrada de dimensión 
 \begin_inset Formula $2$
 \end_inset
 
@@ -1103,7 +1101,7 @@ Vamos formar un cilindro juntando los dos extremos opuestos del cuadrado
  La retícula especial que definimos es
 \begin_inset Formula 
 \begin{equation}
-\mathscr{R}_{L}^{2}=\left\{ \vec{x}\in\mathscr{R}_{\mathrm{cuad}}^{2}|(x_{1},x_{2})=(x_{1}+nL,x_{2}+mL),n,m\in\mathbb{N}\right\} .\label{eq:reticula_especial}
+\mathscr{R}_{L}^{2}=\left\{ \vec{x}\in\mathscr{R}_{\mathrm{cuad}}^{2}|(x_{1},x_{2})=(x_{1}+nL,x_{2}+mL),n,m\in\mathbb{Z}\right\} .\label{eq:reticula_especial}
 \end{equation}
 
 \end_inset
@@ -1373,22 +1371,22 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-Las posiciones de los espines son pares enteros del la forma (
-\begin_inset Formula $i,j)$
-\end_inset
-
- tales que 
-\begin_inset Formula $i,j\in(1,\dots,L)$
+Las posiciones de los espines son pares enteros 
+\begin_inset Formula $x_{1},x_{2}\in(1,\dots,L)$
 \end_inset
 
 .
- Ya que las posiciones de los espines están dadas por dos coordenadas, es
- conveniente definir la notación para un espín en el sitio 
-\begin_inset Formula $(i,j)$
+ Ya que las posiciones de los espines están dadas por dos coordenadas.
+ Nos referiremos a un espin en el sito 
+\begin_inset Formula $\vec{x}=(x_{1},x_{2})$
 \end_inset
 
  como 
-\begin_inset Formula $\vec{s}_{i,j}$
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+ o 
+\begin_inset Formula $\vec{s}_{x_{1},x_{2}}$
 \end_inset
 
 .
@@ -1397,7 +1395,7 @@ Las posiciones de los espines son pares enteros del la forma (
 
 \begin_layout Standard
 Un espín 
-\begin_inset Formula $\vec{s}_{i,j}$
+\begin_inset Formula $\vec{s}_{x}$
 \end_inset
 
  de dimensión 
@@ -1411,7 +1409,7 @@ Un espín
  esta definido por tres coordenadas 
 \begin_inset Formula 
 \begin{equation}
-\vec{s}_{i,j}=\left(\sin\theta_{i,j}\cos\text{\ensuremath{\phi_{i,j}},\ensuremath{\sin\theta_{i,j}\sin\phi_{i,j}},\ensuremath{\cos\theta_{i,j}}}\right).
+\vec{s}_{x}=\left(\sin\theta_{x}\cos\text{\ensuremath{\phi_{x}},\ensuremath{\sin\theta_{x}\sin\phi_{x}},\ensuremath{\cos\theta_{x}}}\right).
 \end{equation}
 
 \end_inset
@@ -1421,7 +1419,7 @@ En donde
 \end_inset
 
 , 
-\begin_inset Formula $\phi_{i,j}\in\left(0,2\pi\right)$
+\begin_inset Formula $\phi_{x}\in\left(0,2\pi\right)$
 \end_inset
 
 , en algunos casos como la generación de configuraciones es ventajoso trabajar
@@ -1552,6 +1550,20 @@ Energía
 \end_layout
 
 \begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\mathcal{H}= & \frac{J}{2}\sum_{x}\sum_{\mu}^{d}\left(\vec{s}_{x+\mu}-\vec{s}_{x}\right)^{2}\\
+= & \frac{J}{2}\sum_{x}\left(\sum_{\mu}^{d}\left(2-2\vec{s}_{x+\mu}\cdot\vec{s}_{x}\right)\right)\\
+= & -J\sum_{x}\left(\vec{s}_{x+\mu}\cdot\vec{s}_{x}+d\right)
+\end{aligned}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 En los modelos O
 \begin_inset Formula $(n)$
 \end_inset
@@ -1579,11 +1591,11 @@ noprefix "false"
 
 \begin_layout Standard
 En este modelo cada espín 
-\begin_inset Formula $\vec{s}_{i,j}$
+\begin_inset Formula $\vec{s}_{x_{1},x_{2}}$
 \end_inset
 
  es vecino más cercano de cuatro espines 
-\begin_inset Formula $\{\vec{s}_{i,+1j},\vec{s}_{i,j+1},\vec{s}_{i-1,j},\vec{s}_{i,j-1}\}$
+\begin_inset Formula $\left\{ \vec{s}_{x_{1}+1,x_{2}},\vec{s}_{x_{1},x_{2}+1},\vec{s}_{x_{1}-1,x_{2}},\vec{s}_{x_{1},x_{2}-1}\right\} $
 \end_inset
 
 .
@@ -1599,7 +1611,7 @@ no en términos de sumas compactas sobre
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathcal{H}\left[s\right]=-\frac{J}{2}\sum_{i=1}^{L}\sum_{j=1}^{L}\left(\vec{s}_{i,j}\cdot\vec{s}_{i+1,j}+\vec{s}_{i,j}\cdot\vec{s}_{i,j+1}+\vec{s}_{i,j}\cdot\vec{s}_{i-1,j}+\vec{s}_{i,j}\cdot\vec{s}_{i,j-1}\right).\label{eq:hamiltoniano_2dO3}
+\mathcal{H}\left[s\right]=-\frac{J}{2}\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\left(\vec{s}_{x_{1}+1,x_{2}}+\vec{s}_{x_{1},x_{2}+1}+\vec{s}_{x_{1}-1,x_{2}}+\vec{s}_{x_{1},x_{2}-1}\right).\label{eq:hamiltoniano_2dO3}
 \end{equation}
 
 \end_inset
@@ -1622,7 +1634,7 @@ noprefix "false"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i-1,j}=\sum_{j=1}^{L}\sum_{i=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i-1,j}=\sum_{j=1}^{L}\sum_{i=0}^{L-1}\vec{s}_{i+1,j}\cdot\vec{s}_{i,j}.
+\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}-1,x_{2}}=\sum_{x_{2}=1}^{L}\sum_{x_{1}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}-1,x_{2}}=\sum_{x_{2}=1}^{L}\sum_{x_{1}=0}^{L-1}\vec{s}_{x_{1}+1,x_{2}}\cdot\vec{s}_{x_{1},x_{2}}.
 \end{equation}
 
 \end_inset
@@ -1630,23 +1642,23 @@ noprefix "false"
 Separando términos se tiene
 \begin_inset Formula 
 \begin{equation}
-\sum_{j=1}^{L}\sum_{i=0}^{L-1}\vec{s}_{i+1,j}\cdot\vec{s}_{i,j}=\sum_{j=1}^{L}\sum_{i=1}^{L}\vec{s}_{i+1,j}\cdot\vec{s}_{i,j}+\sum_{j=1}^{L}\left(\vec{s}_{1,j}\cdot\vec{s}_{0,j}-\vec{s}_{L+1,j}\cdot\vec{s}_{L,j}\right).
+\sum_{x_{2}=1}^{L}\sum_{x_{1}=0}^{L-1}\vec{s}_{x_{1}+1,x_{2}}\cdot\vec{s}_{x_{1},x_{2}}=\sum_{x_{2}=1}^{L}\left(\vec{s}_{1,x_{2}}\cdot\vec{s}_{0,x_{2}}-\vec{s}_{L+1,x_{2}}\cdot\vec{s}_{L,x_{2}}+\sum_{x_{1}=1}^{L}\vec{s}_{x_{1}+1,x_{2}}\cdot\vec{s}_{x_{1},x_{2}}\right).
 \end{equation}
 
 \end_inset
 
 Por las condiciones de frontera 
-\begin_inset Formula $\vec{s}_{1,j}=\vec{s}_{L+1}$
+\begin_inset Formula $\vec{s}_{1,x_{2}}=\vec{s}_{L+1}$
 \end_inset
 
  y 
-\begin_inset Formula $\vec{s}_{0,j}=\vec{s}_{L,j}$
+\begin_inset Formula $\vec{s}_{0,x_{2}}=\vec{s}_{L,x_{2}}$
 \end_inset
 
 , por lo que 
 \begin_inset Formula 
 \begin{equation}
-\sum_{j=1}^{L}\left(\vec{s}_{1,j}\cdot\vec{s}_{0,j}-\vec{s}_{L+1,j}\cdot\vec{s}_{L,j}\right)=0
+\vec{s}_{1,x_{2}}\cdot\vec{s}_{0,x_{2}}-\vec{s}_{L+1,x_{2}}\cdot\vec{s}_{L,x_{2}}=0
 \end{equation}
 
 \end_inset
@@ -1657,7 +1669,7 @@ Entonces
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i-1,j}=\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i+1,j}.\label{eq:equiv1}
+\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}-1,x_{2}}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}+1,x_{2}}.\label{eq:equiv1}
 \end{equation}
 
 \end_inset
@@ -1694,7 +1706,7 @@ noprefix "false"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i,j-1}=\sum_{i=1}^{L}\sum_{j=0}^{L-1}\vec{s}_{i,j+1}\cdot\vec{s}_{i,j}.
+\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}-1}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=0}^{L-1}\vec{s}_{x_{1},x_{2}+1}\cdot\vec{s}_{x_{1},x_{2}}.
 \end{equation}
 
 \end_inset
@@ -1702,23 +1714,23 @@ noprefix "false"
 Separando términos se tiene
 \begin_inset Formula 
 \begin{equation}
-\sum_{i=1}^{L}\sum_{j=0}^{L-1}\vec{s}_{i,j}\cdot\vec{s}_{i,j+1}=\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i,j+1}+\sum_{i=1}^{L}\left(\vec{s}_{i,0}\cdot\vec{s}_{i,1}-\vec{s}_{i,L}\cdot\vec{s}_{i,L+1}\right).
+\sum_{x_{1}=1}^{L}\sum_{x_{2}=0}^{L-1}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}+1}=\sum_{x_{1}=1}^{L}\left(\vec{s}_{x_{1},0}\cdot\vec{s}_{x_{1},1}-\vec{s}_{x_{1},L}\cdot\vec{s}_{x_{1},L+1}+\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}+1}\right).
 \end{equation}
 
 \end_inset
 
 Por las condiciones de frontera 
-\begin_inset Formula $\vec{s}_{i,0}=\vec{s}_{i,L}$
+\begin_inset Formula $\vec{s}_{x_{1},0}=\vec{s}_{x_{1},L}$
 \end_inset
 
  y 
-\begin_inset Formula $\vec{s}_{i,1}=\vec{s}_{i,L+1}$
+\begin_inset Formula $\vec{s}_{x_{1},1}=\vec{s}_{x_{1},L+1}$
 \end_inset
 
 , por lo que se tiene 
 \begin_inset Formula 
 \begin{equation}
-\sum_{i=1}^{L}\left(\vec{s}_{i,0}\cdot\vec{s}_{i,1}-\vec{s}_{i,L}\cdot\vec{s}_{i,L+1}\right).
+\vec{s}_{x_{1},0}\cdot\vec{s}_{x_{1},1}-\vec{s}_{x_{1},L}\cdot\vec{s}_{x_{1},L+1}=0.
 \end{equation}
 
 \end_inset
@@ -1729,7 +1741,7 @@ Entonces
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i,j-1}=\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\vec{s}_{i,j+1}.\label{eq:equiv2}
+\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}-1}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}+1}.\label{eq:equiv2}
 \end{equation}
 
 \end_inset
@@ -1768,7 +1780,7 @@ noprefix "false"
  y simplificando términos se llega a la forma compacta del hamiltonoano
 \begin_inset Formula 
 \begin{equation}
-\mathcal{H}\left[s\right]=-J\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,j}\cdot\left(\vec{s}_{i+1,j}+\vec{s}_{i,j+1}\right).\label{eq:hamiltoniano_simplificado}
+\mathcal{H}\left[s\right]=-J\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\left(\vec{s}_{x_{1}+1,x_{2}}+\vec{s}_{x_{1},x_{2}+1}\right).\label{eq:hamiltoniano_simplificado}
 \end{equation}
 
 \end_inset
@@ -2042,7 +2054,7 @@ Formula de A.
  Strackee 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "van_oosterom_solid_1983"
+key "van_oosterom_solid_1983,eriksson_measure_1990"
 literal "false"
 
 \end_inset
@@ -2129,7 +2141,7 @@ y_{1} & =\vec{s}_{1}\cdot(\vec{s}_{2}\times\vec{s}_{3}).
 \end_inset
 
 Al ser una esfera unitaria, el área del triangulo esférico esta dada por
- el angulo solido generado por los espines, defiendo el número complejo
+ el ángulo solido generado por los espines, defiendo el número complejo
  
 \begin_inset Formula $z_{a}=x_{a}+iy_{a}$
 \end_inset
@@ -2345,80 +2357,94 @@ Métodos de Monte Carlo
 \end_layout
 
 \begin_layout Standard
-En un proceso con probabilidades de transición estacionarias 
-\begin_inset Formula $p_{i,j}$
+El nombre Monte Carlo se refiere a un conjunto de métodos desarrollados
+ por un grupo de científicos, en 1940 durante el desarrollo de la bomba
+ atómica.
+ La esencia de Monte Carlo es la invención de juegos de probabilidad, que
+ son usados para estudiar fenómenos físicos reales.
+ Los juegos de probabilidad se tratan de sistemas descritos por un conjunto
+ de variables aleatorias, la evolución del sistema son los cambio en el
+ estado del sistema dados por una función de probabilidad.
+ Se asocia cada cambio en el estado del sistema a un valor numérico 
+\begin_inset Formula $i\in\{1,\dots,N\}$
 \end_inset
 
-, 
-\begin_inset Formula $i,j\in\{1,\dots,N\}$
-\end_inset
-
-.
+, conocido como el tiempo de Markov.
+ 
 \end_layout
 
 \begin_layout Standard
-Una probabilidad de transición estacionaria es independiente de cuando una
- transición del estado 
-\begin_inset Formula $s$
+Un ejemplo clásico y con una amplio rango de aplicaciones es el caminante
+ aleatorio.
+ Este sistema consta de un caminante descrito por una posición 
+\begin_inset Formula $x_{i}\in\mathbb{Z}$
+\end_inset
+
+.
+ En el siguiente evento el caminante puede desplazarse hacia cualquiera
+ de las posiciones 
+\begin_inset Formula $x_{i+1}\in\{x_{i}+1,x-1\}$
+\end_inset
+
+ dada la probabilidad de transición 
+\begin_inset Formula 
+\begin{equation}
+p[x_{i}\rightarrow x_{i+1}]=\frac{1}{2}.
+\end{equation}
+
+\end_inset
+
+En resumen en cada instante el caminante puede desplazarse hacia adelante
+ o hacia atrás, según la probabilidad de transición.
+ Ya que la probabilidad de transición no depende del tiempo, el caminante
+ aleatorio es un sistema estacionario.
+ Se dice que la probabilidad de transición del estado 
+\begin_inset Formula $x_{k}$
 \end_inset
 
  al estado 
-\begin_inset Formula $s'$
+\begin_inset Formula $x_{m}$
 \end_inset
 
- ocurre en la cadena de Markov.
-\end_layout
-
-\begin_layout Standard
-Si se puede pasar de un estado 
-\begin_inset Formula $s$
-\end_inset
-
- a otro estado 
-\begin_inset Formula $s'$
-\end_inset
-
- en un numero finito de transiciones, entonces 
-\begin_inset Formula $s'$
-\end_inset
-
- es un estado accesible de 
-\begin_inset Formula $s$
-\end_inset
-
-.
+es estacionaria, si es independiente del tiempo.
  
-\end_layout
-
-\begin_layout Standard
-Una cadena de Markov es irreducible si cualquier estado es accesible desde
- cualquier otro estado.
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset citation
-LatexCommand cite
-key "athreya_convergence_1996"
-literal "false"
-
+\begin_inset VSpace bigskip
 \end_inset
 
-.
- 
-\end_layout
 
-\begin_layout Section
-Balance detallado
 \end_layout
 
 \begin_layout Standard
-El método de Monte Carlo, consiente en sumar sobre una muestra aleatoria
- de puntos en el espacio fase, en vez de una distribución homogénea.
- Ya que no todas las configuraciones en el espacio fase son igualmente probables
- la muestra aleatoria debe considerar la probabilidad de la configuración,
- para esto se propone una configuración y se define una probabilidad de
- aceptación dependiendo de la probabilidad de la configuración.
- La probabilidad de aceptación debe cumplir la ecuación de balance detallado
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Sea 
+\begin_inset Formula $\{s_{i}\}$
+\end_inset
+
+ una cadena de Markov con probabilidad de transición estacionaria.
+ La cadena de Markov es reversible respecto a la distribución de probabilidad
+ 
+\begin_inset Formula $p$
+\end_inset
+
+ si cumple la ecuación de balance detallado
 \begin_inset Formula 
 \begin{equation}
 p[s\rightarrow s']p[s]=p[s'\rightarrow s]p[s'],\label{eq:detailed_balance}
@@ -2466,8 +2492,25 @@ donde
 \begin_inset Formula $\left[s'\right]$
 \end_inset
 
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "athreya_convergence_1996,wipf_statistical_2013,yeomans_statistical_1992"
+literal "false"
+
+\end_inset
+
 .
  
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -2475,7 +2518,15 @@ Algoritmo de Metropolis
 \end_layout
 
 \begin_layout Standard
-En el modelo de espines O(
+Metropolis es un algoritmo de actualización local esto significa que los
+ elementos de la configuración cambian individualmente, para generar una
+ nueva configuración se usa la probabilidad e transición con todos los elementos
+ de la configuración.
+ Consideremos el modelo de espines 
+\begin_inset Formula $2$
+\end_inset
+
+-d O(
 \begin_inset Formula $3$
 \end_inset
 
@@ -2495,6 +2546,34 @@ noprefix "false"
 \end_inset
 
 .
+ En este modelo, un algoritmo de actualizaron local actúa sobre un espín
+ y sus vecinos mas cercanos.
+ Dada una configuración 
+\begin_inset Formula $[s]$
+\end_inset
+
+ cada elemento 
+\begin_inset Formula $\vec{s}_{x}\in[s]$
+\end_inset
+
+ cambia siguiendo a la probabilidad de transición
+\begin_inset Formula 
+\begin{equation}
+p[s\rightarrow s']=\begin{cases}
+\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)} & \mathrm{si}\qquad\mathcal{H}[s']\geq\mathcal{H}[s]\\
+0 & \mathrm{si}\qquad\mathcal{H}[s']<\mathcal{H}[s].
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como en este caso la probabilidad transición determina si se acepta o se
+ rechaza un cambio en la configuración, a esta función se le llama probabilidad
+ de aceptación.
  Dadas dos configuraciones 
 \begin_inset Formula $[s]$
 \end_inset
@@ -2511,89 +2590,22 @@ noprefix "false"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-vamos hacer un cambio a cada uno de los espines en el ensamble dada la probabili
-dad de pasar de el estado 
-\begin_inset Formula $[s]$
+Aunque la probabilidad de aceptación definida es valida en cualquier modelo
+ de espines, es útil escribir la probabilidad de aceptación explicita en
+ el modelo 
+\begin_inset Formula $2$
 \end_inset
 
- al estado 
-\begin_inset Formula $[s]$
+-d O(
+\begin_inset Formula $3$
 \end_inset
 
- por 
-\begin_inset Formula $p[s\rightarrow s']$
-\end_inset
-
-, dado que es igualmente probable pasar a cualquier estado dentro de la
- región delimitada por la distancia 
-\begin_inset Formula $2\alpha$
-\end_inset
-
-, si el cambio en el estado cae en la región permitida entonces las probabilidad
-es de transición entre ambos estados es igual 
-\begin_inset Formula $p[s\rightarrow s']=p[s'\rightarrow s]$
-\end_inset
-
-, si no la probabilidad de transición es cero
-\begin_inset Formula 
-\begin{equation}
-p[s\rightarrow s']=\begin{cases}
-\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)} & \mathrm{si}\qquad\mathcal{H}[s']\geq\mathcal{H}[s]\\
-0 & \mathrm{si}\qquad\mathcal{H}[s']<\mathcal{H}[s].
-\end{cases}
-\end{equation}
-
-\end_inset
-
-Metropolis es un algoritmo de actualización local, esto implica que dada
- una configuración inicial se propone una cambio individual en la configuración
- y se acepta con probabilidad 
-\begin_inset Formula $p[s\rightarrow s']$
-\end_inset
-
-.
- Si la energía de la configuración aumenta con el cambio o se acepta si
- la energía de la configuración disminuye.
- Para aplicar el algoritmo caso particular del al modelo 2-
-\begin_inset Formula $d$
-\end_inset
-
- O
-\begin_inset Formula $(3)$
-\end_inset
-
- hay que escribir la probabilidad de transición en términos de los espines
- 
+).
+ La diferencia de energía en términos de los espines 
 \begin_inset Formula $\vec{s}_{i,j}\in\mathbb{Z}_{L}^{2}$
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Standard
-Dada una configuración 
-\begin_inset Formula $[s]$
-\end_inset
-
- se elije un elemento 
-\begin_inset Formula $\vec{s}_{i,j}\in[s]$
-\end_inset
-
- un cambio 
-\begin_inset Formula $\vec{s}_{i,j}^{\,\prime}\in S^{2}$
-\end_inset
-
-.
- La energía de sistema antes y después del cambio se puede escribir en términos
- de los espines vecinos de 
-\begin_inset Formula $\vec{s}_{i,j}$
-\end_inset
-
-
+ es
 \begin_inset Formula 
 \begin{equation}
 \Delta\mathcal{H}_{i,j}=\mathcal{H}[s']-\mathcal{H}[s]=-\left(\vec{s}_{i,j}^{\,\prime}-\vec{s}_{i,j}\right)\cdot\left(\vec{s}_{i+1,j}+\vec{s}_{i,j+1}+\vec{s}_{i-1,j}+\vec{s}_{i,j-1}\right).\label{eq:energy_diff}
@@ -2607,16 +2619,6 @@ El cambio en el espín
 
  se acepta con probabilidad 
 \begin_inset Formula $p_{i,j}$
-\end_inset
-
-, si la energía de la configuración disminuye por el cambio la probabilidad
- de aceptar el cambio es 
-\begin_inset Formula $1$
-\end_inset
-
-, si la energía de la configuración aumenta después del cambio la probabilidad
- es 
-\begin_inset Formula $e^{-\beta\Delta H}$
 \end_inset
 
 .
@@ -2659,8 +2661,9 @@ Algoritmo de Glauber
 
 \begin_layout Standard
 El algoritmo Glauber es al igual que el algoritmo Metropolis de actualización
- local el único cambio es la probabilidad de aceptación.
- Se propone la transición de probabilidad
+ local.
+ La diferencia con el algoritmo de Metropolis es la probabilidad de aceptación.
+ La probabilidadde transicion de lagoritmo de Glauber es 
 \begin_inset Formula 
 \begin{align}
 p[s\rightarrow s'] & =\frac{\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}{1+\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}\nonumber \\
@@ -3379,6 +3382,133 @@ las fluctuaciones del sistema son tan fuertes que no se mantiene el orden
 \end_inset
 
  tiende a infinito.
+\end_layout
+
+\begin_layout Section
+Kibble Zurek
+\end_layout
+
+\begin_layout Standard
+Las transiciones de fase que rompen la simetría son omnipresentes en la
+ física.
+ Por ejemplo, cuando el agua se congela, la simetría rotacional se rompe
+ por la elección de una orientación en los cristales de hielo.
+ En el universo primitivo, la ruptura de la simetría puede haber conducido
+ a la formación de defectos topológicos como monopolos puntuales, cuerdas
+ cósmicas lineales o paredes de dominio planares.
+ Esos defectos son importantes porque son objetos inherentemente estables
+ que pueden haber sobrevivido para proporcionar pistas observacionales sobre
+ cómo era el universo en el momento en que se formaron.
+\end_layout
+
+\begin_layout Standard
+Desafortunadamente, esa idea no funcionó.
+ Las observaciones realizadas por COBE y más recientemente por WMAP de la
+ pequeña anisotropía en el fondo cósmico de microondas revelan una escala
+ de distancia preferencial que las cuerdas cósmicas no pueden explicar.
+\end_layout
+
+\begin_layout Standard
+Afortunadamente, existen análogos de cuerdas cósmicas en muchos sistemas
+ de materia condensada, incluidos los vórtices en los superfluidos.
+\end_layout
+
+\begin_layout Standard
+Un buen ejemplo es el helio-4 superfluido, en el que la condensación de
+ Bose ocurre alrededor de 
+\begin_inset Formula $2K$
+\end_inset
+
+.
+ Una fracción considerable de los átomos de He ocupan un solo estado cuántico
+ a esa temperatura.
+ Entonces 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ es proporcional a la función de onda de ese estado, y 
+\begin_inset Formula $|\varphi|$
+\end_inset
+
+2 representa la densidad de la fracción superfluida.
+ Una cuerda, o cualquiera de sus defectos análogos, es un tubo delgado alrededor
+ del cual la fase de 
+\begin_inset Formula $φ$
+\end_inset
+
+ cambia en 
+\begin_inset Formula $2π$
+\end_inset
+
+.
+ En He, la velocidad superfluida es proporcional al gradiente de la fase.
+\end_layout
+
+\begin_layout Standard
+Un problema que surgió al intentar hacer predicciones sobre las cuerdas
+ cósmicas fue estimar cuántas habría.
+ Una elección aleatoria de fases debería conducir a una maraña aleatoria
+ de cuerdas, caracterizada por una escala de longitud típica 
+\begin_inset Formula $\xi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En 1985, W.
+ Zurek, en Los Álamos, sugirió que las ideas sobre cómo calcular 
+\begin_inset Formula $\xi$
+\end_inset
+
+ podrían probarse aplicándolas al problema de la formación de defectos en
+ una transición de fase de baja temperatura, en particular la transición
+ de normal a superfluido en helio líquido.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kibble_phase-transition_2007"
+literal "false"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\xi\propto\tau_{Q}^{\sigma}
+\end{equation}
+
+\end_inset
+
+Zurek demostró que en una transición de segundo orden, se podía obtener
+ una relación de ley de potencia entre 
+\begin_inset Formula $ξ$
+\end_inset
+
+ y 
+\begin_inset Formula $τ_{q}$
+\end_inset
+
+.
+ Donde 
+\begin_inset Formula $τ_{Q}$
+\end_inset
+
+ se define de modo que la tasa de cambio de temperatura en el punto crítico
+ sea 
+\begin_inset Formula $dT/dt=−Tc/τ_{Q}$
+\end_inset
+
+ y el índice 
+\begin_inset Formula $σ$
+\end_inset
+
+ se pueda calcular en términos de índices críticos conocidos de la transición
+ de fase.
+ Esencialmente, 
+\begin_inset Formula $τ_{Q}$
+\end_inset
+
+ es el tiempo de extinción.
 \end_layout
 
 \begin_layout Section
@@ -6634,7 +6764,8 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.49(1)$
+0.54
+\begin_inset Formula $(1)$
 \end_inset
 
 
@@ -6646,7 +6777,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.0126(2)$
+\begin_inset Formula $0.221(6)$
 \end_inset
 
 
@@ -6658,7 +6789,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.261(5)$
+\begin_inset Formula $0.282(7)$
 \end_inset
 
 
@@ -6681,7 +6812,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.49(2)$
+\begin_inset Formula $0.55(2)$
 \end_inset
 
 
@@ -6693,7 +6824,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.0128(3)$
+\begin_inset Formula $0.217(6)$
 \end_inset
 
 
@@ -6705,7 +6836,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.242(7)$
+\begin_inset Formula $0.284(4)$
 \end_inset
 
 
@@ -6728,7 +6859,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.46(1)$
+\begin_inset Formula $0.51(1)$
 \end_inset
 
 
@@ -6740,7 +6871,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.0122(3)$
+\begin_inset Formula $0.210(5)$
 \end_inset
 
 
@@ -6752,7 +6883,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.259(6)$
+\begin_inset Formula $0.267(4)$
 \end_inset
 
 
@@ -6775,7 +6906,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.46(1)$
+\begin_inset Formula $0.51(1)$
 \end_inset
 
 
@@ -6787,7 +6918,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.0125(3)$
+\begin_inset Formula $0.210(5)$
 \end_inset
 
 
@@ -6799,7 +6930,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.246(7)$
+\begin_inset Formula $0.274(4)$
 \end_inset
 
 
@@ -6822,7 +6953,7 @@ Multi cluster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.74(6)$
+\begin_inset Formula $1.11(7)$
 \end_inset
 
 
@@ -6834,7 +6965,7 @@ Multi cluster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.0156(7)$
+\begin_inset Formula $0.28(1)$
 \end_inset
 
 
@@ -6846,7 +6977,7 @@ Multi cluster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.608(8)$
+\begin_inset Formula $0.629(6)$
 \end_inset
 
 
@@ -7120,28 +7251,112 @@ Finalmente obtenemos el vector
 \end_layout
 
 \begin_layout Chapter
-Programación
+Demostración
 \end_layout
 
 \begin_layout Standard
-Para hacer una simulación por ordenador se escribe un programa con las reglas
- que debe seguir el sistema, se proporcionan condiciones iniciales y se
- deja que el ordenador calcule el estado posterior del sistema.
- Se podría pensar que con esto se puede resolver cualquier problema, delegándolo
- a una computadora, en la realidad muchos sistemas físicos superan en interaccio
-nes a la cantidad de cálculos que un ordenador es capaz de hacer en un tiempo
- razonable.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/demtri.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Vista superior del triangulo esférico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Llevar una serie de conceptos abstractos a una simulación es una tarea complicad
-a, se debe elegir el lenguaje de programación que mejor adapte a las necesidades
- del problema.
- Se debe crear una estructura de funciones y rutinas para establecer una
- base que facilite el diseño de un experimento y permita realizar experimentos
- bajo diversas condiciones, medir las observables y analizar los resultados
- de una forma eficiente es por eso que se requiere de una buen diseño, un
- buen uso de las herramientas disponibles y una buena planificación.
+El ángulo solido del triangulo es el área de la sección esférica del triangulo
+ 
+\begin_inset Formula $ABC$
+\end_inset
+
+ formado por los vértices 
+\begin_inset Formula $\vec{a},\vec{b},\vec{c}\in\mathcal{S}^{2}$
+\end_inset
+
+.
+ El área 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ del triangulo esférico formado por los vértices es
+\begin_inset Formula 
+\begin{equation}
+\tan\left(\frac{\Omega}{2}\right)=\frac{\vec{a}\cdot\left(\vec{b}\times\vec{c}\right)}{1+\cos a+\cos b+\cos c},
+\end{equation}
+
+\end_inset
+
+Tenemos que
+\begin_inset Formula 
+\begin{equation}
+\Omega=A+B+C-\pi,
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Además
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+A+t+u=\pi,\,B+t+v=\pi,\,C=u+v
+\end{equation}
+
+\end_inset
+
+Entonces
+\begin_inset Formula 
+\begin{equation}
+A+B+C+2t=2\pi
+\end{equation}
+
+\end_inset
+
+Se obtiene
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{2}\left(\pi-\Omega\right)=t
+\end{equation}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -7169,7 +7384,7 @@ A día de hoy el uso de lenguajes de programación ampliamente versátiles
  Al estar orientado al computo científico es accesible y de fácil implementación
 , por estas cualidades es el lenguaje de programación principal en este
  proyecto ya que en el caso de el análisis de los resultado y la generación
- de graficas se ha usado Python con algunos de sus librerías especiales.
+ de gráficas se ha usado Python con algunos de sus librerías especiales.
  
 \end_layout
 

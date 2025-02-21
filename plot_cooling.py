@@ -27,24 +27,24 @@ def f1(x, a, b):
     return a*x**(-b)
 
 def f2(x, a, b):
-    return a*(x-4)**(-b)
+    return a*x**(-b)
 
 def f3(x, a, b):
     return a*x**(b)
 
 params = {
     "charge": {"index": 2, "ylabel": r"$\chi_t$", "func": f1},
-    "energy": {"index": 4, "ylabel": r"$\rho_\mathcal{H}$", "func": f2},
-    "magnet": {"index": 6, "ylabel": r"$\langle m\rangle $", "func": f1},
+    "energy": {"index": 4, "ylabel": r"$\rho_\mathcal{H}$", "func": f1},
+    "magnet": {"index": 6, "ylabel": r"$\langle m\rangle $", "func": f3},
 }
-colors = {4: "red", 6: "blue", 8: "purple"}
-lines = {4: (0, (3, 3)), 6: (0, (5, 1)), 8: (0, (5, 5))}
+colors = {8: "red", 10: "blue", 16: "purple"}
+lines = {8: (0, (3, 3)), 10: (0, (5, 1)), 16: (0, (5, 5))}
 # markers = dict(zip([4,8,16,20],["x","+","x","+"]))
 for alg in algs:
     X = []
     ob = params[obs]["index"]
     path = "output/cooling/L64/4-0"
-    indexes = [4, 6, 8, 10, 12, 14, 16]
+    indexes = [8,9,10,11,12,13,14,15,16,17,18]
     fig1, ax1 = plt.subplots()
     for i in indexes:
         data = np.loadtxt(
@@ -53,8 +53,9 @@ for alg in algs:
                 skiprows=1
             )
         data = data.transpose()
+        data[4]=data[4]+2
         X.append([i, data[ob][-1], data[ob + 1][-1]])
-        if i in [4, 6, 8]:
+        if i in [8, 10, 16]:
             ax1.errorbar(
                 data[0],
                 data[ob],
@@ -82,7 +83,7 @@ for alg in algs:
     # ~ np.savetxt(f"output/cooling/scaling_law_{obs}_{alg}.csv",X.transpose(),delimiter=",",header="tauCool,obs,error")
     fig2, ax2 = plt.subplots()
     ax2.errorbar(X[0], X[1], X[2], ls="", color="red", marker="o", markersize=5)
-    x = np.linspace(4, 16)
+    x = np.linspace(8, 18)
 
     f = params[obs]["func"]
     xfit = fit(X[0], X[1], X[2])
@@ -100,7 +101,8 @@ for alg in algs:
     ax2.plot(x, f(x, *xfit.opt), linewidth=1.8, color="blue", linestyle=(0, (3, 3)))
     ax2.set_ylabel(params[obs]["ylabel"], fontsize=18)
     ax2.set_xlabel(r"$\tau_{\mathrm{cool}}$", fontsize=18)
-    ax2.set_yscale("linear")
+    ax2.set_yscale("log")
+    ax2.set_xscale("log")
     fig2.savefig(
         f"output/plot/cooling/scaling_law_{obs}_{alg}.pdf",
         format="pdf",

@@ -1,6 +1,10 @@
 #!/usr/bin/python3
-import re
-
+import re, os
+HOME="/home/israel"
+if os.path.isfile(f"{HOME}/Descargas/citations.bib"):
+	os.system(f"cat {HOME}/Descargas/citations.bib >> citations.bib")
+	os.system(f"rm {HOME}/Descargas/citations.bib")
+	print("cita añadida")
 file = open("citations.bib").read()
 cite_list = file.split("@")
 outlines = []
@@ -24,7 +28,5 @@ for cite in cite_list[1:]:
             if re.search(regexp, line):
                 outlines.append(f"{line}\n")
     outlines.append("}\n\n")
-
-
 outfile = open("bibliography.bib", "w")
 outfile.writelines(outlines)
