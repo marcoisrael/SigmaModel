@@ -10,6 +10,7 @@
 \usepackage{graphicx}
 \usepackage{geometry}
 \usepackage{comment}
+\usepackage{textgreek}
 \usepackage{bachelorstitlepageUNAM}
 
 \sloppy
@@ -1977,7 +1978,7 @@ En el modelo de espines O(
  topológica 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "kosterlitz_nobel_2017,bietenholz_topological_2010"
+key "bietenholz_topological_2010,berg_definition_1981"
 literal "false"
 
 \end_inset
@@ -2495,7 +2496,7 @@ donde
  
 \begin_inset CommandInset citation
 LatexCommand cite
-key "athreya_convergence_1996,wipf_statistical_2013,yeomans_statistical_1992"
+key "athreya_convergence_1996"
 literal "false"
 
 \end_inset
@@ -2647,7 +2648,7 @@ s, una forma de elegir los espines es el método lexicográfico, consiste
  
 \begin_inset CommandInset citation
 LatexCommand cite
-key "metropolis_equation_1953"
+key "metropolis_equation_1953,binder_monte_1988,swendsen_nonuniversal_1987"
 literal "false"
 
 \end_inset
@@ -2660,8 +2661,15 @@ Algoritmo de Glauber
 \end_layout
 
 \begin_layout Standard
-El algoritmo Glauber es al igual que el algoritmo Metropolis de actualización
- local.
+El algoritmo Glauber 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "glauber_time-dependent_1963"
+literal "false"
+
+\end_inset
+
+es al igual que el algoritmo Metropolis de actualización local.
  La diferencia con el algoritmo de Metropolis es la probabilidad de aceptación.
  La probabilidadde transicion de lagoritmo de Glauber es 
 \begin_inset Formula 
@@ -2742,7 +2750,7 @@ El algoritmo cluster sugerido por R.
  escribir como una suma sobre un grupo de distribuciones 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "swendsen_nonuniversal_1987"
+key "swendsen_nonuniversal_1987,wolff_collective_1989"
 literal "false"
 
 \end_inset
@@ -3032,7 +3040,15 @@ Las segundas derivadas son
 \end_inset
 
 Una transición de fase de segundo orden implica una discontinuidad en una
- segunda derivada de la energía libre.
+ segunda derivada de la energía libre
+\begin_inset CommandInset citation
+LatexCommand cite
+key "giachetti_berezinskii-kosterlitz-thouless_2021,hinrichsen_non-equilibrium_2000,yeomans_statistical_1992"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -3123,50 +3139,6 @@ y
 \end_inset
 
  es un exponente crítico.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{comment}
-\end_layout
-
-\begin_layout Plain Layout
-
-Hay tres conceptos importantes en este contexto, universalidad, escalamiento
- y renormalización.
-\end_layout
-
-\begin_layout Plain Layout
-
-La propiedad de localidad requiere de acoplamiento entre espines decaiga
- por lo menos exponencialmente con la distancia.
- En la practica se considera el caso en el que la interacción de los acoplamient
-os decae a cero a una distancia de pocos sitios de retícula.
-\end_layout
-
-\begin_layout Plain Layout
-
-Llamamos acción topológica a una acción local invariante a pequeñas deformacione
-s de los campos, esta acción tiene infinidad de direcciones planas que no
- suprimen las pequeñas fluctuaciones del campo.
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{comment}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -3323,125 +3295,174 @@ En general la clase de universalidad y el valor de los exponentes críticos
  
 \end_layout
 
-\begin_layout Section
-Renormalización
+\begin_layout Chapter
+Mecanismo de Kibble Zurek
 \end_layout
 
 \begin_layout Standard
-La idea de que un punto crítico puede ser mapeado en un punto fijo, eligiendo
- la transformación correcta del hamiltoniano del sistema.
- Es la motivación de los grupos de renormalización.
- Entre las ventajas de la renormalización.
- Permite obtener estimaciones numéricas de los exponentes críticos.
- Con lo que proporciona una base para describir universalidad y escalamiento.
+Una transición de fase por ruptura de simetría es un fenómeno en un sistema
+ físico en el que este pasa de un estado desordenado pero simétrico a un
+ estado ordenado, presentando más simetrías.
+ Algunos ejemplos son:
+\end_layout
+
+\begin_layout Itemize
+Cuando el agua se congela, la simetría rotacional se rompe por la elección
+ de una orientación en los cristales de hielo.
  
 \end_layout
 
-\begin_layout Standard
-Entre los nuevos conceptos que emergen esta la idea de dimensiones marginalmente
- altas y bajas 
-\begin_inset Formula $d_{-}$
-\end_inset
-
- y 
-\begin_inset Formula $d_{+}$
-\end_inset
-
-, la teoría clásica proporciona una descripción adecuada de los puntos y
- exponentes críticos cuando para la dimensión del sistema 
-\begin_inset Formula $d$
-\end_inset
-
- se cumple que 
-\begin_inset Formula $d>d_{+}$
-\end_inset
-
-.
- En le caso 
-\begin_inset Formula $d=d_{+}$
-\end_inset
-
- el modelo clásico usualmente funciona con algunas correcciones.
- Para el caso 
-\begin_inset Formula $d<d_{-}$
-\end_inset
-
-las fluctuaciones del sistema son tan fuertes que no se mantiene el orden
- estructural para ninguna temperatura 
-\begin_inset Formula $T>0$
-\end_inset
-
-.
- En el caso 
-\begin_inset Formula $d_{-}<d<d_{+}$
-\end_inset
-
- do se sabe con exactitud las propiedades del sistema salvo en el caso limite
- en el que el numero de elementos en el sistema 
-\begin_inset Formula $n$
-\end_inset
-
- tiende a infinito.
-\end_layout
-
-\begin_layout Section
-Kibble Zurek
-\end_layout
-
-\begin_layout Standard
-Las transiciones de fase que rompen la simetría son omnipresentes en la
- física.
- Por ejemplo, cuando el agua se congela, la simetría rotacional se rompe
- por la elección de una orientación en los cristales de hielo.
- En el universo primitivo, la ruptura de la simetría puede haber conducido
+\begin_layout Itemize
+En el universo primitivo, la ruptura de la simetría puede haber conducido
  a la formación de defectos topológicos como monopolos puntuales, cuerdas
  cósmicas lineales o paredes de dominio planares.
- Esos defectos son importantes porque son objetos inherentemente estables
- que pueden haber sobrevivido para proporcionar pistas observacionales sobre
- cómo era el universo en el momento en que se formaron.
 \end_layout
 
-\begin_layout Standard
-Desafortunadamente, esa idea no funcionó.
- Las observaciones realizadas por COBE y más recientemente por WMAP de la
- pequeña anisotropía en el fondo cósmico de microondas revelan una escala
- de distancia preferencial que las cuerdas cósmicas no pueden explicar.
-\end_layout
+\begin_layout Itemize
+En un condensado de 
+\begin_inset Formula $^{4}$
+\end_inset
 
-\begin_layout Standard
-Afortunadamente, existen análogos de cuerdas cósmicas en muchos sistemas
- de materia condensada, incluidos los vórtices en los superfluidos.
-\end_layout
-
-\begin_layout Standard
-Un buen ejemplo es el helio-4 superfluido, en el que la condensación de
- Bose ocurre alrededor de 
+He en estado superfluido.
+ La condensación de Bose ocurre alrededor de 
 \begin_inset Formula $2K$
 \end_inset
 
 .
- Una fracción considerable de los átomos de He ocupan un solo estado cuántico
- a esa temperatura.
- Entonces 
-\begin_inset Formula $\varphi$
-\end_inset
+ El rompimiento de la simetría favorece la formación de vórtices.
+\end_layout
 
- es proporcional a la función de onda de ese estado, y 
-\begin_inset Formula $|\varphi|$
-\end_inset
+\begin_layout Standard
+En estos sistemas, los defectos topológicos remanentes son importantes,
+ porque son objetos inherentemente estables que pueden proporcionar pistas
+ observacionales sobre cómo era el sistema en el momento en que se formaron.
+\end_layout
 
-2 representa la densidad de la fracción superfluida.
- Una cuerda, o cualquiera de sus defectos análogos, es un tubo delgado alrededor
- del cual la fase de 
-\begin_inset Formula $φ$
-\end_inset
+\begin_layout Section
+Experimentos en el universo temprano
+\end_layout
 
- cambia en 
-\begin_inset Formula $2π$
+\begin_layout Standard
+Consideremos un universo temprano en expansión.
+ En modelos de interacción débil y electromagnetismo, la temperatura critica
+ es del orden de la raíz cuadrada de la constante de acoplamiento de Fermi
+ 
+\begin_inset Formula $G_{F}^{\text{1/2}}$
 \end_inset
 
 .
- En He, la velocidad superfluida es proporcional al gradiente de la fase.
+ Siguiendo dicha suposición la temperatura critica se pasa entre 
+\begin_inset Formula $10^{-\text{10}}s$
+\end_inset
+
+ y 
+\begin_inset Formula $10^{-12}s$
+\end_inset
+
+.
+ Consideremos un campo escalar 
+\begin_inset Formula $\phi$
+\end_inset
+
+ con un lagrangiano invariante bajo el grupo ortogonal O(
+\begin_inset Formula $n$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathcal{L}=\frac{1}{2}\left(D_{\mu}\phi\right)^{2}-\frac{1}{8}g^{2}\left(\phi^{2}-\eta^{2}\right)^{2}+\frac{1}{8}Tr\left(B_{\mu\nu}B^{\mu\nu}\right)
+\end{equation}
+
+\end_inset
+
+A temperatura cero hay una ruptura espontánea de la simetría a O(
+\begin_inset Formula $n$
+\end_inset
+
+-1), por lo que variedad del estado de menor energía es la esfera 
+\begin_inset Formula $M=\mathcal{S}^{n-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para 
+\begin_inset Formula $T$
+\end_inset
+
+ cerca de la temperatura critica aparecen fluctuaciones en el campo 
+\begin_inset Formula $\phi$
+\end_inset
+
+ , por debajo de la temperatura critica el valor esperado es algún punto
+ en la variedad 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Ningún punto de la esfera tiene preferencia, y la elección es independiente
+ entre las diferentes regiones del espacio.
+ Por lo que se espera la formación de dominios con distinto valor esperado
+ de 
+\begin_inset Formula $\phi$
+\end_inset
+
+, variando entre regiones de una manera mas o menos aleatoria.
+ Al llegar al equilibrio muchos de estas variaciones dejaran de fluctuar
+ acercando el valor esperado de los diferentes dominios al valor constante
+ 
+\begin_inset Formula $\expval{\phi}$
+\end_inset
+
+.
+ La cuestión es si algunas de estos dominios pueden sobrevivir.
+\end_layout
+
+\begin_layout Standard
+Una posibilidad es la neutralidad de el universo respecto a las cargas del
+ campo 
+\begin_inset Formula $\phi$
+\end_inset
+
+ en cuyo caso no hay problema con la formación de dominios.
+ La otra posibilidad es que el universo podría se ser no neutral respecto
+ a las cargas asociadas al campo 
+\begin_inset Formula $\phi$
+\end_inset
+
+.
+ En este caso el rompimiento de la simetría seria fijado alas condiciones
+ iniciales en vez de elecciones aleatorias impidiendo el surgimiento de
+ estructuras de dominio, o mas bien limita su tamaño a la longitud de correlació
+n dada por la ecuación
+\begin_inset Formula 
+\begin{equation}
+\xi^{-1}\approx g^{2}T.
+\end{equation}
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Es decir que la longitud de correlación determina la escala de los posibles
+ protodominios en un universo no neutral.
+\end_layout
+
+\begin_layout Standard
+Es interesante revisar las posibles configuraciones geométricas de estos
+ dominios.
+ Las transiciones de fase de ruptura de simetría en el universo temprano
+ dejaron estructuras topológicamente estables como monopolos y cuerdas cósmicas
 \end_layout
 
 \begin_layout Standard
@@ -3464,14 +3485,6 @@ En 1985, W.
  podrían probarse aplicándolas al problema de la formación de defectos en
  una transición de fase de baja temperatura, en particular la transición
  de normal a superfluido en helio líquido.
-\begin_inset CommandInset citation
-LatexCommand cite
-key "kibble_phase-transition_2007"
-literal "false"
-
-\end_inset
-
-
 \begin_inset Formula 
 \begin{equation}
 \xi\propto\tau_{Q}^{\sigma}
@@ -3509,6 +3522,128 @@ Zurek demostró que en una transición de segundo orden, se podía obtener
 \end_inset
 
  es el tiempo de extinción.
+\end_layout
+
+\begin_layout Standard
+Desafortunadamente, esa idea no funcionó.
+ Las observaciones realizadas por COBE y más recientemente por WMAP 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ciuca_information_2020"
+literal "false"
+
+\end_inset
+
+ de la pequeña anisotropía en el fondo cósmico de microondas revelan una
+ escala de distancia preferencial que las cuerdas cósmicas no pueden explicar.
+ Afortunadamente, existen análogos de cuerdas cósmicas en muchos sistemas
+ de materia condensada, incluidos los vórtices en los superfluidos
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kibble_topology_1976,kibble_phase-transition_2007,kibble_implications_1980"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Experimentos en helio superflúlidico
+\end_layout
+
+\begin_layout Standard
+Existe una analogía entre estas cuerdas cósmicas y vórtices en superfluidos.
+ En un superfluido obtenido en un súbito decaimiento de presión, la fase
+ de la función de onda en el condensado de helio es análoga a la ruptura
+ de simetría del campo de Higgs en el vacío.
+\end_layout
+
+\begin_layout Standard
+Cerca de la transición de fase , el potencial es de la forma
+\begin_inset Formula 
+\begin{equation}
+V=\alpha\abs{\psi\left(\vec{r}\right)}^{2}+\frac{1}{2}\beta\abs{\psi\left(\vec{r}\right)}^{4}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El parametro de orden de un spuerfluido puede pensarse como la función de
+ onda del condensado de Bose.
+ En este sistema se pueden formar vórtices cuando el parámetro de de orden,
+ es un valor complejo
+\begin_inset Formula 
+\begin{equation}
+\psi=\abs{\psi}e^{i\theta}.
+\end{equation}
+
+\end_inset
+
+En el rompimiento de simetría la fase 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ es un valor negativo y el potencial 
+\begin_inset Formula $V$
+\end_inset
+
+ tiene la forma de un potencial de sombrero.
+ Es una situación análoga al modelo cosmológico y una buena aproximación
+ a el superflido 
+\begin_inset Formula $^{4}$
+\end_inset
+
+He.
+ en particular para un spuerfluido cerca de la temperatura critica 
+\begin_inset Formula $T_{C}$
+\end_inset
+
+, el coeficiente 
+\begin_inset Formula $\alpha=\alpha'(T-T_{C})$
+\end_inset
+
+ donde 
+\begin_inset Formula $\alpha',\beta$
+\end_inset
+
+ son constantes que se deducen a partir del calor especifico
+\end_layout
+
+\begin_layout Standard
+Una fracción considerable de los átomos de He ocupan un solo estado cuántico
+ a esa temperatura.
+ Entonces 
+\begin_inset Formula $\psi$
+\end_inset
+
+ es proporcional a la función de onda de ese estado, y 
+\begin_inset Formula $|\psi|^{2}$
+\end_inset
+
+ representa la densidad de la fracción superfluida.
+ Una cuerda, o cualquiera de sus defectos análogos, es un tubo delgado alrededor
+ del cual la fase de 
+\begin_inset Formula $\psi$
+\end_inset
+
+ cambia en 
+\begin_inset Formula $2π$
+\end_inset
+
+.
+ En He, la velocidad superfluida es proporcional al gradiente de la fase
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zurek_cosmological_1985,kosterlitz_long_1972,kosterlitz_nobel_2017"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -6997,7 +7132,7 @@ Multi cluster
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Exponente crítico dinamico 
+Exponente crítico dinámico 
 \begin_inset Formula $z$
 \end_inset
 
@@ -7359,33 +7494,11 @@ Se obtiene
 
 \end_layout
 
-\begin_layout Section
-Equilibrio entre accesibilidad y eficiencia
-\end_layout
-
 \begin_layout Standard
-A día de hoy el uso de lenguajes de programación ampliamente versátiles
- es frecuente para la mayoría de propósitos, sin embargo estos lenguajes
- al ser tan amplios en funcionalidad llegan a perder eficiencia en tareas
- especificas, no es un gran problema en la mayoría de los casos en los que
- esta perdida es de milésimas de segundo, pero en las simulaciones numéricas
- de monte carlo el número de cálculos es suficiente para percibir un incremento
- considerable en el tiempo de computo.
- Lenguajes como Fortran son mucho menos populares pero muy eficiente cumpliendo
- con su propósito, al ser un lenguaje no interpretado se debe de compilar
- para ser ejecutado, como resultado en simulaciones largas que requieren
- de una alto poder de computo la eficiencia es miles de veces mayor que
- en el caso de los lenguajes interpretados y no se requiere de instalar
- algún interprete en un servidor de la nube para ejecutarlo ya que el archivo
- compilado puede comunicarse directamente con el servidor.
- Ya que los lenguajes no interpretados como Fortran tienen un rendimiento
- considerablemente superior en el largo plazo, vale la pena aprender el
- lenguaje.
- Al estar orientado al computo científico es accesible y de fácil implementación
-, por estas cualidades es el lenguaje de programación principal en este
- proyecto ya que en el caso de el análisis de los resultado y la generación
- de gráficas se ha usado Python con algunos de sus librerías especiales.
- 
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

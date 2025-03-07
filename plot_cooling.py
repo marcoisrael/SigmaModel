@@ -90,9 +90,10 @@ for alg in algs:
     param_bounds = ((0, 0), (np.inf, np.inf))
     xfit.fiting(f, args={"bounds": param_bounds})
     print(alg, fix(xfit.opt[1], xfit.error[1]))
+    texto=fix(xfit.opt[1],xfit.error[1])+r"$\tau_{\mathrm{cool}}$"+r"+"+fix(xfit.opt[0],xfit.error[0])+"\n"+r"$\frac{\chi^2}{\mathrm{dof}}=$"+str(xfit.chisq_by_dof)
     ax2.text(
         0.99, 0.99,
-        r"$\frac{\chi^2}{\mathrm{dof}}=$"+str(xfit.chisq_by_dof),
+        texto,
         fontsize=16,
         ha="right",
         va="top",
