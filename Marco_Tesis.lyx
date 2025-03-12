@@ -217,58 +217,55 @@ Motivación al estudio de sistemas fuera del equilibrio
 \end_layout
 
 \begin_layout Standard
-En física se busca dar descripciones cuantitativas a los sistemas físicos.
- Para ello se usan herramientas matemáticas como el cálculo, la estadística
- y la geometría.
- A la vez que se avanza en el desarrollo de tecnología para realizar mejores
- experimentos y medir observables físicas en mejores condiciones.
- Las lineas de investigación continúan de generación en generación refinando
- la teoría y la experimentación.
- De esta forma la comunidad científica avanza de forma consistente y sistemática.
- 
+En física, se busca dar descripciones cuantitativas a los sistemas físicos.
+ Para ello, se emplean herramientas matemáticas como el cálculo, la estadística
+ y la geometría, al mismo tiempo que se avanza en el desarrollo de tecnología
+ para realizar mejores experimentos y medir observables físicas en condiciones
+ óptimas.
+ Las líneas de investigación continúan de generación en generación, refinando
+ tanto la teoría como la experimentación.
+ De esta forma, la comunidad científica progresa de manera consistente y
+ sistemática.
 \end_layout
 
 \begin_layout Standard
-Entre 1949 y 1952 en Los Álamos.
- N.
- Metropolis, A.
- W.
- Rosenbluth, M.
- N.
- Rosenbluth, A.
- H.
- Teller y E.
- Teller, se dedicaron a entender la física de las interacciones de la radiación
- y la materia bajo condiciones extremas tales como la explosión, implosión
- y evolución de las reacciones nucleares.
- En condiciones extremas y fuera del equilibrio los experimentos se vuelven
- complicados, y la teoría detrás de procesos que involucran interacciones
- entre un vasto número de partículas se vuelve demasiado compleja.
- Para solventar sus limitaciones desarrollaron una serie de métodos basados
- procesos estocásticos.
- En vez de intentar calcular cada una de las interacciones en un sistema
- tan complicado.
- A este grupo de métodos se le conoce como métodos de Monte Carlo.
- Con el desarrollo de los ordenadores, los métodos de Monte Carlo se han
- sido en herramientas cruciales en el estudio de sistemas fuera del equilibrio.
- 
-\end_layout
+Una de estas líneas de investigación se desarrolló entre 1949 y 1952 en
+ Los Álamos, de la mano de Nicholas Metropolis, Arianna W.
+ Rosenbluth, Marshall N.
+ Rosenbluth, Augusta H.
+ Teller, y Edward Teller 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "metropolis_equation_1953"
+literal "false"
 
-\begin_layout Standard
-La linea de investigación continua hasta hoy, con importantes aportaciones
- en cada generación.
- En este trabajo ahondaremos en una pequeña parte de esta linea de investigación.
- Aplicaremos los métodos de Monte Carlo en el estudio de enfriamiento rápidos
- en el modelo 
-\begin_inset Formula $2d$
 \end_inset
 
- O(
+.
+ Su trabajo se centró en comprender la física de las interacciones entre
+ la radiación y la materia bajo condiciones extremas, tales como explosiones,
+ implosiones y la evolución de reacciones nucleares fuera del equilibrio.
+ En estas circunstancias, los experimentos se vuelven complejos, y la teoría
+ detrás de procesos que involucran interacciones entre un vasto número de
+ partículas resulta demasiado intrincada.
+ Para superar estas limitaciones, desarrollaron una serie de métodos basados
+ en procesos estocásticos, conocidos como métodos de Monte Carlo.
+\end_layout
+
+\begin_layout Standard
+Con el posterior desarrollo de los ordenadores, los métodos de Monte Carlo
+ se volvieron herramientas fundamentales en el estudio de diversos sistemas
+ con incontables grados de libertad, tanto en equilibrio como fuera de él.
+ En este trabajo, aplicaremos estos métodos al estudio de enfriamientos
+ rápidos en el modelo 2d O(
 \begin_inset Formula $3$
 \end_inset
 
-).
- 
+), un modelo simplificado del enfriamiento del universo temprano y del 
+\begin_inset Formula $^{4}$
+\end_inset
+
+He en estado superfluido.
 \end_layout
 
 \begin_layout Chapter
@@ -280,25 +277,18 @@ Propagador de evolución
 \end_layout
 
 \begin_layout Standard
-Cuando R.
- Feynman desarrollo su propia formulación de integral de trayectorias.
- R.
- Feynman se pregunto si existía un camino para conectar la mecánica estadística
+Cuando Richard Feynman desarrollo su propia formulación de integral de trayector
+ias, se pregunto si existía un camino para conectar la mecánica estadística
  con la mecánica cuántica.
- La mecánica cuántica descrita por E.
- Schrödinger se planeta una ecuación que describe el sistema físico de interés,
- luego se busca la solución.
- En mecánica estadística, se plantea una función de partición, la cual continent
-e toda la información necesaria sobre el sistema que modela.
+ La mecánica cuántica descrita por Erwin Schrödinger se planeta una ecuación
+ que describe el sistema físico de interés, luego se busca la solución.
  La ecuación de E.
  Schrödinger aumenta en complejidad al aumentar los grados de libertad.
+ En mecánica estadística, se plantea una función de partición, la cual continent
+e toda la información necesaria sobre el sistema que modela.
  La función de partición, propone soluciones factibles para sistemas con
  muchos grados de libertad.
- 
-\end_layout
-
-\begin_layout Standard
-R.
+ R.
  Feynman encontró una función análoga a la función de partición para sistemas
  cuánticos y uno de los modelos que se pueden estudiar es el modelo de interés
  para este trabajo, el modelo 
@@ -314,78 +304,43 @@ R.
 \end_layout
 
 \begin_layout Standard
-En mecánica clásica una observable 
-\begin_inset Formula $O(q,p)$
-\end_inset
-
- es una función de las posiciones y los momentos de un sistema, es decir
- se define en el espacio fase del modelo.
- En mecánica clásica la dinámica de una observable se rige por la ecuación
- 
-\begin_inset Formula 
-\begin{equation}
-\dot{O}=\left\{ O,H\right\} ,\label{eq:corchetes_poison}
-\end{equation}
-
-\end_inset
-
-donde 
-\begin_inset Formula $\left\{ O,H\right\} $
-\end_inset
-
- es el corchete de poisson de las funciones.
- La función 
-\begin_inset Formula $\dot{O}$
-\end_inset
-
- es la derivada de la observable con respecto al tiempo 
-\begin_inset Formula $t$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-En vez de funciones definidas en un espacio fase, en mecánica cuántica se
- definen operadores 
-\begin_inset Formula $\mathcal{O}$
-\end_inset
-
- y 
-\begin_inset Formula $\mathcal{H}$
-\end_inset
-
- en el espacio de Hilbert y el corchete de poisson se transforma en el conmutado
-r de los operadores.
- 
-\end_layout
-
-\begin_layout Standard
-La dinámica del operador 
+Consideremos una observable 
 \begin_inset Formula $\hat{O}$
 \end_inset
 
- en el espacio de Hilbert se describe en la ecuación
+ en el espacio de Hilbert de un sistema físico descrito por el Hamiltoniano
 \begin_inset Formula 
 \begin{equation}
-\dv{\hat{\mathcal{O}}}{t}=\frac{i}{\hbar}\left[\hat{\mathcal{H}},\hat{\mathcal{O}}\right].\label{eq:formulacion_heisemberg}
+\hat{\mathcal{H}}=\frac{1}{2m}\sum\hat{p}_{i}^{2}+\hat{V}.
 \end{equation}
 
 \end_inset
 
-Se le conoce como la formulación de W.
- Heisenberg, el paso a la formulación de E.
+ La dinámica del operador 
+\begin_inset Formula $\hat{O}$
+\end_inset
+
+ sigue la ecuación formulada por Werner Heisenberg
+\begin_inset Formula 
+\begin{equation}
+\dv{\hat{O}}{t}=\frac{i}{\hbar}\left[\hat{\mathcal{H}},\hat{O}\right].\label{eq:formulacion_heisemberg}
+\end{equation}
+
+\end_inset
+
+Pasar de la formulación de W.
+ Heisenberg a la formulación de E.
  Schrödinger implica la transformación dependiente del tiempo dada por el
  operador de evolución aplicado a la observable
 \begin_inset Formula 
 \begin{equation}
-\hat{O}(t)=\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}\hat{O}\mathrm{e}^{it\hat{\mathcal{H}}/\hbar},
+\begin{array}{cc}
+\hat{O_{s}}(t)=\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}\hat{O}\mathrm{e}^{it\hat{\mathcal{H}}/\hbar}, & \ket{\psi(t)}=\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}\ket{\psi}\end{array}.
 \end{equation}
 
 \end_inset
 
-aplicar el operador de evolución a la ecuación 
+Al aplicar el operador de evolución a la ecuación 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:formulacion_heisemberg"
@@ -398,37 +353,36 @@ noprefix "false"
  se deriva la ecuación
 \begin_inset Formula 
 \begin{equation}
-\dv{t}\hat{O}(t)=\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}\left(-\frac{i}{\hbar}\left[\hat{\mathcal{H}},\hat{O}\right]+\dv{t}\hat{O}\right)\mathrm{e}^{it\hat{\mathcal{H}}/\hbar}=0.
+\dv{t}\hat{O_{s}}(t)=\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}\left(-\frac{i}{\hbar}\left[\hat{\mathcal{H}},\hat{O}\right]+\dv{t}\hat{O}\right)\mathrm{e}^{it\hat{\mathcal{H}}/\hbar}=0.
 \end{equation}
 
 \end_inset
 
-Escribiendo la ecuación resultante en términos de conmutadores se tiene
- que
+Reescribiendo la ecuación anterior se tiene
 \begin_inset Formula 
 \begin{equation}
-\dv{t}\hat{O}(t)=\frac{i}{\hbar}\left[\hat{\mathcal{H}},\hat{O}_{s}\right].
+\dv{t}\hat{O_{s}}(t)=\frac{i}{\hbar}\left[\hat{\mathcal{H}},\hat{O}_{s}\right].
 \end{equation}
 
 \end_inset
 
-en notación de Dirac
+Escribiendo en notación de Dirac
 \begin_inset Formula 
 \begin{equation}
-i\hbar\dv{t}\ket{\psi(t)}=\hat{\mathcal{H}}\ket{\psi(t)},\label{eq:schordinger}
 \end{equation}
 
 \end_inset
 
-en donde 
+
 \begin_inset Formula 
 \begin{equation}
-\ket{\psi(t)}=\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}\ket{\psi}
+\begin{array}{c}
+i\hbar\dv{t}\ket{\psi(t)}=\hat{\mathcal{H}}\ket{\psi(t)}.\end{array}\label{eq:schordinger}
 \end{equation}
 
 \end_inset
 
-La solucion de la ec.
+La solución de la ec.
  
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -757,15 +711,7 @@ donde
 \begin_inset Formula $t$
 \end_inset
 
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "wipf_statistical_2013,feynman_space-time_1948,creutz_statistical_1981"
-literal "false"
-
-\end_inset
-
-.
+ .
 \begin_inset Float figure
 wide false
 sideways false
@@ -938,6 +884,14 @@ donde otra vez
 
  en el tiempo 
 \begin_inset Formula $t_{E}$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wipf_statistical_2013,feynman_space-time_1948,creutz_statistical_1981"
+literal "false"
+
 \end_inset
 
 .
@@ -1441,109 +1395,20 @@ Observables
 \end_layout
 
 \begin_layout Standard
-Las propiedades macroscópicas de una amplia gama de materiales, pueden describir
-se mediante modelos de espines.
- Hay propiedades importantes como la energía y al magnetización que se deben
- medir para obtener información de estos sistemas.
- A lo largo de la carrera de física se realizan muchas mediciones en experimento
-s usado diferentes mediante instrumentos y métodos directos o indirectos.
- En el caso los experimentos simulados hay que aplicar un enfoque estadístico.
- Empecemos por lo básico.
+Las propiedades macroscópicas de una amplia gama de materiales pueden describirs
+e mediante modelos de espines.
+ Propiedades como la energía, la magnetización y la carga topológica pueden
+ calcularse a partir de una configuración determinada de espines.
 \end_layout
 
 \begin_layout Standard
-Un proceso estocástico es una secuencia de estados cuya evolución esta determina
-da por por eventos aleatorios, y cada evento esta asociado a un valor aleatorio
- 
-\begin_inset Formula $X$
-\end_inset
-
-.
- Consideremos un conjunto de variables aleatorias 
-\begin_inset Formula $\{X_{i}\}$
-\end_inset
-
-, que representa el estado de un sistema a tiempo 
-\begin_inset Formula $t_{i}$
-\end_inset
-
-, para 
-\begin_inset Formula $i\in\{1,\dots,N\}$
-\end_inset
-
-, el conjunto 
-\begin_inset Formula $\{X_{i}\}$
-\end_inset
-
- es una cadena de Markov.
- Las cadenas de Markov son usadas con frecuencia, como aproximaciones discretas
- a procesos físicos continuos.
- 
-\end_layout
-
-\begin_layout Standard
-Consideremos el tiempo de Markov 
-\begin_inset Formula $t_{i}$
-\end_inset
-
- donde 
-\begin_inset Formula $i\in\{1,\dots,N\}$
-\end_inset
-
- y 
-\begin_inset Formula $O[s]_{i}$
-\end_inset
-
- es el valor de la observable en el instante 
-\begin_inset Formula $t_{i}$
-\end_inset
-
-, el promedio aproximado de la observable en el intervalo temporal medido
- es
-\begin_inset Formula 
-\begin{equation}
-\expval{O}_{\mathrm{aprox}}=\frac{1}{N}\sum_{i=1}^{N}O[s]_{i},
-\end{equation}
-
-\end_inset
-
-donde 
-\begin_inset Formula $[s]_{i}$
-\end_inset
-
- es la configuración del sistema en el instante 
-\begin_inset Formula $t_{i}$
-\end_inset
-
-.
- Aunque la observable varia en cada configuración sucesiva, el valor esperado
- se estabiliza cuando el tamaño de la partición aumenta.
- La desviación estándar de esta suma de configuraciones es
-\begin_inset Formula 
-\begin{equation}
-\mathrm{std}(O)=\sqrt{\frac{1}{N-1}\text{\ensuremath{\left(\sum_{i=1}^{N}O[s]_{i}^{2}-N\expval{O}^{2}\right)}}},
-\end{equation}
-
-\end_inset
-
-y el error estándar se define por la ecuación
-\begin_inset Formula 
-\begin{equation}
-\mathrm{error}(O)=\frac{\mathrm{std}(O)}{\sqrt{N}}.
-\end{equation}
-
-\end_inset
-
-Si cada medición es estadísticamente independiente, conduce al valor esperado
- de la observable y su error estándar definido por la ecuación
-\begin_inset Formula 
-\begin{equation}
-\expval{O}\simeq\expval{O}_{\mathrm{aprox}}\pm\mathrm{error}(O).
-\end{equation}
-
-\end_inset
-
-
+A lo largo de un intervalo temporal, se espera que un sistema físico pase
+ por múltiples configuraciones.
+ Por ello, medir observables en una única configuración produce valores
+ inconsistentes que dependen de la configuración utilizada.
+ Para obtener un resultado útil, se busca calcular el promedio de un observable
+ en un intervalo temporal lo suficientemente amplio como para reducir las
+ fluctuaciones por debajo de un umbral de error deseado.
 \end_layout
 
 \begin_layout Subsection
@@ -2358,57 +2223,150 @@ Métodos de Monte Carlo
 \end_layout
 
 \begin_layout Standard
-El nombre Monte Carlo se refiere a un conjunto de métodos desarrollados
- por un grupo de científicos, en 1940 durante el desarrollo de la bomba
- atómica.
- La esencia de Monte Carlo es la invención de juegos de probabilidad, que
- son usados para estudiar fenómenos físicos reales.
- Los juegos de probabilidad se tratan de sistemas descritos por un conjunto
- de variables aleatorias, la evolución del sistema son los cambio en el
- estado del sistema dados por una función de probabilidad.
- Se asocia cada cambio en el estado del sistema a un valor numérico 
-\begin_inset Formula $i\in\{1,\dots,N\}$
+Un proceso estocástico es un secuencia de eventos aleatorios, consideremos
+ un evento aleatorio con 
+\begin_inset Formula $N$
 \end_inset
 
-, conocido como el tiempo de Markov.
+ posibles resultados 
+\begin_inset Formula $\{x_{1},\dots,x_{N}\}$
+\end_inset
+
+.
+ Una variable aleatoria 
+\begin_inset Formula $X$
+\end_inset
+
+ es una selección aleatoria en el conjunto de los resultados posibles de
+ un evento.
+ La probabilidad de que un valor 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ sea elegido esta dado por 
+\begin_inset Formula $p_{i}=P\{X=x_{i}\}$
+\end_inset
+
+.
+ Cada resultado y su probabilidad, en conjunto forman una distribución.
+\end_layout
+
+\begin_layout Standard
+La importancia de muestreo consiste en evaluar propiedades de una distribución
+ a partir de una muestra de una distribución diferente.
+\end_layout
+
+\begin_layout Standard
+La esencia de los métodos de Monte Carlo es evaluar numéricamente las sumas
+ o integrales del espacio fase.
+ El método de Monte Carlo introducido por Metropolis se basa en la idea
+ de importancia de muestreo.
+ En este enfoque, los puntos del espacio de fases no se seleccionan completament
+e al azar, sino que se distribuyen con mayor densidad en aquellas regiones
+ del espacio de fases que aportan contribuciones dominantes a las integrales.
  
 \end_layout
 
 \begin_layout Standard
-Un ejemplo clásico y con una amplio rango de aplicaciones es el caminante
- aleatorio.
- Este sistema consta de un caminante descrito por una posición 
-\begin_inset Formula $x_{i}\in\mathbb{Z}$
+Una cadena de Markov se representa por una matriz de 
+\begin_inset Formula $W$
 \end_inset
 
-.
- En el siguiente evento el caminante puede desplazarse hacia cualquiera
- de las posiciones 
-\begin_inset Formula $x_{i+1}\in\{x_{i}+1,x-1\}$
+ con entradas 
+\begin_inset Formula $W_{i,j}$
 \end_inset
 
- dada la probabilidad de transición 
+ 
+\begin_inset Formula $i,j\in\mathbb{N}$
+\end_inset
+
+que satisfacen la condición 
 \begin_inset Formula 
 \begin{equation}
-p[x_{i}\rightarrow x_{i+1}]=\frac{1}{2}.
+\sum_{i,j}W_{i,j}=1.
 \end{equation}
 
 \end_inset
 
-En resumen en cada instante el caminante puede desplazarse hacia adelante
- o hacia atrás, según la probabilidad de transición.
- Ya que la probabilidad de transición no depende del tiempo, el caminante
- aleatorio es un sistema estacionario.
- Se dice que la probabilidad de transición del estado 
-\begin_inset Formula $x_{k}$
+Cada valor 
+\begin_inset Formula $W_{i,j}$
 \end_inset
 
- al estado 
-\begin_inset Formula $x_{m}$
+ representa la probabilidad de que un sistema en la configuración 
+\begin_inset Formula $[s]_{i}$
 \end_inset
 
-es estacionaria, si es independiente del tiempo.
- 
+ pase a la configuración 
+\begin_inset Formula $[s]_{j}$
+\end_inset
+
+ en un una unidad de tiempo discreta conocida como paso de Markov.
+\end_layout
+
+\begin_layout Standard
+Consideremos la cadena de Markov dada por 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ donde 
+\begin_inset Formula $i\in\{1,\dots,N\}$
+\end_inset
+
+ y 
+\begin_inset Formula $O[s]_{i}$
+\end_inset
+
+ es el valor de la observable en el instante 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+, el promedio aproximado de la observable en el intervalo temporal medido
+ es
+\begin_inset Formula 
+\begin{equation}
+\expval{O}_{\mathrm{aprox}}=\frac{1}{N}\sum_{i=1}^{N}O[s]_{i},
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $[s]_{i}$
+\end_inset
+
+ es la configuración del sistema en el instante 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+.
+ La desviación estándar de esta suma de configuraciones es
+\begin_inset Formula 
+\begin{equation}
+\mathrm{std}(O)=\sqrt{\frac{1}{N-1}\text{\ensuremath{\left(\sum_{i=1}^{N}O[s]_{i}^{2}-N\expval{O}^{2}\right)}}},
+\end{equation}
+
+\end_inset
+
+y el error estándar se define por la ecuación
+\begin_inset Formula 
+\begin{equation}
+\mathrm{error}(O)=\frac{\mathrm{std}(O)}{\sqrt{N}}.
+\end{equation}
+
+\end_inset
+
+Si cada medición es estadísticamente independiente, conduce al valor esperado
+ de la observable y su error estándar definido por la ecuación
+\begin_inset Formula 
+\begin{equation}
+\expval{O}\simeq\expval{O}_{\mathrm{aprox}}\pm\mathrm{error}(O).
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -2433,6 +2391,11 @@ shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
 status open
+
+\begin_layout Plain Layout
+Definicion: Balance Detallado.
+ 
+\end_layout
 
 \begin_layout Plain Layout
 Sea 
@@ -2648,7 +2611,7 @@ s, una forma de elegir los espines es el método lexicográfico, consiste
  
 \begin_inset CommandInset citation
 LatexCommand cite
-key "metropolis_equation_1953,binder_monte_1988,swendsen_nonuniversal_1987"
+key "binder_monte_1988,swendsen_nonuniversal_1987"
 literal "false"
 
 \end_inset
@@ -3313,18 +3276,18 @@ Cuando el agua se congela, la simetría rotacional se rompe por la elección
 \end_layout
 
 \begin_layout Itemize
-En el universo primitivo, la ruptura de la simetría puede haber conducido
+En el universo temprano, la ruptura de la simetría puede haber conducido
  a la formación de defectos topológicos como monopolos puntuales, cuerdas
  cósmicas lineales o paredes de dominio planares.
 \end_layout
 
 \begin_layout Itemize
-En un condensado de 
+En 
 \begin_inset Formula $^{4}$
 \end_inset
 
-He en estado superfluido.
- La condensación de Bose ocurre alrededor de 
+He en estado superfluidico, la condensación de Bose ocurre alrededor de
+ 
 \begin_inset Formula $2K$
 \end_inset
 
@@ -3339,19 +3302,23 @@ En estos sistemas, los defectos topológicos remanentes son importantes,
 \end_layout
 
 \begin_layout Section
-Experimentos en el universo temprano
+Relacionado al universo temprano
 \end_layout
 
 \begin_layout Standard
-Consideremos un universo temprano en expansión.
- En modelos de interacción débil y electromagnetismo, la temperatura critica
- es del orden de la raíz cuadrada de la constante de acoplamiento de Fermi
- 
-\begin_inset Formula $G_{F}^{\text{1/2}}$
+Consideremos el universo temprano en expansión.
+ En modelos de interacción débil y electromagnetismo, la temperatura crítica
+ es del orden 
+\begin_inset Formula $\sqrt{G_{F}}$
 \end_inset
 
-.
- Siguiendo dicha suposición la temperatura critica se pasa entre 
+, donde 
+\begin_inset Formula $G_{F}$
+\end_inset
+
+ es la constante de Fermi.
+ Siguiendo dicha suposición, el universo paso por la temperatura crítica
+ entre 
 \begin_inset Formula $10^{-\text{10}}s$
 \end_inset
 
@@ -3360,31 +3327,48 @@ Consideremos un universo temprano en expansión.
 \end_inset
 
 .
- Consideremos un campo escalar 
-\begin_inset Formula $\phi$
+ 
+\end_layout
+
+\begin_layout Standard
+Consideremos un campo multi escalar 
+\begin_inset Formula $\phi\in\mathbb{R}^{n}$
 \end_inset
 
  con un lagrangiano invariante bajo el grupo ortogonal O(
 \begin_inset Formula $n$
 \end_inset
 
-).
+),
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathcal{L}=\frac{1}{2}\left(D_{\mu}\phi\right)^{2}-\frac{1}{8}g^{2}\left(\phi^{2}-\eta^{2}\right)^{2}+\frac{1}{8}Tr\left(B_{\mu\nu}B^{\mu\nu}\right)
+\begin{array}{c}
+\mathcal{L}=\frac{1}{2}\left(D_{\mu}\vec{\phi}\right)^{2}-\frac{1}{8}g^{2}\left(\phi^{2}-\eta^{2}\right)^{2}+\frac{1}{8}\mathrm{Tr}\left(B_{\mu\nu}B^{\mu\nu}\right)\\
+D_{\mu}\left(\vec{\phi}\right)=\left(\partial_{\mu}-qB_{\mu}\right)\text{\ensuremath{\vec{\phi}}}\\
+B_{\mu\nu}=O\mu\nu B\mu\nu-D_{\nu}B\mu+q\left[B_{\mu},B_{\nu}\right].
+\end{array}
 \end{equation}
 
 \end_inset
 
-A temperatura cero hay una ruptura espontánea de la simetría a O(
+Donde 
+\begin_inset Formula $g,\nu$
+\end_inset
+
+ son constantes de acoplamiento.
+ A temperatura 
+\begin_inset Formula $T$
+\end_inset
+
+ cero hay una ruptura espontánea de la simetría a O(
 \begin_inset Formula $n$
 \end_inset
 
 -1), por lo que variedad del estado de menor energía es la esfera 
-\begin_inset Formula $M=\mathcal{S}^{n-1}$
+\begin_inset Formula $\mathcal{S}^{n-1}$
 \end_inset
 
 
@@ -3395,13 +3379,15 @@ Para
 \begin_inset Formula $T$
 \end_inset
 
- cerca de la temperatura critica aparecen fluctuaciones en el campo 
-\begin_inset Formula $\phi$
+ cerca de la temperatura crítica aparecen fluctuaciones fuertes en el campo
+ 
+\begin_inset Formula $\vec{\phi}$
 \end_inset
 
- , por debajo de la temperatura critica el valor esperado es algún punto
- en la variedad 
-\begin_inset Formula $M$
+.
+ por debajo de la temperatura crítica el valor esperado es algún punto en
+ 
+\begin_inset Formula $\mathcal{S}^{n-\text{1}}$
 \end_inset
 
 .
@@ -3410,39 +3396,49 @@ Para
 \begin_layout Standard
 Ningún punto de la esfera tiene preferencia, y la elección es independiente
  entre las diferentes regiones del espacio.
- Por lo que se espera la formación de dominios con distinto valor esperado
+ Por lo tanto, se espera la formación de dominios con distinto valor esperado
  de 
-\begin_inset Formula $\phi$
+\begin_inset Formula $\vec{\phi}$
 \end_inset
 
 , variando entre regiones de una manera mas o menos aleatoria.
  Al llegar al equilibrio muchos de estas variaciones dejaran de fluctuar
  acercando el valor esperado de los diferentes dominios al valor constante
  
-\begin_inset Formula $\expval{\phi}$
+\begin_inset Formula $\expval{\vec{\phi}}$
 \end_inset
 
 .
- La cuestión es si algunas de estos dominios pueden sobrevivir.
+ La cuestión es si luego del enfriamiento del universo, las fronteras entre
+ dominios pueden formar defectos topologícos.
 \end_layout
 
 \begin_layout Standard
-Una posibilidad es la neutralidad de el universo respecto a las cargas del
+Una posibilidad es la neutralidad del universo respecto a las cargas del
  campo 
-\begin_inset Formula $\phi$
+\begin_inset Formula $\vec{\phi}$
 \end_inset
 
- en cuyo caso no hay problema con la formación de dominios.
- La otra posibilidad es que el universo podría se ser no neutral respecto
- a las cargas asociadas al campo 
-\begin_inset Formula $\phi$
+ en cuyo caso no hay problema con la formación de dominios, ya que no hay
+ una direccion preferencial hacia algún punto en 
+\begin_inset Formula $\mathcal{S}^{n-1}$
 \end_inset
 
 .
- En este caso el rompimiento de la simetría seria fijado alas condiciones
- iniciales en vez de elecciones aleatorias impidiendo el surgimiento de
- estructuras de dominio, o mas bien limita su tamaño a la longitud de correlació
-n dada por la ecuación
+ La otra posibilidad es que el universo podría tener una carga asociada
+ 
+\begin_inset Formula $q_{t_{0}}$
+\end_inset
+
+ asociada al campo 
+\begin_inset Formula $\vec{\phi}$
+\end_inset
+
+.
+ En este caso el rompimiento de la simetría seria fijado a las condiciones
+ iniciales impidiendo el surgimiento de estructuras de dominio.
+ Consideremos el primer caso, que permite la formacion de dominios, el tamaño
+ de estos dominios esta determinado por la longitud de correlación
 \begin_inset Formula 
 \begin{equation}
 \xi^{-1}\approx g^{2}T.
@@ -3454,15 +3450,11 @@ n dada por la ecuación
 \end_layout
 
 \begin_layout Standard
-Es decir que la longitud de correlación determina la escala de los posibles
- protodominios en un universo no neutral.
-\end_layout
-
-\begin_layout Standard
 Es interesante revisar las posibles configuraciones geométricas de estos
  dominios.
  Las transiciones de fase de ruptura de simetría en el universo temprano
- dejaron estructuras topológicamente estables como monopolos y cuerdas cósmicas
+ podrian haber formado estructuras topológicamente estables como monopolos
+ y cuerdas cósmicas.
 \end_layout
 
 \begin_layout Standard
@@ -3474,54 +3466,6 @@ Un problema que surgió al intentar hacer predicciones sobre las cuerdas
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-En 1985, W.
- Zurek, en Los Álamos, sugirió que las ideas sobre cómo calcular 
-\begin_inset Formula $\xi$
-\end_inset
-
- podrían probarse aplicándolas al problema de la formación de defectos en
- una transición de fase de baja temperatura, en particular la transición
- de normal a superfluido en helio líquido.
-\begin_inset Formula 
-\begin{equation}
-\xi\propto\tau_{Q}^{\sigma}
-\end{equation}
-
-\end_inset
-
-Zurek demostró que en una transición de segundo orden, se podía obtener
- una relación de ley de potencia entre 
-\begin_inset Formula $ξ$
-\end_inset
-
- y 
-\begin_inset Formula $τ_{q}$
-\end_inset
-
-.
- Donde 
-\begin_inset Formula $τ_{Q}$
-\end_inset
-
- se define de modo que la tasa de cambio de temperatura en el punto crítico
- sea 
-\begin_inset Formula $dT/dt=−Tc/τ_{Q}$
-\end_inset
-
- y el índice 
-\begin_inset Formula $σ$
-\end_inset
-
- se pueda calcular en términos de índices críticos conocidos de la transición
- de fase.
- Esencialmente, 
-\begin_inset Formula $τ_{Q}$
-\end_inset
-
- es el tiempo de extinción.
 \end_layout
 
 \begin_layout Standard
@@ -3537,7 +3481,7 @@ literal "false"
  de la pequeña anisotropía en el fondo cósmico de microondas revelan una
  escala de distancia preferencial que las cuerdas cósmicas no pueden explicar.
  Afortunadamente, existen análogos de cuerdas cósmicas en muchos sistemas
- de materia condensada, incluidos los vórtices en los superfluidos
+ de materia condensada, incluidos las lineas de vórtice en superfluidos
 \begin_inset CommandInset citation
 LatexCommand cite
 key "kibble_topology_1976,kibble_phase-transition_2007,kibble_implications_1980"
@@ -3553,37 +3497,81 @@ Experimentos en helio superflúlidico
 \end_layout
 
 \begin_layout Standard
-Existe una analogía entre estas cuerdas cósmicas y vórtices en superfluidos.
- En un superfluido obtenido en un súbito decaimiento de presión, la fase
- de la función de onda en el condensado de helio es análoga a la ruptura
- de simetría del campo de Higgs en el vacío.
+En 1985, W.
+ Zurek, en Los Álamos, sugirió que las ideas sobre cómo calcular 
+\begin_inset Formula $\xi$
+\end_inset
+
+ podrían probarse aplicándolas al problema de la formación de defectos en
+ una transición de fase de baja temperatura, en particular la transición
+ de normal a superfluido en helio líquido.
+ Zurek demostró que en una transición de segundo orden, se podía obtener
+ una relación de ley de potencia entre 
+\begin_inset Formula $ξ$
+\end_inset
+
+ y 
+\begin_inset Formula $τ_{Q}$
+\end_inset
+
+.
+ Donde 
+\begin_inset Formula $τ_{Q}$
+\end_inset
+
+ se define de modo que la tasa de cambio de temperatura en el punto crítico
+ sea 
+\begin_inset Formula $dT/dt=−Tc/τ_{Q}$
+\end_inset
+
+ y el exponente 
+\begin_inset Formula $z$
+\end_inset
+
+ se pueda calcular en términos de índices críticos conocidos de la transición
+ de fase.
+ 
+\begin_inset Formula 
+\begin{equation}
+\xi\propto\tau_{Q}^{z}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Existe una analogía entre cuerdas cósmicas y lineas de vórtice.
+ En un superfluido, tras un súbito decaimiento de presión, la fase de la
+ función de onda en el condensado de helio es análoga a la ruptura de simetría
+ del campo de multi escalar 
+\begin_inset Formula $\vec{\phi}\in\mathbb{R}^{2}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
 Cerca de la transición de fase , el potencial es de la forma
 \begin_inset Formula 
 \begin{equation}
-V=\alpha\abs{\psi\left(\vec{r}\right)}^{2}+\frac{1}{2}\beta\abs{\psi\left(\vec{r}\right)}^{4}.
+V=\alpha\abs{\psi\left(\vec{r}\right)}^{2}+\frac{1}{2}\beta\abs{\psi\left(\vec{r}\right)}^{4},
 \end{equation}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-El parametro de orden de un spuerfluido puede pensarse como la función de
- onda del condensado de Bose.
- En este sistema se pueden formar vórtices cuando el parámetro de de orden,
- es un valor complejo
-\begin_inset Formula 
-\begin{equation}
-\psi=\abs{\psi}e^{i\theta}.
-\end{equation}
-
+Donde 
+\begin_inset Formula $\alpha=\alpha'(T-T_{c})$
 \end_inset
 
-En el rompimiento de simetría la fase 
+ y 
+\begin_inset Formula $\alpha',\beta$
+\end_inset
+
+ son constantes que se deducen a partir del calor especifico.
+ Por debajo de la temperatura crítica tras la ruptura de la simetría en
+ el superfluido 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -3591,8 +3579,22 @@ En el rompimiento de simetría la fase
 \begin_inset Formula $V$
 \end_inset
 
- tiene la forma de un potencial de sombrero.
- Es una situación análoga al modelo cosmológico y una buena aproximación
+ tiene la forma de sombrero.
+\end_layout
+
+\begin_layout Standard
+El parametro de orden de un spuerfluido puede pensarse como la función de
+ onda del condensado de Bose.
+ En este sistema se pueden formar lineas de vórtice cuando el parámetro
+ de orden es un valor complejo
+\begin_inset Formula 
+\begin{equation}
+\psi=\abs{\psi}e^{i\theta}.
+\end{equation}
+
+\end_inset
+
+Es una situación análoga al modelo cosmológico y una buena aproximación
  a el superflido 
 \begin_inset Formula $^{4}$
 \end_inset
@@ -3602,20 +3604,15 @@ He.
 \begin_inset Formula $T_{C}$
 \end_inset
 
-, el coeficiente 
-\begin_inset Formula $\alpha=\alpha'(T-T_{C})$
-\end_inset
-
- donde 
-\begin_inset Formula $\alpha',\beta$
-\end_inset
-
- son constantes que se deducen a partir del calor especifico
+,
 \end_layout
 
 \begin_layout Standard
-Una fracción considerable de los átomos de He ocupan un solo estado cuántico
- a esa temperatura.
+Una fracción considerable de los átomos de 
+\begin_inset Formula $^{4}$
+\end_inset
+
+He ocupan un solo estado cuántico a esa temperatura.
  Entonces 
 \begin_inset Formula $\psi$
 \end_inset
@@ -5521,7 +5518,7 @@ se vuelve inconveniente ya que genera configuraciones estadística-mente
 Se define la velocidad de enfriamiento 
 \begin_inset Formula 
 \begin{equation}
-v_{\mathrm{cool}}=\frac{T_{f}-T_{i}}{\tau_{\mathrm{cool}}}\label{eq:velocidad_de_enfriamiento}
+v=\frac{T_{f}-T_{i}}{\tau_{Q}}\label{eq:velocidad_de_enfriamiento}
 \end{equation}
 
 \end_inset
@@ -5549,7 +5546,7 @@ donde
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-T\left(t\right)=T_{i}+tv_{\mathrm{coo}l}.\label{eq:temperatura}
+T\left(t\right)=T_{i}+vt.\label{eq:temperatura}
 \end{equation}
 
 \end_inset

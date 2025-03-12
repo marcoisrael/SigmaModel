@@ -14,10 +14,10 @@ Algs = {
 obs = {
     "charge": {"label": r"$C_{QQ}(t)/C_{QQ}(0)$", "index": 1, "sym": "Q"},
     "magnetization": {
-                "label": r"$\frac{C_{M}(t)}{C_{M}(0)}$",
-                "index": 2,
-                "sym": "M"
-            },
+        "label": r"$\frac{C_{M}(t)}{C_{M}(0)}$",
+        "index": 2,
+        "sym": "M"
+    },
     "energy": {
         "label": r"$\frac{C_{\mathcal{H}}(t)}{C_{\mathcal{H}}(0)}$",
         "index": 0,
@@ -72,11 +72,11 @@ class fit:
     def fiting(self, func, args=dict()):
         self.func = func
         self.opt, self.cov = curve_fit(
-                                func, self.xdata,
-                                self.ydata,
-                                **args,
-                                sigma=self.yerr
-                            )
+            func, self.xdata,
+            self.ydata,
+            **args,
+            sigma=self.yerr
+        )
         residuals = self.ydata - func(self.xdata, *self.opt)
         dof = self.xdata.size - self.opt.size
         sigma_err = abs(np.std(residuals))
@@ -85,11 +85,11 @@ class fit:
             random_delta = np.random.normal(0, sigma_err, len(self.xdata))
             random_ydata = self.ydata+random_delta
             random_opt, random_cov = curve_fit(
-                            func,
-                            self.xdata,
-                            random_ydata,
-                            sigma=self.yerr+sigma_err
-                        )
+                func,
+                self.xdata,
+                random_ydata,
+                sigma=self.yerr+sigma_err
+            )
             pfit.append(random_opt)
         pfit = np.array(pfit)
 

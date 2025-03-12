@@ -11,14 +11,15 @@ args = parser.parse_args()
 make_plots = False
 os.makedirs("output/plot/length/", exist_ok=True)
 if args.algorithm == "all":
-    algs = ["lexic_metropolis", "lexic_glauber", "random_metropolis", "random_glauber","multi_cluster"]
+    algs = ["lexic_metropolis", "lexic_glauber",
+            "random_metropolis", "random_glauber", "multi_cluster"]
 else:
     algs = args.algorithm.split(",")
 
 for alg in algs:
     print(alg)
     fig, ax = plt.subplots()
-    T = np.array([0.6,0.65,0.7,0.75,0.8,0.9,1.0])
+    T = np.array([0.6, 0.65, 0.7, 0.75, 0.8, 0.9, 1.0])
     params = {
         32: {"color": "red", "line": "-", "marker": "^"},
         64: {"color": "blue", "line": "-", "marker": "*"},
@@ -74,8 +75,8 @@ for alg in algs:
         )
 
         def f(x, a, b, c):
-            return a*x**-b+c 
-		#1.72+0.87
+            return a*x**-b+c
+            # 1.72+0.87
 
         xfit = fit(T, psi, psiErr)
         # ~ # xfit.fiting(f,{"bounds":((0,0,0.1),(np.inf,np.inf,10))})
@@ -84,13 +85,13 @@ for alg in algs:
 
         x = np.linspace(T[0], T[-1], 200)
         # ~ ax.text(
-            # ~ 0.75,
-            # ~ 0.75 - i,
-            # ~ r"$\frac{\chi^2}{\mathrm{dof}}=$" + str(xfit.chisq_by_dof),
-            # ~ fontsize=12,
-            # ~ ha="left",
-            # ~ va="top",
-            # ~ transform=ax.transAxes,
+        # ~ 0.75,
+        # ~ 0.75 - i,
+        # ~ r"$\frac{\chi^2}{\mathrm{dof}}=$" + str(xfit.chisq_by_dof),
+        # ~ fontsize=12,
+        # ~ ha="left",
+        # ~ va="top",
+        # ~ transform=ax.transAxes,
         # ~ )
         # ~ i = i + 0.1
         ax.plot(
@@ -108,10 +109,10 @@ for alg in algs:
 
         # ~ data = np.array([T, psi, psiErr]).transpose()
         # ~ np.savetxt(f"output/length/{LENGTH}_{alg}.csv", data,
-         	# ~ delimiter=",",header="T,xi,xi_error",comments="", fmt="%16f")
+        # ~ delimiter=",",header="T,xi,xi_error",comments="", fmt="%16f")
         # ax.set_title(f"Correlation length, lexicographical Metropolis, L={LENGTH}", fontsize=12)
     fig.savefig(
         f"output/plot/length/length_{alg}.pdf",
-         format="pdf",
-         bbox_inches="tight"
+        format="pdf",
+        bbox_inches="tight"
     )

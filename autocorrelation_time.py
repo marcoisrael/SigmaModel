@@ -22,7 +22,7 @@ L = 64
 # T = np.sort(np.array(list(map(convert, T))))
 
 # ~ T = np.array([0.9, 1.0, 1.2, 1.4, 1.6])
-T = np.array([0.6,0.7,0.8,0.9,1.0,1.2])
+T = np.array([0.6, 0.7, 0.8, 0.9, 1.0, 1.2])
 if args.algorithm == "all":
     algs = [
         "lexic_metropolis",
@@ -120,8 +120,8 @@ for alg in algs:
         comments="",
     )
     cmd = [
-            "/usr/bin/python3",
-            "plot_autocorrelation_time.py",
-            f"-alg {alg} -o {name}"
-           ]
+        "/usr/bin/python3",
+        "plot_autocorrelation_time.py",
+        f"-alg {alg} -o {name}"
+    ]
     os.system(" ".join(cmd))

@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-import re, os
-HOME="/home/israel"
+import re
+import os
+HOME = "/home/israel"
 if os.path.isfile(f"{HOME}/Descargas/citations.bib"):
-	os.system(f"cat {HOME}/Descargas/citations.bib >> citations.bib")
-	os.system(f"rm {HOME}/Descargas/citations.bib")
-	print("cita añadida")
+    os.system(f"cat {HOME}/Descargas/citations.bib >> citations.bib")
+    os.system(f"rm {HOME}/Descargas/citations.bib")
+    print("cita añadida")
 file = open("citations.bib").read()
 cite_list = file.split("@")
 outlines = []

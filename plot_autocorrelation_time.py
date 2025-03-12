@@ -12,12 +12,12 @@ args = parser.parse_args()
 name = args.observable
 if args.algorithm == "all":
     algs = [
-            "lexic_metropolis",
-            "lexic_glauber",
-            "random_metropolis",
-            "random_glauber",
-            "multi_cluster"
-            ]
+        "lexic_metropolis",
+        "lexic_glauber",
+        "random_metropolis",
+        "random_glauber",
+        "multi_cluster"
+    ]
 else:
     algs = args.algorithm.split(",")
 for alg in algs:
@@ -27,19 +27,23 @@ for alg in algs:
         return a*x**-b+c
 
     data = np.loadtxt(
-            f"output/autocorrelation/{name}_{alg}.csv",
-            skiprows=1,
-            delimiter=","
-            )
+        f"output/autocorrelation/{name}_{alg}.csv",
+        skiprows=1,
+        delimiter=","
+    )
     data = data.transpose()
     x = np.linspace(data[0][0], data[0][-1], 200)
     xfit = fit(data[0], data[1], data[2])
     xfit.fiting(f)
     fig, ax = plt.subplots()
+    text = fix(xfit.opt[1], xfit.error[1])+r"$\exp(-$"+fix(xfit.opt[0], xfit.error[0]) + \
+        r"$T)$"+"\n" + \
+        r"$\frac{\chi^2}{\mathrm{dof}}=$"+str(xfit.chisq_by_dof)
+
     ax.text(
         0.99,
         0.99,
-        r"$\frac{\chi^2}{\mathrm{dof}}=$" + str(xfit.chisq_by_dof),
+        text,
         fontsize=16,
         ha="right",
         va="top",
