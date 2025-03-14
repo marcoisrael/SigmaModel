@@ -13,7 +13,7 @@ Algs = {
 }
 obs = {
     "charge": {"label": r"$C_{QQ}(t)/C_{QQ}(0)$", "index": 1, "sym": "Q"},
-    "magnetization": {
+    "magnet": {
         "label": r"$\frac{C_{M}(t)}{C_{M}(0)}$",
         "index": 2,
         "sym": "M"

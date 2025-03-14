@@ -11,18 +11,12 @@ parser.add_argument("-alg", "--algorithm", default="lexic_metropolis")
 parser.add_argument("-o", "--observable", default="energy")
 args = parser.parse_args()
 colors_list = list(colors._colors_full_map.values())
-make_temp_plots = False
+make_temp_plots = True
 name = args.observable
 alg = args.algorithm
 L = 64
-
-# T = os.listdir(f"output/record-3/L64/{alg}")
-# def convert(x):
-# 	return float(x.replace(".csv",""))
-# T = np.sort(np.array(list(map(convert, T))))
-
-# ~ T = np.array([0.9, 1.0, 1.2, 1.4, 1.6])
 T = np.array([0.6, 0.7, 0.8, 0.9, 1.0, 1.2])
+T = np.array([1.2])
 if args.algorithm == "all":
     algs = [
         "lexic_metropolis",
@@ -40,7 +34,7 @@ for alg in algs:
         path = f"output/record-3/L{L}/{alg}/{temp}.csv"
         data = np.loadtxt(path, delimiter=",", skiprows=1)
         X = []
-        for t in np.arange(0, 501):
+        for t in np.arange(0, 101):
             x = correlation(data[:, obs[name]["index"]], t)
             X.append(x)
 
@@ -52,27 +46,7 @@ for alg in algs:
             return a*np.exp(-x/b)
 
         xfit.fiting(f, args={"bounds": ((0, np.inf))})
-        # i = 1
-        # if temp in (0.9, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0):
-        #     xfit = fit(t[0:50], q[0:50], qErr[0:50])
-        #     f = lambda x, a, b: a * np.exp(-x / b)
-        #     xfit.fiting(f, args={"bounds": ((0, np.inf))})
-        #     i = 1
-        # if temp in (0.7, 0.8):
-        #     xfit = fit(t[0:200:4], q[0:200:4], qErr[0:200:4])
-        #     f = lambda x, a1, a2, b1, b2: a1 * np.exp(-x / b1) + a2 * np.exp(-x / b2)
-        #     xfit.fiting(f, args={"bounds": ((0, np.inf))})
-        #     (i,) = np.where(xfit.opt == xfit.opt[2:].max())[0]
-        # if temp in (0.5, 0.6):
-        #     xfit = fit(t[0:500:10], q[0:500:10], qErr[0:500:10])
-        #     f = (
-        #         lambda x, a1, a2, a3, b1, b2, b3: a1 * np.exp(-x / b1)
-        #         + a2 * np.exp(-x / b2)
-        #         + a3 * np.exp(-x / b3)
-        #     )
-        #    xfit.fiting(f, args={"bounds": ((0, np.inf))})
-        #    (i,) = np.where(xfit.opt == xfit.opt[3:].max())[0]
-        # print(temp,fix(xfit.opt[i],xfit.error[i]))
+
         cor.append(xfit.opt[1])
         corErr.append(xfit.error[1])
         Ti.append(temp)
@@ -92,11 +66,10 @@ for alg in algs:
                 color="red",
                 label="Data",
             )
-            ax.set_xlabel(r"$t$", fontsize=18)
-            ax.set_ylabel(obs[name]["label"], fontsize=18)
+            ax.set_xlabel(r"$i$", fontsize=20)
+            ax.set_ylabel(obs[name]["label"], fontsize=20)
             ax.legend()
-            # ax.set_title(f"{alg}, temp = {temp}", fontsize=15)
-            # print(temp, xfit.opt[-1])
+
             os.makedirs(f"output/plot/{name}/L{L}/{alg}", exist_ok=True)
             fig.tight_layout()
             fig.savefig(
@@ -124,4 +97,4 @@ for alg in algs:
         "plot_autocorrelation_time.py",
         f"-alg {alg} -o {name}"
     ]
-    os.system(" ".join(cmd))
+    # ~ os.system(" ".join(cmd))

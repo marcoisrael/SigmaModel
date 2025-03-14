@@ -901,6 +901,19 @@ literal "false"
 Modelos de espín
 \end_layout
 
+\begin_layout Standard
+Las propiedades macroscópicas de una amplia gama de materiales pueden describirs
+e mediante modelos de espines.
+ Propiedades como la energía, la magnetización y la carga topológica pueden
+ calcularse a partir de una configuración determinada de espines.
+\end_layout
+
+\begin_layout Standard
+Un modelo de espines clásicos, consiste en un arreglo de espines, cada espín
+ es una fuente de magnetización que interactúa con el resto de espines siguiendo
+ un potencial de interacción.
+\end_layout
+
 \begin_layout Section
 Los modelos O
 \begin_inset Formula $(n)$
@@ -1395,10 +1408,45 @@ Observables
 \end_layout
 
 \begin_layout Standard
-Las propiedades macroscópicas de una amplia gama de materiales pueden describirs
-e mediante modelos de espines.
- Propiedades como la energía, la magnetización y la carga topológica pueden
- calcularse a partir de una configuración determinada de espines.
+Describir las propiedades macroscópicas de un material implica la definición
+ de variables como, masa 
+\begin_inset Formula $m$
+\end_inset
+
+, la energía 
+\begin_inset Formula $H$
+\end_inset
+
+ y el momento magnético 
+\begin_inset Formula $m$
+\end_inset
+
+, entre otras cantidades.
+ Dividir tales variables entre el volumen 
+\begin_inset Formula $V$
+\end_inset
+
+, convierte las variables macroscópicas en densidades independientes del
+ tamaño del sistema, también son conocidas como variables mecánicas.
+\end_layout
+
+\begin_layout Standard
+Hay otro tipo de cantidades como la presión 
+\begin_inset Formula $P$
+\end_inset
+
+, la temperatura 
+\begin_inset Formula $T$
+\end_inset
+
+ y el campo magnético 
+\begin_inset Formula $h$
+\end_inset
+
+.
+ Caracterizan el ambiente en el que el sistema esta inmerso.
+ En la mayoría de los sistemas, las variables mecánicas están bien definidas
+ solo cuando el valor estas variables se ha especificado.
 \end_layout
 
 \begin_layout Standard
@@ -1413,6 +1461,12 @@ A lo largo de un intervalo temporal, se espera que un sistema físico pase
 
 \begin_layout Subsection
 Energía
+\end_layout
+
+\begin_layout Standard
+La configuración de menor energía en un sistema de espines ocurre cundo
+ todos los espines de la configuración se alinean en la misma dirección,
+ en un sistema isotrópico no hay una dirección preferencial.
 \end_layout
 
 \begin_layout Standard
@@ -1759,7 +1813,7 @@ La energía real asociada a ese intervalo es el promedio aproximado mas la
  Se define como el valor esperado de la energía dividida por el volumen
 \begin_inset Formula 
 \begin{equation}
-\rho_{\mathcal{H}}=\frac{\expval{\mathcal{H}}}{V}.
+h=\frac{\expval{\mathcal{H}}}{V}.
 \end{equation}
 
 \end_inset
@@ -1778,7 +1832,7 @@ En modelos de espines clásicos, la magnetización
 
  es un escalar que depende de la alineación de los espines de una configuración.
  Se define como la magnitud de la suma de los espines de una configuración
- dividido por en numero de espines 
+ dividido por en número de espines 
 \begin_inset Formula $V$
 \end_inset
 
@@ -1915,20 +1969,6 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-Formula de A.
- Oosterom y J.
- Strackee 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "van_oosterom_solid_1983,eriksson_measure_1990"
-literal "false"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Plain Layout
 Sean 
 \begin_inset Formula $\vec{a},\vec{b},\vec{c}\in\mathbb{R}^{3}$
 \end_inset
@@ -1937,11 +1977,19 @@ Sean
 \begin_inset Formula $\Omega$
 \end_inset
 
- el angulo solido generado por 
+ el ángulo solido generado por 
 \begin_inset Formula $\vec{a},\vec{b},\vec{c}$
 \end_inset
 
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "todhunter_spherical_2021"
+literal "false"
 
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -2484,8 +2532,8 @@ Algoritmo de Metropolis
 \begin_layout Standard
 Metropolis es un algoritmo de actualización local esto significa que los
  elementos de la configuración cambian individualmente, para generar una
- nueva configuración se usa la probabilidad e transición con todos los elementos
- de la configuración.
+ nueva configuración se usa la probabilidad de transición con todos los
+ elementos de la configuración.
  Consideremos el modelo de espines 
 \begin_inset Formula $2$
 \end_inset
@@ -2512,15 +2560,18 @@ noprefix "false"
 .
  En este modelo, un algoritmo de actualizaron local actúa sobre un espín
  y sus vecinos mas cercanos.
- Dada una configuración 
+ 
+\end_layout
+
+\begin_layout Standard
+Dada una configuración 
 \begin_inset Formula $[s]$
 \end_inset
 
- cada elemento 
-\begin_inset Formula $\vec{s}_{x}\in[s]$
-\end_inset
-
- cambia siguiendo a la probabilidad de transición
+, para cada elemento en la configuración se propone un cambio aleatorio
+ que resulta en una configuración [s'].
+ Si el cambio propuesto se acepta o se rechaza depende a la probabilidad
+ de aceptación definida como
 \begin_inset Formula 
 \begin{equation}
 p[s\rightarrow s']=\begin{cases}
@@ -2535,18 +2586,7 @@ p[s\rightarrow s']=\begin{cases}
 \end_layout
 
 \begin_layout Standard
-Como en este caso la probabilidad transición determina si se acepta o se
- rechaza un cambio en la configuración, a esta función se le llama probabilidad
- de aceptación.
- Dadas dos configuraciones 
-\begin_inset Formula $[s]$
-\end_inset
-
- y 
-\begin_inset Formula $[s']$
-\end_inset
-
-, la diferencia en la energía de las configuraciones es 
+La diferencia en la energía de las configuraciones es 
 \begin_inset Formula 
 \begin{equation}
 \Delta\mathcal{H}=\mathcal{H}[s']-\mathcal{H}[s].
@@ -2554,9 +2594,57 @@ Como en este caso la probabilidad transición determina si se acepta o se
 
 \end_inset
 
-Aunque la probabilidad de aceptación definida es valida en cualquier modelo
- de espines, es útil escribir la probabilidad de aceptación explicita en
- el modelo 
+Es conveniente definir la probabilidad de aceptación en función de la diferencia
+ de energía entre configuraciones
+\begin_inset Formula 
+\begin{equation}
+p[s\rightarrow s']=\begin{cases}
+\mathrm{e}^{-\beta\Delta\mathcal{H}} & \mathrm{si}\qquad\Delta\mathcal{H}\geq0\\
+0 & \mathrm{si}\qquad\Delta\mathcal{H}<0.
+\end{cases}
+\end{equation}
+
+\end_inset
+
+Si la energía de la configuración disminuye con el cambio, la probabilidad
+ de aceptaciones 1, y se acepta de inmediato.
+ Si la energía de la configuración aumenta, esta se acepta con una probabilidad
+ 
+\begin_inset Formula $\mathrm{e}^{-\beta\Delta\mathcal{H}}$
+\end_inset
+
+.
+ A mayor temperatura 
+\begin_inset Formula $\beta\rightarrow0$
+\end_inset
+
+ y la probabilidad de aceptación de las configuraciones que aumentan la
+ energía se acerca a 1.
+ Esto se traduce en mas ruido térmico.
+ Por otro lado a menor temperatura 
+\begin_inset Formula $\beta\rightarrow\infty$
+\end_inset
+
+ la probabilidad de aceptación de las configuraciones que aumentan la energía
+ tiende a cero.
+ A menor temperatura, menor número de fluctuaciones, y un menor número de
+ fluctuaciones permite que el sistema se aproxime al estado de mínima energía.
+ La prueba de aceptación se repite para cada elemento de la configuración
+ 
+\begin_inset Formula $[s]$
+\end_inset
+
+, una vez que se probaron todos los espines, se dice que se ha realizado
+ un barrido.
+ Un barrido corresponde una unidad de tiempo discreto de Markov para el
+ algoritmo Metropolis, la forma en la que se realiza el barrido puede ser
+ lexicográfica, en la que los espines se elijen siendo un orden basado en
+ las posiciones de la retícula.
+ O puede ser aleatorio en donde los espines se elijen al azar.
+\end_layout
+
+\begin_layout Standard
+En el modelo 
 \begin_inset Formula $2$
 \end_inset
 
@@ -2577,38 +2665,19 @@ Aunque la probabilidad de aceptación definida es valida en cualquier modelo
 
 \end_inset
 
-El cambio en el espín 
-\begin_inset Formula $\vec{s}_{i,j}$
+Calcular la diferencia de energía entre configuraciones en el modelo 2d
+ O(
+\begin_inset Formula $3$
 \end_inset
 
- se acepta con probabilidad 
-\begin_inset Formula $p_{i,j}$
-\end_inset
-
-.
- Siguiendo lo anterior la probabilidad de aceptación de un cambio en la
- configuración es
-\begin_inset Formula 
-\begin{equation}
-p_{i,j}=\begin{cases}
-\mathrm{e}^{-\beta\Delta\mathcal{H}_{i,j}} & \mathrm{si}\qquad\Delta\mathcal{H}_{i,j}\geq0\\
-0 & \mathrm{si}\qquad\Delta\mathcal{H}_{i,j}<0.
-\end{cases}
-\end{equation}
-
-\end_inset
-
-El cambio se acepta con probabilidad 
-\begin_inset Formula $p_{i,j}$
-\end_inset
-
-, se elije un otro elemento de la configuración y se repiten los pasos anteriore
-s, una forma de elegir los espines es el método lexicográfico, consiste
- en empezar por el primer elemento de la cuadrícula 
-\begin_inset Formula $\vec{s_{1,1}}$
-\end_inset
-
- 
+)implicar realizar pocos cálculos, por lo que los algoritmos de actualización
+ local son muy eficientes lejos de la temperatura crítica, el problema con
+ la temperatura crítica es que a disminuir el número de cambios que se aceptan,
+ el tiempo de relajación del sistema aumenta exponencialmente, a este fenómeno
+ se le conoce como desaceleración crítica.
+ Si se necesita estudiar sistemas en equilibrio cerca de la temperatura
+ crítica hay una opción mas conveniente que consiste en usar un algoritmo
+ que actualice grupos de espines en vez de espines individues 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "binder_monte_1988,swendsen_nonuniversal_1987"
@@ -2634,13 +2703,12 @@ literal "false"
 
 es al igual que el algoritmo Metropolis de actualización local.
  La diferencia con el algoritmo de Metropolis es la probabilidad de aceptación.
- La probabilidadde transicion de lagoritmo de Glauber es 
+ La propuesta es construir una función que cumpla con la ecuación de balance
+ detallado 
 \begin_inset Formula 
-\begin{align}
-p[s\rightarrow s'] & =\frac{\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}{1+\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}\nonumber \\
- & =\frac{\mathrm{e}^{-\beta\left(\mathcal{H}[s]-\mathcal{H}[s']\right)}}{1+\mathrm{e}^{\beta\left(\mathcal{H}[s]-\mathcal{H}[s']\right)}}\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}\nonumber \\
- & =p[s'\rightarrow s]\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}.
-\end{align}
+\begin{equation}
+p[s\rightarrow s']p[s]=p[s'\rightarrow s]p[s'].
+\end{equation}
 
 \end_inset
 
@@ -2656,50 +2724,96 @@ p[s\rightarrow s']\frac{\mathrm{e}^{-\beta\mathcal{H}[s]}}{Z}=p[s'\rightarrow s]
 
 \end_inset
 
-Se cumple la ecuación de balance detallado
+Se propone la probabilidad de aceptación de algoritmo de Glauber como 
 \begin_inset Formula 
-\begin{equation}
-p[s\rightarrow s']p[s]=p[s'\rightarrow s]p[s'].
-\end{equation}
+\begin{align}
+p[s\rightarrow s'] & =\frac{\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}{1+\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}\nonumber \\
+ & =\frac{\mathrm{e}^{-\beta\left(\mathcal{H}[s]-\mathcal{H}[s']\right)}}{1+\mathrm{e}^{\beta\left(\mathcal{H}[s]-\mathcal{H}[s']\right)}}\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}\nonumber \\
+ & =p[s'\rightarrow s]\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}.
+\end{align}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Se propone cambiar el espín 
-\begin_inset Formula $\vec{s}_{i,j}$
-\end_inset
-
- a 
-\begin_inset Formula $\vec{s}\,'_{i,j}$
-\end_inset
-
-, la diferencia en la energía antes y después del cambio esta dado por la
- ec.
+La propuesta cumple la ecuación de balance detallado.
  
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:energy_diff"
-plural "false"
-caps "false"
-noprefix "false"
+\begin_inset Formula 
+\begin{equation}
+p[s\rightarrow s']=\frac{\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}{1+\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}.
+\end{equation}
 
 \end_inset
 
-, la probabilidad de aceptación para el cambio de el espín es
+En términos de la diferencia de energía
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-p_{i,j}=\frac{\mathrm{e}^{-\beta\Delta H_{i,j}}}{1+\mathrm{e}^{-\beta\Delta H_{i,j}}}.
+p[s\rightarrow s']=\frac{\mathrm{e}^{-\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{-\beta\Delta\mathcal{H}}}.
 \end{equation}
 
 \end_inset
 
+Similar al algoritmo de Metropolis dada una configuración 
+\begin_inset Formula $[s]$
+\end_inset
 
+, para cada elemento en la configuración se propone un cambio aleatorio
+ que resulta en una configuración [s'].
+ Si la energía de la configuración aumenta a mayor temperatura 
+\begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow0$
+\end_inset
+
+ y la probabilidad de aceptación se aproxima a 
+\begin_inset Formula $1/2$
+\end_inset
+
+.
+ A menor temperatura 
+\begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow\infty$
+\end_inset
+
+ y 
+\begin_inset Formula $\mathrel{e}^{-\beta\Delta\mathcal{H}}\rightarrow0$
+\end_inset
+
+, por lo tanto la probabilidad de aproxima a 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ Por otro lado si la energía de la configuración disminuye.
+ A mayor temperatura igual que en el caso anterior 
+\begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow0$
+\end_inset
+
+ y la probabilidad de aceptación se aproxima a 
+\begin_inset Formula $1/2$
+\end_inset
+
+.
+ A menor temperatura 
+\begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow-\infty$
+\end_inset
+
+ y 
+\begin_inset Formula $p[s\rightarrow s']\rightarrow1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Al igual que en algoritmo de Metropolis, el problema con la temperatura
+ crítica es que a disminuir el número de cambios que se aceptan, el tiempo
+ de relajación del sistema aumenta exponencialmente.
+ Una forma de contrarrestar el problema es aumentar el número de configuraciones
+ que disminuyen la energía del sistema limitando el área en la que se permiten
+ nuevas configuraciones, la desventaja es que limitar las configuraciones
+ a una zona restringida también disminuye el tiempo de relajación, pero
+ puede encontrarse un equilibrio entre número de cambios aceptados el tamaño
+ del área permitida para nuevas configuraciones de manera que se minimice
+ el tiempo de relajación del sistema.
 \end_layout
 
 \begin_layout Section
@@ -2707,7 +2821,7 @@ Algoritmo cluster
 \end_layout
 
 \begin_layout Standard
-El algoritmo cluster sugerido por R.
+El algoritmo Cluster sugerido por R.
  Swendsen y J.
  Wang, se basa en la observación de que la función de partición se puede
  escribir como una suma sobre un grupo de distribuciones 
@@ -2719,16 +2833,21 @@ literal "false"
 \end_inset
 
 .
- El algoritmo single-cluster consiste en generar un grupo de espines enlazados
- y cambiar la configuración de todos los espines, el algoritmo cluster evita
- la desaceleración cerca del punto crítico, que es característica de los
- algoritmos de actualización local.
- Se elije un espín aleatorio en la configuración 
+ Consiste en generar grupos de espines enlazados y cambiar la configuración
+ de todos los espines en cada grupo a la vez.
+ Una de las principales ventajas del algoritmo Cluster es que evita la desaceler
+ación crítica característica de los algoritmos de actualización local.
+ 
+\end_layout
+
+\begin_layout Standard
+El primer paso en el algoritmo Cluster es la formación de grupos.
+ Se elije un espín en la configuración 
 \begin_inset Formula $\vec{s}\in[s]$
 \end_inset
 
 .
- Se define un vector aleatorio 
+ En seguida propone un vector aleatorio 
 \begin_inset Formula $\vec{w}\in S^{2}$
 \end_inset
 
@@ -2736,11 +2855,11 @@ literal "false"
 \begin_inset Formula $\vec{s}$
 \end_inset
 
- respecto a el plano normal a 
+ respecto a el plano normal a vector de Wolf 
 \begin_inset Formula $\vec{w}$
 \end_inset
 
- con lo que se define el espín 
+ 
 \begin_inset Formula 
 \begin{equation}
 \vec{s}\,'=\vec{s}-2\left(\vec{w}\cdot\vec{s}\right)\vec{w}.
@@ -2748,7 +2867,15 @@ literal "false"
 
 \end_inset
 
-Para formar un grupo de espines se define una probabilidad de enlace 
+Para determinar si el espín 
+\begin_inset Formula $\vec{s}$
+\end_inset
+
+ esta enlazado con sus espines vecinos mas cercano, se elije uno de los
+ espines vecinos y se calcula la probabilidad de enlace mediante la función
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 p_{\mathrm{enlace}}=\begin{cases}
@@ -2759,35 +2886,44 @@ p_{\mathrm{enlace}}=\begin{cases}
 
 \end_inset
 
- La probabilidad de enlace se prueba con los espines vecinos mas cercanos,
- si dos espines se enlazan entonces forman parte del mismo grupo.
- El siguiente paso es probar los enlaces de los nuevos elementos del grupo
- en el caso de que haya enlaces.
- El proceso de probar los enlaces de los espines se repite hasta que no
- se añadan nuevos espines al grupo.
- Una forma eficiente de formar grupos, es aplicar el algoritmo de Hoshen-Kopelma
-n que se describe para el modelo 
+Igual que en los algoritmos anteriores es conveniente expresar la probabilidad
+ de enlace en función de la diferencia de energía
+\begin_inset Formula 
+\begin{equation}
+p_{\mathrm{enlace}}=\begin{cases}
+1-\mathrm{e}^{-\beta\Delta\mathcal{H}} & \mathrm{si}\qquad\Delta\mathcal{H}\geq0\\
+0 & \mathrm{si}\qquad\beta\Delta\mathcal{H}<0.
+\end{cases}
+\end{equation}
+
+\end_inset
+
+ Si dos espines se enlazan entonces forman parte del mismo grupo, luego
+ se prueba si existe un enlace con el resto de espines mas cercanos.
+ Una vez que se probaron los enlaces se prueban enlaces entre los espines
+ que forman la frontera del grupo con sus respectivos espines mas cercanos
+ y si se forman nuevos enlaces se añaden al grupo.
+ Este proceso se repite hasta que se forma un grupo asilado.
+ Un grupo puede consistir de un único espín si sus espines vecinos no se
+ enlazan, o puede estar formado por todos los espines de la configuración,
+ esto puede suceder cerca de la temperatura critica.
+ Una forma de realizar el proceso de formación de grupos es usar el algoritmo
+ de Hoshen-Kopelman que se describe para el modelo 
 \begin_inset Formula $2$
 \end_inset
 
--d O(3) en el apéndice.
+-d O(3) en el apéndice B.
+ 
 \end_layout
 
 \begin_layout Standard
-En el algoritmo multi-cluster se generan múltiples grupos de espines, estos
- grupos deben contener el total de espines de la configuración.
- El tamaño mínimo para un grupo es el de un espín y el máximo es el total
- de espines.
- Una vez formados los grupos se cambia la configuración de cada grupo reflejando
- los espines respecto al plano normal a 
-\begin_inset Formula $\vec{w}$
+Una vez formados los grupos se decide si un grupo es reflejado respecto
+ al plano de Wolf con probabilidad 
+\begin_inset Formula $p_{\mathrm{flip}}=1/2$
 \end_inset
 
- con probabilidad 
-\begin_inset Formula $p_{\mathrm{cluster}}=1/2$
-\end_inset
-
-.
+, este valor minimiza el tiempo de relajación del sistema al mantener mas
+ menos la mitad de los grupos y cambiar la configuración de la otra mitad..
 \end_layout
 
 \begin_layout Chapter
@@ -2799,21 +2935,38 @@ Transiciones de fase
 \end_layout
 
 \begin_layout Standard
-Dos propiedades relevantes en la descripción macroscópica de un ferro-magneto
- son, la energía total y el momento magnético total, dividir estas cantidades
- por el volumen da la densidad de energía y la magnetización, estas cantidades
- tienen el nombre de variables mecánicas del sistema.
- Hay otro tipo de cantidades que son externas como la temperatura 
-\begin_inset Formula $T$
+La temperatura es un paramento que añade ruido aleatorio a cambiar las direccion
+es de los espines.
+ A temperatura 
+\begin_inset Formula $T=0$
 \end_inset
 
- y el campo magnético 
-\begin_inset Formula $H$
+ no hay fluctuaciones y el sistema alcanza eventualmente una configuración
+ de energía mínima.
+ Cuando la temperatura 
+\begin_inset Formula $T>0>T_{c}$
 \end_inset
 
-.
- Este tipo de variables interactúan con los espines y cambian las variables
- mecánicas.
+ se forman grupos de espines alineados, el vector de magnetización de cada
+ grupo apunta en una dirección diferente, por lo que el sistema no alcanza
+ una configuración de energía mínima.
+ A mayor temperatura es mayor el número de espines apuntando en direcciones
+ aleatorias.
+ Pasando la temperatura crítica, la intensidad de las fluctuaciones evita
+ la formación de grupos de espines alineados, por lo que predomina el ruido
+ termodinámico.
+ En el proceso mencionado se pasan por dos fases, esenciales, una fase ordenada
+ por debajo de la temperatura crítica y una fase desordenada por encima
+ de la temperatura crítica.
+ El cambio entre estas dos fases es una transición de segundo orden, ya
+ que implica una discontinuidad en la segunda derivada de la energía libre
+ del sistema.
+\end_layout
+
+\begin_layout Standard
+Cuando se perturba un sistema en equilibrio, las variables mecánicas del
+ sistema cambian, el tiempo que el sistema tarda en alcanzar nuevamente
+ el estado de equilibrio termodinámico es conocido como tiempo de relajación
 \end_layout
 
 \begin_layout Standard
@@ -2953,7 +3106,7 @@ Transición de fase de segundo orden.
 \end_layout
 
 \begin_layout Standard
-Una transición de false ocurre cuando hay una discontinuidad en la energía
+Una transición de fase ocurre cuando hay una discontinuidad en la energía
  libre o en una de sus derivadas, la transición de fase presenta un cambio
  visible en las propiedades macroscópicas del sistema.
  La energía es proporcional al logaritmo de la función de partición
@@ -3104,6 +3257,44 @@ y
  es un exponente crítico.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/correlation_length/lexic_metropolis_L32_1.0.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Función de correlación
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Escalamiento
 \end_layout
@@ -3195,7 +3386,7 @@ Universalidad
 \end_layout
 
 \begin_layout Standard
-Debido a el numero de elementos que interactúan en un modelo microscópico
+Debido a el número de elementos que interactúan en un modelo microscópico
  realista, no es posible hacer predicciones exactas sobre todas las cantidades
  relevantes.
  El concepto de clases de universalidad fue señalado primeramente por Kadanoff,
@@ -3600,7 +3791,7 @@ Es una situación análoga al modelo cosmológico y una buena aproximación
 \end_inset
 
 He.
- en particular para un spuerfluido cerca de la temperatura critica 
+ en particular para un spuerfluido cerca de la temperatura crítica 
 \begin_inset Formula $T_{C}$
 \end_inset
 
@@ -3719,16 +3910,50 @@ El tiempo de auto-correlación depende del algoritmo de Monte Carlo particular
  que se use y en general cerca de un punto crítico diverge según la ecuación
 \begin_inset Formula 
 \begin{equation}
-\tau\propto\xi^{z}
+\tau_{\mathrm{exp}}\propto T^{\zeta}
 \end{equation}
 
 \end_inset
 
 donde 
-\begin_inset Formula $z$
+\begin_inset Formula $\zeta$
 \end_inset
 
  es el exponente crítico dinámico.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/magnet/L64/lexic_metropolis/lexic_metropolis_1.2.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tiempo de autocorrelación
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
@@ -3820,7 +4045,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename thermalization.pdf
+	filename output/thermalization.pdf
 	scale 50
 	groupId plots
 
@@ -3833,7 +4058,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Termalizacion de dos sistemas 2d O(
+Termalización de dos sistemas 2d O(
 \begin_inset Formula $3$
 \end_inset
 
@@ -4553,7 +4778,7 @@ name "teblength"
 \begin_layout Standard
 El tiempo de auto correlación se cálculo en equilibrio térmico para las
  temperaturas 
-\begin_inset Formula $T\in\left\{ 0.6,0.65,0.7,0.75,0.8\right\} $
+\begin_inset Formula $T\in\left\{ 0.6,0.7,0.8,0.9,1.0,1.2\right\} $
 \end_inset
 
 .
@@ -4597,7 +4822,7 @@ Algoritmo
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $z_{Q}$
+\begin_inset Formula $\zeta_{Q}$
 \end_inset
 
 
@@ -4609,7 +4834,7 @@ Algoritmo
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $z_{\mathcal{H}}$
+\begin_inset Formula $\zeta_{\mathcal{H}}$
 \end_inset
 
 
@@ -4621,7 +4846,7 @@ Algoritmo
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $z_{m}$
+\begin_inset Formula $\zeta_{m}$
 \end_inset
 
 
@@ -5102,7 +5327,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -5135,7 +5360,7 @@ Algoritmo de Metropolis lexicográfico.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -5171,7 +5396,7 @@ Algorimo de Metropolis aleatorio.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -5201,14 +5426,10 @@ Algoritmo de Glauber lexicográfico.
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-\align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -5524,7 +5745,7 @@ v=\frac{T_{f}-T_{i}}{\tau_{Q}}\label{eq:velocidad_de_enfriamiento}
 \end_inset
 
 donde 
-\begin_inset Formula $\tau_{\mathrm{cool}}$
+\begin_inset Formula $\tau_{\mathrm{Q}}$
 \end_inset
 
  es el número de pasos para llegar desde la temperatura inicial 
@@ -5621,7 +5842,7 @@ Se realizaron enfriamientos desde la temperatura
 \end_inset
 
 , usando las velocidades de enfriamiento 
-\begin_inset Formula $\tau_{\mathrm{cool}}\in\left\{ 4,6,8,10,12,14,16\right\} $
+\begin_inset Formula $\tau_{\mathrm{cool}}\in\left\{ 8,9,10,11,12,13,14,15,16,17,18\right\} $
 \end_inset
 
 .
@@ -6031,8 +6252,8 @@ Multi cluster
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Susceptibilidad topológica 
-\begin_inset Formula $\chi_{t}$
+Susceptibilidad topológica final 
+\begin_inset Formula $\chi_{t_{f}}$
 \end_inset
 
  respecto a la velocidad de enfrenamiento 
@@ -6807,7 +7028,7 @@ Susceptibilidad magnetización
 \end_inset
 
  respecto a la velocidad de enfrenamiento 
-\begin_inset Formula $\tau_{\mathrm{cool}}$
+\begin_inset Formula $\tau_{\mathrm{Q}}$
 \end_inset
 
 .
@@ -7151,6 +7372,27 @@ Resumen y conclusiones
 \end_layout
 
 \begin_layout Standard
+A partir de los resultados en equilibrio se muestra consistencia en los
+ resultados para los diferentes algoritmos.
+ En el caso de la longitud de correlación, y los tiempos de relajación los
+ algoritmos de actualización local dieron resultados consistentes, mientas
+ que el algoritmo Cluster tuvo resultados diferentes en los tiempos de relajació
+n para la magnetización y no dio resultados para la densidad de energía
+ y la susceptibilidad topológica para las temperaturas 
+\begin_inset Formula $T\in\left\{ 0.6,0.7,0.8,0.9,1.0,1.2\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Los experimentos fuera del equilibrio también dieron resultados consistentes
+ con la ley de escalamiento, para la susceptibilidad topológica y la magnetizaci
+ón, pero en el caso de la energía la calidad de los ajustes no fue suficiente
+ para mostrar una ley de escalamiento.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -7175,18 +7417,27 @@ Distribución aleatoria de vectores en la esfera
 \end_layout
 
 \begin_layout Standard
-Se quiere generar una distribución uniforme y aleatoria de vectores en la
- esfera 
+Uno de los principales retos para usar los métodos de Monte Carlo en la
+ simulación del modelo 2d O(3) es la generación de vectores aleatorios uniformem
+ente distribuidos en la esfera 
+\begin_inset Formula $\mathcal{S}^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Un elemento de la esfera 
 \begin_inset Formula $S^{2}$
 \end_inset
 
-, en coordenadas esféricas tenemos los siguientes parámetros
+ se puede escribir en coordenadas esféricas siguiendo la ecuación 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\vec{s}=\left(\sin\theta\cos\text{\ensuremath{\phi},\ensuremath{\sin\theta\sin\phi},\ensuremath{\cos\theta}}\right),
+\vec{s}=\left(\sin\theta\cos\text{\ensuremath{\phi},\ensuremath{\sin\theta\sin\phi},\ensuremath{\cos\theta}}\right),\label{eq:coordenadas_esfericas}
 \end{equation}
 
 \end_inset
@@ -7200,140 +7451,186 @@ donde
 \end_inset
 
 .
- Es posible generar números aleatorios uniformemente distribuidos en el
- intervalo 
-\begin_inset Formula $\left(0,1\right)$
-\end_inset
-
- y escalar los intervalos para generar una pareja 
+ Generar parámetros aleatorios 
 \begin_inset Formula $\left(\theta_{r},\phi_{r}\right)$
 \end_inset
 
-, el problema es que no genera una distribución uniforme en la esfera ya
- que los hay mayor probabilidad de generar un vector cercano al polo norte
- de la esfera, este problema se debe a que en la transformación de coordenadas
- del plano a la esfera, la frontera del rectángulo de área 
-\begin_inset Formula $2\pi^{2}$
+, resulta en una distribución mas densa en el polo norte debido a la transformac
+ión de coordenadas cartesianas a coordenadas esféricas.
+ Una forma de corregir el problema es seleccionar parámetros usando funciones
+ auxiliares 
+\begin_inset Formula $u(\theta,\phi),v(\theta,\phi)$
 \end_inset
 
- se mapea a un único punto en el polo de proyección, podemos corregir el
- efecto compensando disminuyendo la probabilidad cerca de la frontera.
- La densidad de probabilidad 
-\begin_inset Formula $f(\vec{r})$
+ que puedan corregir la distribución.
+\end_layout
+
+\begin_layout Standard
+Definamos 
+\begin_inset Formula $\sigma(\theta,\phi)$
 \end_inset
 
- en la superficie de la esfera cumple la siguiente relación
+ como la densidad de probabilidad en la superficie de la esfera.
+ Si la probabilidad es la misma para cada punto de la esfera la densidad
+ de probabilidad es un valor constante además la integral de la densidad
+ de probabilidad sobre la esfera es 
+\begin_inset Formula $1$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\int_{S}f(\theta,\phi)dS=1.
+\int_{0}^{\pi}\int_{0}^{2\pi}\sigma(\theta,\phi)\sin\theta\dd\theta\dd\phi=1.
 \end{equation}
 
 \end_inset
 
-Ya que queremos que la probabilidad sea igual para cualquier dirección la
- densidad de probabilidad tiene que ser constante, por lo que la densidad
- de probabilidad tiene que ser 
-\begin_inset Formula $f(\theta,\phi)=1/4\pi$
+Como la densidad de probabilidad es constante, se puede separar de la integral,
+ resultando en una integral muy sencilla de resolver.
+\begin_inset Formula 
+\begin{equation}
+\sigma\int_{0}^{\pi}\dd\phi\int_{0}^{2\pi}\sin\theta\dd\theta=1
+\end{equation}
+
 \end_inset
 
-, entonces
+
+\end_layout
+
+\begin_layout Standard
+Las funciones que buscamos se encuentran separando las dependencias de 
+\begin_inset Formula $\theta,\phi$
+\end_inset
+
+ respectivamente
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\frac{1}{4\pi}\int_{0}^{2\pi}d\phi\int_{0}^{\pi}\sin\theta d\theta=\frac{1}{2}\int_{0}^{\pi}\sin\theta d\theta.
+u(\theta)=\frac{1}{2}\int_{0}^{2\pi}\sin\theta\dd\theta=\frac{1}{2}(1-\cos\theta),
 \end{equation}
 
 \end_inset
 
-La contribución de 
-\begin_inset Formula $\phi$
+
+\begin_inset Formula 
+\begin{equation}
+v(\phi)=\frac{1}{\pi}\int_{0}^{\pi}\dd\phi=\frac{1}{\pi}\phi.
+\end{equation}
+
 \end_inset
 
- es lineal, no es el caso para 
-\begin_inset Formula $\theta$
+
+\end_layout
+
+\begin_layout Standard
+Despejando los parámetros se tiene
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{cc}
+\theta=\arccos(1-2u), & \phi=v\pi,\end{array}\label{eq:transformaciones}
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $u,v\in(0,\text{1})$
 \end_inset
 
 .
- Definiendo
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-u(\theta)=\frac{1}{2}\int_{0}^{\theta}\sin\theta'd\theta'=\frac{1}{2}(1-\cos\theta),
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\cos\theta=1-2u.
-\end{equation}
-
-\end_inset
-
-Resolviendo obtenemos la forma de 
-\begin_inset Formula $\theta$
-\end_inset
-
- que cumple que dada una distribución uniforme de 
-\begin_inset Formula $u\in(0,1)$
-\end_inset
-
- genera una distribución uniforme en la esfera 
+ El proceso para generar una distribución uniforme ya aleatoria de vectores
+ unitarios en la esfera 
 \begin_inset Formula $\mathcal{S}^{2}$
 \end_inset
 
-
-\begin_inset Formula 
-\begin{equation}
-\theta=\arccos(1-2u).
-\end{equation}
-
-\end_inset
-
- La restricción 
-\begin_inset Formula $u_{r}=u\delta$
-\end_inset
-
- donde 
-\begin_inset Formula $\delta\in(0,1)$
-\end_inset
-
- genera una distribución uniforme en una sección de la esfera a una distancia
+, empieza por generar una distribución uniforme y aleatoria en el rectángulo
  
-\begin_inset Formula $\delta$
+\begin_inset Formula $uv$
 \end_inset
 
- del polo de proyección
-\begin_inset Formula 
-\begin{equation}
-\theta=\arccos(1-2u\delta).
-\end{equation}
+, no supone ningún problema ya que existen algoritmos eficientes que pueden
+ generar números pseudoaleatorios muy bien distribuidos en el intervalo
+ 
+\begin_inset Formula $(0,1)$
+\end_inset
+
+.
+ El siguiente paso es usar las ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:transformaciones"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
-Para generar un vector aleatorio en referencia a cualquier punto sobre la
- esfera podemos rotar generar un vector aleatorio 
+ y 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:coordenadas_esfericas"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ para pasar a una distribución de vectores en la esfera con la ventaja de
+ que si la distribución en el rectángulo es uniforme, la distribución en
+ la esfera también es uniforme.
+\end_layout
+
+\begin_layout Standard
+Una ventaja adicional es la posibilidad de limitar la distancia a la que
+ se generan los vectores respecto al polo de proyección usando el parametro
+ 
+\begin_inset Formula $u$
+\end_inset
+
+, si 
+\begin_inset Formula $u\in(0,d)$
+\end_inset
+
+ entonces 
+\begin_inset Formula $\theta\in(0,2\pi d)$
+\end_inset
+
+.
+ Podemos aprovechar esto para generar vectores uniformemente distribuidos
+ en una sección circular de la esfera.
+ En el algoritmo de Metropolis la probabilidad de aceptación se puede controlar
+ cambiando la región en la que se generan las nuevas propuestas, una región
+ amplia reduce la probabilidad de aceptación, por lo que limitar la generación
+ de vectores a una región de la esfera aumenta la probabilidad de aceptación
+ a la vez que aumenta el tiempo de autocorrelación ya que el cambio en la
+ configuración se limita al tamaño de la región permitida para nuevas propuestas.
+ 
+\end_layout
+
+\begin_layout Standard
+Para lograr nuestro objetivo se debe generar un vector aleatorio en referencia
+ a cualquier punto sobre la esfera.
+ Una forma sencilla es usar el método que ya desarrollamos, podemos generar
+ un vector aleatorio 
 \begin_inset Formula $\vec{r}$
 \end_inset
 
- respecto al polo de proyección y hacer una rotación hasta el punto deseado
- 
+ respecto al polo de proyección y hacer una rotación del polo de proyección
+ un punto de referencia 
 \begin_inset Formula $\vec{s}$
 \end_inset
 
 .
- Es conveniente calcular un vector ortonormal a 
+ Un método conveniente para realizar la rotación consiste en calcular un
+ vector ortonormal a 
 \begin_inset Formula $\vec{s}$
 \end_inset
 
@@ -7347,12 +7644,12 @@ Para generar un vector aleatorio en referencia a cualquier punto sobre la
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\vec{k}=\frac{\vec{s}\times\vec{r}}{\Vert\vec{s}\times\vec{r}\Vert}
+\vec{k}=\frac{\vec{s}\times\vec{r}}{\Vert\vec{s}\times\vec{r}\Vert}.
 \end{equation}
 
 \end_inset
 
-Se calcula la rotación de 
+Luego se calcula la rotación de 
 \begin_inset Formula $\vec{s}$
 \end_inset
 
@@ -7364,7 +7661,21 @@ Se calcula la rotación de
 \begin_inset Formula $\vec{k}$
 \end_inset
 
+, donde 
+\begin_inset Formula $\theta$
+\end_inset
+
+ es el parametro calculado para generar el vector aleatorio 
+\begin_inset Formula $\vec{r}$
+\end_inset
+
+.
+ Finalmente se tiene que el vector aleatorio respecto al vector de referencia
  
+\begin_inset Formula $\vec{s}$
+\end_inset
+
+ es
 \end_layout
 
 \begin_layout Standard
@@ -7375,120 +7686,11 @@ Se calcula la rotación de
 
 \end_inset
 
-Finalmente obtenemos el vector 
-\begin_inset Formula $\vec{s}^{\,'}$
-\end_inset
 
-.
 \end_layout
 
 \begin_layout Chapter
-Demostración
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/demtri.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Vista superior del triangulo esférico.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-El ángulo solido del triangulo es el área de la sección esférica del triangulo
- 
-\begin_inset Formula $ABC$
-\end_inset
-
- formado por los vértices 
-\begin_inset Formula $\vec{a},\vec{b},\vec{c}\in\mathcal{S}^{2}$
-\end_inset
-
-.
- El área 
-\begin_inset Formula $\Omega$
-\end_inset
-
- del triangulo esférico formado por los vértices es
-\begin_inset Formula 
-\begin{equation}
-\tan\left(\frac{\Omega}{2}\right)=\frac{\vec{a}\cdot\left(\vec{b}\times\vec{c}\right)}{1+\cos a+\cos b+\cos c},
-\end{equation}
-
-\end_inset
-
-Tenemos que
-\begin_inset Formula 
-\begin{equation}
-\Omega=A+B+C-\pi,
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Además
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-A+t+u=\pi,\,B+t+v=\pi,\,C=u+v
-\end{equation}
-
-\end_inset
-
-Entonces
-\begin_inset Formula 
-\begin{equation}
-A+B+C+2t=2\pi
-\end{equation}
-
-\end_inset
-
-Se obtiene
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\frac{1}{2}\left(\pi-\Omega\right)=t
-\end{equation}
-
-\end_inset
-
-
+Algoritmo Hoshen-Koppelman
 \end_layout
 
 \begin_layout Standard

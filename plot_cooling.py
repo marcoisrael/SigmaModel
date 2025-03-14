@@ -37,9 +37,9 @@ def f3(x, a, b):
 
 
 params = {
-    "charge": {"index": 2, "ylabel": r"$(\chi_t)_f$", "func": f1},
-    "energy": {"index": 4, "ylabel": r"$\rho_\mathcal{H}$", "func": f1},
-    "magnet": {"index": 6, "ylabel": r"$\langle m\rangle $", "func": f3},
+    "charge": {"index": 2, "ylabel": r"$\chi_t$", "ylabel2": r"$\chi_{t_f}$", "func": f1},
+    "energy": {"index": 4, "ylabel": r"$h$", "ylabel2": r"$h_f$", "func": f1},
+    "magnet": {"index": 6, "ylabel": r"$m$", "ylabel2": r"$m_f$", "func": f3},
 }
 colors = {8: "red", 10: "blue", 16: "purple"}
 lines = {8: (0, (3, 3)), 10: (0, (5, 1)), 16: (0, (5, 5))}
@@ -77,7 +77,7 @@ for alg in algs:
             # ax1.plot(x, f(x,*xfit.opt), color=colors[i], linewidth=0.8,
             # linestyle=lines[i],label=f"$\\tau_{{\\mathrm{{cool}}}}={i}$")
     ax1.legend()
-    ax1.set_xlabel(r"$t$", fontsize=18)
+    ax1.set_xlabel(r"$i$", fontsize=18)
     ax1.set_ylabel(params[obs]["ylabel"], fontsize=18)
     fig1.savefig(
         f"output/plot/cooling/{obs}_{alg}.pdf", format="pdf", bbox_inches="tight"
@@ -108,8 +108,8 @@ for alg in algs:
     )
     ax2.plot(x, f(x, *xfit.opt), linewidth=1.8,
              color="blue", linestyle=(0, (3, 3)))
-    ax2.set_ylabel(params[obs]["ylabel"], fontsize=18)
-    ax2.set_xlabel(r"$\tau_Q$", fontsize=18)
+    ax2.set_ylabel(params[obs]["ylabel2"], fontsize=20)
+    ax2.set_xlabel(r"$\tau_Q$", fontsize=20)
     ax2.set_yscale("log")
     ax2.set_xscale("log")
     for axis in [ax2.xaxis, ax2.yaxis]:
