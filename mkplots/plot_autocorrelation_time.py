@@ -23,8 +23,8 @@ else:
 for alg in algs:
     L = 64
 
-    def f(x, a, b, c):
-        return a*x**-b+c
+    def f(x, a, b):
+        return a*x**-b
 
     data = np.loadtxt(
         f"output/autocorrelation/{name}_{alg}.csv",
@@ -33,10 +33,10 @@ for alg in algs:
     )
     data = data.transpose()
     x = np.linspace(data[0][0], data[0][-1], 200)
-    xfit = fit(data[0], data[1], data[2])
+    xfit = fit(data[0][1:], data[1][1:], data[2][1:])
     xfit.fiting(f)
     fig, ax = plt.subplots()
-    text = fix(xfit.opt[1], xfit.error[1])+r"$\exp(-$"+fix(xfit.opt[0], xfit.error[0]) + \
+    text = fix(xfit.opt[0], xfit.error[0])+r"$\exp(-$"+fix(xfit.opt[1], xfit.error[1]) + \
         r"$T)$"+"\n" + \
         r"$\frac{\chi^2}{\mathrm{dof}}=$"+str(xfit.chisq_by_dof)
 
@@ -68,9 +68,11 @@ for alg in algs:
         linestyle=(0, (3, 3)),
     )
     print(alg, fix(xfit.opt[1], xfit.error[1]))
-    ax.set_xlabel(r"$T$", fontsize=18)
-    ax.set_ylabel(r"$\tau_{\mathrm{exp}}$", fontsize=18)
+    ax.set_xlabel(r"$\log(T)$", fontsize=18)
+    ax.set_ylabel(r"$\log(\tau)$", fontsize=18)
     # ax.legend()
+    ax.set_yscale("log")
+    ax.set_xscale("log")
     title = Algs[alg]
     i = obs[name]["sym"]
     os.makedirs(f"output/plot/{name}/L{L}/{alg}", exist_ok=True)

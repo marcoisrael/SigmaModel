@@ -15,8 +15,7 @@ make_temp_plots = True
 name = args.observable
 alg = args.algorithm
 L = 64
-T = np.array([0.6, 0.7, 0.8, 0.9, 1.0, 1.2])
-T = np.array([1.2])
+T = np.array([0.7, 0.8, 0.9,1.0])
 if args.algorithm == "all":
     algs = [
         "lexic_metropolis",

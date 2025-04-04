@@ -21,11 +21,9 @@ program measure
    Temp = string2real(arg(1))
    delta_step = string2real(arg(5))
    N = string2int(arg(2))
-   sp = 20 !ceiling(915.43*exp(-temp/0.1644))
-   delta_step = dmin1(0.08419342-0.21964047*temp+0.3387236*temp*temp, dble(1))
-
-   allocate(s(VOLUME,3),cl(VOLUME,3))
-   allocate(obs(VOLUME), med(VOLUME), var(VOLUME))
+   sp = 10 
+   allocate(s(VOLUME,3),cl(LENGTH,3))
+   allocate(obs(LENGTH), med(LENGTH), var(LENGTH))
    call hot_start(s)
 
    beta = 1/Temp
@@ -33,7 +31,9 @@ program measure
    do k=1, thermalization
       call cluster(s, str1)
    end do
-
+   med(:)=0
+   var(:)=0
+   
    do k=1, N
       do i=1, sp
          call step(s, arg(3), arg(4))

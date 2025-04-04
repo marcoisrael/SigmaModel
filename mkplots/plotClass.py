@@ -88,7 +88,7 @@ class fit:
                 func,
                 self.xdata,
                 random_ydata,
-                sigma=self.yerr+sigma_err
+                #sigma=self.yerr+sigma_err
             )
             pfit.append(random_opt)
         pfit = np.array(pfit)

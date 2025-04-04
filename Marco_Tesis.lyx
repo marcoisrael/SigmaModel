@@ -75,7 +75,7 @@
 \biblio_style plain
 \biblio_options doi=false,maxbibnames=10,sorting=none
 \biblatex_bibstyle ieee
-\biblatex_citestyle numeric
+\biblatex_citestyle ieee
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -235,7 +235,7 @@ Una de estas líneas de investigación se desarrolló entre 1949 y 1952 en
  Rosenbluth, Augusta H.
  Teller, y Edward Teller 
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand autocite
 key "metropolis_equation_1953"
 literal "false"
 
@@ -888,7 +888,7 @@ donde otra vez
 
  
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand autocite
 key "wipf_statistical_2013,feynman_space-time_1948,creutz_statistical_1981"
 literal "false"
 
@@ -973,11 +973,13 @@ Definimos una retícula como un subgrupo discreto del espacio continuo
  En la mayoría de los casos se usan retículas compuestas por repeticiones
  de estructuras geométricas simples, algunos ejemplos en dos dimensiones
  son estructuras cuadradas, triangulares, hexagonales, etc.
- Formada por hipercubos de dimensión 
+ En este caso se considera una retícula de dimensión 
 \begin_inset Formula $d$
 \end_inset
 
-, se define como el conjunto de sitios en el espacio de dimensión 
+ formada por hipercubos.
+ La retícula se define como el conjunto de sitios en el espacio de dimensión
+ 
 \begin_inset Formula $d$
 \end_inset
 
@@ -987,7 +989,7 @@ Definimos una retícula como un subgrupo discreto del espacio continuo
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathscr{R}^{d}=\left\{ \vec{x}\in\mathbb{R}^{d}|\vec{x}=(x_{1}\dots,x_{d})\land x_{i}\in\mathbb{Z}\right\} .
+\mathscr{R}^{d}=\left\{ x\in\mathbb{R}^{d}|x=(x_{1}\dots,x_{d})\land x_{i}\in\mathbb{Z}\right\} .
 \end{equation}
 
 \end_inset
@@ -1010,8 +1012,8 @@ En cada sito
 \begin_inset Formula $2d$
 \end_inset
 
- sitios son los vecinos mas cercanos 
-\begin_inset Formula $\vec{x}$
+ sitios son los vecinos más cercanos a 
+\begin_inset Formula $x$
 \end_inset
 
 .
@@ -1023,8 +1025,8 @@ En este trabajo se empleo la estructura cuadrada, caso
 \end_inset
 
  donde la retícula esta definida en un plano.
- Como en una simulación no es posible definir retículas infinitas hay que
- tomar un trozo finito.
+ En una simulación no es posible usar retículas infinitas, hay que tomar
+ un trozo finito.
  Tomando un cuadrado 
 \begin_inset Formula $L\times L$
 \end_inset
@@ -1040,17 +1042,16 @@ En este trabajo se empleo la estructura cuadrada, caso
  descrita como
 \begin_inset Formula 
 \begin{equation}
-\mathscr{R}_{\mathrm{cuad}}^{2}=\left\{ \vec{x}\in\mathscr{R}^{2}|x_{1},x_{2}\in(0,L)\right\} .
+\mathscr{R}_{\mathrm{cuad}}^{2}=\left\{ x\in\mathscr{R}^{2}|x_{1},x_{2}\in(1,L)\right\} .
 \end{equation}
 
 \end_inset
 
 Ya no tenemos el problema con la retícula infinita pero ahora los sitios
- del contorno tienen tres vecinos mas cercanos en vez de cuatro, y en los
- cuatro sitios ubicados las esquinas de la retícula solo se tienen dos dos
- vecinos mas cercanos.
- Para minimizar los efectos de volumen finito hay que solucionar estas asimetría
-s.
+ del contorno tienen tres vecinos más cercanos en vez de cuatro, y en los
+ cuatro sitios ubicados las esquinas de la retícula solo se tienen dos vecinos
+ más cercanos.
+ Para tener invarianza de translación discreta.
  Una posible solución es cambiar la topología de la retícula.
 \end_layout
 
@@ -1069,17 +1070,13 @@ Vamos formar un cilindro juntando los dos extremos opuestos del cuadrado
  La retícula especial que definimos es
 \begin_inset Formula 
 \begin{equation}
-\mathscr{R}_{L}^{2}=\left\{ \vec{x}\in\mathscr{R}_{\mathrm{cuad}}^{2}|(x_{1},x_{2})=(x_{1}+nL,x_{2}+mL),n,m\in\mathbb{Z}\right\} .\label{eq:reticula_especial}
+\mathscr{R}_{L}^{2}=\left\{ x\in\mathscr{R}_{\mathrm{cuad}}^{2}|(x_{1},x_{2})=(x_{1}+nL,x_{2}+mL),n,m\in\mathbb{Z}\right\} .\label{eq:reticula_especial}
 \end{equation}
 
 \end_inset
 
 La estructura topológica de toroidal es utilizada en los videojuegos, cuando
  un personaje sale de la pantalla simplemente aparece por el extremo opuesto.
- En nuestro caso con esta estructura cada sitio tiene siempre cuatro vecinos
- mas cercanos.
- Al eliminar las asimetrías en la retícula finita se reducen los efectos
- de volumen finito inevitables en una simulación.
  
 \end_layout
 
@@ -1149,7 +1146,11 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-Definición: Espín clásico.
+Definición: Espín clásico en el modelo O(
+\begin_inset Formula $n$
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Plain Layout
@@ -1182,15 +1183,11 @@ El modelo O(
 
 ) es un modelo de espines clásicos.
  Cada espín 
-\begin_inset Formula $\vec{s}$
+\begin_inset Formula $\vec{s}_{x}$
 \end_inset
 
  ocupa un sitio 
-\begin_inset Formula $\vec{x}$
-\end_inset
-
- en la retícula 
-\begin_inset Formula $\mathscr{R}^{d}$
+\begin_inset Formula $x\in\mathscr{R}^{d}$
 \end_inset
 
 .
@@ -1203,59 +1200,46 @@ El modelo O(
 \end_inset
 
 , por ejemplo la configuración en la que todos los espines apuntan a la
- misma dirección se conoce como 
-\begin_inset Quotes fld
-\end_inset
-
-cold start
-\begin_inset Quotes frd
-\end_inset
-
-, esta configuración tiene la particularidad de ser la configuración de
- menor energía.
+ misma dirección se conoce como configuración uniforme.
+ La configuración uniforme tiene la particularidad tener la de menor energía.
  Consideramos una configuración 
 \begin_inset Formula $[s]$
 \end_inset
 
-, la energía depende del potencial de interacción magnética espín a espín,
- es de la forma
+, la energía depende del potencial de interacción magnética espín a espín.
+ La función hamiltoniana es de la forma
 \begin_inset Formula 
 \begin{equation}
-\mathcal{H}[s]=-J\sum_{\langle x,y\rangle}\vec{s}_{x}\cdot\vec{s}_{y},\label{eq:hamiltoniano_o(n)}
+\begin{aligned}\mathcal{H}[s]= & \frac{J}{2}\sum_{x}\sum_{\hat{\mu}}^{d}\left(\vec{s}_{x}-\vec{s}_{x+\hat{\mu}}\right)^{2}\\
+=- & \frac{J}{2}\sum_{x}\sum_{\hat{\mu}}^{d}\left(2\vec{s}_{x+\hat{\mu}}\cdot\vec{s}_{x}-2\right)\\
+= & -J\sum_{x}\sum_{\hat{\mu}}^{d}\left(\vec{s}_{x+\hat{\mu}}\cdot\vec{s}_{\hat{x}}+1\right),
+\end{aligned}
+\label{eq:hamiltoniano_o(n)}
 \end{equation}
 
 \end_inset
 
- donde 
-\begin_inset Formula $\vec{s}_{x}$
-\end_inset
-
- y 
-\begin_inset Formula $\vec{s}_{y}$
-\end_inset
-
- son los espines ubicados en los sitios 
-\begin_inset Formula $\vec{x}$
-\end_inset
-
- y 
-\begin_inset Formula $\vec{y}$
-\end_inset
-
- .
- 
+donde 
 \begin_inset Formula $J$
 \end_inset
 
- es una constante de acoplamiento y 
-\begin_inset Formula $\langle x,y\rangle$
+ es una constante de acoplamiento, 
+\begin_inset Formula $\hat{\mu}$
 \end_inset
 
- se refiere a los espines vecinos más cercanos.
+ es un vector unitario con valor 
+\begin_inset Formula $1$
+\end_inset
+
+ en la 
+\begin_inset Formula $d$
+\end_inset
+
+-esíma entrada.
  Como la interacción magnética decae proporcionalmente al inverso del cuadrado
- de la distancia, la contribución mas grande se da entre los vecinos mas
+ de la distancia, la contribución más grande se da entre los vecinos más
  cercanos.
- Es conveniente despreciar las interacciones entre espines a mas de una
+ Es conveniente despreciar las interacciones entre espines a más de una
  unidad de distancia.
 \end_layout
 
@@ -1302,19 +1286,12 @@ Espín en el modelo O(
 \end_layout
 
 \begin_layout Standard
-El caso de interés en este trabajo es el modelo 
-\begin_inset Formula $2d$
-\end_inset
-
- O
-\begin_inset Formula $(3)$
-\end_inset
-
-, un modelo de espines en la esfera 
+El caso de interés en este trabajo es el modelo 2d O(3), un modelo de espines
+ en la esfera 
 \begin_inset Formula $\mathcal{S}^{2}$
 \end_inset
 
- y una retícula bidimensional.
+ sobre una retícula bidimensional.
  Ya que se realizaran simulaciones en volúmenes finitos se usara la retícula
  toroidal 
 \begin_inset Formula $\mathscr{R}_{L}^{2}$
@@ -1344,17 +1321,12 @@ Las posiciones de los espines son pares enteros
 \end_inset
 
 .
- Ya que las posiciones de los espines están dadas por dos coordenadas.
- Nos referiremos a un espin en el sito 
-\begin_inset Formula $\vec{x}=(x_{1},x_{2})$
+ Nos referiremos a un espín en el sito 
+\begin_inset Formula $x=(x_{1},x_{2})$
 \end_inset
 
  como 
 \begin_inset Formula $\vec{s}_{x}$
-\end_inset
-
- o 
-\begin_inset Formula $\vec{s}_{x_{1},x_{2}}$
 \end_inset
 
 .
@@ -1377,30 +1349,31 @@ Un espín
  esta definido por tres coordenadas 
 \begin_inset Formula 
 \begin{equation}
-\vec{s}_{x}=\left(\sin\theta_{x}\cos\text{\ensuremath{\phi_{x}},\ensuremath{\sin\theta_{x}\sin\phi_{x}},\ensuremath{\cos\theta_{x}}}\right).
+\vec{s}_{x}=\left(\sin\theta_{x}\cos\text{\ensuremath{\phi_{x}},\ensuremath{\sin\theta_{x}\sin\phi_{x}},\ensuremath{\cos\theta_{x}}}\right),
 \end{equation}
 
 \end_inset
 
-En donde 
-\begin_inset Formula $\theta_{i,j}\in\left(0,\pi\right)$
+en donde 
+\begin_inset Formula $\theta_{x}\in[0,\pi)$
 \end_inset
 
 , 
-\begin_inset Formula $\phi_{x}\in\left(0,2\pi\right)$
+\begin_inset Formula $\phi_{x}\in[0,2\pi)$
 \end_inset
 
-, en algunos casos como la generación de configuraciones es ventajoso trabajar
+.
+ En algunos casos, como la generación de configuraciones, es ventajoso trabajar
  con coordenadas esféricas 
 \begin_inset Formula $(\theta,\phi)$
 \end_inset
 
-, en otros casos como el calculo del producto escalar es mas conveniente
- usar las componentes 
-\begin_inset Formula $(x,y,z)$
+, en otros casos como el calculo del producto escalar es más conveniente
+ usar las componentes de espín 
+\begin_inset Formula $\left(s_{x}^{(1)},s_{x}^{(2)},s_{x}^{(3)}\right)$
 \end_inset
 
- por lo que usaremos ambas descripciones en los casos que mas convenga.
+ por lo que usaremos ambas descripciones en los casos que más convenga.
 \end_layout
 
 \begin_layout Section
@@ -1464,26 +1437,6 @@ Energía
 \end_layout
 
 \begin_layout Standard
-La configuración de menor energía en un sistema de espines ocurre cundo
- todos los espines de la configuración se alinean en la misma dirección,
- en un sistema isotrópico no hay una dirección preferencial.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\begin{aligned}\mathcal{H}= & \frac{J}{2}\sum_{x}\sum_{\mu}^{d}\left(\vec{s}_{x+\mu}-\vec{s}_{x}\right)^{2}\\
-= & \frac{J}{2}\sum_{x}\left(\sum_{\mu}^{d}\left(2-2\vec{s}_{x+\mu}\cdot\vec{s}_{x}\right)\right)\\
-= & -J\sum_{x}\left(\vec{s}_{x+\mu}\cdot\vec{s}_{x}+d\right)
-\end{aligned}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 En los modelos O
 \begin_inset Formula $(n)$
 \end_inset
@@ -1498,44 +1451,34 @@ noprefix "false"
 
 \end_inset
 
-, veamos en detalle el caso de interés de este trabajo, el modelo 
-\begin_inset Formula $2d$
-\end_inset
-
- O
+, en el modelo 2d O
 \begin_inset Formula $(3)$
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Standard
-En este modelo cada espín 
-\begin_inset Formula $\vec{s}_{x_{1},x_{2}}$
-\end_inset
-
- es vecino más cercano de cuatro espines 
-\begin_inset Formula $\left\{ \vec{s}_{x_{1}+1,x_{2}},\vec{s}_{x_{1},x_{2}+1},\vec{s}_{x_{1}-1,x_{2}},\vec{s}_{x_{1},x_{2}-1}\right\} $
-\end_inset
-
-.
- Usando la notación para el caso bidimensional se puede reescribir el hamiltonia
-no en términos de sumas compactas sobre 
-\begin_inset Formula $i,j$
-\end_inset
-
- (La suma total se divide para compensar que cada termino se ha sumado dos
- veces por la simetría de las sumas dobles) conduciendo a la ecuación
+ es de la forma
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathcal{H}\left[s\right]=-\frac{J}{2}\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\left(\vec{s}_{x_{1}+1,x_{2}}+\vec{s}_{x_{1},x_{2}+1}+\vec{s}_{x_{1}-1,x_{2}}+\vec{s}_{x_{1},x_{2}-1}\right).\label{eq:hamiltoniano_2dO3}
+\mathcal{H}\left[s\right]=-J\sum_{x}\left(\vec{s}_{x}\cdot\vec{s}_{x+\hat{1}}+\vec{s}_{x}\cdot\vec{s}_{x+\hat{2}}+2\right),\label{eq:hamiltoniano_2dO3}
 \end{equation}
 
 \end_inset
 
+donde 
+\begin_inset Formula $\hat{1}=(1,0)$
+\end_inset
+
+ y 
+\begin_inset Formula $\hat{2}=(0,1)$
+\end_inset
+
+.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 Aunque es una ecuación sencilla de manejar es posible simplificarla intercambian
 do y recorriendo índices en el tercer termino de la ec.
  
@@ -1551,7 +1494,7 @@ noprefix "false"
 , se tiene
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{equation}
 \sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}-1,x_{2}}=\sum_{x_{2}=1}^{L}\sum_{x_{1}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}-1,x_{2}}=\sum_{x_{2}=1}^{L}\sum_{x_{1}=0}^{L-1}\vec{s}_{x_{1}+1,x_{2}}\cdot\vec{s}_{x_{1},x_{2}}.
@@ -1586,7 +1529,7 @@ Por las condiciones de frontera
 Entonces
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{equation}
 \sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}-1,x_{2}}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}+1,x_{2}}.\label{eq:equiv1}
@@ -1608,7 +1551,7 @@ noprefix "false"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Intercambiando y recorriendo índices en el tercer termino de la ec.
  
 \begin_inset CommandInset ref
@@ -1623,10 +1566,10 @@ noprefix "false"
  se tiene
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{equation}
-\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}-1}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=0}^{L-1}\vec{s}_{x_{1},x_{2}+1}\cdot\vec{s}_{x_{1},x_{2}}.
+\sum_{x_{1}=1}^{L}\sum_{x_{2\;}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}-1}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=0}^{L-1}\vec{s}_{x_{1},x_{2}+1}\cdot\vec{s}_{x_{1},x_{2}}.
 \end{equation}
 
 \end_inset
@@ -1658,7 +1601,7 @@ Por las condiciones de frontera
 Entonces
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{equation}
 \sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}-1}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}+1}.\label{eq:equiv2}
@@ -1698,10 +1641,18 @@ noprefix "false"
 \end_inset
 
  y simplificando términos se llega a la forma compacta del hamiltonoano
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{equation}
 \mathcal{H}\left[s\right]=-J\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\left(\vec{s}_{x_{1}+1,x_{2}}+\vec{s}_{x_{1},x_{2}+1}\right).\label{eq:hamiltoniano_simplificado}
 \end{equation}
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -1799,7 +1750,7 @@ Pensemos en una configuración como un evento y en un conjunto de configuracione
 
 \end_inset
 
-La energía real asociada a ese intervalo es el promedio aproximado mas la
+La energía real asociada a ese intervalo es el promedio aproximado más la
  incertidumbre asociada
 \begin_inset Formula 
 \begin{equation}
@@ -1832,23 +1783,19 @@ En modelos de espines clásicos, la magnetización
 
  es un escalar que depende de la alineación de los espines de una configuración.
  Se define como la magnitud de la suma de los espines de una configuración
- dividido por en número de espines 
-\begin_inset Formula $V$
-\end_inset
-
-
+ dividido por el volumen.
 \begin_inset Formula 
 \begin{equation}
-m=\frac{1}{V}\abs{\sum_{i,j}\vec{s}_{i,j}}.
+M=\frac{1}{V}\abs{\sum_{x}\vec{s}_{x}}
 \end{equation}
 
 \end_inset
 
-Ya que los espines son unitarios se tiene que en una configuración de espines
- alineados a la misma dirección tiene magnetización
+ La magnetización máxima se alcanza en una configuración de espines alineados
+ 
 \begin_inset Formula 
 \begin{equation}
-m=\frac{\abs{V\vec{s}}}{V}=\abs{\vec{s}}=1
+M_{\mathrm{max}}=\frac{1}{V}\abs{\sum_{x}\vec{s}_{x}}=\frac{1}{V}\abs{V\vec{s}}=\abs{\vec{s}}=1
 \end{equation}
 
 \end_inset
@@ -1867,7 +1814,7 @@ iones en ese intervalo
 El promedio aproximado de la magnetización es 
 \begin_inset Formula 
 \begin{equation}
-\expval{m}_{\mathrm{aprox}}=\frac{1}{N}\sum_{i=1}^{N}m_{i}.
+\expval{M}_{\mathrm{aprox}}=\frac{1}{N}\sum_{i=1}^{N}M_{i}.
 \end{equation}
 
 \end_inset
@@ -1876,7 +1823,7 @@ El promedio de la magnetización es el valor aproximado con una incertidumbre
  asociada
 \begin_inset Formula 
 \begin{equation}
-\expval{m}\simeq\expval{m}\pm\mathrm{error}(m)
+\expval{M}\simeq\expval{M}\pm\mathrm{error}(M)
 \end{equation}
 
 \end_inset
@@ -1896,7 +1843,7 @@ En el modelo de espines O(
 ) definido en un cuadrado, las condiciones de frontera garantizan la invariante
  topológica 
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand autocite
 key "bietenholz_topological_2010,berg_definition_1981"
 literal "false"
 
@@ -1983,7 +1930,7 @@ Sean
 
  
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand autocite
 key "todhunter_spherical_2021"
 literal "false"
 
@@ -2092,13 +2039,24 @@ Se obtiene
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+A=\Omega_{1}+\Omega_{2}
+\end{equation}
+
+\end_inset
+
 La carga topológica se define como como
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Q[s]=\frac{1}{4\pi}\sum_{i,j}\text{\left(\Omega_{1}(i,j)+\Omega_{2}(i,j)\right)}\in\mathbb{Z},
+Q[s]=\frac{1}{4\pi}\sum_{x}A_{x}\in\mathbb{Z},
 \end{equation}
 
 \end_inset
@@ -2506,7 +2464,7 @@ donde
 
  
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand autocite
 key "athreya_convergence_1996"
 literal "false"
 
@@ -2559,7 +2517,7 @@ noprefix "false"
 
 .
  En este modelo, un algoritmo de actualizaron local actúa sobre un espín
- y sus vecinos mas cercanos.
+ y sus vecinos más cercanos.
  
 \end_layout
 
@@ -2620,7 +2578,7 @@ Si la energía de la configuración disminuye con el cambio, la probabilidad
 
  y la probabilidad de aceptación de las configuraciones que aumentan la
  energía se acerca a 1.
- Esto se traduce en mas ruido térmico.
+ Esto se traduce en más ruido térmico.
  Por otro lado a menor temperatura 
 \begin_inset Formula $\beta\rightarrow\infty$
 \end_inset
@@ -2676,10 +2634,10 @@ Calcular la diferencia de energía entre configuraciones en el modelo 2d
  el tiempo de relajación del sistema aumenta exponencialmente, a este fenómeno
  se le conoce como desaceleración crítica.
  Si se necesita estudiar sistemas en equilibrio cerca de la temperatura
- crítica hay una opción mas conveniente que consiste en usar un algoritmo
+ crítica hay una opción más conveniente que consiste en usar un algoritmo
  que actualice grupos de espines en vez de espines individues 
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand autocite
 key "binder_monte_1988,swendsen_nonuniversal_1987"
 literal "false"
 
@@ -2695,7 +2653,7 @@ Algoritmo de Glauber
 \begin_layout Standard
 El algoritmo Glauber 
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand autocite
 key "glauber_time-dependent_1963"
 literal "false"
 
@@ -2826,36 +2784,42 @@ El algoritmo Cluster sugerido por R.
  Wang, se basa en la observación de que la función de partición se puede
  escribir como una suma sobre un grupo de distribuciones 
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand autocite
 key "swendsen_nonuniversal_1987,wolff_collective_1989"
 literal "false"
 
 \end_inset
 
 .
- Consiste en generar grupos de espines enlazados y cambiar la configuración
- de todos los espines en cada grupo a la vez.
+ Consiste en generar clusters de espines enlazados y cambiar la configuración
+ de todos los espines en cada cluster a la vez.
  Una de las principales ventajas del algoritmo Cluster es que evita la desaceler
 ación crítica característica de los algoritmos de actualización local.
  
 \end_layout
 
 \begin_layout Standard
-El primer paso en el algoritmo Cluster es la formación de grupos.
- Se elije un espín en la configuración 
+Un cluster puede consistir de un único espín si sus espines vecinos no se
+ enlazan, o puede estar formado por todos los espines de la configuración,
+ esto puede suceder cerca de la temperatura critica.
+ 
+\end_layout
+
+\begin_layout Standard
+En seguida propone un vector aleatorio 
+\begin_inset Formula $\vec{w}\in S^{2}$
+\end_inset
+
+, se elije un espín en la configuración 
 \begin_inset Formula $\vec{s}\in[s]$
 \end_inset
 
 .
- En seguida propone un vector aleatorio 
-\begin_inset Formula $\vec{w}\in S^{2}$
-\end_inset
-
  y se calcula la reflexión de 
 \begin_inset Formula $\vec{s}$
 \end_inset
 
- respecto a el plano normal a vector de Wolf 
+ respecto a el plano normal a 
 \begin_inset Formula $\vec{w}$
 \end_inset
 
@@ -2871,8 +2835,8 @@ Para determinar si el espín
 \begin_inset Formula $\vec{s}$
 \end_inset
 
- esta enlazado con sus espines vecinos mas cercano, se elije uno de los
- espines vecinos y se calcula la probabilidad de enlace mediante la función
+ esta enlazado con sus espines vecinos más cercano, se calcula la probabilidad
+ de enlace mediante la función
 \end_layout
 
 \begin_layout Standard
@@ -2898,16 +2862,38 @@ p_{\mathrm{enlace}}=\begin{cases}
 
 \end_inset
 
- Si dos espines se enlazan entonces forman parte del mismo grupo, luego
- se prueba si existe un enlace con el resto de espines mas cercanos.
- Una vez que se probaron los enlaces se prueban enlaces entre los espines
- que forman la frontera del grupo con sus respectivos espines mas cercanos
- y si se forman nuevos enlaces se añaden al grupo.
- Este proceso se repite hasta que se forma un grupo asilado.
- Un grupo puede consistir de un único espín si sus espines vecinos no se
- enlazan, o puede estar formado por todos los espines de la configuración,
- esto puede suceder cerca de la temperatura critica.
- Una forma de realizar el proceso de formación de grupos es usar el algoritmo
+Si existe un enlace con uno de los espines vecinos se forma un cluseter
+ con los espines enlazados, se selecciona uno de estos espines y se repite
+ la prueba de enlace con sus propios vecinos mas cercanos.
+ Si hay mas enlaces se continua repitiendo el proceso, si no hay enlaces
+ se pasa a u otro espín del cluster, hasta comprobar que no hay mas enlaces
+ con algún espín del cluster.
+\end_layout
+
+\begin_layout Standard
+Cuando se termina de formar el cluster se cambia el estado de todos los
+ espines del cluster a la vez aplicando la reflexión respecto al plano normal
+ a 
+\begin_inset Formula $\vec{w}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Una variante del algoritmo consiste en formar multiples clusters a la vez,
+ en lugar de uno.
+ Una vez formados se decide si un se cambai el estado de sus elemntos cluster
+ con probabilidad 
+\begin_inset Formula $p_{\mathrm{flip}}=1/2$
+\end_inset
+
+, valor que minimiza el tiempo de relajación del sistema al mantener más
+ menos la mitad de los grupos y cambiar la configuración de la otra mitad.
+\end_layout
+
+\begin_layout Standard
+Una forma de realizar el proceso de formación de grupos es usar el algoritmo
  de Hoshen-Kopelman que se describe para el modelo 
 \begin_inset Formula $2$
 \end_inset
@@ -2916,18 +2902,117 @@ p_{\mathrm{enlace}}=\begin{cases}
  
 \end_layout
 
-\begin_layout Standard
-Una vez formados los grupos se decide si un grupo es reflejado respecto
- al plano de Wolf con probabilidad 
-\begin_inset Formula $p_{\mathrm{flip}}=1/2$
-\end_inset
-
-, este valor minimiza el tiempo de relajación del sistema al mantener mas
- menos la mitad de los grupos y cambiar la configuración de la otra mitad..
-\end_layout
-
 \begin_layout Chapter
 Fenómenos críticos
+\end_layout
+
+\begin_layout Standard
+La probabilidad de que el sistema a una 
+\begin_inset Formula $T$
+\end_inset
+
+ dada esté en una configuración determinada de energía 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ es proporcional al factor de Boltzmann
+\begin_inset Formula 
+\begin{equation}
+P_{\mathcal{H}[\sigma]}=\frac{\mathrm{e}^{-\beta\mathcal{H}[\sigma]}}{Z},
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $\beta=1/k_{B}T$
+\end_inset
+
+, 
+\begin_inset Formula $k_{B}$
+\end_inset
+
+ es la constante de Boltzmann y 
+\begin_inset Formula $Z$
+\end_inset
+
+ es la función de partición.
+ La relación entre la termodinámica y la física estadística viene determinada
+ por la energía libre de Helmholtz 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ en el colectivo canónico
+\begin_inset Formula 
+\begin{equation}
+\mathcal{F}=-k_{B}T\ln Z.
+\end{equation}
+
+\end_inset
+
+A partir de la función de partición, la energía promedio se calcula como
+\begin_inset Formula 
+\begin{equation}
+\expval{\mathcal{H}}=\frac{\sum_{\sigma}\mathcal{H}[\sigma]\mathrm{e}^{-\beta\mathcal{H}[\sigma]}}{Z}=\pdv{\beta\mathcal{F}}{\beta}.
+\end{equation}
+
+\end_inset
+
+El calor específico a volumen constante se define como
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}c_{V}=\frac{1}{V} & \left(\pdv{\beta\expval{\mathcal{H}}}{T}\right)_{V}=\frac{1}{V}\pdv{T}\frac{\sum_{\sigma}\mathcal{H}_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\\
+=\frac{1}{V}\frac{1}{k_{B}T} & \left[\frac{\sum_{\sigma}\mathcal{H}_{\sigma}^{2}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}-\left(\frac{\sum_{\sigma}\mathcal{H}_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\right)^{2}\right],\\
+=\frac{1}{V} & \frac{1}{k_{B}T^{2}}\left(\expval{\mathcal{H}^{2}}-\expval{\mathcal{H}}^{2}\right).
+\end{aligned}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Siendo 
+\begin_inset Formula $B$
+\end_inset
+
+ el campo magnético aplicado.
+ La magnetización 
+\begin_inset Formula $M$
+\end_inset
+
+ se define como
+\begin_inset Formula 
+\begin{equation}
+M=\pdv{\mathcal{F}}{B}=\frac{\sum_{\sigma}M_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z},
+\end{equation}
+
+\end_inset
+
+donde
+\begin_inset Formula 
+\begin{equation}
+\mathcal{H}[\sigma]=-J\sum_{\expval{xy}}\vec{s}_{x}\cdot\vec{s}_{y}-B\sum_{x}\vec{s}_{x}.
+\end{equation}
+
+\end_inset
+
+La susceptibilidad magnética 
+\begin_inset Formula $\chi_{M}$
+\end_inset
+
+ se define como
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\chi_{\mu}=\pdv[2]{\mathcal{F}}{B}= & \frac{1}{V}\left(\pdv{M}{B}\right)_{V}=\frac{1}{c}\pdv{B}\frac{\sum_{\sigma}M_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\\
+=\frac{1}{V} & \frac{1}{k_{B}T^{2}}\left[\frac{\sum_{\sigma}M_{\sigma}^{2}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}-\left(\frac{\sum_{\sigma}M_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\right)^{2}\right],\\
+=\frac{1}{V} & \frac{1}{k_{B}T^{2}}\left(\expval{M^{2}}-\expval{M}^{2}\right).
+\end{aligned}
+\end{equation}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -2935,16 +3020,35 @@ Transiciones de fase
 \end_layout
 
 \begin_layout Standard
-La temperatura es un paramento que añade ruido aleatorio a cambiar las direccion
-es de los espines.
+Una transición de fase ocurre cuando hay una discontinuidad en la energía
+ libre o en una de sus derivadas, la transición de fase presenta un cambio
+ visible en las propiedades macroscópicas del sistema.
+ La energía es proporcional al logaritmo de la función de partición
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "giachetti_berezinskii-kosterlitz-thouless_2021,hinrichsen_non-equilibrium_2000,yeomans_statistical_1992"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En el modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+), la temperatura es un paramento que añade ruido aleatorio a cambiar las
+ direcciones de los espines.
  A temperatura 
 \begin_inset Formula $T=0$
 \end_inset
 
- no hay fluctuaciones y el sistema alcanza eventualmente una configuración
- de energía mínima.
+ no hay fluctuaciones y el sistema alcanza una configuración de energía
+ mínima.
  Cuando la temperatura 
-\begin_inset Formula $T>0>T_{c}$
+\begin_inset Formula $T_{c}>T>0$
 \end_inset
 
  se forman grupos de espines alineados, el vector de magnetización de cada
@@ -2953,14 +3057,24 @@ es de los espines.
  A mayor temperatura es mayor el número de espines apuntando en direcciones
  aleatorias.
  Pasando la temperatura crítica, la intensidad de las fluctuaciones evita
- la formación de grupos de espines alineados, por lo que predomina el ruido
- termodinámico.
- En el proceso mencionado se pasan por dos fases, esenciales, una fase ordenada
- por debajo de la temperatura crítica y una fase desordenada por encima
- de la temperatura crítica.
- El cambio entre estas dos fases es una transición de segundo orden, ya
- que implica una discontinuidad en la segunda derivada de la energía libre
- del sistema.
+ la formación de grupos considerables de espines alineados, por consecuencia
+ predomina el ruido termodinámico.
+ En el proceso mencionado se pasan por dos fases: 
+\end_layout
+
+\begin_layout Itemize
+Una fase ordenada por debajo de la temperatura crítica
+\end_layout
+
+\begin_layout Itemize
+Una fase desordenada por encima de la temperatura crítica.
+ 
+\end_layout
+
+\begin_layout Standard
+El cambio entre estas dos fases es una transición de segundo orden, ya que
+ implica una discontinuidad en la segunda derivada de la energía libre del
+ sistema.
 \end_layout
 
 \begin_layout Standard
@@ -2971,6 +3085,7 @@ Cuando se perturba un sistema en equilibrio, las variables mecánicas del
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -3105,68 +3220,6 @@ Transición de fase de segundo orden.
 
 \end_layout
 
-\begin_layout Standard
-Una transición de fase ocurre cuando hay una discontinuidad en la energía
- libre o en una de sus derivadas, la transición de fase presenta un cambio
- visible en las propiedades macroscópicas del sistema.
- La energía es proporcional al logaritmo de la función de partición
-\begin_inset Formula 
-\begin{equation}
-\mathcal{F}=-kT\ln Z,
-\end{equation}
-
-\end_inset
-
-las propiedades termodinámicas del sistema se calculan a partir de la energía
- libre donde, la primera ley de la termodinámica para ferromagnetos es
-\begin_inset Formula 
-\begin{equation}
-\dd U=T\dd S-M\dd H.
-\end{equation}
-
-\end_inset
-
-En donde 
-\begin_inset Formula $\dd U$
-\end_inset
-
- es el cambio en la energía, 
-\begin_inset Formula $\dd S$
-\end_inset
-
- en la entropía y 
-\begin_inset Formula $\dd H$
-\end_inset
-
- en el campo magnético.
- Las primeras derivadas de la energía libre son 
-\begin_inset Formula 
-\begin{equation}
-\begin{aligned}U=-\pdv{\ln Z}{\beta},\quad & S=-\left(\pdv{\mathcal{F}}{T}\right)_{H}, & M=-\left(\pdv{\mathcal{F}}{H}\right)_{T}.\end{aligned}
-\end{equation}
-
-\end_inset
-
-Las segundas derivadas son
-\begin_inset Formula 
-\begin{equation}
-\begin{aligned}c_{H}=\left(\pdv{U}{T}\right)_{H},\quad & C_{M}=T\left(\pdv{S}{T}\right)_{M}, & \chi_{T}=\left(\pdv{M}{H}\right)_{T}.\end{aligned}
-\end{equation}
-
-\end_inset
-
-Una transición de fase de segundo orden implica una discontinuidad en una
- segunda derivada de la energía libre
-\begin_inset CommandInset citation
-LatexCommand cite
-key "giachetti_berezinskii-kosterlitz-thouless_2021,hinrichsen_non-equilibrium_2000,yeomans_statistical_1992"
-literal "false"
-
-\end_inset
-
-.
-\end_layout
-
 \begin_layout Section
 Función de correlación
 \end_layout
@@ -3175,7 +3228,7 @@ Función de correlación
 Las variables termodinámicas como la magnetización o la entropía son propiedades
  macroscópicas, entender lo que pasa en las transiciones de fase requiere
  de un enfoque a nivel microscópico.
- La función de correlación se define
+ La función de correlación se define como
 \begin_inset Formula 
 \begin{equation}
 \expval{\vec{s}_{x}\cdot\vec{s}_{y}}_{c}=\expval{\vec{s}_{x}\cdot\vec{s}_{y}}-\expval{\vec{s}_{x}}\cdot\expval{\vec{s}_{y}}.
@@ -3193,36 +3246,12 @@ En los modelos de espín la función de correlación mide que tan fuertemente
 \end_layout
 
 \begin_layout Standard
-En el modelo 
-\begin_inset Formula $2$
-\end_inset
-
--d O(
-\begin_inset Formula $3$
-\end_inset
-
-) 
+En la practica, para determinar la longitud de correlación se mapea a una
+ linea 
 \begin_inset Formula 
 \begin{equation}
 \begin{split}\vec{\sigma}_{i}=\frac{1}{L}\sum_{k=1}^{L}\vec{s}_{i,k},\quad & \vec{\sigma}_{j}=\frac{1}{L}\sum_{l=1}^{L}\vec{s}_{l,j}\end{split}
 ,
-\end{equation}
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{equation}
-\begin{aligned}\expval{\vec{s}_{i,k}\cdot\vec{s}_{l,j}}_{c}= & \frac{1}{L^{4}}\sum_{i=1}^{L}\sum_{k=1}^{L}\sum_{l=1}^{L}\sum_{j=1}^{L}\vec{s}_{i,k}\cdot\vec{s}_{l,j}-\frac{1}{L^{4}}\sum_{i=i}^{L}\sum_{k=1}^{L}\vec{s}_{i,k}\cdot\sum_{l=1}^{L}\sum_{j=1}^{L}\vec{s}_{l,j}\end{aligned}
-,
-\end{equation}
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{equation}
-\expval{\vec{s}_{i,j}\cdot\vec{s}_{k,l}}_{c}=\frac{1}{L^{2}}\sum_{i=1}^{L}\sum_{j=1}^{L}\vec{\sigma}_{i}\cdot\vec{\sigma}_{j}-\frac{1}{L²}\sum_{i=1}^{L}\vec{\sigma}_{i}\cdot\sum_{j=1}^{L}\vec{\sigma}_{j}=\expval{\vec{\sigma}_{i}\cdot\vec{\sigma}_{j}}_{c}.
 \end{equation}
 
 \end_inset
@@ -3242,7 +3271,41 @@ donde
 \begin_inset Formula $\xi$
 \end_inset
 
- es la longitud de correlación
+ es la longitud de correlación.
+ La longitud de correlación 
+\begin_inset Formula $\xi$
+\end_inset
+
+ diverge a la temperatura crítica 
+\begin_inset Formula $T_{c}$
+\end_inset
+
+.
+ Conforme 
+\begin_inset Formula $T$
+\end_inset
+
+ se acerca a la temperatura crítica desde arriba, la divergencia de 
+\begin_inset Formula $\xi$
+\end_inset
+
+ define el exponente critico 
+\begin_inset Formula $\nu$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\xi\propto\left(T-T_{c}\right)^{-\nu},
+\end{equation}
+
+\end_inset
+
+En el modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+) la formula se simplifica como
 \begin_inset Formula 
 \begin{equation}
 \xi\propto T^{-\nu},\label{eq:length}
@@ -3250,11 +3313,7 @@ donde
 
 \end_inset
 
-y 
-\begin_inset Formula $\nu$
-\end_inset
-
- es un exponente crítico.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3592,7 +3651,7 @@ Ningún punto de la esfera tiene preferencia, y la elección es independiente
 \begin_inset Formula $\vec{\phi}$
 \end_inset
 
-, variando entre regiones de una manera mas o menos aleatoria.
+, variando entre regiones de una manera más o menos aleatoria.
  Al llegar al equilibrio muchos de estas variaciones dejaran de fluctuar
  acercando el valor esperado de los diferentes dominios al valor constante
  
@@ -3663,7 +3722,7 @@ Un problema que surgió al intentar hacer predicciones sobre las cuerdas
 Desafortunadamente, esa idea no funcionó.
  Las observaciones realizadas por COBE y más recientemente por WMAP 
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand autocite
 key "ciuca_information_2020"
 literal "false"
 
@@ -3674,7 +3733,7 @@ literal "false"
  Afortunadamente, existen análogos de cuerdas cósmicas en muchos sistemas
  de materia condensada, incluidos las lineas de vórtice en superfluidos
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand autocite
 key "kibble_topology_1976,kibble_phase-transition_2007,kibble_implications_1980"
 literal "false"
 
@@ -3825,7 +3884,7 @@ He ocupan un solo estado cuántico a esa temperatura.
 .
  En He, la velocidad superfluida es proporcional al gradiente de la fase
 \begin_inset CommandInset citation
-LatexCommand cite
+LatexCommand autocite
 key "zurek_cosmological_1985,kosterlitz_long_1972,kosterlitz_nobel_2017"
 literal "false"
 
@@ -3910,7 +3969,7 @@ El tiempo de auto-correlación depende del algoritmo de Monte Carlo particular
  que se use y en general cerca de un punto crítico diverge según la ecuación
 \begin_inset Formula 
 \begin{equation}
-\tau_{\mathrm{exp}}\propto T^{\zeta}
+\tau_{\mathrm{}}\propto\xi^{z}
 \end{equation}
 
 \end_inset
@@ -4187,7 +4246,7 @@ Se realizó una serie de experimentos numéricos para determinar característica
 
 ).
  Se cálculo la longitud de correlación para las temperaturas 
-\begin_inset Formula $T\in\left\{ 0.7,0.8,0.9,1.0,1.4,1.6\right\} $
+\begin_inset Formula $T\in\left\{ 0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0\right\} $
 \end_inset
 
 , en retículas de longitud 
@@ -4203,11 +4262,381 @@ hot start
 \begin_inset Quotes frd
 \end_inset
 
- y se termalizo durante 
+ y se termalizó durante 
 \begin_inset Formula $10^{4}$
 \end_inset
 
  actualizaciones del algoritmo multi cluster.
+\end_layout
+
+\begin_layout Standard
+Cada uno de los exponentes críticos esta registrado en la Tabla 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "teblength"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Se ajustaron las longitudes de correlación respecto a la temperatura a
+ la función
+\begin_inset Formula 
+\begin{equation}
+\xi=AT^{-\nu}.
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $L$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nu_{\mathrm{ML}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nu_{\mathrm{MA}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nu_{\mathrm{GL}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nu_{\mathrm{GA}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nu_{\mathrm{MC}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $32$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.93(3)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.92(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.91(4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.0(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.94(8)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $64$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.2(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.9(7)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.0(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.2(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.00(9)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $128$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.8(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.7(1)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.3(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.1(4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.1(1)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Exponentes críticos de la longitud de correlación.
+ ML corresponde al algoritmo de metropolis lexicográfico, MA a metropolis
+ aleatorio.
+ GL corresponde a Glauber lexicoggráfico, GA a glauber aleatorio y MC a
+ multi cluster.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "teblength"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4327,6 +4756,44 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
+	filename output/plot/length/length_random_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Glauber aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
 	filename output/plot/length/length_multi_cluster.pdf
 	scale 50
 	groupId plots
@@ -4356,39 +4823,6 @@ Multi cluster
 \begin_layout Plain Layout
 \noindent
 \align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/length/length_random_glauber.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Glauber aleatorio
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -4411,388 +4845,6 @@ Longitud de correlación en función de la temperatura para las retículas
 \end_layout
 
 \begin_layout Standard
-Se ajustaron las longitudes de correlación respecto a la temperatura a la
- función
-\begin_inset Formula 
-\begin{equation}
-\xi=AT^{-\nu}.
-\end{equation}
-
-\end_inset
-
-Cada uno de los exponentes críticos esta registrado en la Tabla 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "teblength"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
-\begin_inset Float table
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="6">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $L$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\nu_{\mathrm{ML}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\nu_{\mathrm{MA}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\nu_{\mathrm{GL}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\nu_{\mathrm{GA}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\nu_{\mathrm{MC}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $32$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $5.1(7)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $5.3(5)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $5.2(5)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $5.0(6)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $5.0(4)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $64$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $7.5(2)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $8.7(9)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $8.3(9)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $7.3(4)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $8.0(3)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $128$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $8.83(1)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $9.3(5)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $11.21(7)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $9.4(2)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $9.7(7)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Exponentes críticos de la longitud de correlación.
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "teblength"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-El tiempo de auto correlación se cálculo en equilibrio térmico para las
- temperaturas 
-\begin_inset Formula $T\in\left\{ 0.6,0.7,0.8,0.9,1.0,1.2\right\} $
-\end_inset
-
-.
- En todos los casos se partió de un hot-start y se termalizo durante 
-\begin_inset Formula $10^{4}$
-\end_inset
-
- actualizaciones del algoritmo multi cluster.
- Finalmente se promedio sobre 
-\begin_inset Formula $10^{5}$
-\end_inset
-
- barridos del algoritmo de metrópolis lexicográfico fig.
- .
 \begin_inset Float table
 placement H
 wide false
@@ -4822,7 +4874,7 @@ Algoritmo
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\zeta_{Q}$
+\begin_inset Formula $z_{Q}$
 \end_inset
 
 
@@ -4834,7 +4886,7 @@ Algoritmo
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\zeta_{\mathcal{H}}$
+\begin_inset Formula $z_{\mathcal{H}}$
 \end_inset
 
 
@@ -4846,7 +4898,7 @@ Algoritmo
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\zeta_{m}$
+\begin_inset Formula $z_{m}$
 \end_inset
 
 
@@ -4869,7 +4921,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.2(5)$
+\begin_inset Formula $1.45(9)$
 \end_inset
 
 
@@ -4881,7 +4933,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.8(1)$
+\begin_inset Formula $-$
 \end_inset
 
 
@@ -4893,7 +4945,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $6.4(2)$
+\begin_inset Formula $0.44(3)$
 \end_inset
 
 
@@ -4916,7 +4968,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.4(2)$
+\begin_inset Formula $1.2(3)$
 \end_inset
 
 
@@ -4928,7 +4980,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.8(1)$
+\begin_inset Formula $-$
 \end_inset
 
 
@@ -4940,7 +4992,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $6.3(4)$
+\begin_inset Formula $1.1(3)$
 \end_inset
 
 
@@ -4963,7 +5015,7 @@ Glauber lexicografico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.8(4)$
+\begin_inset Formula $0.8(2)$
 \end_inset
 
 
@@ -4975,7 +5027,7 @@ Glauber lexicografico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.0(2)$
+\begin_inset Formula $-$
 \end_inset
 
 
@@ -4987,7 +5039,7 @@ Glauber lexicografico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $6.6(3)$
+\begin_inset Formula $0.8(2)$
 \end_inset
 
 
@@ -5010,7 +5062,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.6(3)$
+\begin_inset Formula $1.0(3)$
 \end_inset
 
 
@@ -5022,7 +5074,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.8(1)$
+\begin_inset Formula $-$
 \end_inset
 
 
@@ -5034,7 +5086,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $6.7(5)$
+\begin_inset Formula $1.0(2)$
 \end_inset
 
 
@@ -5057,7 +5109,10 @@ Multi cluster
 \begin_inset Text
 
 \begin_layout Plain Layout
--
+\begin_inset Formula $-$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5066,7 +5121,10 @@ Multi cluster
 \begin_inset Text
 
 \begin_layout Plain Layout
--
+\begin_inset Formula $-$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5075,7 +5133,7 @@ Multi cluster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $11.2(7)$
+\begin_inset Formula $0.05(5)$
 \end_inset
 
 
@@ -5097,6 +5155,933 @@ Multi cluster
 \begin_layout Plain Layout
 Exponente crítico 
 \begin_inset Formula $z$
+\end_inset
+
+ para diferentes algoritmos.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/lexic_metropolis_charge.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/random_metropolis_charge.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algorimo de Metropolis aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/lexic_glauber_charge.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/random_glauber_charge.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Gauber aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/multi_cluster_charge.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Multi cluster.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tiempo de autocorrelación de la carga topológica en función de la longitud
+ de correlación en una retícula de longitud 
+\begin_inset Formula $L=64$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/lexic_metropolis_energy.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/random_metropolis_energy.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algorimo de Metropolis aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/lexic_glauber_energy.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/random_glauber_energy.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Gauber aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/multi_cluster_energy.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Multi cluster.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tiempo de autocorrelación de la magnetización en función de la longitud
+ de correlación en una retícula de longitud 
+\begin_inset Formula $L=64$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/lexic_metropolis_magnet.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/random_metropolis_charge.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algorimo de Metropolis aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/lexic_glauber_charge.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/random_glauber_charge.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Gauber aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/multi_cluster_magnet.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Multi cluster.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tiempo de autocorrelación de la magnetización en función de la longitud
+ de correlación en una retícula de longitud 
+\begin_inset Formula $L=64$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El tiempo de auto correlación se cálculo en equilibrio térmico para las
+ temperaturas 
+\begin_inset Formula $T\in\left\{ 0.7,0.8,0.9,1.0\right\} $
+\end_inset
+
+.
+ En todos los casos se partió de un hot-start y se termalizó durante 
+\begin_inset Formula $10^{4}$
+\end_inset
+
+ actualizaciones del algoritmo multi cluster.
+ Finalmente se promedio sobre 
+\begin_inset Formula $10^{5}$
+\end_inset
+
+ barridos del algoritmo de metrópolis lexicográfico.
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Algoritmo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lambda_{Q}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lambda_{\mathcal{H}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lambda_{m}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Metropolis lexicográfico
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.8(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.9(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8.0(7)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Metropolis aleatorio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5.1(7)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.3(3)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8.4(8)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Glauber lexicografico
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5.7(4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.5(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8.9(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Glauber aleatorio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.1(3)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.3(4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9.1(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Multi cluster
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.2(9)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.29(4)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.30(8)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Exponente crítico 
+\begin_inset Formula $\lambda$
 \end_inset
 
  para diferentes algoritmos.
@@ -5320,14 +6305,14 @@ Tiempo de autocorrelación de la carga topológica en función de la temperatura
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -5360,7 +6345,7 @@ Algoritmo de Metropolis lexicográfico.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -5396,7 +6381,7 @@ Algorimo de Metropolis aleatorio.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -5429,7 +6414,7 @@ Algoritmo de Glauber lexicográfico.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -5462,7 +6447,7 @@ Algoritmo de Gauber aleatorio.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -5529,7 +6514,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename output/plot/magnetization/autocorrelation_lexic_metropolis_L64_M.pdf
+	filename output/plot/magnet/autocorrelation_lexic_metropolis_L64_M.pdf
 	scale 50
 	groupId plots
 
@@ -5561,7 +6546,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename output/plot/magnetization/autocorrelation_random_metropolis_L64_M.pdf
+	filename output/plot/magnet/autocorrelation_random_metropolis_L64_M.pdf
 	scale 50
 	groupId plots
 
@@ -5598,7 +6583,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename output/plot/magnetization/autocorrelation_lexic_glauber_L64_M.pdf
+	filename output/plot/magnet/autocorrelation_lexic_glauber_L64_M.pdf
 	scale 50
 	groupId plots
 
@@ -5630,7 +6615,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename output/plot/magnetization/autocorrelation_random_glauber_L64_M.pdf
+	filename output/plot/magnet/autocorrelation_random_glauber_L64_M.pdf
 	scale 50
 	groupId plots
 
@@ -5663,7 +6648,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename output/plot/magnetization/autocorrelation_multi_cluster_L64_M.pdf
+	filename output/plot/magnet/autocorrelation_multi_cluster_L64_M.pdf
 	scale 50
 	groupId plots
 
@@ -5851,13 +6836,336 @@ Se realizaron enfriamientos desde la temperatura
 \end_inset
 
  enfriamientos.
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Algoritmo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\zeta_{Q}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\zeta_{\mathcal{H}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\zeta_{m}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Metropolis lexicográfico
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.54
+\begin_inset Formula $(1)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.220(6)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.282(7)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Metropolis aleatorio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.55(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.218(6)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.284(4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Glauber lexicográfico
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.51(1)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.211(4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.267(3)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Glauber aleatorio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.51(1)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.209(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.274(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Multi cluster
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.10(7)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.282(7)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.629(6)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Exponente crítico dinámico 
+\begin_inset Formula $z$
+\end_inset
+
+ para diferentes algoritmos.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -6073,7 +7381,7 @@ Evolución de los enfriamientos de la susceptibilidad topológica
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -6277,7 +7585,7 @@ Susceptibilidad topológica final
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -6477,7 +7785,7 @@ Evolución de los enfriamientos de la densidad de energía
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -6644,7 +7952,7 @@ Susceptibilidad densidad de energía
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -6844,7 +8152,7 @@ Evolución de los enfriamientos de la magnetización
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -7042,329 +8350,6 @@ Susceptibilidad magnetización
 \end_inset
 
 
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="4">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Algoritmo
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $z_{Q}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $z_{\mathcal{H}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $z_{m}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Metropolis lexicográfico
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.54
-\begin_inset Formula $(1)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $0.221(6)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $0.282(7)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Metropolis aleatorio
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $0.55(2)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $0.217(6)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $0.284(4)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Glauber lexicográfico
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $0.51(1)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $0.210(5)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $0.267(4)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Glauber aleatorio
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $0.51(1)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $0.210(5)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $0.274(4)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Multi cluster
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $1.11(7)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $0.28(1)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $0.629(6)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Exponente crítico dinámico 
-\begin_inset Formula $z$
-\end_inset
-
- para diferentes algoritmos.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Chapter
@@ -7455,7 +8440,7 @@ donde
 \begin_inset Formula $\left(\theta_{r},\phi_{r}\right)$
 \end_inset
 
-, resulta en una distribución mas densa en el polo norte debido a la transformac
+, resulta en una distribución más densa en el polo norte debido a la transformac
 ión de coordenadas cartesianas a coordenadas esféricas.
  Una forma de corregir el problema es seleccionar parámetros usando funciones
  auxiliares 
@@ -7687,10 +8672,410 @@ Luego se calcula la rotación de
 \end_inset
 
 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/cone.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Rotación de un espín 
+\begin_inset Formula $\vec{s}$
+\end_inset
+
+ respecto al eje de rotación 
+\begin_inset Formula $\vec{k}$
+\end_inset
+
+ en dirección 
+\begin_inset Formula $\vec{r}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
-Algoritmo Hoshen-Koppelman
+Algoritmo Hoshen-Kopelman aplicado al modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+La teoría de precolación se relaciona a una amplia variedad de fenómenos
+ como:
+\end_layout
+
+\begin_layout Itemize
+La magnetización espontánea de un ferromagneto.
+\end_layout
+
+\begin_layout Itemize
+La propagación de enfermedades.
+\end_layout
+
+\begin_layout Itemize
+La formación de geles de polímeros.
+\end_layout
+
+\begin_layout Itemize
+La conductividad eléctrica en semiconductores amorfos.
+\end_layout
+
+\begin_layout Itemize
+La formación de un grupo infinito de moléculas idénticas en un sistema multicomp
+onente.
+\end_layout
+
+\begin_layout Standard
+Para resolver problemas de precolación, los métodos de Monte Carlo se aplican
+ a subretículas finitas.
+ En este caso la teoría de precolación la probabilidad de colocar un cluster
+ infinito en una retícula infinita, la cuestión es como tratar un cluster
+ infinito en una retícula finita.
+\end_layout
+
+\begin_layout Standard
+El algoritmo de Hoshen kopelman fue descrito por Joseph Hoshen y Raoul Kopelman
+ en 1976 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "hoshen_percolation_1976"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En el modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+) usando el algoritmo multi cluster, se tiene una retícula finita bidimensional
+ de longitud 
+\begin_inset Formula $L$
+\end_inset
+
+ cuyos sitios están ocupados por espines.
+ Para probar el enlace entre dos espines 
+\begin_inset Formula $\vec{s}_{x},\vec{s}_{y}$
+\end_inset
+
+ donde 
+\begin_inset Formula $\vec{s}_{y}$
+\end_inset
+
+ es uno de los espines vecinos más cercanos de 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+.
+ Primero se obtiene un vector aleatorio y unitario 
+\begin_inset Formula $\vec{w}$
+\end_inset
+
+.
+ Se selección el espín 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+y se refleja respecto al plano normal a 
+\begin_inset Formula $\vec{w}$
+\end_inset
+
+ dando lugar al espín 
+\begin_inset Formula $\vec{s}_{x}\,'$
+\end_inset
+
+.
+ Se tienen dos configuraciones 
+\begin_inset Formula $\vec{s}_{x}\in[s]$
+\end_inset
+
+ y 
+\begin_inset Formula $\vec{s}_{x}\,'\in[s']$
+\end_inset
+
+ , la diferencia de energía entre las configuraciones es
+\begin_inset Formula 
+\begin{equation}
+\Delta\mathcal{H}=\vec{s}_{x}\cdot\vec{s}_{y}-\vec{s}_{x}\,'\cdot\vec{s}_{y}.
+\end{equation}
+
+\end_inset
+
+Calculando la diferencia de energía entre las configuraciones, la probabilidad
+ de enlace entre es
+\begin_inset Formula 
+\begin{equation}
+p_{\mathrm{enlace}}=\begin{cases}
+1-\mathrm{e}^{-\beta\Delta\mathcal{H}} & \mathrm{si}\qquad\Delta\mathcal{H}\geq0\\
+0 & \mathrm{si}\qquad\beta\Delta\mathcal{H}<0.
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para cuales quiera dos espines 
+\begin_inset Formula $\vec{s}_{x},\vec{s}_{y}$
+\end_inset
+
+ en una configuración 
+\begin_inset Formula $[s]$
+\end_inset
+
+.
+ Los dos espines pertenecen al mismo cluster si hay un enlace directo entre
+ ambos.
+ Si 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ es un cluster no vacío y 
+\begin_inset Formula $\vec{s}_{x}\in[s]$
+\end_inset
+
+ el espín 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+ pertenece al cluster si esta enlazado a un espín que pertenece al cluster.
+\end_layout
+
+\begin_layout Standard
+A cada espín se le asocia una etiqueta 
+\begin_inset Formula $m_{x}^{\alpha}$
+\end_inset
+
+ donde 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ indica el cluster al que pertenece el espín en cuestión.
+ El procedimiento para asociar cada espín a sus respectivos clusters es
+ el siguiente:
+\end_layout
+
+\begin_layout Enumerate
+Se selecciona el espín 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+, se genera un valor a una matriz de enlaces 
+\begin_inset Formula $b$
+\end_inset
+
+ en función de su enlace con los espines 
+\begin_inset Formula $\vec{s}_{x+\hat{1}},\vec{s}_{x+\hat{2}}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+Si hay enlace entre 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+, 
+\begin_inset Formula $\vec{s}_{x+\hat{1}}$
+\end_inset
+
+ se asigna el valor 
+\begin_inset Formula $b_{x}=10$
+\end_inset
+
+, si hay enlace entre 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+ , 
+\begin_inset Formula $\vec{s}_{x+\hat{2}}$
+\end_inset
+
+ se asigna el valor 
+\begin_inset Formula $b_{x}=1$
+\end_inset
+
+ y si hay enlace entre 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+, 
+\begin_inset Formula $\vec{s}_{x+\hat{1}}$
+\end_inset
+
+ y 
+\begin_inset Formula $\vec{s}_{x+\hat{2}}$
+\end_inset
+
+ se asigna el valor 
+\begin_inset Formula $b_{x}=11$
+\end_inset
+
+.
+ Si no hay enlaces se asigna el valor 
+\begin_inset Formula $b_{x}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Se pasa al siguiente espín y se regresa al paso 1.
+\end_layout
+
+\begin_layout Standard
+Al probar todos los espines se forma una matriz de enlaces, la siguiente
+ matriz es un ejemplo de matriz de enlaces en una retícula cuadrada de longitud
+ 
+\begin_inset Formula $8$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+b=\left(\begin{array}{cccccccc}
+1 & 0 & 10 & 0 & 0 & 10 & 0 & 0\\
+0 & 1 & 0 & 0 & 1 & 10 & 0 & 0\\
+0 & 1 & 0 & 0 & 0 & 0 & 1 & 0\\
+0 & 10 & 11 & 0 & 0 & 10 & 0 & 0\\
+0 & 0 & 0 & 10 & 0 & 0 & 0 & 10\\
+11 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 10\\
+10 & 11 & 0 & 1 & 0 & 0 & 0 & 0
+\end{array}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El siguiente paso es usar 
+\begin_inset Formula $b$
+\end_inset
+
+ para etiquetar cada espín a su respectivo cluster.
+\end_layout
+
+\begin_layout Enumerate
+Se selecciona el espín 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Si 
+\begin_inset Formula $b_{x}=0$
+\end_inset
+
+ se crea un nuevo cluster 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ y se asocia la etiqueta 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ al espín 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+, luego vuelve al paso 1
+\end_layout
+
+\begin_layout Enumerate
+Si 
+\begin_inset Formula $b_{x}>0$
+\end_inset
+
+ se verifica si el valor de 
+\begin_inset Formula $b_{x+\hat{1}}$
+\end_inset
+
+ y 
+\begin_inset Formula $b_{x+\hat{2}}$
+\end_inset
+
+.
+ Si alguno de los espines tiene enlace con un clsuter existente 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, entonces los espines enlazados se añaden al clusuter existente etiquétamelos
+ con 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Se pasa al siguiente espín y se regresa al paso 1.
+\end_layout
+
+\begin_layout Standard
+Finalmente se obtiene la matriz de clusters, donde cada valor en esta asociado
+ a un único cluster
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+m=\left(\begin{array}{cccccccc}
+1 & 1 & 2 & 3 & 4 & 5 & 6 & 7\\
+8 & 2 & 2 & 9 & 5 & 5 & 10 & 11\\
+12 & 13 & 13 & 14 & 15 & 5 & 16 & 16\\
+17 & 18 & 19 & 19 & 20 & 21 & 22 & 23\\
+24 & 18 & 19 & 25 & 26 & 21 & 27 & 28\\
+28 & 28 & 29 & 25 & 30 & 31 & 32 & 28\\
+28 & 33 & 34 & 35 & 36 & 36 & 37 & 38\\
+1 & 1 & 1 & 39 & 39 & 40 & 41 & 38
+\end{array}\right)
+\end{equation}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
