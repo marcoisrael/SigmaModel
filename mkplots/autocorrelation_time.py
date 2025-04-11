@@ -11,17 +11,18 @@ parser.add_argument("-alg", "--algorithm", default="lexic_metropolis")
 parser.add_argument("-o", "--observable", default="energy")
 args = parser.parse_args()
 colors_list = list(colors._colors_full_map.values())
-make_temp_plots = True
+make_temp_plots = False
 name = args.observable
 alg = args.algorithm
 L = 64
-T = np.array([0.7, 0.8, 0.9,1.0])
+T = np.array([0.5,0.6,0.7, 0.8, 0.9,1.0,1.2])
 if args.algorithm == "all":
     algs = [
         "lexic_metropolis",
         "random_metropolis",
         "lexic_glauber",
         "random_glauber",
+        "multi_cluster",
     ]
 else:
     algs = args.algorithm.split(",")
@@ -39,7 +40,7 @@ for alg in algs:
 
         X = np.array(X)
         t, q, qErr = X[:, 0], X[:, 1] / X[0, 1], X[:, 2] / X[0, 1]
-        xfit = fit(t[0:50], q[0:50], qErr[0:50])
+        xfit = fit(t[0:100:2], q[0:100:2], qErr[0:100:2])
 
         def f(x, a, b):
             return a*np.exp(-x/b)

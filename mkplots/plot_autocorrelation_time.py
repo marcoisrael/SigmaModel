@@ -16,29 +16,36 @@ if args.algorithm == "all":
         "lexic_glauber",
         "random_metropolis",
         "random_glauber",
-        "multi_cluster"
+        "multi_cluster",
     ]
 else:
     algs = args.algorithm.split(",")
+
+def f(x, a, b):
+    return a*x**-b
+
 for alg in algs:
     L = 64
-
-    def f(x, a, b):
-        return a*x**-b
+    fig, ax = plt.subplots()
 
     data = np.loadtxt(
-        f"output/autocorrelation/{name}_{alg}.csv",
-        skiprows=1,
-        delimiter=","
+        f"output/autocorrelation/{name}_{alg}.csv", skiprows=1, delimiter=","
     )
-    data = data.transpose()
+ 
+    data = data[2:].transpose()
     x = np.linspace(data[0][0], data[0][-1], 200)
-    xfit = fit(data[0][1:], data[1][1:], data[2][1:])
+    xfit = fit(data[0,1:-1], data[1,1:-1], data[2,1:-1])
     xfit.fiting(f)
-    fig, ax = plt.subplots()
-    text = fix(xfit.opt[0], xfit.error[0])+r"$\exp(-$"+fix(xfit.opt[1], xfit.error[1]) + \
-        r"$T)$"+"\n" + \
-        r"$\frac{\chi^2}{\mathrm{dof}}=$"+str(xfit.chisq_by_dof)
+
+    text = (
+        fix(xfit.opt[0], xfit.error[0])
+        + r"$\exp(-$"
+        + fix(xfit.opt[1], xfit.error[1])
+        + r"$T)$"
+        + "\n"
+        + r"$\frac{\chi^2}{\mathrm{dof}}=$"
+        + str(xfit.chisq_by_dof)
+    )
 
     ax.text(
         0.99,
@@ -48,6 +55,14 @@ for alg in algs:
         ha="right",
         va="top",
         transform=ax.transAxes,
+    )
+    ax.plot(
+        x,
+        f(x, *xfit.opt),
+        linewidth=1.8,
+        color="blue",
+        label=r"$\tau_{exp}$",
+        linestyle=(0, (3, 3)),
     )
     ax.errorbar(
         data[0],
@@ -59,15 +74,8 @@ for alg in algs:
         markersize=5,
         color="red",
     )
-    ax.plot(
-        x,
-        f(x, *xfit.opt),
-        linewidth=1.8,
-        color="blue",
-        label=r"$\tau_{exp}$",
-        linestyle=(0, (3, 3)),
-    )
-    print(alg, fix(xfit.opt[1], xfit.error[1]))
+
+    # print(alg, fix(xfit.opt[1], xfit.error[1]))
     ax.set_xlabel(r"$\log(T)$", fontsize=18)
     ax.set_ylabel(r"$\log(\tau)$", fontsize=18)
     # ax.legend()
