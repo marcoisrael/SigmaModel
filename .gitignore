@@ -1,0 +1,9 @@
+*.mod
+*test*
+bin
+logs
+*cpython*
+output
+*pycache*
+*.lyx~
+*.lyx#
