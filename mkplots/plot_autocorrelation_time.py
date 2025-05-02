@@ -32,7 +32,7 @@ for alg in algs:
         f"output/autocorrelation/{name}_{alg}.csv", skiprows=1, delimiter=","
     )
     p0=0
-    pf=-1
+    pf=0
     data = data.transpose()
     x = np.linspace(data[0][0], data[0][-1], 200)
     if pf==0:
@@ -41,19 +41,12 @@ for alg in algs:
         xfit = fit(data[0,p0:pf], data[1,p0:pf], data[2,p0:pf])
     xfit.fiting(f)
 
-    text = (
-        fix(xfit.opt[0], xfit.error[0])
-        + r"$\exp($"
-        + fix(-xfit.opt[1], xfit.error[1])
-        + r"$T)$"
-        + "\n"
-        + r"$\frac{\chi^2}{\mathrm{dof}}=$"
-        + str(xfit.chisq_by_dof)
-    )
+    text = ( r"$\tau \propto T^{-\lambda}$"+"\n"+
+            r"$\lambda = $"+f"{fix(xfit.opt[1], xfit.error[1])}" )
 
     ax.text(
-        0.99,
-        0.99,
+        0.96,
+        0.96,
         text,
         fontsize=16,
         ha="right",

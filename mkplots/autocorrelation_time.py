@@ -15,7 +15,7 @@ make_temp_plots = True
 name = args.observable
 alg = args.algorithm
 L = 64
-T = np.array([0.3,0.4,0.5,0.6,0.7,0.8])
+T = np.array([0.7,0.8,0.9,1.0])
 if args.algorithm == "all":
     algs = [
         "lexic_metropolis",
@@ -100,4 +100,4 @@ for alg in algs:
         "mkplots/plot_autocorrelation_time.py",
         f"-alg {alg} -o {name}"
     ]
-    os.system(" ".join(cmd))
+    #os.system(" ".join(cmd))

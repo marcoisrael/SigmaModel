@@ -95,11 +95,9 @@ for alg in algs:
     param_bounds = ((0, 0), (np.inf, np.inf))
     xfit.fiting(f, args={"bounds": param_bounds})
     print(alg, fix(xfit.opt[1], xfit.error[1]))
-    text = fix(xfit.opt[0], xfit.error[0])+r"$\exp($"+fix(-xfit.opt[1], xfit.error[1]) + \
-        r"$\tau_Q)$"+"\n" + \
-        r"$\frac{\chi^2}{\mathrm{dof}}=$"+str(xfit.chisq_by_dof)
+    text = r"$\xi \propto \tau_Q^{\zeta}=$"+"\n"+r"$\zeta=$"+fix(xfit.opt[1], xfit.error[1])
     ax2.text(
-        0.99, 0.99,
+        0.96, 0.30,
         text,
         fontsize=16,
         ha="right",

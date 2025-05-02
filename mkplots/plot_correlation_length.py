@@ -93,7 +93,7 @@ for alg in algs:
             label=f"$L=${LENGTH}, "+r"$\nu=$"+fix(xfit.opt[1],xfit.error[1]),
         )
    
-    text = (r"$\xi \propto \exp(-T/\nu)$")
+    text = (r"$\xi \propto T^{-\nu}$")
 
     ax.text(
         0.99,

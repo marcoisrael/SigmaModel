@@ -16,7 +16,7 @@ names = [
         "Random\nGlauber",
         "Multi\ncluster",
         ]
-T = np.array([0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0])
+T = np.array([0.9,1.0,1.2])
 for LENGTH in [32,64,128]:
     val=[]
     valErr=[]
@@ -40,7 +40,7 @@ for LENGTH in [32,64,128]:
         def f(x, a, b):
             return a*x**-b
             
-        xfit = fit(T[:3], psi[:3], psiErr[:3])
+        xfit = fit(T, psi, psiErr)
         xfit.fiting(f)
         val.append(xfit.opt[1])
         valErr.append(xfit.error[1])

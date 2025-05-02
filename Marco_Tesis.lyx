@@ -4178,7 +4178,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename output/plot/magnet/L64/lexic_metropolis/lexic_metropolis_1.2.pdf
+	filename output/plot/magnet/L64/lexic_metropolis/lexic_metropolis_1.0.pdf
 	scale 50
 
 \end_inset
@@ -4635,7 +4635,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.94(8)$
+\begin_inset Formula $2.3(3)$
 \end_inset
 
 
@@ -4709,7 +4709,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.00(9)$
+\begin_inset Formula $2.5(3)$
 \end_inset
 
 
@@ -4783,7 +4783,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.1(1)$
+\begin_inset Formula $2.5(3)$
 \end_inset
 
 
@@ -4803,7 +4803,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Exponentes críticos de la longitud de correlación, en reticulas de longitud
+Exponentes críticos de la longitud de correlación, en retículas de longitud
  
 \begin_inset Formula $\{32,64,128\}.$
 \end_inset
@@ -4840,7 +4840,7 @@ status open
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -4880,7 +4880,7 @@ Metropolis lexicográfico
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -4920,7 +4920,7 @@ Metropolis aleatorio
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -5215,6 +5215,10 @@ El exponente critico dinámico se calculo a partir de las longitudes de correlac
 \end_inset
 
 .
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
 \begin_inset Float table
 placement H
 wide false
@@ -5291,7 +5295,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.9(2)$
+\begin_inset Formula $1.2(4)$
 \end_inset
 
 
@@ -5315,7 +5319,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.44(3)$
+\begin_inset Formula $0.34(6)$
 \end_inset
 
 
@@ -5338,7 +5342,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.4(9)$
+\begin_inset Formula $0.8(6)$
 \end_inset
 
 
@@ -5362,7 +5366,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.1(3)$
+\begin_inset Formula $0.3(2)$
 \end_inset
 
 
@@ -5385,7 +5389,7 @@ Glauber lexicografico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.1(7)$
+\begin_inset Formula $0.6(3)$
 \end_inset
 
 
@@ -5409,7 +5413,7 @@ Glauber lexicografico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.8(2)$
+\begin_inset Formula $0.34(8)$
 \end_inset
 
 
@@ -5432,7 +5436,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $5.80(1)$
+\begin_inset Formula $0.6(2)$
 \end_inset
 
 
@@ -5456,7 +5460,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.0(2)$
+\begin_inset Formula $0.32(3)$
 \end_inset
 
 
@@ -5479,7 +5483,7 @@ multi clúster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.1(2)$
+\begin_inset Formula $-$
 \end_inset
 
 
@@ -5491,7 +5495,7 @@ multi clúster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $-$
+\begin_inset Formula $0.011(5)$
 \end_inset
 
 
@@ -5503,7 +5507,7 @@ multi clúster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.05(5)$
+\begin_inset Formula $0.03(5)$
 \end_inset
 
 
@@ -5550,6 +5554,205 @@ Exponente crítico
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/lexic_metropolis_charge.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/random_metropolis_charge.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algorimo de Metropolis aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/lexic_glauber_charge.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/random_glauber_charge.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Gauber aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/multi_cluster_charge.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de multi clúster.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tiempo de autocorrelación de la suceptibilidad topologica en función de
+ la longitud de correlación en una retícula de longitud 
+\begin_inset Formula $L=64$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Float figure
 placement H
 wide false
@@ -5561,7 +5764,7 @@ status collapsed
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -5728,8 +5931,8 @@ Algoritmo de multi clúster.
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Tiempo de autocorrelación de la magnetización en función de la longitud
- de correlación en una retícula de longitud 
+Tiempo de autocorrelación de la energía en función de la longitud de correlación
+ en una retícula de longitud 
 \begin_inset Formula $L=64$
 \end_inset
 
@@ -5751,7 +5954,7 @@ Tiempo de autocorrelación de la magnetización en función de la longitud
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -5796,7 +5999,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename output/plot/scaling/random_metropolis_charge.pdf
+	filename output/plot/scaling/random_metropolis_magnet.pdf
 	scale 50
 	groupId plots
 
@@ -5833,7 +6036,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename output/plot/scaling/lexic_glauber_charge.pdf
+	filename output/plot/scaling/lexic_glauber_magnet.pdf
 	scale 50
 	groupId plots
 
@@ -5865,7 +6068,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename output/plot/scaling/random_glauber_charge.pdf
+	filename output/plot/scaling/random_glauber_magnet.pdf
 	scale 50
 	groupId plots
 
@@ -6040,7 +6243,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.9(2)$
+\begin_inset Formula $4.3(7)$
 \end_inset
 
 
@@ -6052,7 +6255,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.7(4)$
+\begin_inset Formula $2.0(4)$
 \end_inset
 
 
@@ -6064,7 +6267,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $7.24(10)$
+\begin_inset Formula $11.28(6)$
 \end_inset
 
 
@@ -6087,7 +6290,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.4(9)$
+\begin_inset Formula $4.1(2)$
 \end_inset
 
 
@@ -6099,7 +6302,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.6(8)$
+\begin_inset Formula $1.7(2)$
 \end_inset
 
 
@@ -6111,7 +6314,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $9.7(10)$
+\begin_inset Formula $9.6(3)$
 \end_inset
 
 
@@ -6134,7 +6337,7 @@ Glauber lexicografico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.1(7)$
+\begin_inset Formula $3.3(6)$
 \end_inset
 
 
@@ -6146,7 +6349,7 @@ Glauber lexicografico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.0(8)$
+\begin_inset Formula $1.1(5)$
 \end_inset
 
 
@@ -6158,7 +6361,7 @@ Glauber lexicografico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $7.71(8)$
+\begin_inset Formula $15.1(6)$
 \end_inset
 
 
@@ -6181,7 +6384,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $5.80(1)$
+\begin_inset Formula $3.4(4)$
 \end_inset
 
 
@@ -6193,7 +6396,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.2(5)$
+\begin_inset Formula $1.55(4)$
 \end_inset
 
 
@@ -6205,7 +6408,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $6.9(2)$
+\begin_inset Formula $10.4(3)$
 \end_inset
 
 
@@ -6228,7 +6431,7 @@ multi clúster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.1(2)$
+\begin_inset Formula $-0.4(9)$
 \end_inset
 
 
@@ -6240,7 +6443,7 @@ multi clúster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.32(7)$
+\begin_inset Formula $1.2(1)$
 \end_inset
 
 
@@ -6252,7 +6455,7 @@ multi clúster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.36(5)$
+\begin_inset Formula $5.3(1)$
 \end_inset
 
 
@@ -6295,7 +6498,7 @@ Exponente
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -6500,7 +6703,7 @@ Tiempo de autocorrelación de la carga topológica en función de la temperatura
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -6697,7 +6900,7 @@ Tiempo de autocorrelación de la densidad de energía en función de la temperat
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -7122,7 +7325,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.2492(8)$
+\begin_inset Formula $0.2491(7)$
 \end_inset
 
 
@@ -7157,7 +7360,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.55(1)$
+\begin_inset Formula $0.55(2)$
 \end_inset
 
 
@@ -7169,7 +7372,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.247(2)$
+\begin_inset Formula $0.247(1)$
 \end_inset
 
 
@@ -7181,7 +7384,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.284(4)$
+\begin_inset Formula $0.318(2)$
 \end_inset
 
 
@@ -7228,7 +7431,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.268(4)$
+\begin_inset Formula $0.26(1)$
 \end_inset
 
 
@@ -7251,7 +7454,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.51(2)$
+\begin_inset Formula $0.51(1)$
 \end_inset
 
 
@@ -7263,7 +7466,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.238(1)$
+\begin_inset Formula $0.238(2)$
 \end_inset
 
 
@@ -7275,7 +7478,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.274(5)$
+\begin_inset Formula $0.30(2)$
 \end_inset
 
 
@@ -7310,7 +7513,7 @@ multi clúster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.338(1)$
+\begin_inset Formula $0.338(4)$
 \end_inset
 
 
@@ -7322,7 +7525,7 @@ multi clúster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.630(6)$
+\begin_inset Formula $0.68(2)$
 \end_inset
 
 
@@ -7987,7 +8190,7 @@ Evolución de los enfriamientos de la densidad de energía
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -9303,207 +9506,103 @@ literal "false"
 \end_inset
 
 .
- Describe un procedimiento para etiquetar los elementos de una retícula
- en agrupaciones clusters.
- Cada sitio 
-\begin_inset Formula $x$
-\end_inset
-
- en una retícula colinda con 
-\begin_inset Formula $k$
-\end_inset
-
- vecinos mas cercanos, en este caso 
-\begin_inset Formula $\Omega=\{y_{1},\dots,y_{k}\}$
-\end_inset
-
- son los vecinos mas cercanos a 
-\begin_inset Formula $x$
-\end_inset
-
-.
- Cada uno de estos sitios puede estar enlazado o asilado de 
-\begin_inset Formula $x$
-\end_inset
-
-.
+ Un clúster es un conjunto de sitios enlazados en una retícula.
+ La función de enlace indica si dos sitios están o no enlazados.
+ El algoritmo de HK es un procedimiento para etiquetar los sitios de la
+ retícula en clusters, se usa la función de enlace para determinar el clúster
+ al que pertenece cada sitio.
 \end_layout
 
 \begin_layout Itemize
-El clúster mínimo, esta formado por un sitio aislado.
-\end_layout
-
-\begin_layout Itemize
-Sean 
-\begin_inset Formula $x,y,z$
-\end_inset
-
- sitios no vacíos.
- Si 
-\begin_inset Formula $x$
-\end_inset
-
- esta conectado con 
-\begin_inset Formula $y$
-\end_inset
-
- y 
-\begin_inset Formula $z$
-\end_inset
-
- esta conectado con 
-\begin_inset Formula $y$
-\end_inset
-
-, entonces 
-\begin_inset Formula $x$
-\end_inset
-
- esta conectado con 
-\begin_inset Formula $z$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Dos sitios están conectados si y solo si pertenecen al mismo clúster.
+Dos sitios enlazados pertenecen al mismo clúster.
 \end_layout
 
 \begin_layout Standard
-Dados dos clusters 
-\begin_inset Formula $C_{1}=\{x_{1},\dots,x_{n}\}$
-\end_inset
-
- y 
-\begin_inset Formula $C_{2}=\{y_{1},\dots,y_{n}\}$
-\end_inset
-
-, si 
-\begin_inset Formula $x_{i}\in C_{1}$
-\end_inset
-
-.
- Si 
-\begin_inset Formula $x_{i}$
-\end_inset
-
- esta conectado con 
-\begin_inset Formula $y_{j}\in C_{2}$
-\end_inset
-
- entonces todos los elementos de 
-\begin_inset Formula $C_{1}$
-\end_inset
-
- esta conectados a 
-\begin_inset Formula $y_{j}$
-\end_inset
-
- por medio de 
-\begin_inset Formula $x_{i}$
-\end_inset
-
-.
- Por lo tanto todos los sitios de 
-\begin_inset Formula $C_{1}$
-\end_inset
-
- están conectados a 
-\begin_inset Formula $C_{2}$
-\end_inset
-
-.
- Como están conectados pertenecen al mismo clúster 
-\begin_inset Formula $C=C_{1}\cup C_{2}$
-\end_inset
-
-, a esto se le llama unión de clusters y es fundamental en el algoritmo
- de Hoshen-Kopelman.
- 
+El enlace entre sitios es transitivo, por lo que se pude dar el caso de
+ que dos sitios no estén directamente enlazados pero pertenecen al mismo
+ clúster.
 \end_layout
 
 \begin_layout Standard
-Consideremos una configuración de sitios 
-\begin_inset Formula $\Omega=\{x_{1},\dots,x_{n}\}$
+Consideremos una retícula 
+\begin_inset Formula $\mathscr{R}$
 \end_inset
 
- en una retícula 
-\begin_inset Formula $\mathscr{T}_{L}^{d}$
+, cada sitio 
+\begin_inset Formula $x$
 \end_inset
 
-, se define 
-\begin_inset Formula $\Omega'=\Omega$
+ tiene sus propios sitios vecinos más cercanos 
+\begin_inset Formula $\{y_{1},\dots,y_{k}\}$
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Enumerate
-Si 
-\begin_inset Formula $\Omega'$
-\end_inset
-
- es vacío se termina la clasificación.
- 
-\end_layout
-
-\begin_layout Enumerate
-Si 
-\begin_inset Formula $\Omega'$
-\end_inset
-
- no es vacío se selecciona un sitio 
-\begin_inset Formula $x\in\Omega'$
+ Cada vecino puede estar o no estar enlazado 
+\begin_inset Formula $x$
 \end_inset
 
 .
- 
+ Además cada puede o no estar enlazado con alguno de sus propios vecinos
+ más cercanos.
+\end_layout
+
+\begin_layout Standard
+Los pasos de la clasificación son los siguientes:
 \end_layout
 
 \begin_layout Enumerate
-Si 
+Se selecciona un sitio 
+\begin_inset Formula $x_{i}\in\mathscr{R}$
+\end_inset
+
+.
+ En la selección se deben evitar repeticiones y se debe garantizar que todos
+ los sitios son eventualmente seccionados.
+\end_layout
+
+\begin_layout Enumerate
+Se crea un nuevo clúster 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+ y se se clasifican los sitios vecinos.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Si no hay ningún enlace, se crea un nuevo se etiqueta a 
 \begin_inset Formula $x$
 \end_inset
 
- es no es un sitio vacío, entonces no pertenece a ningún clúster y se salta
- al paso 7.
- 
-\end_layout
-
-\begin_layout Enumerate
-Si 
-\begin_inset Formula $x$
+ como el único elemento del clúster 
+\begin_inset Formula $c_{i}$
 \end_inset
 
- es un sitio ocupado se verifica si alguno de los sitios vecinos más cercanos
- esta ocupado y si pertenece a un clúster.
- 
+.
+ Se regresa al paso 1.
 \end_layout
 
 \begin_layout Enumerate
-Si ningún sitio pertenece a un clúster se crea una nuevo clúster con los
- sitios conectados.
- Si algún sitios pertenece a un clúster, se hace una unión de clusters y
- se añaden los sitios conectados.
- 
-\end_layout
-
-\begin_layout Enumerate
-Se asignan las etiquetas correspondientes.
-\end_layout
-
-\begin_layout Enumerate
-Se descarta el sitio 
-\begin_inset Formula $x$
+Si hay algún enlace etiqueta a 
+\begin_inset Formula $x_{i}$
 \end_inset
 
- del conjunto 
-\begin_inset Formula $\Omega'$
+ y los sitios enlazados como elementos del clúster 
+\begin_inset Formula $c_{i}$
 \end_inset
 
- y se regresa al paso 1.
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Se unen los clusters con sitios en común.
+ Se elije la etiqueta con el valor numérico mas bajo como identificador
+ de la unión de los clusters.
+\end_layout
+
+\begin_layout Enumerate
+Se regresa al paso 1.
 \end_layout
 
 \begin_layout Standard
@@ -9535,78 +9634,44 @@ node (start) [startstop] {Inicio};
 
 
 \backslash
-node (p1a) [process, below of=start] {¿Es $
-\backslash
-Omega'$ vacio?};
+node (p1) [process, below of=start] {Se selecciona $x_i$};
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-node (p1b) [process, right of=p1a, xshift=2.5cm] {Fin};
+node (p2) [process, below of=p1] {Se crea un nuevo clúster};
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-node (p2) [process, below of=p1a] {Selecciona $x
-\backslash
-in
-\backslash
-Omega'$};
+node (p3) [process, below of=p2] {Se buscan enlaces entre los sitios vecinos};
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-node (p3a) [process, below of=p2] {¿Esta $x$ ocupado?};
+node (p4a) [process, left of=p3, xshift=-2.5cm] {Se añade $x_i$ al nuevo
+ clúster };
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-node (p3b) [process, left of=p3a, xshift=-2.5cm] {Descarta $x$ de $
-\backslash
-Omega$};
+node (p4b) [process, below of=p3] {Los sitios enlazados se añaden al nuevo
+  clúster};
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-node (p4) [process, below of=p3a] {Busca entre los vecions más cercanos};
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node (p5) [process, below of=p4] {¿Algún vecino pretenece a un clúster?};
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node (p6a) [process, below of=p5] {Une los clusters};
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node (p6b) [process, right of=p6a, xshift=2.5cm] {Crea un nuevo clúster};
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-node (p7) [process, below of=p6a] {Asigna etiquetas};
+node (p5) [process, below of=p4b,xshift=3cm] {Se unen los clusters};
 \end_layout
 
 \begin_layout Plain Layout
@@ -9617,91 +9682,56 @@ node (p7) [process, below of=p6a] {Asigna etiquetas};
 
 
 \backslash
-draw [arrow] (start) -- (p1a);
+draw [arrow] (start) -- (p1);
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-draw [arrow] (p1a) -- (p1b);
+draw [arrow] (p1) -- (p2);
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-draw [arrow] (p1a) -- node[anchor=west]{No} (p2);
+draw [arrow] (p2) -- (p3);
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-draw [arrow] (p2) -- (p3a);
+draw [arrow] (p3) -- (p4a);
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-draw [arrow] (p3a) -- node[anchor=south]{No} (p3b);
+draw [arrow] (p3) -- (p4b);
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-draw [arrow] (p3a) -- node[anchor=west]{Sí} (p4);
+draw [arrow] (p4a) |- (p1);
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-draw [arrow] (p4) -- (p5);
+draw [arrow] (p4b) -- (p5);
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-draw [arrow] (p5) -- node[anchor=west]{Sí} (p6a);
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-draw [arrow] (p5) -| node[anchor=east, xshift=0.8cm, yshift=-0.8cm]{No} (p6b);
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-draw [arrow] (p6a) -- (p7);
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-draw [arrow] (p6b) |- (p7);
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-draw [arrow] (p7) -|  (p3b);
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-draw [arrow] (p3b) |- (p1a);
+draw [arrow] (p5) |-  (p1);
 \end_layout
 
 \begin_layout Plain Layout
@@ -9738,60 +9768,10 @@ Rutina, algoritmo de Hoshen-Kopelman.
 \end_layout
 
 \begin_layout Standard
-Como ejemplo en una retícula bidimensional de 
-\begin_inset Formula $8\times8$
-\end_inset
-
- se tiene una configuración 
-\begin_inset Formula 
-\begin{equation}
-\left(\begin{array}{cccccccc}
-0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-0 & 0 & 0 & 1 & 1 & 0 & 0 & 0\\
-0 & 0 & 1 & 1 & 1 & 1 & 1 & 0\\
-0 & 0 & 0 & 0 & 0 & 1 & 1 & 0\\
-0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-0 & 1 & 1 & 1 & 0 & 0 & 0 & 0\\
-1 & 1 & 1 & 1 & 0 & 0 & 0 & 0\\
-0 & 0 & 1 & 1 & 0 & 0 & 0 & 0\\
-0 & 0 & 1 & 1 & 0 & 0 & 0 & 1
-\end{array}\right).
-\end{equation}
-
-\end_inset
-
-El 
-\begin_inset Formula $0$
-\end_inset
-
- representa un sitio vacío y el 
-\begin_inset Formula $1$
-\end_inset
-
- representa un sitio desocupado.
- Aplicando el algoritmo de Hoshen-kpelman se obtienen tres clusters, si
- se genera una matriz con las etiquetas correspondientes se tiene
-\begin_inset Formula 
-\begin{equation}
-\left(\begin{array}{cccccccc}
-0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-0 & 0 & 0 & 1 & 1 & 0 & 0 & 0\\
-0 & 0 & 1 & 1 & 1 & 1 & 1 & 0\\
-0 & 0 & 0 & 0 & 0 & 1 & 1 & 0\\
-0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-0 & 2 & 2 & 2 & 0 & 0 & 0 & 0\\
-2 & 2 & 2 & 2 & 0 & 0 & 0 & 0\\
-0 & 0 & 2 & 2 & 0 & 0 & 0 & 0\\
-0 & 0 & 2 & 2 & 0 & 0 & 0 & 3
-\end{array}\right).
-\end{equation}
-
-\end_inset
-
 El algoritmo de Hoshen-Kopelman es por más eficiente que otros algoritmos
- de formación de clsuteres.
- A diferencia de otros algoritmos en los que el numero de calculos aumenta
- expnencialmente conforme aumentael numero de sitios.
+ de formación de clusters.
+ A diferencia de otros algoritmos en los que el numero de cálculos aumenta
+ exponencialmente conforme aumenta el número de sitios.
  En Hoshen-Kopelmanl numero de cálculos aumenta linealmente, por lo que
  es ideal para simulaciones como las realizadas en este trabajo.
  
