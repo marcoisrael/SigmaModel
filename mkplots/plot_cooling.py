@@ -66,8 +66,8 @@ for alg in algs:
                 data[ob + 1],
                 color=colors[i],
                 ls="",
-                marker="o",
-                markersize=5,
+                marker=markers[i],
+                markersize=8,
                 label=f"$\\tau_Q={i}$",
             )
             # f = lambda x, a, b,c:c/(1+np.exp((x-a)/b))
@@ -90,11 +90,12 @@ for alg in algs:
     x = np.linspace(8, 18)
 
     f = params[obs]["func"]
-    xfit = fit(X[0], X[1], X[2])
+    p0=8
+    xfit = fit(X[0][p0:], X[1][p0:], X[2][p0:])
     param_bounds = ((0, 0), (np.inf, np.inf))
     xfit.fiting(f, args={"bounds": param_bounds})
     print(alg, fix(xfit.opt[1], xfit.error[1]))
-    text = fix(xfit.opt[0], xfit.error[0])+r"$\exp(-$"+fix(xfit.opt[1], xfit.error[1]) + \
+    text = fix(xfit.opt[0], xfit.error[0])+r"$\exp($"+fix(-xfit.opt[1], xfit.error[1]) + \
         r"$\tau_Q)$"+"\n" + \
         r"$\frac{\chi^2}{\mathrm{dof}}=$"+str(xfit.chisq_by_dof)
     ax2.text(

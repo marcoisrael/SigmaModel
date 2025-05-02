@@ -68,7 +68,7 @@ if args.record:
 	folder = f'output/{args.name}/L{args.length}/{key}_{alg}/'
 	os.makedirs(folder, exist_ok=True) 
 
-	cmd_run = ["./bin/main0",f"{args.temp}",f"{int(args.steps)}",key,alg,args.delta,args.length,args.spacing]
+	cmd_run = ["./bin/main0",f"{args.temp}",f"{int(args.steps)}",key,alg,args.delta,args.length,args.spacing,args.name]
 	#print(" ".join(cmd_run))
 	print(75*"-")
 	print(f'{"Temp":>25}{args.temp:>25}')

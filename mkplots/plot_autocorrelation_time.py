@@ -16,7 +16,7 @@ if args.algorithm == "all":
         "lexic_glauber",
         "random_metropolis",
         "random_glauber",
-        "multi_cluster",
+        #"multi_cluster",
     ]
 else:
     algs = args.algorithm.split(",")
@@ -31,16 +31,20 @@ for alg in algs:
     data = np.loadtxt(
         f"output/autocorrelation/{name}_{alg}.csv", skiprows=1, delimiter=","
     )
- 
-    data = data[2:].transpose()
+    p0=0
+    pf=-1
+    data = data.transpose()
     x = np.linspace(data[0][0], data[0][-1], 200)
-    xfit = fit(data[0,1:-1], data[1,1:-1], data[2,1:-1])
+    if pf==0:
+        xfit = fit(data[0,p0:], data[1,p0:], data[2,p0:])
+    else:    
+        xfit = fit(data[0,p0:pf], data[1,p0:pf], data[2,p0:pf])
     xfit.fiting(f)
 
     text = (
         fix(xfit.opt[0], xfit.error[0])
-        + r"$\exp(-$"
-        + fix(xfit.opt[1], xfit.error[1])
+        + r"$\exp($"
+        + fix(-xfit.opt[1], xfit.error[1])
         + r"$T)$"
         + "\n"
         + r"$\frac{\chi^2}{\mathrm{dof}}=$"

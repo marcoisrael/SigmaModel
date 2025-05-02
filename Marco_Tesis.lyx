@@ -242,15 +242,15 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Chapter
-Motivación al estudio de sistemás fuera del equilibrio
+Motivación al estudio de sistemas fuera del equilibrio
 \end_layout
 
 \begin_layout Standard
-En física, se busca dar descripciones cuantitativas a los sistemás físicos.
+En física, se busca dar descripciones cuantitativas a los sistemas físicos.
  Para ello, se emplean herramientas matemáticas como el cálculo, la estadística
  y la geometría, al mismo tiempo que se avanza en el desarrollo de tecnología
  para realizar mejores experimentos y medir observables físicas en condiciones
- óptimás.
+ óptimas.
  Las líneas de investigación continúan de generación en generación, refinando
  tanto la teoría como la experimentación.
  De esta forma, la comunidad científica progresa de manera consistente y
@@ -272,18 +272,18 @@ literal "false"
 
 .
  Su trabajo se centró en comprender la física de las interacciones entre
- la radiación y la materia bajo condiciones extremás, tales como explosiones,
+ la radiación y la materia bajo condiciones extremas, tales como explosiones,
  implosiones y la evolución de reacciones nucleares fuera del equilibrio.
  En estas circunstancias, los experimentos se vuelven complejos, y la teoría
  detrás de procesos que involucran interacciones entre un vasto número de
- partículas resulta demásiado intrincada.
+ partículas resulta demasiado intrincada.
  Para superar estas limitaciones, desarrollaron una serie de métodos basados
  en procesos estocásticos, conocidos como métodos de Monte Carlo.
 \end_layout
 
 \begin_layout Standard
 Con el posterior desarrollo de los ordenadores, los métodos de Monte Carlo
- se volvieron herramientas fundamentales en el estudio de diversos sistemás
+ se volvieron herramientas fundamentales en el estudio de diversos sistemas
  con incontables grados de libertad, tanto en equilibrio como fuera de él.
  En este trabajo, aplicaremos estos métodos al estudio de enfriamientos
  rápidos en el modelo 2d O(
@@ -315,10 +315,10 @@ ias, se pregunto si existía un camino para conectar la mecánica estadística
  Schrödinger aumenta en complejidad al aumentar los grados de libertad.
  En mecánica estadística, se plantea una función de partición, la cual continent
 e toda la información necesaria sobre el sistema que modela.
- La función de partición, propone soluciones factibles para sistemás con
+ La función de partición, propone soluciones factibles para sistemas con
  muchos grados de libertad.
  R.
- Feynman encontró una función análoga a la función de partición para sistemás
+ Feynman encontró una función análoga a la función de partición para sistemas
  cuánticos y uno de los modelos que se pueden estudiar es el modelo de interés
  para este trabajo, el modelo 
 \begin_inset Formula $2d$
@@ -570,7 +570,7 @@ Sean
 \begin_inset Formula $\hat{A}+\hat{B}$
 \end_inset
 
- es auto-adjunto en la intersección de sus dominios, además 
+ es auto-adjunto en la intersección de sus dominios, ademas 
 \begin_inset Formula $\hat{A}$
 \end_inset
 
@@ -1383,7 +1383,7 @@ Observables
 
 \begin_layout Standard
 Describir las propiedades macroscópicas de un material implica la definición
- de variables como, mása 
+ de variables como, masa 
 \begin_inset Formula $m$
 \end_inset
 
@@ -1419,7 +1419,7 @@ Hay otro tipo de cantidades como la presión
 
 .
  Caracterizan el ambiente en el que el sistema esta inmerso.
- En la mayoría de los sistemás, las variables mecánicas están bien definidas
+ En la mayoría de los sistemas, las variables mecánicas están bien definidas
  solo cuando el valor estas variables se ha especificado.
 \end_layout
 
@@ -2264,7 +2264,7 @@ La importancia de muestreo consiste en evaluar propiedades de una distribución
 \end_layout
 
 \begin_layout Standard
-La esencia de los métodos de Monte Carlo es evaluar numéricamente las sumás
+La esencia de los métodos de Monte Carlo es evaluar numéricamente las sumas
  o integrales del espacio fase.
  El método de Monte Carlo introducido por Metropolis se basa en la idea
  de importancia de muestreo.
@@ -2634,7 +2634,7 @@ Calcular la diferencia de energía entre configuraciones en el modelo 2d
  la temperatura crítica es que a disminuir el número de cambios que se aceptan,
  el tiempo de relajación del sistema aumenta exponencialmente, a este fenómeno
  se le conoce como desaceleración crítica.
- Si se necesita estudiar sistemás en equilibrio cerca de la temperatura
+ Si se necesita estudiar sistemas en equilibrio cerca de la temperatura
  crítica hay una opción más conveniente que consiste en usar un algoritmo
  que actualice grupos de espines en vez de espines individues 
 \begin_inset CommandInset citation
@@ -2776,11 +2776,11 @@ Al igual que en algoritmo de Metropolis, el problema con la temperatura
 \end_layout
 
 \begin_layout Section
-Algoritmo cluster
+Algoritmo clúster
 \end_layout
 
 \begin_layout Standard
-El algoritmo Cluster sugerido por R.
+El algoritmo clúster sugerido por R.
  Swendsen y J.
  Wang, se basa en la observación de que la función de partición se puede
  escribir como una suma sobre un grupo de distribuciones 
@@ -2793,14 +2793,14 @@ literal "false"
 
 .
  Consiste en generar clusters de espines enlazados y cambiar la configuración
- de todos los espines en cada cluster a la vez.
- Una de las principales ventajas del algoritmo Cluster es que evita la desaceler
+ de todos los espines en cada clúster a la vez.
+ Una de las principales ventajas del algoritmo clúster es que evita la desaceler
 ación crítica característica de los algoritmos de actualización local.
  
 \end_layout
 
 \begin_layout Standard
-Un cluster puede consistir de un único espín si sus espines vecinos no se
+Un clúster puede consistir de un único espín si sus espines vecinos no se
  enlazan, o puede estar formado por todos los espines de la configuración,
  esto puede suceder cerca de la temperatura critica.
  
@@ -2871,7 +2871,7 @@ En el modelo 2d O(
 \begin_inset Formula $3$
 \end_inset
 
-) usando el algoritmo multi cluster, se tiene una retícula finita bidimensional
+) usando el algoritmo multi clúster, se tiene una retícula finita bidimensional
  de longitud 
 \begin_inset Formula $L$
 \end_inset
@@ -2949,13 +2949,13 @@ Para cuales quiera dos espines
 \end_inset
 
 .
- Los dos espines pertenecen al mismo cluster si hay un enlace directo entre
+ Los dos espines pertenecen al mismo clúster si hay un enlace directo entre
  ambos.
  Si 
 \begin_inset Formula $\alpha$
 \end_inset
 
- es un cluster no vacío y 
+ es un clúster no vacío y 
 \begin_inset Formula $\vec{s}_{x}\in[s]$
 \end_inset
 
@@ -2963,7 +2963,7 @@ Para cuales quiera dos espines
 \begin_inset Formula $\vec{s}_{x}$
 \end_inset
 
- pertenece al cluster si esta enlazado a un espín que pertenece al cluster.
+ pertenece al clúster si esta enlazado a un espín que pertenece al clúster.
 \end_layout
 
 \begin_layout Standard
@@ -2975,7 +2975,7 @@ A cada espín se le asocia una etiqueta
 \begin_inset Formula $\alpha$
 \end_inset
 
- indica el cluster al que pertenece el espín en cuestión.
+ indica el clúster al que pertenece el espín en cuestión.
  El procedimiento para asociar cada espín a sus respectivos clusters es
  el siguiente:
 \end_layout
@@ -3054,13 +3054,13 @@ Si existe un enlace con uno de los espines vecinos se forma un cluseter
  con los espines enlazados, se selecciona uno de estos espines y se repite
  la prueba de enlace con sus propios vecinos más cercanos.
  Si hay más enlaces se continua repitiendo el proceso, si no hay enlaces
- se pasa a u otro espín del cluster, hasta comprobar que no hay más enlaces
- con algún espín del cluster.
+ se pasa a u otro espín del clúster, hasta comprobar que no hay más enlaces
+ con algún espín del clúster.
 \end_layout
 
 \begin_layout Standard
-Cuando se termina de formar el cluster se cambia el estado de todos los
- espines del cluster a la vez aplicando la reflexión respecto al plano normal
+Cuando se termina de formar el clúster se cambia el estado de todos los
+ espines del clúster a la vez aplicando la reflexión respecto al plano normal
  a 
 \begin_inset Formula $\vec{w}$
 \end_inset
@@ -3071,7 +3071,7 @@ Cuando se termina de formar el cluster se cambia el estado de todos los
 \begin_layout Standard
 Una variante del algoritmo consiste en formar multiples clusters a la vez,
  en lugar de uno.
- Una vez formados se decide si un se cambia el estado de sus elementos cluster
+ Una vez formados se decide si un se cambia el estado de sus elementos clúster
  con probabilidad 
 \begin_inset Formula $p_{\mathrm{flip}}=1/2$
 \end_inset
@@ -3641,7 +3641,7 @@ Debido a el número de elementos que interactúan en un modelo microscópico
  Fermi se baso en el trabajo de Grriffiths, Jasnow y otros investigadores.
  Se estudiaron datos experimentales de diversos materiales cerca de sus
  respectivos puntos críticos, y se encontró que los datos de los diversos
- sistemás son descritos por la misma función de escalamiento.
+ sistemas son descritos por la misma función de escalamiento.
  El aparente comportamiento universal motivo a buscar una respuesta para
  la siguiente cuestión.
 \end_layout
@@ -3734,7 +3734,7 @@ He en estado superfluidico, la condensación de Bose ocurre alrededor de
 \end_layout
 
 \begin_layout Standard
-En estos sistemás, los defectos topológicos remanentes son importantes,
+En estos sistemas, los defectos topológicos remanentes son importantes,
  porque son objetos inherentemente estables que pueden proporcionar pistas
  observacionales sobre cómo era el sistema en el momento en que se formaron.
 \end_layout
@@ -3918,7 +3918,7 @@ literal "false"
 
  de la pequeña anisotropía en el fondo cósmico de microondas revelan una
  escala de distancia preferencial que las cuerdas cósmicas no pueden explicar.
- Afortunadamente, existen análogos de cuerdas cósmicas en muchos sistemás
+ Afortunadamente, existen análogos de cuerdas cósmicas en muchos sistemas
  de materia condensada, incluidos las lineas de vórtice en superfluidos
 \begin_inset CommandInset citation
 LatexCommand autocite
@@ -4248,8 +4248,8 @@ cold-start
 \begin_layout Itemize
 Actualización.
  Una actualizacion es un barrido para los algoritmos de actualizaron local,
- o la formación y reflexión de los clusteres de una configuración en el
- algoritmo multi-cluster.
+ o la formación y reflexión de los clusters de una configuración en el algoritmo
+ multi-cluster.
 \end_layout
 
 \begin_layout Itemize
@@ -4274,7 +4274,7 @@ GR.
 
 \begin_layout Itemize
 MC.
- Multi cluster.
+ Multi clúster.
 \end_layout
 
 \begin_layout Standard
@@ -4587,7 +4587,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.93(3)$
+\begin_inset Formula $2.21(8)$
 \end_inset
 
 
@@ -4599,7 +4599,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.92(5)$
+\begin_inset Formula $2.5(3)$
 \end_inset
 
 
@@ -4611,7 +4611,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.91(4)$
+\begin_inset Formula $2.1(4)$
 \end_inset
 
 
@@ -4623,7 +4623,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.0(2)$
+\begin_inset Formula $2.5(6)$
 \end_inset
 
 
@@ -4661,7 +4661,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.2(2)$
+\begin_inset Formula $2.5(2)(2)$
 \end_inset
 
 
@@ -4673,7 +4673,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.9(7)$
+\begin_inset Formula $2.4(3)$
 \end_inset
 
 
@@ -4685,7 +4685,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.0(2)$
+\begin_inset Formula $2.4(2)$
 \end_inset
 
 
@@ -4697,7 +4697,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.2(2)$
+\begin_inset Formula $2.3(1)$
 \end_inset
 
 
@@ -4735,7 +4735,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.8(2)$
+\begin_inset Formula $2.3(3)$
 \end_inset
 
 
@@ -4747,7 +4747,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.7(1)$
+\begin_inset Formula $2.4(4)$
 \end_inset
 
 
@@ -4759,7 +4759,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.3(2)$
+\begin_inset Formula $2.2(1)$
 \end_inset
 
 
@@ -4771,7 +4771,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.1(4)$
+\begin_inset Formula $2.4(3)$
 \end_inset
 
 
@@ -4830,10 +4830,177 @@ name "teblength"
 
 \begin_layout Standard
 \begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
 placement H
 wide false
 sideways false
 status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/length_lexic_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Metropolis lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/length_random_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Metropolis aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/length_lexic_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Glauber lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/length_random_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Glauber aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -4854,12 +5021,29 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+Multi clúster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
 Longitud de correlación en función de la temperatura para las retículas
  de longitud 
 \begin_inset Formula $L\in\left\{ 32,64,128\right\} $
 \end_inset
 
- usnadp eñ algoritmo multi cluster.
+, algoritmo multi clúster.
 \end_layout
 
 \end_inset
@@ -4877,7 +5061,7 @@ Longitud de correlación en función de la temperatura para las retículas
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -5107,7 +5291,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.45(9)$
+\begin_inset Formula $4.9(2)$
 \end_inset
 
 
@@ -5154,7 +5338,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.2(3)$
+\begin_inset Formula $4.4(9)$
 \end_inset
 
 
@@ -5201,7 +5385,7 @@ Glauber lexicografico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.8(2)$
+\begin_inset Formula $4.1(7)$
 \end_inset
 
 
@@ -5248,7 +5432,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.0(3)$
+\begin_inset Formula $5.80(1)$
 \end_inset
 
 
@@ -5286,7 +5470,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-multi cluster
+multi clúster
 \end_layout
 
 \end_inset
@@ -5295,7 +5479,7 @@ multi cluster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $-$
+\begin_inset Formula $0.1(2)$
 \end_inset
 
 
@@ -5527,7 +5711,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de multi cluster.
+Algoritmo de multi clúster.
 \end_layout
 
 \end_inset
@@ -5724,7 +5908,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de multi cluster.
+Algoritmo de multi clúster.
 \end_layout
 
 \end_inset
@@ -5774,7 +5958,7 @@ El tiempo de auto correlación se cálculo en equilibrio térmico para las
 \begin_inset Formula $10^{4}$
 \end_inset
 
- actualizaciones del algoritmo multi cluster.
+ actualizaciones del algoritmo multi clúster.
  Finalmente se promedio sobre 
 \begin_inset Formula $10^{5}$
 \end_inset
@@ -5856,7 +6040,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $5.7(2)$
+\begin_inset Formula $4.9(2)$
 \end_inset
 
 
@@ -5868,7 +6052,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.47(6)$
+\begin_inset Formula $3.7(4)$
 \end_inset
 
 
@@ -5880,7 +6064,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $8.1(9)$
+\begin_inset Formula $7.24(10)$
 \end_inset
 
 
@@ -5903,7 +6087,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $5.7(3)$
+\begin_inset Formula $4.4(9)$
 \end_inset
 
 
@@ -5915,7 +6099,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.9(4)$
+\begin_inset Formula $3.6(8)$
 \end_inset
 
 
@@ -5927,7 +6111,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $8.6(6)$
+\begin_inset Formula $9.7(10)$
 \end_inset
 
 
@@ -5950,7 +6134,7 @@ Glauber lexicografico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $6.9(6)$
+\begin_inset Formula $4.1(7)$
 \end_inset
 
 
@@ -5962,7 +6146,7 @@ Glauber lexicografico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.4(6)$
+\begin_inset Formula $3.0(8)$
 \end_inset
 
 
@@ -5974,7 +6158,7 @@ Glauber lexicografico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $8.8(2)$
+\begin_inset Formula $7.71(8)$
 \end_inset
 
 
@@ -5997,7 +6181,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $5.7(5)$
+\begin_inset Formula $5.80(1)$
 \end_inset
 
 
@@ -6009,7 +6193,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.6(6)$
+\begin_inset Formula $3.2(5)$
 \end_inset
 
 
@@ -6021,7 +6205,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $8.9(5)$
+\begin_inset Formula $6.9(2)$
 \end_inset
 
 
@@ -6035,7 +6219,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-multi cluster
+multi clúster
 \end_layout
 
 \end_inset
@@ -6044,7 +6228,7 @@ multi cluster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.0(6)$
+\begin_inset Formula $0.1(2)$
 \end_inset
 
 
@@ -6056,7 +6240,10 @@ multi cluster
 \begin_inset Text
 
 \begin_layout Plain Layout
-1.28(6)
+\begin_inset Formula $0.32(7)$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6065,7 +6252,7 @@ multi cluster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.31(7)$
+\begin_inset Formula $0.36(5)$
 \end_inset
 
 
@@ -6108,7 +6295,7 @@ Exponente
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -6273,7 +6460,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de multi cluster.
+Algoritmo de multi clúster.
 \end_layout
 
 \end_inset
@@ -6313,7 +6500,7 @@ Tiempo de autocorrelación de la carga topológica en función de la temperatura
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -6470,7 +6657,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de multi cluster.
+Algoritmo de multi clúster.
 \end_layout
 
 \end_inset
@@ -6510,7 +6697,7 @@ Tiempo de autocorrelación de la densidad de energía en función de la temperat
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -6667,7 +6854,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de multi cluster.
+Algoritmo de multi clúster.
 \end_layout
 
 \end_inset
@@ -6715,8 +6902,8 @@ Los enfriamientos son fenómenos que ocurren fuera del estado de equilibrio
  En las simulaciones en equilibrio se mostró que el algoritmo MC termaliza
  nuestras configuraciones en pocas actualizaciones, por lo que la trayectoria
  de su enfriamiento se aproxima a un proceso en equilibrio termodinámico.
- Por otro lado los algoritmos de actualizaron local requieren de mas actualizaci
-ón para termalizar una configuración y se hacen mas lentos cerca de la temperatu
+ Por otro lado los algoritmos de actualizaron local requieren de más actualizaci
+ón para termalizar una configuración y se hacen más lentos cerca de la temperatu
 ra critica por lo que son mejores opciones para la simulación de un enfriamiento.
 \end_layout
 
@@ -6850,7 +7037,7 @@ Se realizaron enfriamientos desde la temperatura
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -6935,7 +7122,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.220(6)$
+\begin_inset Formula $0.2492(8)$
 \end_inset
 
 
@@ -6947,7 +7134,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.282(7)$
+\begin_inset Formula $0.283(7)$
 \end_inset
 
 
@@ -6970,7 +7157,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.55(2)$
+\begin_inset Formula $0.55(1)$
 \end_inset
 
 
@@ -6982,7 +7169,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.218(6)$
+\begin_inset Formula $0.247(2)$
 \end_inset
 
 
@@ -7029,7 +7216,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.211(4)$
+\begin_inset Formula $0.237(2)$
 \end_inset
 
 
@@ -7041,7 +7228,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.267(3)$
+\begin_inset Formula $0.268(4)$
 \end_inset
 
 
@@ -7064,7 +7251,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.51(1)$
+\begin_inset Formula $0.51(2)$
 \end_inset
 
 
@@ -7076,7 +7263,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.209(5)$
+\begin_inset Formula $0.238(1)$
 \end_inset
 
 
@@ -7102,7 +7289,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-multi cluster
+multi clúster
 \end_layout
 
 \end_inset
@@ -7111,7 +7298,7 @@ multi cluster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.10(7)$
+\begin_inset Formula $1.35(6)$
 \end_inset
 
 
@@ -7123,7 +7310,7 @@ multi cluster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.282(7)$
+\begin_inset Formula $0.338(1)$
 \end_inset
 
 
@@ -7135,7 +7322,7 @@ multi cluster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.629(6)$
+\begin_inset Formula $0.630(6)$
 \end_inset
 
 
@@ -7346,7 +7533,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-multi cluster
+multi clúster
 \end_layout
 
 \end_inset
@@ -7556,7 +7743,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-multi cluster
+multi clúster
 \end_layout
 
 \end_inset
@@ -7756,7 +7943,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-multi cluster
+multi clúster
 \end_layout
 
 \end_inset
@@ -7926,6 +8113,43 @@ status open
 
 \begin_layout Plain Layout
 Glauber aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_energy_multi_cluster.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Multi clúster
 \end_layout
 
 \end_inset
@@ -8125,7 +8349,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-multi cluster
+multi clúster
 \end_layout
 
 \end_inset
@@ -8169,7 +8393,7 @@ Evolución de los enfriamientos de la magnetización
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -8331,7 +8555,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-multi cluster
+multi clúster
 \end_layout
 
 \end_inset
@@ -9069,28 +9293,7 @@ Algoritmo Hoshen-Kopelman
 \end_layout
 
 \begin_layout Standard
-La teoría de precolación se relaciona a una amplia variedad de fenómenos
- como:
-\end_layout
-
-\begin_layout Itemize
-La magnetización espontánea de un ferromagneto.
-\end_layout
-
-\begin_layout Itemize
-La propagación de enfermedades.
-\end_layout
-
-\begin_layout Itemize
-La formación de geles de polímeros.
-\end_layout
-
-\begin_layout Itemize
-La conductividad eléctrica en semiconductores amorfos.
-\end_layout
-
-\begin_layout Standard
-El algoritmo de Hoshen Kopelman fue descrito por Joseph Hoshen y Raoul Kopelman
+El algoritmo de Hoshen-Kopelman fue descrito por Joseph Hoshen y Raoul Kopelman
  en 1976 
 \begin_inset CommandInset citation
 LatexCommand autocite
@@ -9100,16 +9303,34 @@ literal "false"
 \end_inset
 
 .
- El algoritmo opera en una retícula, cada sitio puede estar ocupado o vacío.
- Dada una configuración de sitios ocupados y vacíos, el algoritmo busca
- y etiqueta grupos de sitos ocupados y conectados.
- Los sitios de cada grupo, se clasifican con una etiqueta única.
- Realizar la clasificación requiere de considerar varios casos, y seguir
- algunas reglas.
+ Describe un procedimiento para etiquetar los elementos de una retícula
+ en agrupaciones clusters.
+ Cada sitio 
+\begin_inset Formula $x$
+\end_inset
+
+ en una retícula colinda con 
+\begin_inset Formula $k$
+\end_inset
+
+ vecinos mas cercanos, en este caso 
+\begin_inset Formula $\Omega=\{y_{1},\dots,y_{k}\}$
+\end_inset
+
+ son los vecinos mas cercanos a 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Cada uno de estos sitios puede estar enlazado o asilado de 
+\begin_inset Formula $x$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
-El cluster mínimo, es el que esta formado por un sitio aislado.
+El clúster mínimo, esta formado por un sitio aislado.
 \end_layout
 
 \begin_layout Itemize
@@ -9146,11 +9367,11 @@ Sean
 \end_layout
 
 \begin_layout Itemize
-Dos sitios están conectados si y solo si pertenecen al mismo cluster.
+Dos sitios están conectados si y solo si pertenecen al mismo clúster.
 \end_layout
 
 \begin_layout Standard
-Dados dos clusteres 
+Dados dos clusters 
 \begin_inset Formula $C_{1}=\{x_{1},\dots,x_{n}\}$
 \end_inset
 
@@ -9193,11 +9414,11 @@ Dados dos clusteres
 \end_inset
 
 .
- Como están conectados pertenecen al mismo cluster 
+ Como están conectados pertenecen al mismo clúster 
 \begin_inset Formula $C=C_{1}\cup C_{2}$
 \end_inset
 
-, a esto se le llama unión de clusteres y es fundamental en el algoritmo
+, a esto se le llama unión de clusters y es fundamental en el algoritmo
  de Hoshen-Kopelman.
  
 \end_layout
@@ -9246,7 +9467,7 @@ Si
 \begin_inset Formula $x$
 \end_inset
 
- es no es un sitio vacío, entonces no pertenece a ningún cluster y se salta
+ es no es un sitio vacío, entonces no pertenece a ningún clúster y se salta
  al paso 7.
  
 \end_layout
@@ -9257,15 +9478,15 @@ Si
 \end_inset
 
  es un sitio ocupado se verifica si alguno de los sitios vecinos más cercanos
- esta ocupado y si pertenece a un cluster.
+ esta ocupado y si pertenece a un clúster.
  
 \end_layout
 
 \begin_layout Enumerate
-Si ningún sitio pertenece a un cluster se crea una nuevo cluster con los
+Si ningún sitio pertenece a un clúster se crea una nuevo clúster con los
  sitios conectados.
- Si algún sitios pertenece a un cluster, se hace una unión de clusteres
- y se añaden los sitios conectados.
+ Si algún sitios pertenece a un clúster, se hace una unión de clusters y
+ se añaden los sitios conectados.
  
 \end_layout
 
@@ -9364,21 +9585,21 @@ node (p4) [process, below of=p3a] {Busca entre los vecions más cercanos};
 
 
 \backslash
-node (p5) [process, below of=p4] {¿Algún vecino pretenece a un cluster?};
+node (p5) [process, below of=p4] {¿Algún vecino pretenece a un clúster?};
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-node (p6a) [process, below of=p5] {Une los clusteres};
+node (p6a) [process, below of=p5] {Une los clusters};
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-node (p6b) [process, right of=p6a, xshift=2.5cm] {Crea un nuevo cluster};
+node (p6b) [process, right of=p6a, xshift=2.5cm] {Crea un nuevo clúster};
 \end_layout
 
 \begin_layout Plain Layout
@@ -9548,7 +9769,7 @@ El
 \end_inset
 
  representa un sitio desocupado.
- Aplicando el algoritmo de Hoshen-kpelman se obtienen tres clusteres, si
+ Aplicando el algoritmo de Hoshen-kpelman se obtienen tres clusters, si
  se genera una matriz con las etiquetas correspondientes se tiene
 \begin_inset Formula 
 \begin{equation}
@@ -9567,7 +9788,7 @@ El
 
 \end_inset
 
-El algoritmo de Hoshen-Kopelman es por mas eficiente que otros algoritmos
+El algoritmo de Hoshen-Kopelman es por más eficiente que otros algoritmos
  de formación de clsuteres.
  A diferencia de otros algoritmos en los que el numero de calculos aumenta
  expnencialmente conforme aumentael numero de sitios.

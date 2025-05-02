@@ -19,7 +19,7 @@ else:
 for alg in algs:
     print(alg)
     fig, ax = plt.subplots()
-    T = np.array([0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0])
+    T = np.array([0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0,1.2])
     params = {
         32: {"color": "red", "line": "dotted", "marker": "."},
         64: {"color": "blue", "line": "dashed", "marker": "+"},
@@ -78,8 +78,8 @@ for alg in algs:
 
         def f(x, a, b):
             return a*x**-b
-
-        xfit = fit(T[:3], psi[:3], psiErr[:3])
+        p0=6
+        xfit = fit(T[p0:], psi[p0:], psiErr[p0:])
         xfit.fiting(f)
         print(LENGTH, fix(xfit.opt[1], xfit.error[1]))
 
@@ -90,13 +90,25 @@ for alg in algs:
             linewidth=1,
             color=params[LENGTH]["color"],
             linestyle=params[LENGTH]["line"],
-            label=f"$L={LENGTH}$",
+            label=f"$L=${LENGTH}, "+r"$\nu=$"+fix(xfit.opt[1],xfit.error[1]),
         )
-        ax.set_xlabel(r"$\log(T)$", fontsize=18)
-        ax.set_ylabel(r"$\log(\xi)$", fontsize=18)
-        ax.legend()
-        ax.set_yscale("log")
-        ax.set_xscale("log")
+   
+    text = (r"$\xi \propto \exp(-T/\nu)$")
+
+    ax.text(
+        0.99,
+        0.76,
+        text,
+        fontsize=16,
+        ha="right",
+        va="top",
+        transform=ax.transAxes,
+    ) 
+    ax.set_xlabel(r"$\log(T)$", fontsize=18)
+    ax.set_ylabel(r"$\log(\xi)$", fontsize=18)
+    ax.legend()
+    ax.set_yscale("log")
+    ax.set_xscale("log")
     fig.savefig(
         f"output/plot/length/length_{alg}.pdf",
         format="pdf",
