@@ -19,7 +19,7 @@ else:
 for alg in algs:
     print(alg)
     fig, ax = plt.subplots()
-    T = np.array([0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0,1.2])
+    T = np.array([0.4,0.5,0.6,0.7,0.8,0.9,1.0,1.2])
     params = {
         32: {"color": "red", "line": "dotted", "marker": "."},
         64: {"color": "blue", "line": "dashed", "marker": "+"},
@@ -78,8 +78,8 @@ for alg in algs:
 
         def f(x, a, b):
             return a*x**-b
-        p0=6
-        xfit = fit(T[p0:], psi[p0:], psiErr[p0:])
+
+        xfit = fit(T[3:7], psi[3:7], psiErr[3:7])
         xfit.fiting(f)
         print(LENGTH, fix(xfit.opt[1], xfit.error[1]))
 

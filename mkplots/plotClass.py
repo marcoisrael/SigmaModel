@@ -75,10 +75,11 @@ class fit:
             func, self.xdata,
             self.ydata,
             **args,
-            sigma=self.yerr
+            #:sigma=self.yerr
         )
         residuals = self.ydata - func(self.xdata, *self.opt)
         dof = self.xdata.size - self.opt.size
+        # self.error = np.diag(self.cov)
         sigma_err = abs(np.std(residuals))
         pfit = []
         for i in range(100):
@@ -92,7 +93,7 @@ class fit:
             )
             pfit.append(random_opt)
         pfit = np.array(pfit)
-
+        
         self.opt = np.mean(pfit, 0)
         self.error = 2*np.std(pfit, 0)
 

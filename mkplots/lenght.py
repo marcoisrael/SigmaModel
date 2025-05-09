@@ -16,7 +16,7 @@ names = [
         "Random\nGlauber",
         "Multi\ncluster",
         ]
-T = np.array([0.9,1.0,1.2])
+T = np.array([0.7,0.8,0.9,1.0])
 for LENGTH in [32,64,128]:
     val=[]
     valErr=[]

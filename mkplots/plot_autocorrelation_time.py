@@ -31,14 +31,9 @@ for alg in algs:
     data = np.loadtxt(
         f"output/autocorrelation/{name}_{alg}.csv", skiprows=1, delimiter=","
     )
-    p0=0
-    pf=0
     data = data.transpose()
     x = np.linspace(data[0][0], data[0][-1], 200)
-    if pf==0:
-        xfit = fit(data[0,p0:], data[1,p0:], data[2,p0:])
-    else:    
-        xfit = fit(data[0,p0:pf], data[1,p0:pf], data[2,p0:pf])
+    xfit = fit(data[0,:], data[1,:], data[2,:])
     xfit.fiting(f)
 
     text = ( r"$\tau \propto T^{-\lambda}$"+"\n"+
