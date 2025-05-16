@@ -17,9 +17,8 @@
 \usepackage{listings}
 \usepackage{tikz}
 \usepackage{bachelorstitlepageUNAM}
-
 \usetikzlibrary{shapes.geometric, arrows}
-
+\renewcommand\spanishtablename{Tabla}
 \sloppy
 \author{Marco Israel Rodríguez Cornejo}
 \title{Enfriameintos rapidos del modelo 2d O(3)}
@@ -55,7 +54,7 @@ draw=black]
 \use_default_options true
 \maintain_unincluded_children false
 \language spanish-mexico
-\language_package default
+\language_package babel
 \inputencoding utf8
 \fontencoding global
 \font_roman "default" "default"
@@ -2792,7 +2791,7 @@ literal "false"
 \end_inset
 
 .
- Consiste en generar clusters de espines enlazados y cambiar la configuración
+ Consiste en generar clústers de espines enlazados y cambiar la configuración
  de todos los espines en cada clúster a la vez.
  Una de las principales ventajas del algoritmo clúster es que evita la desaceler
 ación crítica característica de los algoritmos de actualización local.
@@ -2871,8 +2870,11 @@ En el modelo 2d O(
 \begin_inset Formula $3$
 \end_inset
 
-) usando el algoritmo multi clúster, se tiene una retícula finita bidimensional
- de tamaño 
+) usando el algoritmo 
+\shape italic
+multi-clúster
+\shape default
+, se tiene una retícula finita bidimensional de tamaño 
 \begin_inset Formula $L$
 \end_inset
 
@@ -2976,7 +2978,7 @@ A cada espín se le asocia una etiqueta
 \end_inset
 
  indica el clúster al que pertenece el espín en cuestión.
- El procedimiento para asociar cada espín a sus respectivos clusters es
+ El procedimiento para asociar cada espín a sus respectivos clústers es
  el siguiente:
 \end_layout
 
@@ -3069,7 +3071,7 @@ Cuando se termina de formar el clúster se cambia el estado de todos los
 \end_layout
 
 \begin_layout Standard
-Una variante del algoritmo consiste en formar multiples clusters a la vez,
+Una variante del algoritmo consiste en formar multiples clústers a la vez,
  en lugar de uno.
  Una vez formados se decide si un se cambia el estado de sus elementos clúster
  con probabilidad 
@@ -3477,7 +3479,7 @@ donde
 \begin_inset Formula $\xi$
 \end_inset
 
- define el exponente critico 
+ define el exponente crítico 
 \begin_inset Formula $\nu$
 \end_inset
 
@@ -3891,7 +3893,7 @@ Una posibilidad es la neutralidad del universo respecto a las cargas del
 Es interesante revisar las posibles configuraciones geométricas de estos
  dominios.
  Las transiciones de fase de ruptura de simetría en el universo temprano
- podrian haber formado estructuras topológicamente estables como monopolos
+ podrían haber formado estructuras topológicamente estables como monopolos
  y cuerdas cósmicas.
 \end_layout
 
@@ -3949,21 +3951,21 @@ En 1985, W.
 \end_inset
 
  y 
-\begin_inset Formula $τ_{Q}$
+\begin_inset Formula $τ_{\mathrm{cool}}$
 \end_inset
 
 .
  Donde 
-\begin_inset Formula $τ_{Q}$
+\begin_inset Formula $τ_{\mathrm{cool}}$
 \end_inset
 
  se define de modo que la tasa de cambio de temperatura en el punto crítico
  sea 
-\begin_inset Formula $dT/dt=−Tc/τ_{Q}$
+\begin_inset Formula $dT/dt=−Tc/τ_{\mathrm{cool}}$
 \end_inset
 
  y el exponente 
-\begin_inset Formula $z$
+\begin_inset Formula $\zeta$
 \end_inset
 
  se pueda calcular en términos de índices críticos conocidos de la transición
@@ -3971,7 +3973,7 @@ En 1985, W.
  
 \begin_inset Formula 
 \begin{equation}
-\xi\propto\tau_{Q}^{z}
+\xi\propto\tau_{\mathrm{cool}}^{\zeta}
 \end{equation}
 
 \end_inset
@@ -4178,7 +4180,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename output/plot/magnet/L64/lexic_metropolis/lexic_metropolis_1.0.pdf
+	filename output/plot/magnet/L64/lexic_metropolis/lexic_metropolis_0.9.pdf
 	scale 50
 
 \end_inset
@@ -4190,7 +4192,20 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Tiempo de autocorrelación
+Evolución de la autocorrelación de la magnetización en 
+\begin_inset Formula $100$
+\end_inset
+
+ barridos de actualización para el algoritmo de Metropolis lexicográfico
+ a temperatura 
+\begin_inset Formula $T=0.9$
+\end_inset
+
+ en una retícula de tamaño 
+\begin_inset Formula $L=64$
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -4221,26 +4236,20 @@ En esta sección se miden las diferentes observables que se han descrito
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes fld
-\end_inset
 
+\shape italic
 hot-start
-\begin_inset Quotes frd
-\end_inset
-
+\shape default
 .
  Es una configuración inicial de espines aleatorios.
  
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes fld
-\end_inset
 
+\shape italic
 cold-start
-\begin_inset Quotes frd
-\end_inset
-
+\shape default
 .
  Es una configuración inicial de espines alineados.
 \end_layout
@@ -4252,28 +4261,13 @@ Actualización.
 \end_layout
 
 \begin_layout Itemize
-ML.
- Metropolis lexicográfico.
-\end_layout
+Barrido de actualizaciones.
+ Un barrido es la actualización de 
+\begin_inset Formula $V=L\times L$
+\end_inset
 
-\begin_layout Itemize
-MR.
- Metropolis aleatorio.
-\end_layout
-
-\begin_layout Itemize
-GL.
- Glauber lexicográfico.
-\end_layout
-
-\begin_layout Itemize
-GR.
- Glauber aleatorio.
-\end_layout
-
-\begin_layout Itemize
-MC.
- Multi clúster.
+ espines seleccionados en orden lexicográfico, aleatorio o por su pertenecía
+ a un clúster.
 \end_layout
 
 \begin_layout Standard
@@ -4313,23 +4307,15 @@ Termalización de dos sistemas 2d O(
 
 .
  La trayectoria 
-\begin_inset Quotes fld
-\end_inset
-
+\shape italic
 cold-start
-\begin_inset Quotes frd
-\end_inset
-
+\shape default
 , parte de un estado de energía máxima en el que todos los espines están
  alineados.
  La trayectoria 
-\begin_inset Quotes fld
-\end_inset
-
+\shape italic
 hot-start
-\begin_inset Quotes frd
-\end_inset
-
+\shape default
 , parte de una configuración aleatoria .
  Después de unos 20 barridos ambas trayectorias oscilan alrededor una energía
  que corresponde al sistema termalizado.
@@ -4353,7 +4339,7 @@ name "therm"
 \end_layout
 
 \begin_layout Standard
-El programa que se encarga de las simulaciones sigue los siguientes pasos.
+El programa que se encarga de las simulaciones sigue los siguientes pasos:
 \end_layout
 
 \begin_layout Enumerate
@@ -4375,7 +4361,7 @@ Se miden las observables.
 \end_layout
 
 \begin_layout Enumerate
-Si el numero de observables medidas en menor a el numero requerido se regresa
+Si el número de observables medidas en menor a el número requerido se regresa
  al paso 2.
 \end_layout
 
@@ -4391,7 +4377,7 @@ noprefix "false"
 \end_inset
 
 , las observables de un sistema fluctúan entre mediciones.
- Por lo que un resultado se calcula a partir del promedio de un numero medicione
+ Por lo que un resultado se calcula a partir del promedio de un número medicione
 s suficientemente grande para alcanzar la precisión deseada.
  
 \end_layout
@@ -4428,24 +4414,24 @@ Se calculó la longitud de correlación en retículas de tamaño
 
 .
  En todos los casos se partió de una configuración 
-\begin_inset Quotes fld
-\end_inset
-
+\shape italic
 hot-start
-\begin_inset Quotes frd
-\end_inset
-
+\shape default
  y se termalizó durante 
 \begin_inset Formula $10^{4}$
 \end_inset
 
- actualizaciones del algoritmo MC.
+ actualizaciones del algoritmo 
+\shape italic
+multi-clúster
+\shape default
+.
 \end_layout
 
 \begin_layout Standard
-Cada uno de los exponentes críticos esta registrado en la Tabla 
+Cada uno de los exponentes críticos esta registrado en la tabla 
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "teblength"
 plural "false"
 caps "false"
@@ -4470,6 +4456,373 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/length_lexic_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algotimo de Metropolis lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/length_random_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algotimo de Metropolis aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/length_lexic_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algotimo de Glauber lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/length_random_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algotimo de Glauber aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/length_multi_cluster.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algotimo
+\shape italic
+ multi-clúster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Longitud de correlación en función de la temperatura para las retículas
+ de tamaño 
+\begin_inset Formula $L\in\left\{ 32,64,128\right\} $
+\end_inset
+
+, algoritmo 
+\shape italic
+multi-clúster
+\shape default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/size_32.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $L=32$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/length/size_64.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $L=64$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/size_128.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $L=128$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Longitud de correlación para los diferentes algoritmos dada una retícula
+ de tamaño 
+\begin_inset Formula $L$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Float table
 placement H
 wide false
@@ -4479,7 +4832,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="6">
+<lyxtabular version="3" rows="5" columns="6">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -4488,7 +4841,7 @@ status open
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4500,47 +4853,105 @@ status open
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-ML
+Metropolis
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-MR
+Metropolis
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-GL
+Glauber
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-GA
+Glauber
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-MC
+
+\shape italic
+multi-clúster
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lexicográfico
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+aleatorio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lexicográfico
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+aleatorio
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -4804,10 +5215,6 @@ name "teblength"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Los efectos de volumen finito son mas fuertes en temperaturas menores a
  
 \begin_inset Formula $T=0.7$
@@ -4823,389 +5230,548 @@ Los efectos de volumen finito son mas fuertes en temperaturas menores a
 \end_inset
 
 .
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/length/length_lexic_metropolis.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Metropolis lexicográfico
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/length/length_random_metropolis.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Metropolis aleatorio
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/length/length_lexic_glauber.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Glauber lexicográfico
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/length/length_random_glauber.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Glauber aleatorio
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/length/length_multi_cluster.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Multi clúster
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Longitud de correlación en función de la temperatura para las retículas
- de tamaño 
-\begin_inset Formula $L\in\left\{ 32,64,128\right\} $
-\end_inset
-
-, algoritmo multi clúster.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/length/size_32.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Formula $L=32$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/length/size_64.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Formula $L=64$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/length/size_128.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Formula $L=128$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Longitud de correlación para los diferentes algoritmos dada una retícula
- de tamaño 
-\begin_inset Formula $L$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
-Exponente critico dinámico
+Tiempo de autocorrelación
 \end_layout
 
 \begin_layout Standard
-El exponente critico dinámico se obtuvo a partir de las longitudes de correlació
-n y los tiempos de autocorrelación para las temperaturas 
-\begin_inset Formula $T\in\{0.7,0.8,0.9,1.0\}$
+El tiempo de autocorrelación se calculó en equilibrio térmico en las temperatura
+s 
+\begin_inset Formula $T\in\left\{ 0.7,0.8,0.9,1.0\right\} $
 \end_inset
 
 .
- Se empleo una retícula cuadrada de tamaño 
+ En todos los casos se partió de una configuración inicial 
+\shape italic
+hot-start.
+
+\shape default
+ Con el fin de asegurar una configuración completamente termalizada se realizaro
+n 
+\begin_inset Formula $10^{4}$
+\end_inset
+
+ barridos de actiulaización del algoritmo multi-clúster.
+ Finalmente se promedio sobre 
+\begin_inset Formula $10^{5}$
+\end_inset
+
+ barridos del algoritmo de Metropolis lexicográfico.
+\end_layout
+
+\begin_layout Standard
+Para la carga topológica en el algoritmo multi-clúster, la autocorrelación
+ no puede medirse debido a la eficiencia con la que el algoritmo multi-clúster
+ alcanza la configuración de equilibrio.
+ En el caso de los algoritmos de actualización local hay una desaceleración
+ crítica cerca de la temperatura 
+\begin_inset Formula $T=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Los tiempos de autocorrelación se calcularon por ajuste a la función exponencial
+ y por integración, ambos resultados fueron consistentes por encima de 
+\begin_inset Formula $T=0.7$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/charge/autocorrelation_lexic_metropolis_L64_Q.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/charge/autocorrelation_random_metropolis_L64_Q.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algorimo de Metropolis aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/charge/autocorrelation_lexic_glauber_L64_Q.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/charge/autocorrelation_random_glauber_L64_Q.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Gauber aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tiempo de autocorrelación de la carga topológica en función de la temperatura
+ en una retícula de longitud 
 \begin_inset Formula $L=64$
 \end_inset
 
 .
-\begin_inset Note Comment
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/energy/autocorrelation_lexic_metropolis_L64_E.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/energy/autocorrelation_random_metropolis_L64_E.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algorimo de Metropolis aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/energy/autocorrelation_lexic_glauber_L64_E.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/energy/autocorrelation_random_glauber_L64_E.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Gauber aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tiempo de autocorrelación de la densidad de energía en función de la temperatura
+ en una retícula de tamaño 
+\begin_inset Formula $L=64$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/magnet/autocorrelation_lexic_metropolis_L64_M.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/magnet/autocorrelation_random_metropolis_L64_M.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algorimo de Metropolis aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/magnet/autocorrelation_lexic_glauber_L64_M.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/magnet/autocorrelation_random_glauber_L64_M.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Gauber aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tiempo de autocorrelación de la magnetización en función de la temperatura
+ en una retícula de tamaño 
+\begin_inset Formula $L=64$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Float table
 placement H
 wide false
@@ -5235,7 +5801,7 @@ Algoritmo
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\chi$
+\begin_inset Formula $Q$
 \end_inset
 
 
@@ -5282,7 +5848,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.45(6)$
+\begin_inset Formula $6.9(7)$
 \end_inset
 
 
@@ -5294,7 +5860,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.4(2)$
+\begin_inset Formula $4.0(8)$
 \end_inset
 
 
@@ -5306,7 +5872,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.3(2)$
+\begin_inset Formula $9.3(5)$
 \end_inset
 
 
@@ -5329,7 +5895,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.1(3)$
+\begin_inset Formula $5.5(1)$
 \end_inset
 
 
@@ -5341,7 +5907,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.1(2)$
+\begin_inset Formula $3.9(7)$
 \end_inset
 
 
@@ -5353,7 +5919,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.3(4)$
+\begin_inset Formula $7.4(9)$
 \end_inset
 
 
@@ -5367,7 +5933,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-Glauber lexicografico
+Glauber lexicográfico
 \end_layout
 
 \end_inset
@@ -5376,7 +5942,7 @@ Glauber lexicografico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.13(9)$
+\begin_inset Formula $7.0(5)$
 \end_inset
 
 
@@ -5388,7 +5954,7 @@ Glauber lexicografico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.13(7)$
+\begin_inset Formula $4.0(2)$
 \end_inset
 
 
@@ -5400,7 +5966,7 @@ Glauber lexicografico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.26(8)$
+\begin_inset Formula $7.6(7)$
 \end_inset
 
 
@@ -5423,7 +5989,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.08(4)$
+\begin_inset Formula $7.6(3)$
 \end_inset
 
 
@@ -5435,7 +6001,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.2(1)$
+\begin_inset Formula $4.8(9)$
 \end_inset
 
 
@@ -5447,7 +6013,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.33(5)$
+\begin_inset Formula $9.1(4)$
 \end_inset
 
 
@@ -5467,37 +6033,55 @@ Glauber aleatorio
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Exponente crítico 
-\begin_inset Formula $z$
+Exponente 
+\begin_inset Formula $\lambda$
 \end_inset
 
- dinámico para la susceptibilidad topológica 
-\begin_inset Formula $z_{\chi}$
+ del tiempo de autocorrelación.
+\end_layout
+
 \end_inset
 
-, la energía 
-\begin_inset Formula $\mathcal{H}$
+
+\end_layout
+
 \end_inset
 
- y la magnetización 
-\begin_inset Formula $m$
+
+\end_layout
+
+\begin_layout Section
+Exponente crítico dinámico
+\end_layout
+
+\begin_layout Standard
+El exponente crítico dinámico se obtuvo a partir de las longitudes de correlació
+n y los tiempos de autocorrelación para las temperaturas 
+\begin_inset Formula $T\in\{0.7,0.8,0.9,1.0\}$
 \end_inset
 
 .
-\end_layout
+ Se empleo una retícula cuadrada de tamaño 
+\begin_inset Formula $L=64$
+\end_inset
+
+.
+ Como la autocorrelación no pudo medirse para el algoritmo multi-clúster
+ tampoco se pudo calcular el exponente critico dinámico, en consecuencia
+ en la tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab_exp"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
+ se excluyen los exponentes críticos para el algoritmo multi-clúster
+\shape italic
+.
+\shape default
 
 \begin_inset Float figure
 placement H
@@ -5644,7 +6228,7 @@ Algoritmo de Gauber aleatorio.
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Tiempo de autocorrelación de la suceptibilidad topologica en función de
+Tiempo de autocorrelación de la susceptibilidad topológica en función de
  la longitud de correlación en una retícula de tamaño 
 \begin_inset Formula $L=64$
 \end_inset
@@ -5671,7 +6255,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -5704,7 +6288,7 @@ Algoritmo de Metropolis lexicográfico.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -5740,7 +6324,7 @@ Algorimo de Metropolis aleatorio.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -5773,7 +6357,7 @@ Algoritmo de Glauber lexicográfico.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -5985,29 +6569,6 @@ Tiempo de autocorrelación de la magnetización en función de la longitud
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Tiempo de autocorrelación
-\end_layout
-
-\begin_layout Standard
-El tiempo de autocorrelación se calculó en equilibrio térmico en las temperatura
-s 
-\begin_inset Formula $T\in\left\{ 0.7,0.8,0.9,1.0\right\} $
-\end_inset
-
-.
- En todos los casos se partió de un hot-start y se termalizó durante 
-\begin_inset Formula $10^{4}$
-\end_inset
-
- actualizaciones del algoritmo multi clúster.
- Finalmente se promedio sobre 
-\begin_inset Formula $10^{5}$
-\end_inset
-
- barridos del algoritmo de metrópolis lexicográfico.
 \begin_inset Float table
 placement H
 wide false
@@ -6017,7 +6578,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="4">
+<lyxtabular version="3" rows="5" columns="4">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -6037,7 +6598,7 @@ Algoritmo
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $Q$
+\begin_inset Formula $\chi$
 \end_inset
 
 
@@ -6084,7 +6645,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $6.9(7)$
+\begin_inset Formula $1.45(6)$
 \end_inset
 
 
@@ -6096,7 +6657,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.0(8)$
+\begin_inset Formula $0.4(2)$
 \end_inset
 
 
@@ -6108,7 +6669,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $9.3(5)$
+\begin_inset Formula $0.3(2)$
 \end_inset
 
 
@@ -6131,7 +6692,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $5.5(1)$
+\begin_inset Formula $1.1(3)$
 \end_inset
 
 
@@ -6143,7 +6704,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.9(7)$
+\begin_inset Formula $0.1(2)$
 \end_inset
 
 
@@ -6155,7 +6716,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $7.4(9)$
+\begin_inset Formula $0.3(4)$
 \end_inset
 
 
@@ -6178,7 +6739,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $7.0(5)$
+\begin_inset Formula $1.13(9)$
 \end_inset
 
 
@@ -6190,7 +6751,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.0(2)$
+\begin_inset Formula $0.13(7)$
 \end_inset
 
 
@@ -6202,7 +6763,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $7.6(7)$
+\begin_inset Formula $0.26(8)$
 \end_inset
 
 
@@ -6212,7 +6773,7 @@ Glauber lexicográfico
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6221,58 +6782,11 @@ Glauber aleatorio
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $7.6(3)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $4.8(9)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $9.1(4)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-multi clúster
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $-$
+\begin_inset Formula $1.08(4)$
 \end_inset
 
 
@@ -6284,7 +6798,7 @@ multi clúster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.2(4)$
+\begin_inset Formula $0.2(1)$
 \end_inset
 
 
@@ -6296,7 +6810,7 @@ multi clúster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.3(5)$
+\begin_inset Formula $0.33(5)$
 \end_inset
 
 
@@ -6316,188 +6830,20 @@ multi clúster
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Exponente 
-\begin_inset Formula $\lambda$
+Exponente crítico 
+\begin_inset Formula $z$
 \end_inset
 
- del tiempo de autocorrelación.
- 
-\end_layout
-
+ dinámico para la susceptibilidad topológica 
+\begin_inset Formula $\chi_{t}$
 \end_inset
 
-
-\end_layout
-
+, la energía 
+\begin_inset Formula $\mathcal{H}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Para la carga topológica en el algoritmo multi clúster, la autocorrelación
- cae en un único paso mientras que para la energía y la magnetización, hay
- una desaceleración lenta respecto a los algoritmos de actualización local.
-\end_layout
-
-\begin_layout Standard
-En todos los casos, la observable con mayor autocorrelacion es la magnetizacion.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/charge/autocorrelation_lexic_metropolis_L64_Q.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Algoritmo de Metropolis lexicográfico.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/charge/autocorrelation_random_metropolis_L64_Q.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Algorimo de Metropolis aleatorio.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/charge/autocorrelation_lexic_glauber_L64_Q.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Algoritmo de Glauber lexicográfico.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/charge/autocorrelation_random_glauber_L64_Q.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Algoritmo de Gauber aleatorio.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Tiempo de autocorrelación de la carga topológica en función de la temperatura
- en una retícula de longitud 
-\begin_inset Formula $L=64$
+ y la magnetización 
+\begin_inset Formula $m$
 \end_inset
 
 .
@@ -6506,396 +6852,9 @@ Tiempo de autocorrelación de la carga topológica en función de la temperatura
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/energy/autocorrelation_lexic_metropolis_L64_E.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Algoritmo de Metropolis lexicográfico.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/energy/autocorrelation_random_metropolis_L64_E.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Algorimo de Metropolis aleatorio.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/energy/autocorrelation_lexic_glauber_L64_E.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Algoritmo de Glauber lexicográfico.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/energy/autocorrelation_random_glauber_L64_E.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Algoritmo de Gauber aleatorio.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/energy/autocorrelation_multi_cluster_L64_E.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Algoritmo de multi clúster.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Tiempo de autocorrelación de la densidad de energía en función de la temperatura
- en una retícula de tamaño 
-\begin_inset Formula $L=64$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/magnet/autocorrelation_lexic_metropolis_L64_M.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Algoritmo de Metropolis lexicográfico.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/magnet/autocorrelation_random_metropolis_L64_M.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Algorimo de Metropolis aleatorio.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/magnet/autocorrelation_lexic_glauber_L64_M.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Algoritmo de Glauber lexicográfico.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/magnet/autocorrelation_random_glauber_L64_M.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Algoritmo de Gauber aleatorio.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/magnet/autocorrelation_multi_cluster_L64_M.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Algoritmo de multi clúster.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Tiempo de autocorrelación de la magnetización en función de la temperatura
- en una retícula de tamaño 
-\begin_inset Formula $L=64$
-\end_inset
-
-.
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab_exp"
 
 \end_inset
 
@@ -6912,38 +6871,38 @@ Simulación de enfriamientos
 \end_layout
 
 \begin_layout Standard
-Los enfriamientos son fenómenos que ocurren fuera del estado de equilibrio
- de un sistema.
- La simulación de un enfriamiento se puede realizar cambiando la temperatura
- del sistema entre cada actualización, el valor cambio del cambio entre
- cada actualización de fine la velocidad del enfriamiento.
- En las simulaciones en equilibrio se mostró que el algoritmo MC termaliza
- nuestras configuraciones en pocas actualizaciones, por lo que la trayectoria
- de su enfriamiento se aproxima a un proceso en equilibrio termodinámico.
- Por otro lado los algoritmos de actualizaron local requieren de más actualizaci
-ón para termalizar una configuración y se hacen más lentos cerca de la temperatu
-ra critica por lo que son mejores opciones para la simulación de un enfriamiento.
-\end_layout
+Un enfriamiento rápido, es un fenómeno fuera del equilibrio en el que un
+ sistema pasa de una temperatura inicial 
+\begin_inset Formula $T_{i}$
+\end_inset
 
-\begin_layout Standard
-Al igual que en las simulaciones en equilibrio, un resultado se tiene que
- promediar a partir de un numero de mediciones suficientemente grande para
- alcanzar la precisión deseada.
- La diferencia en un enfriamiento es que cada medición sucesiva se realiza
- a una temperatura diferente.
- Se define la velocidad de enfriamiento 
+ a una temperatura final 
+\begin_inset Formula $T_{f}$
+\end_inset
+
+ en un tiempo 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ La simulación de un enfriamiento se realiza cambiando la temperatura del
+ sistema entre cada barrido de actualizaciones.
+ El decremento de la temperatura entre cada barrido define la velocidad
+ del enfriamiento.
+ Se define la velocidad de enfriamiento como
 \begin_inset Formula 
 \begin{equation}
-v=\frac{T_{f}-T_{i}}{\tau_{Q}}\label{eq:velocidad_de_enfriamiento}
+v_{\mathrm{cool}}=\frac{T_{i}-T_{f}}{\tau_{\mathrm{cool}}}<0.\label{eq:velocidad_de_enfriamiento}
 \end{equation}
 
 \end_inset
 
-donde 
-\begin_inset Formula $\tau_{\mathrm{Q}}$
+La variable 
+\begin_inset Formula $\tau_{\mathrm{cool}}$
 \end_inset
 
- es el número de pasos para llegar desde la temperatura inicial 
+ es la tasa de cambio de temperatura y corresponde al número de pasos para
+ llegar desde la temperatura inicial 
 \begin_inset Formula $T_{i}$
 \end_inset
 
@@ -6953,16 +6912,16 @@ donde
 
 .
  Conforme avanza el tiempo de Markov en el rango 
-\begin_inset Formula $(t,\tau_{\mathrm{cool}})$
+\begin_inset Formula $t\in[0,\tau_{\mathrm{cool}}]$
 \end_inset
 
-, la temperatura actual cambia linealmente siguiendo la ecuación
+, la temperatura cambia siguiendo la ecuación
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-T\left(t\right)=T_{i}+vt.\label{eq:temperatura}
+T\left(t\right)=T_{i}-v_{\mathrm{cool}}t.\label{eq:temperatura}
 \end{equation}
 
 \end_inset
@@ -6971,11 +6930,11 @@ T\left(t\right)=T_{i}+vt.\label{eq:temperatura}
 \end_layout
 
 \begin_layout Standard
-Empezando desde 
-\begin_inset Formula $t=0$
-\end_inset
 
-, un enfriamiento consta de los siguientes pasos.
+\end_layout
+
+\begin_layout Standard
+Una simulación de enfriamiento consta de los siguientes pasos:
 \end_layout
 
 \begin_layout Enumerate
@@ -6996,7 +6955,15 @@ Se actualiza la configuración a temperatura
 \end_layout
 
 \begin_layout Enumerate
-Se miden las observables.
+Se miden las observables y se aumenta el tiempo de Markov de 
+\begin_inset Formula $t$
+\end_inset
+
+ a 
+\begin_inset Formula $t+1$
+\end_inset
+
+.
  
 \end_layout
 
@@ -7009,31 +6976,37 @@ Si
 \end_layout
 
 \begin_layout Standard
-En vez de promediar entre configuraciones sucesivas en equilibrio, se realiza
- un número 
+Como se hace en las simulaciones en equilibrio, una medición se obtiene
+ de promediar un número de mediciones suficientemente grande para alcanzar
+ la precisión estadística deseada.
+ Se realiza un número 
 \begin_inset Formula $N$
 \end_inset
 
- enfrenamientos.
- Cada enfriamiento resulta en tres trayectorias de 
-\begin_inset Formula $\tau_{Q}$
+ de enfrenamientos y se obtiene un promedio de las mediciones en el mismo
+ instante 
+\begin_inset Formula $t$
 \end_inset
 
- puntos, se tiene una trayectoria para cada observable en función de la
- temperatura.
- Para obtener el resultado se promedian las trayectorias de los 
-\begin_inset Formula $N$
-\end_inset
-
- enfriamientos.
-\end_layout
-
-\begin_layout Section
-Enfriamientos
+.
+ 
 \end_layout
 
 \begin_layout Standard
-Se realizaron enfriamientos desde la temperatura 
+En cada enfriamiento se mide una trayectoria pata cada observable en función
+ del tiempo de Markov o de manera equivalente en función de la temperatura.
+\end_layout
+
+\begin_layout Section
+Enfriamientos rápidos
+\end_layout
+
+\begin_layout Standard
+Se realizaron 
+\begin_inset Formula $10^{5}$
+\end_inset
+
+ enfriamientos desde la temperatura 
 \begin_inset Formula $T_{i}=4$
 \end_inset
 
@@ -7041,16 +7014,1247 @@ Se realizaron enfriamientos desde la temperatura
 \begin_inset Formula $T_{f}=0$
 \end_inset
 
-, usando las velocidades de enfriamiento 
-\begin_inset Formula $\tau_{Q}\in\left\{ 8,9,10,11,12,13,14,15,16,17,18\right\} $
+, usando las tasas de cambio de temperatura 
+\begin_inset Formula $\tau_{\mathrm{cool}}\in\left\{ 8,9,10,11,12,13,14,15,16,17,18\right\} $
 \end_inset
 
 .
- Para cada experimento se realizaron 
-\begin_inset Formula $10^{5}$
+ En cada experimento numérico se midió la susceptibilidad topológica, la
+ energía y la magnetización.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/charge_lexic_metropolis.pdf
+	scale 50
+	groupId plots
+
 \end_inset
 
- enfriamientos.
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Metropolis lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/charge_random_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Metropolis aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/charge_lexic_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Glauber lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/charge_random_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Glauber aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/charge_multi_cluster.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo multi-clúster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Evolución de los enfriamientos de la susceptibilidad topológica 
+\begin_inset Formula $\chi_{t}$
+\end_inset
+
+ respecto a la temperatura 
+\begin_inset Formula $T$
+\end_inset
+
+, para diferentes tasas de cambio de temperatura 
+\begin_inset Formula $\tau_{\mathrm{cool}}\in\{8,10,16\}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_charge_lexic_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Metropolis lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_charge_random_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Metropolis aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_charge_lexic_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Glauber lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_charge_random_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Glauber aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_charge_multi_cluster.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo multi-clúster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Susceptibilidad topológica final 
+\begin_inset Formula $\chi_{t_{f}}$
+\end_inset
+
+ respecto a la tasa de cambio de temperatura 
+\begin_inset Formula $\tau_{\mathrm{cool}}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/energy_lexic_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Metropolis lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/energy_random_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Metropolis aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/energy_lexic_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Glauber lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/energy_random_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Glauber aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/energy_multi_cluster.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo multi-clúster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Evolución de los enfriamientos de la densidad de energía 
+\begin_inset Formula $\rho_{\mathcal{H}}$
+\end_inset
+
+ respecto a la temperatura 
+\begin_inset Formula $T$
+\end_inset
+
+, para diferentes velocidades de enfriamiento 
+\begin_inset Formula $\tau_{\mathrm{cool}}\in\{8,10,16\}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_energy_lexic_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Metropolis lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_energy_random_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_energy_lexic_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_energy_random_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_energy_multi_cluster.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo multi-clúster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Densidad de energía final 
+\begin_inset Formula $\rho_{\mathcal{H}_{f}}$
+\end_inset
+
+ respecto a la tasa de cambio de temperatura 
+\begin_inset Formula $\tau_{\mathrm{cool}}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/magnet_lexic_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/magnet_random_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Metropolis aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/magnet_lexic_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Glauber lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/magnet_random_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Glauber aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/magnet_multi_cluster.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo multi-clúster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Evolución de los enfriamientos de la magnetización 
+\begin_inset Formula $m$
+\end_inset
+
+ respecto a la temperatura 
+\begin_inset Formula $T$
+\end_inset
+
+, para diferentes tasas de cambio de temperatura 
+\begin_inset Formula $\tau_{\mathrm{cool}}\in\{4,6,8\}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_magnet_lexic_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Metropolis lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_magnet_random_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Metropolis aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_magnet_lexic_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Glauber lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_magnet_random_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de Glauber aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_magnet_multi_cluster.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algortmo de multi-clúster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Magnetización final 
+\begin_inset Formula $m_{f}$
+\end_inset
+
+ respecto a la tasa de cambio de temperatura 
+\begin_inset Formula $\tau_{\mathrm{\mathrm{cool}}}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Float table
 placement H
 wide false
@@ -7080,7 +8284,7 @@ Algoritmo
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\zeta_{Q}$
+\begin_inset Formula $\chi_{t}$
 \end_inset
 
 
@@ -7092,7 +8296,7 @@ Algoritmo
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\zeta_{\mathcal{H}}$
+\begin_inset Formula $\mathcal{H}$
 \end_inset
 
 
@@ -7104,7 +8308,7 @@ Algoritmo
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\zeta_{m}$
+\begin_inset Formula $m$
 \end_inset
 
 
@@ -7140,7 +8344,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.2491(7)$
+\begin_inset Formula $0.221(5)$
 \end_inset
 
 
@@ -7175,7 +8379,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.55(2)$
+\begin_inset Formula $0.55(1)$
 \end_inset
 
 
@@ -7187,7 +8391,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.247(1)$
+\begin_inset Formula $0.217(5)$
 \end_inset
 
 
@@ -7199,7 +8403,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.318(2)$
+\begin_inset Formula $0.284(4)$
 \end_inset
 
 
@@ -7234,7 +8438,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.237(2)$
+\begin_inset Formula $0.211(5)$
 \end_inset
 
 
@@ -7246,7 +8450,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.26(1)$
+\begin_inset Formula $0.267(4)$
 \end_inset
 
 
@@ -7269,7 +8473,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.51(1)$
+\begin_inset Formula $0.51(2)$
 \end_inset
 
 
@@ -7281,7 +8485,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.238(2)$
+\begin_inset Formula $0.209(5)$
 \end_inset
 
 
@@ -7293,7 +8497,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.30(2)$
+\begin_inset Formula $0.274(5)$
 \end_inset
 
 
@@ -7307,7 +8511,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-multi clúster
+multi-clúster
 \end_layout
 
 \end_inset
@@ -7316,7 +8520,7 @@ multi clúster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.35(6)$
+\begin_inset Formula $1.10(7)$
 \end_inset
 
 
@@ -7328,7 +8532,7 @@ multi clúster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.338(4)$
+\begin_inset Formula $0.28(1)$
 \end_inset
 
 
@@ -7340,7 +8544,7 @@ multi clúster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.68(2)$
+\begin_inset Formula $0.630(5)$
 \end_inset
 
 
@@ -7360,1255 +8564,55 @@ multi clúster
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Exponente crítico 
+Exponentes críticos 
 \begin_inset Formula $\zeta$
 \end_inset
 
- para diferentes algoritmos.
+ respecto a la susceptibilidad topológica, la energía y la magnetización
+ para los diferentes algoritmos.
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/charge_lexic_metropolis.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Metropolis lexicográfico
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/charge_random_metropolis.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Metropolis aleatorio
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/charge_lexic_glauber.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Glauber lexicográfico
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/charge_random_glauber.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Glauber aleatorio
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/charge_multi_cluster.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-multi clúster
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Evolución de los enfriamientos de la susceptibilidad topológica 
-\begin_inset Formula $\chi_{t}$
-\end_inset
-
- respecto a la temperatura 
-\begin_inset Formula $T$
-\end_inset
-
-, para diferentes velocidades de enfriamiento 
-\begin_inset Formula $\tau_{\mathrm{cool}}\in\{4,6,8\}$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/scaling_law_charge_lexic_metropolis.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Metropolis lexicográfico
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/scaling_law_charge_random_metropolis.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Metropolis aleatorio
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/scaling_law_charge_lexic_glauber.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Glauber lexicográfico
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/scaling_law_charge_random_glauber.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Glauber aleatorio
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/scaling_law_charge_multi_cluster.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-multi clúster
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Susceptibilidad topológica final 
-\begin_inset Formula $\chi_{t_{f}}$
-\end_inset
-
- respecto a la velocidad de enfrenamiento 
-\begin_inset Formula $\tau_{\mathrm{cool}}$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/energy_lexic_metropolis.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Metropolis lexicográfico
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/energy_random_metropolis.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Metropolis aleatorio
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/energy_lexic_glauber.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Glauber lexicográfico
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/energy_random_glauber.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Glauber aleatorio
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/energy_multi_cluster.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-multi clúster
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Evolución de los enfriamientos de la densidad de energía 
-\begin_inset Formula $\rho_{\mathcal{H}}$
-\end_inset
-
- respecto a la temperatura 
-\begin_inset Formula $T$
-\end_inset
-
-, para diferentes velocidades de enfriamiento 
-\begin_inset Formula $\tau_{\mathrm{cool}}\in\{4,6,8\}$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/scaling_law_energy_lexic_metropolis.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Metropolis lexicográfico
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/scaling_law_energy_random_metropolis.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Metropolis aleatorio
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/scaling_law_energy_lexic_glauber.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Glauber lexicográfico
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/scaling_law_energy_random_glauber.pdf
-	scale 50
-	groupId plots
-
-\end_inset
+\begin_inset CommandInset label
+LatexCommand label
+name "tab_resultados"
 
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Glauber aleatorio
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/scaling_law_energy_multi_cluster.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Multi clúster
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Susceptibilidad densidad de energía 
-\begin_inset Formula $\rho_{\mathcal{H}}$
-\end_inset
-
- respecto a la velocidad de enfrenamiento 
-\begin_inset Formula $\tau_{\mathrm{cool}}$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/magnet_lexic_metropolis.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Metropolis lexicográfico
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/magnet_random_metropolis.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Metropolis aleatorio
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/magnet_lexic_glauber.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Glauber lexicográfico
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/magnet_random_glauber.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Glauber aleatorio
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/magnet_multi_cluster.pdf
-	scale 50
-	groupId plots
-
 \end_inset
 
 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-multi clúster
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Evolución de los enfriamientos de la magnetización 
-\begin_inset Formula $m$
-\end_inset
-
- respecto a la temperatura 
-\begin_inset Formula $T$
-\end_inset
-
-, para diferentes velocidades de enfriamiento 
-\begin_inset Formula $\tau_{\mathrm{cool}}\in\{4,6,8\}$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/scaling_law_magnet_lexic_metropolis.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Metropolis lexicográfico
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/scaling_law_magnet_random_metropolis.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Metropolis aleatorio
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/scaling_law_magnet_lexic_glauber.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Glauber lexicográfico
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/scaling_law_magnet_random_glauber.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Glauber aleatorio
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/cooling/scaling_law_magnet_multi_cluster.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-multi clúster
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
 
-\begin_layout Plain Layout
-Susceptibilidad magnetización 
-\begin_inset Formula $m$
-\end_inset
+En la tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab_resultados"
+plural "false"
+caps "false"
+noprefix "false"
 
- respecto a la velocidad de enfrenamiento 
-\begin_inset Formula $\tau_{\mathrm{Q}}$
 \end_inset
-
-.
-\end_layout
 
+ se observa que el exponente critico 
+\begin_inset Formula $\zeta$
 \end_inset
-
 
-\end_layout
-
+ es menor para los algoritmos de actualización local.
+ Para la susceptibilidad topológica el algoritmo multi-clúster presenta
+ un valor de 
+\begin_inset Formula $\zeta$
 \end_inset
-
 
+ de aproximadamente el doble que los algoritmos de actualización local.
+ También se observa 
+\emph on
+que la
+\emph default
+ energía y la magnetización tienen en todos los algoritmos un valor menor
+ que la susceptibilidad topológica.
 \end_layout
 
 \begin_layout Chapter
@@ -8616,18 +8620,45 @@ Resumen y conclusiones
 \end_layout
 
 \begin_layout Standard
-Para los algoritmos de actualización local el exponente critico 
-\begin_inset Formula $\zeta$
+Se comprobó la ley de escalamiento de Zurek para enfriamientos de temperatura
+ inicial 
+\begin_inset Formula $T_{i}$
 \end_inset
 
- es compatible con la ley de escalamiento de Zurek para cada una de las
- observables (Suceptibilidad topológica, energía y magnetización) para las
- tazas de enfriemiento 
-\begin_inset Formula $[8,9,10,11,12,13,14,15,16,17,18]$
+ a temperatura final 
+\begin_inset Formula $T_{f}=0$
+\end_inset
+
+, para la susceptibilidad topológica, la energía y la magnetización, para
+ tasas de cambio de temperatura 
+\begin_inset Formula $\tau_{\mathrm{cool}}\in\left\{ 8,9,10,11,12,13,14,15,16,17,18\right\} $
 \end_inset
 
 .
- 
+ Como prueba de consistencia se realizo el mismo experimento con cinco algoritmo
+s, cuatro de actualización local y uno de actualización por clústers
+\shape italic
+.
+\end_layout
+
+\begin_layout Standard
+La energía y la magnetización presentaron un menor valor para el exponente
+ critico 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ respecto a la susceptibilidad topológica, estos resultados implica una
+ adaptación más rápida al cambio de temperatura por parte de la energía
+ respecto a las otras observables.
+\end_layout
+
+\begin_layout Standard
+El algoritmo muti-clúster obtuvo el valor mas alto de 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ con la susceptibilidad topológica, implicando una mayor supervivencia de
+ defectos topológicos respecto a los algoritmos de actualización local.
 \end_layout
 
 \begin_layout Standard
@@ -9016,7 +9047,7 @@ donde
 \begin_inset Formula $p$
 \end_inset
 
- de la esfera que se cubre, ai 
+ de la esfera que se cubre, si 
 \begin_inset Formula $u=1$
 \end_inset
 
@@ -9128,7 +9159,7 @@ El vector aleatorio
 \end_layout
 
 \begin_layout Standard
-El procedimiento es sencillo de implementar aquí hay un ejemplo de implementacio
+El procedimiento es sencillo de implementar aquí hay un ejemplo de implementació
 n en el lenguaje de programación Fortran.
 \end_layout
 
@@ -9323,8 +9354,12 @@ literal "false"
 .
  Un clúster es un conjunto de sitios enlazados en una retícula.
  La función de enlace indica si dos sitios están o no enlazados.
- El algoritmo de HK es un procedimiento para etiquetar los sitios de la
- retícula en clusters, se usa la función de enlace para determinar el clúster
+ El algoritmo de Hoshen-Kopelman es un procedimiento para etiquetar los
+ sitios de la retícula en clústers, se usa la función de enlace para determinar
+ el 
+\shape italic
+clúster
+\shape default
  al que pertenece cada sitio.
 \end_layout
 
@@ -9411,9 +9446,9 @@ Si hay algún enlace etiqueta a
 
 \end_deeper
 \begin_layout Enumerate
-Se unen los clusters con sitios en común.
+Se unen los clústers con sitios en común.
  Se elije la etiqueta con el valor numérico mas bajo como identificador
- de la unión de los clusters.
+ de la unión de los clústers.
 \end_layout
 
 \begin_layout Enumerate
@@ -9486,7 +9521,7 @@ node (p4b) [process, below of=p3] {Los sitios enlazados se añaden al nuevo
 
 
 \backslash
-node (p5) [process, below of=p4b,xshift=3cm] {Se unen los clusters};
+node (p5) [process, below of=p4b,xshift=3cm] {Se unen los clústers};
 \end_layout
 
 \begin_layout Plain Layout
@@ -9584,10 +9619,10 @@ Rutina, algoritmo de Hoshen-Kopelman.
 
 \begin_layout Standard
 El algoritmo de Hoshen-Kopelman es por más eficiente que otros algoritmos
- de formación de clusters.
- A diferencia de otros algoritmos en los que el numero de cálculos aumenta
+ de formación de clústers.
+ A diferencia de otros algoritmos en los que el número de cálculos aumenta
  exponencialmente conforme aumenta el número de sitios.
- En Hoshen-Kopelmanl numero de cálculos aumenta linealmente, por lo que
+ En Hoshen-Kopelmanl número de cálculos aumenta linealmente, por lo que
  es ideal para simulaciones como las realizadas en este trabajo.
  
 \begin_inset Newpage newpage

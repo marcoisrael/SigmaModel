@@ -75,7 +75,7 @@ class fit:
             func, self.xdata,
             self.ydata,
             **args,
-            #:sigma=self.yerr
+            #sigma=self.yerr
         )
         residuals = self.ydata - func(self.xdata, *self.opt)
         dof = self.xdata.size - self.opt.size

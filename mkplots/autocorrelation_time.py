@@ -11,7 +11,7 @@ parser.add_argument("-alg", "--algorithm", default="lexic_metropolis")
 parser.add_argument("-o", "--observable", default="energy")
 args = parser.parse_args()
 colors_list = list(colors._colors_full_map.values())
-make_temp_plots = False
+make_temp_plots = True
 name = args.observable
 alg = args.algorithm
 L = 64
@@ -67,7 +67,7 @@ for alg in algs:
         # print(temp, "  ",fix(val,error), "  ", fix(xfit.opt[1],xfit.error[1]))
         # cor.append(xfit.opt[1])
         # corErr.append(xfit.error[1])
-    
+        #   
         # x = np.linspace(t[0], t[-1], 500)
         # if make_temp_plots:
         #     fig, ax = plt.subplots(tight_layout=True)
@@ -84,20 +84,20 @@ for alg in algs:
         #         color="red",
         #         label="Data",
         #     )
-            # ax.set_xlabel(r"$i$", fontsize=20)
-            # ax.set_ylabel(obs[name]["label"], fontsize=20)
-            # ax.legend()
-            #
-            # os.makedirs(f"output/plot/{name}/L{L}/{alg}", exist_ok=True)
-            # fig.tight_layout()
-            # fig.savefig(
-            #     f"output/plot/{name}/L{L}/{alg}/{alg}_{temp}.pdf",
-            #     format="pdf",
-            #     bbox_inches="tight",
-            # )
-            # print(f"output/plot/{name}/L{L}/{alg}/{alg}_{temp}.png")
-            # plt.close()
-            # del ax, fig
+        #     ax.set_xlabel(r"$t$", fontsize=20)
+        #     ax.set_ylabel(r"$\tau$", fontsize=20)
+        #     ax.legend()
+        #    
+        #     os.makedirs(f"output/plot/{name}/L{L}/{alg}", exist_ok=True)
+        #     fig.tight_layout()
+        #     fig.savefig(
+        #         f"output/plot/{name}/L{L}/{alg}/{alg}_{temp}.pdf",
+        #         format="pdf",
+        #         bbox_inches="tight",
+        #     )
+        #     print(f"output/plot/{name}/L{L}/{alg}/{alg}_{temp}.png")
+        #     plt.close()
+        #     del ax, fig
 
     cor = np.array(cor)
     corErr = np.array(corErr)
@@ -115,4 +115,4 @@ for alg in algs:
         "mkplots/plot_autocorrelation_time.py",
         f"-alg {alg} -o {name}"
     ]
-    os.system(" ".join(cmd))
+    #os.system(" ".join(cmd))
