@@ -78,6 +78,7 @@ for alg in algs:
             # x = np.linspace(0,i,200)
             # ax1.plot(x, f(x,*xfit.opt), color=colors[i], linewidth=0.8,
             # linestyle=lines[i],label=f"$\\tau_{{\\mathrm{{cool}}}}={i}$")
+    
     ax1.legend()
     ax1.set_xlabel(r"$t$", fontsize=18)
     ax1.set_ylabel(params[obs]["ylabel"], fontsize=18)
@@ -100,31 +101,34 @@ for alg in algs:
     text = r"$\zeta=$"+fix(xfit.opt[1], xfit.error[1])
     ax2.text(
             0.05, 0.75,
-        text,
-        fontsize=16,
-        ha="left",
-        va="top",
-        transform=ax2.transAxes,
-    )
-    ax2.plot(x, f(x, *xfit.opt), 
-             linewidth=1.8,
-             color="blue", 
-             linestyle=(0, (3, 3)),
-             label=params[obs]["ylabel2"]+r"$\propto \tau_{\mathrm{cool}}^{\zeta}$")
-
+            text,
+            fontsize=16,
+            ha="left",
+            va="top",
+            transform=ax2.transAxes
+            )
+    ax2.plot(
+            x, f(x, *xfit.opt), 
+            linewidth=1.8,
+            color="blue", 
+            linestyle=(0, (3, 3)),
+            label=params[obs]["ylabel2"]+r"$\propto \tau_{\mathrm{cool}}^{\zeta}$"
+            )
     ax2.set_ylabel(r"$\log($"+params[obs]["ylabel2"]+r"$)$", fontsize=20)
     ax2.set_xlabel(r"$\log(\tau_\mathrm{cool})$", fontsize=20)
     ax2.set_yscale("log")
     ax2.set_xscale("log")
-    for axis in [ax2.xaxis, ax2.yaxis]:
-        formatter = ScalarFormatter()
-        formatter.set_scientific(False)
-        axis.set_major_formatter(formatter)
-        axis.set_minor_formatter(formatter)
-    ax2.legend(fontsize=18) 
-    ax2.set_xticks([8,9,10,11,12,13,14,15,16,17,18])
+
+    # for axis in [ax2.xaxis, ax2.yaxis]:
+    #     formatter = ScalarFormatter()
+    #     formatter.set_scientific(False)
+    #     axis.set_major_formatter(formatter)
+    #     axis.set_minor_formatter(formatter)
+    
+    ax2.legend(fontsize=16) 
+    # ax2.set_xticks([8,9,10,11,12,13,14,15,16,17,18])
     fig2.savefig(
         f"output/plot/cooling/scaling_law_{obs}_{alg}.pdf",
-            format="pdf",
-            bbox_inches="tight",
+        format="pdf",
+        bbox_inches="tight",
     )

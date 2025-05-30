@@ -19,7 +19,7 @@ if args.algorithm == "all":
         "lexic_glauber",
         "random_metropolis",
         "random_glauber",
-        #"multi_cluster"
+        "multi_cluster"
     ]
 else:
     algs = args.algorithm.split(",")
@@ -80,7 +80,7 @@ for alg in algs:
 
      
     def f(x, a, b):
-        return a*x**-b
+        return a*x**b
     
     xfit = fit(cor, psi, psiErr)
     xfit.fiting(f)
@@ -88,7 +88,7 @@ for alg in algs:
     x = np.linspace(cor[0],cor[-1])
     ax.plot(x,f(x,*xfit.opt), ls="dotted")
     
-    text = r"$\xi\propto \tau^{-z}$"+"\n"+r"$z$="+fix(xfit.opt[0], xfit.error[0])
+    text = r"$\xi\propto \tau^{z}$"+"\n"+r"$z$="+fix(xfit.opt[0], xfit.error[0])
     
     ax.text(0.96,0.20,text,fontsize=16,ha="right",va="top",transform=ax.transAxes)
     print(fix(xfit.opt[0], xfit.error[0]))

@@ -115,4 +115,4 @@ for alg in algs:
         "mkplots/plot_autocorrelation_time.py",
         f"-alg {alg} -o {name}"
     ]
-    #os.system(" ".join(cmd))
+    os.system(" ".join(cmd))

@@ -36,12 +36,11 @@ for alg in algs:
     xfit = fit(data[0,:], data[1,:], data[2,:])
     xfit.fiting(f)
 
-    text = ( r"$\tau \propto T^{-\lambda}$"+"\n"+
-            r"$\lambda = $"+f"{fix(xfit.opt[1], xfit.error[1])}" )
+    text = ( r"$\nu z = $"+f"{fix(xfit.opt[1], xfit.error[1])}" )
 
     ax.text(
         0.96,
-        0.96,
+        0.82,
         text,
         fontsize=16,
         ha="right",
@@ -53,8 +52,8 @@ for alg in algs:
         f(x, *xfit.opt),
         linewidth=1.8,
         color="blue",
-        label=r"$\tau_{exp}$",
         linestyle=(0, (3, 3)),
+        label=r"$\tau \propto T^{-\nu z}$"
     )
     ax.errorbar(
         data[0],
@@ -70,7 +69,7 @@ for alg in algs:
     # print(alg, fix(xfit.opt[1], xfit.error[1]))
     ax.set_xlabel(r"$\log(T)$", fontsize=18)
     ax.set_ylabel(r"$\log(\tau)$", fontsize=18)
-    # ax.legend()
+    ax.legend(fontsize=16)
     ax.set_yscale("log")
     ax.set_xscale("log")
     title = Algs[alg]

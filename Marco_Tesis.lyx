@@ -4382,883 +4382,38 @@ s suficientemente grande para alcanzar la precisión deseada.
  
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Section
-Longitud de correlación
-\end_layout
-
-\begin_layout Standard
-Se realizó una serie de experimentos numéricos para determinar características
- generales del modelo 2d O(
-\begin_inset Formula $3$
-\end_inset
-
-), 
-\end_layout
-
-\begin_layout Standard
-Se calculó la longitud de correlación en retículas de tamaño 
-\begin_inset Formula $L\times L$
-\end_inset
-
- donde 
-\begin_inset Formula $L\in\left\{ 32,64,128\right\} $
-\end_inset
-
- para las temperaturas 
-\begin_inset Formula $T\in\left\{ 0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0\right\} $
-\end_inset
-
-.
- En todos los casos se partió de una configuración 
-\shape italic
-hot-start
-\shape default
- y se termalizó durante 
-\begin_inset Formula $10^{4}$
-\end_inset
-
- actualizaciones del algoritmo 
-\shape italic
-multi-clúster
-\shape default
-.
-\end_layout
-
-\begin_layout Standard
-Cada uno de los exponentes críticos esta registrado en la tabla 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "teblength"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
- Se ajustaron las longitudes de correlación respecto a la temperatura a
- la función
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\xi=AT^{-\nu}.
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/length/length_lexic_metropolis.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Algotimo de Metropolis lexicográfico
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/length/length_random_metropolis.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Algotimo de Metropolis aleatorio
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/length/length_lexic_glauber.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Algotimo de Glauber lexicográfico
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/length/length_random_glauber.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Algotimo de Glauber aleatorio
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/length/length_multi_cluster.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Algotimo
-\shape italic
- multi-clúster
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Longitud de correlación en función de la temperatura para las retículas
- de tamaño 
-\begin_inset Formula $L\in\left\{ 32,64,128\right\} $
-\end_inset
-
-, algoritmo 
-\shape italic
-multi-clúster
-\shape default
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/length/size_32.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Formula $L=32$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/plot/length/size_64.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Formula $L=64$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename output/plot/length/size_128.pdf
-	scale 50
-	groupId plots
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Formula $L=128$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Longitud de correlación para los diferentes algoritmos dada una retícula
- de tamaño 
-\begin_inset Formula $L$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float table
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="6">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $L$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Metropolis
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Metropolis
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Glauber
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Glauber
-\end_layout
-
-\end_inset
-</cell>
-<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape italic
-multi-clúster
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="4" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-lexicográfico
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-aleatorio
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-lexicográfico
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-aleatorio
-\end_layout
-
-\end_inset
-</cell>
-<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $32$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $4.5(6)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $4.3(4)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $4.7(5)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $4.1(4)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $4.5(5)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $64$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $4.7(6)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $4.5(8)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $4.0(3)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $3.7(3)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $4.5(6)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $128$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $4.8(7)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $4.5(4)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $4.5(5)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $3.7(2)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $4.6(6)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Exponentes crítico 
-\begin_inset Formula $\nu$
-\end_inset
-
- obtenido en retículas de tamaño 
-\begin_inset Formula $\{32,64,128\}.$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "teblength"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-Los efectos de volumen finito son mas fuertes en temperaturas menores a
- 
-\begin_inset Formula $T=0.7$
-\end_inset
-
- por lo que se consideraron las temperaturas posteriores para el ajuste.
- Promediando los exponentes críticos para 
-\begin_inset Formula $L=128$
-\end_inset
-
- se tiene 
-\begin_inset Formula $\nu=4.4(5)$
-\end_inset
-
-.
-\end_layout
-
 \begin_layout Section
 Tiempo de autocorrelación
 \end_layout
 
 \begin_layout Standard
-El tiempo de autocorrelación se calculó en equilibrio térmico en las temperatura
-s 
+Se calculó el tiempo de autocorrelación en equilibrio térmico para las temperatu
+ras 
 \begin_inset Formula $T\in\left\{ 0.7,0.8,0.9,1.0\right\} $
 \end_inset
 
+ en una retícula de tamaño 
+\begin_inset Formula $L\times L$
+\end_inset
+
+ donde 
+\begin_inset Formula $L=64$
+\end_inset
+
 .
- En todos los casos se partió de una configuración inicial 
+ En todos los experimentos numéricos se partió de una configuración inicial
+ 
 \shape italic
 hot-start.
 
 \shape default
- Con el fin de asegurar una configuración completamente termalizada se realizaro
-n 
+ Ya que en este punto se desconocía el tiempo de autocorrelacion, se realizaron
+ 
 \begin_inset Formula $10^{4}$
 \end_inset
 
- barridos de actiulaización del algoritmo multi-clúster.
- Finalmente se promedio sobre 
-\begin_inset Formula $10^{5}$
-\end_inset
-
- barridos del algoritmo de Metropolis lexicográfico.
+ barridos de actualización del algoritmo multi-clúster, asegurando una configura
+ción completamente termalizada.
 \end_layout
 
 \begin_layout Standard
@@ -5275,11 +4430,24 @@ Para la carga topológica en el algoritmo multi-clúster, la autocorrelación
 
 \begin_layout Standard
 Los tiempos de autocorrelación se calcularon por ajuste a la función exponencial
- y por integración, ambos resultados fueron consistentes por encima de 
-\begin_inset Formula $T=0.7$
+ y por integración, ambos resultados fueron consistentes para 
+\begin_inset Formula $T\in\left\{ 0.7,0.8,0.9,1.0\right\} $
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+Finalmente se ajusto el tiempo de autocorrelación en función de la temperatura
+ siguiendo la ecuación 
+\begin_inset Formula 
+\begin{equation}
+\tau\propto T^{-\nu z}.
+\end{equation}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5294,7 +4462,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -6034,10 +5202,10 @@ Glauber aleatorio
 
 \begin_layout Plain Layout
 Exponente 
-\begin_inset Formula $\lambda$
+\begin_inset Formula $\nu z$
 \end_inset
 
- del tiempo de autocorrelación.
+ para el tiempo de autocorrelación.
 \end_layout
 
 \end_inset
@@ -6048,6 +5216,862 @@ Exponente
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+El algoritmo multi-cluster termalizo las configuraciones en un barridos
+ de actualización en el rango de temperaturas usado por lo que no se pudo
+ determinar un exponente.
+\end_layout
+
+\begin_layout Section
+Longitud de correlación
+\end_layout
+
+\begin_layout Standard
+Se realizó una serie de experimentos numéricos para determinar características
+ generales del modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+), 
+\end_layout
+
+\begin_layout Standard
+Se calculó la longitud de correlación en retículas de tamaño 
+\begin_inset Formula $L\times L$
+\end_inset
+
+ donde 
+\begin_inset Formula $L\in\left\{ 32,64,128\right\} $
+\end_inset
+
+ para las temperaturas 
+\begin_inset Formula $T\in\left\{ 0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0\right\} $
+\end_inset
+
+.
+ En todos los casos se partió de una configuración 
+\shape italic
+hot-start
+\shape default
+ y se termalizó durante 
+\begin_inset Formula $10^{4}$
+\end_inset
+
+ actualizaciones del algoritmo 
+\shape italic
+multi-clúster
+\shape default
+.
+\end_layout
+
+\begin_layout Standard
+Cada uno de los exponentes críticos esta registrado en la tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "teblength"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Se ajustaron las longitudes de correlación respecto a la temperatura a
+ la función
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\xi\propto T^{-\nu}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/length_lexic_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algotimo de Metropolis lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/length_random_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algotimo de Metropolis aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/length_lexic_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algotimo de Glauber lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/length_random_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algotimo de Glauber aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/length_multi_cluster.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algotimo
+\shape italic
+ multi-clúster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Longitud de correlación en función de la temperatura para las retículas
+ de tamaño 
+\begin_inset Formula $L\in\left\{ 32,64,128\right\} $
+\end_inset
+
+, algoritmo 
+\shape italic
+multi-clúster
+\shape default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/size_32.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $L=32$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/length/size_64.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $L=64$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/size_128.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $L=128$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Longitud de correlación para los diferentes algoritmos dada una retícula
+ de tamaño 
+\begin_inset Formula $L$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $L$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Metropolis
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Metropolis
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Glauber
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Glauber
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+multi-clúster
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lexicográfico
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+aleatorio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lexicográfico
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+aleatorio
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $32$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.5(6)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.3(4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.7(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.1(4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.5(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $64$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.7(6)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.5(8)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.0(3)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.7(3)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.5(6)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $128$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.8(7)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.5(4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.5(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.7(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.6(6)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Exponente crítico 
+\begin_inset Formula $\nu$
+\end_inset
+
+ obtenido en las retículas de tamaño 
+\begin_inset Formula $L\times L$
+\end_inset
+
+ donde 
+\begin_inset Formula $L\in\{32,64,128\}.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "teblength"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Los efectos de volumen finito son mas fuertes en temperaturas menores a
+ 
+\begin_inset Formula $T=0.7$
+\end_inset
+
+ por lo que se consideraron las temperaturas posteriores para el ajuste.
+ Promediando los exponentes críticos para 
+\begin_inset Formula $L=128$
+\end_inset
+
+ se tiene 
+\begin_inset Formula $\nu=4.4(5)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -6060,15 +6084,30 @@ n y los tiempos de autocorrelación para las temperaturas
 \begin_inset Formula $T\in\{0.7,0.8,0.9,1.0\}$
 \end_inset
 
-.
- Se empleo una retícula cuadrada de tamaño 
+ en una retícula de tamaño 
+\begin_inset Formula $L\times L$
+\end_inset
+
+ donde 
 \begin_inset Formula $L=64$
 \end_inset
 
 .
- Como la autocorrelación no pudo medirse para el algoritmo multi-clúster
- tampoco se pudo calcular el exponente critico dinámico, en consecuencia
- en la tabla 
+ El exponente critico se calculo siguiendo la ecuación 
+\shape italic
+
+\begin_inset Formula 
+\begin{equation}
+\tau\propto\xi^{z}.
+\end{equation}
+
+\end_inset
+
+C
+\shape default
+omo el exponente critico de autocorrelación no pudo medirse para el algoritmo
+ multi-clsuter, tampoco pudo medirse para calcular el exponente critico
+ dinámico, en consecuencia en la tabla 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab_exp"
@@ -6094,7 +6133,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -6866,6 +6905,198 @@ name "tab_exp"
 
 \end_layout
 
+\begin_layout Standard
+Se calculó el valor del exponente del mecanismo de Kibble-Zurek siguiendo
+ la ecuación
+\begin_inset Formula 
+\begin{equation}
+\chi_{t}\propto\tau_{\mathrm{cool}}^{-\zeta},\;\zeta=\frac{\nu}{1+\nu z},
+\end{equation}
+
+\end_inset
+
+y usando los exponentes criticos de las tablas 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "teblength"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab_exp"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Finalmente se obtuvieron los resultados promedio expresados en la tabla
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab_exp2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\chi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $m$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\zeta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.03$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.7$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.94$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Promedio del mecanismo de Kibble-Zurek, para la susceptibilidad topológica,
+ la energía y la magnetización.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab_exp2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Simulación de enfriamientos
 \end_layout
@@ -7036,7 +7267,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -7055,7 +7286,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Metropolis lexicográfico
+Algoritmo de Metropolis lexicográfico
 \end_layout
 
 \end_inset
@@ -7069,7 +7300,7 @@ Algortmo de Metropolis lexicográfico
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -7084,7 +7315,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Metropolis aleatorio
+Algoritmo de Metropolis aleatorio
 \end_layout
 
 \end_inset
@@ -7126,7 +7357,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Glauber lexicográfico
+Algoritmo de Glauber lexicográfico
 \end_layout
 
 \end_inset
@@ -7159,7 +7390,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Glauber aleatorio
+Algoritmo de Glauber aleatorio
 \end_layout
 
 \end_inset
@@ -7197,7 +7428,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo multi-clúster
+Algoritmo multi-clúster
 \end_layout
 
 \end_inset
@@ -7253,7 +7484,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -7272,7 +7503,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Metropolis lexicográfico
+Algoritmo de Metropolis lexicográfico
 \end_layout
 
 \end_inset
@@ -7304,7 +7535,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Metropolis aleatorio
+Algoritmo de Metropolis aleatorio
 \end_layout
 
 \end_inset
@@ -7337,7 +7568,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Glauber lexicográfico
+Algoritmo de Glauber lexicográfico
 \end_layout
 
 \end_inset
@@ -7370,7 +7601,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Glauber aleatorio
+Algoritmo de Glauber aleatorio
 \end_layout
 
 \end_inset
@@ -7407,7 +7638,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo multi-clúster
+Algoritmo multi-clúster
 \end_layout
 
 \end_inset
@@ -7477,7 +7708,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Metropolis lexicográfico
+Algoritmo de Metropolis lexicográfico
 \end_layout
 
 \end_inset
@@ -7506,7 +7737,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Metropolis aleatorio
+Algoritmo de Metropolis aleatorio
 \end_layout
 
 \end_inset
@@ -7544,7 +7775,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Glauber lexicográfico
+Algoritmo de Glauber lexicográfico
 \end_layout
 
 \end_inset
@@ -7573,7 +7804,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Glauber aleatorio
+Algoritmo de Glauber aleatorio
 \end_layout
 
 \end_inset
@@ -7607,7 +7838,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo multi-clúster
+Algoritmo multi-clúster
 \end_layout
 
 \end_inset
@@ -7678,7 +7909,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Metropolis lexicográfico
+Algoritmo de Metropolis lexicográfico
 \end_layout
 
 \end_inset
@@ -7912,7 +8143,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Metropolis aleatorio
+Algoritmo de Metropolis aleatorio
 \end_layout
 
 \end_inset
@@ -7950,7 +8181,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Glauber lexicográfico
+Algoritmo de Glauber lexicográfico
 \end_layout
 
 \end_inset
@@ -7979,7 +8210,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Glauber aleatorio
+Algoritmo de Glauber aleatorio
 \end_layout
 
 \end_inset
@@ -8013,7 +8244,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo multi-clúster
+Algoritmo multi-clúster
 \end_layout
 
 \end_inset
@@ -8084,7 +8315,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Metropolis lexicográfico
+Algoritmo de Metropolis lexicográfico
 \end_layout
 
 \end_inset
@@ -8116,7 +8347,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Metropolis aleatorio
+Algoritmo de Metropolis aleatorio
 \end_layout
 
 \end_inset
@@ -8149,7 +8380,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Glauber lexicográfico
+Algoritmo de Glauber lexicográfico
 \end_layout
 
 \end_inset
@@ -8182,7 +8413,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de Glauber aleatorio
+Algoritmo de Glauber aleatorio
 \end_layout
 
 \end_inset
@@ -8219,7 +8450,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algortmo de multi-clúster
+Algoritmo de multi-clúster
 \end_layout
 
 \end_inset
@@ -8601,18 +8832,6 @@ noprefix "false"
 \end_inset
 
  es menor para los algoritmos de actualización local.
- Para la susceptibilidad topológica el algoritmo multi-clúster presenta
- un valor de 
-\begin_inset Formula $\zeta$
-\end_inset
-
- de aproximadamente el doble que los algoritmos de actualización local.
- También se observa 
-\emph on
-que la
-\emph default
- energía y la magnetización tienen en todos los algoritmos un valor menor
- que la susceptibilidad topológica.
 \end_layout
 
 \begin_layout Chapter
@@ -8620,45 +8839,17 @@ Resumen y conclusiones
 \end_layout
 
 \begin_layout Standard
-Se comprobó la ley de escalamiento de Zurek para enfriamientos de temperatura
- inicial 
-\begin_inset Formula $T_{i}$
+Se ajusto el cambio en la velocidad de los enfriemientia a una ley de escalamien
+to pero los exponentes medidos en las simulaciones de enfriamientos no coinciden
+ con los resultados calculados a partir de los exponentes críticos medidos
+ en el equilibrio.
+ Una posible causa de la discrepancia podría ser que a diferencia del escenario
+ planteado por Zurek en las simulaciones no se paso por una temperatura
+ critica, ya que el sistema tiene una temperatura critica en 
+\begin_inset Formula $T=0$
 \end_inset
 
- a temperatura final 
-\begin_inset Formula $T_{f}=0$
-\end_inset
-
-, para la susceptibilidad topológica, la energía y la magnetización, para
- tasas de cambio de temperatura 
-\begin_inset Formula $\tau_{\mathrm{cool}}\in\left\{ 8,9,10,11,12,13,14,15,16,17,18\right\} $
-\end_inset
-
-.
- Como prueba de consistencia se realizo el mismo experimento con cinco algoritmo
-s, cuatro de actualización local y uno de actualización por clústers
-\shape italic
-.
-\end_layout
-
-\begin_layout Standard
-La energía y la magnetización presentaron un menor valor para el exponente
- critico 
-\begin_inset Formula $\zeta$
-\end_inset
-
- respecto a la susceptibilidad topológica, estos resultados implica una
- adaptación más rápida al cambio de temperatura por parte de la energía
- respecto a las otras observables.
-\end_layout
-
-\begin_layout Standard
-El algoritmo muti-clúster obtuvo el valor mas alto de 
-\begin_inset Formula $\zeta$
-\end_inset
-
- con la susceptibilidad topológica, implicando una mayor supervivencia de
- defectos topológicos respecto a los algoritmos de actualización local.
+, 
 \end_layout
 
 \begin_layout Standard
