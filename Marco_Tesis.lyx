@@ -1030,17 +1030,9 @@ En cada sito
 \begin_inset Formula $\vec{x}\in\mathscr{R}^{d}$
 \end_inset
 
- hay 
-\begin_inset Formula $2d$
-\end_inset
-
- sitios ubicados a una unidad de distancia (dos por cada dimensión).
+ hay 2d sitios ubicados a una unidad de distancia (dos por cada dimensión).
  El resto de sitios se ubican a una distancia mayor a una unidad, por lo
- que a esos 
-\begin_inset Formula $2d$
-\end_inset
-
- sitios son los vecinos más cercanos a 
+ que a esos 2d sitios son los vecinos más cercanos a 
 \begin_inset Formula $x$
 \end_inset
 
@@ -1214,11 +1206,7 @@ El modelo O(
  La función hamiltoniana es de la forma
 \begin_inset Formula 
 \begin{equation}
-\begin{aligned}\mathcal{H}[s]= & \frac{J}{2}\sum_{x}\sum_{\hat{\mu}}^{d}\left(\vec{s}_{x}-\vec{s}_{x+\hat{\mu}}\right)^{2}\\
-=- & \frac{J}{2}\sum_{x}\sum_{\hat{\mu}}^{d}\left(2\vec{s}_{x+\hat{\mu}}\cdot\vec{s}_{x}-2\right)\\
-= & -J\sum_{x}\sum_{\hat{\mu}}^{d}\left(\vec{s}_{x+\hat{\mu}}\cdot\vec{s}_{\hat{x}}+1\right),
-\end{aligned}
-\label{eq:hamiltoniano_o(n)}
+\mathcal{H}[s]=-J\sum_{\expval{x,y}}\vec{s}_{x}\cdot\vec{s}_{y}\label{eq:hamiltoniano_o(n)}
 \end{equation}
 
 \end_inset
@@ -1228,18 +1216,10 @@ donde
 \end_inset
 
  es una constante de acoplamiento, 
-\begin_inset Formula $\hat{\mu}$
+\begin_inset Formula $\expval{x,y}$
 \end_inset
 
- es un vector unitario con valor 
-\begin_inset Formula $1$
-\end_inset
-
- en la 
-\begin_inset Formula $d$
-\end_inset
-
--esíma entrada.
+ son los espines vecinos más cercanos.
  Como la interacción magnética decae proporcionalmente al inverso del cuadrado
  de la distancia, la contribución más grande se da entre los vecinos más
  cercanos.
@@ -1461,22 +1441,35 @@ noprefix "false"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathcal{H}\left[s\right]=-J\sum_{x}\left(\vec{s}_{x}\cdot\vec{s}_{x+\hat{1}}+\vec{s}_{x}\cdot\vec{s}_{x+\hat{2}}+2\right),\label{eq:hamiltoniano_2dO3}
+\mathcal{H}\left[s\right]=-J\sum_{x_{1}}\sum_{x_{2}}\vec{s}_{x_{1},x_{2}}\cdot\left(\vec{s}_{x_{1}+1,x_{2}}+\vec{s}_{x_{1},x_{2}+1}+\vec{s}_{x_{1}-1,x_{2}}+\vec{s}_{x_{1},x_{2}-1}\right),\label{eq:hamiltoniano_2dO3}
 \end{equation}
 
 \end_inset
 
-donde 
-\begin_inset Formula $\hat{1}=(1,0)$
-\end_inset
 
- y 
-\begin_inset Formula $\hat{2}=(0,1)$
-\end_inset
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
-.
-\begin_inset Note Note
-status collapsed
+\begin_layout Plain Layout
+
+\series bold
+Simplificacion del hamiltoniano.
+\end_layout
 
 \begin_layout Plain Layout
 Aunque es una ecuación sencilla de manejar es posible simplificarla intercambian
@@ -1876,11 +1869,7 @@ La susceptibilidad topológica
 B.
  Breg y M.
  Lüscher introdujeron la definición geométrica de carga topológica reticular
- para estudiar la susceptibilidad topológica del modelo 
-\begin_inset Formula $2$
-\end_inset
-
-d O(
+ para estudiar la susceptibilidad topológica del modelo 2d O(
 \begin_inset Formula $3$
 \end_inset
 
@@ -2602,11 +2591,7 @@ Si la energía de la configuración disminuye con el cambio, la probabilidad
 \end_layout
 
 \begin_layout Standard
-En el modelo 
-\begin_inset Formula $2$
-\end_inset
-
--d O(
+En el modelo 2d O(
 \begin_inset Formula $3$
 \end_inset
 
@@ -3973,7 +3958,7 @@ En 1985, W.
  
 \begin_inset Formula 
 \begin{equation}
-\xi\propto\tau_{\mathrm{cool}}^{\zeta}
+\xi\propto\tau_{\mathrm{cool}}^{-\frac{\nu}{1+\nu z}}
 \end{equation}
 
 \end_inset
@@ -4035,13 +4020,13 @@ El parametro de orden de un spuerfluido puede pensarse como la función de
 \end_inset
 
 Es una situación análoga al modelo cosmológico y una buena aproximación
- a el superflido 
+ a el superfluido 
 \begin_inset Formula $^{4}$
 \end_inset
 
 He.
  en particular para un spuerfluido cerca de la temperatura crítica 
-\begin_inset Formula $T_{C}$
+\begin_inset Formula $T_{c}$
 \end_inset
 
 ,
@@ -4159,13 +4144,13 @@ El tiempo de auto-correlación depende del algoritmo de Monte Carlo particular
  que se use y en general cerca de un punto crítico diverge según la ecuación
 \begin_inset Formula 
 \begin{equation}
-\tau_{\mathrm{}}\propto\xi^{z}
+\tau\propto\xi^{-\nu z}
 \end{equation}
 
 \end_inset
 
 donde 
-\begin_inset Formula $\zeta$
+\begin_inset Formula $z$
 \end_inset
 
  es el exponente crítico dinámico.
@@ -4407,7 +4392,7 @@ ras
 hot-start.
 
 \shape default
- Ya que en este punto se desconocía el tiempo de autocorrelacion, se realizaron
+ Ya que en este punto se desconocía el tiempo de autocorrelación, se realizaron
  
 \begin_inset Formula $10^{4}$
 \end_inset
@@ -7029,7 +7014,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $2.03$
+\begin_inset Formula $0.57(9)$
 \end_inset
 
 
@@ -7041,7 +7026,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.7$
+\begin_inset Formula $1.0(5)$
 \end_inset
 
 
@@ -7053,10 +7038,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.94$
-\end_inset
-
-
+0.7(2)
 \end_layout
 
 \end_inset
@@ -8839,17 +8821,67 @@ Resumen y conclusiones
 \end_layout
 
 \begin_layout Standard
-Se ajusto el cambio en la velocidad de los enfriemientia a una ley de escalamien
-to pero los exponentes medidos en las simulaciones de enfriamientos no coinciden
- con los resultados calculados a partir de los exponentes críticos medidos
- en el equilibrio.
- Una posible causa de la discrepancia podría ser que a diferencia del escenario
- planteado por Zurek en las simulaciones no se paso por una temperatura
- critica, ya que el sistema tiene una temperatura critica en 
+Se ajustó el cambio en la velocidad de los enfriamientos a una ley de escalamien
+to.
+ La susceptibilidad topológica resultó en una ley de escalamiento con un
+ exponente 
+\begin_inset Formula $\zeta_{1}=0.53(1)$
+\end_inset
+
+, el cual es compatible con las simulaciones en equilibrio que arrojan 
+\begin_inset Formula $\zeta_{2}=0.57(9)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Para la energía y la magnetización, los exponentes obtenidos a partir de
+ los enfriamientos no coinciden con los resultados calculados en equilibrio.
+\end_layout
+
+\begin_layout Standard
+El mecanismo de Kibble-Zurek se plantea en sistemas donde ocurre una ruptura
+ de simetría al cruzar una temperatura crítica.
+ Sin embargo, en el modelo 2d O(3), la temperatura crítica es 
 \begin_inset Formula $T=0$
 \end_inset
 
-, 
+, lo que implica que no es posible alcanzar temperaturas menores a cero.
+ En los experimentos realizados no se cruzó una temperatura crítica, por
+ lo tanto, no hubo un cambio en el orden del sistema.
+ En cambio, al aproximar el sistema a temperatura cero, se observa una desaceler
+ación crítica que resulta ser más fuerte en el caso de la susceptibilidad
+ topológica.
+ Esto podría ser la razón por la cual el valor de 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ es compatible con el resultado en equilibrio.
+\end_layout
+
+\begin_layout Standard
+Aunque el modelo 2d O(3), no pasa por la temperatura critica en los enfriamiento
+s, fue posible ajustar una ley de escalamiento para las observables de susceptib
+ilidad topológica, energía y magnetización.
+ Para los algoritmos de actualización locales, la ley de escalamiento conduce
+ a exponentes críticos 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ compatibles.
+\end_layout
+
+\begin_layout Standard
+En cambio, con el algoritmo multi-cluster, los valores obtenidos para el
+ exponente 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ resultan mayores que los de los algoritmos de actualización locales.
+ Además, para las temperaturas simuladas en equilibrio, no fue posible calcular
+ el exponente crítico dinámico, por lo que no se pudo confirmar una compatibilid
+ad entre los resultados obtenidos en equilibrio y los enfriamientos.
 \end_layout
 
 \begin_layout Standard
@@ -8916,7 +8948,7 @@ son variables aleatorias.
 
 \begin_layout Standard
 Un primer intento para generar vectores aleatorios y uniformemente distribuidos
- es generar parámetros aleatorios uniformemente distribuidos 
+ es generar parámetros aleatorios 
 \begin_inset Formula $\theta_{r}\in[0,\pi]$
 \end_inset
 
@@ -8924,10 +8956,15 @@ Un primer intento para generar vectores aleatorios y uniformemente distribuidos
 \begin_inset Formula $\phi_{r}\in[0,2\pi)$
 \end_inset
 
-.
- Si se generan vectores aleatorios de esta manera, y se pintan en usa esfera,
- se observa como la distribución de los vectores es más densa en los polos.
- Consideremos una distribución 
+ uniformemente distribuidos.
+ Sin embargo, si se generan vectores aleatorios de esta manera y se representan
+ sobre una esfera, se observa que la distribución de los vectores es más
+ densa en los polos..
+ 
+\end_layout
+
+\begin_layout Standard
+Consideremos ahora una distribución 
 \begin_inset Formula $f$
 \end_inset
 
@@ -8935,14 +8972,14 @@ Un primer intento para generar vectores aleatorios y uniformemente distribuidos
 \begin_inset Formula $\vec{s}$
 \end_inset
 
- uniformemente distribuidos en la esfera.
+ uniformemente distribuidos sobre la superficie de la esfera.
  Para que se cumpla la condición de uniformidad, la densidad de probabilidad
- tiene que se la constante 
+ debe ser constante, con valor 
 \begin_inset Formula $p=1/4\pi$
 \end_inset
 
-.
- La integral de la densidad de probabilidad sobre el área de la esfera es
+, entonces integral de la densidad de probabilidad sobre el área de la esfera
+ es
 \end_layout
 
 \begin_layout Standard
@@ -9533,6 +9570,41 @@ Algoritmo Hoshen-Kopelman
 \end_layout
 
 \begin_layout Standard
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Definición: cúster.
+\end_layout
+
+\begin_layout Plain Layout
+En una retícula de espines clasicos, un clúster es un conjunto de sitios
+ enlazados directa o indirectamente.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 El algoritmo de Hoshen-Kopelman fue descrito por Joseph Hoshen y Raoul Kopelman
  en 1976 
 \begin_inset CommandInset citation
@@ -9543,114 +9615,190 @@ literal "false"
 \end_inset
 
 .
- Un clúster es un conjunto de sitios enlazados en una retícula.
- La función de enlace indica si dos sitios están o no enlazados.
- El algoritmo de Hoshen-Kopelman es un procedimiento para etiquetar los
- sitios de la retícula en clústers, se usa la función de enlace para determinar
- el 
-\shape italic
-clúster
-\shape default
- al que pertenece cada sitio.
-\end_layout
-
-\begin_layout Itemize
-Dos sitios enlazados pertenecen al mismo clúster.
+ El algoritmo de Hoshen-Kopelman describe como etiquetar los sitios de la
+ retícula en sus respectivos clústers a partir de una función de enlace.
 \end_layout
 
 \begin_layout Standard
-El enlace entre sitios es transitivo, por lo que se pude dar el caso de
- que dos sitios no estén directamente enlazados pero pertenecen al mismo
- clúster.
+El algoritmo de Hoshen-Kopelman es considerablemente más eficiente que otros
+ métodos de formación de clústers.
+ A diferencia de algoritmos en los que el número de cálculos crece cuadráticamen
+te con el volumen del sistema, en el caso de Hoshen-Kopelman dicho crecimiento
+ es lineal.
 \end_layout
 
 \begin_layout Standard
-Consideremos una retícula 
-\begin_inset Formula $\mathscr{R}$
-\end_inset
+Un enlace directo ocurre entre dos sitios vecinos, mientras que un enlace
+ indirecto se da entre sitios que no son vecinos, pero que están conectados
+ a un sitio común.
+ Este tipo de enlace implica la posibilidad de que dos clústers inicialmente
+ distintos se unan mediante una conexión entre elementos que pertenecen
+ a cada uno de ellos.
+\end_layout
 
-, cada sitio 
+\begin_layout Standard
+Para empezar vamos a generar una configuración de enlaces en donde cada
+ sitio 
 \begin_inset Formula $x$
 \end_inset
 
- tiene sus propios sitios vecinos más cercanos 
-\begin_inset Formula $\{y_{1},\dots,y_{k}\}$
+ indica los enlaces directos, por ejemplo en una retícula cuadrada hay cuatro
+ vecinos más cercanos, para cada vecino un 1 indica un enlace directo mientras
+ que un 0 indica que no hay enlace.
+ La función de enlace 
+\begin_inset Formula $p(x_{1},x_{2})$
+\end_inset
+
+ da la probabilidad de enlace entre los sitios 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $x_{2}$
 \end_inset
 
 .
- Cada vecino puede estar o no estar enlazado 
-\begin_inset Formula $x$
-\end_inset
-
-.
- Además cada puede o no estar enlazado con alguno de sus propios vecinos
- más cercanos.
 \end_layout
 
 \begin_layout Standard
-Los pasos de la clasificación son los siguientes:
+Una vez determinada todos los enlaces se realizan los siguientes pasos:
 \end_layout
 
 \begin_layout Enumerate
 Se selecciona un sitio 
-\begin_inset Formula $x_{i}\in\mathscr{R}$
+\begin_inset Formula $x$
 \end_inset
 
-.
- En la selección se deben evitar repeticiones y se debe garantizar que todos
- los sitios son eventualmente seccionados.
-\end_layout
-
-\begin_layout Enumerate
-Se crea un nuevo clúster 
-\begin_inset Formula $c_{i}$
-\end_inset
-
- y se se clasifican los sitios vecinos.
+ y se comprueban sus enlaces directos.
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Si no hay ningún enlace, se crea un nuevo se etiqueta a 
-\begin_inset Formula $x$
+Si no hay enlaces directos, se etiqueta al sitio con un identificador 
+\begin_inset Formula $\alpha$
 \end_inset
 
- como el único elemento del clúster 
-\begin_inset Formula $c_{i}$
-\end_inset
-
-.
- Se regresa al paso 1.
+ correspondiente a un clúster de un elemento y se regresa al paso 1.
 \end_layout
 
 \begin_layout Enumerate
-Si hay algún enlace etiqueta a 
-\begin_inset Formula $x_{i}$
-\end_inset
-
- y los sitios enlazados como elementos del clúster 
-\begin_inset Formula $c_{i}$
-\end_inset
-
-.
+Si hay enlaces directos se pasa al paso 2.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Se unen los clústers con sitios en común.
- Se elije la etiqueta con el valor numérico mas bajo como identificador
- de la unión de los clústers.
+Se comprueban los enlaces directos de los sitios vecinos.
+ Todos los espines enlazados en la comprobación se etiquetan con un identificado
+r 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ correspondiente a un clúster.
 \end_layout
 
 \begin_layout Enumerate
-Se regresa al paso 1.
+Se repinten los pasos anteriores etiquetando cada sitio de la retícula en
+ sus respectivos clústers.
+\end_layout
+
+\begin_layout Enumerate
+En el proceso de formación de cústers, habrán casos en los que a un sitio
+ le corresponden dos o más etiquetas 
+\begin_inset Formula $\alpha_{1},\dots,\alpha_{n}$
+\end_inset
+
+, ya que hay un enlace indirecto entre clústers los clusters correspondientes
+ se fusionan en uno y se les asigna la etiqueta 
+\begin_inset Formula $\alpha_{1.}$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+Una segunda propuesta útil para loa formación de cústers individuales es
+ la formación procedural de clústers.
+ En este caso es importante diferenciar entre sitios en el interior de un
+ cúster y sitios en la frontera de un clúster.
+ Un sitio en el interior de un clúster si todos sus vecinos más cercanos
+ pertenecen al mismo clúster.
+ En complementariedad un sitio esta en la frontera si alguno de sus vecinos
+ más cercanos no pertenece al clúster.
+\end_layout
+
+\begin_layout Standard
+En la formación procedural se parte de un clúster individual y se va extendiendo
+ una frontera provisional en cada paso hasta alcanzar el tamaño máximo del
+ clúster, en ocasiones transformando a los sitios de la frontera en sitios
+ en el interior.
+ 
+\end_layout
+
+\begin_layout Standard
+Para evitar que un clúster se extienda indebidamente por el calculo doble
+ de una probabilidad de enlace, solo se calculara una vez un enlace entre
+ dos espines.
+\end_layout
+
+\begin_layout Standard
+El proceso es el siguiente:
+\end_layout
+
+\begin_layout Enumerate
+Se selecciona un sitio aleatorio 
+\begin_inset Formula $x$
+\end_inset
+
+ y se comprueban los enlaces directos.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Todos los espines enlazados en la comprobación se etiquetan con un identificador
+ 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ correspondiente a un clúster.
+\end_layout
+
+\begin_layout Enumerate
+Se identifican los sitios localizados en la frontera y se comprueban sus
+ enlaces directos.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Si hay enlaces directos adicionales se regresa al paso 2.
+\end_layout
+
+\begin_layout Enumerate
+Si no hay enlaces directos adicionales se termina la comprobación.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Este método es especialmente útil en la formación de un clúster, ya que
+ evita el calculo de una gran cantidad e enlaces.
+\end_layout
+
+\begin_layout Standard
+La aplicación de estos métodos al los algoritmos multi-clsuter y single-cluster,
+ permiten ahorrar una gran cantidad cálculos, por lo que el poder de computo
+ pude usarse en aumentar la estadística de los experimentos y reducir los
+ tiempos de calculo, sin duda es un beneficio que vale la pena a cambio
+ de un poco de programación extra.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -9799,7 +9947,8 @@ Rutina, algoritmo de Hoshen-Kopelman.
 
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
+
 
 \end_layout
 
@@ -9809,13 +9958,6 @@ Rutina, algoritmo de Hoshen-Kopelman.
 \end_layout
 
 \begin_layout Standard
-El algoritmo de Hoshen-Kopelman es por más eficiente que otros algoritmos
- de formación de clústers.
- A diferencia de otros algoritmos en los que el número de cálculos aumenta
- exponencialmente conforme aumenta el número de sitios.
- En Hoshen-Kopelmanl número de cálculos aumenta linealmente, por lo que
- es ideal para simulaciones como las realizadas en este trabajo.
- 
 \begin_inset Newpage newpage
 \end_inset
 
