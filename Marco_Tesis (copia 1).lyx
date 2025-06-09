@@ -1,0 +1,9600 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{comment}
+\usepackage{textgreek}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{bachelorstitlepageUNAM}
+\usetikzlibrary{shapes.geometric, arrows}
+\renewcommand\spanishtablename{Tabla}
+\sloppy
+\author{Marco Israel Rodríguez Cornejo}
+\title{Enfriameintos rapidos del modelo 2d O(3)}
+\faculty{Facultad de Ciencias}
+\degree{Licenciatura en Fìsica}
+\supervisor{Wolfgang Peter Bietenholz}
+\cityandyear{Ciudad Universitaria, CDMX, 2024}
+\logouni{Escudo-UNAM.pdf} 
+\logofac{Escudo-FCIENCIAS.pdf}
+
+\lstset{language=[90]Fortran,
+  basicstyle=\tiny,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  morecomment=[l]{!\ }% Comment only with space after !
+}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, 
+minimum width=3cm, 
+minimum height=1cm,
+text centered, 
+draw=black]
+
+\tikzstyle{process} = [rectangle, 
+minimum width=3cm, 
+minimum height=1cm, 
+text centered, 
+text width=3cm, 
+draw=black]
+
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\setcounter{tocdepth}{1}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package babel
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine biblatex
+\cite_engine_type numerical
+\biblio_style plain
+\biblio_options doi=false,url=false,maxbibnames=10,sorting=none
+\biblatex_bibstyle ieee
+\biblatex_citestyle ieee
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #718c00
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 3
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newbibmacro{string+doi}[1]{%
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+iffieldundef{doi}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\backslash
+iffieldundef{url}
+\end_layout
+
+\begin_layout Plain Layout
+
+		{#1}
+\end_layout
+
+\begin_layout Plain Layout
+
+		{
+\backslash
+href{
+\backslash
+thefield{url}}{#1}}%     
+\end_layout
+
+\begin_layout Plain Layout
+
+	}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\backslash
+href{http://dx.doi.org/
+\backslash
+thefield{doi}}{#1}}% 
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+DeclareFieldFormat[article]{title}{
+\backslash
+usebibmacro{string+doi}{
+\backslash
+mkbibquote{#1}}} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+DeclareFieldFormat[article]{pages}{#1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+DeclareFieldFormat[article]{volume}{#1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+DeclareFieldFormat[article]{number}{#1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{gobble}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{arabic}  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Motivación al estudio de sistemas fuera del equilibrio
+\end_layout
+
+\begin_layout Standard
+En la practica de la física, se busca describir fenómenos físicos.
+ Para ello, se emplean herramientas matemáticas como el cálculo, la estadística
+ y la geometría.
+ Para realizar mejores experimentos y mediciones, se avanza en el desarrollo
+ de tecnología en múltiples frentes.
+ La investigación es un proceso largo y requiere gran esfuerzo, a veces
+ el esfuerzo no recompensa con resultados favorables, los modelos se desechan
+ o se replantean.
+ Las investigaciones continúan de generación en generación, refinando la
+ teoría como la experimentación.
+ De esta forma, la comunidad científica progresa de manera consistente y
+ sistemática.
+\end_layout
+
+\begin_layout Standard
+Los estados de la materia y sus transiciones de fase son temas de gran interés
+ en física.
+ Kibble y Wojciech H.
+ Zurek se interesaron en el estudio de las clases de universalidad y como
+ muchos sistemas presentan ruptura de simetría al pasar por una temperatura
+ critica, propusieron que la supervivencia de defectos topológicos, se relaciona
+ con el ratio de enfriamiento al que un sistema pasa por la temperatura
+ critica.
+\end_layout
+
+\begin_layout Standard
+Entre los años 1949 y 1952: Nicholas Metropolis, Arianna W.
+ Rosenbluth, Marshall N.
+ Rosenbluth, Augusta H.
+ Teller, y Edward Teller 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "metropolis_equation_1953"
+literal "false"
+
+\end_inset
+
+.
+ , trabajaban en Los Álamos en el desarrollo de la bomba atómica.
+ Su trabajo se centró en comprender la física de las interacciones entre
+ la radiación y la materia bajo condiciones extremas, tales como explosiones,
+ implosiones y la evolución de reacciones nucleares fuera del equilibrio.
+ 
+\end_layout
+
+\begin_layout Standard
+En estas circunstancias, los experimentos se vuelven complejos, y la teoría
+ detrás de procesos que involucran interacciones entre un vasto número de
+ partículas resulta demasiado intrincada.
+ Para superar estas limitaciones, desarrollaron una serie de métodos basados
+ en procesos estocásticos, conocidos como métodos de Monte Carlo.
+\end_layout
+
+\begin_layout Standard
+Con el posterior desarrollo de los ordenadores, los métodos de Monte Carlo
+ se volvieron herramientas fundamentales en el estudio de sistemas con incontabl
+es grados de libertad.
+\end_layout
+
+\begin_layout Standard
+En este trabajo, se aplicaron los métodos de Monte Carlo al estudio de enfriamie
+ntos rápidos de en el modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+).
+ Se realizaron simulaciones en equilibrio y fuera del equilibrio.
+ En los experimentos fuera del equilibrio se midieron los defectos topológicos
+ remanentes para diferentes ratios de enfriamiento, esperando resultados
+ compatibles con la ley de escalamiento de Zurek.
+\end_layout
+
+\begin_layout Chapter
+Función de partición e integral de trayectorias
+\end_layout
+
+\begin_layout Section
+Propagador de evolución
+\end_layout
+
+\begin_layout Standard
+Cuando Richard Feynman desarrollo su propia formulación de integral de trayector
+ias, se pregunto si existía un camino para conectar la mecánica estadística
+ con la mecánica cuántica.
+ La mecánica cuántica descrita por Erwin Schrödinger se planeta una ecuación
+ que describe el sistema físico de interés, luego se busca la solución.
+ La ecuación de E.
+ Schrödinger aumenta en complejidad al aumentar los grados de libertad.
+ En mecánica estadística, se plantea una función de partición, la cual continent
+e toda la información necesaria sobre el sistema que modela.
+ La función de partición, propone soluciones factibles para sistemas con
+ muchos grados de libertad.
+ R.
+ Feynman encontró una función análoga a la función de partición para sistemas
+ cuánticos y uno de los modelos que se pueden estudiar es el modelo de interés
+ para este trabajo, el modelo 
+\begin_inset Formula $2d$
+\end_inset
+
+ O(
+\begin_inset Formula $3$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+Consideremos una observable 
+\begin_inset Formula $\hat{O}$
+\end_inset
+
+ en el espacio de Hilbert de un sistema físico descrito por el Hamiltoniano
+\begin_inset Formula 
+\begin{equation}
+\hat{\mathcal{H}}=\frac{1}{2m}\sum\hat{p}_{i}^{2}+\hat{V}.
+\end{equation}
+
+\end_inset
+
+ La dinámica del operador 
+\begin_inset Formula $\hat{O}$
+\end_inset
+
+ sigue la ecuación formulada por Werner Heisenberg
+\begin_inset Formula 
+\begin{equation}
+\dv{\hat{O}}{t}=\frac{i}{\hbar}\left[\hat{\mathcal{H}},\hat{O}\right].\label{eq:formulacion_heisemberg}
+\end{equation}
+
+\end_inset
+
+Pasar de la formulación de W.
+ Heisenberg a la formulación de E.
+ Schrödinger implica la transformación dependiente del tiempo dada por el
+ operador de evolución aplicado a la observable
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{cc}
+\hat{O_{s}}(t)=\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}\hat{O}\mathrm{e}^{it\hat{\mathcal{H}}/\hbar}, & \ket{\psi(t)}=\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}\ket{\psi}\end{array}.
+\end{equation}
+
+\end_inset
+
+Al aplicar el operador de evolución a la ecuación 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:formulacion_heisemberg"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ se deriva la ecuación
+\begin_inset Formula 
+\begin{equation}
+\dv{t}\hat{O_{s}}(t)=\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}\left(-\frac{i}{\hbar}\left[\hat{\mathcal{H}},\hat{O}\right]+\dv{t}\hat{O}\right)\mathrm{e}^{it\hat{\mathcal{H}}/\hbar}=0.
+\end{equation}
+
+\end_inset
+
+Reescribiendo la ecuación anterior se tiene
+\begin_inset Formula 
+\begin{equation}
+\dv{t}\hat{O_{s}}(t)=\frac{i}{\hbar}\left[\hat{\mathcal{H}},\hat{O}_{s}\right].
+\end{equation}
+
+\end_inset
+
+Escribiendo en notación de Dirac
+\begin_inset Formula 
+\begin{equation}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{c}
+i\hbar\dv{t}\ket{\psi(t)}=\hat{\mathcal{H}}\ket{\psi(t)}.\end{array}\label{eq:schordinger}
+\end{equation}
+
+\end_inset
+
+La solución de la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:schordinger"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ es de la forma
+\begin_inset Formula 
+\begin{equation}
+\braket{q'}{\psi(t)}=\int\mel{q'}{\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}}{q}\braket{q}{\psi}\dd q,
+\end{equation}
+
+\end_inset
+
+donde, 
+\begin_inset Formula $q$
+\end_inset
+
+ y 
+\begin_inset Formula $q'$
+\end_inset
+
+ son estados distintos.
+ Definimos al propagador de la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:schordinger"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+K\left(q,q';t\right):=\mel{q'}{\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}}{q}.\label{eq:propagador}
+\end{equation}
+
+\end_inset
+
+El propagador, describe la evolución de la función de onda desde el estado
+ 
+\begin_inset Formula $q$
+\end_inset
+
+ hasta 
+\begin_inset Formula $q'$
+\end_inset
+
+ en
+\emph on
+ 
+\emph default
+tiempo 
+\begin_inset Formula $t$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+K\left(q,q';t\right)=\left(\frac{m}{2\pi i\hbar t}\right)^{d/2}\mathrm{e}^{iS\left(q,q';t\right)/\hbar}.\label{eq:amplitud_probabilidad_clasica}
+\end{equation}
+
+\end_inset
+
+Donde 
+\begin_inset Formula $S\left(q,q';t\right)$
+\end_inset
+
+ es la acción de la trayectoria desde 
+\begin_inset Formula $q$
+\end_inset
+
+ a 
+\begin_inset Formula $q'$
+\end_inset
+
+ y 
+\begin_inset Formula $\hat{\mathcal{H}}=\frac{\hat{p}^{2}}{2m}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+S\left(q,q';t\right)=\int_{0}^{t}\frac{m}{2}\dot{q}^{2}=\frac{m}{2t}\left(q'-q\right)^{2}\dd\tau.\label{eq:accion_particula_libre}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+K\left(q,q';t\right)=\left(\frac{m}{2\pi i\hbar t}\right)^{d/2}\exp\left(i\frac{m}{2t}(q'-q)^{2}\right).
+\end{equation}
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Teorema.
+ Trotter
+\end_layout
+
+\begin_layout Plain Layout
+Sean 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ y 
+\begin_inset Formula $\hat{B}$
+\end_inset
+
+ operadores auto-adjuntos y 
+\begin_inset Formula $\hat{A}+\hat{B}$
+\end_inset
+
+ es auto-adjunto en la intersección de sus dominios, ademas 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ y 
+\begin_inset Formula $\hat{B}$
+\end_inset
+
+ tienen cota inferior y 
+\begin_inset Formula $\tau\in\mathbb{R}$
+\end_inset
+
+ entonces 
+\begin_inset Formula 
+\[
+\mathrm{e}^{-\tau\left(\hat{A}+\hat{B}\right)}=\lim_{n\rightarrow\infty}\left(\mathrm{e}^{-\tau\hat{A}/n}\mathrm{e}^{-\tau\hat{B}/n}\right)^{n}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Se busca una expresión general para el propagador que resuelve la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:schordinger"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, suponiendo un hamiltonaino 
+\begin_inset Formula $\hat{\mathcal{H}}=\hat{H}_{0}+\hat{V}$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{equation}
+i\hbar\dv{t}K\left(q,q';t\right)=\hat{H}K\left(q,q';t\right),
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $\hat{H}_{0}=\frac{1}{2m}\sum\hat{p}_{i}^{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Partiendo de la forma general del propagador
+\begin_inset Formula 
+\begin{equation}
+K\left(q,q';t\right)=\mel**{q'}{\mathrm{e}^{-i\hbar t\left(\hat{H}_{0}+\hat{V}\right)}}{q}.
+\end{equation}
+
+\end_inset
+
+Aplicando el teorema de Trotter 
+\begin_inset Formula 
+\begin{equation}
+K\left(q,q';t\right)=\lim_{n\rightarrow\infty}\mel**{q'}{\left(\mathrm{e}^{-i\hbar t\hat{\mathcal{H}}_{0}/n}\mathrm{e}^{-i\hbar t\hat{V}/n}\right)^{n}}{q},
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+K\left(q,q';t\right)=\lim_{n\rightarrow\infty}\int\prod_{j=0}^{n-1}\mel**{q_{j+1}}{\mathrm{e}^{-i\hbar t\hat{\mathcal{H}}_{0}/n}\mathrm{e}^{-i\hbar t\hat{V}/n}}{q_{j}}\dd q_{1}\dots\dd q_{n-1},\label{eq:amplitud_probabilidad_lim}
+\end{equation}
+
+\end_inset
+
+En cada factor del productorio se tiene el hamitoniano para una partícula
+ libre, aplicando la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:amplitud_probabilidad_clasica"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ a ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:amplitud_probabilidad_lim"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ se tiene
+\begin_inset Formula 
+\begin{align}
+K\left(q,q';t\right)= & \lim_{n\rightarrow\infty}\int\left(\frac{m}{2\pi ia}\right)^{n/2}\times\nonumber \\
+ & \exp\left\{ ia\sum_{j=0}^{n-1}\left[\frac{m}{2}\left(\frac{q_{j+1}-q_{j}}{a}\right)^{2}-V\left(q_{j}\right)\right]\right\} \dd q_{1}\dots\dd q_{n-1},
+\end{align}
+
+\end_inset
+
+donde 
+\begin_inset Formula $a=t/n$
+\end_inset
+
+ y 
+\begin_inset Formula $\hbar=1$
+\end_inset
+
+.
+ Observado que la suma corresponde la integral de Riemann de la acción en
+ el límite
+\begin_inset Formula 
+\begin{equation}
+\lim_{n\rightarrow\infty}\sum_{j=0}^{n-1}a\left[\frac{m}{2}\left(\frac{q_{j+1}-q_{j}}{a}\right)^{2}-V\left(q_{j}\right)\right]=\int_{0}^{t}\left[\frac{m}{2}\left(\dv{q}{t'}\right)-V\left(q(t')\right)\right]\dd{t'}.\label{eq:lim_lagrangian}
+\end{equation}
+
+\end_inset
+
+Finalmente el propagador se describe por la ecuación
+\begin_inset Formula 
+\begin{equation}
+K\left(q,q';t\right)=\sum_{\sigma\in\Omega}\mathrm{e}^{-itS[\sigma]},\label{eq:propagador_general}
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ corresponde a una trayectoria en 
+\begin_inset Formula $\Omega$
+\end_inset
+
+, y este es el conjunto de todas las posibles trayectorias que inician en
+ 
+\begin_inset Formula $q$
+\end_inset
+
+ y terminan en 
+\begin_inset Formula $q'$
+\end_inset
+
+ en el tiempo 
+\begin_inset Formula $t$
+\end_inset
+
+ .
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/israel/Documentos/Servicio/SigmaModel/break_path.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ejemplificación de la evolución de un estado en en el espacio fase, desde
+ 
+\begin_inset Formula $q$
+\end_inset
+
+ hasta 
+\begin_inset Formula $q'$
+\end_inset
+
+ en el tiempo 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Rotación de Wick
+\end_layout
+
+\begin_layout Standard
+El tensor métrico del espacio de Minkowski es de la forma
+\begin_inset Formula 
+\begin{equation}
+g_{M}=\left(\begin{array}{cccc}
+-1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{array}\right),
+\end{equation}
+
+\end_inset
+
+En donde el 
+\begin_inset Formula $-1$
+\end_inset
+
+ corresponde a la coordenada temporal.
+ G.
+ Wick propone la transformación al espacio euclidiano, cambiando el eje
+ real de la coordenada temporal por un eje imaginario resultando en el tensor
+ euclidiano
+\begin_inset Formula 
+\begin{equation}
+g_{E}=\left(\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{array}\right).
+\end{equation}
+
+\end_inset
+
+La métrica del espacio de Minkoski es
+\begin_inset Formula 
+\begin{equation}
+\dd s^{2}=-\dd t^{2}+\dd x²+\dd y²+\dd z²,
+\end{equation}
+
+\end_inset
+
+La métrica del espacio euclidiano con el eje temporal imaginario es
+\begin_inset Formula 
+\begin{equation}
+\dd s^{2}=\dd t_{E}^{2}+\dd x²+\dd y²+\dd z².
+\end{equation}
+
+\end_inset
+
+Por conveniencia pasemos la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:propagador_general"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ del espacio euclidiano al espacio de Minkowski, tenemos que hacer el cambio
+ 
+\begin_inset Formula $t_{E}=it$
+\end_inset
+
+, la forma del propagador en el espacio de Minkowsi es equivalente a la
+ función de partición definida en mecánica estadística, la forma discreta
+ del propagador esta dada por la ecuación
+\begin_inset Formula 
+\begin{align}
+K\left(q,q';t_{E}\right)= & \lim_{n\rightarrow\infty}\int\left(\frac{m}{2\pi ia}\right)^{n/2}\times\nonumber \\
+ & \exp\left\{ a\sum_{j=0}^{n-1}\left[\frac{m}{2}\left(\frac{q_{j+1}-q_{j}}{a}\right)^{2}+V\left(q_{j}\right)\right]\right\} \dd q_{1}\dots\dd q_{n-1},
+\end{align}
+
+\end_inset
+
+donde 
+\begin_inset Formula $\beta=t_{E}/n$
+\end_inset
+
+, en el límite cuando 
+\begin_inset Formula $n\rightarrow\infty$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\lim_{n\rightarrow\infty}\sum_{j=0}^{n-1}\beta\left[\frac{m}{2}\left(\frac{q_{j+1}-q_{j}}{\beta}\right)^{2}+V\left(q_{j}\right)\right]=\int_{0}^{t_{E}}\left[\frac{m}{2}\left(\dv{q}{t_{E}'}\right)+V\left(q(t_{E}')\right)\right]\dd{t_{E}'}.
+\end{equation}
+
+\end_inset
+
+Finalmente 
+\begin_inset Formula 
+\begin{equation}
+K\left(q,q';t_{E}\right)=\sum_{\sigma\in\Omega}\mathrm{e}^{-\beta S[\sigma]},
+\end{equation}
+
+\end_inset
+
+donde otra vez 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ corresponde a una trayectoria en 
+\begin_inset Formula $\Omega$
+\end_inset
+
+, y este es el conjunto de todas las posibles trayectorias que inician en
+ 
+\begin_inset Formula $q$
+\end_inset
+
+ y terminan en 
+\begin_inset Formula $q'$
+\end_inset
+
+ en el tiempo 
+\begin_inset Formula $t_{E}$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "wipf_statistical_2013,feynman_space-time_1948,creutz_statistical_1981"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Chapter
+Modelos de espín
+\end_layout
+
+\begin_layout Standard
+Las propiedades macroscópicas de una amplia gama de materiales pueden describirs
+e mediante modelos de espines.
+ Propiedades como la energía, la magnetización y la carga topológica pueden
+ calcularse a partir de una configuración determinada de espines.
+\end_layout
+
+\begin_layout Standard
+Un modelo de espines clásicos, consiste en un arreglo de espines, cada espín
+ es una fuente de magnetización que interactúa con el resto de espines siguiendo
+ un potencial de interacción.
+\end_layout
+
+\begin_layout Section
+Los modelos O
+\begin_inset Formula $(n)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Definición: Retícula.
+\end_layout
+
+\begin_layout Plain Layout
+Definimos una retícula como un subgrupo discreto del espacio continuo 
+\begin_inset Formula $\mathbb{R}^{d}$
+\end_inset
+
+ que es isomorfo al espacio discreto de 
+\begin_inset Formula $\mathbb{Z}^{d}$
+\end_inset
+
+, 
+\begin_inset Formula $d$
+\end_inset
+
+ es el número de dimensiones.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+ Los modelos de retícula son ampliamente usados para modelar efectos colectivos.
+ En la mayoría de los casos se usan retículas compuestas por repeticiones
+ de estructuras geométricas simples, algunos ejemplos en dos dimensiones
+ son estructuras cuadradas, triangulares, hexagonales, etc.
+ En este caso se considera una retícula de dimensión 
+\begin_inset Formula $d$
+\end_inset
+
+ formada por hipercubos.
+ La retícula se define como el conjunto de sitios en el espacio de dimensión
+ 
+\begin_inset Formula $d$
+\end_inset
+
+ cuyas posiciones son coordenadas enteras
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathscr{R}^{d}=\left\{ x\in\mathbb{R}^{d}|x=(x_{1}\dots,x_{d})\land x_{i}\in\mathbb{Z}\right\} .
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En cada sito 
+\begin_inset Formula $\vec{x}\in\mathscr{R}^{d}$
+\end_inset
+
+ hay 2d sitios ubicados a una unidad de distancia (dos por cada dimensión).
+ El resto de sitios se ubican a una distancia mayor a una unidad, por lo
+ que a esos 2d sitios son los vecinos más cercanos a 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Fuera de la teoría no es posible computar en retículas infinitas en tiempo
+ finito, por lo que se considera un trozo finito 
+\begin_inset Formula $L^{d}$
+\end_inset
+
+.
+ Se obtiene la retícula finita de dimensión 
+\begin_inset Formula $d$
+\end_inset
+
+ y tamaño 
+\begin_inset Formula $L$
+\end_inset
+
+ descrita como
+\begin_inset Formula 
+\begin{equation}
+\mathscr{R}_{\mathrm{L}}^{d}=\left\{ x\in\mathscr{R}^{d}|0<x_{i}\leq L,i\in\{1,\dots,d\}\right\} .
+\end{equation}
+
+\end_inset
+
+Se ha superado el problema con la retícula infinita, pero a la vez se ha
+ roto la homogeneidad.
+ Para recuperarla se establecen condiciones de frontera periódicas.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathscr{T}_{L}^{d}=\left\{ x\in\mathscr{R}_{\mathrm{L}}^{d}|x_{i}=x_{i}+nL,i\in\{1,\dots,L\},n\in\mathbb{Z}\right\} .\label{eq:reticula_especial}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/toro.pdf
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+En dos dimensiones la topología de una retícula finita cuadrada es la de
+ un toroide, y esa es la estructura que nos interesa en el modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Modelo 2d O
+\begin_inset Formula $\left(3\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Definición: Espín clásico en el modelo O(
+\begin_inset Formula $n$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Plain Layout
+En el contexto de un sistema clásico, un espín es un vector unitario definido
+ en un espacio abstracto de dimensión 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Es decir es un elemento de la esfera 
+\begin_inset Formula $\mathcal{S}^{n-1}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El modelo O(
+\begin_inset Formula $n$
+\end_inset
+
+) es un modelo de espines clásicos.
+ Cada espín 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+ ocupa un sitio 
+\begin_inset Formula $x\in\mathscr{T}_{L}^{d}$
+\end_inset
+
+.
+ Una configuración 
+\begin_inset Formula $[s]$
+\end_inset
+
+ es un arreglo de espines 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+, por ejemplo la configuración en la que todos los espines apuntan a la
+ misma dirección se conoce como configuración uniforme.
+ La configuración uniforme tiene la particularidad tener la de menor energía.
+ Consideramos una configuración 
+\begin_inset Formula $[s]$
+\end_inset
+
+, la energía depende del potencial de interacción magnética espín a espín.
+ La función hamiltoniana es de la forma
+\begin_inset Formula 
+\begin{equation}
+\mathcal{H}[s]=-J\sum_{\expval{x,y}}\vec{s}_{x}\cdot\vec{s}_{y}\label{eq:hamiltoniano_o(n)}
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $J$
+\end_inset
+
+ es una constante de acoplamiento, 
+\begin_inset Formula $\expval{x,y}$
+\end_inset
+
+ son los espines vecinos más cercanos.
+ Como la interacción magnética decae proporcionalmente al inverso del cuadrado
+ de la distancia, la contribución más grande se da entre los vecinos más
+ cercanos.
+ Es conveniente despreciar las interacciones entre espines a más de una
+ unidad de distancia.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/sphere.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Espín en el modelo O(
+\begin_inset Formula $3$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El caso de interés en este trabajo es el modelo 2d O(3), un modelo de espines
+ en la esfera 
+\begin_inset Formula $\mathcal{S}^{2}$
+\end_inset
+
+ sobre una retícula bidimensional.
+ Ya que se realizaran simulaciones en volúmenes finitos se usara la retícula
+ toroidal 
+\begin_inset Formula $\mathscr{R}_{L}^{2}$
+\end_inset
+
+ de tamaño 
+\begin_inset Formula $L$
+\end_inset
+
+ definida en la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:reticula_especial"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Las posiciones de los espines son pares enteros 
+\begin_inset Formula $x_{1},x_{2}\in(1,\dots,L)$
+\end_inset
+
+.
+ Nos referiremos a un espín en el sito 
+\begin_inset Formula $x=(x_{1},x_{2})$
+\end_inset
+
+ como 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Un espín 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+ de dimensión 
+\begin_inset Formula $3$
+\end_inset
+
+ restringido a las esfera 
+\begin_inset Formula $\mathcal{S}^{2}$
+\end_inset
+
+ esta definido por tres coordenadas 
+\begin_inset Formula 
+\begin{equation}
+\vec{s}_{x}=\left(\sin\theta_{x}\cos\text{\ensuremath{\phi_{x}},\ensuremath{\sin\theta_{x}\sin\phi_{x}},\ensuremath{\cos\theta_{x}}}\right),
+\end{equation}
+
+\end_inset
+
+en donde 
+\begin_inset Formula $\theta_{x}\in[0,\pi)$
+\end_inset
+
+, 
+\begin_inset Formula $\phi_{x}\in[0,2\pi)$
+\end_inset
+
+.
+ En algunos casos, como la generación de configuraciones, es ventajoso trabajar
+ con coordenadas esféricas 
+\begin_inset Formula $(\theta,\phi)$
+\end_inset
+
+, en otros casos como el calculo del producto escalar es más conveniente
+ usar las componentes de espín 
+\begin_inset Formula $\left(s_{x}^{(1)},s_{x}^{(2)},s_{x}^{(3)}\right)$
+\end_inset
+
+ por lo que usaremos ambas descripciones en los casos que más convenga.
+\end_layout
+
+\begin_layout Section
+Observables
+\end_layout
+
+\begin_layout Standard
+Describir las propiedades macroscópicas de un material implica la definición
+ de variables como, masa 
+\begin_inset Formula $m$
+\end_inset
+
+, la energía 
+\begin_inset Formula $H$
+\end_inset
+
+ y el momento magnético 
+\begin_inset Formula $m$
+\end_inset
+
+, entre otras cantidades.
+ Dividir tales variables entre el volumen 
+\begin_inset Formula $V$
+\end_inset
+
+, convierte las variables macroscópicas en densidades independientes del
+ tamaño del sistema, también son conocidas como variables mecánicas.
+\end_layout
+
+\begin_layout Standard
+Hay otro tipo de cantidades como la presión 
+\begin_inset Formula $P$
+\end_inset
+
+, la temperatura 
+\begin_inset Formula $T$
+\end_inset
+
+ y el campo magnético 
+\begin_inset Formula $h$
+\end_inset
+
+.
+ Caracterizan el ambiente en el que el sistema esta inmerso.
+ En la mayoría de los sistemas, las variables mecánicas están bien definidas
+ solo cuando el valor estas variables se ha especificado.
+\end_layout
+
+\begin_layout Standard
+A lo largo de un intervalo temporal, se espera que un sistema físico pase
+ por múltiples configuraciones.
+ Por ello, medir observables en una única configuración produce valores
+ inconsistentes que dependen de la configuración utilizada.
+ Para obtener un resultado útil, se busca calcular el promedio de un observable
+ en un intervalo temporal lo suficientemente amplio como para reducir las
+ fluctuaciones por debajo de un umbral de error deseado.
+\end_layout
+
+\begin_layout Subsection
+Energía
+\end_layout
+
+\begin_layout Standard
+En el modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+), la temperatura es un paramento que añade ruido aleatorio a cambiar las
+ direcciones de los espines.
+ A temperatura 
+\begin_inset Formula $T=0$
+\end_inset
+
+ no hay fluctuaciones y el sistema alcanza una configuración de energía
+ mínima.
+ Cuando la temperatura 
+\begin_inset Formula $T_{c}>T>0$
+\end_inset
+
+ se forman grupos de espines alineados, el vector de magnetización de cada
+ grupo apunta en una dirección diferente, por lo que el sistema no alcanza
+ una configuración de energía mínima.
+ A mayor temperatura es mayor el número de espines apuntando en direcciones
+ aleatorias.
+ Pasando la temperatura crítica, la intensidad de las fluctuaciones evita
+ la formación de grupos considerables de espines alineados, por consecuencia
+ predomina el ruido termodinámico.
+\end_layout
+
+\begin_layout Standard
+En los modelos O
+\begin_inset Formula $(n)$
+\end_inset
+
+ la energía esta dada por el hamiltonaino 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:hamiltoniano_o(n)"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, en el modelo 2d O
+\begin_inset Formula $(3)$
+\end_inset
+
+ es de la forma
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathcal{H}\left[s\right]=-J\sum_{x_{1}}\sum_{x_{2}}\vec{s}_{x_{1},x_{2}}\cdot\left(\vec{s}_{x_{1}+1,x_{2}}+\vec{s}_{x_{1},x_{2}+1}+\vec{s}_{x_{1}-1,x_{2}}+\vec{s}_{x_{1},x_{2}-1}\right),\label{eq:hamiltoniano_2dO3}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aunque es una ecuación sencilla de manejar es posible simplificarla intercambian
+do y recorriendo índices en el tercer termino de la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:hamiltoniano_2dO3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, se tiene
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}-1,x_{2}}=\sum_{x_{2}=1}^{L}\sum_{x_{1}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}-1,x_{2}}=\sum_{x_{2}=1}^{L}\sum_{x_{1}=0}^{L-1}\vec{s}_{x_{1}+1,x_{2}}\cdot\vec{s}_{x_{1},x_{2}}.
+\end{equation}
+
+\end_inset
+
+Separando términos se tiene
+\begin_inset Formula 
+\begin{equation}
+\sum_{x_{2}=1}^{L}\sum_{x_{1}=0}^{L-1}\vec{s}_{x_{1}+1,x_{2}}\cdot\vec{s}_{x_{1},x_{2}}=\sum_{x_{2}=1}^{L}\left(\vec{s}_{1,x_{2}}\cdot\vec{s}_{0,x_{2}}-\vec{s}_{L+1,x_{2}}\cdot\vec{s}_{L,x_{2}}+\sum_{x_{1}=1}^{L}\vec{s}_{x_{1}+1,x_{2}}\cdot\vec{s}_{x_{1},x_{2}}\right).
+\end{equation}
+
+\end_inset
+
+Por las condiciones de frontera 
+\begin_inset Formula $\vec{s}_{1,x_{2}}=\vec{s}_{L+1}$
+\end_inset
+
+ y 
+\begin_inset Formula $\vec{s}_{0,x_{2}}=\vec{s}_{L,x_{2}}$
+\end_inset
+
+, por lo que 
+\begin_inset Formula 
+\begin{equation}
+\vec{s}_{1,x_{2}}\cdot\vec{s}_{0,x_{2}}-\vec{s}_{L+1,x_{2}}\cdot\vec{s}_{L,x_{2}}=0
+\end{equation}
+
+\end_inset
+
+Entonces
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}-1,x_{2}}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}+1,x_{2}}.\label{eq:equiv1}
+\end{equation}
+
+\end_inset
+
+De forma análoga para el cuarto termino de la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:hamiltoniano_2dO3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Intercambiando y recorriendo índices en el tercer termino de la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:hamiltoniano_2dO3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ se tiene
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sum_{x_{1}=1}^{L}\sum_{x_{2\;}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}-1}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=0}^{L-1}\vec{s}_{x_{1},x_{2}+1}\cdot\vec{s}_{x_{1},x_{2}}.
+\end{equation}
+
+\end_inset
+
+Separando términos se tiene
+\begin_inset Formula 
+\begin{equation}
+\sum_{x_{1}=1}^{L}\sum_{x_{2}=0}^{L-1}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}+1}=\sum_{x_{1}=1}^{L}\left(\vec{s}_{x_{1},0}\cdot\vec{s}_{x_{1},1}-\vec{s}_{x_{1},L}\cdot\vec{s}_{x_{1},L+1}+\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}+1}\right).
+\end{equation}
+
+\end_inset
+
+Por las condiciones de frontera 
+\begin_inset Formula $\vec{s}_{x_{1},0}=\vec{s}_{x_{1},L}$
+\end_inset
+
+ y 
+\begin_inset Formula $\vec{s}_{x_{1},1}=\vec{s}_{x_{1},L+1}$
+\end_inset
+
+, por lo que se tiene 
+\begin_inset Formula 
+\begin{equation}
+\vec{s}_{x_{1},0}\cdot\vec{s}_{x_{1},1}-\vec{s}_{x_{1},L}\cdot\vec{s}_{x_{1},L+1}=0.
+\end{equation}
+
+\end_inset
+
+Entonces
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}-1}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}+1}.\label{eq:equiv2}
+\end{equation}
+
+\end_inset
+
+Remplazando los términos 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:equiv1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:equiv2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ en la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:hamiltoniano_2dO3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y simplificando términos se llega a la forma compacta del hamiltonoano
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathcal{H}\left[s\right]=-J\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\left(\vec{s}_{x_{1}+1,x_{2}}+\vec{s}_{x_{1},x_{2}+1}\right).\label{eq:hamiltoniano_simplificado}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La energía de una configuración depende de las diferencias relativas entre
+ espines vecinos.
+ Pensemos en una configuración 
+\begin_inset Formula $[s]$
+\end_inset
+
+ a la que se aplica una rotación por una ángulo 
+\begin_inset Formula $\phi$
+\end_inset
+
+ en la misma dirección a todos los espines en 
+\begin_inset Formula $[s]$
+\end_inset
+
+, la transformación mantiene las diferencias relativas entre espines, por
+ lo tanto, la nueva configuración 
+\begin_inset Formula $[s']$
+\end_inset
+
+ es una configuración equivalente asociada a la misma energía que 
+\begin_inset Formula $[s]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Definición: Tiempo de Markov.
+\end_layout
+
+\begin_layout Plain Layout
+En un sistema estocástico, un conjunto de eventos sucesivos forman una cadena
+ de Markov.
+ El tiempo de Markov es un paramento que indica en que evento se encuentra
+ el sistema.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pensemos en una configuración como un evento y en un conjunto de configuraciones
+ como una cadena de Markov.
+ El tiempo de Markov 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ indica la configuración del sistema en el ese instante.
+ Como cada configuración tiene una energía asociada, la energía asociada
+ alas configuraciones es diferente en cada valor de 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+.
+ Una posible forma de  determinar la energía en un intervalo temporal, es
+ calcular el promedio de las energías asociadas a las configuraciones en
+ ese intervalo.
+ Resultando en la energía aproximada
+\begin_inset Formula 
+\begin{equation}
+\expval{\mathcal{H}}_{\mathrm{aprox}}=\frac{1}{N}\sum_{i=1}^{N}\mathcal{H}_{i}.
+\end{equation}
+
+\end_inset
+
+La energía real asociada a ese intervalo es el promedio aproximado más la
+ incertidumbre asociada
+\begin_inset Formula 
+\begin{equation}
+\expval{\mathcal{H}}\simeq\expval{\mathcal{H}}_{\mathrm{aprox}}\pm\mathrm{error}(\mathcal{H}).
+\end{equation}
+
+\end_inset
+
+ La energía es una propiedad extensiva, para comparar resultados en retículas
+ de diferentes tamaños es importante considerar la densidad de energía.
+ Se define como el valor esperado de la energía dividida por el volumen
+\begin_inset Formula 
+\begin{equation}
+h=\frac{\expval{\mathcal{H}}}{V}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Magnetización
+\end_layout
+
+\begin_layout Standard
+En modelos de espines clásicos, la magnetización 
+\begin_inset Formula $m$
+\end_inset
+
+ es un escalar que depende de la alineación de los espines de una configuración.
+ Se define como la magnitud de la suma de los espines de una configuración
+ dividido por el volumen.
+\begin_inset Formula 
+\begin{equation}
+M=\frac{1}{V}\abs{\sum_{x}\vec{s}_{x}}
+\end{equation}
+
+\end_inset
+
+ La magnetización máxima se alcanza en una configuración de espines alineados
+ 
+\begin_inset Formula 
+\begin{equation}
+M_{\mathrm{max}}=\frac{1}{V}\abs{\sum_{x}\vec{s}_{x}}=\frac{1}{V}\abs{V\vec{s}}=\abs{\vec{s}}=1
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Igual que con la energía un conjunto de configuraciones tiene un conjunto
+ de configuraciones es una cadena de Markov y se puede medir la magnetizaron
+ de aproximada en un intervalo temporal calculando el promedio de las magnetizac
+iones en ese intervalo
+\end_layout
+
+\begin_layout Standard
+El promedio aproximado de la magnetización es 
+\begin_inset Formula 
+\begin{equation}
+\expval{M}_{\mathrm{aprox}}=\frac{1}{N}\sum_{i=1}^{N}M_{i}.
+\end{equation}
+
+\end_inset
+
+El promedio de la magnetización es el valor aproximado con una incertidumbre
+ asociada
+\begin_inset Formula 
+\begin{equation}
+\expval{M}\simeq\expval{M}\pm\mathrm{error}(M)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Carga topológica
+\end_layout
+
+\begin_layout Standard
+En el modelo de espines O(
+\begin_inset Formula $3$
+\end_inset
+
+) definido en un cuadrado, las condiciones de frontera garantizan la invariante
+ topológica 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "bietenholz_topological_2010,berg_definition_1981"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Q[s]=\frac{1}{8\pi}\int\varepsilon_{\mu\nu}\vec{s}(x)\cdot(\partial_{\mu}\vec{s}(x)\times\partial_{\nu}\vec{s}(x))\dd^{2}x\in\mathbb{Z}.
+\end{equation}
+
+\end_inset
+
+La susceptibilidad topológica 
+\begin_inset Formula $\chi_{t}$
+\end_inset
+
+ es una función de respuesta, es decir, describe la respuesta de un sistema
+ a una perturbación externa y se define siguiendo la ecuación
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{V}\pdv[2]{}{\theta}\int\mathrm{e}^{-S[\phi]}\mathrm{e}^{iQ[\phi]\theta}\dd\phi\Bigg{|}_{\theta=0}=\frac{1}{V}\expval{Q^{2}}|_{\theta=0}.
+\end{equation}
+
+\end_inset
+
+B.
+ Breg y M.
+ Lüscher introdujeron la definición geométrica de carga topológica reticular
+ para estudiar la susceptibilidad topológica del modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+).
+ Para definir la carga topológica de una configuración se usa un acercamiento
+ geométrico, la retícula se divide en plaquetas formadas por cuatro espines,
+ esto a su vez se subdividen en un dos triángulos, alternando la orientación
+ de la diagonal que divide cada cuadrado para replicar la propiedad de isotropía.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Sean 
+\begin_inset Formula $\vec{a},\vec{b},\vec{c}\in\mathbb{R}^{3}$
+\end_inset
+
+ y 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ el ángulo solido generado por 
+\begin_inset Formula $\vec{a},\vec{b},\vec{c}$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "todhunter_spherical_2021"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{equation}
+\tan\text{\left(\frac{\Omega}{2}\right)=\ensuremath{\frac{\vec{a}\cdot(\vec{b}\times\vec{c})}{abc-(\vec{a}\cdot\vec{b})c+(\vec{c}\cdot\vec{a})b+(\vec{b}\cdot\vec{c})a}}}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En la figura 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "triangles"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ las plaquetas se dividen en triángulos 
+\begin_inset Formula $a,b$
+\end_inset
+
+.
+ Para los triángulos 
+\begin_inset Formula $a$
+\end_inset
+
+, los espines 
+\begin_inset Formula $\vec{s}_{1},\vec{s}_{2},\vec{s}_{3}$
+\end_inset
+
+ definen las esquinas de un triangulo esférico en 
+\begin_inset Formula $\mathcal{S}^{2}$
+\end_inset
+
+.
+ Se calculan las variables para el triangulo 
+\begin_inset Formula $1$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align}
+x_{1} & =1+\vec{s}_{1}\cdot\vec{s}_{2}+\vec{s}_{2}\cdot\vec{s}_{3}+\vec{s}_{3}\cdot\vec{s}_{1}\nonumber \\
+y_{1} & =\vec{s}_{1}\cdot(\vec{s}_{2}\times\vec{s}_{3}).
+\end{align}
+
+\end_inset
+
+Al ser una esfera unitaria, el área del triangulo esférico esta dada por
+ el ángulo solido generado por los espines, defiendo el número complejo
+ 
+\begin_inset Formula $z_{a}=x_{a}+iy_{a}$
+\end_inset
+
+ y aplicando la formula de A.
+ Oosterom y J.
+ Strakee.
+ Se obtiene
+\begin_inset Formula 
+\begin{equation}
+\Omega_{1}=2\mathrm{arg}(z_{1}).
+\end{equation}
+
+\end_inset
+
+Para los triángulos 
+\begin_inset Formula $b$
+\end_inset
+
+ se definen las variables
+\begin_inset Formula 
+\begin{align}
+x_{2} & =1+\vec{s}_{4}\cdot\vec{s}_{3}+\vec{s}_{3}\cdot\vec{s}_{2}+\vec{s}_{2}\cdot\vec{s}_{4}\nonumber \\
+y_{2} & =\vec{s}_{4}\cdot(\vec{s}_{3}\times\vec{s}_{2}).
+\end{align}
+
+\end_inset
+
+Se obtiene
+\begin_inset Formula 
+\begin{equation}
+\Omega_{2}=2\mathrm{arg}(z_{2}).
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+A=\Omega_{1}+\Omega_{2}
+\end{equation}
+
+\end_inset
+
+La carga topológica se define como como
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Q[s]=\frac{1}{4\pi}\sum_{x}A_{x}\in\mathbb{Z},
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $\Omega_{a}(i,j)$
+\end_inset
+
+ y 
+\begin_inset Formula $\Omega_{b}(i,j)$
+\end_inset
+
+ son las áreas de los triángulos esféricos en el trozo de la retícula indexado
+ por 
+\begin_inset Formula $i,j$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+El valor esperado del cuadrado de la carga topológica es 
+\begin_inset Formula 
+\begin{equation}
+\expval{Q^{2}}\approx\frac{1}{N}\sum_{i=1}^{N}Q_{i}^{2}.
+\end{equation}
+
+\end_inset
+
+El cuadrado de la carga dividido por el volumen es la susceptibilidad topológica
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\chi_{t}=\frac{\expval{Q^{2}}}{V}.
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/lsquare.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Diagonal descendente.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/rsquare.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Diagonal ascendente.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Orientaciones de posibles de los triángulos formados en la retícula.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "triangles"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/lattice.pdf
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Descomposición de la retícula cardada bidimensional en triángulos alternado
+ la dirección de la diagonal.
+ Esta descomposición se usa para medir la carga topológica.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Algoritmo de Glauber
+\end_layout
+
+\begin_layout Standard
+El algoritmo Glauber 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "glauber_time-dependent_1963"
+literal "false"
+
+\end_inset
+
+es al igual que el algoritmo Metropolis de actualización local.
+ La diferencia con el algoritmo de Metropolis es la probabilidad de aceptación.
+ La propuesta es construir una función que cumpla con la ecuación de balance
+ detallado 
+\begin_inset Formula 
+\begin{equation}
+p[s\rightarrow s']p[s]=p[s'\rightarrow s]p[s'].
+\end{equation}
+
+\end_inset
+
+Reordenando términos y dividiendo por 
+\begin_inset Formula $Z$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+p[s\rightarrow s']\frac{\mathrm{e}^{-\beta\mathcal{H}[s]}}{Z}=p[s'\rightarrow s]\frac{\mathrm{e}^{-\beta\mathcal{H}[s']}}{Z}.
+\end{equation}
+
+\end_inset
+
+Se propone la probabilidad de aceptación de algoritmo de Glauber como 
+\begin_inset Formula 
+\begin{align}
+p[s\rightarrow s'] & =\frac{\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}{1+\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}\nonumber \\
+ & =\frac{\mathrm{e}^{-\beta\left(\mathcal{H}[s]-\mathcal{H}[s']\right)}}{1+\mathrm{e}^{\beta\left(\mathcal{H}[s]-\mathcal{H}[s']\right)}}\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}\nonumber \\
+ & =p[s'\rightarrow s]\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}.
+\end{align}
+
+\end_inset
+
+La propuesta cumple la ecuación de balance detallado.
+ 
+\begin_inset Formula 
+\begin{equation}
+p[s\rightarrow s']=\frac{\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}{1+\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}.
+\end{equation}
+
+\end_inset
+
+En términos de la diferencia de energía
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+p[s\rightarrow s']=\frac{\mathrm{e}^{-\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{-\beta\Delta\mathcal{H}}}.
+\end{equation}
+
+\end_inset
+
+Similar al algoritmo de Metropolis dada una configuración 
+\begin_inset Formula $[s]$
+\end_inset
+
+, para cada elemento en la configuración se propone un cambio aleatorio
+ que resulta en una configuración [s'].
+ Si la energía de la configuración aumenta a mayor temperatura 
+\begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow0$
+\end_inset
+
+ y la probabilidad de aceptación se aproxima a 
+\begin_inset Formula $1/2$
+\end_inset
+
+.
+ A menor temperatura 
+\begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow\infty$
+\end_inset
+
+ y 
+\begin_inset Formula $\mathrel{e}^{-\beta\Delta\mathcal{H}}\rightarrow0$
+\end_inset
+
+, por lo tanto la probabilidad de aproxima a 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ Por otro lado si la energía de la configuración disminuye.
+ A mayor temperatura igual que en el caso anterior 
+\begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow0$
+\end_inset
+
+ y la probabilidad de aceptación se aproxima a 
+\begin_inset Formula $1/2$
+\end_inset
+
+.
+ A menor temperatura 
+\begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow-\infty$
+\end_inset
+
+ y 
+\begin_inset Formula $p[s\rightarrow s']\rightarrow1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Al igual que en algoritmo de Metropolis, el problema con la temperatura
+ crítica es que a disminuir el número de cambios que se aceptan, el tiempo
+ de relajación del sistema aumenta exponencialmente.
+ Una forma de contrarrestar el problema es aumentar el número de configuraciones
+ que disminuyen la energía del sistema limitando el área en la que se permiten
+ nuevas configuraciones, la desventaja es que limitar las configuraciones
+ a una zona restringida también disminuye el tiempo de relajación, pero
+ puede encontrarse un equilibrio entre número de cambios aceptados el tamaño
+ del área permitida para nuevas configuraciones de manera que se minimice
+ el tiempo de relajación del sistema.
+\end_layout
+
+\begin_layout Section
+Algoritmo clúster
+\end_layout
+
+\begin_layout Standard
+El algoritmo clúster sugerido por R.
+ Swendsen y J.
+ Wang, se basa en la observación de que la función de partición se puede
+ escribir como una suma sobre un grupo de distribuciones 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "swendsen_nonuniversal_1987,wolff_collective_1989"
+literal "false"
+
+\end_inset
+
+.
+ Consiste en generar clústers de espines enlazados y cambiar la configuración
+ de todos los espines en cada clúster a la vez.
+ Una de las principales ventajas del algoritmo clúster es que evita la desaceler
+ación crítica característica de los algoritmos de actualización local.
+ 
+\end_layout
+
+\begin_layout Standard
+Un clúster puede consistir de un único espín si sus espines vecinos no se
+ enlazan, o puede estar formado por todos los espines de la configuración,
+ esto puede suceder cerca de la temperatura critica.
+ 
+\end_layout
+
+\begin_layout Standard
+En seguida propone un vector aleatorio 
+\begin_inset Formula $\vec{w}\in S^{2}$
+\end_inset
+
+, se elije un espín en la configuración 
+\begin_inset Formula $\vec{s}\in[s]$
+\end_inset
+
+.
+ y se calcula la reflexión de 
+\begin_inset Formula $\vec{s}$
+\end_inset
+
+ respecto a el plano normal a 
+\begin_inset Formula $\vec{w}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{equation}
+\vec{s}\,'=\vec{s}-2\left(\vec{w}\cdot\vec{s}\right)\vec{w}.
+\end{equation}
+
+\end_inset
+
+Para determinar si el espín 
+\begin_inset Formula $\vec{s}$
+\end_inset
+
+ esta enlazado con sus espines vecinos más cercano, se calcula la probabilidad
+ de enlace mediante la función
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+p_{\mathrm{enlace}}=\begin{cases}
+1-\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)} & \mathrm{si}\qquad\mathcal{H}[s']\geq\mathcal{H}[s]\\
+0 & \mathrm{si}\qquad\mathcal{H}[s']<\mathcal{H}[s].
+\end{cases}
+\end{equation}
+
+\end_inset
+
+Igual que en los algoritmos anteriores es conveniente expresar la probabilidad
+ de enlace en función de la diferencia de energía
+\begin_inset Formula 
+\begin{equation}
+p_{\mathrm{enlace}}=\begin{cases}
+1-\mathrm{e}^{-\beta\Delta\mathcal{H}} & \mathrm{si}\qquad\Delta\mathcal{H}\geq0\\
+0 & \mathrm{si}\qquad\beta\Delta\mathcal{H}<0.
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+) usando el algoritmo 
+\shape italic
+multi-clúster
+\shape default
+, se tiene una retícula finita bidimensional de tamaño 
+\begin_inset Formula $L$
+\end_inset
+
+ cuyos sitios están ocupados por espines.
+ Para probar el enlace entre dos espines 
+\begin_inset Formula $\vec{s}_{x},\vec{s}_{y}$
+\end_inset
+
+ donde 
+\begin_inset Formula $\vec{s}_{y}$
+\end_inset
+
+ es uno de los espines vecinos más cercanos de 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+.
+ Primero se obtiene un vector aleatorio y unitario 
+\begin_inset Formula $\vec{w}$
+\end_inset
+
+.
+ Se selección el espín 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+y se refleja respecto al plano normal a 
+\begin_inset Formula $\vec{w}$
+\end_inset
+
+ dando lugar al espín 
+\begin_inset Formula $\vec{s}_{x}\,'$
+\end_inset
+
+.
+ Se tienen dos configuraciones 
+\begin_inset Formula $\vec{s}_{x}\in[s]$
+\end_inset
+
+ y 
+\begin_inset Formula $\vec{s}_{x}\,'\in[s']$
+\end_inset
+
+ , la diferencia de energía entre las configuraciones es
+\begin_inset Formula 
+\begin{equation}
+\Delta\mathcal{H}=\vec{s}_{x}\cdot\vec{s}_{y}-\vec{s}_{x}\,'\cdot\vec{s}_{y}.
+\end{equation}
+
+\end_inset
+
+Calculando la diferencia de energía entre las configuraciones, la probabilidad
+ de enlace entre es
+\begin_inset Formula 
+\begin{equation}
+p_{\mathrm{enlace}}=\begin{cases}
+1-\mathrm{e}^{-\beta\Delta\mathcal{H}} & \mathrm{si}\qquad\Delta\mathcal{H}\geq0\\
+0 & \mathrm{si}\qquad\beta\Delta\mathcal{H}<0.
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para cuales quiera dos espines 
+\begin_inset Formula $\vec{s}_{x},\vec{s}_{y}$
+\end_inset
+
+ en una configuración 
+\begin_inset Formula $[s]$
+\end_inset
+
+.
+ Los dos espines pertenecen al mismo clúster si hay un enlace directo entre
+ ambos.
+ Si 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ es un clúster no vacío y 
+\begin_inset Formula $\vec{s}_{x}\in[s]$
+\end_inset
+
+ el espín 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+ pertenece al clúster si esta enlazado a un espín que pertenece al clúster.
+\end_layout
+
+\begin_layout Standard
+A cada espín se le asocia una etiqueta 
+\begin_inset Formula $m_{x}^{\alpha}$
+\end_inset
+
+ donde 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ indica el clúster al que pertenece el espín en cuestión.
+ El procedimiento para asociar cada espín a sus respectivos clústers es
+ el siguiente:
+\end_layout
+
+\begin_layout Enumerate
+Se selecciona el espín 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+, se genera un valor a una matriz de enlaces 
+\begin_inset Formula $b$
+\end_inset
+
+ en función de su enlace con los espines 
+\begin_inset Formula $\vec{s}_{x+\hat{1}},\vec{s}_{x+\hat{2}}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+Si hay enlace entre 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+, 
+\begin_inset Formula $\vec{s}_{x+\hat{1}}$
+\end_inset
+
+ se asigna el valor 
+\begin_inset Formula $b_{x}=10$
+\end_inset
+
+, si hay enlace entre 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+ , 
+\begin_inset Formula $\vec{s}_{x+\hat{2}}$
+\end_inset
+
+ se asigna el valor 
+\begin_inset Formula $b_{x}=1$
+\end_inset
+
+ y si hay enlace entre 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+, 
+\begin_inset Formula $\vec{s}_{x+\hat{1}}$
+\end_inset
+
+ y 
+\begin_inset Formula $\vec{s}_{x+\hat{2}}$
+\end_inset
+
+ se asigna el valor 
+\begin_inset Formula $b_{x}=11$
+\end_inset
+
+.
+ Si no hay enlaces se asigna el valor 
+\begin_inset Formula $b_{x}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Se pasa al siguiente espín y se regresa al paso 1.
+\end_layout
+
+\begin_layout Standard
+Si existe un enlace con uno de los espines vecinos se forma un clúseter
+ con los espines enlazados, se selecciona uno de estos espines y se repite
+ la prueba de enlace con sus propios vecinos más cercanos.
+ Si hay más enlaces se continua repitiendo el proceso, si no hay enlaces
+ se pasa a u otro espín del clúster, hasta comprobar que no hay más enlaces
+ con algún espín del clúster.
+\end_layout
+
+\begin_layout Standard
+Cuando se termina de formar el clúster se cambia el estado de todos los
+ espines del clúster a la vez aplicando la reflexión respecto al plano normal
+ a 
+\begin_inset Formula $\vec{w}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Una variante del algoritmo consiste en formar múltiples clústers a la vez,
+ en lugar de uno.
+ Una vez formados se decide si un se cambia el estado de sus elementos clúster
+ con probabilidad 
+\begin_inset Formula $p_{\mathrm{flip}}=1/2$
+\end_inset
+
+, valor que minimiza el tiempo de relajación del sistema al mantener más
+ menos la mitad de los grupos y cambiar la configuración de la otra mitad.
+\end_layout
+
+\begin_layout Standard
+Una forma de realizar el proceso de formación de grupos es usar el algoritmo
+ de Hoshen-Kopelman que se describe para el modelo 
+\begin_inset Formula $2$
+\end_inset
+
+-d O(3) en el apéndice 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Algoritmo-Hoshen-Kopelman"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Chapter
+Fenómenos críticos
+\end_layout
+
+\begin_layout Section
+Transiciones de fase
+\end_layout
+
+\begin_layout Standard
+Una transición de fase ocurre cunado hay un discontinuad en la energía libre
+ o en una de sus derivadas.
+ En la transitorio hay un cambio visible en las propiedades del sistema
+ que se esta observando: Como el cambio de estado liquido a gas, de estado
+ paramagnético a ferromagnético o conductor a superconductor.
+\end_layout
+
+\begin_layout Standard
+A nivel microscópico un sistema puede pasar de un estado simétrico y con
+ alta energía a otro asimétrico y menor energía al pasar por debajo de una
+ temperatura critica 
+\begin_inset Formula $T_{c}$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "giachetti_berezinskii-kosterlitz-thouless_2021,hinrichsen_non-equilibrium_2000,yeomans_statistical_1992"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+En el diagrama de la imagen 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "diag_phase"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, las lineas delimitan las regiones en las que el fluido es estable.
+ El fluido puede existir en estado solido liquido o gaseoso, en función
+ de la presión y la temperatura.
+ La variación de las variables en una región estable no cambia el estado
+ del fluido, en cambio cruzar las fronteras implica un salto en la densidad
+ y el calor latente, como consecuencia de una discontinuidad de primer orden
+ en la energía libre.
+ 
+\end_layout
+
+\begin_layout Standard
+En el proceso descrito se pasan por dos fases: 
+\end_layout
+
+\begin_layout Itemize
+Una fase desordenada por encima de la temperatura crítica.
+ 
+\end_layout
+
+\begin_layout Itemize
+Una fase ordenada por debajo de la temperatura crítica.
+\end_layout
+
+\begin_layout Standard
+Este es un ejemplo de una transición de segundo orden, ya que implica una
+ discontinuidad en la segunda derivada de la energía libre del sistema.
+\end_layout
+
+\begin_layout Standard
+Cuando se perturba un sistema en equilibrio, las variables mecánicas del
+ sistema cambian, el tiempo que el sistema tarda en alcanzar nuevamente
+ el estado de equilibrio termodinámico es conocido como tiempo de relajación
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/phase.png
+	lyxscale 80
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Diagrama de fase de un fluido.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "diag_phase"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/discont_0.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Energía libre.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/discont_1.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Primera derivada de la energía libre.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/discont_2.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Segunda derivada de la energía libre.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Transición de fase de segundo orden.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Parametro de orden
+\end_layout
+
+\begin_layout Standard
+Un parametro de orden es una cantidad que caracteriza el estado de un sistema
+ físico durante una transición de fase.
+ Por ejemplo, la magnetización es un parametro de orden para un ferromagnético
+ que pase del estado diamagnético al paramagnético.
+ Se pueden derivar de la función de partición del sistema.
+\end_layout
+
+\begin_layout Standard
+La probabilidad de que el sistema a una 
+\begin_inset Formula $T$
+\end_inset
+
+ dada esté en una configuración determinada de energía 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ es proporcional al factor de Boltzmann
+\begin_inset Formula 
+\begin{equation}
+P_{\mathcal{H}[\sigma]}=\frac{\mathrm{e}^{-\beta\mathcal{H}[\sigma]}}{Z},
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $\beta=1/k_{B}T$
+\end_inset
+
+, 
+\begin_inset Formula $k_{B}$
+\end_inset
+
+ es la constante de Boltzmann y 
+\begin_inset Formula $Z$
+\end_inset
+
+ es la función de partición.
+ La relación entre la termodinámica y la física estadística viene determinada
+ por la energía libre de Helmholtz 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ en el colectivo canónico
+\begin_inset Formula 
+\begin{equation}
+\mathcal{F}=-k_{B}T\ln Z.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A partir de la función de partición la magnetización 
+\begin_inset Formula $M$
+\end_inset
+
+ se define como
+\begin_inset Formula 
+\begin{equation}
+M=\pdv{\mathcal{F}}{B}=\frac{\sum_{\sigma}M_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z},
+\end{equation}
+
+\end_inset
+
+donde
+\begin_inset Formula 
+\begin{equation}
+\mathcal{H}[\sigma]=-J\sum_{\expval{xy}}\vec{s}_{x}\cdot\vec{s}_{y}-B\sum_{x}\vec{s}_{x}.
+\end{equation}
+
+\end_inset
+
+La susceptibilidad magnética 
+\begin_inset Formula $\chi_{M}$
+\end_inset
+
+ se define como
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\chi_{\mu}=\pdv[2]{\mathcal{F}}{B}= & \frac{1}{V}\left(\pdv{M}{B}\right)_{V}=\frac{1}{c}\pdv{B}\frac{\sum_{\sigma}M_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\\
+=\frac{1}{V} & \frac{1}{k_{B}T^{2}}\left[\frac{\sum_{\sigma}M_{\sigma}^{2}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}-\left(\frac{\sum_{\sigma}M_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\right)^{2}\right],\\
+=\frac{1}{V} & \frac{1}{k_{B}T^{2}}\left(\expval{M^{2}}-\expval{M}^{2}\right).
+\end{aligned}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A partir de la función de partición, la energía promedio se calcula como
+\begin_inset Formula 
+\begin{equation}
+\expval{\mathcal{H}}=\frac{\sum_{\sigma}\mathcal{H}[\sigma]\mathrm{e}^{-\beta\mathcal{H}[\sigma]}}{Z}=\pdv{\beta\mathcal{F}}{\beta}.
+\end{equation}
+
+\end_inset
+
+El calor específico a volumen constante se define como
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}c_{V}=\frac{1}{V} & \left(\pdv{\beta\expval{\mathcal{H}}}{T}\right)_{V}=\frac{1}{V}\pdv{T}\frac{\sum_{\sigma}\mathcal{H}_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\\
+=\frac{1}{V}\frac{1}{k_{B}T} & \left[\frac{\sum_{\sigma}\mathcal{H}_{\sigma}^{2}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}-\left(\frac{\sum_{\sigma}\mathcal{H}_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\right)^{2}\right],\\
+=\frac{1}{V} & \frac{1}{k_{B}T^{2}}\left(\expval{\mathcal{H}^{2}}-\expval{\mathcal{H}}^{2}\right).
+\end{aligned}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Siendo 
+\begin_inset Formula $B$
+\end_inset
+
+ el campo magnético aplicado.
+ 
+\end_layout
+
+\begin_layout Section
+Función de correlación
+\end_layout
+
+\begin_layout Standard
+Las variables termodinámicas como la magnetización o la entropía son propiedades
+ macroscópicas, entender lo que pasa en las transiciones de fase requiere
+ de un enfoque a nivel microscópico.
+ La función de correlación se define como
+\begin_inset Formula 
+\begin{equation}
+\expval{\vec{s}_{x}\cdot\vec{s}_{y}}_{c}=\expval{\vec{s}_{x}\cdot\vec{s}_{y}}-\expval{\vec{s}_{x}}\cdot\expval{\vec{s}_{y}}.
+\end{equation}
+
+\end_inset
+
+En los modelos de espín la función de correlación mide que tan fuertemente
+ se afectan dos espines 
+\begin_inset Formula $\vec{s}_{x},\vec{s}_{y}\in\mathcal{S}^{n-1}$
+\end_inset
+
+ .
+ 
+\end_layout
+
+\begin_layout Standard
+En la practica, para determinar la longitud de correlación se mapea a una
+ linea 
+\begin_inset Formula 
+\begin{equation}
+\begin{split}\vec{\sigma}_{i}=\frac{1}{L}\sum_{k=1}^{L}\vec{s}_{i,k},\quad & \vec{\sigma}_{j}=\frac{1}{L}\sum_{l=1}^{L}\vec{s}_{l,j}\end{split}
+,
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\expval{\vec{\sigma}_{i}\cdot\vec{\sigma}_{j}}_{c}=A\cosh\left(\frac{|i-j|-L/2}{\xi}\right),
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $\xi$
+\end_inset
+
+ es la longitud de correlación.
+ La longitud de correlación 
+\begin_inset Formula $\xi$
+\end_inset
+
+ diverge a la temperatura crítica 
+\begin_inset Formula $T_{c}$
+\end_inset
+
+.
+ Conforme 
+\begin_inset Formula $T$
+\end_inset
+
+ se acerca a la temperatura crítica desde arriba, la divergencia de 
+\begin_inset Formula $\xi$
+\end_inset
+
+ define el exponente crítico 
+\begin_inset Formula $\nu$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\xi\propto\left(T-T_{c}\right)^{-\nu},
+\end{equation}
+
+\end_inset
+
+En el modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+) la formula se simplifica como
+\begin_inset Formula 
+\begin{equation}
+\xi\propto T^{-\nu},\label{eq:length}
+\end{equation}
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/correlation_length/lexic_metropolis_L32_1.0.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Función de correlación
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Escalamiento
+\end_layout
+
+\begin_layout Standard
+Dado un potencial termodinámico
+\begin_inset Formula 
+\begin{equation}
+G(H,T)=G(H,\epsilon).
+\end{equation}
+
+\end_inset
+
+Cerca de el punto crítico existen exponentes 
+\begin_inset Formula $a_{H}$
+\end_inset
+
+ y 
+\begin_inset Formula $a_{T}$
+\end_inset
+
+tales que se cumple la ecuación
+\begin_inset Formula 
+\begin{equation}
+G\left(\lambda^{a_{H}}H,\lambda^{a_{T}}\epsilon\right)=\lambda G(H,\epsilon),
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $\lambda\in\mathbb{R}^{+}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+M=-\pdv{\mathcal{F}}{B}\Big{|}_{T,B=0}\propto(T_{c}-T)^{\beta},
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\chi=\pdv{M}{B}\Big{|}_{T,B=0}\propto(T_{c}-T)^{\gamma},
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+M|_{T=T_{C}}\propto B^{1/\delta},
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+C=-T\pdv[2]{\mathcal{F}}{T}\propto(T-T_{c})^{-\alpha},
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\xi\propto(T-T_{c})^{-\nu}.
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Universalidad
+\end_layout
+
+\begin_layout Standard
+Debido a el número de elementos que interactúan en un modelo microscópico
+ realista, no es posible hacer predicciones exactas sobre todas las cantidades
+ relevantes.
+ El concepto de clases de universalidad fue señalado primeramente por Kadanoff,
+ posteriormente en 1970 E.
+ Fermi se baso en el trabajo de Grriffiths, Jasnow y otros investigadores.
+ Se estudiaron datos experimentales de diversos materiales cerca de sus
+ respectivos puntos críticos, y se encontró que los datos de los diversos
+ sistemas son descritos por la misma función de escalamiento.
+ El aparente comportamiento universal motivo a buscar una respuesta para
+ la siguiente cuestión.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+¿Que características¸características de las interacciones microscópicas
+ son importantes para determinar puntos críticos, exponentes críticos y
+ funciones de escalamiento y que características son irrelevantes?
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En general la clase de universalidad y el valor de los exponentes críticos
+ no depende de la estructura local de los acoplamientos.
+ O dicho de otra forma.
+ Aunque las interacciones son a nivel local, los exponentes críticos dependen
+ solo de la dimensión espacial y las simetrías del sistema.
+ 
+\end_layout
+
+\begin_layout Chapter
+Mecanismo de Kibble-Zurek
+\end_layout
+
+\begin_layout Standard
+Una transición de fase por ruptura de simetría es un fenómeno en un sistema
+ físico en el que este pasa de un estado desordenado pero simétrico a un
+ estado ordenado, presentando más simetrías.
+ Algunos ejemplos son:
+\end_layout
+
+\begin_layout Itemize
+Cuando el agua se congela, la simetría rotacional se rompe por la elección
+ de una orientación en los cristales de hielo.
+ 
+\end_layout
+
+\begin_layout Itemize
+En el universo temprano, la ruptura de la simetría puede haber conducido
+ a la formación de defectos topológicos como monopolos puntuales, cuerdas
+ cósmicas lineales o paredes de dominio planares.
+\end_layout
+
+\begin_layout Itemize
+En 
+\begin_inset Formula $^{4}$
+\end_inset
+
+He en estado superfluidico, la condensación de Bose ocurre alrededor de
+ 
+\begin_inset Formula $2K$
+\end_inset
+
+.
+ El rompimiento de la simetría favorece la formación de vórtices.
+\end_layout
+
+\begin_layout Standard
+En estos sistemas, los defectos topológicos remanentes son importantes,
+ porque son objetos inherentemente estables que pueden proporcionar pistas
+ observacionales sobre cómo era el sistema en el momento en que se formaron.
+\end_layout
+
+\begin_layout Section
+Relacionado al universo temprano
+\end_layout
+
+\begin_layout Standard
+Consideremos el universo temprano en expansión.
+ En modelos de interacción débil y electromagnetismo, la temperatura crítica
+ es del orden 
+\begin_inset Formula $\sqrt{G_{F}}$
+\end_inset
+
+, donde 
+\begin_inset Formula $G_{F}$
+\end_inset
+
+ es la constante de Fermi.
+ Siguiendo dicha suposición, el universo paso por la temperatura crítica
+ entre 
+\begin_inset Formula $10^{-\text{10}}s$
+\end_inset
+
+ y 
+\begin_inset Formula $10^{-12}s$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Consideremos un campo multi escalar 
+\begin_inset Formula $\phi\in\mathbb{R}^{n}$
+\end_inset
+
+ con un lagrangiano invariante bajo el grupo ortogonal O(
+\begin_inset Formula $n$
+\end_inset
+
+),
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{c}
+\mathcal{L}=\frac{1}{2}\left(D_{\mu}\vec{\phi}\right)^{2}-\frac{1}{8}g^{2}\left(\phi^{2}-\eta^{2}\right)^{2}+\frac{1}{8}\mathrm{Tr}\left(B_{\mu\nu}B^{\mu\nu}\right)\\
+D_{\mu}\left(\vec{\phi}\right)=\left(\partial_{\mu}-qB_{\mu}\right)\text{\ensuremath{\vec{\phi}}}\\
+B_{\mu\nu}=O\mu\nu B\mu\nu-D_{\nu}B\mu+q\left[B_{\mu},B_{\nu}\right].
+\end{array}
+\end{equation}
+
+\end_inset
+
+Donde 
+\begin_inset Formula $g,\nu$
+\end_inset
+
+ son constantes de acoplamiento.
+ A temperatura 
+\begin_inset Formula $T$
+\end_inset
+
+ cero hay una ruptura espontánea de la simetría a O(
+\begin_inset Formula $n$
+\end_inset
+
+-1), por lo que variedad del estado de menor energía es la esfera 
+\begin_inset Formula $\mathcal{S}^{n-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para 
+\begin_inset Formula $T$
+\end_inset
+
+ cerca de la temperatura crítica aparecen fluctuaciones fuertes en el campo
+ 
+\begin_inset Formula $\vec{\phi}$
+\end_inset
+
+.
+ por debajo de la temperatura crítica el valor esperado es algún punto en
+ 
+\begin_inset Formula $\mathcal{S}^{n-\text{1}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Ningún punto de la esfera tiene preferencia, y la elección es independiente
+ entre las diferentes regiones del espacio.
+ Por lo tanto, se espera la formación de dominios con distinto valor esperado
+ de 
+\begin_inset Formula $\vec{\phi}$
+\end_inset
+
+, variando entre regiones de una manera más o menos aleatoria.
+ Al llegar al equilibrio muchos de estas variaciones dejaran de fluctuar
+ acercando el valor esperado de los diferentes dominios al valor constante
+ 
+\begin_inset Formula $\expval{\vec{\phi}}$
+\end_inset
+
+.
+ La cuestión es si luego del enfriamiento del universo, las fronteras entre
+ dominios pueden formar defectos topologícos.
+\end_layout
+
+\begin_layout Standard
+Una posibilidad es la neutralidad del universo respecto a las cargas del
+ campo 
+\begin_inset Formula $\vec{\phi}$
+\end_inset
+
+ en cuyo caso no hay problema con la formación de dominios, ya que no hay
+ una direccion preferencial hacia algún punto en 
+\begin_inset Formula $\mathcal{S}^{n-1}$
+\end_inset
+
+.
+ La otra posibilidad es que el universo podría tener una carga asociada
+ 
+\begin_inset Formula $q_{t_{0}}$
+\end_inset
+
+ asociada al campo 
+\begin_inset Formula $\vec{\phi}$
+\end_inset
+
+.
+ En este caso el rompimiento de la simetría seria fijado a las condiciones
+ iniciales impidiendo el surgimiento de estructuras de dominio.
+ Consideremos el primer caso, que permite la formacion de dominios, el tamaño
+ de estos dominios esta determinado por la longitud de correlación
+\begin_inset Formula 
+\begin{equation}
+\xi^{-1}\approx g^{2}T.
+\end{equation}
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Es interesante revisar las posibles configuraciones geométricas de estos
+ dominios.
+ Las transiciones de fase de ruptura de simetría en el universo temprano
+ podrían haber formado estructuras topológicamente estables como monopolos
+ y cuerdas cósmicas.
+\end_layout
+
+\begin_layout Standard
+Un problema que surgió al intentar hacer predicciones sobre las cuerdas
+ cósmicas fue estimar cuántas habría.
+ Una elección aleatoria de fases debería conducir a una maraña aleatoria
+ de cuerdas, caracterizada por una escala de longitud típica 
+\begin_inset Formula $\xi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Desafortunadamente, esa idea no funcionó.
+ Las observaciones realizadas por COBE y más recientemente por WMAP 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "ciuca_information_2020"
+literal "false"
+
+\end_inset
+
+ de la pequeña anisotropía en el fondo cósmico de microondas revelan una
+ escala de distancia preferencial que las cuerdas cósmicas no pueden explicar.
+ Afortunadamente, existen análogos de cuerdas cósmicas en muchos sistemas
+ de materia condensada, incluidos las lineas de vórtice en superfluidos
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "kibble_topology_1976,kibble_phase-transition_2007,kibble_implications_1980"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Experimentos en helio superflúlidico
+\end_layout
+
+\begin_layout Standard
+En 1985, W.
+ Zurek, en Los Álamos, sugirió que las ideas sobre cómo calcular 
+\begin_inset Formula $\xi$
+\end_inset
+
+ podrían probarse aplicándolas al problema de la formación de defectos en
+ una transición de fase de baja temperatura, en particular la transición
+ de normal a superfluido en helio líquido.
+ Zurek demostró que en una transición de segundo orden, se podía obtener
+ una relación de ley de potencia entre 
+\begin_inset Formula $ξ$
+\end_inset
+
+ y 
+\begin_inset Formula $τ_{\mathrm{cool}}$
+\end_inset
+
+.
+ Donde 
+\begin_inset Formula $τ_{\mathrm{cool}}$
+\end_inset
+
+ se define de modo que la tasa de cambio de temperatura en el punto crítico
+ sea 
+\begin_inset Formula $dT/dt=−Tc/τ_{\mathrm{cool}}$
+\end_inset
+
+ y el exponente 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ se pueda calcular en términos de índices críticos conocidos de la transición
+ de fase.
+ 
+\begin_inset Formula 
+\begin{equation}
+\xi\propto\tau_{\mathrm{cool}}^{-\frac{\nu}{1+\nu z}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Existe una analogía entre cuerdas cósmicas y lineas de vórtice.
+ En un superfluido, tras un súbito decaimiento de presión, la fase de la
+ función de onda en el condensado de helio es análoga a la ruptura de simetría
+ del campo de multi-escalar 
+\begin_inset Formula $\vec{\phi}\in\mathbb{R}^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Cerca de la transición de fase , el potencial es de la forma
+\begin_inset Formula 
+\begin{equation}
+V=\alpha\abs{\psi\left(\vec{r}\right)}^{2}+\frac{1}{2}\beta\abs{\psi\left(\vec{r}\right)}^{4},
+\end{equation}
+
+\end_inset
+
+Donde 
+\begin_inset Formula $\alpha=\alpha'(T-T_{c})$
+\end_inset
+
+ y 
+\begin_inset Formula $\alpha',\beta$
+\end_inset
+
+ son constantes que se deducen a partir del calor especifico.
+ Por debajo de la temperatura crítica tras la ruptura de la simetría en
+ el superfluido 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ es un valor negativo y el potencial 
+\begin_inset Formula $V$
+\end_inset
+
+ tiene la forma de sombrero.
+\end_layout
+
+\begin_layout Standard
+El parametro de orden de un spuerfluido puede pensarse como la función de
+ onda del condensado de Bose.
+ En este sistema se pueden formar lineas de vórtice cuando el parámetro
+ de orden es un valor complejo
+\begin_inset Formula 
+\begin{equation}
+\psi=\abs{\psi}e^{i\theta}.
+\end{equation}
+
+\end_inset
+
+Es una situación análoga al modelo cosmológico y una buena aproximación
+ a el superfluido 
+\begin_inset Formula $^{4}$
+\end_inset
+
+He.
+ en particular para un spuerfluido cerca de la temperatura crítica 
+\begin_inset Formula $T_{c}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+Una fracción considerable de los átomos de 
+\begin_inset Formula $^{4}$
+\end_inset
+
+He ocupan un solo estado cuántico a esa temperatura.
+ Entonces 
+\begin_inset Formula $\psi$
+\end_inset
+
+ es proporcional a la función de onda de ese estado, y 
+\begin_inset Formula $|\psi|^{2}$
+\end_inset
+
+ representa la densidad de la fracción superfluida.
+ Una cuerda, o cualquiera de sus defectos análogos, es un tubo delgado alrededor
+ del cual la fase de 
+\begin_inset Formula $\psi$
+\end_inset
+
+ cambia en 
+\begin_inset Formula $2π$
+\end_inset
+
+.
+ En He, la velocidad superfluida es proporcional al gradiente de la fase
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "zurek_cosmological_1985,kosterlitz_long_1972,kosterlitz_nobel_2017"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Tiempo de auto-correlación
+\end_layout
+
+\begin_layout Standard
+La simulación de un sistema cerca de un punto crítico un problema complicado,
+ en general la dinámica de las simulaciones desacelera considerablemente
+ cerca de un punto crítico.
+ La desaceleración es una complicación cuando se dispone de un tiempo de
+ computo finito por lo que es de gran interés entender como cambia el sistema
+ del sistema.
+ La evolución de un sistema se caracteriza por el tiempo de auto-correlación,
+ mide la velocidad a la que un sistema pasa a un estado estadística-mente
+ independiente.
+ Consideremos una observable 
+\begin_inset Formula $A$
+\end_inset
+
+ y 
+\begin_inset Formula $A_{t}$
+\end_inset
+
+ el valor de 
+\begin_inset Formula $A$
+\end_inset
+
+ en el instante 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Definimos la auto-correlación como 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C_{AA}\left(t\right)=\expval{A_{s}A_{s+t}}-\expval{A}^{2}.\label{eq:autocorrelacion}
+\end{equation}
+
+\end_inset
+
+Si la cadena de Markov cumple la condición de balance detallado, los valores
+ propios de la matriz de transferencia son reales, se tiene que
+\begin_inset Formula 
+\begin{equation}
+C_{AA}\left(t\right)=\sum_{\alpha}C_{\alpha}\mathrm{e}^{-t/\tau_{\mathrm{exp},\alpha}}.
+\end{equation}
+
+\end_inset
+
+El tiempo de autocorrelación se estima como 
+\begin_inset Formula 
+\begin{equation}
+\tau_{\mathrm{exp}}=\max(\tau_{\mathrm{exp},\alpha})
+\end{equation}
+
+\end_inset
+
+Donde 
+\begin_inset Formula $\tau_{\mathrm{exp},A}$
+\end_inset
+
+ es el tiempo de auto-correlación exponencial.
+ Una definición alternativa es el tiempo de auto-correlación integrado
+\begin_inset Formula 
+\begin{equation}
+\tau_{\mathrm{int}}=\frac{1}{2}+\sum_{t=1}^{\infty}\frac{C_{AA}\left(t\right)}{C_{AA}\left(0\right)}.
+\end{equation}
+
+\end_inset
+
+El tiempo de auto-correlación depende del algoritmo de Monte Carlo particular
+ que se use y en general cerca de un punto crítico diverge según la ecuación
+\begin_inset Formula 
+\begin{equation}
+\tau\propto\xi^{-\nu z}
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $z$
+\end_inset
+
+ es el exponente crítico dinámico.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/magnet/L64/lexic_metropolis/lexic_metropolis_0.9.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Evolución de la autocorrelación de la magnetización en 
+\begin_inset Formula $100$
+\end_inset
+
+ barridos de actualización para el algoritmo de Metropolis lexicográfico
+ a temperatura 
+\begin_inset Formula $T=0.9$
+\end_inset
+
+ en una retícula de tamaño 
+\begin_inset Formula $L=64$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Simulaciones en equilibrio
+\end_layout
+
+\begin_layout Standard
+En esta sección se miden las diferentes observables que se han descrito
+ en los capítulos anteriores, en una simulación del modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+).
+ Para ello se ha escrito un programa en Fortran con rutinas de generación
+ de configuraciones y actualización de estados en función de la temperatura
+ para cada uno de los algoritmos descritos.
+ Algunos términos básicos son:
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+hot-start
+\shape default
+.
+ Es una configuración inicial de espines aleatorios.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+cold-start
+\shape default
+.
+ Es una configuración inicial de espines alineados.
+\end_layout
+
+\begin_layout Itemize
+Actualización.
+ Una actualización es un cambio o una propuesta de cambio de una configuración.
+ 
+\end_layout
+
+\begin_layout Itemize
+Barrido de actualizaciones.
+ Un barrido es la actualización de 
+\begin_inset Formula $V=L\times L$
+\end_inset
+
+ espines seleccionados en orden lexicográfico, aleatorio o por su pertenecía
+ a un clúster.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/thermalization.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Termalización de dos sistemas 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+) a temperatura 
+\begin_inset Formula $T=4$
+\end_inset
+
+, 
+\begin_inset Formula $L=64$
+\end_inset
+
+.
+ La trayectoria 
+\shape italic
+cold-start
+\shape default
+, parte de un estado de energía máxima en el que todos los espines están
+ alineados.
+ La trayectoria 
+\shape italic
+hot-start
+\shape default
+, parte de una configuración aleatoria .
+ Después de unos 20 barridos ambas trayectorias oscilan alrededor una energía
+ que corresponde al sistema termalizado.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "therm"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El programa que se encarga de las simulaciones sigue los siguientes pasos:
+\end_layout
+
+\begin_layout Enumerate
+Se genera una configuración en equilibrio termodinámico a temperatura 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Se actualiza la configuración.
+\end_layout
+
+\begin_layout Enumerate
+Se miden las observables.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Si el número de observables medidas en menor a el número requerido se regresa
+ al paso 2.
+\end_layout
+
+\begin_layout Standard
+Como se ve en la Figura 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "therm"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, las observables de un sistema fluctúan entre mediciones.
+ Por lo que un resultado se calcula a partir del promedio de un número medicione
+s suficientemente grande para alcanzar la precisión deseada.
+ 
+\end_layout
+
+\begin_layout Section
+Tiempo de autocorrelación
+\end_layout
+
+\begin_layout Standard
+Se calculó el tiempo de autocorrelación en equilibrio térmico para las temperatu
+ras 
+\begin_inset Formula $T\in\left\{ 0.7,0.8,0.9,1.0\right\} $
+\end_inset
+
+ en una retícula de tamaño 
+\begin_inset Formula $L\times L$
+\end_inset
+
+ donde 
+\begin_inset Formula $L=64$
+\end_inset
+
+.
+ En todos los experimentos numéricos se partió de una configuración inicial
+ 
+\shape italic
+hot-start.
+
+\shape default
+ Ya que en este punto se desconocía el tiempo de autocorrelación, se realizaron
+ 
+\begin_inset Formula $10^{4}$
+\end_inset
+
+ barridos de actualización del algoritmo multi-clúster, asegurando una configura
+ción completamente termalizada.
+\end_layout
+
+\begin_layout Standard
+Para la carga topológica en el algoritmo multi-clúster, la autocorrelación
+ no puede medirse debido a la eficiencia con la que el algoritmo multi-clúster
+ alcanza la configuración de equilibrio.
+ En el caso de los algoritmos de actualización local hay una desaceleración
+ crítica cerca de la temperatura 
+\begin_inset Formula $T=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Los tiempos de autocorrelación se calcularon por ajuste a la función exponencial
+ y por integración, ambos resultados fueron consistentes para 
+\begin_inset Formula $T\in\left\{ 0.7,0.8,0.9,1.0\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finalmente se ajusto el tiempo de autocorrelación en función de la temperatura
+ siguiendo la ecuación 
+\begin_inset Formula 
+\begin{equation}
+\tau\propto T^{-\nu z}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/charge/autocorrelation_lexic_metropolis_L64_Q.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/charge/autocorrelation_random_metropolis_L64_Q.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algorimo de Metropolis aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/charge/autocorrelation_lexic_glauber_L64_Q.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/charge/autocorrelation_random_glauber_L64_Q.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Gauber aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tiempo de autocorrelación de la carga topológica en función de la temperatura
+ en una retícula de longitud 
+\begin_inset Formula $L=64$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/energy/autocorrelation_lexic_metropolis_L64_E.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/energy/autocorrelation_random_metropolis_L64_E.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algorimo de Metropolis aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/energy/autocorrelation_lexic_glauber_L64_E.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/energy/autocorrelation_random_glauber_L64_E.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Gauber aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tiempo de autocorrelación de la densidad de energía en función de la temperatura
+ en una retícula de tamaño 
+\begin_inset Formula $L=64$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/magnet/autocorrelation_lexic_metropolis_L64_M.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/magnet/autocorrelation_random_metropolis_L64_M.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algorimo de Metropolis aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/magnet/autocorrelation_lexic_glauber_L64_M.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/magnet/autocorrelation_random_glauber_L64_M.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Gauber aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tiempo de autocorrelación de la magnetización en función de la temperatura
+ en una retícula de tamaño 
+\begin_inset Formula $L=64$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Algoritmo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Q$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $m$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Metropolis lexicográfico
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $6.9(7)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.0(8)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9.3(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Metropolis aleatorio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5.5(1)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.9(7)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $7.4(9)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Glauber lexicográfico
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $7.0(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.0(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $7.6(7)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Glauber aleatorio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $7.6(3)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.8(9)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9.1(4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Exponente 
+\begin_inset Formula $\nu z$
+\end_inset
+
+ para el tiempo de autocorrelación.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El algoritmo multi-cluster termalizo las configuraciones en un barridos
+ de actualización en el rango de temperaturas usado por lo que no se pudo
+ determinar un exponente.
+\end_layout
+
+\begin_layout Section
+Longitud de correlación
+\end_layout
+
+\begin_layout Standard
+Se realizó una serie de experimentos numéricos para determinar características
+ generales del modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+), 
+\end_layout
+
+\begin_layout Standard
+Se calculó la longitud de correlación en retículas de tamaño 
+\begin_inset Formula $L\times L$
+\end_inset
+
+ donde 
+\begin_inset Formula $L\in\left\{ 32,64,128\right\} $
+\end_inset
+
+ para las temperaturas 
+\begin_inset Formula $T\in\left\{ 0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0\right\} $
+\end_inset
+
+.
+ En todos los casos se partió de una configuración 
+\shape italic
+hot-start
+\shape default
+ y se termalizó durante 
+\begin_inset Formula $10^{4}$
+\end_inset
+
+ actualizaciones del algoritmo 
+\shape italic
+multi-clúster
+\shape default
+.
+\end_layout
+
+\begin_layout Standard
+Cada uno de los exponentes críticos esta registrado en la tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "teblength"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Se ajustaron las longitudes de correlación respecto a la temperatura a
+ la función
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\xi\propto T^{-\nu}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/length_lexic_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algotimo de Metropolis lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/length_random_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algotimo de Metropolis aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/length_lexic_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algotimo de Glauber lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/length_random_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algotimo de Glauber aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/length_multi_cluster.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algotimo
+\shape italic
+ multi-clúster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Longitud de correlación en función de la temperatura para las retículas
+ de tamaño 
+\begin_inset Formula $L\in\left\{ 32,64,128\right\} $
+\end_inset
+
+, algoritmo 
+\shape italic
+multi-clúster
+\shape default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/size_32.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $L=32$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/length/size_64.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $L=64$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/length/size_128.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $L=128$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Longitud de correlación para los diferentes algoritmos dada una retícula
+ de tamaño 
+\begin_inset Formula $L$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $L$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Metropolis
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Metropolis
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Glauber
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Glauber
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+multi-clúster
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lexicográfico
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+aleatorio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lexicográfico
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+aleatorio
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $32$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.5(6)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.3(4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.7(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.1(4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.5(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $64$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.7(6)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.5(8)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.0(3)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.7(3)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.5(6)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $128$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.8(7)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.5(4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.5(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.7(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.6(6)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Exponente crítico 
+\begin_inset Formula $\nu$
+\end_inset
+
+ obtenido en las retículas de tamaño 
+\begin_inset Formula $L\times L$
+\end_inset
+
+ donde 
+\begin_inset Formula $L\in\{32,64,128\}.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "teblength"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Los efectos de volumen finito son mas fuertes en temperaturas menores a
+ 
+\begin_inset Formula $T=0.7$
+\end_inset
+
+ por lo que se consideraron las temperaturas posteriores para el ajuste.
+ Promediando los exponentes críticos para 
+\begin_inset Formula $L=128$
+\end_inset
+
+ se tiene 
+\begin_inset Formula $\nu=4.4(5)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Exponente crítico dinámico
+\end_layout
+
+\begin_layout Standard
+El exponente crítico dinámico se obtuvo a partir de las longitudes de correlació
+n y los tiempos de autocorrelación para las temperaturas 
+\begin_inset Formula $T\in\{0.7,0.8,0.9,1.0\}$
+\end_inset
+
+ en una retícula de tamaño 
+\begin_inset Formula $L\times L$
+\end_inset
+
+ donde 
+\begin_inset Formula $L=64$
+\end_inset
+
+.
+ El exponente critico se calculo siguiendo la ecuación 
+\shape italic
+
+\begin_inset Formula 
+\begin{equation}
+\tau\propto\xi^{z}.
+\end{equation}
+
+\end_inset
+
+C
+\shape default
+omo el exponente critico de autocorrelación no pudo medirse para el algoritmo
+ multi-clsuter, tampoco pudo medirse para calcular el exponente critico
+ dinámico, en consecuencia en la tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab_exp"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ se excluyen los exponentes críticos para el algoritmo multi-clúster
+\shape italic
+.
+\shape default
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/lexic_metropolis_charge.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/random_metropolis_charge.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algorimo de Metropolis aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/lexic_glauber_charge.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/random_glauber_charge.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Gauber aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tiempo de autocorrelación de la susceptibilidad topológica en función de
+ la longitud de correlación en una retícula de tamaño 
+\begin_inset Formula $L=64$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/lexic_metropolis_energy.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/random_metropolis_energy.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algorimo de Metropolis aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/lexic_glauber_energy.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/random_glauber_energy.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Gauber aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tiempo de autocorrelación de la energía en función de la longitud de correlación
+ en una retícula de tamaño 
+\begin_inset Formula $L=64$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/lexic_metropolis_magnet.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/random_metropolis_magnet.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algorimo de Metropolis aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/lexic_glauber_magnet.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/scaling/random_glauber_magnet.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Gauber aleatorio.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tiempo de autocorrelación de la magnetización en función de la longitud
+ de correlación en una retícula de tamaño 
+\begin_inset Formula $L=64$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Algoritmo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\chi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $m$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Metropolis lexicográfico
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.45(6)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.4(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.3(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Metropolis aleatorio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.1(3)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.1(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.3(4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Glauber lexicográfico
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.13(9)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.13(7)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.26(8)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Glauber aleatorio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.08(4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.2(1)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.33(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Exponente crítico 
+\begin_inset Formula $z$
+\end_inset
+
+ dinámico para la susceptibilidad topológica 
+\begin_inset Formula $\chi_{t}$
+\end_inset
+
+, la energía 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ y la magnetización 
+\begin_inset Formula $m$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab_exp"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se calculó el valor del exponente del mecanismo de Kibble-Zurek siguiendo
+ la ecuación
+\begin_inset Formula 
+\begin{equation}
+\chi_{t}\propto\tau_{\mathrm{cool}}^{-\zeta},\;\zeta=\frac{\nu}{1+\nu z},
+\end{equation}
+
+\end_inset
+
+y usando los exponentes criticos de las tablas 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "teblength"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab_exp"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Finalmente se obtuvieron los resultados promedio expresados en la tabla
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab_exp2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\chi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $m$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\zeta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.57(9)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.0(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.7(2)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Promedio del mecanismo de Kibble-Zurek, para la susceptibilidad topológica,
+ la energía y la magnetización.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab_exp2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Simulación de enfriamientos
+\end_layout
+
+\begin_layout Standard
+Un enfriamiento rápido, es un fenómeno fuera del equilibrio en el que un
+ sistema pasa de una temperatura inicial 
+\begin_inset Formula $T_{i}$
+\end_inset
+
+ a una temperatura final 
+\begin_inset Formula $T_{f}$
+\end_inset
+
+ en un tiempo 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ La simulación de un enfriamiento se realiza cambiando la temperatura del
+ sistema entre cada barrido de actualizaciones.
+ El decremento de la temperatura entre cada barrido define la velocidad
+ del enfriamiento.
+ Se define la velocidad de enfriamiento como
+\begin_inset Formula 
+\begin{equation}
+v_{\mathrm{cool}}=\frac{T_{i}-T_{f}}{\tau_{\mathrm{cool}}}<0.\label{eq:velocidad_de_enfriamiento}
+\end{equation}
+
+\end_inset
+
+La variable 
+\begin_inset Formula $\tau_{\mathrm{cool}}$
+\end_inset
+
+ es la tasa de cambio de temperatura y corresponde al número de pasos para
+ llegar desde la temperatura inicial 
+\begin_inset Formula $T_{i}$
+\end_inset
+
+ hasta la temperatura final 
+\begin_inset Formula $T_{f}$
+\end_inset
+
+.
+ Conforme avanza el tiempo de Markov en el rango 
+\begin_inset Formula $t\in[0,\tau_{\mathrm{cool}}]$
+\end_inset
+
+, la temperatura cambia siguiendo la ecuación
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+T\left(t\right)=T_{i}-v_{\mathrm{cool}}t.\label{eq:temperatura}
+\end{equation}
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+Una simulación de enfriamiento consta de los siguientes pasos:
+\end_layout
+
+\begin_layout Enumerate
+Se genera una configuración en equilibrio termodinámico a temperatura 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Se actualiza la configuración a temperatura 
+\begin_inset Formula $T(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Se miden las observables y se aumenta el tiempo de Markov de 
+\begin_inset Formula $t$
+\end_inset
+
+ a 
+\begin_inset Formula $t+1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Si 
+\begin_inset Formula $T<0$
+\end_inset
+
+, se regresa al paso 2.
+\end_layout
+
+\begin_layout Standard
+Como se hace en las simulaciones en equilibrio, una medición se obtiene
+ de promediar un número de mediciones suficientemente grande para alcanzar
+ la precisión estadística deseada.
+ Se realiza un número 
+\begin_inset Formula $N$
+\end_inset
+
+ de enfrenamientos y se obtiene un promedio de las mediciones en el mismo
+ instante 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+En cada enfriamiento se mide una trayectoria pata cada observable en función
+ del tiempo de Markov o de manera equivalente en función de la temperatura.
+\end_layout
+
+\begin_layout Section
+Enfriamientos rápidos
+\end_layout
+
+\begin_layout Standard
+Se realizaron 
+\begin_inset Formula $10^{5}$
+\end_inset
+
+ enfriamientos desde la temperatura 
+\begin_inset Formula $T_{i}=4$
+\end_inset
+
+ hasta 
+\begin_inset Formula $T_{f}=0$
+\end_inset
+
+, usando las tasas de cambio de temperatura 
+\begin_inset Formula $\tau_{\mathrm{cool}}\in\left\{ 8,9,10,11,12,13,14,15,16,17,18\right\} $
+\end_inset
+
+.
+ En cada experimento numérico se midió la susceptibilidad topológica, la
+ energía y la magnetización.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/charge_lexic_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/charge_random_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/charge_lexic_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/charge_random_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/charge_multi_cluster.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo multi-clúster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Evolución de los enfriamientos de la susceptibilidad topológica 
+\begin_inset Formula $\chi_{t}$
+\end_inset
+
+ respecto a la temperatura 
+\begin_inset Formula $T$
+\end_inset
+
+, para diferentes tasas de cambio de temperatura 
+\begin_inset Formula $\tau_{\mathrm{cool}}\in\{8,10,16\}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_charge_lexic_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_charge_random_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_charge_lexic_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_charge_random_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_charge_multi_cluster.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo multi-clúster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Susceptibilidad topológica final 
+\begin_inset Formula $\chi_{t_{f}}$
+\end_inset
+
+ respecto a la tasa de cambio de temperatura 
+\begin_inset Formula $\tau_{\mathrm{cool}}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/energy_lexic_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/energy_random_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/energy_lexic_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/energy_random_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/energy_multi_cluster.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo multi-clúster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Evolución de los enfriamientos de la densidad de energía 
+\begin_inset Formula $\rho_{\mathcal{H}}$
+\end_inset
+
+ respecto a la temperatura 
+\begin_inset Formula $T$
+\end_inset
+
+, para diferentes velocidades de enfriamiento 
+\begin_inset Formula $\tau_{\mathrm{cool}}\in\{8,10,16\}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_energy_lexic_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_energy_random_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_energy_lexic_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_energy_random_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_energy_multi_cluster.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo multi-clúster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Densidad de energía final 
+\begin_inset Formula $\rho_{\mathcal{H}_{f}}$
+\end_inset
+
+ respecto a la tasa de cambio de temperatura 
+\begin_inset Formula $\tau_{\mathrm{cool}}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/magnet_lexic_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/magnet_random_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/magnet_lexic_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/magnet_random_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/magnet_multi_cluster.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo multi-clúster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Evolución de los enfriamientos de la magnetización 
+\begin_inset Formula $m$
+\end_inset
+
+ respecto a la temperatura 
+\begin_inset Formula $T$
+\end_inset
+
+, para diferentes tasas de cambio de temperatura 
+\begin_inset Formula $\tau_{\mathrm{cool}}\in\{4,6,8\}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_magnet_lexic_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_magnet_random_metropolis.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Metropolis aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_magnet_lexic_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber lexicográfico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_magnet_random_glauber.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de Glauber aleatorio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename output/plot/cooling/scaling_law_magnet_multi_cluster.pdf
+	scale 50
+	groupId plots
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algoritmo de multi-clúster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Magnetización final 
+\begin_inset Formula $m_{f}$
+\end_inset
+
+ respecto a la tasa de cambio de temperatura 
+\begin_inset Formula $\tau_{\mathrm{\mathrm{cool}}}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Algoritmo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Q$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $m$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Metropolis lexicográfico
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.54
+\begin_inset Formula $(1)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.221(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.283(7)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Metropolis aleatorio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.55(1)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.217(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.284(4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Glauber lexicográfico
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.51(1)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.211(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.267(4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Glauber aleatorio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.51(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.209(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.274(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+multi-clúster
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.10(7)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.28(1)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.630(5)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Exponentes críticos 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ respecto a la susceptibilidad topológica, la energía y la magnetización
+ para los diferentes algoritmos.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab_resultados"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+En la tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab_resultados"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ se observa que el exponente critico 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ es menor para los algoritmos de actualización local.
+\end_layout
+
+\begin_layout Chapter
+Resumen y conclusiones
+\end_layout
+
+\begin_layout Standard
+Se realizaron simulaciones del modelo modelo 2d O(3), usando los algoritmos
+ 
+\end_layout
+
+\begin_layout Itemize
+Metropolis lexicográfico
+\end_layout
+
+\begin_layout Itemize
+Metropolis aleatorio
+\end_layout
+
+\begin_layout Itemize
+Glauber lexicográfico
+\end_layout
+
+\begin_layout Itemize
+Glauber aleatorio
+\end_layout
+
+\begin_layout Itemize
+multi-cluster
+\end_layout
+
+\begin_layout Standard
+En las simulaciones en equilibrio, se midió la longitud de correlación y
+ el exponente critico dinámico, para las observables de susceptibilidad
+ topológica energía y magnetización.
+ 
+\end_layout
+
+\begin_layout Standard
+Se simulo un sistema con diferentes velocidades de enfriamiento y se midieron
+ los parámetros de orden: carga topológica, energía y magnetización en relación
+ a los diferentes ratios de enfriamiento.
+\end_layout
+
+\begin_layout Standard
+La carga topológica resultó en una ley de escalamiento con un exponente
+ 
+\begin_inset Formula $\zeta_{1}=0.53(1)$
+\end_inset
+
+, el cual se calculo con los exponentes críticos 
+\begin_inset Formula $\zeta_{2}=0.57(9)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Para la energía y la magnetización, los exponentes 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ obtenidos a partir de los enfriamientos no coinciden con los resultados
+ calculados en equilibrio.
+\end_layout
+
+\begin_layout Standard
+El mecanismo de Kibble-Zurek se plantea en sistemas donde ocurre una ruptura
+ de simetría al cruzar una temperatura crítica.
+ Sin embargo, en el modelo 2d O(3), la temperatura crítica es 
+\begin_inset Formula $T=0$
+\end_inset
+
+, lo que implica que no es posible alcanzar temperaturas menores a cero.
+ En los experimentos realizados no se cruzó una temperatura crítica, por
+ lo tanto, no hubo un cambio en el orden del sistema.
+ Por otro lado, al aproximar el sistema a temperatura cero, se observa una
+ desaceleración crítica que resulta ser más fuerte en el caso de la susceptibili
+dad topológica.
+ Esto podría ser la razón por la cual el valor de 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ es compatible con el resultado en equilibrio.
+\end_layout
+
+\begin_layout Standard
+Aunque el modelo 2d O(3) no pasa por la temperatura crítica en los enfriamientos
+, fue posible ajustar una ley de escalamiento para las observables de susceptibi
+lidad topológica, energía y magnetización.
+ Para los algoritmos de actualización locales, la ley de escalamiento conduce
+ a exponentes críticos 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ compatibles respecto a la misma observable, sin embargo difieren para diferente
+s observables.
+\end_layout
+
+\begin_layout Standard
+En el caso de algoritmo multi-cluster no fue posible medir un exponente
+ critico dinámico por la efectividad de termalización del algoritmo, lo
+ que sugiere que multi-clsuter realiza actualizaciones, los valores obtenidos
+ para el exponente 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ resultan mayores que los de los algoritmos de actualización locales.
+ Además, para las temperaturas simuladas en equilibrio, no fue posible calcular
+ el exponente crítico dinámico, por lo que no se pudo confirmar una compatibilid
+ad entre los resultados obtenidos en equilibrio y los enfriamientos.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+appendix
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Distribución aleatoria de vectores en la esfera 
+\begin_inset Formula $S^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Uno de los principales retos para usar los métodos de Monte Carlo en la
+ simulación del modelo 2d O(3) es la generación de vectores aleatorios uniformem
+ente distribuidos en la esfera 
+\begin_inset Formula $\mathcal{S}^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Un elemento de la esfera 
+\begin_inset Formula $S^{2}$
+\end_inset
+
+ se puede escribir como 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\vec{s}=\left(\sin\theta\cos\text{\ensuremath{\phi},\ensuremath{\sin\theta\sin\phi},\ensuremath{\cos\theta}}\right),\label{eq:coordenadas_esfericas}
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $\theta\in[0,\pi]$
+\end_inset
+
+ y 
+\begin_inset Formula $\text{\ensuremath{\phi\in[0,2\pi)}}$
+\end_inset
+
+son variables aleatorias.
+ 
+\end_layout
+
+\begin_layout Standard
+Un primer intento para generar vectores aleatorios y uniformemente distribuidos
+ es generar parámetros aleatorios 
+\begin_inset Formula $\theta_{r}\in[0,\pi]$
+\end_inset
+
+ y 
+\begin_inset Formula $\phi_{r}\in[0,2\pi)$
+\end_inset
+
+ uniformemente distribuidos.
+ Sin embargo, si se generan vectores aleatorios de esta manera y se representan
+ sobre una esfera, se observa que la distribución de los vectores es más
+ densa en los polos..
+ 
+\end_layout
+
+\begin_layout Standard
+Consideremos ahora una distribución 
+\begin_inset Formula $f$
+\end_inset
+
+ de vectores aleatorios 
+\begin_inset Formula $\vec{s}$
+\end_inset
+
+ uniformemente distribuidos sobre la superficie de la esfera.
+ Para que se cumpla la condición de uniformidad, la densidad de probabilidad
+ debe ser constante, con valor 
+\begin_inset Formula $p=1/4\pi$
+\end_inset
+
+, entonces integral de la densidad de probabilidad sobre el área de la esfera
+ es
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{4\pi}\int_{\mathcal{S}}\dd\vec{r}=1.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En coordenadas esféricas se tiene
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{4\pi}\int_{0}^{2\pi}\int_{0}^{\pi}\sin\theta\dd\theta\dd\phi=\left(\frac{1}{2\pi}\int_{0}^{2\pi}\dd\phi\right)\left(\frac{1}{2}\int_{0}^{\pi}\sin\theta\dd\theta\right)=1.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Con el ultimo paso se ha separado la distribución de probabilidad de vectores
+ en la esfera, en dos distribuciones de probabilidad 
+\begin_inset Formula $u,v$
+\end_inset
+
+ para las variables aleatorias 
+\begin_inset Formula $\theta,\phi$
+\end_inset
+
+ definidas como
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+U(\theta)=\frac{1}{2}\int_{0}^{\theta}\sin\theta'\dd\theta'=\frac{1}{2}(1-\cos\theta),\;V(\phi)=\frac{1}{2\pi}\int_{0}^{\phi}\dd\phi'=\frac{\phi}{2\pi},
+\end{equation}
+
+\end_inset
+
+luego se definen variables aleatorias 
+\begin_inset Formula $u,v$
+\end_inset
+
+ tales que su función de distribución son las variables aleatorias 
+\begin_inset Formula $\theta,\phi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{cc}
+\theta=\arccos(1-2u), & \phi=2\pi v,\end{array}\label{eq:transformaciones}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\begin_inset Formula $u,v\in(0,\text{1})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Recapitulando los pasos para generar un vector aleatorio en la esfera son
+ los siguientes:
+\end_layout
+
+\begin_layout Enumerate
+Se generan dos números aleatorios 
+\begin_inset Formula $u_{r},v_{r}\in[0,1]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Se calculan las variables 
+\begin_inset Formula $\theta_{r}=\arccos(1-2u_{r}),\phi=2\pi v_{r}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Se calculan las componentes cartesianas y se define el vector 
+\begin_inset Formula $\vec{s_{r}}=\left(\sin\theta_{r}\cos\text{\ensuremath{\phi_{r}},\ensuremath{\sin\theta\sin\phi_{r}},\ensuremath{\cos\theta_{r}}}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/dist1.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Distribución aleatoria y uniforme de las variables 
+\begin_inset Formula $u,v$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/dist2.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Transformación de las variables 
+\begin_inset Formula $u,v$
+\end_inset
+
+ a las variables 
+\begin_inset Formula $\theta,\phi$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+En la figura (a) se tiene una distribución de puntos homogénea y aleatoria,
+ la distribución se mapea a la distribución de la figura (b) en las variables
+ 
+\begin_inset Formula $\theta,\phi$
+\end_inset
+
+,se obtiene es una distribución es la que genera vectores aleatorios y uniformem
+ente distribuidos en la esfera.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dada una esfera 
+\begin_inset Formula $\mathcal{S}^{2}$
+\end_inset
+
+ y un vector 
+\begin_inset Formula $\vec{s}_{0}$
+\end_inset
+
+, el siguiente es desafío generar una distribución de vectores aleatoria
+ y uniformemente distribuida en una región circular
+\begin_inset Formula $R$
+\end_inset
+
+ de la esfera 
+\begin_inset Formula $\mathcal{S}^{2}$
+\end_inset
+
+ con centro en 
+\begin_inset Formula $\vec{s}_{0}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Se define como la región de la esfera es con centro en 
+\begin_inset Formula $\vec{s}_{0}$
+\end_inset
+
+ tal que la distancia esférica máxima entre 
+\begin_inset Formula $\vec{s}_{0}$
+\end_inset
+
+ y cualquier vector de la distribución es 
+\begin_inset Formula $\alpha_{\mathrm{max}}=\arccos(1-2u_{\mathrm{max}})$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{equation}
+R=\left\{ \vec{s}\in\mathcal{S}^{2}|d(\vec{s},\vec{s}_{0})\leq\alpha_{\mathrm{max}}\right\} ,
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $d(\vec{s},\vec{s}_{0})$
+\end_inset
+
+ la distancia esférica entre 
+\begin_inset Formula $\vec{s}$
+\end_inset
+
+ y 
+\begin_inset Formula $\vec{s}_{0}$
+\end_inset
+
+.
+ El valor 
+\begin_inset Formula $u_{\mathrm{max}}$
+\end_inset
+
+ ajusta el porcentaje 
+\begin_inset Formula $p$
+\end_inset
+
+ de la esfera que se cubre, si 
+\begin_inset Formula $u=1$
+\end_inset
+
+ entonces 
+\begin_inset Formula $\alpha=\pi$
+\end_inset
+
+ y la región que se cubre es la totalidad de la esfera.
+ 
+\end_layout
+
+\begin_layout Standard
+Si se quiere cubrir el porcentaje 
+\begin_inset Formula $p$
+\end_inset
+
+ de la esfera, se fija 
+\begin_inset Formula $u_{\mathrm{max}}=p/100$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Pasos para generar un vector aleatorio en 
+\begin_inset Formula $R$
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+Se genera un vector aleatorio 
+\begin_inset Formula $\vec{r}$
+\end_inset
+
+ en la esfera completa.
+ Los vectores 
+\begin_inset Formula $\vec{s}_{0}$
+\end_inset
+
+ y 
+\begin_inset Formula $\vec{r}$
+\end_inset
+
+ fijan un circulo máximo sobre la esfera con una orientación aleatoria.
+\end_layout
+
+\begin_layout Standard
+Se calcular un vector ortonormal al plano formado por 
+\begin_inset Formula $\vec{s_{0}}$
+\end_inset
+
+ y 
+\begin_inset Formula $\vec{r}$
+\end_inset
+
+ siguiendo la ecuación
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\vec{k}=\frac{\vec{s}_{0}\times\vec{r}}{\Vert\vec{s}_{0}\times\vec{r}\Vert}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se hace define el nuevo vector como una rotación de 
+\begin_inset Formula $\vec{s}_{0}$
+\end_inset
+
+ respecto 
+\begin_inset Formula $\vec{k}$
+\end_inset
+
+ por un ángulo 
+\begin_inset Formula $\alpha_{r}\in(0,\alpha_{\mathrm{max}})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+El vector aleatorio 
+\begin_inset Formula $\vec{s}_{r}$
+\end_inset
+
+ respecto al vector de referencia 
+\begin_inset Formula $\vec{s}_{r}$
+\end_inset
+
+ es de la forma
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\vec{s}_{r}=\vec{s}_{0}\cos\alpha_{r}+(\vec{k}\times\vec{s_{0}})\sin\alpha_{r}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El procedimiento es sencillo de implementar aquí hay un ejemplo de implementació
+n en el lenguaje de programación Fortran.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/cone.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Rotación de un espín 
+\begin_inset Formula $\vec{s}$
+\end_inset
+
+ respecto al eje de rotación 
+\begin_inset Formula $\vec{k}$
+\end_inset
+
+ en dirección 
+\begin_inset Formula $\vec{r}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Algoritmo Hoshen-Kopelman
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Algoritmo-Hoshen-Kopelman"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Definición: cúster.
+\end_layout
+
+\begin_layout Plain Layout
+En una retícula de espines clasicos, un clúster es un conjunto de sitios
+ enlazados directa o indirectamente.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El algoritmo de Hoshen-Kopelman fue descrito por Joseph Hoshen y Raoul Kopelman
+ en 1976 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "hoshen_percolation_1976"
+literal "false"
+
+\end_inset
+
+.
+ El algoritmo de Hoshen-Kopelman describe como etiquetar los sitios de la
+ retícula en sus respectivos clústers a partir de una función de enlace.
+\end_layout
+
+\begin_layout Standard
+El algoritmo de Hoshen-Kopelman es considerablemente más eficiente que otros
+ métodos de formación de clústers.
+ A diferencia de algoritmos en los que el número de cálculos crece cuadráticamen
+te con el volumen del sistema, en el caso de Hoshen-Kopelman dicho crecimiento
+ es lineal.
+\end_layout
+
+\begin_layout Standard
+Un enlace directo ocurre entre dos sitios vecinos, mientras que un enlace
+ indirecto se da entre sitios que no son vecinos, pero que están conectados
+ a un sitio común.
+ Este tipo de enlace implica la posibilidad de que dos clústers inicialmente
+ distintos se unan mediante una conexión entre elementos que pertenecen
+ a cada uno de ellos.
+\end_layout
+
+\begin_layout Standard
+Para empezar vamos a generar una configuración de enlaces en donde cada
+ sitio 
+\begin_inset Formula $x$
+\end_inset
+
+ indica los enlaces directos, por ejemplo en una retícula cuadrada hay cuatro
+ vecinos más cercanos, para cada vecino un 1 indica un enlace directo mientras
+ que un 0 indica que no hay enlace.
+ La función de enlace 
+\begin_inset Formula $p(x_{1},x_{2})$
+\end_inset
+
+ da la probabilidad de enlace entre los sitios 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Una vez determinada todos los enlaces se realizan los siguientes pasos:
+\end_layout
+
+\begin_layout Enumerate
+Se selecciona un sitio 
+\begin_inset Formula $x$
+\end_inset
+
+ y se comprueban sus enlaces directos.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Si no hay enlaces directos, se etiqueta al sitio con un identificador 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ correspondiente a un clúster de un elemento y se regresa al paso 1.
+\end_layout
+
+\begin_layout Enumerate
+Si hay enlaces directos se pasa al paso 2.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Se comprueban los enlaces directos de los sitios vecinos.
+ Todos los espines enlazados en la comprobación se etiquetan con un identificado
+r 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ correspondiente a un clúster.
+\end_layout
+
+\begin_layout Enumerate
+Se repinten los pasos anteriores etiquetando cada sitio de la retícula en
+ sus respectivos clústers.
+\end_layout
+
+\begin_layout Enumerate
+En el proceso de formación de cústers, habrán casos en los que a un sitio
+ le corresponden dos o más etiquetas 
+\begin_inset Formula $\alpha_{1},\dots,\alpha_{n}$
+\end_inset
+
+, ya que hay un enlace indirecto entre clústers los clusters correspondientes
+ se fusionan en uno y se les asigna la etiqueta 
+\begin_inset Formula $\alpha_{1.}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Una segunda propuesta útil para loa formación de cústers individuales es
+ la formación procedural de clústers.
+ En este caso es importante diferenciar entre sitios en el interior de un
+ cúster y sitios en la frontera de un clúster.
+ Un sitio en el interior de un clúster si todos sus vecinos más cercanos
+ pertenecen al mismo clúster.
+ En complementariedad un sitio esta en la frontera si alguno de sus vecinos
+ más cercanos no pertenece al clúster.
+\end_layout
+
+\begin_layout Standard
+En la formación procedural se parte de un clúster individual y se va extendiendo
+ una frontera provisional en cada paso hasta alcanzar el tamaño máximo del
+ clúster, en ocasiones transformando a los sitios de la frontera en sitios
+ en el interior.
+ 
+\end_layout
+
+\begin_layout Standard
+Para evitar que un clúster se extienda indebidamente por el calculo doble
+ de una probabilidad de enlace, solo se calculara una vez un enlace entre
+ dos espines.
+\end_layout
+
+\begin_layout Standard
+El proceso es el siguiente:
+\end_layout
+
+\begin_layout Enumerate
+Se selecciona un sitio aleatorio 
+\begin_inset Formula $x$
+\end_inset
+
+ y se comprueban los enlaces directos.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Todos los espines enlazados en la comprobación se etiquetan con un identificador
+ 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ correspondiente a un clúster.
+\end_layout
+
+\begin_layout Enumerate
+Se identifican los sitios localizados en la frontera y se comprueban sus
+ enlaces directos.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Si hay enlaces directos adicionales se regresa al paso 2.
+\end_layout
+
+\begin_layout Enumerate
+Si no hay enlaces directos adicionales se termina la comprobación.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Este método es especialmente útil en la formación de un clúster, ya que
+ evita el calculo de una gran cantidad e enlaces.
+\end_layout
+
+\begin_layout Standard
+La aplicación de estos métodos al los algoritmos multi-clsuter y single-cluster,
+ permiten ahorrar una gran cantidad cálculos, por lo que el poder de computo
+ pude usarse en aumentar la estadística de los experimentos y reducir los
+ tiempos de calculo, sin duda es un beneficio que vale la pena a cambio
+ de un poco de programación extra.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[node distance=2cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (start) [startstop] {Inicio}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (p1) [process, below of=start] {Se selecciona $x_i$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (p2) [process, below of=p1] {Se crea un nuevo clúster};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (p3) [process, below of=p2] {Se buscan enlaces entre los sitios vecinos};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (p4a) [process, left of=p3, xshift=-2.5cm] {Se añade $x_i$ al nuevo
+ clúster };
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (p4b) [process, below of=p3] {Los sitios enlazados se añaden al nuevo
+  clúster};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (p5) [process, below of=p4b,xshift=3cm] {Se unen los clústers};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw [arrow] (start) -- (p1);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw [arrow] (p1) -- (p2);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw [arrow] (p2) -- (p3);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw [arrow] (p3) -- (p4a);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw [arrow] (p3) -- (p4b);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw [arrow] (p4a) |- (p1);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw [arrow] (p4b) -- (p5);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw [arrow] (p5) |-  (p1);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Rutina, algoritmo de Hoshen-Kopelman.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "bibliography"
+options "bibtotoc"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

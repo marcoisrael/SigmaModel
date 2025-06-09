@@ -22,7 +22,7 @@ for cite in cite_list[1:]:
     if re.search("book", cite):
         cite = cite.replace("book", "article")
         cite = cite.replace("publisher", "journal")
-        regexp = "@article|\ttitle =|doi =|journal =|author =|year =|pages ="
+        regexp = "@article|\ttitle =|doi =|journal =|author =|year =|pages =|url ="
         for line in f"@{cite}".splitlines():
             if re.search("@book|@incollection", line):
                 outlines.append(f"{line}\n".replace)
