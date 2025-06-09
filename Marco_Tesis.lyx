@@ -50,6 +50,7 @@ text width=3cm,
 draw=black]
 
 \tikzstyle{arrow} = [thick,->,>=stealth]
+\setcounter{tocdepth}{1}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -101,7 +102,7 @@ draw=black]
 \cite_engine biblatex
 \cite_engine_type numerical
 \biblio_style plain
-\biblio_options doi=false,maxbibnames=10,sorting=none
+\biblio_options doi=false,url=false,maxbibnames=10,sorting=none
 \biblatex_bibstyle ieee
 \biblatex_citestyle ieee
 \use_bibtopic false
@@ -148,13 +149,49 @@ newbibmacro{string+doi}[1]{%
 
 \begin_layout Plain Layout
 
-  
+	
 \backslash
-iffieldundef{doi}{#1}{
+iffieldundef{doi}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\backslash
+iffieldundef{url}
+\end_layout
+
+\begin_layout Plain Layout
+
+		{#1}
+\end_layout
+
+\begin_layout Plain Layout
+
+		{
+\backslash
+href{
+\backslash
+thefield{url}}{#1}}%     
+\end_layout
+
+\begin_layout Plain Layout
+
+	}     
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
 \backslash
 href{http://dx.doi.org/
 \backslash
-thefield{doi}}{#1}}}
+thefield{doi}}{#1}}% 
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -165,7 +202,7 @@ DeclareFieldFormat[article]{title}{
 \backslash
 usebibmacro{string+doi}{
 \backslash
-mkbibquote{#1}}}
+mkbibquote{#1}}} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -245,20 +282,33 @@ Motivación al estudio de sistemas fuera del equilibrio
 \end_layout
 
 \begin_layout Standard
-En física, se busca dar descripciones cuantitativas a los sistemas físicos.
+En la practica de la física, se busca describir fenómenos físicos.
  Para ello, se emplean herramientas matemáticas como el cálculo, la estadística
- y la geometría, al mismo tiempo que se avanza en el desarrollo de tecnología
- para realizar mejores experimentos y medir observables físicas en condiciones
- óptimas.
- Las líneas de investigación continúan de generación en generación, refinando
- tanto la teoría como la experimentación.
+ y la geometría.
+ Para realizar mejores experimentos y mediciones, se avanza en el desarrollo
+ de tecnología en múltiples frentes.
+ La investigación es un proceso largo y requiere gran esfuerzo, a veces
+ el esfuerzo no recompensa con resultados favorables, los modelos se desechan
+ o se replantean.
+ Las investigaciones continúan de generación en generación, refinando la
+ teoría como la experimentación.
  De esta forma, la comunidad científica progresa de manera consistente y
  sistemática.
 \end_layout
 
 \begin_layout Standard
-Una de estas líneas de investigación se desarrolló entre 1949 y 1952 en
- Los Álamos, de la mano de Nicholas Metropolis, Arianna W.
+Los estados de la materia y sus transiciones de fase son temas de gran interés
+ en física.
+ Kibble y Wojciech H.
+ Zurek se interesaron en el estudio de las clases de universalidad y como
+ muchos sistemas presentan ruptura de simetría al pasar por una temperatura
+ critica, propusieron que la supervivencia de defectos topológicos, se relaciona
+ con el ratio de enfriamiento al que un sistema pasa por la temperatura
+ critica.
+\end_layout
+
+\begin_layout Standard
+Entre los años 1949 y 1952: Nicholas Metropolis, Arianna W.
  Rosenbluth, Marshall N.
  Rosenbluth, Augusta H.
  Teller, y Edward Teller 
@@ -270,10 +320,15 @@ literal "false"
 \end_inset
 
 .
+ , trabajaban en Los Álamos en el desarrollo de la bomba atómica.
  Su trabajo se centró en comprender la física de las interacciones entre
  la radiación y la materia bajo condiciones extremas, tales como explosiones,
  implosiones y la evolución de reacciones nucleares fuera del equilibrio.
- En estas circunstancias, los experimentos se vuelven complejos, y la teoría
+ 
+\end_layout
+
+\begin_layout Standard
+En estas circunstancias, los experimentos se vuelven complejos, y la teoría
  detrás de procesos que involucran interacciones entre un vasto número de
  partículas resulta demasiado intrincada.
  Para superar estas limitaciones, desarrollaron una serie de métodos basados
@@ -282,22 +337,25 @@ literal "false"
 
 \begin_layout Standard
 Con el posterior desarrollo de los ordenadores, los métodos de Monte Carlo
- se volvieron herramientas fundamentales en el estudio de diversos sistemas
- con incontables grados de libertad, tanto en equilibrio como fuera de él.
- En este trabajo, aplicaremos estos métodos al estudio de enfriamientos
- rápidos en el modelo 2d O(
+ se volvieron herramientas fundamentales en el estudio de sistemas con incontabl
+es grados de libertad.
+\end_layout
+
+\begin_layout Standard
+En este trabajo, se aplicaron los métodos de Monte Carlo al estudio de enfriamie
+ntos rápidos de en el modelo 2d O(
 \begin_inset Formula $3$
 \end_inset
 
-), un modelo simplificado del enfriamiento del universo temprano y del 
-\begin_inset Formula $^{4}$
-\end_inset
-
-He en estado superfluido.
+).
+ Se realizaron simulaciones en equilibrio y fuera del equilibrio.
+ En los experimentos fuera del equilibrio se midieron los defectos topológicos
+ remanentes para diferentes ratios de enfriamiento, esperando resultados
+ compatibles con la ley de escalamiento de Zurek.
 \end_layout
 
 \begin_layout Chapter
-Acercamiento estadístico a la mecánica cuántica
+Función de partición e integral de trayectorias
 \end_layout
 
 \begin_layout Section
@@ -748,7 +806,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename break_path.pdf
+	filename /home/israel/Documentos/Servicio/SigmaModel/break_path.pdf
 	scale 50
 
 \end_inset
@@ -774,7 +832,6 @@ Ejemplificación de la evolución de un estado en en el espacio fase, desde
 \end_inset
 
 .
- 
 \end_layout
 
 \end_inset
@@ -782,13 +839,13 @@ Ejemplificación de la evolución de un estado en en el espacio fase, desde
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Rotación de Wick
 \end_layout
 
 \begin_layout Standard
@@ -1252,7 +1309,7 @@ Espín en el modelo O(
 \begin_inset Formula $3$
 \end_inset
 
-) 
+)
 \end_layout
 
 \end_inset
@@ -1417,6 +1474,33 @@ Energía
 \end_layout
 
 \begin_layout Standard
+En el modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+), la temperatura es un paramento que añade ruido aleatorio a cambiar las
+ direcciones de los espines.
+ A temperatura 
+\begin_inset Formula $T=0$
+\end_inset
+
+ no hay fluctuaciones y el sistema alcanza una configuración de energía
+ mínima.
+ Cuando la temperatura 
+\begin_inset Formula $T_{c}>T>0$
+\end_inset
+
+ se forman grupos de espines alineados, el vector de magnetización de cada
+ grupo apunta en una dirección diferente, por lo que el sistema no alcanza
+ una configuración de energía mínima.
+ A mayor temperatura es mayor el número de espines apuntando en direcciones
+ aleatorias.
+ Pasando la temperatura crítica, la intensidad de las fluctuaciones evita
+ la formación de grupos considerables de espines alineados, por consecuencia
+ predomina el ruido termodinámico.
+\end_layout
+
+\begin_layout Standard
 En los modelos O
 \begin_inset Formula $(n)$
 \end_inset
@@ -1447,31 +1531,9 @@ noprefix "false"
 \end_inset
 
 
-\begin_inset Box Shadowbox
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Simplificacion del hamiltoniano.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Aunque es una ecuación sencilla de manejar es posible simplificarla intercambian
 do y recorriendo índices en el tercer termino de la ec.
  
@@ -1487,7 +1549,7 @@ noprefix "false"
 , se tiene
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 \sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}-1,x_{2}}=\sum_{x_{2}=1}^{L}\sum_{x_{1}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}-1,x_{2}}=\sum_{x_{2}=1}^{L}\sum_{x_{1}=0}^{L-1}\vec{s}_{x_{1}+1,x_{2}}\cdot\vec{s}_{x_{1},x_{2}}.
@@ -1522,7 +1584,7 @@ Por las condiciones de frontera
 Entonces
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 \sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}-1,x_{2}}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}+1,x_{2}}.\label{eq:equiv1}
@@ -1544,7 +1606,7 @@ noprefix "false"
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Intercambiando y recorriendo índices en el tercer termino de la ec.
  
 \begin_inset CommandInset ref
@@ -1559,7 +1621,7 @@ noprefix "false"
  se tiene
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 \sum_{x_{1}=1}^{L}\sum_{x_{2\;}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}-1}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=0}^{L-1}\vec{s}_{x_{1},x_{2}+1}\cdot\vec{s}_{x_{1},x_{2}}.
@@ -1594,7 +1656,7 @@ Por las condiciones de frontera
 Entonces
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 \sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}-1}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}+1}.\label{eq:equiv2}
@@ -1636,16 +1698,11 @@ noprefix "false"
  y simplificando términos se llega a la forma compacta del hamiltonoano
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 \mathcal{H}\left[s\right]=-J\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\left(\vec{s}_{x_{1}+1,x_{2}}+\vec{s}_{x_{1},x_{2}+1}\right).\label{eq:hamiltoniano_simplificado}
 \end{equation}
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 
@@ -1925,7 +1982,7 @@ literal "false"
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -2204,431 +2261,9 @@ Descomposición de la retícula cardada bidimensional en triángulos alternado
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
-\end_layout
-
-\begin_layout Chapter
-Métodos de Monte Carlo
-\end_layout
-
-\begin_layout Standard
-Un proceso estocástico es un secuencia de eventos aleatorios, consideremos
- un evento aleatorio con 
-\begin_inset Formula $N$
-\end_inset
-
- posibles resultados 
-\begin_inset Formula $\{x_{1},\dots,x_{N}\}$
-\end_inset
-
-.
- Una variable aleatoria 
-\begin_inset Formula $X$
-\end_inset
-
- es una selección aleatoria en el conjunto de los resultados posibles de
- un evento.
- La probabilidad de que un valor 
-\begin_inset Formula $x_{i}$
-\end_inset
-
- sea elegido esta dado por 
-\begin_inset Formula $p_{i}=P\{X=x_{i}\}$
-\end_inset
-
-.
- Cada resultado y su probabilidad, en conjunto forman una distribución.
-\end_layout
-
-\begin_layout Standard
-La importancia de muestreo consiste en evaluar propiedades de una distribución
- a partir de una muestra de una distribución diferente.
-\end_layout
-
-\begin_layout Standard
-La esencia de los métodos de Monte Carlo es evaluar numéricamente las sumas
- o integrales del espacio fase.
- El método de Monte Carlo introducido por Metropolis se basa en la idea
- de importancia de muestreo.
- En este enfoque, los puntos del espacio de fases no se seleccionan completament
-e al azar, sino que se distribuyen con mayor densidad en aquellas regiones
- del espacio de fases que aportan contribuciones dominantes a las integrales.
- 
-\end_layout
-
-\begin_layout Standard
-Una cadena de Markov se representa por una matriz de 
-\begin_inset Formula $W$
-\end_inset
-
- con entradas 
-\begin_inset Formula $W_{i,j}$
-\end_inset
-
- 
-\begin_inset Formula $i,j\in\mathbb{N}$
-\end_inset
-
-que satisfacen la condición 
-\begin_inset Formula 
-\begin{equation}
-\sum_{i,j}W_{i,j}=1.
-\end{equation}
-
-\end_inset
-
-Cada valor 
-\begin_inset Formula $W_{i,j}$
-\end_inset
-
- representa la probabilidad de que un sistema en la configuración 
-\begin_inset Formula $[s]_{i}$
-\end_inset
-
- pase a la configuración 
-\begin_inset Formula $[s]_{j}$
-\end_inset
-
- en un una unidad de tiempo discreta conocida como paso de Markov.
-\end_layout
-
-\begin_layout Standard
-Consideremos la cadena de Markov dada por 
-\begin_inset Formula $t_{i}$
-\end_inset
-
- donde 
-\begin_inset Formula $i\in\{1,\dots,N\}$
-\end_inset
-
- y 
-\begin_inset Formula $O[s]_{i}$
-\end_inset
-
- es el valor de la observable en el instante 
-\begin_inset Formula $t_{i}$
-\end_inset
-
-, el promedio aproximado de la observable en el intervalo temporal medido
- es
-\begin_inset Formula 
-\begin{equation}
-\expval{O}_{\mathrm{aprox}}=\frac{1}{N}\sum_{i=1}^{N}O[s]_{i},
-\end{equation}
-
-\end_inset
-
-donde 
-\begin_inset Formula $[s]_{i}$
-\end_inset
-
- es la configuración del sistema en el instante 
-\begin_inset Formula $t_{i}$
-\end_inset
-
-.
- La desviación estándar de esta suma de configuraciones es
-\begin_inset Formula 
-\begin{equation}
-\mathrm{std}(O)=\sqrt{\frac{1}{N-1}\text{\ensuremath{\left(\sum_{i=1}^{N}O[s]_{i}^{2}-N\expval{O}^{2}\right)}}},
-\end{equation}
-
-\end_inset
-
-y el error estándar se define por la ecuación
-\begin_inset Formula 
-\begin{equation}
-\mathrm{error}(O)=\frac{\mathrm{std}(O)}{\sqrt{N}}.
-\end{equation}
-
-\end_inset
-
-Si cada medición es estadísticamente independiente, conduce al valor esperado
- de la observable y su error estándar definido por la ecuación
-\begin_inset Formula 
-\begin{equation}
-\expval{O}\simeq\expval{O}_{\mathrm{aprox}}\pm\mathrm{error}(O).
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Box Shadowbox
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-Definicion: Balance Detallado.
- 
-\end_layout
-
-\begin_layout Plain Layout
-Sea 
-\begin_inset Formula $\{s_{i}\}$
-\end_inset
-
- una cadena de Markov con probabilidad de transición estacionaria.
- La cadena de Markov es reversible respecto a la distribución de probabilidad
- 
-\begin_inset Formula $p$
-\end_inset
-
- si cumple la ecuación de balance detallado
-\begin_inset Formula 
-\begin{equation}
-p[s\rightarrow s']p[s]=p[s'\rightarrow s]p[s'],\label{eq:detailed_balance}
-\end{equation}
-
-\end_inset
-
-donde 
-\begin_inset Formula $p[s]$
-\end_inset
-
- es la probabilidad de la configuración 
-\begin_inset Formula $\left[s\right]$
-\end_inset
-
- y 
-\begin_inset Formula $p[s\rightarrow s']$
-\end_inset
-
- es la probabilidad de la transición de la configuración 
-\begin_inset Formula $\left[s\right]$
-\end_inset
-
- a 
-\begin_inset Formula $\left[s'\right]$
-\end_inset
-
-, de igual manera 
-\begin_inset Formula $p[s']$
-\end_inset
-
- es la probabilidad de la configuración 
-\begin_inset Formula $\left[s'\right]$
-\end_inset
-
- y 
-\begin_inset Formula $p[s'\rightarrow s]$
-\end_inset
-
- es la probabilidad de la transición de la configuración 
-\begin_inset Formula $\left[s\right]$
-\end_inset
-
- a 
-\begin_inset Formula $\left[s'\right]$
-\end_inset
-
- 
-\begin_inset CommandInset citation
-LatexCommand autocite
-key "athreya_convergence_1996"
-literal "false"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\end_inset
-
-
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Algoritmo de Metropolis
-\end_layout
-
-\begin_layout Standard
-Metropolis es un algoritmo de actualización local esto significa que los
- elementos de la configuración cambian individualmente, para generar una
- nueva configuración se usa la probabilidad de transición con todos los
- elementos de la configuración.
- Consideremos el modelo de espines 
-\begin_inset Formula $2$
-\end_inset
-
--d O(
-\begin_inset Formula $3$
-\end_inset
-
-), definido en la retícula cuadrada 
-\begin_inset Formula $\mathscr{R}_{L}^{2}$
-\end_inset
-
-, la de energía de una configuración se define por la ec.
- 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:hamiltoniano_simplificado"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
- En este modelo, un algoritmo de actualizaron local actúa sobre un espín
- y sus vecinos más cercanos.
- 
-\end_layout
-
-\begin_layout Standard
-Dada una configuración 
-\begin_inset Formula $[s]$
-\end_inset
-
-, para cada elemento en la configuración se propone un cambio aleatorio
- que resulta en una configuración [s'].
- Si el cambio propuesto se acepta o se rechaza depende a la probabilidad
- de aceptación definida como
-\begin_inset Formula 
-\begin{equation}
-p[s\rightarrow s']=\begin{cases}
-\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)} & \mathrm{si}\qquad\mathcal{H}[s']\geq\mathcal{H}[s]\\
-0 & \mathrm{si}\qquad\mathcal{H}[s']<\mathcal{H}[s].
-\end{cases}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-La diferencia en la energía de las configuraciones es 
-\begin_inset Formula 
-\begin{equation}
-\Delta\mathcal{H}=\mathcal{H}[s']-\mathcal{H}[s].
-\end{equation}
-
-\end_inset
-
-Es conveniente definir la probabilidad de aceptación en función de la diferencia
- de energía entre configuraciones
-\begin_inset Formula 
-\begin{equation}
-p[s\rightarrow s']=\begin{cases}
-\mathrm{e}^{-\beta\Delta\mathcal{H}} & \mathrm{si}\qquad\Delta\mathcal{H}\geq0\\
-0 & \mathrm{si}\qquad\Delta\mathcal{H}<0.
-\end{cases}
-\end{equation}
-
-\end_inset
-
-Si la energía de la configuración disminuye con el cambio, la probabilidad
- de aceptaciones 1, y se acepta de inmediato.
- Si la energía de la configuración aumenta, esta se acepta con una probabilidad
- 
-\begin_inset Formula $\mathrm{e}^{-\beta\Delta\mathcal{H}}$
-\end_inset
-
-.
- A mayor temperatura 
-\begin_inset Formula $\beta\rightarrow0$
-\end_inset
-
- y la probabilidad de aceptación de las configuraciones que aumentan la
- energía se acerca a 1.
- Esto se traduce en más ruido térmico.
- Por otro lado a menor temperatura 
-\begin_inset Formula $\beta\rightarrow\infty$
-\end_inset
-
- la probabilidad de aceptación de las configuraciones que aumentan la energía
- tiende a cero.
- A menor temperatura, menor número de fluctuaciones, y un menor número de
- fluctuaciones permite que el sistema se aproxime al estado de mínima energía.
- La prueba de aceptación se repite para cada elemento de la configuración
- 
-\begin_inset Formula $[s]$
-\end_inset
-
-, una vez que se probaron todos los espines, se dice que se ha realizado
- un barrido.
- Un barrido corresponde una unidad de tiempo discreto de Markov para el
- algoritmo Metropolis, la forma en la que se realiza el barrido puede ser
- lexicográfica, en la que los espines se elijen siendo un orden basado en
- las posiciones de la retícula.
- O puede ser aleatorio en donde los espines se elijen al azar.
-\end_layout
-
-\begin_layout Standard
-En el modelo 2d O(
-\begin_inset Formula $3$
-\end_inset
-
-).
- La diferencia de energía en términos de los espines 
-\begin_inset Formula $\vec{s}_{i,j}\in\mathbb{Z}_{L}^{2}$
-\end_inset
-
- es
-\begin_inset Formula 
-\begin{equation}
-\Delta\mathcal{H}_{i,j}=\mathcal{H}[s']-\mathcal{H}[s]=-\left(\vec{s}_{i,j}^{\,\prime}-\vec{s}_{i,j}\right)\cdot\left(\vec{s}_{i+1,j}+\vec{s}_{i,j+1}+\vec{s}_{i-1,j}+\vec{s}_{i,j-1}\right).\label{eq:energy_diff}
-\end{equation}
-
-\end_inset
-
-Calcular la diferencia de energía entre configuraciones en el modelo 2d
- O(
-\begin_inset Formula $3$
-\end_inset
-
-)implicar realizar pocos cálculos, por lo que los algoritmos de actualización
- local son muy eficientes lejos de la temperatura crítica, el problema con
- la temperatura crítica es que a disminuir el número de cambios que se aceptan,
- el tiempo de relajación del sistema aumenta exponencialmente, a este fenómeno
- se le conoce como desaceleración crítica.
- Si se necesita estudiar sistemas en equilibrio cerca de la temperatura
- crítica hay una opción más conveniente que consiste en usar un algoritmo
- que actualice grupos de espines en vez de espines individues 
-\begin_inset CommandInset citation
-LatexCommand autocite
-key "binder_monte_1988,swendsen_nonuniversal_1987"
-literal "false"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Section
@@ -3037,7 +2672,7 @@ Se pasa al siguiente espín y se regresa al paso 1.
 \end_layout
 
 \begin_layout Standard
-Si existe un enlace con uno de los espines vecinos se forma un cluseter
+Si existe un enlace con uno de los espines vecinos se forma un clúseter
  con los espines enlazados, se selecciona uno de estos espines y se repite
  la prueba de enlace con sus propios vecinos más cercanos.
  Si hay más enlaces se continua repitiendo el proceso, si no hay enlaces
@@ -3056,7 +2691,7 @@ Cuando se termina de formar el clúster se cambia el estado de todos los
 \end_layout
 
 \begin_layout Standard
-Una variante del algoritmo consiste en formar multiples clústers a la vez,
+Una variante del algoritmo consiste en formar múltiples clústers a la vez,
  en lugar de uno.
  Una vez formados se decide si un se cambia el estado de sus elementos clúster
  con probabilidad 
@@ -3073,12 +2708,275 @@ Una forma de realizar el proceso de formación de grupos es usar el algoritmo
 \begin_inset Formula $2$
 \end_inset
 
--d O(3) en el apéndice B.
+-d O(3) en el apéndice 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Algoritmo-Hoshen-Kopelman"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
  
 \end_layout
 
 \begin_layout Chapter
 Fenómenos críticos
+\end_layout
+
+\begin_layout Section
+Transiciones de fase
+\end_layout
+
+\begin_layout Standard
+Una transición de fase ocurre cunado hay un discontinuad en la energía libre
+ o en una de sus derivadas.
+ En la transitorio hay un cambio visible en las propiedades del sistema
+ que se esta observando: Como el cambio de estado liquido a gas, de estado
+ paramagnético a ferromagnético o conductor a superconductor.
+\end_layout
+
+\begin_layout Standard
+A nivel microscópico un sistema puede pasar de un estado simétrico y con
+ alta energía a otro asimétrico y menor energía al pasar por debajo de una
+ temperatura critica 
+\begin_inset Formula $T_{c}$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "giachetti_berezinskii-kosterlitz-thouless_2021,hinrichsen_non-equilibrium_2000,yeomans_statistical_1992"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+En el diagrama de la imagen 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "diag_phase"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, las lineas delimitan las regiones en las que el fluido es estable.
+ El fluido puede existir en estado solido liquido o gaseoso, en función
+ de la presión y la temperatura.
+ La variación de las variables en una región estable no cambia el estado
+ del fluido, en cambio cruzar las fronteras implica un salto en la densidad
+ y el calor latente, como consecuencia de una discontinuidad de primer orden
+ en la energía libre.
+ 
+\end_layout
+
+\begin_layout Standard
+En el proceso descrito se pasan por dos fases: 
+\end_layout
+
+\begin_layout Itemize
+Una fase desordenada por encima de la temperatura crítica.
+ 
+\end_layout
+
+\begin_layout Itemize
+Una fase ordenada por debajo de la temperatura crítica.
+\end_layout
+
+\begin_layout Standard
+Este es un ejemplo de una transición de segundo orden, ya que implica una
+ discontinuidad en la segunda derivada de la energía libre del sistema.
+\end_layout
+
+\begin_layout Standard
+Cuando se perturba un sistema en equilibrio, las variables mecánicas del
+ sistema cambian, el tiempo que el sistema tarda en alcanzar nuevamente
+ el estado de equilibrio termodinámico es conocido como tiempo de relajación
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/phase.png
+	lyxscale 80
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Diagrama de fase de un fluido.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "diag_phase"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/discont_0.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Energía libre.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/discont_1.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Primera derivada de la energía libre.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/discont_2.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Segunda derivada de la energía libre.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Transición de fase de segundo orden.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Parametro de orden
+\end_layout
+
+\begin_layout Standard
+Un parametro de orden es una cantidad que caracteriza el estado de un sistema
+ físico durante una transición de fase.
+ Por ejemplo, la magnetización es un parametro de orden para un ferromagnético
+ que pase del estado diamagnético al paramagnético.
+ Se pueden derivar de la función de partición del sistema.
 \end_layout
 
 \begin_layout Standard
@@ -3124,35 +3022,11 @@ donde
 
 \end_inset
 
-A partir de la función de partición, la energía promedio se calcula como
-\begin_inset Formula 
-\begin{equation}
-\expval{\mathcal{H}}=\frac{\sum_{\sigma}\mathcal{H}[\sigma]\mathrm{e}^{-\beta\mathcal{H}[\sigma]}}{Z}=\pdv{\beta\mathcal{F}}{\beta}.
-\end{equation}
-
-\end_inset
-
-El calor específico a volumen constante se define como
-\begin_inset Formula 
-\begin{equation}
-\begin{aligned}c_{V}=\frac{1}{V} & \left(\pdv{\beta\expval{\mathcal{H}}}{T}\right)_{V}=\frac{1}{V}\pdv{T}\frac{\sum_{\sigma}\mathcal{H}_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\\
-=\frac{1}{V}\frac{1}{k_{B}T} & \left[\frac{\sum_{\sigma}\mathcal{H}_{\sigma}^{2}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}-\left(\frac{\sum_{\sigma}\mathcal{H}_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\right)^{2}\right],\\
-=\frac{1}{V} & \frac{1}{k_{B}T^{2}}\left(\expval{\mathcal{H}^{2}}-\expval{\mathcal{H}}^{2}\right).
-\end{aligned}
-\end{equation}
-
-\end_inset
-
 
 \end_layout
 
 \begin_layout Standard
-Siendo 
-\begin_inset Formula $B$
-\end_inset
-
- el campo magnético aplicado.
- La magnetización 
+A partir de la función de partición la magnetización 
 \begin_inset Formula $M$
 \end_inset
 
@@ -3190,209 +3064,36 @@ La susceptibilidad magnética
 
 \end_layout
 
-\begin_layout Section
-Transiciones de fase
+\begin_layout Standard
+A partir de la función de partición, la energía promedio se calcula como
+\begin_inset Formula 
+\begin{equation}
+\expval{\mathcal{H}}=\frac{\sum_{\sigma}\mathcal{H}[\sigma]\mathrm{e}^{-\beta\mathcal{H}[\sigma]}}{Z}=\pdv{\beta\mathcal{F}}{\beta}.
+\end{equation}
+
+\end_inset
+
+El calor específico a volumen constante se define como
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}c_{V}=\frac{1}{V} & \left(\pdv{\beta\expval{\mathcal{H}}}{T}\right)_{V}=\frac{1}{V}\pdv{T}\frac{\sum_{\sigma}\mathcal{H}_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\\
+=\frac{1}{V}\frac{1}{k_{B}T} & \left[\frac{\sum_{\sigma}\mathcal{H}_{\sigma}^{2}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}-\left(\frac{\sum_{\sigma}\mathcal{H}_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\right)^{2}\right],\\
+=\frac{1}{V} & \frac{1}{k_{B}T^{2}}\left(\expval{\mathcal{H}^{2}}-\expval{\mathcal{H}}^{2}\right).
+\end{aligned}
+\end{equation}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Una transición de fase ocurre cuando hay una discontinuidad en la energía
- libre o en una de sus derivadas, la transición de fase presenta un cambio
- visible en las propiedades macroscópicas del sistema.
- La energía es proporcional al logaritmo de la función de partición
-\begin_inset CommandInset citation
-LatexCommand autocite
-key "giachetti_berezinskii-kosterlitz-thouless_2021,hinrichsen_non-equilibrium_2000,yeomans_statistical_1992"
-literal "false"
-
+Siendo 
+\begin_inset Formula $B$
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Standard
-En el modelo 2d O(
-\begin_inset Formula $3$
-\end_inset
-
-), la temperatura es un paramento que añade ruido aleatorio a cambiar las
- direcciones de los espines.
- A temperatura 
-\begin_inset Formula $T=0$
-\end_inset
-
- no hay fluctuaciones y el sistema alcanza una configuración de energía
- mínima.
- Cuando la temperatura 
-\begin_inset Formula $T_{c}>T>0$
-\end_inset
-
- se forman grupos de espines alineados, el vector de magnetización de cada
- grupo apunta en una dirección diferente, por lo que el sistema no alcanza
- una configuración de energía mínima.
- A mayor temperatura es mayor el número de espines apuntando en direcciones
- aleatorias.
- Pasando la temperatura crítica, la intensidad de las fluctuaciones evita
- la formación de grupos considerables de espines alineados, por consecuencia
- predomina el ruido termodinámico.
- En el proceso mencionado se pasan por dos fases: 
-\end_layout
-
-\begin_layout Itemize
-Una fase ordenada por debajo de la temperatura crítica
-\end_layout
-
-\begin_layout Itemize
-Una fase desordenada por encima de la temperatura crítica.
+ el campo magnético aplicado.
  
-\end_layout
-
-\begin_layout Standard
-El cambio entre estas dos fases es una transición de segundo orden, ya que
- implica una discontinuidad en la segunda derivada de la energía libre del
- sistema.
-\end_layout
-
-\begin_layout Standard
-Cuando se perturba un sistema en equilibrio, las variables mecánicas del
- sistema cambian, el tiempo que el sistema tarda en alcanzar nuevamente
- el estado de equilibrio termodinámico es conocido como tiempo de relajación
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/discont_0.pdf
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Energía libre.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/discont_1.pdf
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Primera derivada de la energía libre.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename output/discont_2.pdf
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Segunda derivada de la energía libre.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Transición de fase de segundo orden.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -3493,6 +3194,7 @@ En el modelo 2d O(
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -3517,10 +3219,6 @@ Función de correlación
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -3662,7 +3360,7 @@ status open
 \begin_layout Plain Layout
 ¿Que características¸características de las interacciones microscópicas
  son importantes para determinar puntos críticos, exponentes críticos y
- funciones de escalamiento y que características son irrelevantes? 
+ funciones de escalamiento y que características son irrelevantes?
 \end_layout
 
 \end_inset
@@ -3684,7 +3382,7 @@ En general la clase de universalidad y el valor de los exponentes críticos
 \end_layout
 
 \begin_layout Chapter
-Mecanismo de Kibble Zurek
+Mecanismo de Kibble-Zurek
 \end_layout
 
 \begin_layout Standard
@@ -3970,7 +3668,7 @@ En 1985, W.
 Existe una analogía entre cuerdas cósmicas y lineas de vórtice.
  En un superfluido, tras un súbito decaimiento de presión, la fase de la
  función de onda en el condensado de helio es análoga a la ruptura de simetría
- del campo de multi escalar 
+ del campo de multi-escalar 
 \begin_inset Formula $\vec{\phi}\in\mathbb{R}^{2}$
 \end_inset
 
@@ -8497,7 +8195,7 @@ Algoritmo
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\chi_{t}$
+\begin_inset Formula $Q$
 \end_inset
 
 
@@ -8821,14 +8519,50 @@ Resumen y conclusiones
 \end_layout
 
 \begin_layout Standard
-Se ajustó el cambio en la velocidad de los enfriamientos a una ley de escalamien
-to.
- La susceptibilidad topológica resultó en una ley de escalamiento con un
- exponente 
+Se realizaron simulaciones del modelo modelo 2d O(3), usando los algoritmos
+ 
+\end_layout
+
+\begin_layout Itemize
+Metropolis lexicográfico
+\end_layout
+
+\begin_layout Itemize
+Metropolis aleatorio
+\end_layout
+
+\begin_layout Itemize
+Glauber lexicográfico
+\end_layout
+
+\begin_layout Itemize
+Glauber aleatorio
+\end_layout
+
+\begin_layout Itemize
+multi-cluster
+\end_layout
+
+\begin_layout Standard
+En las simulaciones en equilibrio, se midió la longitud de correlación y
+ el exponente critico dinámico, para las observables de susceptibilidad
+ topológica energía y magnetización.
+ 
+\end_layout
+
+\begin_layout Standard
+Se simulo un sistema con diferentes velocidades de enfriamiento y se midieron
+ los parámetros de orden: carga topológica, energía y magnetización en relación
+ a los diferentes ratios de enfriamiento.
+\end_layout
+
+\begin_layout Standard
+La carga topológica resultó en una ley de escalamiento con un exponente
+ 
 \begin_inset Formula $\zeta_{1}=0.53(1)$
 \end_inset
 
-, el cual es compatible con las simulaciones en equilibrio que arrojan 
+, el cual se calculo con los exponentes críticos 
 \begin_inset Formula $\zeta_{2}=0.57(9)$
 \end_inset
 
@@ -8836,8 +8570,12 @@ to.
 \end_layout
 
 \begin_layout Standard
-Para la energía y la magnetización, los exponentes obtenidos a partir de
- los enfriamientos no coinciden con los resultados calculados en equilibrio.
+Para la energía y la magnetización, los exponentes 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ obtenidos a partir de los enfriamientos no coinciden con los resultados
+ calculados en equilibrio.
 \end_layout
 
 \begin_layout Standard
@@ -8850,9 +8588,9 @@ El mecanismo de Kibble-Zurek se plantea en sistemas donde ocurre una ruptura
 , lo que implica que no es posible alcanzar temperaturas menores a cero.
  En los experimentos realizados no se cruzó una temperatura crítica, por
  lo tanto, no hubo un cambio en el orden del sistema.
- En cambio, al aproximar el sistema a temperatura cero, se observa una desaceler
-ación crítica que resulta ser más fuerte en el caso de la susceptibilidad
- topológica.
+ Por otro lado, al aproximar el sistema a temperatura cero, se observa una
+ desaceleración crítica que resulta ser más fuerte en el caso de la susceptibili
+dad topológica.
  Esto podría ser la razón por la cual el valor de 
 \begin_inset Formula $\zeta$
 \end_inset
@@ -8861,20 +8599,23 @@ ación crítica que resulta ser más fuerte en el caso de la susceptibilidad
 \end_layout
 
 \begin_layout Standard
-Aunque el modelo 2d O(3), no pasa por la temperatura critica en los enfriamiento
-s, fue posible ajustar una ley de escalamiento para las observables de susceptib
-ilidad topológica, energía y magnetización.
+Aunque el modelo 2d O(3) no pasa por la temperatura crítica en los enfriamientos
+, fue posible ajustar una ley de escalamiento para las observables de susceptibi
+lidad topológica, energía y magnetización.
  Para los algoritmos de actualización locales, la ley de escalamiento conduce
  a exponentes críticos 
 \begin_inset Formula $\zeta$
 \end_inset
 
- compatibles.
+ compatibles respecto a la misma observable, sin embargo difieren para diferente
+s observables.
 \end_layout
 
 \begin_layout Standard
-En cambio, con el algoritmo multi-cluster, los valores obtenidos para el
- exponente 
+En el caso de algoritmo multi-cluster no fue posible medir un exponente
+ critico dinámico por la efectividad de termalización del algoritmo, lo
+ que sugiere que multi-clsuter realiza actualizaciones, los valores obtenidos
+ para el exponente 
 \begin_inset Formula $\zeta$
 \end_inset
 
@@ -9437,136 +9178,15 @@ Rotación de un espín
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Float algorithm
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{lstlisting}
-\end_layout
-
-\begin_layout Plain Layout
-
-function random_vector()    
-\end_layout
-
-\begin_layout Plain Layout
-
-	real(8),dimension(3) :: random_vector    
-\end_layout
-
-\begin_layout Plain Layout
-
-	real(8) :: theta, phi    
-\end_layout
-
-\begin_layout Plain Layout
-
-	theta = acos(1-2*random())    
-\end_layout
-
-\begin_layout Plain Layout
-
-	phi = 2*pi*random()    
-\end_layout
-
-\begin_layout Plain Layout
-
-	random_vector = [sin(theta)*cos(phi), sin(theta)*sin(phi), cos(theta)]
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-end function
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-function random_vector_sector(s)    
-\end_layout
-
-\begin_layout Plain Layout
-
-	real(8), dimension(3) :: random_vector_sector, r, k, s    
-\end_layout
-
-\begin_layout Plain Layout
-
-	real(8) :: alpha    r = random_vector()    
-\end_layout
-
-\begin_layout Plain Layout
-
-	k = cross_product(s, r)    
-\end_layout
-
-\begin_layout Plain Layout
-
-	k = k/sqrt(dot_product(k,k))    
-\end_layout
-
-\begin_layout Plain Layout
-
-	alpha = acos(1-2*delta_step*random())    
-\end_layout
-
-\begin_layout Plain Layout
-
-	random_vector_sector = s*cos(alpha)+cross_product(k, s)*sin(alpha) 
-\end_layout
-
-\begin_layout Plain Layout
-
-end function
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{lstlisting}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Implementación del algoritmo de generación de vectores en Fortran.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Chapter
 Algoritmo Hoshen-Kopelman
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Algoritmo-Hoshen-Kopelman"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
