@@ -50,7 +50,7 @@ text width=3cm,
 draw=black]
 
 \tikzstyle{arrow} = [thick,->,>=stealth]
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -269,8 +269,36 @@ pagenumbering{arabic}
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begingroup
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+small
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+tableofcontents
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+endgroup
+\end_layout
 
 \end_inset
 
@@ -319,8 +347,7 @@ literal "false"
 
 \end_inset
 
-.
- , trabajaban en Los Álamos en el desarrollo de la bomba atómica.
+, trabajaban en Los Álamos en el desarrollo de la bomba atómica.
  Su trabajo se centró en comprender la física de las interacciones entre
  la radiación y la materia bajo condiciones extremas, tales como explosiones,
  implosiones y la evolución de reacciones nucleares fuera del equilibrio.
@@ -2266,462 +2293,6 @@ Descomposición de la retícula cardada bidimensional en triángulos alternado
 
 \end_layout
 
-\begin_layout Section
-Algoritmo de Glauber
-\end_layout
-
-\begin_layout Standard
-El algoritmo Glauber 
-\begin_inset CommandInset citation
-LatexCommand autocite
-key "glauber_time-dependent_1963"
-literal "false"
-
-\end_inset
-
-es al igual que el algoritmo Metropolis de actualización local.
- La diferencia con el algoritmo de Metropolis es la probabilidad de aceptación.
- La propuesta es construir una función que cumpla con la ecuación de balance
- detallado 
-\begin_inset Formula 
-\begin{equation}
-p[s\rightarrow s']p[s]=p[s'\rightarrow s]p[s'].
-\end{equation}
-
-\end_inset
-
-Reordenando términos y dividiendo por 
-\begin_inset Formula $Z$
-\end_inset
-
-
-\begin_inset Formula 
-\begin{equation}
-p[s\rightarrow s']\frac{\mathrm{e}^{-\beta\mathcal{H}[s]}}{Z}=p[s'\rightarrow s]\frac{\mathrm{e}^{-\beta\mathcal{H}[s']}}{Z}.
-\end{equation}
-
-\end_inset
-
-Se propone la probabilidad de aceptación de algoritmo de Glauber como 
-\begin_inset Formula 
-\begin{align}
-p[s\rightarrow s'] & =\frac{\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}{1+\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}\nonumber \\
- & =\frac{\mathrm{e}^{-\beta\left(\mathcal{H}[s]-\mathcal{H}[s']\right)}}{1+\mathrm{e}^{\beta\left(\mathcal{H}[s]-\mathcal{H}[s']\right)}}\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}\nonumber \\
- & =p[s'\rightarrow s]\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}.
-\end{align}
-
-\end_inset
-
-La propuesta cumple la ecuación de balance detallado.
- 
-\begin_inset Formula 
-\begin{equation}
-p[s\rightarrow s']=\frac{\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}{1+\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}.
-\end{equation}
-
-\end_inset
-
-En términos de la diferencia de energía
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-p[s\rightarrow s']=\frac{\mathrm{e}^{-\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{-\beta\Delta\mathcal{H}}}.
-\end{equation}
-
-\end_inset
-
-Similar al algoritmo de Metropolis dada una configuración 
-\begin_inset Formula $[s]$
-\end_inset
-
-, para cada elemento en la configuración se propone un cambio aleatorio
- que resulta en una configuración [s'].
- Si la energía de la configuración aumenta a mayor temperatura 
-\begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow0$
-\end_inset
-
- y la probabilidad de aceptación se aproxima a 
-\begin_inset Formula $1/2$
-\end_inset
-
-.
- A menor temperatura 
-\begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow\infty$
-\end_inset
-
- y 
-\begin_inset Formula $\mathrel{e}^{-\beta\Delta\mathcal{H}}\rightarrow0$
-\end_inset
-
-, por lo tanto la probabilidad de aproxima a 
-\begin_inset Formula $0$
-\end_inset
-
-.
- Por otro lado si la energía de la configuración disminuye.
- A mayor temperatura igual que en el caso anterior 
-\begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow0$
-\end_inset
-
- y la probabilidad de aceptación se aproxima a 
-\begin_inset Formula $1/2$
-\end_inset
-
-.
- A menor temperatura 
-\begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow-\infty$
-\end_inset
-
- y 
-\begin_inset Formula $p[s\rightarrow s']\rightarrow1$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Al igual que en algoritmo de Metropolis, el problema con la temperatura
- crítica es que a disminuir el número de cambios que se aceptan, el tiempo
- de relajación del sistema aumenta exponencialmente.
- Una forma de contrarrestar el problema es aumentar el número de configuraciones
- que disminuyen la energía del sistema limitando el área en la que se permiten
- nuevas configuraciones, la desventaja es que limitar las configuraciones
- a una zona restringida también disminuye el tiempo de relajación, pero
- puede encontrarse un equilibrio entre número de cambios aceptados el tamaño
- del área permitida para nuevas configuraciones de manera que se minimice
- el tiempo de relajación del sistema.
-\end_layout
-
-\begin_layout Section
-Algoritmo clúster
-\end_layout
-
-\begin_layout Standard
-El algoritmo clúster sugerido por R.
- Swendsen y J.
- Wang, se basa en la observación de que la función de partición se puede
- escribir como una suma sobre un grupo de distribuciones 
-\begin_inset CommandInset citation
-LatexCommand autocite
-key "swendsen_nonuniversal_1987,wolff_collective_1989"
-literal "false"
-
-\end_inset
-
-.
- Consiste en generar clústers de espines enlazados y cambiar la configuración
- de todos los espines en cada clúster a la vez.
- Una de las principales ventajas del algoritmo clúster es que evita la desaceler
-ación crítica característica de los algoritmos de actualización local.
- 
-\end_layout
-
-\begin_layout Standard
-Un clúster puede consistir de un único espín si sus espines vecinos no se
- enlazan, o puede estar formado por todos los espines de la configuración,
- esto puede suceder cerca de la temperatura critica.
- 
-\end_layout
-
-\begin_layout Standard
-En seguida propone un vector aleatorio 
-\begin_inset Formula $\vec{w}\in S^{2}$
-\end_inset
-
-, se elije un espín en la configuración 
-\begin_inset Formula $\vec{s}\in[s]$
-\end_inset
-
-.
- y se calcula la reflexión de 
-\begin_inset Formula $\vec{s}$
-\end_inset
-
- respecto a el plano normal a 
-\begin_inset Formula $\vec{w}$
-\end_inset
-
- 
-\begin_inset Formula 
-\begin{equation}
-\vec{s}\,'=\vec{s}-2\left(\vec{w}\cdot\vec{s}\right)\vec{w}.
-\end{equation}
-
-\end_inset
-
-Para determinar si el espín 
-\begin_inset Formula $\vec{s}$
-\end_inset
-
- esta enlazado con sus espines vecinos más cercano, se calcula la probabilidad
- de enlace mediante la función
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-p_{\mathrm{enlace}}=\begin{cases}
-1-\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)} & \mathrm{si}\qquad\mathcal{H}[s']\geq\mathcal{H}[s]\\
-0 & \mathrm{si}\qquad\mathcal{H}[s']<\mathcal{H}[s].
-\end{cases}
-\end{equation}
-
-\end_inset
-
-Igual que en los algoritmos anteriores es conveniente expresar la probabilidad
- de enlace en función de la diferencia de energía
-\begin_inset Formula 
-\begin{equation}
-p_{\mathrm{enlace}}=\begin{cases}
-1-\mathrm{e}^{-\beta\Delta\mathcal{H}} & \mathrm{si}\qquad\Delta\mathcal{H}\geq0\\
-0 & \mathrm{si}\qquad\beta\Delta\mathcal{H}<0.
-\end{cases}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-En el modelo 2d O(
-\begin_inset Formula $3$
-\end_inset
-
-) usando el algoritmo 
-\shape italic
-multi-clúster
-\shape default
-, se tiene una retícula finita bidimensional de tamaño 
-\begin_inset Formula $L$
-\end_inset
-
- cuyos sitios están ocupados por espines.
- Para probar el enlace entre dos espines 
-\begin_inset Formula $\vec{s}_{x},\vec{s}_{y}$
-\end_inset
-
- donde 
-\begin_inset Formula $\vec{s}_{y}$
-\end_inset
-
- es uno de los espines vecinos más cercanos de 
-\begin_inset Formula $\vec{s}_{x}$
-\end_inset
-
-.
- Primero se obtiene un vector aleatorio y unitario 
-\begin_inset Formula $\vec{w}$
-\end_inset
-
-.
- Se selección el espín 
-\begin_inset Formula $\vec{s}_{x}$
-\end_inset
-
-y se refleja respecto al plano normal a 
-\begin_inset Formula $\vec{w}$
-\end_inset
-
- dando lugar al espín 
-\begin_inset Formula $\vec{s}_{x}\,'$
-\end_inset
-
-.
- Se tienen dos configuraciones 
-\begin_inset Formula $\vec{s}_{x}\in[s]$
-\end_inset
-
- y 
-\begin_inset Formula $\vec{s}_{x}\,'\in[s']$
-\end_inset
-
- , la diferencia de energía entre las configuraciones es
-\begin_inset Formula 
-\begin{equation}
-\Delta\mathcal{H}=\vec{s}_{x}\cdot\vec{s}_{y}-\vec{s}_{x}\,'\cdot\vec{s}_{y}.
-\end{equation}
-
-\end_inset
-
-Calculando la diferencia de energía entre las configuraciones, la probabilidad
- de enlace entre es
-\begin_inset Formula 
-\begin{equation}
-p_{\mathrm{enlace}}=\begin{cases}
-1-\mathrm{e}^{-\beta\Delta\mathcal{H}} & \mathrm{si}\qquad\Delta\mathcal{H}\geq0\\
-0 & \mathrm{si}\qquad\beta\Delta\mathcal{H}<0.
-\end{cases}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Para cuales quiera dos espines 
-\begin_inset Formula $\vec{s}_{x},\vec{s}_{y}$
-\end_inset
-
- en una configuración 
-\begin_inset Formula $[s]$
-\end_inset
-
-.
- Los dos espines pertenecen al mismo clúster si hay un enlace directo entre
- ambos.
- Si 
-\begin_inset Formula $\alpha$
-\end_inset
-
- es un clúster no vacío y 
-\begin_inset Formula $\vec{s}_{x}\in[s]$
-\end_inset
-
- el espín 
-\begin_inset Formula $\vec{s}_{x}$
-\end_inset
-
- pertenece al clúster si esta enlazado a un espín que pertenece al clúster.
-\end_layout
-
-\begin_layout Standard
-A cada espín se le asocia una etiqueta 
-\begin_inset Formula $m_{x}^{\alpha}$
-\end_inset
-
- donde 
-\begin_inset Formula $\alpha$
-\end_inset
-
- indica el clúster al que pertenece el espín en cuestión.
- El procedimiento para asociar cada espín a sus respectivos clústers es
- el siguiente:
-\end_layout
-
-\begin_layout Enumerate
-Se selecciona el espín 
-\begin_inset Formula $\vec{s}_{x}$
-\end_inset
-
-, se genera un valor a una matriz de enlaces 
-\begin_inset Formula $b$
-\end_inset
-
- en función de su enlace con los espines 
-\begin_inset Formula $\vec{s}_{x+\hat{1}},\vec{s}_{x+\hat{2}}$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Enumerate
-Si hay enlace entre 
-\begin_inset Formula $\vec{s}_{x}$
-\end_inset
-
-, 
-\begin_inset Formula $\vec{s}_{x+\hat{1}}$
-\end_inset
-
- se asigna el valor 
-\begin_inset Formula $b_{x}=10$
-\end_inset
-
-, si hay enlace entre 
-\begin_inset Formula $\vec{s}_{x}$
-\end_inset
-
- , 
-\begin_inset Formula $\vec{s}_{x+\hat{2}}$
-\end_inset
-
- se asigna el valor 
-\begin_inset Formula $b_{x}=1$
-\end_inset
-
- y si hay enlace entre 
-\begin_inset Formula $\vec{s}_{x}$
-\end_inset
-
-, 
-\begin_inset Formula $\vec{s}_{x+\hat{1}}$
-\end_inset
-
- y 
-\begin_inset Formula $\vec{s}_{x+\hat{2}}$
-\end_inset
-
- se asigna el valor 
-\begin_inset Formula $b_{x}=11$
-\end_inset
-
-.
- Si no hay enlaces se asigna el valor 
-\begin_inset Formula $b_{x}=0$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-Se pasa al siguiente espín y se regresa al paso 1.
-\end_layout
-
-\begin_layout Standard
-Si existe un enlace con uno de los espines vecinos se forma un clúseter
- con los espines enlazados, se selecciona uno de estos espines y se repite
- la prueba de enlace con sus propios vecinos más cercanos.
- Si hay más enlaces se continua repitiendo el proceso, si no hay enlaces
- se pasa a u otro espín del clúster, hasta comprobar que no hay más enlaces
- con algún espín del clúster.
-\end_layout
-
-\begin_layout Standard
-Cuando se termina de formar el clúster se cambia el estado de todos los
- espines del clúster a la vez aplicando la reflexión respecto al plano normal
- a 
-\begin_inset Formula $\vec{w}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Una variante del algoritmo consiste en formar múltiples clústers a la vez,
- en lugar de uno.
- Una vez formados se decide si un se cambia el estado de sus elementos clúster
- con probabilidad 
-\begin_inset Formula $p_{\mathrm{flip}}=1/2$
-\end_inset
-
-, valor que minimiza el tiempo de relajación del sistema al mantener más
- menos la mitad de los grupos y cambiar la configuración de la otra mitad.
-\end_layout
-
-\begin_layout Standard
-Una forma de realizar el proceso de formación de grupos es usar el algoritmo
- de Hoshen-Kopelman que se describe para el modelo 
-\begin_inset Formula $2$
-\end_inset
-
--d O(3) en el apéndice 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:Algoritmo-Hoshen-Kopelman"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
- 
-\end_layout
-
 \begin_layout Chapter
 Fenómenos críticos
 \end_layout
@@ -2733,15 +2304,29 @@ Transiciones de fase
 \begin_layout Standard
 Una transición de fase ocurre cunado hay un discontinuad en la energía libre
  o en una de sus derivadas.
- En la transitorio hay un cambio visible en las propiedades del sistema
- que se esta observando: Como el cambio de estado liquido a gas, de estado
- paramagnético a ferromagnético o conductor a superconductor.
+ En la transición hay un cambio visible a nivel macroscópico en las propiedades
+ del sistema que se esta observando.
+ Algunos ejemplos son:
+\end_layout
+
+\begin_layout Enumerate
+El cambio de estado liquido a gas de un fluido.
+ 
+\end_layout
+
+\begin_layout Enumerate
+El cambio del estado paramagnético al ferromagnético en un imán 
+\end_layout
+
+\begin_layout Enumerate
+El cambio de o conductor a superconductor en un material.
 \end_layout
 
 \begin_layout Standard
-A nivel microscópico un sistema puede pasar de un estado simétrico y con
- alta energía a otro asimétrico y menor energía al pasar por debajo de una
- temperatura critica 
+El primer ejemplo es es una transición de fase de primer orden A nivel microscóp
+ico un sistema puede pasar de un estado simétrico y con alta energía a otro
+ asimétrico y menor energía al pasar por debajo de una temperatura critica
+ 
 \begin_inset Formula $T_{c}$
 \end_inset
 
@@ -2809,8 +2394,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename output/phase.png
-	lyxscale 80
+	filename output/phase.pdf
 	scale 50
 
 \end_inset
@@ -2920,7 +2504,7 @@ Primera derivada de la energía libre.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -3382,7 +2966,7 @@ En general la clase de universalidad y el valor de los exponentes críticos
 \end_layout
 
 \begin_layout Chapter
-Mecanismo de Kibble-Zurek
+Mecanismo de Kibble-Zureknumpy matrix product for array and matrix
 \end_layout
 
 \begin_layout Standard
@@ -3899,6 +3483,878 @@ Evolución de la autocorrelación de la magnetización en
 \end_inset
 
 
+\end_layout
+
+\begin_layout Chapter
+Métodos de Monte Carlo
+\end_layout
+
+\begin_layout Standard
+Un proceso estocástico es un secuencia de eventos aleatorios, consideremos
+ un evento aleatorio con 
+\begin_inset Formula $N$
+\end_inset
+
+ posibles resultados 
+\begin_inset Formula $\{x_{1},\dots,x_{N}\}$
+\end_inset
+
+.
+ Una variable aleatoria 
+\begin_inset Formula $X$
+\end_inset
+
+ es una selección aleatoria en el conjunto de los resultados posibles de
+ un evento.
+ La probabilidad de que un valor 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ sea elegido esta dado por 
+\begin_inset Formula $p_{i}=P\{X=x_{i}\}$
+\end_inset
+
+.
+ Cada resultado y su probabilidad, en conjunto forman una distribución.
+\end_layout
+
+\begin_layout Standard
+La importancia de muestreo consiste en evaluar propiedades de una distribución
+ a partir de una muestra de una distribución diferente.
+\end_layout
+
+\begin_layout Standard
+La esencia de los métodos de Monte Carlo es evaluar numéricamente las sumas
+ o integrales del espacio fase.
+ El método de Monte Carlo introducido por Metropolis se basa en la idea
+ de importancia de muestreo.
+ En este enfoque, los puntos del espacio de fases no se seleccionan completament
+e al azar, sino que se distribuyen con mayor densidad en aquellas regiones
+ del espacio de fases que aportan contribuciones dominantes a las integrales.
+ 
+\end_layout
+
+\begin_layout Standard
+Una cadena de Markov se representa por una matriz de 
+\begin_inset Formula $W$
+\end_inset
+
+ con entradas 
+\begin_inset Formula $W_{i,j}$
+\end_inset
+
+ 
+\begin_inset Formula $i,j\in\mathbb{N}$
+\end_inset
+
+que satisfacen la condición 
+\begin_inset Formula 
+\begin{equation}
+\sum_{i,j}W_{i,j}=1.
+\end{equation}
+
+\end_inset
+
+Cada valor 
+\begin_inset Formula $W_{i,j}$
+\end_inset
+
+ representa la probabilidad de que un sistema en la configuración 
+\begin_inset Formula $[s]_{i}$
+\end_inset
+
+ pase a la configuración 
+\begin_inset Formula $[s]_{j}$
+\end_inset
+
+ en un una unidad de tiempo discreta conocida como paso de Markov.
+\end_layout
+
+\begin_layout Standard
+Consideremos la cadena de Markov dada por 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ donde 
+\begin_inset Formula $i\in\{1,\dots,N\}$
+\end_inset
+
+ y 
+\begin_inset Formula $O[s]_{i}$
+\end_inset
+
+ es el valor de la observable en el instante 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+, el promedio aproximado de la observable en el intervalo temporal medido
+ es
+\begin_inset Formula 
+\begin{equation}
+\expval{O}_{\mathrm{aprox}}=\frac{1}{N}\sum_{i=1}^{N}O[s]_{i},
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $[s]_{i}$
+\end_inset
+
+ es la configuración del sistema en el instante 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+.
+ La desviación estándar de esta suma de configuraciones es
+\begin_inset Formula 
+\begin{equation}
+\mathrm{std}(O)=\sqrt{\frac{1}{N-1}\text{\ensuremath{\left(\sum_{i=1}^{N}O[s]_{i}^{2}-N\expval{O}^{2}\right)}}},
+\end{equation}
+
+\end_inset
+
+y el error estándar se define por la ecuación
+\begin_inset Formula 
+\begin{equation}
+\mathrm{error}(O)=\frac{\mathrm{std}(O)}{\sqrt{N}}.
+\end{equation}
+
+\end_inset
+
+Si cada medición es estadísticamente independiente, conduce al valor esperado
+ de la observable y su error estándar definido por la ecuación
+\begin_inset Formula 
+\begin{equation}
+\expval{O}\simeq\expval{O}_{\mathrm{aprox}}\pm\mathrm{error}(O).
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Definicion: Balance Detallado.
+\end_layout
+
+\begin_layout Plain Layout
+Sea 
+\begin_inset Formula $\{s_{i}\}$
+\end_inset
+
+ una cadena de Markov con probabilidad de transición estacionaria.
+ La cadena de Markov es reversible respecto a la distribución de probabilidad
+ 
+\begin_inset Formula $p$
+\end_inset
+
+ si cumple la ecuación de balance detallado
+\begin_inset Formula 
+\begin{equation}
+p[s\rightarrow s']p[s]=p[s'\rightarrow s]p[s'],\label{eq:detailed_balance}
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $p[s]$
+\end_inset
+
+ es la probabilidad de la configuración 
+\begin_inset Formula $\left[s\right]$
+\end_inset
+
+ y 
+\begin_inset Formula $p[s\rightarrow s']$
+\end_inset
+
+ es la probabilidad de la transición de la configuración 
+\begin_inset Formula $\left[s\right]$
+\end_inset
+
+ a 
+\begin_inset Formula $\left[s'\right]$
+\end_inset
+
+, de igual manera 
+\begin_inset Formula $p[s']$
+\end_inset
+
+ es la probabilidad de la configuración 
+\begin_inset Formula $\left[s'\right]$
+\end_inset
+
+ y 
+\begin_inset Formula $p[s'\rightarrow s]$
+\end_inset
+
+ es la probabilidad de la transición de la configuración 
+\begin_inset Formula $\left[s\right]$
+\end_inset
+
+ a 
+\begin_inset Formula $\left[s'\right]$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "athreya_convergence_1996"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Algoritmo de Metropolis
+\end_layout
+
+\begin_layout Standard
+Metropolis es un algoritmo de actualización local esto significa que los
+ elementos de la configuración cambian individualmente, para generar una
+ nueva configuración se usa la probabilidad de transición con todos los
+ elementos de la configuración.
+ Consideremos el modelo de espines 
+\begin_inset Formula $2$
+\end_inset
+
+-d O(
+\begin_inset Formula $3$
+\end_inset
+
+), definido en la retícula cuadrada 
+\begin_inset Formula $\mathscr{R}_{L}^{2}$
+\end_inset
+
+, la de energía de una configuración se define por la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:hamiltoniano_simplificado"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ En este modelo, un algoritmo de actualizaron local actúa sobre un espín
+ y sus vecinos más cercanos.
+ 
+\end_layout
+
+\begin_layout Standard
+Dada una configuración 
+\begin_inset Formula $[s]$
+\end_inset
+
+, para cada elemento en la configuración se propone un cambio aleatorio
+ que resulta en una configuración [s'].
+ Si el cambio propuesto se acepta o se rechaza depende a la probabilidad
+ de aceptación definida como
+\begin_inset Formula 
+\begin{equation}
+p[s\rightarrow s']=\begin{cases}
+\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)} & \mathrm{si}\qquad\mathcal{H}[s']\geq\mathcal{H}[s]\\
+0 & \mathrm{si}\qquad\mathcal{H}[s']<\mathcal{H}[s].
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La diferencia en la energía de las configuraciones es 
+\begin_inset Formula 
+\begin{equation}
+\Delta\mathcal{H}=\mathcal{H}[s']-\mathcal{H}[s].
+\end{equation}
+
+\end_inset
+
+Es conveniente definir la probabilidad de aceptación en función de la diferencia
+ de energía entre configuraciones
+\begin_inset Formula 
+\begin{equation}
+p[s\rightarrow s']=\begin{cases}
+\mathrm{e}^{-\beta\Delta\mathcal{H}} & \mathrm{si}\qquad\Delta\mathcal{H}\geq0\\
+0 & \mathrm{si}\qquad\Delta\mathcal{H}<0.
+\end{cases}
+\end{equation}
+
+\end_inset
+
+Si la energía de la configuración disminuye con el cambio, la probabilidad
+ de aceptaciones 1, y se acepta de inmediato.
+ Si la energía de la configuración aumenta, esta se acepta con una probabilidad
+ 
+\begin_inset Formula $\mathrm{e}^{-\beta\Delta\mathcal{H}}$
+\end_inset
+
+.
+ A mayor temperatura 
+\begin_inset Formula $\beta\rightarrow0$
+\end_inset
+
+ y la probabilidad de aceptación de las configuraciones que aumentan la
+ energía se acerca a 1.
+ Esto se traduce en más ruido térmico.
+ Por otro lado a menor temperatura 
+\begin_inset Formula $\beta\rightarrow\infty$
+\end_inset
+
+ la probabilidad de aceptación de las configuraciones que aumentan la energía
+ tiende a cero.
+ A menor temperatura, menor número de fluctuaciones, y un menor número de
+ fluctuaciones permite que el sistema se aproxime al estado de mínima energía.
+ La prueba de aceptación se repite para cada elemento de la configuración
+ 
+\begin_inset Formula $[s]$
+\end_inset
+
+, una vez que se probaron todos los espines, se dice que se ha realizado
+ un barrido.
+ Un barrido corresponde una unidad de tiempo discreto de Markov para el
+ algoritmo Metropolis, la forma en la que se realiza el barrido puede ser
+ lexicográfica, en la que los espines se elijen siendo un orden basado en
+ las posiciones de la retícula.
+ O puede ser aleatorio en donde los espines se elijen al azar.
+\end_layout
+
+\begin_layout Standard
+En el modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+).
+ La diferencia de energía en términos de los espines 
+\begin_inset Formula $\vec{s}_{i,j}\in\mathbb{Z}_{L}^{2}$
+\end_inset
+
+ es
+\begin_inset Formula 
+\begin{equation}
+\Delta\mathcal{H}_{i,j}=\mathcal{H}[s']-\mathcal{H}[s]=-\left(\vec{s}_{i,j}^{\,\prime}-\vec{s}_{i,j}\right)\cdot\left(\vec{s}_{i+1,j}+\vec{s}_{i,j+1}+\vec{s}_{i-1,j}+\vec{s}_{i,j-1}\right).\label{eq:energy_diff}
+\end{equation}
+
+\end_inset
+
+Calcular la diferencia de energía entre configuraciones en el modelo 2d
+ O(
+\begin_inset Formula $3$
+\end_inset
+
+)implicar realizar pocos cálculos, por lo que los algoritmos de actualización
+ local son muy eficientes lejos de la temperatura crítica, el problema con
+ la temperatura crítica es que a disminuir el número de cambios que se aceptan,
+ el tiempo de relajación del sistema aumenta exponencialmente, a este fenómeno
+ se le conoce como desaceleración crítica.
+ Si se necesita estudiar sistemas en equilibrio cerca de la temperatura
+ crítica hay una opción más conveniente que consiste en usar un algoritmo
+ que actualice grupos de espines en vez de espines individues 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "binder_monte_1988,swendsen_nonuniversal_1987"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Algoritmo de Glauber
+\end_layout
+
+\begin_layout Standard
+El algoritmo Glauber 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "glauber_time-dependent_1963"
+literal "false"
+
+\end_inset
+
+es al igual que el algoritmo Metropolis de actualización local.
+ La diferencia con el algoritmo de Metropolis es la probabilidad de aceptación.
+ La propuesta es construir una función que cumpla con la ecuación de balance
+ detallado 
+\begin_inset Formula 
+\begin{equation}
+p[s\rightarrow s']p[s]=p[s'\rightarrow s]p[s'].
+\end{equation}
+
+\end_inset
+
+Reordenando términos y dividiendo por 
+\begin_inset Formula $Z$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+p[s\rightarrow s']\frac{\mathrm{e}^{-\beta\mathcal{H}[s]}}{Z}=p[s'\rightarrow s]\frac{\mathrm{e}^{-\beta\mathcal{H}[s']}}{Z}.
+\end{equation}
+
+\end_inset
+
+Se propone la probabilidad de aceptación de algoritmo de Glauber como 
+\begin_inset Formula 
+\begin{align}
+p[s\rightarrow s'] & =\frac{\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}{1+\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}\nonumber \\
+ & =\frac{\mathrm{e}^{-\beta\left(\mathcal{H}[s]-\mathcal{H}[s']\right)}}{1+\mathrm{e}^{\beta\left(\mathcal{H}[s]-\mathcal{H}[s']\right)}}\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}\nonumber \\
+ & =p[s'\rightarrow s]\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}.
+\end{align}
+
+\end_inset
+
+La propuesta cumple la ecuación de balance detallado.
+ 
+\begin_inset Formula 
+\begin{equation}
+p[s\rightarrow s']=\frac{\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}{1+\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)}}.
+\end{equation}
+
+\end_inset
+
+En términos de la diferencia de energía
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+p[s\rightarrow s']=\frac{\mathrm{e}^{-\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{-\beta\Delta\mathcal{H}}}.
+\end{equation}
+
+\end_inset
+
+Similar al algoritmo de Metropolis dada una configuración 
+\begin_inset Formula $[s]$
+\end_inset
+
+, para cada elemento en la configuración se propone un cambio aleatorio
+ que resulta en una configuración [s'].
+ Si la energía de la configuración aumenta a mayor temperatura 
+\begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow0$
+\end_inset
+
+ y la probabilidad de aceptación se aproxima a 
+\begin_inset Formula $1/2$
+\end_inset
+
+.
+ A menor temperatura 
+\begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow\infty$
+\end_inset
+
+ y 
+\begin_inset Formula $\mathrel{e}^{-\beta\Delta\mathcal{H}}\rightarrow0$
+\end_inset
+
+, por lo tanto la probabilidad de aproxima a 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ Por otro lado si la energía de la configuración disminuye.
+ A mayor temperatura igual que en el caso anterior 
+\begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow0$
+\end_inset
+
+ y la probabilidad de aceptación se aproxima a 
+\begin_inset Formula $1/2$
+\end_inset
+
+.
+ A menor temperatura 
+\begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow-\infty$
+\end_inset
+
+ y 
+\begin_inset Formula $p[s\rightarrow s']\rightarrow1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Al igual que en algoritmo de Metropolis, el problema con la temperatura
+ crítica es que a disminuir el número de cambios que se aceptan, el tiempo
+ de relajación del sistema aumenta exponencialmente.
+ Una forma de contrarrestar el problema es aumentar el número de configuraciones
+ que disminuyen la energía del sistema limitando el área en la que se permiten
+ nuevas configuraciones, la desventaja es que limitar las configuraciones
+ a una zona restringida también disminuye el tiempo de relajación, pero
+ puede encontrarse un equilibrio entre número de cambios aceptados el tamaño
+ del área permitida para nuevas configuraciones de manera que se minimice
+ el tiempo de relajación del sistema.
+\end_layout
+
+\begin_layout Section
+Algoritmo clúster
+\end_layout
+
+\begin_layout Standard
+El algoritmo clúster sugerido por R.
+ Swendsen y J.
+ Wang, se basa en la observación de que la función de partición se puede
+ escribir como una suma sobre un grupo de distribuciones 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "swendsen_nonuniversal_1987,wolff_collective_1989"
+literal "false"
+
+\end_inset
+
+.
+ Consiste en generar clústers de espines enlazados y cambiar la configuración
+ de todos los espines en cada clúster a la vez.
+ Una de las principales ventajas del algoritmo clúster es que evita la desaceler
+ación crítica característica de los algoritmos de actualización local.
+ 
+\end_layout
+
+\begin_layout Standard
+Un clúster puede consistir de un único espín si sus espines vecinos no se
+ enlazan, o puede estar formado por todos los espines de la configuración,
+ esto puede suceder cerca de la temperatura critica.
+ 
+\end_layout
+
+\begin_layout Standard
+En seguida propone un vector aleatorio 
+\begin_inset Formula $\vec{w}\in S^{2}$
+\end_inset
+
+, se elije un espín en la configuración 
+\begin_inset Formula $\vec{s}\in[s]$
+\end_inset
+
+.
+ y se calcula la reflexión de 
+\begin_inset Formula $\vec{s}$
+\end_inset
+
+ respecto a el plano normal a 
+\begin_inset Formula $\vec{w}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{equation}
+\vec{s}\,'=\vec{s}-2\left(\vec{w}\cdot\vec{s}\right)\vec{w}.
+\end{equation}
+
+\end_inset
+
+Para determinar si el espín 
+\begin_inset Formula $\vec{s}$
+\end_inset
+
+ esta enlazado con sus espines vecinos más cercano, se calcula la probabilidad
+ de enlace mediante la función
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+p_{\mathrm{enlace}}=\begin{cases}
+1-\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)} & \mathrm{si}\qquad\mathcal{H}[s']\geq\mathcal{H}[s]\\
+0 & \mathrm{si}\qquad\mathcal{H}[s']<\mathcal{H}[s].
+\end{cases}
+\end{equation}
+
+\end_inset
+
+Igual que en los algoritmos anteriores es conveniente expresar la probabilidad
+ de enlace en función de la diferencia de energía
+\begin_inset Formula 
+\begin{equation}
+p_{\mathrm{enlace}}=\begin{cases}
+1-\mathrm{e}^{-\beta\Delta\mathcal{H}} & \mathrm{si}\qquad\Delta\mathcal{H}\geq0\\
+0 & \mathrm{si}\qquad\beta\Delta\mathcal{H}<0.
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+) usando el algoritmo 
+\shape italic
+multi-clúster
+\shape default
+, se tiene una retícula finita bidimensional de tamaño 
+\begin_inset Formula $L$
+\end_inset
+
+ cuyos sitios están ocupados por espines.
+ Para probar el enlace entre dos espines 
+\begin_inset Formula $\vec{s}_{x},\vec{s}_{y}$
+\end_inset
+
+ donde 
+\begin_inset Formula $\vec{s}_{y}$
+\end_inset
+
+ es uno de los espines vecinos más cercanos de 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+.
+ Primero se obtiene un vector aleatorio y unitario 
+\begin_inset Formula $\vec{w}$
+\end_inset
+
+.
+ Se selección el espín 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+y se refleja respecto al plano normal a 
+\begin_inset Formula $\vec{w}$
+\end_inset
+
+ dando lugar al espín 
+\begin_inset Formula $\vec{s}_{x}\,'$
+\end_inset
+
+.
+ Se tienen dos configuraciones 
+\begin_inset Formula $\vec{s}_{x}\in[s]$
+\end_inset
+
+ y 
+\begin_inset Formula $\vec{s}_{x}\,'\in[s']$
+\end_inset
+
+ , la diferencia de energía entre las configuraciones es
+\begin_inset Formula 
+\begin{equation}
+\Delta\mathcal{H}=\vec{s}_{x}\cdot\vec{s}_{y}-\vec{s}_{x}\,'\cdot\vec{s}_{y}.
+\end{equation}
+
+\end_inset
+
+Calculando la diferencia de energía entre las configuraciones, la probabilidad
+ de enlace entre es
+\begin_inset Formula 
+\begin{equation}
+p_{\mathrm{enlace}}=\begin{cases}
+1-\mathrm{e}^{-\beta\Delta\mathcal{H}} & \mathrm{si}\qquad\Delta\mathcal{H}\geq0\\
+0 & \mathrm{si}\qquad\beta\Delta\mathcal{H}<0.
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para cuales quiera dos espines 
+\begin_inset Formula $\vec{s}_{x},\vec{s}_{y}$
+\end_inset
+
+ en una configuración 
+\begin_inset Formula $[s]$
+\end_inset
+
+.
+ Los dos espines pertenecen al mismo clúster si hay un enlace directo entre
+ ambos.
+ Si 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ es un clúster no vacío y 
+\begin_inset Formula $\vec{s}_{x}\in[s]$
+\end_inset
+
+ el espín 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+ pertenece al clúster si esta enlazado a un espín que pertenece al clúster.
+\end_layout
+
+\begin_layout Standard
+A cada espín se le asocia una etiqueta 
+\begin_inset Formula $m_{x}^{\alpha}$
+\end_inset
+
+ donde 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ indica el clúster al que pertenece el espín en cuestión.
+ El procedimiento para asociar cada espín a sus respectivos clústers es
+ el siguiente:
+\end_layout
+
+\begin_layout Enumerate
+Se selecciona el espín 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+, se genera un valor a una matriz de enlaces 
+\begin_inset Formula $b$
+\end_inset
+
+ en función de su enlace con los espines 
+\begin_inset Formula $\vec{s}_{x+\hat{1}},\vec{s}_{x+\hat{2}}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+Si hay enlace entre 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+, 
+\begin_inset Formula $\vec{s}_{x+\hat{1}}$
+\end_inset
+
+ se asigna el valor 
+\begin_inset Formula $b_{x}=10$
+\end_inset
+
+, si hay enlace entre 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+ , 
+\begin_inset Formula $\vec{s}_{x+\hat{2}}$
+\end_inset
+
+ se asigna el valor 
+\begin_inset Formula $b_{x}=1$
+\end_inset
+
+ y si hay enlace entre 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+, 
+\begin_inset Formula $\vec{s}_{x+\hat{1}}$
+\end_inset
+
+ y 
+\begin_inset Formula $\vec{s}_{x+\hat{2}}$
+\end_inset
+
+ se asigna el valor 
+\begin_inset Formula $b_{x}=11$
+\end_inset
+
+.
+ Si no hay enlaces se asigna el valor 
+\begin_inset Formula $b_{x}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Se pasa al siguiente espín y se regresa al paso 1.
+\end_layout
+
+\begin_layout Standard
+Si existe un enlace con uno de los espines vecinos se forma un clúseter
+ con los espines enlazados, se selecciona uno de estos espines y se repite
+ la prueba de enlace con sus propios vecinos más cercanos.
+ Si hay más enlaces se continua repitiendo el proceso, si no hay enlaces
+ se pasa a u otro espín del clúster, hasta comprobar que no hay más enlaces
+ con algún espín del clúster.
+\end_layout
+
+\begin_layout Standard
+Cuando se termina de formar el clúster se cambia el estado de todos los
+ espines del clúster a la vez aplicando la reflexión respecto al plano normal
+ a 
+\begin_inset Formula $\vec{w}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Una variante del algoritmo consiste en formar múltiples clústers a la vez,
+ en lugar de uno.
+ Una vez formados se decide si un se cambia el estado de sus elementos clúster
+ con probabilidad 
+\begin_inset Formula $p_{\mathrm{flip}}=1/2$
+\end_inset
+
+, valor que minimiza el tiempo de relajación del sistema al mantener más
+ menos la mitad de los grupos y cambiar la configuración de la otra mitad.
+\end_layout
+
+\begin_layout Standard
+Una forma de realizar el proceso de formación de grupos es usar el algoritmo
+ de Hoshen-Kopelman que se describe para el modelo 
+\begin_inset Formula $2$
+\end_inset
+
+-d O(3) en el apéndice 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Algoritmo-Hoshen-Kopelman"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Chapter
@@ -9137,7 +9593,7 @@ n en el lenguaje de programación Fortran.
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center

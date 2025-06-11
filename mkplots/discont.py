@@ -14,7 +14,7 @@ ax.plot(x_right, np.heaviside(x_right, 1), color="tab:blue")
 ax.plot(x*0, x+0.5, ls="dashed", color="gray", alpha=0.5)
 ax.set_xticks([], [])
 ax.set_yticks([], [])
-ax.set_ylabel(r"$\chi_\mu$", fontsize=20)
+ax.set_ylabel(r"$\chi_m$", fontsize=20)
 ax.set_xlabel(r"$B$", fontsize=20)
 fig.savefig(f"{path}/discont_{2}.pdf", format="pdf", bbox_inches="tight")
 

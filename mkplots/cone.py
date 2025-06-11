@@ -1,33 +1,32 @@
-from numpy import sin, cos, pi, array, arccos, sqrt, dot
-from numpy import arcsin, cross, shape, transpose, linspace, meshgrid
+import numpy as np
 from numpy.random import random
 from arrowClass import *
 
 import matplotlib.pyplot as plt
 
-s = array([1,1,1])
-s = s/sqrt(dot(s,s))
-phi = 2*pi*random()
-theta = arcsin(random())
+s = np.array([0,-np.sin(0.3),np.cos(0.3)])
+# s = s/np.sqrt(np.dot(s,s))
+phi = 2*np.pi*random()
+theta = np.arcsin(random())
 #r = array([sin(theta)*cos(phi),sin(theta)*sin(phi),cos(theta)])
-r = array([1,1,-1])
-r = r/sqrt(dot(r,r))
-k = cross(s,r)
-k = k/sqrt(dot(k,k))
+r = np.array([1,1,-1])
+r = r/np.sqrt(np.dot(r,r))
+k = np.cross(s,r)
+k = k/np.sqrt(np.dot(k,k))
 
-delta = 0.2
-alpha = arccos(1-2*delta*random())
-u = s*cos(alpha)+cross(k,s)*sin(alpha)
-u = u/sqrt(dot(u,u))
+delta = 0.1
+alpha = np.arccos(1-delta)
+u = s*np.cos(alpha)+np.cross(k,s)*np.sin(alpha)
+u = u/np.sqrt(np.dot(u,u))
 
 fig = plt.figure(dpi=200)
 ax = fig.add_subplot(projection='3d')
 
 U = []
-for alpha in linspace(0,alpha):
-	u = s*cos(alpha)+cross(k,s)*sin(alpha)
+for alpha in np.linspace(0,alpha):
+	u = s*np.cos(alpha)+np.cross(k,s)*np.sin(alpha)
 	U.append(u)
-U = 0.9*array(U)
+U = 0.9*np.array(U)
 ax.plot(U[:,0],U[:,1],U[:,2], color="red")
 names=[r"$\vec{r}$",r"$\vec{s_0}$",r"$\vec{k}$",r"$\vec{s_r}$"]
 shifts=[[0.2,0.2,0.2],[0.1,0.1,0.1],[0.2,0.2,0.2],[0.3,0.1,0.2]]
@@ -36,31 +35,34 @@ for v, vec, delta in zip([r,s,k,u],names,shifts):
 	ax.arrow3D(0,0,0,x,y,z, mutation_scale=16,ec ='black',fc='black')
 	ax.text(x+delta[0]*x,y+delta[1]*y,z+delta[2]*z,vec,fontsize=16)
 
-u, v = linspace(0,pi), linspace(0,2*pi)
-u,v = meshgrid(u,v)
-x = sin(u)*cos(v)
-y = sin(u)*sin(v)
-z = cos(u)
+u, v = np.linspace(0,np.pi), np.linspace(0,2*np.pi)
+u,v = np.meshgrid(u,v)
+x = np.sin(u)*np.cos(v)
+y = np.sin(u)*np.sin(v)
+z = np.cos(u)
 ax.plot_wireframe(x, y, z, alpha=0.5,rstride=2, cstride=2, linewidth=0.7)
 
+t = np.linspace(0,2*np.pi)
+z = np.linspace(0,1)
+t , z = np.meshgrid(t, z)
+c = 0.6
+x, y = c*z*np.cos(t), c*z*np.sin(t)
 
-lim = 1
-t = linspace(-lim,lim)
+alpha = 0.3
 
-a, c, b = k
-z = -(a*x+b*y)/c
-#ax.plot_surface(x, z, y, alpha=0.3)
+y = y*np.cos(alpha)-z*np.sin(alpha)
+z = y*np.sin(alpha)+z*np.cos(alpha)
 
+ax.plot_surface(x, y, z, alpha=0.5)
 
-#t = linspace(0,2*pi)
-#plt.plot(cos(t), sin(t), 0)
+# lim = 1.1
+# ax.set_xlim(-lim,lim)
+# ax.set_ylim(-lim,lim)
+# ax.set_zlim(-lim,lim)
 
-lim = 1.1
-ax.set_xlim(-lim,lim)
-ax.set_ylim(-lim,lim)
-ax.set_zlim(-lim,lim)
 ax.set_aspect("equal")
 ax.axis("off")
-ax.view_init(-30,65)
-#plt.show()
+ax.view_init(41,47)
+# plt.show()
+
 fig.savefig("output/cone.pdf", format="pdf" , bbox_inches="tight")
