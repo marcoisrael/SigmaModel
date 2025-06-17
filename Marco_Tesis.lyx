@@ -310,26 +310,26 @@ Motivación al estudio de sistemas fuera del equilibrio
 \end_layout
 
 \begin_layout Standard
-En la practica de la física, se busca describir fenómenos físicos.
- Para ello, se emplean herramientas matemáticas como el cálculo, la estadística
- y la geometría.
- Para realizar mejores experimentos y mediciones, se avanza en el desarrollo
- de tecnología en múltiples frentes.
- La investigación es un proceso largo y requiere gran esfuerzo, a veces
- el esfuerzo no recompensa con resultados favorables, los modelos se desechan
- o se replantean.
+La investigación es un proceso largo y requiere gran esfuerzo, en el proceso,
+ los modelos se desechan o se replantean.
+ En la búsqueda de la comprensión de los fenómenos físicos, se han implementado
+ herramientas matemáticas como el cálculo, la estadística y la geometría.
+ La forma de probar los modelo teóricos es por medio de experimentos.
+ Siempre se busca realizar mejores experimentos y obtener mejores mediciones.
  Las investigaciones continúan de generación en generación, refinando la
  teoría como la experimentación.
- De esta forma, la comunidad científica progresa de manera consistente y
- sistemática.
+ De esta forma, el progreso e las investigaciones se encamina en la dirección
+ correcta.
 \end_layout
 
 \begin_layout Standard
 Los estados de la materia y sus transiciones de fase son temas de gran interés
  en física.
+ Tom W.
  Kibble y Wojciech H.
- Zurek se interesaron en el estudio de las clases de universalidad y como
- muchos sistemas presentan ruptura de simetría al pasar por una temperatura
+ Zurek se interesaron en el estudio de las clases de universalidad y la
+ formación de defectos topológicos en sistemas al traicionar de fase.
+ Como muchos sistemas presentan ruptura de simetría al pasar por una temperatura
  critica, propusieron que la supervivencia de defectos topológicos, se relaciona
  con el ratio de enfriamiento al que un sistema pasa por la temperatura
  critica.
@@ -385,30 +385,85 @@ ntos rápidos de en el modelo 2d O(
 Función de partición e integral de trayectorias
 \end_layout
 
+\begin_layout Standard
+En sistemas físicos que consisten en un gran numero de grados de libertad,
+ plantear y resolver la ecuaciones de movimiento del sistema se vuelve impractic
+o.
+ En mecánica estadística el problema se aborda planteando una función de
+ partición, como solución para sistemas con muchos grados de libertad.
+ Se renuncia a conocer la trayectoria exacta de cada elemento, a cambio,
+ la función de partición continente toda la información necesaria sobre
+ el sistema que modela.
+ Se define como la suma de las configuraciones 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ con energía 
+\begin_inset Formula $\mathcal{H}[\sigma]$
+\end_inset
+
+, en el contexto de un modelo de espines clásicos el sistema depende de
+ la temperatura 
+\begin_inset Formula $T$
+\end_inset
+
+ y el campo magnético 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ En el mimo contexto la función de partición es de la forma
+\begin_inset Formula 
+\begin{equation}
+Z(T,B)=\sum_{\sigma}\mathrm{e}^{-\beta\mathcal{H}[\sigma]},
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $k$
+\end_inset
+
+ es la constante de Boltzmann y 
+\begin_inset Formula $\beta=1/kT$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Section
 Propagador de evolución
+\end_layout
+
+\begin_layout Standard
+En la mecánica cuántica, descrita por Erwin Schrödinger introdujo una ecuación
+ que describe un sistema cuántico
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\text{–}\frac{\hbar^{2}}{2m}\nabla^{2}\psi+V\psi=i\hbar\frac{\partial\psi}{\partial t}
+\end{equation}
+
+\end_inset
+
+luego se busca la solución.
+ 
 \end_layout
 
 \begin_layout Standard
 Cuando Richard Feynman desarrollo su propia formulación de integral de trayector
 ias, se pregunto si existía un camino para conectar la mecánica estadística
  con la mecánica cuántica.
- La mecánica cuántica descrita por Erwin Schrödinger se planeta una ecuación
- que describe el sistema físico de interés, luego se busca la solución.
- La ecuación de E.
- Schrödinger aumenta en complejidad al aumentar los grados de libertad.
- En mecánica estadística, se plantea una función de partición, la cual continent
-e toda la información necesaria sobre el sistema que modela.
- La función de partición, propone soluciones factibles para sistemas con
- muchos grados de libertad.
- R.
+ 
+\end_layout
+
+\begin_layout Standard
+R.
  Feynman encontró una función análoga a la función de partición para sistemas
  cuánticos y uno de los modelos que se pueden estudiar es el modelo de interés
- para este trabajo, el modelo 
-\begin_inset Formula $2d$
-\end_inset
-
- O(
+ para este trabajo, el modelo 2d O(
 \begin_inset Formula $3$
 \end_inset
 
