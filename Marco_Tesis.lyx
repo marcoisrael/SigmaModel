@@ -310,11 +310,11 @@ Motivación al estudio de sistemas fuera del equilibrio
 \end_layout
 
 \begin_layout Standard
-La investigación es un proceso largo y requiere gran esfuerzo, en el proceso,
- los modelos se desechan o se replantean.
+La investigación es un proceso largo y requiere gran esfuerzo.
+ En el proceso, los modelos se desechan o se replantean.
  En la búsqueda de la comprensión de los fenómenos físicos, se han implementado
  herramientas matemáticas como el cálculo, la estadística y la geometría.
- La forma de probar los modelo teóricos es por medio de experimentos.
+ La forma de probar los modelos teóricos es por medio de experimentos.
  Siempre se busca realizar mejores experimentos y obtener mejores mediciones.
  Las investigaciones continúan de generación en generación, refinando la
  teoría como la experimentación.
@@ -330,13 +330,13 @@ Los estados de la materia y sus transiciones de fase son temas de gran interés
  Zurek se interesaron en el estudio de las clases de universalidad y la
  formación de defectos topológicos en sistemas al traicionar de fase.
  Como muchos sistemas presentan ruptura de simetría al pasar por una temperatura
- critica, propusieron que la supervivencia de defectos topológicos, se relaciona
+ crítica, propusieron que la supervivencia de defectos topológicos, se relaciona
  con el ratio de enfriamiento al que un sistema pasa por la temperatura
- critica.
+ crítica.
 \end_layout
 
 \begin_layout Standard
-Entre los años 1949 y 1952: Nicholas Metropolis, Arianna W.
+Entre los años 1949 y 1952, Nicholas Metropolis, Arianna W.
  Rosenbluth, Marshall N.
  Rosenbluth, Augusta H.
  Teller, y Edward Teller 
@@ -386,10 +386,10 @@ Función de partición e integral de trayectorias
 \end_layout
 
 \begin_layout Standard
-En sistemas físicos que consisten en un gran numero de grados de libertad,
- plantear y resolver la ecuaciones de movimiento del sistema se vuelve impractic
-o.
- En mecánica estadística el problema se aborda planteando una función de
+En sistemas físicos que consisten en un gran número de grados de libertad,
+ plantear y resolver las ecuaciones de movimiento del sistema se vuelve
+ inviable.
+ En mecánica estadística, el problema se aborda planteando una función de
  partición, como solución para sistemas con muchos grados de libertad.
  Se renuncia a conocer la trayectoria exacta de cada elemento, a cambio,
  la función de partición continente toda la información necesaria sobre
@@ -402,25 +402,21 @@ o.
 \begin_inset Formula $\mathcal{H}[\sigma]$
 \end_inset
 
-, en el contexto de un modelo de espines clásicos el sistema depende de
- la temperatura 
+, en el contexto de un modelo de espines clásicos.
+ El sistema depende de la temperatura 
 \begin_inset Formula $T$
 \end_inset
 
- y el campo magnético 
-\begin_inset Formula $B$
-\end_inset
-
 .
- En el mimo contexto la función de partición es de la forma
+ En el mismo contexto, la función de partición es de la forma
 \begin_inset Formula 
 \begin{equation}
-Z(T,B)=\sum_{\sigma}\mathrm{e}^{-\beta\mathcal{H}[\sigma]},
+Z=\sum_{\sigma}\mathrm{e}^{-\beta\mathcal{H}[\sigma]},\label{eq:func_part}
 \end{equation}
 
 \end_inset
 
-donde 
+dónde 
 \begin_inset Formula $k$
 \end_inset
 
@@ -437,24 +433,43 @@ Propagador de evolución
 
 \begin_layout Standard
 En la mecánica cuántica, descrita por Erwin Schrödinger introdujo una ecuación
- que describe un sistema cuántico
+ que describe la dinámica de un sistema cuántico
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\text{–}\frac{\hbar^{2}}{2m}\nabla^{2}\psi+V\psi=i\hbar\frac{\partial\psi}{\partial t}
+i\hbar\dv{\ket{\psi(t)}}{t}=\mathcal{{H}}\ket{\psi(t)},
 \end{equation}
 
 \end_inset
 
-luego se busca la solución.
- 
+dónde 
+\begin_inset Formula $t$
+\end_inset
+
+ es el tiempo, 
+\begin_inset Formula $i$
+\end_inset
+
+ es la unidad imaginaria, 
+\begin_inset Formula $\hbar$
+\end_inset
+
+ es la constante de Plank, 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ es el hamilotonaino del sistema y 
+\begin_inset Formula $\ket{\psi(t)}$
+\end_inset
+
+ es la función de onda en notación de Dirac.
 \end_layout
 
 \begin_layout Standard
-Cuando Richard Feynman desarrollo su propia formulación de integral de trayector
-ias, se pregunto si existía un camino para conectar la mecánica estadística
+Cuando Richard Feynman desarrolló su propia formulación de integral de trayector
+ias, se preguntó si existía un camino para conectar la mecánica estadística
  con la mecánica cuántica.
  
 \end_layout
@@ -472,7 +487,7 @@ R.
 \end_layout
 
 \begin_layout Standard
-Consideremos una observable 
+Esta en nuestro interés describir de evolución de una observable 
 \begin_inset Formula $\hat{O}$
 \end_inset
 
@@ -484,11 +499,15 @@ Consideremos una observable
 
 \end_inset
 
+Partiendo de la interpretación Werner Heisenberg, pasar a la interpretación
+ de Schrödinger y dar el paso al equivalente a la función de partición propuesta
+ Feynman.
  La dinámica del operador 
 \begin_inset Formula $\hat{O}$
 \end_inset
 
- sigue la ecuación formulada por Werner Heisenberg
+ sin dependencia temporal explícita, sigue la ecuación formulada por Heisenberg
+ y es de la forma
 \begin_inset Formula 
 \begin{equation}
 \dv{\hat{O}}{t}=\frac{i}{\hbar}\left[\hat{\mathcal{H}},\hat{O}\right].\label{eq:formulacion_heisemberg}
@@ -496,18 +515,28 @@ Consideremos una observable
 
 \end_inset
 
-Pasar de la formulación de W.
- Heisenberg a la formulación de E.
- Schrödinger implica la transformación dependiente del tiempo dada por el
- operador de evolución aplicado a la observable
+Para pasar de la formulación de Heisenberg a la formulación de Schrödinger
+ se define el operador de evolución usando la transformación
 \begin_inset Formula 
 \begin{equation}
 \begin{array}{cc}
-\hat{O_{s}}(t)=\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}\hat{O}\mathrm{e}^{it\hat{\mathcal{H}}/\hbar}, & \ket{\psi(t)}=\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}\ket{\psi}\end{array}.
+\hat{O}(t)=\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}\hat{O}\mathrm{e}^{it\hat{\mathcal{H}}/\hbar}, & \ket{\psi(t)}=\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}\ket{\psi}\end{array},
 \end{equation}
 
 \end_inset
 
+dónde 
+\begin_inset Formula $\ket{\psi}$
+\end_inset
+
+ es la observable en notación de Dirac y 
+\begin_inset Formula $\ket{\psi(t)}$
+\end_inset
+
+ es la observable con la dependencia temporal.
+\end_layout
+
+\begin_layout Standard
 Al aplicar el operador de evolución a la ecuación 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -518,23 +547,29 @@ noprefix "false"
 
 \end_inset
 
- se deriva la ecuación
+ se deriva la siguiente ecuación
 \begin_inset Formula 
 \begin{equation}
-\dv{t}\hat{O_{s}}(t)=\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}\left(-\frac{i}{\hbar}\left[\hat{\mathcal{H}},\hat{O}\right]+\dv{t}\hat{O}\right)\mathrm{e}^{it\hat{\mathcal{H}}/\hbar}=0.
+\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}i\hbar\dv{\hat{O}}{t}\mathrm{e}^{it\hat{\mathcal{H}}/\hbar}=\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}\left[\hat{\mathcal{H}},\hat{O}\right]\mathrm{e}^{it\hat{\mathcal{H}}/\hbar}.
 \end{equation}
 
 \end_inset
 
-Reescribiendo la ecuación anterior se tiene
+el hamiltoniano se mantiene igual a l aplicar la transformación, cambiando
+ la ecuación a la expresión
 \begin_inset Formula 
 \begin{equation}
-\dv{t}\hat{O_{s}}(t)=\frac{i}{\hbar}\left[\hat{\mathcal{H}},\hat{O}_{s}\right].
+i\hbar\dv{\hat{O}(t)}{t}=\left[\hat{\mathcal{H}},\hat{O}(t)\right].
 \end{equation}
 
 \end_inset
 
-Escribiendo en notación de Dirac
+
+\end_layout
+
+\begin_layout Standard
+En notación de Dirac se llega a la ecuación de Schrödinger con dependencia
+ temporal explicita
 \begin_inset Formula 
 \begin{equation}
 \end{equation}
@@ -545,12 +580,16 @@ Escribiendo en notación de Dirac
 \begin_inset Formula 
 \begin{equation}
 \begin{array}{c}
-i\hbar\dv{t}\ket{\psi(t)}=\hat{\mathcal{H}}\ket{\psi(t)}.\end{array}\label{eq:schordinger}
+i\hbar\dv{\ket{\psi(t)}}{t}=\hat{\mathcal{H}}\ket{\psi(t)}.\end{array}\label{eq:schordinger}
 \end{equation}
 
 \end_inset
 
-La solución de la ec.
+Consideremos el caso mas simple dónde 
+\begin_inset Formula $\hat{\mathcal{H}}=\frac{\hat{p}^{2}}{2m}$
+\end_inset
+
+, la solución de la ec.
  
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -569,7 +608,7 @@ noprefix "false"
 
 \end_inset
 
-donde, 
+dónde, 
 \begin_inset Formula $q$
 \end_inset
 
@@ -625,7 +664,7 @@ K\left(q,q';t\right)=\left(\frac{m}{2\pi i\hbar t}\right)^{d/2}\mathrm{e}^{iS\le
 
 \end_inset
 
-Donde 
+dónde 
 \begin_inset Formula $S\left(q,q';t\right)$
 \end_inset
 
@@ -741,7 +780,8 @@ Sean
 \begin_inset VSpace bigskip
 \end_inset
 
-Se busca una expresión general para el propagador que resuelve la ec.
+El caso simple se resolvio con la finalidad de dar una solución general
+ a la ec.
  
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -752,7 +792,8 @@ noprefix "false"
 
 \end_inset
 
-, suponiendo un hamiltonaino 
+.
+ Suponiendo un hamiltonaino 
 \begin_inset Formula $\hat{\mathcal{H}}=\hat{H}_{0}+\hat{V}$
 \end_inset
 
@@ -764,7 +805,7 @@ i\hbar\dv{t}K\left(q,q';t\right)=\hat{H}K\left(q,q';t\right),
 
 \end_inset
 
-donde 
+dónde 
 \begin_inset Formula $\hat{H}_{0}=\frac{1}{2m}\sum\hat{p}_{i}^{2}$
 \end_inset
 
@@ -773,7 +814,7 @@ donde
 \end_layout
 
 \begin_layout Standard
-Partiendo de la forma general del propagador
+Partiendo de la forma general del propagador se tiene
 \begin_inset Formula 
 \begin{equation}
 K\left(q,q';t\right)=\mel**{q'}{\mathrm{e}^{-i\hbar t\left(\hat{H}_{0}+\hat{V}\right)}}{q}.
@@ -800,8 +841,8 @@ K\left(q,q';t\right)=\lim_{n\rightarrow\infty}\int\prod_{j=0}^{n-1}\mel**{q_{j+1
 
 \end_inset
 
-En cada factor del productorio se tiene el hamitoniano para una partícula
- libre, aplicando la ec.
+En cada factor del producto se tiene el hamitoniano para una partícula libre,
+ aplicando la ec.
  
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -812,7 +853,7 @@ noprefix "false"
 
 \end_inset
 
- a ec.
+ a la ec.
  
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -823,7 +864,7 @@ noprefix "false"
 
 \end_inset
 
- se tiene
+ se llega a
 \begin_inset Formula 
 \begin{align}
 K\left(q,q';t\right)= & \lim_{n\rightarrow\infty}\int\left(\frac{m}{2\pi ia}\right)^{n/2}\times\nonumber \\
@@ -832,7 +873,7 @@ K\left(q,q';t\right)= & \lim_{n\rightarrow\infty}\int\left(\frac{m}{2\pi ia}\rig
 
 \end_inset
 
-donde 
+dónde 
 \begin_inset Formula $a=t/n$
 \end_inset
 
@@ -850,7 +891,7 @@ donde
 
 \end_inset
 
-Finalmente el propagador se describe por la ecuación
+El propagador se puede exresar como la suma infinita
 \begin_inset Formula 
 \begin{equation}
 K\left(q,q';t\right)=\sum_{\sigma\in\Omega}\mathrm{e}^{-itS[\sigma]},\label{eq:propagador_general}
@@ -858,7 +899,7 @@ K\left(q,q';t\right)=\sum_{\sigma\in\Omega}\mathrm{e}^{-itS[\sigma]},\label{eq:p
 
 \end_inset
 
-donde 
+dónde 
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -879,7 +920,7 @@ donde
 \begin_inset Formula $t$
 \end_inset
 
- .
+.
 \begin_inset Float figure
 wide false
 sideways false
@@ -900,8 +941,29 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Ejemplificación de la evolución de un estado en en el espacio fase, desde
- 
+Se muestra una trayectoria que parte de 
+\begin_inset Formula $q$
+\end_inset
+
+ hasta 
+\begin_inset Formula $q'$
+\end_inset
+
+ en el tiempo 
+\begin_inset Formula $t$
+\end_inset
+
+ en 
+\begin_inset Formula $n$
+\end_inset
+
+ pasos de tamaño 
+\begin_inset Formula $a$
+\end_inset
+
+.
+ La función de partición es la suma de todas las posibles trayectorias que
+ van de 
 \begin_inset Formula $q$
 \end_inset
 
@@ -931,6 +993,37 @@ Rotación de Wick
 \end_layout
 
 \begin_layout Standard
+Comparando el propagador de evolución ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:propagador_general"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ con la función de partición ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:func_part"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, se vuelve clara la relación entre la mecánica cuántica y la física estadística
+, con la única diferencia de que hay una unidad imaginaria presente en el
+ propagador de evolución que no aparece en la función de partición.
+ La rotación de Wick implica cambiar el eje temporal en el espacio hiperbólico
+ descrito por la métrica de Minkowski por un eje imaginario en el espacio
+ de Hilbert.
+\end_layout
+
+\begin_layout Standard
 El tensor métrico del espacio de Minkowski es de la forma
 \begin_inset Formula 
 \begin{equation}
@@ -944,7 +1037,7 @@ g_{M}=\left(\begin{array}{cccc}
 
 \end_inset
 
-En donde el 
+En dónde 
 \begin_inset Formula $-1$
 \end_inset
 
@@ -999,7 +1092,7 @@ noprefix "false"
 
 , la forma del propagador en el espacio de Minkowsi es equivalente a la
  función de partición definida en mecánica estadística, la forma discreta
- del propagador esta dada por la ecuación
+ del propagador está dada por la ecuación
 \begin_inset Formula 
 \begin{align}
 K\left(q,q';t_{E}\right)= & \lim_{n\rightarrow\infty}\int\left(\frac{m}{2\pi ia}\right)^{n/2}\times\nonumber \\
@@ -1008,7 +1101,7 @@ K\left(q,q';t_{E}\right)= & \lim_{n\rightarrow\infty}\int\left(\frac{m}{2\pi ia}
 
 \end_inset
 
-donde 
+dónde 
 \begin_inset Formula $\beta=t_{E}/n$
 \end_inset
 
@@ -1032,28 +1125,33 @@ K\left(q,q';t_{E}\right)=\sum_{\sigma\in\Omega}\mathrm{e}^{-\beta S[\sigma]},
 
 \end_inset
 
-donde otra vez 
-\begin_inset Formula $\sigma$
-\end_inset
-
- corresponde a una trayectoria en 
+dónde 
 \begin_inset Formula $\Omega$
 \end_inset
 
-, y este es el conjunto de todas las posibles trayectorias que inician en
- 
+ es el conjunto de todas las posibles configuraciones de 
 \begin_inset Formula $q$
 \end_inset
 
- y terminan en 
+ a 
 \begin_inset Formula $q'$
 \end_inset
 
- en el tiempo 
+ en el intervalo temporal 
 \begin_inset Formula $t_{E}$
 \end_inset
 
- 
+ y 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ es un elemento de 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ Habiendo aplicado la rotación de Wick, se llega una expresión idéntica
+ a la función de partición para describir la observable del modelo cuántico
 \begin_inset CommandInset citation
 LatexCommand autocite
 key "wipf_statistical_2013,feynman_space-time_1948,creutz_statistical_1981"
@@ -1069,24 +1167,64 @@ Modelos de espín
 \end_layout
 
 \begin_layout Standard
-Las propiedades macroscópicas de una amplia gama de materiales pueden describirs
-e mediante modelos de espines.
- Propiedades como la energía, la magnetización y la carga topológica pueden
- calcularse a partir de una configuración determinada de espines.
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Definición: Espín clásico en los modelos O(
+\begin_inset Formula $n$
+\end_inset
+
+).
 \end_layout
 
-\begin_layout Standard
-Un modelo de espines clásicos, consiste en un arreglo de espines, cada espín
- es una fuente de magnetización que interactúa con el resto de espines siguiendo
- un potencial de interacción.
+\begin_layout Plain Layout
+En el contexto de un sistema clásico, un espín es un vector unitario definido
+ en un espacio abstracto de dimensión 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Es decir, es un elemento de la esfera 
+\begin_inset Formula $\mathcal{S}^{n-1}$
+\end_inset
+
+.
 \end_layout
 
-\begin_layout Section
-Los modelos O
-\begin_inset Formula $(n)$
 \end_inset
 
 
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Las propiedades macroscópicas de una amplia gama de materiales pueden describirs
+e mediante modelos de espines.
+ En estos modelos, propiedades como la energía, la magnetización y la carga
+ topológica pueden calcularse a partir de las configuraciones de espines.
+\end_layout
+
+\begin_layout Section
+Estructura de una retícula 
 \end_layout
 
 \begin_layout Standard
@@ -1136,10 +1274,15 @@ Definimos una retícula como un subgrupo discreto del espacio continuo
 \begin_inset VSpace bigskip
 \end_inset
 
- Los modelos de retícula son ampliamente usados para modelar efectos colectivos.
+
+\end_layout
+
+\begin_layout Standard
+Los modelos de retícula son ampliamente usados para describir efectos colectivos.
  En la mayoría de los casos se usan retículas compuestas por repeticiones
- de estructuras geométricas simples, algunos ejemplos en dos dimensiones
- son estructuras cuadradas, triangulares, hexagonales, etc.
+ de estructuras geométricas simples.
+ Algunos ejemplos en dos dimensiones son estructuras cuadradas, triangulares,
+ hexagonales, etc.
  En este caso se considera una retícula de dimensión 
 \begin_inset Formula $d$
 \end_inset
@@ -1235,12 +1378,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-En dos dimensiones la topología de una retícula finita cuadrada es la de
- un toroide, y esa es la estructura que nos interesa en el modelo 2d O(
-\begin_inset Formula $3$
-\end_inset
-
-).
+En dos dimensiones la topología de una retícula finita cuadrada con condiciones
+ de frontera periódicas es un toroide.
 \end_layout
 
 \end_inset
@@ -1262,81 +1401,43 @@ Modelo 2d O
 \end_layout
 
 \begin_layout Standard
-\begin_inset Box Shadowbox
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-Definición: Espín clásico en el modelo O(
-\begin_inset Formula $n$
+El modelo 2d O
+\begin_inset Formula $(3)$
 \end_inset
 
-).
-\end_layout
+ consiste en un arreglo de espines clásicos en 
+\begin_inset Formula $\mathcal{S}^{2}$
+\end_inset
 
-\begin_layout Plain Layout
-En el contexto de un sistema clásico, un espín es un vector unitario definido
- en un espacio abstracto de dimensión 
-\begin_inset Formula $n$
+ acomodados en los sitios de una retícula 
+\begin_inset Formula $x\in\mathscr{T}_{L}^{2}$
 \end_inset
 
 .
- Es decir es un elemento de la esfera 
-\begin_inset Formula $\mathcal{S}^{n-1}$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\begin_inset VSpace bigskip
-\end_inset
-
-
+ Cada espín es una fuente de magnetización e interactúa con el resto de
+ espines siguiendo un potencial de interacción, como la interacción magnética
+ decae proporcionalmente al inverso del cuadrado de la distancia, la contribució
+n más grande se da entre los vecinos más cercanos, ya que la contribución
+ de los espines lejanos es órdenes de magnitud inferior a la de los vecinos
+ más cercanos, es conveniente despreciar las interacciones con espines lejanos.
+ 
 \end_layout
 
 \begin_layout Standard
-El modelo O(
-\begin_inset Formula $n$
+En el modelo 2d O(
+\begin_inset Formula $3$
 \end_inset
 
-) es un modelo de espines clásicos.
- Cada espín 
-\begin_inset Formula $\vec{s}_{x}$
-\end_inset
-
- ocupa un sitio 
-\begin_inset Formula $x\in\mathscr{T}_{L}^{d}$
-\end_inset
-
-.
- Una configuración 
+) una configuración 
 \begin_inset Formula $[s]$
 \end_inset
 
- es un arreglo de espines 
-\begin_inset Formula $\vec{s}_{x}$
-\end_inset
-
-, por ejemplo la configuración en la que todos los espines apuntan a la
- misma dirección se conoce como configuración uniforme.
- La configuración uniforme tiene la particularidad tener la de menor energía.
+ es el conjunto de estados de los espines en la retícula en el mismo instante.
+ Por ejemplo, las configuraciones en las que todos los espines apuntan a
+ la misma dirección o la configuración en la que todos los espines apuntan
+ en direcciones perpendiculares a sus vecinos.
+ Siguiendo esta definición, cualquier combinación de espines permitida es
+ una configuración válida.
  Consideramos una configuración 
 \begin_inset Formula $[s]$
 \end_inset
@@ -1350,7 +1451,7 @@ El modelo O(
 
 \end_inset
 
-donde 
+dónde 
 \begin_inset Formula $J$
 \end_inset
 
@@ -1359,11 +1460,20 @@ donde
 \end_inset
 
  son los espines vecinos más cercanos.
- Como la interacción magnética decae proporcionalmente al inverso del cuadrado
- de la distancia, la contribución más grande se da entre los vecinos más
- cercanos.
- Es conveniente despreciar las interacciones entre espines a más de una
- unidad de distancia.
+ En el caso de una configuración uniforme se deduce de la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:hamiltoniano_o(n)"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ que si todos los espines son paralelos, la suma sobre el producto escalar
+ se maximiza conduciendo a que una configuración uniforme tiene la menor
+ energía permitida por el modelo.
 \end_layout
 
 \begin_layout Standard
@@ -1387,65 +1497,42 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Espín en el modelo O(
+Representación de un espín clásico 
+\begin_inset Formula $\vec{s}$
+\end_inset
+
+ en en el modelo O(
 \begin_inset Formula $3$
 \end_inset
 
-)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-El caso de interés en este trabajo es el modelo 2d O(3), un modelo de espines
- en la esfera 
-\begin_inset Formula $\mathcal{S}^{2}$
-\end_inset
-
- sobre una retícula bidimensional.
- Ya que se realizaran simulaciones en volúmenes finitos se usara la retícula
- toroidal 
-\begin_inset Formula $\mathscr{R}_{L}^{2}$
-\end_inset
-
- de tamaño 
-\begin_inset Formula $L$
-\end_inset
-
- definida en la ec.
+).
  
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:reticula_especial"
-plural "false"
-caps "false"
-noprefix "false"
+\end_layout
 
 \end_inset
 
-.
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Las posiciones de los espines son pares enteros 
-\begin_inset Formula $x_{1},x_{2}\in(1,\dots,L)$
-\end_inset
+Es importante definir una notación clara y simple para referir los sitios
+ y los espines del modelo.
+\end_layout
 
-.
- Nos referiremos a un espín en el sito 
+\begin_layout Standard
+Para los espines, una forma simple es referirlos mediante sus posiciones
+ en la retícula.
+ una forma simple es mediante pares enteros 
 \begin_inset Formula $x=(x_{1},x_{2})$
 \end_inset
 
- como 
-\begin_inset Formula $\vec{s}_{x}$
+ dónde 
+\begin_inset Formula $x_{1},x_{2}\in(1,\dots,L)$
 \end_inset
 
 .
@@ -1473,7 +1560,7 @@ Un espín
 
 \end_inset
 
-en donde 
+en dónde 
 \begin_inset Formula $\theta_{x}\in[0,\pi)$
 \end_inset
 
@@ -1481,113 +1568,24 @@ en donde
 \begin_inset Formula $\phi_{x}\in[0,2\pi)$
 \end_inset
 
-.
- En algunos casos, como la generación de configuraciones, es ventajoso trabajar
- con coordenadas esféricas 
+ y 
+\begin_inset Formula $x$
+\end_inset
+
+ indica el sitio en la retícula que ocupa el espín.
+ En algunos casos, es ventajoso trabajar con coordenadas esféricas 
 \begin_inset Formula $(\theta,\phi)$
 \end_inset
 
-, en otros casos como el calculo del producto escalar es más conveniente
- usar las componentes de espín 
-\begin_inset Formula $\left(s_{x}^{(1)},s_{x}^{(2)},s_{x}^{(3)}\right)$
+, en otros casos es más conveniente usar las componentes de espín 
+\begin_inset Formula $\vec{s}_{x}=\left(s_{x}^{(1)},s_{x}^{(2)},s_{x}^{(3)}\right)$
 \end_inset
 
- por lo que usaremos ambas descripciones en los casos que más convenga.
-\end_layout
-
-\begin_layout Section
-Observables
+ por lo que usaremos ambas descripciones dependiendo de la situación.
 \end_layout
 
 \begin_layout Standard
-Describir las propiedades macroscópicas de un material implica la definición
- de variables como, masa 
-\begin_inset Formula $m$
-\end_inset
-
-, la energía 
-\begin_inset Formula $H$
-\end_inset
-
- y el momento magnético 
-\begin_inset Formula $m$
-\end_inset
-
-, entre otras cantidades.
- Dividir tales variables entre el volumen 
-\begin_inset Formula $V$
-\end_inset
-
-, convierte las variables macroscópicas en densidades independientes del
- tamaño del sistema, también son conocidas como variables mecánicas.
-\end_layout
-
-\begin_layout Standard
-Hay otro tipo de cantidades como la presión 
-\begin_inset Formula $P$
-\end_inset
-
-, la temperatura 
-\begin_inset Formula $T$
-\end_inset
-
- y el campo magnético 
-\begin_inset Formula $h$
-\end_inset
-
-.
- Caracterizan el ambiente en el que el sistema esta inmerso.
- En la mayoría de los sistemas, las variables mecánicas están bien definidas
- solo cuando el valor estas variables se ha especificado.
-\end_layout
-
-\begin_layout Standard
-A lo largo de un intervalo temporal, se espera que un sistema físico pase
- por múltiples configuraciones.
- Por ello, medir observables en una única configuración produce valores
- inconsistentes que dependen de la configuración utilizada.
- Para obtener un resultado útil, se busca calcular el promedio de un observable
- en un intervalo temporal lo suficientemente amplio como para reducir las
- fluctuaciones por debajo de un umbral de error deseado.
-\end_layout
-
-\begin_layout Subsection
-Energía
-\end_layout
-
-\begin_layout Standard
-En el modelo 2d O(
-\begin_inset Formula $3$
-\end_inset
-
-), la temperatura es un paramento que añade ruido aleatorio a cambiar las
- direcciones de los espines.
- A temperatura 
-\begin_inset Formula $T=0$
-\end_inset
-
- no hay fluctuaciones y el sistema alcanza una configuración de energía
- mínima.
- Cuando la temperatura 
-\begin_inset Formula $T_{c}>T>0$
-\end_inset
-
- se forman grupos de espines alineados, el vector de magnetización de cada
- grupo apunta en una dirección diferente, por lo que el sistema no alcanza
- una configuración de energía mínima.
- A mayor temperatura es mayor el número de espines apuntando en direcciones
- aleatorias.
- Pasando la temperatura crítica, la intensidad de las fluctuaciones evita
- la formación de grupos considerables de espines alineados, por consecuencia
- predomina el ruido termodinámico.
-\end_layout
-
-\begin_layout Standard
-En los modelos O
-\begin_inset Formula $(n)$
-\end_inset
-
- la energía esta dada por el hamiltonaino 
+La energía esta dada por el hamiltonaino 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:hamiltoniano_o(n)"
@@ -1597,17 +1595,13 @@ noprefix "false"
 
 \end_inset
 
-, en el modelo 2d O
-\begin_inset Formula $(3)$
-\end_inset
-
- es de la forma
+, desarrollando en una suma doble se llega a un hamitoniano de la forma
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathcal{H}\left[s\right]=-J\sum_{x_{1}}\sum_{x_{2}}\vec{s}_{x_{1},x_{2}}\cdot\left(\vec{s}_{x_{1}+1,x_{2}}+\vec{s}_{x_{1},x_{2}+1}+\vec{s}_{x_{1}-1,x_{2}}+\vec{s}_{x_{1},x_{2}-1}\right),\label{eq:hamiltoniano_2dO3}
+\mathcal{H}\left[s\right]=-\frac{J}{2}\sum_{x_{1}}\sum_{x_{2}}\vec{s}_{x_{1},x_{2}}\cdot\left(\vec{s}_{(x_{1}+1,x_{2})}+\vec{s}_{(x_{1},x_{2}+1)}+\vec{s}_{(x_{1}-1,x_{2})}+\vec{s}_{(x_{1},x_{2}-1)}\right).\label{eq:hamiltoniano_2dO3}
 \end{equation}
 
 \end_inset
@@ -1616,8 +1610,19 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-Aunque es una ecuación sencilla de manejar es posible simplificarla intercambian
-do y recorriendo índices en el tercer termino de la ec.
+La ecuación 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:hamiltoniano_o(n)"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ se puede simplificar considerando las condiciones de frontera.
+ Si se intercambia y se recorren los índices en el tercer termino de la
+ ec.
  
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -1634,31 +1639,39 @@ noprefix "false"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}-1,x_{2}}=\sum_{x_{2}=1}^{L}\sum_{x_{1}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}-1,x_{2}}=\sum_{x_{2}=1}^{L}\sum_{x_{1}=0}^{L-1}\vec{s}_{x_{1}+1,x_{2}}\cdot\vec{s}_{x_{1},x_{2}}.
+\begin{aligned}\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{(x_{1},x_{2})}\cdot\vec{s}_{(x_{1}-1,x_{2})}= & \sum_{x_{2}=1}^{L}\sum_{x_{1}=1}^{L}\vec{s}_{(x_{1},x_{2})}\cdot\vec{s}_{(x_{1}-1,x_{2})}\\
+= & \sum_{x_{2}=1}^{L}\sum_{x_{1}=0}^{L-1}\vec{s}_{(x_{1}+1,x_{2})}\cdot\vec{s}_{(x_{1},x_{2})}.
+\end{aligned}
 \end{equation}
 
 \end_inset
 
-Separando términos se tiene
+Separando el primer y el ultimo elemento de la suma sobre 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ se tiene 
 \begin_inset Formula 
 \begin{equation}
-\sum_{x_{2}=1}^{L}\sum_{x_{1}=0}^{L-1}\vec{s}_{x_{1}+1,x_{2}}\cdot\vec{s}_{x_{1},x_{2}}=\sum_{x_{2}=1}^{L}\left(\vec{s}_{1,x_{2}}\cdot\vec{s}_{0,x_{2}}-\vec{s}_{L+1,x_{2}}\cdot\vec{s}_{L,x_{2}}+\sum_{x_{1}=1}^{L}\vec{s}_{x_{1}+1,x_{2}}\cdot\vec{s}_{x_{1},x_{2}}\right).
+\begin{aligned}\sum_{x_{2}=1}^{L}\sum_{x_{1}=0}^{L-1}\vec{s}_{(x_{1}+1,x_{2})}\cdot\vec{s}_{(x_{1},x_{2})}= & \sum_{x_{2}=1}^{L}\Big(\vec{s}_{(1,x_{2})}\cdot\vec{s}_{(0,x_{2})}-\vec{s}_{(L+1,x_{2})}\cdot\vec{s}_{(L,x_{2})}\\
+ & +\sum_{x_{1}=1}^{L}\vec{s}_{(x_{1}+1,x_{2})}\cdot\vec{s}_{(x_{1},x_{2})}\Big).
+\end{aligned}
 \end{equation}
 
 \end_inset
 
 Por las condiciones de frontera 
-\begin_inset Formula $\vec{s}_{1,x_{2}}=\vec{s}_{L+1}$
+\begin_inset Formula $\vec{s}_{(1,x_{2})}=\vec{s}_{(L+1)}$
 \end_inset
 
  y 
-\begin_inset Formula $\vec{s}_{0,x_{2}}=\vec{s}_{L,x_{2}}$
+\begin_inset Formula $\vec{s}_{(0,x_{2})}=\vec{s}_{(L,x_{2})}$
 \end_inset
 
-, por lo que 
+, entonces
 \begin_inset Formula 
 \begin{equation}
-\vec{s}_{1,x_{2}}\cdot\vec{s}_{0,x_{2}}-\vec{s}_{L+1,x_{2}}\cdot\vec{s}_{L,x_{2}}=0
+\vec{s}_{(1,x_{2})}\cdot\vec{s}_{(0,x_{2})}-\vec{s}_{(L+1,x_{2})}\cdot\vec{s}_{(L,x_{2})}=0.
 \end{equation}
 
 \end_inset
@@ -1669,7 +1682,7 @@ Entonces
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}-1,x_{2}}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}+1,x_{2}}.\label{eq:equiv1}
+\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{(x_{1},x_{2})}\cdot\vec{s}_{(x_{1}-1,x_{2})}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{(x_{1},x_{2})}\cdot\vec{s}_{(x_{1}+1,x_{2})}.\label{eq:equiv1}
 \end{equation}
 
 \end_inset
@@ -1706,31 +1719,37 @@ noprefix "false"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\sum_{x_{1}=1}^{L}\sum_{x_{2\;}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}-1}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=0}^{L-1}\vec{s}_{x_{1},x_{2}+1}\cdot\vec{s}_{x_{1},x_{2}}.
+\sum_{x_{1}=1}^{L}\sum_{x_{2\;}=1}^{L}\vec{s}_{(x_{1},x_{2})}\cdot\vec{s}_{(x_{1},x_{2}-1)}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=0}^{L-1}\vec{s}_{(x_{1},x_{2}+1)}\cdot\vec{s}_{(x_{1},x_{2})}.
 \end{equation}
 
 \end_inset
 
-Separando términos se tiene
+Separando el primer y el ultimo elemento de la suma sobre 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ se tiene
 \begin_inset Formula 
 \begin{equation}
-\sum_{x_{1}=1}^{L}\sum_{x_{2}=0}^{L-1}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}+1}=\sum_{x_{1}=1}^{L}\left(\vec{s}_{x_{1},0}\cdot\vec{s}_{x_{1},1}-\vec{s}_{x_{1},L}\cdot\vec{s}_{x_{1},L+1}+\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}+1}\right).
+\begin{aligned}\sum_{x_{1}=1}^{L}\sum_{x_{2}=0}^{L-1}\vec{s}_{(x_{1},x_{2})}\cdot\vec{s}_{(x_{1},x_{2}+1)}= & \sum_{x_{1}=1}^{L}\Big(\vec{s}_{(x_{1},0)}\cdot\vec{s}_{(x_{1},1)}-\vec{s}_{(x_{1},L)}\cdot\vec{s}_{(x_{1},L+1)}\\
+ & +\sum_{x_{2}=1}^{L}\vec{s}_{(x_{1},x_{2})}\cdot\vec{s}_{(x_{1},x_{2}+1)}\Big).
+\end{aligned}
 \end{equation}
 
 \end_inset
 
 Por las condiciones de frontera 
-\begin_inset Formula $\vec{s}_{x_{1},0}=\vec{s}_{x_{1},L}$
+\begin_inset Formula $\vec{s}_{(x_{1},0)}=\vec{s}_{(x_{1},L)}$
 \end_inset
 
  y 
-\begin_inset Formula $\vec{s}_{x_{1},1}=\vec{s}_{x_{1},L+1}$
+\begin_inset Formula $\vec{s}_{(x_{1},1)}=\vec{s}_{(x_{1},L+1)}$
 \end_inset
 
 , por lo que se tiene 
 \begin_inset Formula 
 \begin{equation}
-\vec{s}_{x_{1},0}\cdot\vec{s}_{x_{1},1}-\vec{s}_{x_{1},L}\cdot\vec{s}_{x_{1},L+1}=0.
+\vec{s}_{(x_{1},0)}\cdot\vec{s}_{(x_{1},1)}-\vec{s}_{(x_{1},L)}\cdot\vec{s}_{(x_{1},L+1)}=0.
 \end{equation}
 
 \end_inset
@@ -1741,7 +1760,7 @@ Entonces
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}-1}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}+1}.\label{eq:equiv2}
+\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{(x_{1},x_{2})}\cdot\vec{s}_{(x_{1},x_{2}-1)}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{(x_{1},x_{2})}\cdot\vec{s}_{(x_{1},x_{2}+1)}.\label{eq:equiv2}
 \end{equation}
 
 \end_inset
@@ -1778,17 +1797,134 @@ noprefix "false"
 \end_inset
 
  y simplificando términos se llega a la forma compacta del hamiltonoano
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathcal{H}\left[s\right]=-J\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\left(\vec{s}_{x_{1}+1,x_{2}}+\vec{s}_{x_{1},x_{2}+1}\right).\label{eq:hamiltoniano_simplificado}
+\mathcal{H}\left[s\right]=-J\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{(x_{1},x_{2})}\cdot\left(\vec{s}_{(x_{1}+1,x_{2})}+\vec{s}_{(x_{1},x_{2}+1)}\right).
 \end{equation}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+La suma recorre todos los sitios en la retícula, por cada sitio, se considera
+ el producto escalar con espín en el sitio a la derecha y arriba en la retícula.
+ Definiendo 
+\begin_inset Formula $\hat{1}=(1,0)$
+\end_inset
+
+ y 
+\begin_inset Formula $\hat{2}=(0,1)$
+\end_inset
+
+ se tiene 
+\begin_inset Formula 
+\begin{equation}
+\mathcal{H}[s]=-J\sum_{x}\vec{s}_{x}\cdot\left(\vec{s}_{x+\hat{1}}+\vec{s}_{x+\hat{2}}\right)\label{eq:hamiltoniano_simplificado}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Observables
+\end_layout
+
+\begin_layout Standard
+Describir las propiedades macroscópicas de un material, requiere de observables
+ medibles como, masa 
+\begin_inset Formula $m$
+\end_inset
+
+, la energía 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+, la magnetización 
+\begin_inset Formula $m$
+\end_inset
+
+, etc.
+ Si una observable, como la energía se divide por volumen 
+\begin_inset Formula $V$
+\end_inset
+
+ del sistema, se convierte en una densidad independiente de tamaño del sistema,
+ a estas observables se les conoce como variables mecánicas.
+\end_layout
+
+\begin_layout Standard
+Hay otro tipo de cantidades como la presión 
+\begin_inset Formula $P$
+\end_inset
+
+, la temperatura 
+\begin_inset Formula $T$
+\end_inset
+
+, el campo magnético 
+\begin_inset Formula $B$
+\end_inset
+
+, etc.
+ Estas variables caracterizan el ambiente en el que el sistema está inmerso.
+ En la mayoría de los sistemas, las variables mecánicas están bien definidas
+ solo cuando el valor de estas variables se fija.
+\end_layout
+
+\begin_layout Standard
+Desde el punto de vista microscópico, las variables mecánicas dependen de
+ la configuración del sistema en un instante fijo.
+ A lo largo de un intervalo temporal, se espera que un sistema físico pase
+ por múltiples configuraciones.
+ 
+\end_layout
+
+\begin_layout Standard
+Medir observables en una única configuración lleva a valores inconsistentes,
+ ya que las configuraciones por las que pasa el sistema fluctúan.
+ Se busca calcular el promedio de un observable en un intervalo temporal
+ lo suficientemente amplio como para reducir las fluctuaciones por debajo
+ de un umbral de error deseado.
+ El valor medible de la observable, es el promedio de los valores obtenidos
+ por las configuraciones en el intervalo temporal.
+\end_layout
+
+\begin_layout Subsection
+Energía
+\end_layout
+
+\begin_layout Standard
+En el modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+), la temperatura es un paramento que añade ruido, fluctuaciones que cambian
+ las direcciones de los espines.
+ A temperatura 
+\begin_inset Formula $T=0$
+\end_inset
+
+, no hay fluctuaciones y el sistema alcanza en el equilibrio una configuración
+ de energía mínima (una configuración uniforme).
+ Cuando la temperatura 
+\begin_inset Formula $T_{c}>T>0$
+\end_inset
+
+ se forman grupos de espines alineados, el vector de magnetización de cada
+ grupo apunta en una dirección diferente, en esta región de temperatura
+ hay baja simetría inducida por la estructura de diferentes regiones de
+ espines alineados.
+ A mayor temperatura por encima de la temperatura critica, es mayor el número
+ de espines apuntando en direcciones aleatorias.
+ Pasando la temperatura crítica, la intensidad de las fluctuaciones evita
+ la formación de grupos considerables de espines alineados, por consecuencia
+ predomina el ruido termodinámico.
+ La simetría del sistema por encima de la temperatura critica es alta debido
+ a la configuración general del sistema.
 \end_layout
 
 \begin_layout Standard
@@ -1798,7 +1934,7 @@ La energía de una configuración depende de las diferencias relativas entre
 \begin_inset Formula $[s]$
 \end_inset
 
- a la que se aplica una rotación por una ángulo 
+ a la que se aplica una rotación por un ángulo 
 \begin_inset Formula $\phi$
 \end_inset
 
@@ -1811,11 +1947,16 @@ La energía de una configuración depende de las diferencias relativas entre
 \begin_inset Formula $[s']$
 \end_inset
 
- es una configuración equivalente asociada a la misma energía que 
+ es una configuración equivalente asociada a la misma energía que la configuraci
+ón 
 \begin_inset Formula $[s]$
 \end_inset
 
 .
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1866,7 +2007,7 @@ Pensemos en una configuración como un evento y en un conjunto de configuracione
 
  indica la configuración del sistema en el ese instante.
  Como cada configuración tiene una energía asociada, la energía asociada
- alas configuraciones es diferente en cada valor de 
+ a las configuraciones es diferente en cada valor de 
 \begin_inset Formula $t_{i}$
 \end_inset
 
@@ -2189,7 +2330,7 @@ Q[s]=\frac{1}{4\pi}\sum_{x}A_{x}\in\mathbb{Z},
 
 \end_inset
 
-donde 
+dónde 
 \begin_inset Formula $\Omega_{a}(i,j)$
 \end_inset
 
@@ -2373,32 +2514,9 @@ El cambio de estado liquido a gas de un fluido.
 El cambio del estado paramagnético al ferromagnético en un imán 
 \end_layout
 
-\begin_layout Enumerate
-El cambio de o conductor a superconductor en un material.
-\end_layout
-
 \begin_layout Standard
-El primer ejemplo es es una transición de fase de primer orden A nivel microscóp
-ico un sistema puede pasar de un estado simétrico y con alta energía a otro
- asimétrico y menor energía al pasar por debajo de una temperatura critica
- 
-\begin_inset Formula $T_{c}$
-\end_inset
-
- 
-\begin_inset CommandInset citation
-LatexCommand autocite
-key "giachetti_berezinskii-kosterlitz-thouless_2021,hinrichsen_non-equilibrium_2000,yeomans_statistical_1992"
-literal "false"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-En el diagrama de la imagen 
+El primer ejemplo es es una transición de fase de primer orden.
+ En el diagrama de la imagen 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "diag_phase"
@@ -2419,28 +2537,6 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-En el proceso descrito se pasan por dos fases: 
-\end_layout
-
-\begin_layout Itemize
-Una fase desordenada por encima de la temperatura crítica.
- 
-\end_layout
-
-\begin_layout Itemize
-Una fase ordenada por debajo de la temperatura crítica.
-\end_layout
-
-\begin_layout Standard
-Este es un ejemplo de una transición de segundo orden, ya que implica una
- discontinuidad en la segunda derivada de la energía libre del sistema.
-\end_layout
-
-\begin_layout Standard
-Cuando se perturba un sistema en equilibrio, las variables mecánicas del
- sistema cambian, el tiempo que el sistema tarda en alcanzar nuevamente
- el estado de equilibrio termodinámico es conocido como tiempo de relajación
- 
 \begin_inset Float figure
 wide false
 sideways false
@@ -2479,6 +2575,43 @@ name "diag_phase"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+El segundo ejemplo es una transición de fase de segundo orden ya que implica
+ una discontinuidad en la segunda derivada de la energía libre del sistema.
+ A nivel microscópico un sistema puede pasar de un estado simétrico y con
+ alta energía a otro asimétrico y menor energía al pasar por debajo de una
+ temperatura critica 
+\begin_inset Formula $T_{c}$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "giachetti_berezinskii-kosterlitz-thouless_2021,hinrichsen_non-equilibrium_2000,yeomans_statistical_1992"
+literal "false"
+
+\end_inset
+
+.
+ En el proceso descrito se pasan por dos fases: 
+\end_layout
+
+\begin_layout Itemize
+Una fase desordenada por encima de la temperatura crítica.
+ 
+\end_layout
+
+\begin_layout Itemize
+Una fase ordenada por debajo de la temperatura crítica.
+\end_layout
+
+\begin_layout Standard
+Cuando se perturba un sistema en equilibrio, las variables mecánicas del
+ sistema cambian, el tiempo que el sistema tarda en alcanzar nuevamente
+ el estado de equilibrio termodinámico es conocido como tiempo de relajación
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2593,7 +2726,9 @@ Segunda derivada de la energía libre.
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Transición de fase de segundo orden.
+Se muestra la primera y segundas derivada de la energía libre de .
+ Hay una discontinuidad en la segunda derivada por lo que se trata de una
+ transición de fase de segundo orden.
 \end_layout
 
 \end_inset
@@ -2635,7 +2770,7 @@ P_{\mathcal{H}[\sigma]}=\frac{\mathrm{e}^{-\beta\mathcal{H}[\sigma]}}{Z},
 
 \end_inset
 
-donde 
+dónde 
 \begin_inset Formula $\beta=1/k_{B}T$
 \end_inset
 
@@ -2677,7 +2812,7 @@ M=\pdv{\mathcal{F}}{B}=\frac{\sum_{\sigma}M_{\sigma}\mathrm{e}^{-\beta\mathcal{H
 
 \end_inset
 
-donde
+dónde
 \begin_inset Formula 
 \begin{equation}
 \mathcal{H}[\sigma]=-J\sum_{\expval{xy}}\vec{s}_{x}\cdot\vec{s}_{y}-B\sum_{x}\vec{s}_{x}.
@@ -2782,7 +2917,7 @@ En la practica, para determinar la longitud de correlación se mapea a una
 
 \end_inset
 
-donde 
+dónde 
 \begin_inset Formula $\xi$
 \end_inset
 
@@ -2895,7 +3030,7 @@ G\left(\lambda^{a_{H}}H,\lambda^{a_{T}}\epsilon\right)=\lambda G(H,\epsilon),
 
 \end_inset
 
-donde 
+dónde 
 \begin_inset Formula $\lambda\in\mathbb{R}^{+}$
 \end_inset
 
@@ -3074,7 +3209,7 @@ Consideremos el universo temprano en expansión.
 \begin_inset Formula $\sqrt{G_{F}}$
 \end_inset
 
-, donde 
+, dónde 
 \begin_inset Formula $G_{F}$
 \end_inset
 
@@ -3116,7 +3251,7 @@ B_{\mu\nu}=O\mu\nu B\mu\nu-D_{\nu}B\mu+q\left[B_{\mu},B_{\nu}\right].
 
 \end_inset
 
-Donde 
+dónde 
 \begin_inset Formula $g,\nu$
 \end_inset
 
@@ -3277,7 +3412,7 @@ En 1985, W.
 \end_inset
 
 .
- Donde 
+ dónde 
 \begin_inset Formula $τ_{\mathrm{cool}}$
 \end_inset
 
@@ -3323,7 +3458,7 @@ V=\alpha\abs{\psi\left(\vec{r}\right)}^{2}+\frac{1}{2}\beta\abs{\psi\left(\vec{r
 
 \end_inset
 
-Donde 
+dónde 
 \begin_inset Formula $\alpha=\alpha'(T-T_{c})$
 \end_inset
 
@@ -3464,7 +3599,7 @@ El tiempo de autocorrelación se estima como
 
 \end_inset
 
-Donde 
+dónde 
 \begin_inset Formula $\tau_{\mathrm{exp},A}$
 \end_inset
 
@@ -3486,7 +3621,7 @@ El tiempo de auto-correlación depende del algoritmo de Monte Carlo particular
 
 \end_inset
 
-donde 
+dónde 
 \begin_inset Formula $z$
 \end_inset
 
@@ -3630,7 +3765,7 @@ Consideremos la cadena de Markov dada por
 \begin_inset Formula $t_{i}$
 \end_inset
 
- donde 
+ dónde 
 \begin_inset Formula $i\in\{1,\dots,N\}$
 \end_inset
 
@@ -3651,7 +3786,7 @@ Consideremos la cadena de Markov dada por
 
 \end_inset
 
-donde 
+dónde 
 \begin_inset Formula $[s]_{i}$
 \end_inset
 
@@ -3737,7 +3872,7 @@ p[s\rightarrow s']p[s]=p[s'\rightarrow s]p[s'],\label{eq:detailed_balance}
 
 \end_inset
 
-donde 
+dónde 
 \begin_inset Formula $p[s]$
 \end_inset
 
@@ -3912,7 +4047,7 @@ Si la energía de la configuración disminuye con el cambio, la probabilidad
  algoritmo Metropolis, la forma en la que se realiza el barrido puede ser
  lexicográfica, en la que los espines se elijen siendo un orden basado en
  las posiciones de la retícula.
- O puede ser aleatorio en donde los espines se elijen al azar.
+ O puede ser aleatorio en dónde los espines se elijen al azar.
 \end_layout
 
 \begin_layout Standard
@@ -4193,7 +4328,7 @@ multi-clúster
 \begin_inset Formula $\vec{s}_{x},\vec{s}_{y}$
 \end_inset
 
- donde 
+ dónde 
 \begin_inset Formula $\vec{s}_{y}$
 \end_inset
 
@@ -4283,7 +4418,7 @@ A cada espín se le asocia una etiqueta
 \begin_inset Formula $m_{x}^{\alpha}$
 \end_inset
 
- donde 
+ dónde 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -4590,7 +4725,7 @@ ras
 \begin_inset Formula $L\times L$
 \end_inset
 
- donde 
+ dónde 
 \begin_inset Formula $L=64$
 \end_inset
 
@@ -5436,7 +5571,7 @@ Se calculó la longitud de correlación en retículas de tamaño
 \begin_inset Formula $L\times L$
 \end_inset
 
- donde 
+ dónde 
 \begin_inset Formula $L\in\left\{ 32,64,128\right\} $
 \end_inset
 
@@ -6230,7 +6365,7 @@ Exponente crítico
 \begin_inset Formula $L\times L$
 \end_inset
 
- donde 
+ dónde 
 \begin_inset Formula $L\in\{32,64,128\}.$
 \end_inset
 
@@ -6282,7 +6417,7 @@ n y los tiempos de autocorrelación para las temperaturas
 \begin_inset Formula $L\times L$
 \end_inset
 
- donde 
+ dónde 
 \begin_inset Formula $L=64$
 \end_inset
 
@@ -9090,7 +9225,7 @@ Para la energía y la magnetización, los exponentes
 \end_layout
 
 \begin_layout Standard
-El mecanismo de Kibble-Zurek se plantea en sistemas donde ocurre una ruptura
+El mecanismo de Kibble-Zurek se plantea en sistemas dónde ocurre una ruptura
  de simetría al cruzar una temperatura crítica.
  Sin embargo, en el modelo 2d O(3), la temperatura crítica es 
 \begin_inset Formula $T=0$
@@ -9186,7 +9321,7 @@ Un elemento de la esfera
 
 \end_inset
 
-donde 
+dónde 
 \begin_inset Formula $\theta\in[0,\pi]$
 \end_inset
 
@@ -9305,7 +9440,7 @@ luego se definen variables aleatorias
 \end_layout
 
 \begin_layout Standard
-donde 
+dónde 
 \begin_inset Formula $u,v\in(0,\text{1})$
 \end_inset
 
@@ -9506,7 +9641,7 @@ R=\left\{ \vec{s}\in\mathcal{S}^{2}|d(\vec{s},\vec{s}_{0})\leq\alpha_{\mathrm{ma
 
 \end_inset
 
-donde 
+dónde 
 \begin_inset Formula $d(\vec{s},\vec{s}_{0})$
 \end_inset
 
@@ -9768,7 +9903,7 @@ Un enlace directo ocurre entre dos sitios vecinos, mientras que un enlace
 \end_layout
 
 \begin_layout Standard
-Para empezar vamos a generar una configuración de enlaces en donde cada
+Para empezar vamos a generar una configuración de enlaces en dónde cada
  sitio 
 \begin_inset Formula $x$
 \end_inset
