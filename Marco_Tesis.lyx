@@ -1818,10 +1818,36 @@ La suma recorre todos los sitios en la retícula, por cada sitio, se considera
 \begin_inset Formula $\hat{2}=(0,1)$
 \end_inset
 
- se tiene 
+ y 
+\begin_inset Formula $J=1$
+\end_inset
+
+ se tiene
 \begin_inset Formula 
 \begin{equation}
-\mathcal{H}[s]=-J\sum_{x}\vec{s}_{x}\cdot\left(\vec{s}_{x+\hat{1}}+\vec{s}_{x+\hat{2}}\right)\label{eq:hamiltoniano_simplificado}
+\mathcal{H}[s]=-\sum_{x}\vec{s}_{x}\cdot\left(\vec{s}_{x+\hat{1}}+\vec{s}_{x+\hat{2}}\right)
+\end{equation}
+
+\end_inset
+
+ Es conveniente ubicar la energía mínima en el valor cero, si se tiene una
+ configuración uniforme en una retícula de 
+\begin_inset Formula $V$
+\end_inset
+
+ sitios, la energía es 
+\begin_inset Formula $\mathcal{H}[s_{u}]=-2V$
+\end_inset
+
+, por lo que el mínimo se puede recorrer sumando al hamiltoniano el factor
+ 
+\begin_inset Formula $-2V$
+\end_inset
+
+, entonces 
+\begin_inset Formula 
+\begin{equation}
+\mathcal{H}[s]=-\sum_{x}\left[\vec{s}_{x}\cdot\left(\vec{s}_{x+\hat{1}}+\vec{s}_{x+\hat{2}}\right)+2\right].\label{eq:hamiltoniano_simplificado}
 \end{equation}
 
 \end_inset
@@ -1881,78 +1907,6 @@ Desde el punto de vista microscópico, las variables mecánicas dependen de
  A lo largo de un intervalo temporal, se espera que un sistema físico pase
  por múltiples configuraciones.
  
-\end_layout
-
-\begin_layout Standard
-Medir observables en una única configuración lleva a valores inconsistentes,
- ya que las configuraciones por las que pasa el sistema fluctúan.
- Se busca calcular el promedio de un observable en un intervalo temporal
- lo suficientemente amplio como para reducir las fluctuaciones por debajo
- de un umbral de error deseado.
- El valor medible de la observable, es el promedio de los valores obtenidos
- por las configuraciones en el intervalo temporal.
-\end_layout
-
-\begin_layout Subsection
-Energía
-\end_layout
-
-\begin_layout Standard
-En el modelo 2d O(
-\begin_inset Formula $3$
-\end_inset
-
-), la temperatura es un paramento que añade ruido, fluctuaciones que cambian
- las direcciones de los espines.
- A temperatura 
-\begin_inset Formula $T=0$
-\end_inset
-
-, no hay fluctuaciones y el sistema alcanza en el equilibrio una configuración
- de energía mínima (una configuración uniforme).
- Cuando la temperatura 
-\begin_inset Formula $T_{c}>T>0$
-\end_inset
-
- se forman grupos de espines alineados, el vector de magnetización de cada
- grupo apunta en una dirección diferente, en esta región de temperatura
- hay baja simetría inducida por la estructura de diferentes regiones de
- espines alineados.
- A mayor temperatura por encima de la temperatura critica, es mayor el número
- de espines apuntando en direcciones aleatorias.
- Pasando la temperatura crítica, la intensidad de las fluctuaciones evita
- la formación de grupos considerables de espines alineados, por consecuencia
- predomina el ruido termodinámico.
- La simetría del sistema por encima de la temperatura critica es alta debido
- a la configuración general del sistema.
-\end_layout
-
-\begin_layout Standard
-La energía de una configuración depende de las diferencias relativas entre
- espines vecinos.
- Pensemos en una configuración 
-\begin_inset Formula $[s]$
-\end_inset
-
- a la que se aplica una rotación por un ángulo 
-\begin_inset Formula $\phi$
-\end_inset
-
- en la misma dirección a todos los espines en 
-\begin_inset Formula $[s]$
-\end_inset
-
-, la transformación mantiene las diferencias relativas entre espines, por
- lo tanto, la nueva configuración 
-\begin_inset Formula $[s']$
-\end_inset
-
- es una configuración equivalente asociada a la misma energía que la configuraci
-ón 
-\begin_inset Formula $[s]$
-\end_inset
-
-.
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -1999,8 +1953,54 @@ En un sistema estocástico, un conjunto de eventos sucesivos forman una cadena
 \end_layout
 
 \begin_layout Standard
-Pensemos en una configuración como un evento y en un conjunto de configuraciones
- como una cadena de Markov.
+Medir observables en una única configuración lleva a valores inconsistentes,
+ ya que las configuraciones por las que pasa el sistema fluctúan.
+ Se busca calcular el promedio de un observable en un intervalo temporal
+ en el timepo de Markov lo suficientemente amplio como para reducir las
+ fluctuaciones por debajo de un umbral de error deseado.
+ El valor medible de la observable, es el promedio de los valores obtenidos
+ por las configuraciones en el intervalo de Markov.
+\end_layout
+
+\begin_layout Subsection
+Energía
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+La energía de una configuración depende de las diferencias relativas entre
+ espines vecinos.
+ Pensemos en una configuración 
+\begin_inset Formula $[s]$
+\end_inset
+
+ a la que se aplica una rotación por un ángulo 
+\begin_inset Formula $\phi$
+\end_inset
+
+ en la misma dirección a todos los espines en 
+\begin_inset Formula $[s]$
+\end_inset
+
+, la transformación mantiene las diferencias relativas entre espines, por
+ lo tanto, la nueva configuración 
+\begin_inset Formula $[s']$
+\end_inset
+
+ es equivalente y está asociada a la misma energía que la configuración
+ 
+\begin_inset Formula $[s]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Pensemos en una configuración como un evento en el sentido estadístico y
+ en un conjunto de configuraciones como una cadena de Markov.
  El tiempo de Markov 
 \begin_inset Formula $t_{i}$
 \end_inset
@@ -2012,10 +2012,7 @@ Pensemos en una configuración como un evento y en un conjunto de configuracione
 \end_inset
 
 .
- Una posible forma de  determinar la energía en un intervalo temporal, es
- calcular el promedio de las energías asociadas a las configuraciones en
- ese intervalo.
- Resultando en la energía aproximada
+ La energía promedio en un intervalo temporal, es de la forma
 \begin_inset Formula 
 \begin{equation}
 \expval{\mathcal{H}}_{\mathrm{aprox}}=\frac{1}{N}\sum_{i=1}^{N}\mathcal{H}_{i}.
@@ -2050,13 +2047,50 @@ Magnetización
 \end_layout
 
 \begin_layout Standard
+En el modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+), la temperatura es un paramento que añade ruido, fluctuaciones que cambian
+ las direcciones de los espines.
+ A temperatura 
+\begin_inset Formula $T=0$
+\end_inset
+
+, no hay fluctuaciones y el sistema alcanza en el equilibrio una configuración
+ de energía mínima (una configuración uniforme con todos los espines alineados).
+\end_layout
+
+\begin_layout Standard
+Cuando la temperatura 
+\begin_inset Formula $T_{c}>T>0$
+\end_inset
+
+ se forman grupos de espines alineados, el vector de magnetización de cada
+ grupo apunta en una dirección diferente.
+ En esta región de temperatura hay baja simetría inducida por la estructura
+ de diferentes regiones de espines alineados.
+ 
+\end_layout
+
+\begin_layout Standard
+Por encima de la temperatura crítica, es mayor el número de espines apuntando
+ en direcciones aleatorias.
+ Pasando la temperatura crítica, la intensidad de las fluctuaciones evita
+ la formación de grupos considerables de espines alineados, por consecuencia
+ predomina el ruido termodinámico.
+ La simetría del sistema por encima de la temperatura crítica es alta debido
+ a la configuración general del sistema.
+\end_layout
+
+\begin_layout Standard
 En modelos de espines clásicos, la magnetización 
 \begin_inset Formula $m$
 \end_inset
 
  es un escalar que depende de la alineación de los espines de una configuración.
  Se define como la magnitud de la suma de los espines de una configuración
- dividido por el volumen.
+ dividida por el volumen.
 \begin_inset Formula 
 \begin{equation}
 M=\frac{1}{V}\abs{\sum_{x}\vec{s}_{x}}
@@ -2077,8 +2111,8 @@ M_{\mathrm{max}}=\frac{1}{V}\abs{\sum_{x}\vec{s}_{x}}=\frac{1}{V}\abs{V\vec{s}}=
 \end_layout
 
 \begin_layout Standard
-Igual que con la energía un conjunto de configuraciones tiene un conjunto
- de configuraciones es una cadena de Markov y se puede medir la magnetizaron
+Igual que con la energía, un conjunto de configuraciones tiene un conjunto
+ de configuraciones, es una cadena de Markov y se puede medir la magnetizaron
  de aproximada en un intervalo temporal calculando el promedio de las magnetizac
 iones en ese intervalo
 \end_layout
@@ -2156,8 +2190,9 @@ B.
 ).
  Para definir la carga topológica de una configuración se usa un acercamiento
  geométrico, la retícula se divide en plaquetas formadas por cuatro espines,
- esto a su vez se subdividen en un dos triángulos, alternando la orientación
- de la diagonal que divide cada cuadrado para replicar la propiedad de isotropía.
+ esto a su vez se subdividen en dos triángulos, alternando la orientación
+ de la diagonal que divide cada cuadrado para replicar isotropía del modelo
+ de espines.
  
 \end_layout
 
@@ -2252,12 +2287,12 @@ noprefix "false"
 \begin_inset Formula $\vec{s}_{1},\vec{s}_{2},\vec{s}_{3}$
 \end_inset
 
- definen las esquinas de un triangulo esférico en 
+ definen las esquinas de un triángulo esférico en 
 \begin_inset Formula $\mathcal{S}^{2}$
 \end_inset
 
 .
- Se calculan las variables para el triangulo 
+ Se calculan las variables para el triángulo 
 \begin_inset Formula $1$
 \end_inset
 
@@ -2270,16 +2305,13 @@ y_{1} & =\vec{s}_{1}\cdot(\vec{s}_{2}\times\vec{s}_{3}).
 
 \end_inset
 
-Al ser una esfera unitaria, el área del triangulo esférico esta dada por
+Al ser una esfera unitaria, el área del triángulo esférico esta dada por
  el ángulo solido generado por los espines, defiendo el número complejo
  
 \begin_inset Formula $z_{a}=x_{a}+iy_{a}$
 \end_inset
 
- y aplicando la formula de A.
- Oosterom y J.
- Strakee.
- Se obtiene
+ y aplicando la formula, se obtiene
 \begin_inset Formula 
 \begin{equation}
 \Omega_{1}=2\mathrm{arg}(z_{1}).
@@ -2582,7 +2614,7 @@ El segundo ejemplo es una transición de fase de segundo orden ya que implica
  una discontinuidad en la segunda derivada de la energía libre del sistema.
  A nivel microscópico un sistema puede pasar de un estado simétrico y con
  alta energía a otro asimétrico y menor energía al pasar por debajo de una
- temperatura critica 
+ temperatura crítica 
 \begin_inset Formula $T_{c}$
 \end_inset
 
@@ -4246,7 +4278,7 @@ ación crítica característica de los algoritmos de actualización local.
 \begin_layout Standard
 Un clúster puede consistir de un único espín si sus espines vecinos no se
  enlazan, o puede estar formado por todos los espines de la configuración,
- esto puede suceder cerca de la temperatura critica.
+ esto puede suceder cerca de la temperatura crítica.
  
 \end_layout
 
