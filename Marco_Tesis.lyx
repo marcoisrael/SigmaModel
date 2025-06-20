@@ -1902,11 +1902,66 @@ Hay otro tipo de cantidades como la presión
 \end_layout
 
 \begin_layout Standard
-Desde el punto de vista microscópico, las variables mecánicas dependen de
+Desde un punto de vista microscópico, las variables mecánicas dependen de
  la configuración del sistema en un instante fijo.
  A lo largo de un intervalo temporal, se espera que un sistema físico pase
  por múltiples configuraciones.
  
+\end_layout
+
+\begin_layout Standard
+Cuando se perturba un sistema en equilibrio, las variables mecánicas del
+ sistema cambian.
+ El tiempo que el sistema tarda en alcanzar nuevamente el equilibrio termodinámi
+co es conocido como tiempo de relajación.
+ 
+\end_layout
+
+\begin_layout Standard
+Se busca calcular el promedio de un observable en un sistema en equilibrio
+ termodinámico por un intervalo temporal suficientemente amplio como para
+ reducir las fluctuaciones por debajo de un umbral de error deseado.
+ El valor medible de la observable, es el promedio de los valores obtenidos
+ por las configuraciones en el tiempo.
+\end_layout
+
+\begin_layout Subsection
+Energía
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+La energía de una configuración depende de las diferencias relativas entre
+ espines vecinos.
+ Pensemos en una configuración 
+\begin_inset Formula $[s]$
+\end_inset
+
+ a la que se aplica una rotación por un ángulo 
+\begin_inset Formula $\phi$
+\end_inset
+
+ en la misma dirección a todos los espines en 
+\begin_inset Formula $[s]$
+\end_inset
+
+, la transformación mantiene las diferencias relativas entre espines, por
+ lo tanto, la nueva configuración 
+\begin_inset Formula $[s']$
+\end_inset
+
+ es equivalente y está asociada a la misma energía que la configuración
+ 
+\begin_inset Formula $[s]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -1950,52 +2005,6 @@ En un sistema estocástico, un conjunto de eventos sucesivos forman una cadena
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Medir observables en una única configuración lleva a valores inconsistentes,
- ya que las configuraciones por las que pasa el sistema fluctúan.
- Se busca calcular el promedio de un observable en un intervalo temporal
- en el timepo de Markov lo suficientemente amplio como para reducir las
- fluctuaciones por debajo de un umbral de error deseado.
- El valor medible de la observable, es el promedio de los valores obtenidos
- por las configuraciones en el intervalo de Markov.
-\end_layout
-
-\begin_layout Subsection
-Energía
-\end_layout
-
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-La energía de una configuración depende de las diferencias relativas entre
- espines vecinos.
- Pensemos en una configuración 
-\begin_inset Formula $[s]$
-\end_inset
-
- a la que se aplica una rotación por un ángulo 
-\begin_inset Formula $\phi$
-\end_inset
-
- en la misma dirección a todos los espines en 
-\begin_inset Formula $[s]$
-\end_inset
-
-, la transformación mantiene las diferencias relativas entre espines, por
- lo tanto, la nueva configuración 
-\begin_inset Formula $[s']$
-\end_inset
-
- es equivalente y está asociada a la misma energía que la configuración
- 
-\begin_inset Formula $[s]$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -2053,38 +2062,11 @@ En el modelo 2d O(
 
 ), la temperatura es un paramento que añade ruido, fluctuaciones que cambian
  las direcciones de los espines.
- A temperatura 
-\begin_inset Formula $T=0$
-\end_inset
-
-, no hay fluctuaciones y el sistema alcanza en el equilibrio una configuración
- de energía mínima (una configuración uniforme con todos los espines alineados).
-\end_layout
-
-\begin_layout Standard
-Cuando la temperatura 
-\begin_inset Formula $T_{c}>T>0$
-\end_inset
-
- se forman grupos de espines alineados, el vector de magnetización de cada
- grupo apunta en una dirección diferente.
- En esta región de temperatura hay baja simetría inducida por la estructura
- de diferentes regiones de espines alineados.
  
 \end_layout
 
 \begin_layout Standard
-Por encima de la temperatura crítica, es mayor el número de espines apuntando
- en direcciones aleatorias.
- Pasando la temperatura crítica, la intensidad de las fluctuaciones evita
- la formación de grupos considerables de espines alineados, por consecuencia
- predomina el ruido termodinámico.
- La simetría del sistema por encima de la temperatura crítica es alta debido
- a la configuración general del sistema.
-\end_layout
-
-\begin_layout Standard
-En modelos de espines clásicos, la magnetización 
+La magnetización 
 \begin_inset Formula $m$
 \end_inset
 
@@ -2526,19 +2508,108 @@ Fenómenos críticos
 \end_layout
 
 \begin_layout Section
+Parametro de orden
+\end_layout
+
+\begin_layout Standard
+Un parámetro de orden es una cantidad que caracteriza el estado de un sistema
+ físico durante una transición de fase.
+ Por ejemplo, la magnetización es un parámetro de orden para un ferromagnético
+ que pase del estado diamagnético al paramagnético.
+ Se pueden derivar de la función de partición del sistema.
+\end_layout
+
+\begin_layout Standard
+La relación entre la termodinámica y la física estadística viene determinada
+ por la energía libre de Helmholtz 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ en el colectivo canónico
+\begin_inset Formula 
+\begin{equation}
+\mathcal{F}=-k_{B}T\ln Z.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A partir de la función de partición la magnetización 
+\begin_inset Formula $M$
+\end_inset
+
+ se define como
+\begin_inset Formula 
+\begin{equation}
+M=\pdv{\mathcal{F}}{B}=\frac{\sum_{\sigma}m_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z},
+\end{equation}
+
+\end_inset
+
+dónde
+\begin_inset Formula 
+\begin{equation}
+\mathcal{H}[\sigma]=-J\sum_{\expval{xy}}\vec{s}_{x}\cdot\vec{s}_{y}-B\sum_{x}\vec{s}_{x}.
+\end{equation}
+
+\end_inset
+
+La susceptibilidad magnética 
+\begin_inset Formula $\chi_{m}$
+\end_inset
+
+ se define 
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\chi_{m}=\pdv[2]{\mathcal{F}}{B}= & \frac{1}{V}\left(\pdv{M}{B}\right)=\frac{1}{V}\pdv{B}\frac{\sum_{\sigma}M_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\\
+=\frac{1}{V} & \frac{1}{kT}\left[\frac{\sum_{\sigma}M_{\sigma}^{2}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}-\left(\frac{\sum_{\sigma}M_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\right)^{2}\right],\\
+=\frac{1}{V} & \frac{1}{k^{2}T^{2}}\left(\expval{M^{2}}-\expval{M}^{2}\right).
+\end{aligned}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A partir de la función de partición, la energía promedio se calcula como
+\begin_inset Formula 
+\begin{equation}
+\expval{\mathcal{H}}=\frac{\sum_{\sigma}\mathcal{H}[\sigma]\mathrm{e}^{-\beta\mathcal{H}[\sigma]}}{Z}=\pdv{\beta\mathcal{F}}{\beta}.
+\end{equation}
+
+\end_inset
+
+El calor específico a volumen constante se define como
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}c_{V}=\frac{1}{V} & \left(\pdv{\beta\expval{\mathcal{H}}}{T}\right)=\frac{1}{V}\pdv{T}\frac{\sum_{\sigma}\mathcal{H}_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\\
+=\frac{1}{V}\frac{1}{kT} & \left[\frac{\sum_{\sigma}\mathcal{H}_{\sigma}^{2}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}-\left(\frac{\sum_{\sigma}\mathcal{H}_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\right)^{2}\right],\\
+=\frac{1}{V} & \frac{1}{k^{2}T^{2}}\left(\expval{\mathcal{H}^{2}}-\expval{\mathcal{H}}^{2}\right).
+\end{aligned}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Transiciones de fase
 \end_layout
 
 \begin_layout Standard
-Una transición de fase ocurre cunado hay un discontinuad en la energía libre
- o en una de sus derivadas.
- En la transición hay un cambio visible a nivel macroscópico en las propiedades
- del sistema que se esta observando.
- Algunos ejemplos son:
+En la naturaleza hay fenómenos conocidos como transiciones de fase, en los
+ que las propiedades de un material cambian bajo ciertas condiciones.
+ Describir estos fenómenos es uno de los grandes desafíos de la física moderna
 \end_layout
 
 \begin_layout Enumerate
-El cambio de estado liquido a gas de un fluido.
+El cambio de estado líquido a gas de un fluido.
  
 \end_layout
 
@@ -2547,7 +2618,15 @@ El cambio del estado paramagnético al ferromagnético en un imán
 \end_layout
 
 \begin_layout Standard
-El primer ejemplo es es una transición de fase de primer orden.
+Son algunos ejemplos.
+ A nivel macroscópico, las propiedades físicas de los materiales cambian,
+ a nivel microscópico, una transición de fase ocurre cuando hay un discontinuad
+ en la energía libre o en una de sus derivadas.
+ 
+\end_layout
+
+\begin_layout Standard
+El primer ejemplo es una transición de fase de primer orden.
  En el diagrama de la imagen 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2558,11 +2637,11 @@ noprefix "false"
 
 \end_inset
 
-, las lineas delimitan las regiones en las que el fluido es estable.
- El fluido puede existir en estado solido liquido o gaseoso, en función
+, las líneas delimitan las regiones en las que el fluido es estable.
+ El fluido puede existir en estado sólido líquido o gaseoso, en función
  de la presión y la temperatura.
  La variación de las variables en una región estable no cambia el estado
- del fluido, en cambio cruzar las fronteras implica un salto en la densidad
+ del fluido, en cambio, cruzar las fronteras implica un salto en la densidad
  y el calor latente, como consecuencia de una discontinuidad de primer orden
  en la energía libre.
  
@@ -2577,7 +2656,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename output/phase.pdf
+	filename output/phase_liquid.pdf
 	scale 50
 
 \end_inset
@@ -2589,7 +2668,11 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Diagrama de fase de un fluido.
+Se muestra el diagrama fase de un fluido y se delimitan las fronteras entre
+ tres estados solido, liquido y gaseoso.
+ Cuando se pasa por una frontera en el espacio fase, hay una transición
+ de fase que percibe como un cambio visible a nivel macroscópico en las
+ propiedades del sistema que se esta observando.
 \end_layout
 
 \end_inset
@@ -2610,8 +2693,8 @@ name "diag_phase"
 \end_layout
 
 \begin_layout Standard
-El segundo ejemplo es una transición de fase de segundo orden ya que implica
- una discontinuidad en la segunda derivada de la energía libre del sistema.
+Una transición de fase de segundo orden ya que implica una discontinuidad
+ en la segunda derivada de la energía libre del sistema.
  A nivel microscópico un sistema puede pasar de un estado simétrico y con
  alta energía a otro asimétrico y menor energía al pasar por debajo de una
  temperatura crítica 
@@ -2640,10 +2723,32 @@ Una fase ordenada por debajo de la temperatura crítica.
 \end_layout
 
 \begin_layout Standard
-Cuando se perturba un sistema en equilibrio, las variables mecánicas del
- sistema cambian, el tiempo que el sistema tarda en alcanzar nuevamente
- el estado de equilibrio termodinámico es conocido como tiempo de relajación
+A nivel microscópico, a temperatura 
+\begin_inset Formula $T=0$
+\end_inset
+
+, no hay fluctuaciones y el sistema alcanza en el equilibrio una configuración
+ de energía mínima (una configuración uniforme con todos los espines alineados).
+\end_layout
+
+\begin_layout Standard
+Cuando la temperatura 
+\begin_inset Formula $T_{c}>T>0$
+\end_inset
+
+ se forman grupos de espines alineados, el vector de magnetización de cada
+ grupo apunta en una dirección diferente.
+ En esta región de temperatura hay baja simetría inducida por la estructura
+ de diferentes regiones de espines alineados.
  
+\end_layout
+
+\begin_layout Standard
+Por encima de la temperatura crítica, es mayor el número de espines apuntando
+ en direcciones aleatorias.
+ Pasando la temperatura crítica, la intensidad de las fluctuaciones evita
+ la formación de grupos considerables de espines alineados, por consecuencia
+ predomina el ruido termodinámico.
 \end_layout
 
 \begin_layout Standard
@@ -2658,7 +2763,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -2689,7 +2794,7 @@ Energía libre.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -2724,7 +2829,7 @@ Primera derivada de la energía libre.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -2773,133 +2878,48 @@ Se muestra la primera y segundas derivada de la energía libre de .
 
 \end_layout
 
-\begin_layout Section
-Parametro de orden
-\end_layout
-
 \begin_layout Standard
-Un parametro de orden es una cantidad que caracteriza el estado de un sistema
- físico durante una transición de fase.
- Por ejemplo, la magnetización es un parametro de orden para un ferromagnético
- que pase del estado diamagnético al paramagnético.
- Se pueden derivar de la función de partición del sistema.
-\end_layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
 
-\begin_layout Standard
-La probabilidad de que el sistema a una 
-\begin_inset Formula $T$
-\end_inset
-
- dada esté en una configuración determinada de energía 
-\begin_inset Formula $\mathcal{H}$
-\end_inset
-
- es proporcional al factor de Boltzmann
-\begin_inset Formula 
-\begin{equation}
-P_{\mathcal{H}[\sigma]}=\frac{\mathrm{e}^{-\beta\mathcal{H}[\sigma]}}{Z},
-\end{equation}
-
-\end_inset
-
-dónde 
-\begin_inset Formula $\beta=1/k_{B}T$
-\end_inset
-
-, 
-\begin_inset Formula $k_{B}$
-\end_inset
-
- es la constante de Boltzmann y 
-\begin_inset Formula $Z$
-\end_inset
-
- es la función de partición.
- La relación entre la termodinámica y la física estadística viene determinada
- por la energía libre de Helmholtz 
-\begin_inset Formula $\mathcal{F}$
-\end_inset
-
- en el colectivo canónico
-\begin_inset Formula 
-\begin{equation}
-\mathcal{F}=-k_{B}T\ln Z.
-\end{equation}
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/phase_magnet.pdf
+	scale 50
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
-A partir de la función de partición la magnetización 
-\begin_inset Formula $M$
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Se muestra el diagrama fase de un ferro-magneto, por debajo de la temperatura
+ crítica aparece una magnetización espontánea 
+\begin_inset Formula $\pm M(T)$
 \end_inset
 
- se define como
-\begin_inset Formula 
-\begin{equation}
-M=\pdv{\mathcal{F}}{B}=\frac{\sum_{\sigma}M_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z},
-\end{equation}
-
-\end_inset
-
-dónde
-\begin_inset Formula 
-\begin{equation}
-\mathcal{H}[\sigma]=-J\sum_{\expval{xy}}\vec{s}_{x}\cdot\vec{s}_{y}-B\sum_{x}\vec{s}_{x}.
-\end{equation}
-
-\end_inset
-
-La susceptibilidad magnética 
-\begin_inset Formula $\chi_{M}$
-\end_inset
-
- se define como
-\begin_inset Formula 
-\begin{equation}
-\begin{aligned}\chi_{\mu}=\pdv[2]{\mathcal{F}}{B}= & \frac{1}{V}\left(\pdv{M}{B}\right)_{V}=\frac{1}{c}\pdv{B}\frac{\sum_{\sigma}M_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\\
-=\frac{1}{V} & \frac{1}{k_{B}T^{2}}\left[\frac{\sum_{\sigma}M_{\sigma}^{2}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}-\left(\frac{\sum_{\sigma}M_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\right)^{2}\right],\\
-=\frac{1}{V} & \frac{1}{k_{B}T^{2}}\left(\expval{M^{2}}-\expval{M}^{2}\right).
-\end{aligned}
-\end{equation}
+.
+ Pasando la temperatura crítica no hay magnetización.
+\end_layout
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
-A partir de la función de partición, la energía promedio se calcula como
-\begin_inset Formula 
-\begin{equation}
-\expval{\mathcal{H}}=\frac{\sum_{\sigma}\mathcal{H}[\sigma]\mathrm{e}^{-\beta\mathcal{H}[\sigma]}}{Z}=\pdv{\beta\mathcal{F}}{\beta}.
-\end{equation}
-
-\end_inset
-
-El calor específico a volumen constante se define como
-\begin_inset Formula 
-\begin{equation}
-\begin{aligned}c_{V}=\frac{1}{V} & \left(\pdv{\beta\expval{\mathcal{H}}}{T}\right)_{V}=\frac{1}{V}\pdv{T}\frac{\sum_{\sigma}\mathcal{H}_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\\
-=\frac{1}{V}\frac{1}{k_{B}T} & \left[\frac{\sum_{\sigma}\mathcal{H}_{\sigma}^{2}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}-\left(\frac{\sum_{\sigma}\mathcal{H}_{\sigma}\mathrm{e}^{-\beta\mathcal{H}_{\sigma}}}{Z}\right)^{2}\right],\\
-=\frac{1}{V} & \frac{1}{k_{B}T^{2}}\left(\expval{\mathcal{H}^{2}}-\expval{\mathcal{H}}^{2}\right).
-\end{aligned}
-\end{equation}
-
-\end_inset
-
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
-Siendo 
-\begin_inset Formula $B$
 \end_inset
 
- el campo magnético aplicado.
- 
+
 \end_layout
 
 \begin_layout Section
@@ -2907,10 +2927,7 @@ Función de correlación
 \end_layout
 
 \begin_layout Standard
-Las variables termodinámicas como la magnetización o la entropía son propiedades
- macroscópicas, entender lo que pasa en las transiciones de fase requiere
- de un enfoque a nivel microscópico.
- La función de correlación se define como
+La función de correlación se define como
 \begin_inset Formula 
 \begin{equation}
 \expval{\vec{s}_{x}\cdot\vec{s}_{y}}_{c}=\expval{\vec{s}_{x}\cdot\vec{s}_{y}}-\expval{\vec{s}_{x}}\cdot\expval{\vec{s}_{y}}.
@@ -3034,11 +3051,86 @@ Función de correlación
 \end_layout
 
 \begin_layout Section
+Universalidad
+\end_layout
+
+\begin_layout Standard
+Debido a el número de elementos que interactúan en un modelo microscópico
+ realista, no es posible hacer predicciones exactas sobre todas las cantidades
+ relevantes.
+ El concepto de clases de universalidad fue señalado primeramente por Kadanoff,
+ posteriormente en 1970 E.
+ Fermi se baso en el trabajo de Grriffiths, Jasnow y otros investigadores.
+ Se estudiaron datos experimentales de diversos materiales cerca de sus
+ respectivos puntos críticos, y se encontró que los datos de los diversos
+ sistemas son descritos por la misma función de escalamiento.
+ El aparente comportamiento universal motivo a buscar una respuesta para
+ la siguiente cuestión.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+¿Que características de las interacciones microscópicas son importantes
+ para determinar puntos críticos, exponentes críticos y funciones de escalamient
+o y que características son irrelevantes?
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En general la clase de universalidad y el valor de los exponentes críticos
+ no depende de la estructura local de los acoplamientos.
+ O dicho de otra forma.
+ Aunque las interacciones son a nivel local, los exponentes críticos dependen
+ solo de la dimensión espacial y las simetrías del sistema.
+ 
+\end_layout
+
+\begin_layout Section
 Escalamiento
 \end_layout
 
 \begin_layout Standard
-Dado un potencial termodinámico
+Existe una gran cantidad de sistemas físicos en diferentes escalas, el universo
+ y no seé trata a la misma escala que un fluido, pero se pueden encontrar
+ transformaciones que relacionan las propiedades que caracterizan un sistema
+ con otro a una escala diferente.
+\end_layout
+
+\begin_layout Standard
+Consideremos un potencial termodinámico
 \begin_inset Formula 
 \begin{equation}
 G(H,T)=G(H,\epsilon).
@@ -3110,81 +3202,6 @@ C=-T\pdv[2]{\mathcal{F}}{T}\propto(T-T_{c})^{-\alpha},
 \end_inset
 
 
-\begin_inset Formula 
-\begin{equation}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Universalidad
-\end_layout
-
-\begin_layout Standard
-Debido a el número de elementos que interactúan en un modelo microscópico
- realista, no es posible hacer predicciones exactas sobre todas las cantidades
- relevantes.
- El concepto de clases de universalidad fue señalado primeramente por Kadanoff,
- posteriormente en 1970 E.
- Fermi se baso en el trabajo de Grriffiths, Jasnow y otros investigadores.
- Se estudiaron datos experimentales de diversos materiales cerca de sus
- respectivos puntos críticos, y se encontró que los datos de los diversos
- sistemas son descritos por la misma función de escalamiento.
- El aparente comportamiento universal motivo a buscar una respuesta para
- la siguiente cuestión.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-¿Que características¸características de las interacciones microscópicas
- son importantes para determinar puntos críticos, exponentes críticos y
- funciones de escalamiento y que características son irrelevantes?
-\end_layout
-
-\end_inset
-
-
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-En general la clase de universalidad y el valor de los exponentes críticos
- no depende de la estructura local de los acoplamientos.
- O dicho de otra forma.
- Aunque las interacciones son a nivel local, los exponentes críticos dependen
- solo de la dimensión espacial y las simetrías del sistema.
- 
 \end_layout
 
 \begin_layout Chapter
@@ -3228,6 +3245,33 @@ He en estado superfluidico, la condensación de Bose ocurre alrededor de
 En estos sistemas, los defectos topológicos remanentes son importantes,
  porque son objetos inherentemente estables que pueden proporcionar pistas
  observacionales sobre cómo era el sistema en el momento en que se formaron.
+\end_layout
+
+\begin_layout Standard
+Un aspecto atractivo de estas transiciones es que su comportamiento es universal
+ y no depende de los detalles microscópicos del sistema.
+ En cambio, la clase de universalidad está determinada por propiedades fundament
+ales como la simetría, el rango de interacciones, la dimensionalidad y los
+ parámetros de orden.
+\end_layout
+
+\begin_layout Standard
+El concepto de emergencia de simetría introducido por Wilson Fisher dice
+ que la acción efectiva que describe las fluctuaciones de la función de
+ onda cerca de un punto crítico puede tener más simetrías que la acción
+ microscópica.
+ La propuesta implica que en sistemas que posen simetrías discretas como
+ los ferromagnetos puede emerger una simetría continua cerca de la temperatura
+ critica
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "lin_topological_2014"
+literal "false"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Section
@@ -3296,7 +3340,7 @@ dónde
 \begin_inset Formula $n$
 \end_inset
 
--1), por lo que variedad del estado de menor energía es la esfera 
+-1), por lo que la variedad del estado de menor energía es la esfera 
 \begin_inset Formula $\mathcal{S}^{n-1}$
 \end_inset
 
@@ -3308,14 +3352,14 @@ Para
 \begin_inset Formula $T$
 \end_inset
 
- cerca de la temperatura crítica aparecen fluctuaciones fuertes en el campo
+ cerca de la temperatura crítica, aparecen fluctuaciones fuertes en el campo
  
 \begin_inset Formula $\vec{\phi}$
 \end_inset
 
 .
- por debajo de la temperatura crítica el valor esperado es algún punto en
- 
+ por debajo de la temperatura crítica, el valor esperado es algún punto
+ en 
 \begin_inset Formula $\mathcal{S}^{n-\text{1}}$
 \end_inset
 
@@ -3331,14 +3375,14 @@ Ningún punto de la esfera tiene preferencia, y la elección es independiente
 \end_inset
 
 , variando entre regiones de una manera más o menos aleatoria.
- Al llegar al equilibrio muchos de estas variaciones dejaran de fluctuar
+ Al llegar al equilibrio, muchas de estas variaciones dejarán de fluctuar,
  acercando el valor esperado de los diferentes dominios al valor constante
  
 \begin_inset Formula $\expval{\vec{\phi}}$
 \end_inset
 
 .
- La cuestión es si luego del enfriamiento del universo, las fronteras entre
+ La cuestión es, si luego del enfriamiento del universo, las fronteras entre
  dominios pueden formar defectos topologícos.
 \end_layout
 
@@ -3348,14 +3392,13 @@ Una posibilidad es la neutralidad del universo respecto a las cargas del
 \begin_inset Formula $\vec{\phi}$
 \end_inset
 
- en cuyo caso no hay problema con la formación de dominios, ya que no hay
- una direccion preferencial hacia algún punto en 
+, en cuyo caso no hay problema con la formación de dominios, ya que no hay
+ una dirección preferencial hacia algún punto en 
 \begin_inset Formula $\mathcal{S}^{n-1}$
 \end_inset
 
 .
- La otra posibilidad es que el universo podría tener una carga asociada
- 
+ La otra posibilidad es que el universo podría tener una carga 
 \begin_inset Formula $q_{t_{0}}$
 \end_inset
 
@@ -3364,10 +3407,10 @@ Una posibilidad es la neutralidad del universo respecto a las cargas del
 \end_inset
 
 .
- En este caso el rompimiento de la simetría seria fijado a las condiciones
- iniciales impidiendo el surgimiento de estructuras de dominio.
- Consideremos el primer caso, que permite la formacion de dominios, el tamaño
- de estos dominios esta determinado por la longitud de correlación
+ En este caso, el rompimiento de la simetría sería fijado a las condiciones
+ iniciales, impidiendo el surgimiento de estructuras de dominio.
+ Consideremos el primer caso, que permite la formación de dominios.
+ El tamaño de estos dominios está determinado por la longitud de correlación
 \begin_inset Formula 
 \begin{equation}
 \xi^{-1}\approx g^{2}T.
@@ -3410,7 +3453,7 @@ literal "false"
  de la pequeña anisotropía en el fondo cósmico de microondas revelan una
  escala de distancia preferencial que las cuerdas cósmicas no pueden explicar.
  Afortunadamente, existen análogos de cuerdas cósmicas en muchos sistemas
- de materia condensada, incluidos las lineas de vórtice en superfluidos
+ de materia condensada, incluidos las líneas de vórtice en superfluidos
 \begin_inset CommandInset citation
 LatexCommand autocite
 key "kibble_topology_1976,kibble_phase-transition_2007,kibble_implications_1980"
@@ -3444,13 +3487,13 @@ En 1985, W.
 \end_inset
 
 .
- dónde 
+ El parámetro 
 \begin_inset Formula $τ_{\mathrm{cool}}$
 \end_inset
 
  se define de modo que la tasa de cambio de temperatura en el punto crítico
  sea 
-\begin_inset Formula $dT/dt=−Tc/τ_{\mathrm{cool}}$
+\begin_inset Formula $dT/dt=−T_{c}/τ_{\mathrm{cool}}$
 \end_inset
 
  y el exponente 
@@ -3471,7 +3514,7 @@ En 1985, W.
 \end_layout
 
 \begin_layout Standard
-Existe una analogía entre cuerdas cósmicas y lineas de vórtice.
+Existe una analogía entre cuerdas cósmicas y líneas de vórtice.
  En un superfluido, tras un súbito decaimiento de presión, la fase de la
  función de onda en el condensado de helio es análoga a la ruptura de simetría
  del campo de multi-escalar 
@@ -3499,7 +3542,7 @@ dónde
 \end_inset
 
  son constantes que se deducen a partir del calor especifico.
- Por debajo de la temperatura crítica tras la ruptura de la simetría en
+ Por debajo de la temperatura crítica, tras la ruptura de la simetría en
  el superfluido 
 \begin_inset Formula $\alpha$
 \end_inset
@@ -3512,7 +3555,7 @@ dónde
 \end_layout
 
 \begin_layout Standard
-El parametro de orden de un spuerfluido puede pensarse como la función de
+El parámetro de orden de un superfluido puede pensarse como la función de
  onda del condensado de Bose.
  En este sistema se pueden formar lineas de vórtice cuando el parámetro
  de orden es un valor complejo
@@ -3524,12 +3567,12 @@ El parametro de orden de un spuerfluido puede pensarse como la función de
 \end_inset
 
 Es una situación análoga al modelo cosmológico y una buena aproximación
- a el superfluido 
+ al superfluido 
 \begin_inset Formula $^{4}$
 \end_inset
 
 He.
- en particular para un spuerfluido cerca de la temperatura crítica 
+ En particular para un spuerfluido cerca de la temperatura crítica 
 \begin_inset Formula $T_{c}$
 \end_inset
 
@@ -3541,7 +3584,7 @@ Una fracción considerable de los átomos de
 \begin_inset Formula $^{4}$
 \end_inset
 
-He ocupan un solo estado cuántico a esa temperatura.
+He ocupa un solo estado cuántico a esa temperatura.
  Entonces 
 \begin_inset Formula $\psi$
 \end_inset
@@ -3577,16 +3620,23 @@ Tiempo de auto-correlación
 \end_layout
 
 \begin_layout Standard
-La simulación de un sistema cerca de un punto crítico un problema complicado,
- en general la dinámica de las simulaciones desacelera considerablemente
- cerca de un punto crítico.
- La desaceleración es una complicación cuando se dispone de un tiempo de
- computo finito por lo que es de gran interés entender como cambia el sistema
- del sistema.
- La evolución de un sistema se caracteriza por el tiempo de auto-correlación,
- mide la velocidad a la que un sistema pasa a un estado estadística-mente
+La evolución de un sistema se caracteriza por el tiempo de autocorrelación,
+ que mide la velocidad a la que un sistema pasa a un estado estadísticamente
  independiente.
- Consideremos una observable 
+ 
+\end_layout
+
+\begin_layout Standard
+En general, la dinámica de las simulaciones desacelera considerablemente
+ cerca de un punto crítico.
+ La desaceleración crítica es una barrera inevitable, ya que en la realidad
+ se dispone de un tiempo de cómputo finito, por lo que es de gran interés
+ entender cómo cambia el tiempo de autocorrelación para las diferentes observabl
+es del sistema.
+\end_layout
+
+\begin_layout Standard
+Consideremos una observable 
 \begin_inset Formula $A$
 \end_inset
 
@@ -3712,47 +3762,20 @@ Métodos de Monte Carlo
 \end_layout
 
 \begin_layout Standard
-Un proceso estocástico es un secuencia de eventos aleatorios, consideremos
- un evento aleatorio con 
-\begin_inset Formula $N$
-\end_inset
-
- posibles resultados 
-\begin_inset Formula $\{x_{1},\dots,x_{N}\}$
-\end_inset
-
-.
- Una variable aleatoria 
-\begin_inset Formula $X$
-\end_inset
-
- es una selección aleatoria en el conjunto de los resultados posibles de
- un evento.
- La probabilidad de que un valor 
-\begin_inset Formula $x_{i}$
-\end_inset
-
- sea elegido esta dado por 
-\begin_inset Formula $p_{i}=P\{X=x_{i}\}$
-\end_inset
-
-.
- Cada resultado y su probabilidad, en conjunto forman una distribución.
-\end_layout
-
-\begin_layout Standard
-La importancia de muestreo consiste en evaluar propiedades de una distribución
- a partir de una muestra de una distribución diferente.
-\end_layout
-
-\begin_layout Standard
 La esencia de los métodos de Monte Carlo es evaluar numéricamente las sumas
  o integrales del espacio fase.
  El método de Monte Carlo introducido por Metropolis se basa en la idea
- de importancia de muestreo.
- En este enfoque, los puntos del espacio de fases no se seleccionan completament
-e al azar, sino que se distribuyen con mayor densidad en aquellas regiones
- del espacio de fases que aportan contribuciones dominantes a las integrales.
+ de muestreo de importancia.
+ Consiste en evaluar propiedades de una distribución a partir de una muestra
+ de una distribución diferente.
+ 
+\end_layout
+
+\begin_layout Standard
+Los elementos del espacio de fases no se seleccionan completamente al azar.
+ La probabilidad de selección se multiplica por una función con mayor densidad
+ en aquellas regiones del espacio de fases de mayor contribución a las integrale
+s.
  
 \end_layout
 
@@ -3789,7 +3812,7 @@ Cada valor
 \begin_inset Formula $[s]_{j}$
 \end_inset
 
- en un una unidad de tiempo discreta conocida como paso de Markov.
+ en una unidad de tiempo discreta conocida como paso de Markov.
 \end_layout
 
 \begin_layout Standard
@@ -3853,6 +3876,93 @@ Si cada medición es estadísticamente independiente, conduce al valor esperado
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Definición: Variable aleatoria.
+\end_layout
+
+\begin_layout Plain Layout
+Una variable aleatoria 
+\begin_inset Formula $X$
+\end_inset
+
+ es el valor resultante de una selección aleatoria en el conjunto de los
+ posibles resultados de un evento.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+Un proceso estocástico es una secuencia de eventos aleatorios, consideremos
+ un evento aleatorio con 
+\begin_inset Formula $N$
+\end_inset
+
+ posibles resultados 
+\begin_inset Formula $\{x_{1},\dots,x_{N}\}$
+\end_inset
+
+.
+ La probabilidad de que el sistema a una 
+\begin_inset Formula $T$
+\end_inset
+
+ dada esté en una configuración determinada de energía 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ es proporcional al factor de Boltzmann
+\begin_inset Formula 
+\begin{equation}
+P[s]=\frac{\mathrm{e}^{-\beta\mathcal{H}[s]}}{Z},
+\end{equation}
+
+\end_inset
+
+dónde 
+\begin_inset Formula $k$
+\end_inset
+
+ es la constante de Boltzmann, 
+\begin_inset Formula $\beta=1/kT$
+\end_inset
+
+, y 
+\begin_inset Formula $Z$
+\end_inset
+
+ es la función de partición.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3958,10 +4068,6 @@ literal "false"
 \end_inset
 
 
-\begin_inset VSpace bigskip
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -3969,10 +4075,9 @@ Algoritmo de Metropolis
 \end_layout
 
 \begin_layout Standard
-Metropolis es un algoritmo de actualización local esto significa que los
- elementos de la configuración cambian individualmente, para generar una
- nueva configuración se usa la probabilidad de transición con todos los
- elementos de la configuración.
+Metropolis es un algoritmo de actualización local.
+ Es decir, generar una nueva configuración requiere de aplicar una probabilidad
+ de transición individualmente a cada elemento de la configuración.
  Consideremos el modelo de espines 
 \begin_inset Formula $2$
 \end_inset
@@ -3981,11 +4086,12 @@ Metropolis es un algoritmo de actualización local esto significa que los
 \begin_inset Formula $3$
 \end_inset
 
-), definido en la retícula cuadrada 
-\begin_inset Formula $\mathscr{R}_{L}^{2}$
+), definido en la retícula con condiciones de frontera periódicas 
+\begin_inset Formula $\mathscr{T}_{L}^{2}$
 \end_inset
 
-, la de energía de una configuración se define por la ec.
+.
+ La de energía de una configuración se define por la ec.
  
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -3997,20 +4103,22 @@ noprefix "false"
 \end_inset
 
 .
- En este modelo, un algoritmo de actualizaron local actúa sobre un espín
- y sus vecinos más cercanos.
  
 \end_layout
 
 \begin_layout Standard
-Dada una configuración 
-\begin_inset Formula $[s]$
+El algoritmo de actualización actúa sobre cada espín 
+\begin_inset Formula $\vec{s}_{x}\in[s]$
 \end_inset
 
-, para cada elemento en la configuración se propone un cambio aleatorio
- que resulta en una configuración [s'].
- Si el cambio propuesto se acepta o se rechaza depende a la probabilidad
- de aceptación definida como
+ y sus vecinos más cercanos.
+ Se propone un cambio aleatorio en el estado del espín 
+\begin_inset Formula $\vec{s}_{x}$
+\end_inset
+
+que resulta en una configuración [s'].
+ Si el cambio propuesto se acepta o se rechaza, depende de la probabilidad
+ de aceptación
 \begin_inset Formula 
 \begin{equation}
 p[s\rightarrow s']=\begin{cases}
@@ -4047,39 +4155,52 @@ p[s\rightarrow s']=\begin{cases}
 
 Si la energía de la configuración disminuye con el cambio, la probabilidad
  de aceptaciones 1, y se acepta de inmediato.
- Si la energía de la configuración aumenta, esta se acepta con una probabilidad
+ 
+\end_layout
+
+\begin_layout Standard
+Si la energía de la configuración aumenta, esta se acepta con una probabilidad
  
 \begin_inset Formula $\mathrm{e}^{-\beta\Delta\mathcal{H}}$
 \end_inset
 
 .
- A mayor temperatura 
+ Si 
 \begin_inset Formula $\beta\rightarrow0$
 \end_inset
 
- y la probabilidad de aceptación de las configuraciones que aumentan la
- energía se acerca a 1.
- Esto se traduce en más ruido térmico.
- Por otro lado a menor temperatura 
+, entonces la probabilidad de aceptación para las configuraciones que aumentan
+ la energía se acerca a 1.
+ Resultando en más ruido térmico.
+ Por otro lado, si 
 \begin_inset Formula $\beta\rightarrow\infty$
 \end_inset
 
  la probabilidad de aceptación de las configuraciones que aumentan la energía
  tiende a cero.
- A menor temperatura, menor número de fluctuaciones, y un menor número de
- fluctuaciones permite que el sistema se aproxime al estado de mínima energía.
- La prueba de aceptación se repite para cada elemento de la configuración
+ A menor temperatura, menor número de fluctuaciones.
+ Menos fluctuaciones implican que el sistema se acerca a configuraciones
+ de energía cercanas al mínimo.
+ 
+\end_layout
+
+\begin_layout Standard
+La prueba de aceptación se repite para cada elemento de la configuración
  
 \begin_inset Formula $[s]$
 \end_inset
 
-, una vez que se probaron todos los espines, se dice que se ha realizado
- un barrido.
- Un barrido corresponde una unidad de tiempo discreto de Markov para el
- algoritmo Metropolis, la forma en la que se realiza el barrido puede ser
- lexicográfica, en la que los espines se elijen siendo un orden basado en
- las posiciones de la retícula.
- O puede ser aleatorio en dónde los espines se elijen al azar.
+.
+ El orden de selección puede ser lexicográfico, en la que los espines se
+ eligen siendo un orden basado en las posiciones de la retícula.
+ O aleatorio, donde los espines se eligen al azar.
+ Un barrido de actualización corresponde a una unidad de tiempo discreto
+ de Markov para el algoritmo Metropolis e implica que se ha aplicado la
+ probabilidad de aceptación a un número de espines igual al total 
+\begin_inset Formula $V$
+\end_inset
+
+ de espines en una configuración.
 \end_layout
 
 \begin_layout Standard
@@ -4095,32 +4216,12 @@ En el modelo 2d O(
  es
 \begin_inset Formula 
 \begin{equation}
-\Delta\mathcal{H}_{i,j}=\mathcal{H}[s']-\mathcal{H}[s]=-\left(\vec{s}_{i,j}^{\,\prime}-\vec{s}_{i,j}\right)\cdot\left(\vec{s}_{i+1,j}+\vec{s}_{i,j+1}+\vec{s}_{i-1,j}+\vec{s}_{i,j-1}\right).\label{eq:energy_diff}
+\Delta\mathcal{H}=\mathcal{H}[s']-\mathcal{H}[s]=\left(\vec{s}_{x}-\vec{s}_{x}^{\,\prime}\right)\cdot\left(\vec{s}_{x+\hat{1}}+\vec{s}_{x-\hat{1}}+\vec{s}_{x+\hat{2}}+\vec{s}_{x-\hat{2}}\right).\label{eq:energy_diff}
 \end{equation}
 
 \end_inset
 
-Calcular la diferencia de energía entre configuraciones en el modelo 2d
- O(
-\begin_inset Formula $3$
-\end_inset
 
-)implicar realizar pocos cálculos, por lo que los algoritmos de actualización
- local son muy eficientes lejos de la temperatura crítica, el problema con
- la temperatura crítica es que a disminuir el número de cambios que se aceptan,
- el tiempo de relajación del sistema aumenta exponencialmente, a este fenómeno
- se le conoce como desaceleración crítica.
- Si se necesita estudiar sistemas en equilibrio cerca de la temperatura
- crítica hay una opción más conveniente que consiste en usar un algoritmo
- que actualice grupos de espines en vez de espines individues 
-\begin_inset CommandInset citation
-LatexCommand autocite
-key "binder_monte_1988,swendsen_nonuniversal_1987"
-literal "false"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Section
@@ -4137,7 +4238,7 @@ literal "false"
 \end_inset
 
 es al igual que el algoritmo Metropolis de actualización local.
- La diferencia con el algoritmo de Metropolis es la probabilidad de aceptación.
+ La diferencia es la probabilidad de aceptación.
  La propuesta es construir una función que cumpla con la ecuación de balance
  detallado 
 \begin_inset Formula 
@@ -4195,64 +4296,109 @@ Similar al algoritmo de Metropolis dada una configuración
 
 , para cada elemento en la configuración se propone un cambio aleatorio
  que resulta en una configuración [s'].
- Si la energía de la configuración aumenta a mayor temperatura 
+ Si 
 \begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow0$
 \end_inset
 
- y la probabilidad de aceptación se aproxima a 
+, entonces la probabilidad de aceptación se aproxima a 
 \begin_inset Formula $1/2$
 \end_inset
 
 .
- A menor temperatura 
+ Si 
 \begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow\infty$
 \end_inset
 
- y 
+ entonces 
 \begin_inset Formula $\mathrel{e}^{-\beta\Delta\mathcal{H}}\rightarrow0$
 \end_inset
 
-, por lo tanto la probabilidad de aproxima a 
+ y la probabilidad de aceptación se aproxima a 
 \begin_inset Formula $0$
 \end_inset
 
 .
- Por otro lado si la energía de la configuración disminuye.
- A mayor temperatura igual que en el caso anterior 
-\begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow0$
-\end_inset
-
- y la probabilidad de aceptación se aproxima a 
-\begin_inset Formula $1/2$
-\end_inset
-
-.
- A menor temperatura 
+ Por otro lado, si la energía de la configuración disminuye.
+ Si 
 \begin_inset Formula $\beta\Delta\mathcal{H}\rightarrow-\infty$
 \end_inset
 
- y 
-\begin_inset Formula $p[s\rightarrow s']\rightarrow1$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Al igual que en algoritmo de Metropolis, el problema con la temperatura
- crítica es que a disminuir el número de cambios que se aceptan, el tiempo
- de relajación del sistema aumenta exponencialmente.
- Una forma de contrarrestar el problema es aumentar el número de configuraciones
- que disminuyen la energía del sistema limitando el área en la que se permiten
- nuevas configuraciones, la desventaja es que limitar las configuraciones
- a una zona restringida también disminuye el tiempo de relajación, pero
- puede encontrarse un equilibrio entre número de cambios aceptados el tamaño
- del área permitida para nuevas configuraciones de manera que se minimice
- el tiempo de relajación del sistema.
+ entonces la probabilidad de aceptación tiende a 1.
 \end_layout
 
 \begin_layout Section
 Algoritmo clúster
+\end_layout
+
+\begin_layout Standard
+Calcular la diferencia de energía entre configuraciones implica realizar
+ pocos cálculos, por lo que los algoritmos de actualización local son muy
+ eficientes lejos de la temperatura crítica.
+ El problema con la temperatura crítica en los algoritmos de actualización
+ locales se hace notar cerca de la temperatura crítica, donde disminuye
+ drásticamente el número de cambios que se aceptan.
+ Por consecuencia, el tiempo de relajación del sistema aumenta exponencialmente.
+ A este fenómeno se le conoce como desaceleración crítica.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Definicion: Clúster.
+\end_layout
+
+\begin_layout Plain Layout
+Un clúster es un subconjunto de espines de una configuración que comparten
+ un vínculo directo o indirecto.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para estudiar sistemas en equilibrio cerca de la temperatura crítica hay
+ una opción más conveniente.
+ Se trata de aplicar un algoritmo que actualice grupos de espines en vez
+ de espines individues 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "binder_monte_1988,swendsen_nonuniversal_1987"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -4268,58 +4414,61 @@ literal "false"
 \end_inset
 
 .
- Consiste en generar clústers de espines enlazados y cambiar la configuración
- de todos los espines en cada clúster a la vez.
+ 
+\end_layout
+
+\begin_layout Standard
+Consiste en generar clústeres y cambiar la configuración de cada subconjunto
+ de espines a la vez.
  Una de las principales ventajas del algoritmo clúster es que evita la desaceler
 ación crítica característica de los algoritmos de actualización local.
  
 \end_layout
 
 \begin_layout Standard
-Un clúster puede consistir de un único espín si sus espines vecinos no se
- enlazan, o puede estar formado por todos los espines de la configuración,
- esto puede suceder cerca de la temperatura crítica.
+Un clúster puede estar formado por un único espín si no hay vínculos con
+ sus vecinos, o puede estar formado por todos los espines de la configuración,
+ caso frecuente cerca de la temperatura crítica.
  
 \end_layout
 
 \begin_layout Standard
-En seguida propone un vector aleatorio 
+Se propone un vector aleatorio 
 \begin_inset Formula $\vec{w}\in S^{2}$
 \end_inset
 
-, se elije un espín en la configuración 
-\begin_inset Formula $\vec{s}\in[s]$
+, se elige un espín 
+\begin_inset Formula $\vec{s}_{x}$
 \end_inset
 
-.
  y se calcula la reflexión de 
-\begin_inset Formula $\vec{s}$
+\begin_inset Formula $\vec{s}_{x}$
 \end_inset
 
- respecto a el plano normal a 
+ respecto al plano normal a 
 \begin_inset Formula $\vec{w}$
 \end_inset
 
- 
+ aplicando la transformación de Wolff
 \begin_inset Formula 
 \begin{equation}
-\vec{s}\,'=\vec{s}-2\left(\vec{w}\cdot\vec{s}\right)\vec{w}.
+\vec{s}_{x}\,'=\vec{s}_{x}-2\left(\vec{w}\cdot\vec{s}_{x}\right)\vec{w}.\label{eq:wolff}
 \end{equation}
 
 \end_inset
 
 Para determinar si el espín 
-\begin_inset Formula $\vec{s}$
+\begin_inset Formula $\vec{s}_{x}$
 \end_inset
 
  esta enlazado con sus espines vecinos más cercano, se calcula la probabilidad
- de enlace mediante la función
+ de vínculo dada por la función
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-p_{\mathrm{enlace}}=\begin{cases}
+p_{\mathrm{vínculo}}=\begin{cases}
 1-\mathrm{e}^{-\beta\left(\mathcal{H}[s']-\mathcal{H}[s]\right)} & \mathrm{si}\qquad\mathcal{H}[s']\geq\mathcal{H}[s]\\
 0 & \mathrm{si}\qquad\mathcal{H}[s']<\mathcal{H}[s].
 \end{cases}
@@ -4327,13 +4476,16 @@ p_{\mathrm{enlace}}=\begin{cases}
 
 \end_inset
 
-Igual que en los algoritmos anteriores es conveniente expresar la probabilidad
- de enlace en función de la diferencia de energía
+En términos de la diferencia de energía 
+\begin_inset Formula $\Delta\mathcal{H}$
+\end_inset
+
+ se tiene
 \begin_inset Formula 
 \begin{equation}
-p_{\mathrm{enlace}}=\begin{cases}
+p_{\mathrm{vínculo}}=\begin{cases}
 1-\mathrm{e}^{-\beta\Delta\mathcal{H}} & \mathrm{si}\qquad\Delta\mathcal{H}\geq0\\
-0 & \mathrm{si}\qquad\beta\Delta\mathcal{H}<0.
+0 & \mathrm{si}\qquad\Delta\mathcal{H}<0.
 \end{cases}
 \end{equation}
 
@@ -4343,59 +4495,11 @@ p_{\mathrm{enlace}}=\begin{cases}
 \end_layout
 
 \begin_layout Standard
-En el modelo 2d O(
-\begin_inset Formula $3$
-\end_inset
-
-) usando el algoritmo 
-\shape italic
-multi-clúster
-\shape default
-, se tiene una retícula finita bidimensional de tamaño 
-\begin_inset Formula $L$
-\end_inset
-
- cuyos sitios están ocupados por espines.
- Para probar el enlace entre dos espines 
+Para probar el vínculo entre dos espines vecinos 
 \begin_inset Formula $\vec{s}_{x},\vec{s}_{y}$
 \end_inset
 
- dónde 
-\begin_inset Formula $\vec{s}_{y}$
-\end_inset
-
- es uno de los espines vecinos más cercanos de 
-\begin_inset Formula $\vec{s}_{x}$
-\end_inset
-
-.
- Primero se obtiene un vector aleatorio y unitario 
-\begin_inset Formula $\vec{w}$
-\end_inset
-
-.
- Se selección el espín 
-\begin_inset Formula $\vec{s}_{x}$
-\end_inset
-
-y se refleja respecto al plano normal a 
-\begin_inset Formula $\vec{w}$
-\end_inset
-
- dando lugar al espín 
-\begin_inset Formula $\vec{s}_{x}\,'$
-\end_inset
-
-.
- Se tienen dos configuraciones 
-\begin_inset Formula $\vec{s}_{x}\in[s]$
-\end_inset
-
- y 
-\begin_inset Formula $\vec{s}_{x}\,'\in[s']$
-\end_inset
-
- , la diferencia de energía entre las configuraciones es
+, se calcula la diferencia en al energía de las configuraciones
 \begin_inset Formula 
 \begin{equation}
 \Delta\mathcal{H}=\vec{s}_{x}\cdot\vec{s}_{y}-\vec{s}_{x}\,'\cdot\vec{s}_{y}.
@@ -4403,169 +4507,13 @@ y se refleja respecto al plano normal a
 
 \end_inset
 
-Calculando la diferencia de energía entre las configuraciones, la probabilidad
- de enlace entre es
-\begin_inset Formula 
-\begin{equation}
-p_{\mathrm{enlace}}=\begin{cases}
-1-\mathrm{e}^{-\beta\Delta\mathcal{H}} & \mathrm{si}\qquad\Delta\mathcal{H}\geq0\\
-0 & \mathrm{si}\qquad\beta\Delta\mathcal{H}<0.
-\end{cases}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Para cuales quiera dos espines 
-\begin_inset Formula $\vec{s}_{x},\vec{s}_{y}$
-\end_inset
-
- en una configuración 
-\begin_inset Formula $[s]$
-\end_inset
-
-.
- Los dos espines pertenecen al mismo clúster si hay un enlace directo entre
- ambos.
- Si 
-\begin_inset Formula $\alpha$
-\end_inset
-
- es un clúster no vacío y 
-\begin_inset Formula $\vec{s}_{x}\in[s]$
-\end_inset
-
- el espín 
-\begin_inset Formula $\vec{s}_{x}$
-\end_inset
-
- pertenece al clúster si esta enlazado a un espín que pertenece al clúster.
-\end_layout
-
-\begin_layout Standard
-A cada espín se le asocia una etiqueta 
-\begin_inset Formula $m_{x}^{\alpha}$
-\end_inset
-
- dónde 
-\begin_inset Formula $\alpha$
-\end_inset
-
- indica el clúster al que pertenece el espín en cuestión.
- El procedimiento para asociar cada espín a sus respectivos clústers es
- el siguiente:
-\end_layout
-
-\begin_layout Enumerate
-Se selecciona el espín 
-\begin_inset Formula $\vec{s}_{x}$
-\end_inset
-
-, se genera un valor a una matriz de enlaces 
-\begin_inset Formula $b$
-\end_inset
-
- en función de su enlace con los espines 
-\begin_inset Formula $\vec{s}_{x+\hat{1}},\vec{s}_{x+\hat{2}}$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Enumerate
-Si hay enlace entre 
-\begin_inset Formula $\vec{s}_{x}$
-\end_inset
-
-, 
-\begin_inset Formula $\vec{s}_{x+\hat{1}}$
-\end_inset
-
- se asigna el valor 
-\begin_inset Formula $b_{x}=10$
-\end_inset
-
-, si hay enlace entre 
-\begin_inset Formula $\vec{s}_{x}$
-\end_inset
-
- , 
-\begin_inset Formula $\vec{s}_{x+\hat{2}}$
-\end_inset
-
- se asigna el valor 
-\begin_inset Formula $b_{x}=1$
-\end_inset
-
- y si hay enlace entre 
-\begin_inset Formula $\vec{s}_{x}$
-\end_inset
-
-, 
-\begin_inset Formula $\vec{s}_{x+\hat{1}}$
-\end_inset
-
- y 
-\begin_inset Formula $\vec{s}_{x+\hat{2}}$
-\end_inset
-
- se asigna el valor 
-\begin_inset Formula $b_{x}=11$
-\end_inset
-
-.
- Si no hay enlaces se asigna el valor 
-\begin_inset Formula $b_{x}=0$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-Se pasa al siguiente espín y se regresa al paso 1.
-\end_layout
-
-\begin_layout Standard
-Si existe un enlace con uno de los espines vecinos se forma un clúseter
- con los espines enlazados, se selecciona uno de estos espines y se repite
- la prueba de enlace con sus propios vecinos más cercanos.
- Si hay más enlaces se continua repitiendo el proceso, si no hay enlaces
- se pasa a u otro espín del clúster, hasta comprobar que no hay más enlaces
- con algún espín del clúster.
-\end_layout
-
-\begin_layout Standard
-Cuando se termina de formar el clúster se cambia el estado de todos los
- espines del clúster a la vez aplicando la reflexión respecto al plano normal
- a 
-\begin_inset Formula $\vec{w}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Una variante del algoritmo consiste en formar múltiples clústers a la vez,
- en lugar de uno.
- Una vez formados se decide si un se cambia el estado de sus elementos clúster
- con probabilidad 
-\begin_inset Formula $p_{\mathrm{flip}}=1/2$
-\end_inset
-
-, valor que minimiza el tiempo de relajación del sistema al mantener más
- menos la mitad de los grupos y cambiar la configuración de la otra mitad.
+Se calcula la probabilidad de vínculo, con lo que se decide si los espines
+ están enlazados.
 \end_layout
 
 \begin_layout Standard
 Una forma de realizar el proceso de formación de grupos es usar el algoritmo
- de Hoshen-Kopelman que se describe para el modelo 
-\begin_inset Formula $2$
-\end_inset
-
--d O(3) en el apéndice 
+ de Hoshen-Kopelman que se describe en el apéndice 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Algoritmo-Hoshen-Kopelman"
@@ -4576,7 +4524,43 @@ noprefix "false"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+En la variante single-cluster, se forma un único clúster, y se cambia el
+ estado de todos los espines la vez aplicando transformación de Wolff ec.
  
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:wolff"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En la variante multi-cluster se forman todos los clústeres posibles.
+ Una vez formados, se decide si se aplica la transformación de Wolff ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:wolff"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ con probabilidad 
+\begin_inset Formula $p_{\mathrm{giro}}=1/2$
+\end_inset
+
+, valor que minimiza el tiempo de relajación del sistema al mantener más
+ menos la mitad de los grupos y cambiar la configuración de la otra mitad.
 \end_layout
 
 \begin_layout Chapter
@@ -4590,7 +4574,7 @@ En esta sección se miden las diferentes observables que se han descrito
 \end_inset
 
 ).
- Para ello se ha escrito un programa en Fortran con rutinas de generación
+ Para ello, se ha escrito un programa en Fortran con rutinas de generación
  de configuraciones y actualización de estados en función de la temperatura
  para cada uno de los algoritmos descritos.
  Algunos términos básicos son:
@@ -4599,8 +4583,10 @@ En esta sección se miden las diferentes observables que se han descrito
 \begin_layout Itemize
 
 \shape italic
+\emph on
 hot-start
 \shape default
+\emph default
 .
  Es una configuración inicial de espines aleatorios.
  
@@ -4609,8 +4595,10 @@ hot-start
 \begin_layout Itemize
 
 \shape italic
+\emph on
 cold-start
 \shape default
+\emph default
 .
  Es una configuración inicial de espines alineados.
 \end_layout
@@ -4627,7 +4615,7 @@ Barrido de actualizaciones.
 \begin_inset Formula $V=L\times L$
 \end_inset
 
- espines seleccionados en orden lexicográfico, aleatorio o por su pertenecía
+ espines seleccionados en orden lexicográfico, aleatorio o por su pertenecia
  a un clúster.
 \end_layout
 
@@ -4669,17 +4657,21 @@ Termalización de dos sistemas 2d O(
 .
  La trayectoria 
 \shape italic
+\emph on
 cold-start
 \shape default
+\emph default
 , parte de un estado de energía máxima en el que todos los espines están
  alineados.
  La trayectoria 
 \shape italic
+\emph on
 hot-start
 \shape default
-, parte de una configuración aleatoria .
- Después de unos 20 barridos ambas trayectorias oscilan alrededor una energía
- que corresponde al sistema termalizado.
+\emph default
+, parte de una configuración aleatoria.
+ Después de unos 20 barridos, ambas trayectorias oscilan alrededor de una
+ energía que corresponde al sistema termalizado.
 \end_layout
 
 \end_inset
@@ -4722,7 +4714,7 @@ Se miden las observables.
 \end_layout
 
 \begin_layout Enumerate
-Si el número de observables medidas en menor a el número requerido se regresa
+Si el número de observables medidas en menor al número requerido, se regresa
  al paso 2.
 \end_layout
 
@@ -4738,8 +4730,8 @@ noprefix "false"
 \end_inset
 
 , las observables de un sistema fluctúan entre mediciones.
- Por lo que un resultado se calcula a partir del promedio de un número medicione
-s suficientemente grande para alcanzar la precisión deseada.
+ Por lo que un resultado se calcula a partir del promedio de un número de
+ mediciones suficientemente grande para alcanzar la precisión deseada.
  
 \end_layout
 
@@ -4765,7 +4757,10 @@ ras
  En todos los experimentos numéricos se partió de una configuración inicial
  
 \shape italic
-hot-start.
+\emph on
+hot-start
+\emph default
+.
 
 \shape default
  Ya que en este punto se desconocía el tiempo de autocorrelación, se realizaron
@@ -4781,7 +4776,7 @@ ción completamente termalizada.
 Para la carga topológica en el algoritmo multi-clúster, la autocorrelación
  no puede medirse debido a la eficiencia con la que el algoritmo multi-clúster
  alcanza la configuración de equilibrio.
- En el caso de los algoritmos de actualización local hay una desaceleración
+ En el caso de los algoritmos de actualización local, hay una desaceleración
  crítica cerca de la temperatura 
 \begin_inset Formula $T=0$
 \end_inset
@@ -4799,7 +4794,7 @@ Los tiempos de autocorrelación se calcularon por ajuste a la función exponenci
 \end_layout
 
 \begin_layout Standard
-Finalmente se ajusto el tiempo de autocorrelación en función de la temperatura
+Finalmente, se ajustó el tiempo de autocorrelación en función de la temperatura
  siguiendo la ecuación 
 \begin_inset Formula 
 \begin{equation}
@@ -5612,23 +5607,27 @@ Se calculó la longitud de correlación en retículas de tamaño
 \end_inset
 
 .
- En todos los casos se partió de una configuración 
+ En todos los casos, se partió de una configuración 
 \shape italic
+\emph on
 hot-start
 \shape default
+\emph default
  y se termalizó durante 
 \begin_inset Formula $10^{4}$
 \end_inset
 
  actualizaciones del algoritmo 
 \shape italic
+\emph on
 multi-clúster
 \shape default
+\emph default
 .
 \end_layout
 
 \begin_layout Standard
-Cada uno de los exponentes críticos esta registrado en la tabla 
+Cada uno de los exponentes críticos está registrado en la tabla 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "teblength"
@@ -5865,8 +5864,10 @@ Longitud de correlación en función de la temperatura para las retículas
 
 , algoritmo 
 \shape italic
+\emph on
 multi-clúster
 \shape default
+\emph default
 .
 \end_layout
 
@@ -6418,12 +6419,12 @@ name "teblength"
 
 \end_inset
 
-Los efectos de volumen finito son mas fuertes en temperaturas menores a
+Los efectos de volumen finito son más fuertes en temperaturas menores a
  
 \begin_inset Formula $T=0.7$
 \end_inset
 
- por lo que se consideraron las temperaturas posteriores para el ajuste.
+, por tanto, se consideraron las temperaturas posteriores para el ajuste.
  Promediando los exponentes críticos para 
 \begin_inset Formula $L=128$
 \end_inset
@@ -6454,7 +6455,7 @@ n y los tiempos de autocorrelación para las temperaturas
 \end_inset
 
 .
- El exponente critico se calculo siguiendo la ecuación 
+ El exponente crítico se calculo siguiendo la ecuación 
 \shape italic
 
 \begin_inset Formula 
@@ -6466,8 +6467,8 @@ n y los tiempos de autocorrelación para las temperaturas
 
 C
 \shape default
-omo el exponente critico de autocorrelación no pudo medirse para el algoritmo
- multi-clsuter, tampoco pudo medirse para calcular el exponente critico
+omo el exponente crítico de autocorrelación no pudo medirse para el algoritmo
+ multi-clúster, tampoco pudo medirse para calcular el exponente crítico
  dinámico, en consecuencia en la tabla 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -7276,7 +7277,7 @@ Se calculó el valor del exponente del mecanismo de Kibble-Zurek siguiendo
 
 \end_inset
 
-y usando los exponentes criticos de las tablas 
+y usando los exponentes críticos de las tablas 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "teblength"
@@ -7460,8 +7461,8 @@ Simulación de enfriamientos
 \end_layout
 
 \begin_layout Standard
-Un enfriamiento rápido, es un fenómeno fuera del equilibrio en el que un
- sistema pasa de una temperatura inicial 
+Un enfriamiento rápido, sé da cuando un sistema pasa de una temperatura
+ inicial 
 \begin_inset Formula $T_{i}$
 \end_inset
 
@@ -7473,7 +7474,7 @@ Un enfriamiento rápido, es un fenómeno fuera del equilibrio en el que un
 \begin_inset Formula $t$
 \end_inset
 
-.
+ menor al tiempo de autocorrelación del sistema.
  La simulación de un enfriamiento se realiza cambiando la temperatura del
  sistema entre cada barrido de actualizaciones.
  El decremento de la temperatura entre cada barrido define la velocidad
@@ -7490,8 +7491,8 @@ La variable
 \begin_inset Formula $\tau_{\mathrm{cool}}$
 \end_inset
 
- es la tasa de cambio de temperatura y corresponde al número de pasos para
- llegar desde la temperatura inicial 
+ es la tasa de cambio de temperatura o tasa de enfriamiento y corresponde
+ al número de pasos para llegar desde la temperatura inicial 
 \begin_inset Formula $T_{i}$
 \end_inset
 
@@ -9185,7 +9186,7 @@ noprefix "false"
 
 \end_inset
 
- se observa que el exponente critico 
+ se observa que el exponente crítico 
 \begin_inset Formula $\zeta$
 \end_inset
 
@@ -9197,8 +9198,8 @@ Resumen y conclusiones
 \end_layout
 
 \begin_layout Standard
-Se realizaron simulaciones del modelo modelo 2d O(3), usando los algoritmos
- 
+Se realizaron simulaciones del modelo modelo 2d O(3), usando los sihuientes
+ algoritmos:
 \end_layout
 
 \begin_layout Itemize
@@ -9223,25 +9224,47 @@ multi-cluster
 
 \begin_layout Standard
 En las simulaciones en equilibrio, se midió la longitud de correlación y
- el exponente critico dinámico, para las observables de susceptibilidad
- topológica energía y magnetización.
+ el exponente crítico dinámico, para las observables de susceptibilidad
+ topológica, energía y magnetización.
  
 \end_layout
 
 \begin_layout Standard
-Se simulo un sistema con diferentes velocidades de enfriamiento y se midieron
- los parámetros de orden: carga topológica, energía y magnetización en relación
- a los diferentes ratios de enfriamiento.
+Se simuló un sistema con diferentes velocidades de enfriamiento.
+ Se midió numéricamente múltiples cantidades: 
+\end_layout
+
+\begin_layout Itemize
+La carga topológica y su susceptibilidad.
+ 
+\end_layout
+
+\begin_layout Itemize
+la energía.
+\end_layout
+
+\begin_layout Itemize
+la magnetización.
+ 
 \end_layout
 
 \begin_layout Standard
-La carga topológica resultó en una ley de escalamiento con un exponente
- 
-\begin_inset Formula $\zeta_{1}=0.53(1)$
+Cada una en función de las diferentes tasas de enfriamiento 
+\begin_inset Formula $\tau_{\mathrm{cool}}$
 \end_inset
 
-, el cual se calculo con los exponentes críticos 
-\begin_inset Formula $\zeta_{2}=0.57(9)$
+.
+\end_layout
+
+\begin_layout Standard
+Los resultados para la susceptibilidad topológica llevaron a una ley de
+ escalamiento con exponente 
+\begin_inset Formula $\zeta=0.53(1)$
+\end_inset
+
+, el cual también se calculó indirectamente con los exponentes críticos
+ conduciendo al valor 
+\begin_inset Formula $\zeta=0.57(9)$
 \end_inset
 
 .
@@ -9285,22 +9308,29 @@ lidad topológica, energía y magnetización.
 \begin_inset Formula $\zeta$
 \end_inset
 
- compatibles respecto a la misma observable, sin embargo difieren para diferente
-s observables.
+ compatibles respecto a la misma observable.
+ Sin embargo difieren para diferentes observables.
 \end_layout
 
 \begin_layout Standard
-En el caso de algoritmo multi-cluster no fue posible medir un exponente
- critico dinámico por la efectividad de termalización del algoritmo, lo
- que sugiere que multi-clsuter realiza actualizaciones, los valores obtenidos
- para el exponente 
+En el caso del algoritmo multi-cluster no fue posible medir un exponente
+ crítico dinámico por la efectividad de termalización del algoritmo.
+ Además, para las temperaturas simuladas en equilibrio, no fue posible calcular
+ el exponente crítico dinámico, por lo que no se pudo confirmar una compatibilid
+ad entre los resultados obtenidos en equilibrio y los enfriamientos.
+ Sí fue posible medir el exponente crítico 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ por medio de la ley de escalamiento.
+ Los valores obtenidos para el exponente 
 \begin_inset Formula $\zeta$
 \end_inset
 
  resultan mayores que los de los algoritmos de actualización locales.
- Además, para las temperaturas simuladas en equilibrio, no fue posible calcular
- el exponente crítico dinámico, por lo que no se pudo confirmar una compatibilid
-ad entre los resultados obtenidos en equilibrio y los enfriamientos.
+ Siguiendo que la dinámica del algoritmo clúster es fundamentalmente diferente,
+ y resulta en la supervivencia de menos defectos topológicos en comparación
+ con los algoritmos de actualización local.
 \end_layout
 
 \begin_layout Standard
@@ -9378,7 +9408,7 @@ Un primer intento para generar vectores aleatorios y uniformemente distribuidos
  uniformemente distribuidos.
  Sin embargo, si se generan vectores aleatorios de esta manera y se representan
  sobre una esfera, se observa que la distribución de los vectores es más
- densa en los polos..
+ densa en los polos.
  
 \end_layout
 
@@ -9397,8 +9427,8 @@ Consideremos ahora una distribución
 \begin_inset Formula $p=1/4\pi$
 \end_inset
 
-, entonces integral de la densidad de probabilidad sobre el área de la esfera
- es
+, entonces, integral de la densidad de probabilidad sobre el área de la
+ esfera es
 \end_layout
 
 \begin_layout Standard
@@ -9428,8 +9458,8 @@ En coordenadas esféricas se tiene
 \end_layout
 
 \begin_layout Standard
-Con el ultimo paso se ha separado la distribución de probabilidad de vectores
- en la esfera, en dos distribuciones de probabilidad 
+Se separa la distribución de probabilidad de vectores en la esfera, en dos
+ distribuciones de probabilidad 
 \begin_inset Formula $u,v$
 \end_inset
 
@@ -9448,7 +9478,7 @@ U(\theta)=\frac{1}{2}\int_{0}^{\theta}\sin\theta'\dd\theta'=\frac{1}{2}(1-\cos\t
 
 \end_inset
 
-luego se definen variables aleatorias 
+ se definen variables aleatorias 
 \begin_inset Formula $u,v$
 \end_inset
 
@@ -9634,7 +9664,7 @@ Dada una esfera
 \begin_inset Formula $\vec{s}_{0}$
 \end_inset
 
-, el siguiente es desafío generar una distribución de vectores aleatoria
+, el siguiente objetivo es generar una distribución de vectores aleatoria
  y uniformemente distribuida en una región circular
 \begin_inset Formula $R$
 \end_inset
@@ -9740,11 +9770,11 @@ Se genera un vector aleatorio
 \begin_inset Formula $\vec{r}$
 \end_inset
 
- fijan un circulo máximo sobre la esfera con una orientación aleatoria.
+ fijan un círculo máximo sobre la esfera con una orientación aleatoria.
 \end_layout
 
 \begin_layout Standard
-Se calcular un vector ortonormal al plano formado por 
+Se calcula un vector ortonormal al plano formado por 
 \begin_inset Formula $\vec{s_{0}}$
 \end_inset
 
@@ -9806,8 +9836,14 @@ El vector aleatorio
 \end_layout
 
 \begin_layout Standard
-El procedimiento es sencillo de implementar aquí hay un ejemplo de implementació
-n en el lenguaje de programación Fortran.
+La ventaja de generar vectores en un cono sobre la esfera con esta fórmula
+ es que el número de cálculos es menor, que los que se harían al generar
+ vectores en un cono sobre el eje 
+\begin_inset Formula $z$
+\end_inset
+
+ y aplicar una rotación, disminuyendo considerablemente el tiempo de cómputo
+ cunado se generan millones de vectores aleatorios.
 \end_layout
 
 \begin_layout Standard
@@ -9844,6 +9880,11 @@ Rotación de un espín
 \end_inset
 
 .
+ El espín resultante cae dentro del cono delimitado por 
+\begin_inset Formula $\alpha_{max}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9893,7 +9934,7 @@ Definición: cúster.
 \end_layout
 
 \begin_layout Plain Layout
-En una retícula de espines clasicos, un clúster es un conjunto de sitios
+En una retícula de espines clásicos, un clúster es un conjunto de sitios
  enlazados directa o indirectamente.
 \end_layout
 
@@ -9913,41 +9954,42 @@ literal "false"
 \end_inset
 
 .
- El algoritmo de Hoshen-Kopelman describe como etiquetar los sitios de la
- retícula en sus respectivos clústers a partir de una función de enlace.
+ El algoritmo de Hoshen-Kopelman describe cómo etiquetar los sitios de la
+ retícula en sus respectivos clústeres a partir de una función de vínculo.
 \end_layout
 
 \begin_layout Standard
 El algoritmo de Hoshen-Kopelman es considerablemente más eficiente que otros
- métodos de formación de clústers.
+ métodos de formación de clústeres.
  A diferencia de algoritmos en los que el número de cálculos crece cuadráticamen
 te con el volumen del sistema, en el caso de Hoshen-Kopelman dicho crecimiento
  es lineal.
 \end_layout
 
 \begin_layout Standard
-Un enlace directo ocurre entre dos sitios vecinos, mientras que un enlace
+Un vínculo directo ocurre entre dos sitios vecinos, mientras que un vínculo
  indirecto se da entre sitios que no son vecinos, pero que están conectados
  a un sitio común.
- Este tipo de enlace implica la posibilidad de que dos clústers inicialmente
+ Este tipo de vínculo implica la posibilidad de que dos clústeres inicialmente
  distintos se unan mediante una conexión entre elementos que pertenecen
  a cada uno de ellos.
 \end_layout
 
 \begin_layout Standard
-Para empezar vamos a generar una configuración de enlaces en dónde cada
+Para empezar, vamos a generar una configuración de vínculos en dónde cada
  sitio 
 \begin_inset Formula $x$
 \end_inset
 
- indica los enlaces directos, por ejemplo en una retícula cuadrada hay cuatro
- vecinos más cercanos, para cada vecino un 1 indica un enlace directo mientras
- que un 0 indica que no hay enlace.
- La función de enlace 
+ indica los vínculos directos.
+ Por ejemplo, en una retícula cuadrada hay cuatro vecinos más cercanos.
+ Para cada vecino un 1 indica un vínculo directo, mientras que un 0 indica
+ que no hay vínculo.
+ La función de vínculo 
 \begin_inset Formula $p(x_{1},x_{2})$
 \end_inset
 
- da la probabilidad de enlace entre los sitios 
+ da la probabilidad de vínculo entre los sitios 
 \begin_inset Formula $x_{1}$
 \end_inset
 
@@ -9959,7 +10001,7 @@ Para empezar vamos a generar una configuración de enlaces en dónde cada
 \end_layout
 
 \begin_layout Standard
-Una vez determinada todos los enlaces se realizan los siguientes pasos:
+Una vez determinados todos los vínculos, se realizan los siguientes pasos:
 \end_layout
 
 \begin_layout Enumerate
@@ -9967,12 +10009,12 @@ Se selecciona un sitio
 \begin_inset Formula $x$
 \end_inset
 
- y se comprueban sus enlaces directos.
+ y se comprueban sus vínculos directos.
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Si no hay enlaces directos, se etiqueta al sitio con un identificador 
+Si no hay vínculos directos, se etiqueta al sitio con un identificador 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -9980,12 +10022,12 @@ Si no hay enlaces directos, se etiqueta al sitio con un identificador
 \end_layout
 
 \begin_layout Enumerate
-Si hay enlaces directos se pasa al paso 2.
+Si hay vínculos directos, se pasa al paso 2.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Se comprueban los enlaces directos de los sitios vecinos.
+Se comprueban los vínculos directos de los sitios vecinos.
  Todos los espines enlazados en la comprobación se etiquetan con un identificado
 r 
 \begin_inset Formula $\alpha_{i}$
@@ -9996,17 +10038,18 @@ r
 
 \begin_layout Enumerate
 Se repinten los pasos anteriores etiquetando cada sitio de la retícula en
- sus respectivos clústers.
+ sus respectivos clústeres.
 \end_layout
 
 \begin_layout Enumerate
-En el proceso de formación de cústers, habrán casos en los que a un sitio
+En el proceso de formación de cústers, habrá casos en los que a un sitio
  le corresponden dos o más etiquetas 
 \begin_inset Formula $\alpha_{1},\dots,\alpha_{n}$
 \end_inset
 
-, ya que hay un enlace indirecto entre clústers los clusters correspondientes
- se fusionan en uno y se les asigna la etiqueta 
+, ya que hay un vínculo indirecto entre clústeres.
+ Los clústeres correspondientes se fusionan en uno y se les asigna la etiqueta
+ 
 \begin_inset Formula $\alpha_{1.}$
 \end_inset
 
@@ -10014,27 +10057,41 @@ En el proceso de formación de cústers, habrán casos en los que a un sitio
 \end_layout
 
 \begin_layout Standard
-Una segunda propuesta útil para loa formación de cústers individuales es
- la formación procedural de clústers.
- En este caso es importante diferenciar entre sitios en el interior de un
- cúster y sitios en la frontera de un clúster.
- Un sitio en el interior de un clúster si todos sus vecinos más cercanos
- pertenecen al mismo clúster.
- En complementariedad un sitio esta en la frontera si alguno de sus vecinos
- más cercanos no pertenece al clúster.
+Una forma de optimizar la generación de cústers individuales es la ampliación
+ por capas.
+ Es importante diferenciar entre sitios en el interior de un cúster, sitios
+ en la frontera de un clúster y sitios en el interior.
+ 
 \end_layout
 
-\begin_layout Standard
-En la formación procedural se parte de un clúster individual y se va extendiendo
- una frontera provisional en cada paso hasta alcanzar el tamaño máximo del
- clúster, en ocasiones transformando a los sitios de la frontera en sitios
- en el interior.
+\begin_layout Itemize
+Un sitio está en el interior de un clúster si todos sus vecinos más cercanos
+ pertenecen al mismo clúster.
+ 
+\end_layout
+
+\begin_layout Itemize
+Un sitio está en la frontera si alguno de sus vecinos más cercanos no pertenece
+ al clúster.
+ 
+\end_layout
+
+\begin_layout Itemize
+Un sitio esta en el exterior si ninguno de sus vecinos más cercanos pertenece
+ al cluster.
  
 \end_layout
 
 \begin_layout Standard
-Para evitar que un clúster se extienda indebidamente por el calculo doble
- de una probabilidad de enlace, solo se calculara una vez un enlace entre
+Se parte de un clúster individual y se va extendiendo una frontera provisional
+ en cada paso hasta alcanzar el tamaño máximo del clúster, en ocasiones
+ transformando a los sitios de la frontera en sitios en el interior.
+ 
+\end_layout
+
+\begin_layout Standard
+Para evitar que un clúster se extienda indebidamente por el cálculo doble
+ de una probabilidad de vínculo, solo se calculará una vez un vínculo entre
  dos espines.
 \end_layout
 
@@ -10047,7 +10104,7 @@ Se selecciona un sitio aleatorio
 \begin_inset Formula $x$
 \end_inset
 
- y se comprueban los enlaces directos.
+ y se comprueban los vínculos directos.
  
 \end_layout
 
@@ -10062,41 +10119,41 @@ Todos los espines enlazados en la comprobación se etiquetan con un identificado
 
 \begin_layout Enumerate
 Se identifican los sitios localizados en la frontera y se comprueban sus
- enlaces directos.
+ vínculos directos.
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Si hay enlaces directos adicionales se regresa al paso 2.
+Si hay vínculos directos adicionales, se regresa al paso 2.
 \end_layout
 
 \begin_layout Enumerate
-Si no hay enlaces directos adicionales se termina la comprobación.
+Si no hay vínculos directos adicionales, se termina la comprobación.
 \end_layout
 
 \end_deeper
 \begin_layout Standard
 Este método es especialmente útil en la formación de un clúster, ya que
- evita el calculo de una gran cantidad e enlaces.
+ evita el cálculo de una gran cantidad de vínculos.
 \end_layout
 
 \begin_layout Standard
-La aplicación de estos métodos al los algoritmos multi-clsuter y single-cluster,
- permiten ahorrar una gran cantidad cálculos, por lo que el poder de computo
+La aplicación de estos métodos al los algoritmos multi-clúster y single-cluster,
+ permiten ahorrar una gran cantidad cálculos, por lo que el poder de cómputo
  pude usarse en aumentar la estadística de los experimentos y reducir los
- tiempos de calculo, sin duda es un beneficio que vale la pena a cambio
+ tiempos de cálculo, sin duda es un beneficio que vale la pena a cambio
  de un poco de programación extra.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -10135,7 +10192,7 @@ node (p2) [process, below of=p1] {Se crea un nuevo clúster};
 
 
 \backslash
-node (p3) [process, below of=p2] {Se buscan enlaces entre los sitios vecinos};
+node (p3) [process, below of=p2] {Se buscan vínculos entre los sitios vecinos};
 \end_layout
 
 \begin_layout Plain Layout
@@ -10158,7 +10215,7 @@ node (p4b) [process, below of=p3] {Los sitios enlazados se añaden al nuevo
 
 
 \backslash
-node (p5) [process, below of=p4b,xshift=3cm] {Se unen los clústers};
+node (p5) [process, below of=p4b,xshift=3cm] {Se unen los clústeres};
 \end_layout
 
 \begin_layout Plain Layout
