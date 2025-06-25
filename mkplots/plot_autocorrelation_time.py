@@ -63,20 +63,32 @@ for alg in algs:
         capsize=3,
         elinewidth=1,
         markersize=5,
-        color="red",
+        color="tab:red",
     )
+
+    ax.errorbar(
+        data[0],
+        data[3],
+        data[4],
+        fmt="o",
+        capsize=3,
+        elinewidth=1,
+        markersize=5,
+        color="tab:blue",
+    )    
 
     # print(alg, fix(xfit.opt[1], xfit.error[1]))
     ax.set_xlabel(r"$\log(T)$", fontsize=18)
     ax.set_ylabel(r"$\log(\tau)$", fontsize=18)
     ax.legend(fontsize=16)
-    ax.set_yscale("log")
-    ax.set_xscale("log")
+    #ax.set_yscale("log")
+    #ax.set_xscale("log")
     title = Algs[alg]
     i = obs[name]["sym"]
+    plt.show()
     os.makedirs(f"output/plot/{name}/L{L}/{alg}", exist_ok=True)
-    fig.savefig(
+    """fig.savefig(
         f"output/plot/{name}/autocorrelation_{alg}_L{L}_{i}.pdf",
         format="pdf",
         bbox_inches="tight",
-    )
+    )"""
