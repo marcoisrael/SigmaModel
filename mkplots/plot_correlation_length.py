@@ -21,9 +21,9 @@ for alg in algs:
     fig, ax = plt.subplots()
     T = np.array([0.4,0.5,0.6,0.7,0.8,0.9,1.0,1.2])
     params = {
-        32: {"color": "red", "line": "dotted", "marker": "."},
-        64: {"color": "blue", "line": "dashed", "marker": "+"},
-        128: {"color": "green", "line": "dashdot", "marker": "2"},
+        32: {"color": "red", "line": (0, (3, 3)), "marker": "."},
+        64: {"color": "blue", "line": (0, (1, 1)), "marker": "+"},
+        128: {"color": "green", "line": (0, (2, 3)), "marker": "2"},
     }
     # ~ i = 0
     for LENGTH in [32, 64, 128]:
@@ -56,7 +56,7 @@ for alg in algs:
                     color="red",
                 )
                 ax.plot(x, f(x, *xfit.opt), linewidth=1.8, ls=(0, (3, 3)),color="blue")
-                ax.set_ylabel(r"$\langle \vec{\sigma_i}\cdot\vec{\sigma_j}\rangle$", fontsize=18)
+                ax.set_ylabel(r"$\langle \vec{\sigma_i}\cdot\vec{\sigma_1}\rangle$", fontsize=18)
                 ax.set_xlabel(r"$i$", fontsize=18)
                 fig.savefig(
                     f"output/plot/correlation_length/lexic_metropolis_L{LENGTH}_{temp}.png"
@@ -72,41 +72,54 @@ for alg in algs:
             fmt=params[LENGTH]["marker"],
             capsize=1,
             elinewidth=1,
-            markersize=8,
+            markersize=10,
             color=params[LENGTH]["color"],
         )
-
         def f(x, a, b):
             return a*x**-b
 
         xfit = fit(T[3:7], psi[3:7], psiErr[3:7])
         xfit.fiting(f)
+
+        ax.errorbar(
+            [],
+            [],
+            [],
+            fmt=params[LENGTH]["marker"],
+            capsize=1,
+            elinewidth=1,
+            markersize=10,
+            color=params[LENGTH]["color"],
+            linewidth=1.8,
+            linestyle=params[LENGTH]["line"],
+            label=f"$L=${LENGTH}, "+r"$\nu=$"+fix(xfit.opt[1],xfit.error[1]),
+        )
+        
         print(LENGTH, fix(xfit.opt[1], xfit.error[1]))
 
         x = np.linspace(T[0], T[-1], 200)   
         ax.plot(
             x,
             f(x, *xfit.opt),
-            linewidth=1,
+            linewidth=1.8,
             color=params[LENGTH]["color"],
             linestyle=params[LENGTH]["line"],
-            label=f"$L=${LENGTH}, "+r"$\nu=$"+fix(xfit.opt[1],xfit.error[1]),
         )
    
-    text = (r"$\xi \propto T^{-\nu}$")
-
-    ax.text(
-        0.99,
-        0.76,
-        text,
-        fontsize=16,
-        ha="right",
-        va="top",
-        transform=ax.transAxes,
-    ) 
+    # text = (r"$\xi \propto T^{-\nu}$")
+    #
+    # ax.text(
+    #     0.55,
+    #     0.9,
+    #     text,
+    #     fontsize=16,
+    #     ha="right",
+    #     va="top",
+    #     transform=ax.transAxes,
+    # ) 
     ax.set_xlabel(r"$\log(T)$", fontsize=18)
     ax.set_ylabel(r"$\log(\xi)$", fontsize=18)
-    ax.legend()
+    ax.legend(fontsize=12)
     ax.set_yscale("log")
     ax.set_xscale("log")
     fig.savefig(

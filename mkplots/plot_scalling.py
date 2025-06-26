@@ -21,6 +21,13 @@ if args.algorithm == "all":
         "random_glauber",
         "multi_cluster"
     ]
+if args.algorithm == "local":
+    algs = [
+        "lexic_metropolis",
+        "lexic_glauber",
+        "random_metropolis",
+        "random_glauber",
+            ]
 else:
     algs = args.algorithm.split(",")
 
@@ -75,7 +82,7 @@ for alg in algs:
         capsize=3,
         elinewidth=1,
         markersize=5,
-        color="red",
+        color="tab:blue",
     )
 
      
@@ -86,16 +93,25 @@ for alg in algs:
     xfit.fiting(f)
     
     x = np.linspace(cor[0],cor[-1])
-    ax.plot(x,f(x,*xfit.opt), ls="dotted")
+    ax.plot(x,f(x,*xfit.opt), ls=(0,(3,3)))
+    ax.errorbar(
+            [],[],[],
+            fmt="o",
+            capsize=3,
+            elinewidth=1,
+            markersize=5,
+            color="tab:blue",
+            ls=(0,(3,3)),
+            label=r"$\xi$, $z=$"+fix(xfit.opt[1],xfit.error[1]),
+            )
+    # text = r"$\xi\propto \tau^{z}$"+"\n"+r"$z$="+fix(xfit.opt[0], xfit.error[0])
     
-    text = r"$\xi\propto \tau^{z}$"+"\n"+r"$z$="+fix(xfit.opt[0], xfit.error[0])
-    
-    ax.text(0.96,0.20,text,fontsize=16,ha="right",va="top",transform=ax.transAxes)
-    print(fix(xfit.opt[0], xfit.error[0]))
+    # ax.text(0.96,0.20,text,fontsize=16,ha="right",va="top",transform=ax.transAxes)
+    print(alg, fix(xfit.opt[1], xfit.error[1]))
     
     ax.set_xlabel(r"$\log(\tau)$", fontsize=18)
     ax.set_ylabel(r"$\log(\xi)$", fontsize=18)
-    # ax.legend()
+    ax.legend(fontsize=12)
     ax.set_yscale("log")
     ax.set_xscale("log")
 

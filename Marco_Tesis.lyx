@@ -2945,6 +2945,16 @@ Función de correlación
 \end_layout
 
 \begin_layout Standard
+En los modelos de espín la función de correlación mide que tan fuertemente
+ se afectan dos espines 
+\begin_inset Formula $\vec{s}_{x},\vec{s}_{y}\in\mathcal{S}^{n-1}$
+\end_inset
+
+ .
+ 
+\end_layout
+
+\begin_layout Standard
 La función de correlación se define como
 \begin_inset Formula 
 \begin{equation}
@@ -2953,13 +2963,7 @@ La función de correlación se define como
 
 \end_inset
 
-En los modelos de espín la función de correlación mide que tan fuertemente
- se afectan dos espines 
-\begin_inset Formula $\vec{s}_{x},\vec{s}_{y}\in\mathcal{S}^{n-1}$
-\end_inset
 
- .
- 
 \end_layout
 
 \begin_layout Standard
@@ -3244,7 +3248,6 @@ Una transición de fase por ruptura de simetría es un fenómeno en un sistema
 \begin_layout Itemize
 Cuando el agua se congela, la simetría rotacional se rompe por la elección
  de una orientación en los cristales de hielo.
- 
 \end_layout
 
 \begin_layout Itemize
@@ -3288,7 +3291,7 @@ El concepto de emergencia de simetría introducido por Wilson Fisher dice
  microscópica.
  La propuesta implica que en sistemas que posen simetrías discretas como
  los ferromagnetos puede emerger una simetría continua cerca de la temperatura
- critica
+ crítica
 \begin_inset CommandInset citation
 LatexCommand autocite
 key "lin_topological_2014"
@@ -3745,7 +3748,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename output/plot/magnet/L64/lexic_metropolis/lexic_metropolis_0.9.pdf
+	filename output/plot/magnet/L64/lexic_metropolis/lexic_metropolis_1.0.pdf
 	scale 50
 
 \end_inset
@@ -4641,7 +4644,7 @@ Barrido de actualizaciones.
 \begin_inset Formula $V=L\times L$
 \end_inset
 
- espines seleccionados en orden lexicográfico, aleatorio o por su pertenecia
+ espines seleccionados en orden lexicográfico, aleatorio o por su pertenecía
  a un clúster.
 \end_layout
 
@@ -4673,7 +4676,7 @@ Termalización de dos sistemas 2d O(
 \end_inset
 
 ) a temperatura 
-\begin_inset Formula $T=4$
+\begin_inset Formula $T=1$
 \end_inset
 
 , 
@@ -4696,8 +4699,12 @@ hot-start
 \shape default
 \emph default
 , parte de una configuración aleatoria.
- Después de unos 20 barridos, ambas trayectorias oscilan alrededor de una
- energía que corresponde al sistema termalizado.
+ En unos 
+\begin_inset Formula $100$
+\end_inset
+
+ barridos de actualización, ambas trayectorias oscilan alrededor de una
+ energía del sistema termalizadó.
 \end_layout
 
 \end_inset
@@ -4813,7 +4820,7 @@ Para la carga topológica en el algoritmo multi-clúster, la autocorrelación
 \begin_layout Standard
 Los tiempos de autocorrelación se calcularon por ajuste a la función exponencial
  y por integración, ambos resultados fueron consistentes para 
-\begin_inset Formula $T\in\left\{ 0.7,0.8,0.9,1.0\right\} $
+\begin_inset Formula $T\in\left\{ 0.7,0.8,0.9,1.0,1.2,1.4,1.6,1.8,2.0\right\} $
 \end_inset
 
 .
@@ -5008,7 +5015,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -5172,7 +5179,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -5375,7 +5382,7 @@ Algoritmo
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $m$
+\begin_inset Formula $M$
 \end_inset
 
 
@@ -5398,7 +5405,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $6.9(7)$
+\begin_inset Formula $7.4(2)$
 \end_inset
 
 
@@ -5410,7 +5417,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.0(8)$
+\begin_inset Formula $4.3(6)$
 \end_inset
 
 
@@ -5422,7 +5429,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $9.3(5)$
+\begin_inset Formula $9.0(9)$
 \end_inset
 
 
@@ -5445,7 +5452,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $5.5(1)$
+\begin_inset Formula $7.26(8)$
 \end_inset
 
 
@@ -5457,7 +5464,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.9(7)$
+\begin_inset Formula $4.5(4)$
 \end_inset
 
 
@@ -5469,7 +5476,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $7.4(9)$
+\begin_inset Formula $8.4(3)$
 \end_inset
 
 
@@ -5492,7 +5499,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $7.0(5)$
+\begin_inset Formula $6.0(4)$
 \end_inset
 
 
@@ -5504,7 +5511,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.0(2)$
+\begin_inset Formula $3.9(3)$
 \end_inset
 
 
@@ -5516,7 +5523,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $7.6(7)$
+\begin_inset Formula $10.1(3)$
 \end_inset
 
 
@@ -5539,7 +5546,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $7.6(3)$
+\begin_inset Formula $5.3(6)$
 \end_inset
 
 
@@ -5551,7 +5558,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.8(9)$
+\begin_inset Formula $3.3(6)$
 \end_inset
 
 
@@ -5563,7 +5570,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $9.1(4)$
+\begin_inset Formula $11.0(2)$
 \end_inset
 
 
@@ -5583,11 +5590,13 @@ Glauber aleatorio
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Exponente 
+Exponente crítico 
 \begin_inset Formula $\nu z$
 \end_inset
 
  para el tiempo de autocorrelación.
+ Se toma el promedio entre el exponente para el tiempo de autocorrelación
+ integrado y el ajustado.
 \end_layout
 
 \end_inset
@@ -5601,7 +5610,7 @@ Exponente
 \end_layout
 
 \begin_layout Standard
-El algoritmo multi-cluster termalizo las configuraciones en un barridos
+El algoritmo multi-cluster termalizó las configuraciones en un barridos
  de actualización en el rango de temperaturas usado por lo que no se pudo
  determinar un exponente.
 \end_layout
@@ -5629,7 +5638,7 @@ Se calculó la longitud de correlación en retículas de tamaño
 \end_inset
 
  para las temperaturas 
-\begin_inset Formula $T\in\left\{ 0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0\right\} $
+\begin_inset Formula $T\in\left\{ 0.4,0.5,0.6,0.7,0.8,0.9,1.0,1.2\right\} $
 \end_inset
 
 .
@@ -5681,6 +5690,7 @@ noprefix "false"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -5919,7 +5929,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -6121,6 +6131,7 @@ Glauber
 \begin_layout Plain Layout
 
 \shape italic
+\emph on
 multi-clúster
 \end_layout
 
@@ -6212,7 +6223,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.3(4)$
+\begin_inset Formula $4.3(5)$
 \end_inset
 
 
@@ -6224,7 +6235,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.7(5)$
+\begin_inset Formula $4.6(6)$
 \end_inset
 
 
@@ -6236,7 +6247,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.1(4)$
+\begin_inset Formula $4.1(5)$
 \end_inset
 
 
@@ -6248,7 +6259,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.5(5)$
+\begin_inset Formula $4.4(5)$
 \end_inset
 
 
@@ -6286,7 +6297,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.5(8)$
+\begin_inset Formula $4.6(9)$
 \end_inset
 
 
@@ -6310,7 +6321,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.7(3)$
+\begin_inset Formula $3.8(4)$
 \end_inset
 
 
@@ -6348,7 +6359,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.8(7)$
+\begin_inset Formula $4.8(6)$
 \end_inset
 
 
@@ -6396,7 +6407,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.6(6)$
+\begin_inset Formula $4.7(5)$
 \end_inset
 
 
@@ -6456,7 +6467,7 @@ Los efectos de volumen finito son más fuertes en temperaturas menores a
 \end_inset
 
  se tiene 
-\begin_inset Formula $\nu=4.4(5)$
+\begin_inset Formula $\nu=4.4(2)$
 \end_inset
 
 .
@@ -7049,7 +7060,7 @@ Algoritmo
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $m$
+\begin_inset Formula $M$
 \end_inset
 
 
@@ -7072,7 +7083,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.45(6)$
+\begin_inset Formula $0.71(2)$
 \end_inset
 
 
@@ -7084,7 +7095,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.4(2)$
+\begin_inset Formula $0.69(1)$
 \end_inset
 
 
@@ -7096,7 +7107,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.3(2)$
+\begin_inset Formula $0.5(1)$
 \end_inset
 
 
@@ -7119,7 +7130,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.1(3)$
+\begin_inset Formula $0.8(1)$
 \end_inset
 
 
@@ -7131,7 +7142,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.1(2)$
+\begin_inset Formula $1.2(6)$
 \end_inset
 
 
@@ -7143,7 +7154,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.3(4)$
+\begin_inset Formula $0.6(6)$
 \end_inset
 
 
@@ -7166,7 +7177,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.13(9)$
+\begin_inset Formula $0.60(3)$
 \end_inset
 
 
@@ -7178,7 +7189,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.13(7)$
+\begin_inset Formula $1.0(1)$
 \end_inset
 
 
@@ -7190,7 +7201,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.26(8)$
+\begin_inset Formula $0.49(2)$
 \end_inset
 
 
@@ -7213,7 +7224,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.08(4)$
+\begin_inset Formula $0.57(1)$
 \end_inset
 
 
@@ -7225,7 +7236,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.2(1)$
+\begin_inset Formula $0.8(1)$
 \end_inset
 
 
@@ -7237,7 +7248,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.33(5)$
+\begin_inset Formula $0.43(2)$
 \end_inset
 
 
@@ -7270,7 +7281,7 @@ Exponente crítico
 \end_inset
 
  y la magnetización 
-\begin_inset Formula $m$
+\begin_inset Formula $M$
 \end_inset
 
 .
@@ -7298,7 +7309,7 @@ Se calculó el valor del exponente del mecanismo de Kibble-Zurek siguiendo
  la ecuación
 \begin_inset Formula 
 \begin{equation}
-\chi_{t}\propto\tau_{\mathrm{cool}}^{-\zeta},\;\zeta=\frac{\nu}{1+\nu z},
+\zeta=\frac{\nu}{1+\nu z},
 \end{equation}
 
 \end_inset
@@ -7391,7 +7402,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $m$
+\begin_inset Formula $M$
 \end_inset
 
 
@@ -7417,7 +7428,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.57(9)$
+\begin_inset Formula $0.59(8)$
 \end_inset
 
 
@@ -7429,7 +7440,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.0(5)$
+\begin_inset Formula $0.9(5)$
 \end_inset
 
 
@@ -7441,7 +7452,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.7(2)
+0.47(8)
 \end_layout
 
 \end_inset
@@ -7458,8 +7469,11 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Promedio del mecanismo de Kibble-Zurek, para la susceptibilidad topológica,
- la energía y la magnetización.
+Promedio de los valores calculados para el exponente critico en el mecanismo
+ de Kibble-Zurek.
+ Las obserbables son: la susceptibilidad topológica, la energía y la magnetizaci
+ón.
+ Los valores obtenidos son compatibles.
 \end_layout
 
 \end_inset
@@ -7637,6 +7651,14 @@ Se realizaron
 .
  En cada experimento numérico se midió la susceptibilidad topológica, la
  energía y la magnetización.
+\begin_inset Formula 
+\begin{equation}
+\chi_{t}\propto\tau_{\mathrm{cool}}^{-\zeta},
+\end{equation}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7685,7 +7707,7 @@ Algoritmo de Metropolis lexicográfico
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8074,7 +8096,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -8275,7 +8297,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -8480,7 +8502,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -8681,7 +8703,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -8924,7 +8946,7 @@ Algoritmo
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $m$
+\begin_inset Formula $M$
 \end_inset
 
 
@@ -8960,7 +8982,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.221(5)$
+\begin_inset Formula $0.220(5)$
 \end_inset
 
 
@@ -9007,7 +9029,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.217(5)$
+\begin_inset Formula $0.218(5)$
 \end_inset
 
 
@@ -9019,7 +9041,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.284(4)$
+\begin_inset Formula $0.283(5)$
 \end_inset
 
 
@@ -9101,7 +9123,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.209(5)$
+\begin_inset Formula $0.210(6)$
 \end_inset
 
 
@@ -9136,7 +9158,7 @@ multi-clúster
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.10(7)$
+\begin_inset Formula $1.10(8)$
 \end_inset
 
 
@@ -9290,7 +9312,7 @@ Los resultados para la susceptibilidad topológica llevaron a una ley de
 
 , el cual también se calculó indirectamente con los exponentes críticos
  conduciendo al valor 
-\begin_inset Formula $\zeta=0.57(9)$
+\begin_inset Formula $\zeta=0.59(8)$
 \end_inset
 
 .

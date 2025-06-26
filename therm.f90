@@ -78,5 +78,5 @@ program therm
    do k=0,TQ
       write(1, '((I0,:,","),*(f0.16,:,","))') k, interval(k), medjk(k,1) , &
          varjk(k,1), medjk(k,2), varjk(k,2)
-   end do
+   end do ! hola xd
 end program

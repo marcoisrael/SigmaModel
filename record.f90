@@ -23,14 +23,14 @@ program record
     delta_step = dmin1(0.08419342 - 0.21964047 * temp + 0.3387236 * temp * temp, dble(1))
     allocate(s(volume, 3))
 
-    call hot_start(s)
-    !path = "output/hot.csv"
+    call cold_start(s)
+    path = "output/cold.csv"
     beta = 1 / temp
 
-    do i = 1, thermalization
-        call cluster(s, str1)
-    end do
-    path = 'output/' // trim(arg8) //'/L' // trim(arg6) // "/" // trim(arg3) // "_" // trim(arg4) // '/' // trim(arg1) // ".csv"
+    ! do i = 1, thermalization
+    !     call cluster(s, str1)
+    ! end do
+    ! path = 'output/' // trim(arg8) //'/L' // trim(arg6) // "/" // trim(arg3) // "_" // trim(arg4) // '/' // trim(arg1) // ".csv"
     open(unit = 1, file = path)
     write(1, '(*(g0,:,","))') 'H/V', 'chi_t', 'chi_m'
 

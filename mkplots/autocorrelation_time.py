@@ -11,7 +11,7 @@ parser.add_argument("-alg", "--algorithm", default="lexic_metropolis")
 parser.add_argument("-o", "--observable", default="energy")
 args = parser.parse_args()
 colors_list = list(colors._colors_full_map.values())
-make_temp_plots = False
+make_temp_plots = True
 name = args.observable
 alg = args.algorithm
 L = 64
@@ -24,10 +24,16 @@ if args.algorithm == "all":
         "random_glauber",
         "multi_cluster",
     ]
+elif args.algorithm == "local":
+    algs = [
+        "lexic_metropolis",
+        "random_metropolis",
+        "lexic_glauber",
+        "random_glauber",
+            ]
 else:
     algs = args.algorithm.split(",")
 for alg in algs:
-    print(alg)
     tau_exp = []
     tau_exp_error = []
     tau_int = []
@@ -77,8 +83,8 @@ for alg in algs:
         if make_temp_plots:
             fig, ax = plt.subplots(tight_layout=True)
            
-            ax.plot(x, f(x, *xfit.opt), linewidth=1.2, color="black",
-                    label="Fitting")
+            ax.plot(x, f(x, *xfit.opt), linewidth=1.2, color="tab:blue",
+                    label="Ajuste")
             ax.errorbar(
                 t,
                 q,
@@ -87,11 +93,11 @@ for alg in algs:
                 capsize=1,
                 elinewidth=1,
                 markersize=2,
-                color="red",
-                label="Data",
+                color="tab:red",
+                label="Autocorrelación",
             )
             ax.set_xlabel(r"$t$", fontsize=20)
-            ax.set_ylabel(r"$\tau$", fontsize=20)
+            ax.set_ylabel(r"$\frac{C_{MM}(t)}{C_{MM}(0)}$", fontsize=20)
             ax.legend()
            
             os.makedirs(f"output/plot/{name}/L{L}/{alg}", exist_ok=True)
@@ -101,7 +107,7 @@ for alg in algs:
                 format="pdf",
                 bbox_inches="tight",
             )
-            print(f"output/plot/{name}/L{L}/{alg}/{alg}_{temp}.png")
+            print(f"output/plot/{name}/L{L}/{alg}/{alg}_{temp}.svg")
             plt.close()
             del ax, fig
     
@@ -111,16 +117,16 @@ for alg in algs:
     tau_exp_error = np.array(tau_exp_error)
     data = np.array([Ti, tau_int, tau_int_error, tau_exp, tau_exp_error]).transpose()
     os.makedirs("output/autocorrelation", exist_ok=True)
-    np.savetxt(
-        f"output/autocorrelation/{name}_{alg}.csv",
-        data,
-        delimiter=",",
-        header="T,tauExp,tauExp_error",
-        comments="",
-    )
-    cmd = [
-        "/usr/bin/python3",
-        "mkplots/plot_autocorrelation_time.py",
-        f"-alg {alg} -o {name}"
-    ]
-    #os.system(" ".join(cmd))
+    # np.savetxt(
+    #     f"output/autocorrelation/{name}_{alg}.csv",
+    #     data,
+    #     delimiter=",",
+    #     header="T,tauExp,tauExp_error",
+    #     comments="",
+    # )
+    # cmd = [
+    #     "/usr/bin/python3",
+    #     "mkplots/plot_autocorrelation_time.py",
+    #     f"-alg {alg} -o {name}"
+    # ]
+    # os.system(" ".join(cmd))
