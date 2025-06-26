@@ -2125,11 +2125,24 @@ Carga topológica
 \end_layout
 
 \begin_layout Standard
-En el modelo de espines O(
+El índice de una curva en un plano al rededor de un punto, es un número
+ entero que describe el numero de vueltas que la curva da alrededor del
+ punto, es una cantidad invariante asociada a los defectos topológicos del
+ sistema.
+ Los instantones son defectos topologicos del sistema relacionados a la
+ carga topologica.
+ Por ese motivo al indice genralizado se le conoce como carga topologica.
+ En el modelo de espines O(
 \begin_inset Formula $3$
 \end_inset
 
-), las condiciones de frontera garantizan la invariante topológica 
+) se usa un índice generalizado a una curva alrededor de un punto sobre
+ la esfera 
+\begin_inset Formula $\mathcal{S}^{2}$
+\end_inset
+
+.
+ Las condiciones de frontera garantizan la invariante topológica 
 \begin_inset CommandInset citation
 LatexCommand autocite
 key "bietenholz_topological_2010,berg_definition_1981"
@@ -2148,12 +2161,16 @@ Q[s]=\frac{1}{8\pi}\int\varepsilon_{\mu\nu}\vec{s}(x)\cdot(\partial_{\mu}\vec{s}
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 La susceptibilidad topológica 
 \begin_inset Formula $\chi_{t}$
 \end_inset
 
- es una función de respuesta, describe la respuesta de un sistema a una
- perturbación externa.
+ es una función de respuesta, describe la respuesta de la carga topológica
+ a una perturbación externa.
  Se define siguiendo la ecuación
 \begin_inset Formula 
 \begin{equation}
@@ -3239,9 +3256,8 @@ Mecanismo de Kibble-Zurek
 \end_layout
 
 \begin_layout Standard
-Una transición de fase por ruptura de simetría es un fenómeno en un sistema
- físico en el que este pasa de un estado desordenado pero simétrico a un
- estado ordenado, presentando más simetrías.
+La ruptura de simetría en un sistema, es un fenómeno en el que este pasa
+ de un estado desordenado y simétrico a un estado ordenado con menos simetrías.
  Algunos ejemplos son:
 \end_layout
 
@@ -3252,46 +3268,54 @@ Cuando el agua se congela, la simetría rotacional se rompe por la elección
 
 \begin_layout Itemize
 En el universo temprano, la ruptura de la simetría puede haber conducido
- a la formación de defectos topológicos como mono-polos puntuales, cuerdas
+ a la formación de defectos topológicos como monopolos cuasipuntuales, cuerdas
  cósmicas lineales o paredes de dominio planares.
 \end_layout
 
 \begin_layout Itemize
-En 
+En el helio 
 \begin_inset Formula $^{4}$
 \end_inset
 
-He en estado superfluidico, la condensación de Bose ocurre alrededor de
- 
+He en estado superfluidico, la condensación de Bose-Einstein ocurre alrededor
+ de 
 \begin_inset Formula $2K$
 \end_inset
 
 .
- El rompimiento de la simetría favorece la formación de vórtices.
+ La ruptura de la simetría favorece la formación de vórtices.
 \end_layout
 
 \begin_layout Standard
-En estos sistemas, los defectos topológicos remanentes son importantes,
- porque son objetos inherentemente estables que pueden proporcionar pistas
- observacionales sobre cómo era el sistema en el momento en que se formaron.
+En estos sistemas, los defectos topológicos remanentes son objetos inherentement
+e estables que pueden proporcionar pistas observacionales sobre cómo era
+ el sistema en el momento en que se formaron.
 \end_layout
 
 \begin_layout Standard
-Un aspecto atractivo de estas transiciones es que su comportamiento es universal
- y no depende de los detalles microscópicos del sistema.
- En cambio, la clase de universalidad está determinada por propiedades fundament
-ales como la simetría, el rango de interacciones, la dimensionalidad y los
- parámetros de orden.
-\end_layout
+La esencia del mecanismo de Kibble-Zurek esta en la aleatoriedad en la ruptura
+ de la simetría de dominios en un sistema.
+ Estos dominios están determinados por el tiempo de relajación 
+\begin_inset Formula $\tau$
+\end_inset
 
-\begin_layout Standard
-El concepto de emergencia de simetría introducido por Wilson Fisher dice
- que la acción efectiva que describe las fluctuaciones de la función de
- onda cerca de un punto crítico puede tener más simetrías que la acción
- microscópica.
- La propuesta implica que en sistemas que posen simetrías discretas como
- los ferromagnetos puede emerger una simetría continua cerca de la temperatura
- crítica
+, la longitud de correlación 
+\begin_inset Formula $\xi$
+\end_inset
+
+ y la carga topológica 
+\begin_inset Formula $\chi_{t}$
+\end_inset
+
+.
+ La ley de escalamiento describe en la relación entre los defectos topológicos
+ remanentes respecto a la tasa de enfriamiento en un sistema que pasa por
+ la temperatura crítica.
+ En estas transiciones el comportamiento es universal, la clase de universalidad
+ está determinada por propiedades fundamentales como la simetría de un parámetro
+ de orden, el rango de interacciones o la dimensionalidad por lo que de
+ gran interés clasificar los diferentes modelos en sus respectivas clases
+ de universalidad 
 \begin_inset CommandInset citation
 LatexCommand autocite
 key "lin_topological_2014"
@@ -3366,10 +3390,10 @@ dónde
 \end_inset
 
  cero hay una ruptura espontánea de la simetría a O(
-\begin_inset Formula $n$
+\begin_inset Formula $n-1$
 \end_inset
 
--1), por lo que la variedad del estado de menor energía es la esfera 
+), por lo que la variedad del estado de menor energía es la esfera 
 \begin_inset Formula $\mathcal{S}^{n-1}$
 \end_inset
 
@@ -3436,7 +3460,7 @@ Una posibilidad es la neutralidad del universo respecto a las cargas del
 \end_inset
 
 .
- En este caso, el rompimiento de la simetría sería fijado a las condiciones
+ En este caso, la ruptura de la simetría sería fijado a las condiciones
  iniciales, impidiendo el surgimiento de estructuras de dominio.
  Consideremos el primer caso, que permite la formación de dominios.
  El tamaño de estos dominios está determinado por la longitud de correlación
@@ -3454,8 +3478,7 @@ Una posibilidad es la neutralidad del universo respecto a las cargas del
 Es interesante revisar las posibles configuraciones geométricas de estos
  dominios.
  Las transiciones de fase de ruptura de simetría en el universo temprano
- podrían haber formado estructuras topológicamente estables como monopolos
- y cuerdas cósmicas.
+ podrían haber formado estructuras topológicamente estables.
 \end_layout
 
 \begin_layout Standard
@@ -3736,7 +3759,15 @@ dónde
 \begin_inset Formula $z$
 \end_inset
 
- es el exponente crítico dinámico.
+ es el exponente crítico dinámico 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "niedermayer_general_1988"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -4806,10 +4837,14 @@ ción completamente termalizada.
 \end_layout
 
 \begin_layout Standard
-Para la carga topológica en el algoritmo multi-clúster, la autocorrelación
- no puede medirse debido a la eficiencia con la que el algoritmo multi-clúster
+En el caso de la carga topológica, el timepo de autocorrelación del algoritmo
+ multi-clúster no puede medirse debido a la eficiencia con la que el algoritmo
  alcanza la configuración de equilibrio.
- En el caso de los algoritmos de actualización local, hay una desaceleración
+ 
+\end_layout
+
+\begin_layout Standard
+En el caso de los algoritmos de actualización local, hay una desaceleración
  crítica cerca de la temperatura 
 \begin_inset Formula $T=0$
 \end_inset
@@ -5642,7 +5677,11 @@ Se calculó la longitud de correlación en retículas de tamaño
 \end_inset
 
 .
- En todos los casos, se partió de una configuración 
+ 
+\end_layout
+
+\begin_layout Standard
+En todos los casos, se partió de una configuración 
 \shape italic
 \emph on
 hot-start
@@ -6505,8 +6544,8 @@ n y los tiempos de autocorrelación para las temperaturas
 C
 \shape default
 omo el exponente crítico de autocorrelación no pudo medirse para el algoritmo
- multi-clúster, tampoco pudo medirse para calcular el exponente crítico
- dinámico, en consecuencia en la tabla 
+ multi-clúster, tampoco fue posible calcular el exponente crítico dinámico,
+ en consecuencia en la tabla 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab_exp"
@@ -7632,6 +7671,24 @@ Enfriamientos rápidos
 \end_layout
 
 \begin_layout Standard
+En esta sección se espera conocer si en un modelo donde la temperatura critica
+ es 
+\begin_inset Formula $T_{c}=0$
+\end_inset
+
+ se cumple la ley de escalamiento 
+\begin_inset Formula 
+\begin{equation}
+\chi_{t}\propto\tau_{\mathrm{cool}}^{-\zeta},
+\end{equation}
+
+\end_inset
+
+realizando enfriamientos que se acercan (pero no cruzan) a la temperatura
+ critica.
+\end_layout
+
+\begin_layout Standard
 Se realizaron 
 \begin_inset Formula $10^{5}$
 \end_inset
@@ -7651,14 +7708,6 @@ Se realizaron
 .
  En cada experimento numérico se midió la susceptibilidad topológica, la
  energía y la magnetización.
-\begin_inset Formula 
-\begin{equation}
-\chi_{t}\propto\tau_{\mathrm{cool}}^{-\zeta},
-\end{equation}
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
