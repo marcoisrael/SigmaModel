@@ -13,10 +13,17 @@ name = args.observable
 if args.algorithm == "all":
     algs = [
         "lexic_metropolis",
-        "lexic_glauber",
         "random_metropolis",
+        "lexic_glauber",
         "random_glauber",
-        #"multi_cluster",
+        "multi_cluster",
+    ]
+elif args.algorithm == "local":
+    algs = [
+        "lexic_metropolis",
+        "random_metropolis",
+        "lexic_glauber",
+        "random_glauber",
     ]
 else:
     algs = args.algorithm.split(",")
@@ -31,13 +38,20 @@ for alg in algs:
     data = np.loadtxt(
         f"output/autocorrelation/{name}_{alg}.csv", skiprows=1, delimiter=","
     )
+    nstart, nend = 6,9
     data = data.transpose()
     x = np.linspace(data[0][0], data[0][-1], 200)
-    xfit = fit(data[0,:4], data[1,:4], data[2,:4])
-    xfit.fiting(f)
     
-    xfit2 = fit(data[0,:4], data[3,:4], data[4,:4])
+    y , yerr = 0.5*(data[1,:]+data[3,:]), 0.5*(data[2,:]+data[4,:]) 
+    
+    xfit2 = fit(data[0,nstart:nend], data[1,nstart:nend], data[2,nstart:nend])
     xfit2.fiting(f)
+    
+    xfit1 = fit(data[0,nstart:nend], data[3,nstart:nend], data[4,nstart:nend])
+    xfit1.fiting(f)
+    
+    # xfit = fit(data[0,:n], y[n:n], yerr[n:n])
+    # xfit.fiting(f)
 
     # text = (r"$\tau \propto T^{-\nu z}$"+"\n"+ r"$\nu z = $"+f"{fix(xfit.opt[1], xfit.error[1])}" )
     #
@@ -50,20 +64,23 @@ for alg in algs:
     #     va="top",
     #     transform=ax.transAxes,
     # )
+    
     ax.plot(
         x,
-        f(x, *xfit.opt),
+        f(x, *xfit1.opt),
         linewidth=1.8,
         color="tab:blue",
         linestyle=(0, (3, 3)),
     )
+    
+    
     ax.plot(
         x,
         f(x, *xfit2.opt),
         linewidth=1.8,
         color="tab:red",
         linestyle=(0, (3, 3)),
-    )    
+    )
     ax.errorbar(
         data[0],
         data[1],
@@ -73,8 +90,7 @@ for alg in algs:
         elinewidth=1,
         markersize=5,
         color="tab:red",
-    )
-
+    )   
     ax.errorbar(
         data[0],
         data[3],
@@ -84,18 +100,19 @@ for alg in algs:
         elinewidth=1,
         markersize=5,
         color="tab:blue",
-    )    
+    )
+       
     ax.errorbar(
         [],
         [],
         [],
-        linestyle=(0, (3, 3)),
+        linestyle=(0, (2, 3)),
         fmt="o",
         capsize=3,
         elinewidth=1,
         markersize=5,
         color="tab:red",
-        label=r"$\tau_\mathrm{int}$, $\nu z=$"+fix(xfit.opt[1], xfit.error[1]),
+        label=r"$\tau_\mathrm{int}$, $\nu z=$"+fix(xfit2.opt[1], xfit2.error[1]),
     )
 
     ax.errorbar(
@@ -108,13 +125,15 @@ for alg in algs:
         elinewidth=1,
         markersize=5,
         color="tab:blue",
-        label=r"$\tau_\mathrm{exp}$, $\nu z=$"+ fix(xfit2.opt[1], xfit2.error[1]),
+        label=r"$\tau_\mathrm{exp}$, $\nu z=$"+ fix(xfit1.opt[1], xfit1.error[1]),
     )
-    # print(alg,"tau_int=", fix(xfit.opt[1], xfit.error[1]),"tau_exp=",fix(xfit2.opt[1], xfit2.error[1]))
-    m1 = measure(xfit.opt[1],xfit.error[1])
-    m2 = measure(xfit2.opt[1],xfit2.error[1])
-    m = (m1+m2)/measure(2,0)
-    print(alg, fix(m.value,m.error))
+
+    # m1 = measure(xfit1.opt[1],xfit1.error[1])
+    # m2 = measure(xfit2.opt[1],xfit2.error[1])
+    # m = (m1+m2)/measure(2,0)
+    
+    #print(alg, fix(xfit1.opt[1],xfit1.error[1]))
+    
     ax.set_xlabel(r"$\log(T)$", fontsize=18)
     ax.set_ylabel(r"$\log(\tau)$", fontsize=18)
 

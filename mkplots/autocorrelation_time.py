@@ -42,7 +42,7 @@ for alg in algs:
     for temp in T:
         path = f"output/record/L{L}/{alg}/{temp}.csv"
         data = np.loadtxt(path, delimiter=",", skiprows=1)
-        val = 0
+        val = 0.5
         c0 = correlation(data[:, obs[name]["index"]],0)[1]
         ct = np.zeros(3)
         n = 0
@@ -98,7 +98,7 @@ for alg in algs:
             )
             ax.set_xlabel(r"$t$", fontsize=20)
             ax.set_ylabel(r"$\frac{C_{MM}(t)}{C_{MM}(0)}$", fontsize=20)
-            ax.legend()
+            # ax.legend()
            
             os.makedirs(f"output/plot/{name}/L{L}/{alg}", exist_ok=True)
             fig.tight_layout()
@@ -107,7 +107,7 @@ for alg in algs:
                 format="pdf",
                 bbox_inches="tight",
             )
-            print(f"output/plot/{name}/L{L}/{alg}/{alg}_{temp}.svg")
+            #print(f"output/plot/{name}/L{L}/{alg}/{alg}_{temp}.svg")
             plt.close()
             del ax, fig
     
@@ -118,15 +118,15 @@ for alg in algs:
     data = np.array([Ti, tau_int, tau_int_error, tau_exp, tau_exp_error]).transpose()
     os.makedirs("output/autocorrelation", exist_ok=True)
     # np.savetxt(
-    #     f"output/autocorrelation/{name}_{alg}.csv",
-    #     data,
-    #     delimiter=",",
-    #     header="T,tauExp,tauExp_error",
-    #     comments="",
-    # )
+    #      f"output/autocorrelation/{name}_{alg}.csv",
+    #      data,
+    #      delimiter=",",
+    #      header="T,tauExp,tauExp_error",
+    #      comments="",
+    #  )
     # cmd = [
-    #     "/usr/bin/python3",
-    #     "mkplots/plot_autocorrelation_time.py",
-    #     f"-alg {alg} -o {name}"
-    # ]
+    #      "/usr/bin/python3",
+    #      "mkplots/plot_autocorrelation_time.py",
+    #      f"-alg {alg} -o {name}"
+    #  ]
     # os.system(" ".join(cmd))

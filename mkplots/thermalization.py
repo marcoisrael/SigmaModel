@@ -13,7 +13,7 @@ path="output/cold.csv"
 data = np.loadtxt(path, delimiter=",", skiprows=1)
 ax.plot(2+data[:,0],ls="dotted", color="blue", label="cold-start")
 
-ax.set_ylabel(r"$\rho_{\mathcal{H}}$", fontsize=20)
+ax.set_ylabel(r"$h$", fontsize=20)
 ax.set_xlabel(r"$t$", fontsize=20)
 ax.legend()
 fig.savefig(
