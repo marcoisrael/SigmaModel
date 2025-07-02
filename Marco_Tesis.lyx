@@ -559,7 +559,7 @@ Para pasar de la formulación de Heisenberg a la formulación de Schrödinger
  aplica la transformación 
 \begin_inset Formula 
 \begin{equation}
-\hat{O}(t)=\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}\hat{O}\mathrm{e}^{it\hat{\mathcal{H}}/\hbar}\begin{array}{c}
+\hat{O}(t)=\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}\hat{O}\mathrm{e}^{it\hat{\mathcal{H}}/\hbar},\qquad\begin{array}{c}
 \ket{\psi(t)}=\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}\ket{\psi}\end{array},
 \end{equation}
 
@@ -1929,8 +1929,8 @@ Energía
 
 \begin_layout Standard
 La energía de una configuración depende de las diferencias relativas entre
- espines vecinos.
- Pensemos en una configuración 
+ espines.
+ Consideremos en una configuración 
 \begin_inset Formula $[s]$
 \end_inset
 
@@ -1938,11 +1938,8 @@ La energía de una configuración depende de las diferencias relativas entre
 \begin_inset Formula $\phi$
 \end_inset
 
- en la misma dirección a todos los espines en 
-\begin_inset Formula $[s]$
-\end_inset
-
-, la transformación mantiene las diferencias relativas entre espines, por
+ en la misma dirección a todos los espines.
+ La transformación mantiene las diferencias relativas entre espines, por
  lo tanto, la nueva configuración 
 \begin_inset Formula $[s']$
 \end_inset
@@ -2002,13 +1999,13 @@ En un sistema estocástico, un conjunto de eventos sucesivos forman una cadena
 \end_layout
 
 \begin_layout Standard
-Pensemos en una configuración como un evento en el sentido estadístico y
- en un conjunto de configuraciones como una cadena de Markov.
+Una configuración es un evento en el sentido estadístico.
  El tiempo de Markov 
 \begin_inset Formula $t_{i}$
 \end_inset
 
  indica la configuración del sistema en el ese instante.
+ Un conjunto de configuraciones es una cadena de Markov.
  Como cada configuración tiene una energía asociada, la energía asociada
  a las configuraciones es diferente en cada instante 
 \begin_inset Formula $t_{i}$
@@ -2127,20 +2124,36 @@ El índice de una curva en un plano al rededor de un punto, es un número
  entero que describe el numero de vueltas que la curva da alrededor del
  punto, es una cantidad invariante asociada a los defectos topológicos del
  sistema.
- Las soluciones del modelo, son los defectos topológicos del sistema y están
- relacionados a la carga topológica.
- Al índice generalizado se le conoce como carga topológica.
- En el modelo de espines O(
+ 
+\end_layout
+
+\begin_layout Standard
+Las soluciones del modelo, son los defectos topológicos del sistema y están
+ relacionados a la carga topológica, de ahí su importancia.
+ 
+\end_layout
+
+\begin_layout Standard
+El índice es la carga topológica neta de un sistema.
+ En los modelos O(
 \begin_inset Formula $3$
 \end_inset
 
-) se usa un índice generalizado a una curva alrededor de un punto sobre
- la esfera 
+), el índice mide las vueltas de una curva alrededor de un punto sobre la
+ esfera 
 \begin_inset Formula $\mathcal{S}^{2}$
 \end_inset
 
 .
- Las condiciones de frontera garantizan la invariante topológica 
+ 
+\end_layout
+
+\begin_layout Standard
+En el modelo hay dos simetrías importantes: la primera es la inviariancia
+ de la energía interna por la rotación de un grupo de espines.
+ La segunda es la invariancia bajo transformaciones conformes del espacio-tiempo.
+ En el segundo caso, las condiciones de frontera garantizan la invariante
+ topológica 
 \begin_inset CommandInset citation
 LatexCommand autocite
 key "bietenholz_topological_2010,berg_definition_1981"
@@ -2163,20 +2176,6 @@ Q[s]=\frac{1}{8\pi}\int\varepsilon_{\mu\nu}\vec{s}(x)\cdot(\partial_{\mu}\vec{s}
 \end_layout
 
 \begin_layout Standard
-La susceptibilidad topológica 
-\begin_inset Formula $\chi_{t}$
-\end_inset
-
- es una función de respuesta, describe la respuesta de la carga topológica
- a una perturbación externa.
- Se define siguiendo la ecuación
-\begin_inset Formula 
-\begin{equation}
-\frac{1}{V}\pdv[2]{}{\theta}\int\mathrm{e}^{-S[\phi]}\mathrm{e}^{iQ[\phi]\theta}\dd\phi\Bigg{|}_{\theta=0}=\frac{1}{V}\expval{Q^{2}}|_{\theta=0}.
-\end{equation}
-
-\end_inset
-
 B.
  Breg y M.
  Lüscher introdujeron la definición geométrica de carga topológica reticular
@@ -2352,70 +2351,7 @@ A_{x}=\Omega_{1}+\Omega_{2}
 
 \end_inset
 
-La carga topológica se define como como
-\end_layout
 
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-Q[s]=\frac{1}{4\pi}\sum_{x}A_{x}\in\mathbb{Z},
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-El valor esperado del cuadrado de la carga topológica es 
-\begin_inset Formula 
-\begin{equation}
-\expval{Q^{2}}\approx\frac{1}{N}\sum_{i=1}^{N}Q_{i}^{2}.
-\end{equation}
-
-\end_inset
-
-El cuadrado de la carga dividido por el volumen es la susceptibilidad topológica
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\chi_{t}=\frac{\expval{Q^{2}}}{V}.
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Una pregunta crucial respecto al al definición de susceptibilidad topológica
- es, si es un valor finito en el limite al continuo.
- El consenso respecto a esta pregunta indica que la susceptibilidad topología
- diverge cuando la longitud de correlación (la longitud de escala del sistema)
- diverge en diferentes sistemas con la misma clase de universalidad 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "sec:Universalidad"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
- 
-\begin_inset CommandInset citation
-LatexCommand autocite
-key "bietenholz_topological_2018"
-literal "false"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -2488,7 +2424,7 @@ Diagonal ascendente.
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Orientaciones de posibles de los triángulos formados en la retícula.
+Orientaciones de los triángulos formados en la retícula.
  Cada plaqueta se puede dividir en dos triángulos con diagonales descendentes
  o ascendentes.
 \end_layout
@@ -2509,6 +2445,7 @@ name "triangles"
 
 
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status collapsed
@@ -2540,6 +2477,121 @@ Descomposición de la retícula cardada bidimensional en triángulos, alternado
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+La carga topológica se define como como
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Q[s]=\frac{1}{4\pi}\sum_{x}A_{x}\in\mathbb{Z}.
+\end{equation}
+
+\end_inset
+
+La simetría del sistema implica
+\begin_inset Formula 
+\begin{equation}
+\expval{Q}=0,
+\end{equation}
+
+\end_inset
+
+por lo que medir los defectos topológicos remanentes requiere de otra cantidad.
+\end_layout
+
+\begin_layout Standard
+La susceptibilidad topológica 
+\begin_inset Formula $\chi_{t}$
+\end_inset
+
+ describe la respuesta de la carga topológica a una perturbación externa.
+ Se define siguiendo la ecuación
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{V}\pdv[2]{}{\theta}\int\mathrm{e}^{-S[\phi]}\mathrm{e}^{iQ[\phi]\theta}\dd\phi\Bigg{|}_{\theta=0}=\frac{1}{V}\expval{Q^{2}}|_{\theta=0}.
+\end{equation}
+
+\end_inset
+
+El valor esperado del cuadrado de la carga topológica es 
+\begin_inset Formula 
+\begin{equation}
+\expval{Q^{2}}\approx\frac{1}{N}\sum_{i=1}^{N}Q_{i}^{2}.
+\end{equation}
+
+\end_inset
+
+El cuadrado de la carga dividido por el volumen es la susceptibilidad topológica
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\chi_{t}=\frac{\expval{Q^{2}}}{V}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Una pregunta crucial respecto a la susceptibilidad topológica es, si es
+ un valor finito en el limite al continuo.
+ 
+\end_layout
+
+\begin_layout Standard
+El modelo 2d O(3) presenta libertad asintótica, por lo que los sectores
+ topológicos están bien definidos.
+ 
+\end_layout
+
+\begin_layout Standard
+Definiendo una densidad topológica 
+\begin_inset Formula $q_{x}$
+\end_inset
+
+ se puede definir la susceptibilidad topológica como
+\begin_inset Formula 
+\begin{equation}
+\chi_{t}=\sum_{x}\expval{q_{0}q_{x}}.
+\end{equation}
+
+\end_inset
+
+Hay una divergencia en el termino 
+\begin_inset Formula $x=0$
+\end_inset
+
+.
+ Por otro lado conforme la longitud de correlación aumenta el parametro
+ de escala 
+\begin_inset Formula $L/\xi$
+\end_inset
+
+ aumenta lentamente normalizando la susceptibilidad como 
+\begin_inset Formula 
+\begin{equation}
+\expval{Q^{2}}=L²\chi_{t.}
+\end{equation}
+
+\end_inset
+
+El consenso respecto a esta pregunta indica que la susceptibilidad topología
+ diverge cuando la longitud de correlación diverge en diferentes sistemas
+ con la misma clase de universalidad 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "bietenholz_topological_2018"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Chapter
@@ -5707,9 +5759,27 @@ Exponente crítico
 \end_layout
 
 \begin_layout Standard
+Las definiciones de tiempo de autocorrelación integrada y por ajuste discrepan
+ fuertemente a muy baja temperatura.
+ se mantiene cercanas en el rango de temperaturas 
+\begin_inset Formula $(0.7,1)$
+\end_inset
+
+, a mayor temperatura el calor mínimo 
+\begin_inset Formula $1/2$
+\end_inset
+
+ asociado a la definición integrada mantiene una discrepancia en los valores.
+\end_layout
+
+\begin_layout Standard
 El algoritmo multi-cluster termalizó las configuraciones en un barridos
  de actualización en el rango de temperaturas usado por lo que no se pudo
- determinar un exponente.
+ determinar un exponente 
+\begin_inset Formula $\nu z$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -9512,7 +9582,7 @@ El mecanismo de Kibble-Zurek se plantea en sistemas donde ocurre una ruptura
 
 \begin_layout Standard
 Por otro lado, al aproximar el sistema a temperatura cero, se observa una
- desaceleración crítica que resulta ser menor para la susceptibilidad topológica.
+ desaceleración crítica menor para la susceptibilidad topológica.
  Esto podría ser la razón por la cual el valor de 
 \begin_inset Formula $\zeta$
 \end_inset
