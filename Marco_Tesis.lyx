@@ -156,28 +156,7 @@ iffieldundef{doi}
 
 \begin_layout Plain Layout
 
-	{
-\backslash
-iffieldundef{url}
-\end_layout
-
-\begin_layout Plain Layout
-
-		{#1}
-\end_layout
-
-\begin_layout Plain Layout
-
-		{
-\backslash
-href{
-\backslash
-thefield{url}}{#1}}%     
-\end_layout
-
-\begin_layout Plain Layout
-
-	}     
+	{#1}   
 \end_layout
 
 \begin_layout Plain Layout
@@ -1354,6 +1333,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename output/toro.pdf
+	special trim=50 70 50 70,clip
 
 \end_inset
 
@@ -1393,7 +1373,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename output/sphere.pdf
-	scale 50
+	special trim=60 60 60 60, clip
 
 \end_inset
 
@@ -4951,7 +4931,7 @@ ción completamente termalizada.
 \end_layout
 
 \begin_layout Standard
-En el caso de la carga topológica, el timepo de autocorrelación del algoritmo
+En el caso de la carga topológica, el tiempo de autocorrelación del algoritmo
  multi-clúster no puede medirse debido a la eficiencia con la que el algoritmo
  alcanza la configuración de equilibrio.
  
@@ -4993,7 +4973,7 @@ Finalmente, se ajustó el tiempo de autocorrelación en función de la temperatu
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -5033,7 +5013,7 @@ Algoritmo de Metropolis lexicográfico.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -5069,7 +5049,7 @@ Algorimo de Metropolis aleatorio.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -5102,7 +5082,7 @@ Algoritmo de Glauber lexicográfico.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -5157,7 +5137,7 @@ Tiempo de autocorrelación de la carga topológica en función de la temperatura
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -5233,7 +5213,7 @@ Algorimo de Metropolis aleatorio.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -5266,7 +5246,7 @@ Algoritmo de Glauber lexicográfico.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -5361,7 +5341,7 @@ Algoritmo de Metropolis lexicográfico.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -5397,7 +5377,7 @@ Algorimo de Metropolis aleatorio.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -5430,7 +5410,7 @@ Algoritmo de Glauber lexicográfico.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -5554,7 +5534,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $2.7(2)$
+\begin_inset Formula $2.29(2)$
 \end_inset
 
 
@@ -5566,7 +5546,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.7(2)$
+\begin_inset Formula $3.2(1)$
 \end_inset
 
 
@@ -5578,7 +5558,7 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.7(2)$
+\begin_inset Formula $4.32(9)$
 \end_inset
 
 
@@ -5601,7 +5581,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $2.4(2)$
+\begin_inset Formula $1.55(2)$
 \end_inset
 
 
@@ -5613,7 +5593,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.4(2)$
+\begin_inset Formula $2.77(6)$
 \end_inset
 
 
@@ -5625,7 +5605,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.96(3)$
+\begin_inset Formula $3.93(7)$
 \end_inset
 
 
@@ -5648,7 +5628,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $2.7(2)$
+\begin_inset Formula $1.8(1)$
 \end_inset
 
 
@@ -5660,7 +5640,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.7(2)$
+\begin_inset Formula $3.26(4)$
 \end_inset
 
 
@@ -5672,7 +5652,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.7(4)$
+\begin_inset Formula $3.907(2)$
 \end_inset
 
 
@@ -5695,7 +5675,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $2.5(3)$
+\begin_inset Formula $1.57(1)$
 \end_inset
 
 
@@ -5707,7 +5687,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.20(6)$
+\begin_inset Formula $2.89(4)$
 \end_inset
 
 
@@ -6382,7 +6362,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.5(6)$
+\begin_inset Formula $4.5(7)$
 \end_inset
 
 
@@ -6394,7 +6374,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.3(5)$
+\begin_inset Formula $4.3(4)$
 \end_inset
 
 
@@ -6406,7 +6386,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.6(6)$
+\begin_inset Formula $4.6(7)$
 \end_inset
 
 
@@ -6418,7 +6398,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.1(5)$
+\begin_inset Formula $4.0(4)$
 \end_inset
 
 
@@ -6456,7 +6436,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.7(6)$
+\begin_inset Formula $4.7(5)$
 \end_inset
 
 
@@ -6468,7 +6448,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.6(9)$
+\begin_inset Formula $4.6(8)$
 \end_inset
 
 
@@ -6480,7 +6460,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.0(3)$
+\begin_inset Formula $4.0(2)$
 \end_inset
 
 
@@ -6492,7 +6472,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.8(4)$
+\begin_inset Formula $3.7(3)$
 \end_inset
 
 
@@ -6530,7 +6510,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.8(6)$
+\begin_inset Formula $4.7(6)$
 \end_inset
 
 
@@ -6554,7 +6534,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.5(5)$
+\begin_inset Formula $4.4(5)$
 \end_inset
 
 
@@ -6566,7 +6546,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3.7(2)$
+\begin_inset Formula $3.8(2)$
 \end_inset
 
 
@@ -6578,7 +6558,7 @@ aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.7(5)$
+\begin_inset Formula $4.6(6)$
 \end_inset
 
 
@@ -6638,7 +6618,7 @@ Los efectos de volumen finito son más fuertes en temperaturas menores a
 \end_inset
 
  se tiene 
-\begin_inset Formula $\nu=4.4(2)$
+\begin_inset Formula $\nu=4.4(5)$
 \end_inset
 
 .
@@ -6864,7 +6844,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -7028,7 +7008,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -7325,7 +7305,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.6(6)$
+\begin_inset Formula $0.6(5)$
 \end_inset
 
 
@@ -7360,7 +7340,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.0(1)$
+\begin_inset Formula $0.9(1)$
 \end_inset
 
 
@@ -7372,7 +7352,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.49(2)$
+\begin_inset Formula $0.49(3)$
 \end_inset
 
 
@@ -7395,7 +7375,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.57(1)$
+\begin_inset Formula $0.56(1)$
 \end_inset
 
 
@@ -7606,7 +7586,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1.2(1)$
+\begin_inset Formula $1.6(2)$
 \end_inset
 
 
@@ -7618,7 +7598,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0.98(8)$
+\begin_inset Formula $1.1(1)$
 \end_inset
 
 
@@ -7630,7 +7610,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.85(8)
+0.9(1)
 \end_layout
 
 \end_inset
@@ -7854,7 +7834,7 @@ Se realizaron
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -8071,7 +8051,7 @@ Evolución de los enfriamientos de la susceptibilidad topológica
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -8276,7 +8256,7 @@ Susceptibilidad topológica final
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -8477,7 +8457,7 @@ Evolución de los enfriamientos de la densidad de energía
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -8682,7 +8662,7 @@ Densidad de energía final
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -9505,7 +9485,7 @@ Los resultados para la susceptibilidad topológica llevaron a una ley de
 
  para el algoritmo multi-cluster.
  Se calculó el exponente 
-\begin_inset Formula $\zeta=1.2(1)$
+\begin_inset Formula $\zeta=1.6(2)$
 \end_inset
 
  indirectamente usando la ec.
@@ -9533,7 +9513,7 @@ Para la energía, los exponentes obtenidos resultaron en
 
 para el algoritmo multi-cluster.
  Se calculó el exponente 
-\begin_inset Formula $\zeta=0.98(8)$
+\begin_inset Formula $\zeta=1.1(1)$
 \end_inset
 
  indirectamente.
@@ -9545,12 +9525,12 @@ Para la magnetización, los exponentes obtenidos resultaron en
 \end_inset
 
  para los algoritmos de actualización locales y 
-\begin_inset Formula $\zeta=0.530(5)$
+\begin_inset Formula $\zeta=0.279(6)$
 \end_inset
 
  para el algoritmo multi-cluster.
  Se calculó el exponente 
-\begin_inset Formula $\zeta=0.85(8)$
+\begin_inset Formula $\zeta=0.9(1)$
 \end_inset
 
  indirectamente.
@@ -10149,6 +10129,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename output/cone.pdf
+	special trim=30 50 30 50, clip
 
 \end_inset
 

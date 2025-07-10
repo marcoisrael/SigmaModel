@@ -117,8 +117,8 @@ for alg in algs:
     #     va="top",
     #     transform=ax.transAxes,
     # ) 
-    ax.set_xlabel(r"$\log(T)$", fontsize=18)
-    ax.set_ylabel(r"$\log(\xi)$", fontsize=18)
+    ax.set_xlabel(r"$T$", fontsize=18)
+    ax.set_ylabel(r"$\xi$", fontsize=18)
     ax.legend(fontsize=12)
     ax.set_yscale("log")
     ax.set_xscale("log")

@@ -120,8 +120,8 @@ for alg in algs:
             linestyle=(0,(3,3)),
             label=params[obs]["ylabel2"]+r", $\zeta=$"+fix(xfit.opt[1],xfit.error[1]),
             )
-    ax2.set_ylabel(r"$\log($"+params[obs]["ylabel2"]+r"$)$", fontsize=20)
-    ax2.set_xlabel(r"$\log(\tau_\mathrm{cool})$", fontsize=20)
+    ax2.set_ylabel(params[obs]["ylabel2"], fontsize=20)
+    ax2.set_xlabel(r"$\tau_\mathrm{cool}$", fontsize=20)
     ax2.set_yscale("log")
     ax2.set_xscale("log")
 

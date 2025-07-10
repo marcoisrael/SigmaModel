@@ -109,8 +109,8 @@ for alg in algs:
     # ax.text(0.96,0.20,text,fontsize=16,ha="right",va="top",transform=ax.transAxes)
     print(alg, fix(xfit.opt[1], xfit.error[1]))
     
-    ax.set_xlabel(r"$\log(\tau)$", fontsize=18)
-    ax.set_ylabel(r"$\log(\xi)$", fontsize=18)
+    ax.set_xlabel(r"$\tau$", fontsize=18)
+    ax.set_ylabel(r"$\xi$", fontsize=18)
     ax.legend(fontsize=12)
     ax.set_yscale("log")
     ax.set_xscale("log")

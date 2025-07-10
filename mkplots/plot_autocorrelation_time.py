@@ -134,8 +134,8 @@ for alg in algs:
     
     #print(alg, fix(xfit1.opt[1],xfit1.error[1]))
     
-    ax.set_xlabel(r"$\log(T)$", fontsize=18)
-    ax.set_ylabel(r"$\log(\tau)$", fontsize=18)
+    ax.set_xlabel(r"$T$", fontsize=18)
+    ax.set_ylabel(r"$\tau$", fontsize=18)
 
     ax.legend(fontsize=12)
     ax.set_yscale("log")
