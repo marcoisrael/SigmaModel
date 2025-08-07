@@ -1730,7 +1730,7 @@ noprefix "false"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{(x_{1},x_{2})}\cdot\vec{s}_{(x_{1},x_{2}-1)}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{(x_{1},x_{2})}\cdot\vec{s}_{(x_{1},x_{2}+1)}.\label{eq:equiv2}
+\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}-1}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1},x_{2}+1}.\label{eq:equiv2}
 \end{equation}
 
 \end_inset
@@ -1769,7 +1769,7 @@ noprefix "false"
  y simplificando términos se llega a la forma compacta del hamiltoniano
 \begin_inset Formula 
 \begin{equation}
-\mathcal{H}\left[s\right]=-J\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{(x_{1},x_{2})}\cdot\left(\vec{s}_{(x_{1}+1,x_{2})}+\vec{s}_{(x_{1},x_{2}+1)}\right).
+\mathcal{H}\left[s\right]=-J\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\left(\vec{s}_{x_{1}+1,x_{2}}+\vec{s}_{x_{1},x_{2}+1}\right).
 \end{equation}
 
 \end_inset
