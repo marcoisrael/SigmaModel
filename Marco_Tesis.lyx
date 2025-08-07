@@ -2146,7 +2146,7 @@ En el modelo hay dos simetrías importantes: la primera es la inviariancia
  topológica 
 \begin_inset CommandInset citation
 LatexCommand autocite
-key "bietenholz_topological_2010,berg_definition_1981"
+key "berg_definition_1981,bietenholz_topological_2010,bietenholz_topological_2018"
 literal "false"
 
 \end_inset
@@ -2643,14 +2643,6 @@ El consenso respecto a esta pregunta indica que la susceptibilidad topología
 \end_inset
 
  
-\begin_inset CommandInset citation
-LatexCommand autocite
-key "bietenholz_topological_2018"
-literal "false"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Chapter
