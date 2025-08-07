@@ -1836,16 +1836,12 @@ Observables
 
 \begin_layout Standard
 Describir las propiedades macroscópicas de un material, requiere de observables
- medibles como, masa 
-\begin_inset Formula $m$
-\end_inset
-
-, la energía 
+ medibles como, la energía 
 \begin_inset Formula $\mathcal{H}$
 \end_inset
 
 , la magnetización 
-\begin_inset Formula $m$
+\begin_inset Formula $M$
 \end_inset
 
 , etc.
@@ -1853,8 +1849,8 @@ Describir las propiedades macroscópicas de un material, requiere de observables
 \begin_inset Formula $V$
 \end_inset
 
- del sistema, se convierte en una densidad independiente de tamaño del sistema,
- a estas observables se les conoce como variables mecánicas.
+ del sistema, se convierte en una densidad asintóticamente estable, a estas
+ observables se les conoce como variables intensivas.
 \end_layout
 
 \begin_layout Standard
@@ -1878,7 +1874,7 @@ Hay otro tipo de cantidades como la presión
 
 \begin_layout Standard
 Desde un punto de vista microscópico, las variables mecánicas dependen de
- la configuración del sistema en un instante fijo.
+ la configuración del sistema.
  A lo largo de un intervalo temporal, se espera que un sistema físico pase
  por múltiples configuraciones.
 \end_layout
@@ -1894,7 +1890,7 @@ co es conocido como tiempo de relajación.
 Se busca calcular el promedio de un observable en un sistema en equilibrio
  termodinámico por un intervalo temporal suficientemente amplio como para
  reducir las fluctuaciones por debajo de un umbral de error deseado.
- El valor medible de la observable, es el promedio de los valores obtenidos
+ El valor esperado de la observable, es el promedio de los valores obtenidos
  por las configuraciones en el tiempo.
 \end_layout
 
@@ -1923,15 +1919,11 @@ La energía de una configuración depende de las diferencias relativas entre
 \begin_inset Formula $[s']$
 \end_inset
 
- es equivalente y está asociada a la misma energía que la configuración
- 
+ está asociada a la misma energía que la configuración 
 \begin_inset Formula $[s]$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -1958,19 +1950,20 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-Definición: Tiempo de Markov.
+Definición: Cadena de Markov.
 \end_layout
 
 \begin_layout Plain Layout
-En un sistema estocástico, un conjunto de eventos sucesivos forman una cadena
- de Markov.
- El tiempo de Markov es un paramento que indica en que evento se encuentra
- el sistema.
+Una cadena de Markov es un proceso estocástico discreto en el que la probabilida
+d de un evento depende únicamente del evento anterior.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -1983,7 +1976,7 @@ Una configuración es un evento en el sentido estadístico.
 \begin_inset Formula $t_{i}$
 \end_inset
 
- indica la configuración del sistema en el ese instante.
+ es un parametro que indica la configuración del sistema en el ese instante.
  Un conjunto de configuraciones es una cadena de Markov.
  Como cada configuración tiene una energía asociada, la energía asociada
  a las configuraciones es diferente en cada instante 
@@ -2012,7 +2005,20 @@ La energía real asociada a ese intervalo es el promedio aproximado más la
 
 \end_inset
 
- La energía es una propiedad extensiva, para comparar resultados en retículas
+Considerando un intervalo de dos veces la desviación estándar dando una
+ certeza del 
+\begin_inset Formula $68.27\%$
+\end_inset
+
+, típicamente
+\begin_inset Formula 
+\begin{equation}
+\lim_{N\rightarrow\infty}\mathrm{error}(\mathcal{H})=\frac{1}{\sqrt{N}}.
+\end{equation}
+
+\end_inset
+
+La energía es una propiedad extensiva, para comparar resultados en retículas
  de diferentes tamaños es importante considerar la densidad de energía.
  Está se define como el valor esperado de la energía dividida por el volumen
 \begin_inset Formula 
@@ -2034,7 +2040,7 @@ En el modelo 2d O(
 \begin_inset Formula $3$
 \end_inset
 
-), la temperatura es un paramento que añade ruido (fluctuaciones que cambian
+), la temperatura es un parámetro que añade ruido (fluctuaciones que cambian
  las direcciones de los espines).
  
 \end_layout
@@ -2046,10 +2052,10 @@ La magnetización
 
  es un escalar que depende de la alineación de los espines de una configuración.
  Se define como la magnitud de la suma de los espines de una configuración
- dividida por el volumen.
+ dividida por el volumen,
 \begin_inset Formula 
 \begin{equation}
-M=\frac{1}{V}\abs{\sum_{x}\vec{s}_{x}}
+M=\frac{1}{V}\abs{\sum_{x}\vec{s}_{x}}.
 \end{equation}
 
 \end_inset
@@ -2067,14 +2073,9 @@ M_{\mathrm{max}}=\frac{1}{V}\abs{\sum_{x}\vec{s}_{x}}=\frac{1}{V}\abs{V\vec{s}}=
 \end_layout
 
 \begin_layout Standard
-Igual que con la energía, un conjunto de configuraciones tiene un conjunto
- de configuraciones, es una cadena de Markov y se puede medir la magnetizaron
- de aproximada en un intervalo temporal calculando el promedio de las magnetizac
-iones en ese intervalo
-\end_layout
-
-\begin_layout Standard
-El promedio aproximado de la magnetización es 
+Se puede medir la magnetización de aproximada en un intervalo temporal calculand
+o el promedio de las magnetizaciones en ese intervalo.
+ El promedio aproximado de la magnetización es 
 \begin_inset Formula 
 \begin{equation}
 \expval{M}_{\mathrm{aprox}}=\frac{1}{N}\sum_{i=1}^{N}M_{i}.
@@ -2086,7 +2087,20 @@ El promedio de la magnetización es el valor aproximado con una incertidumbre
  asociada
 \begin_inset Formula 
 \begin{equation}
-\expval{M}\simeq\expval{M}\pm\mathrm{error}(M)
+\expval{M}\simeq\expval{M}_{\mathrm{aprox}}\pm\mathrm{error}(M)
+\end{equation}
+
+\end_inset
+
+Considerando un intervalo de dos veces la desviación estándar dando una
+ certeza del 
+\begin_inset Formula $68.27\%$
+\end_inset
+
+, típicamente
+\begin_inset Formula 
+\begin{equation}
+\lim_{N\rightarrow\infty}\mathrm{error}(M)=\frac{1}{\sqrt{N}}.
 \end{equation}
 
 \end_inset
@@ -2099,27 +2113,20 @@ Carga topológica
 \end_layout
 
 \begin_layout Standard
-El índice de una curva en un plano al rededor de un punto, es un número
- entero que describe el numero de vueltas que la curva da alrededor del
- punto, es una cantidad invariante asociada a los defectos topológicos del
- sistema.
+El índice de una curva cerrada en un plano al rededor de un punto, es un
+ número entero que describe el numero de vueltas orientadas que la curva
+ da alrededor del punto y es invariante a transformaciones continuas de
+ la curva cerrada.
  
 \end_layout
 
 \begin_layout Standard
-Las soluciones del modelo, son los defectos topológicos del sistema y están
- relacionados a la carga topológica, de ahí su importancia.
- 
-\end_layout
-
-\begin_layout Standard
-El índice es la carga topológica neta de un sistema.
- En los modelos O(
+En el modelo O(
 \begin_inset Formula $3$
 \end_inset
 
-), el índice mide las vueltas de una curva alrededor de un punto sobre la
- esfera 
+) La carga topológica a mide las vueltas de una curva alrededor de un punto
+ sobre la esfera 
 \begin_inset Formula $\mathcal{S}^{2}$
 \end_inset
 
@@ -2129,7 +2136,11 @@ El índice es la carga topológica neta de un sistema.
 
 \begin_layout Standard
 En el modelo hay dos simetrías importantes: la primera es la inviariancia
- de la energía interna por la rotación de un grupo de espines.
+ de la energía interna por la rotación de espines con el grupo O(
+\begin_inset Formula $3$
+\end_inset
+
+).
  La segunda es la invariancia bajo transformaciones conformes del espacio-tiempo.
  En el segundo caso, las condiciones de frontera garantizan la invariante
  topológica 
@@ -2155,16 +2166,15 @@ Q[s]=\frac{1}{8\pi}\int\varepsilon_{\mu\nu}\vec{s}(x)\cdot(\partial_{\mu}\vec{s}
 \end_layout
 
 \begin_layout Standard
-B.
- Breg y M.
- Lüscher introdujeron la definición geométrica de carga topológica reticular
- para estudiar la susceptibilidad topológica del modelo 2d O(
+Bernard Berg y Martin Lüscher introdujeron la definición geométrica de carga
+ topológica reticular para estudiar la susceptibilidad topológica del modelo
+ 2d O(
 \begin_inset Formula $3$
 \end_inset
 
 ).
  Para definir la carga topológica de una configuración se usa un acercamiento
- geométrico, la retícula se divide en plaquetas formadas por cuatro espines,
+ geométrico: La retícula se divide en plaquetas formadas por cuatro espines,
  esto a su vez se subdividen en dos triángulos, alternando la orientación
  de la diagonal que divide cada cuadrado para replicar isotropía esperada
  en el modelo de espines.
@@ -2210,7 +2220,7 @@ Sean
  
 \begin_inset CommandInset citation
 LatexCommand autocite
-key "todhunter_spherical_2021"
+key "eriksson_measure_1990,todhunter_spherical_2021"
 literal "false"
 
 \end_inset
@@ -2221,7 +2231,7 @@ literal "false"
 \begin_layout Plain Layout
 \begin_inset Formula 
 \begin{equation}
-\tan\text{\left(\frac{\Omega}{2}\right)=\ensuremath{\frac{\vec{a}\cdot(\vec{b}\times\vec{c})}{abc-(\vec{a}\cdot\vec{b})c+(\vec{c}\cdot\vec{a})b+(\vec{b}\cdot\vec{c})a}}}.
+\tan\text{\left(\frac{\Omega}{2}\right)=\ensuremath{\frac{\vec{a}\cdot(\vec{b}\times\vec{c})}{1+\vec{a}\cdot\vec{b}+\vec{b}\cdot\vec{c}+\vec{c}\cdot\vec{a}}}}.
 \end{equation}
 
 \end_inset
@@ -2241,7 +2251,7 @@ literal "false"
 \begin_layout Standard
 En la figura 
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "triangles"
 plural "false"
 caps "false"
@@ -2250,12 +2260,12 @@ noprefix "false"
 \end_inset
 
  las plaquetas se dividen en triángulos 
-\begin_inset Formula $a,b$
+\begin_inset Formula $1,2$
 \end_inset
 
 .
  Para los triángulos 
-\begin_inset Formula $a$
+\begin_inset Formula $1$
 \end_inset
 
 , los espines 
@@ -2267,15 +2277,15 @@ noprefix "false"
 \end_inset
 
 .
- Se calculan las variables para los triángulos tipo 
+ Se definen las variables para los triángulos tipo 
 \begin_inset Formula $1$
 \end_inset
 
  se definen las variables
 \begin_inset Formula 
 \begin{align}
-x_{1} & =1+\vec{s}_{1}\cdot\vec{s}_{2}+\vec{s}_{2}\cdot\vec{s}_{3}+\vec{s}_{3}\cdot\vec{s}_{1}\nonumber \\
-y_{1} & =\vec{s}_{1}\cdot(\vec{s}_{2}\times\vec{s}_{3}).
+X_{1} & =1+\vec{s}_{1}\cdot\vec{s}_{2}+\vec{s}_{2}\cdot\vec{s}_{3}+\vec{s}_{3}\cdot\vec{s}_{1}\nonumber \\
+Y_{1} & =\vec{s}_{1}\cdot(\vec{s}_{2}\times\vec{s}_{3}).
 \end{align}
 
 \end_inset
@@ -2283,26 +2293,35 @@ y_{1} & =\vec{s}_{1}\cdot(\vec{s}_{2}\times\vec{s}_{3}).
 Al ser una esfera unitaria, el área del triángulo esférico esta dada por
  el ángulo solido generado por los espines, defiendo el número complejo
  
-\begin_inset Formula $z_{a}=x_{a}+iy_{a}$
+\begin_inset Formula $Z_{1}=X_{1}+iY_{1}$
 \end_inset
 
 , aplicando la formula para obtener el área del triangulo esférico, se obtiene
 \begin_inset Formula 
 \begin{equation}
-\Omega_{1}=2\mathrm{arg}(z_{1}).
+\Omega_{1}=2\mathrm{arg}(Z_{1})
 \end{equation}
 
 \end_inset
 
-Para los triángulos tipo 
+donde la función 
+\begin_inset Formula $\mathrm{arg}$
+\end_inset
+
+ devuelve la fase del numero complejo 
+\begin_inset Formula $Z_{1}$
+\end_inset
+
+.
+ Para los triángulos tipo 
 \begin_inset Formula $2$
 \end_inset
 
  se definen las variables
 \begin_inset Formula 
 \begin{align}
-x_{2} & =1+\vec{s}_{4}\cdot\vec{s}_{3}+\vec{s}_{3}\cdot\vec{s}_{2}+\vec{s}_{2}\cdot\vec{s}_{4}\nonumber \\
-y_{2} & =\vec{s}_{4}\cdot(\vec{s}_{3}\times\vec{s}_{2}).
+X_{2} & =1+\vec{s}_{4}\cdot\vec{s}_{3}+\vec{s}_{3}\cdot\vec{s}_{2}+\vec{s}_{2}\cdot\vec{s}_{4}\nonumber \\
+Y_{2} & =\vec{s}_{4}\cdot(\vec{s}_{3}\times\vec{s}_{2}).
 \end{align}
 
 \end_inset
@@ -2310,22 +2329,18 @@ y_{2} & =\vec{s}_{4}\cdot(\vec{s}_{3}\times\vec{s}_{2}).
 Resultando en una área
 \begin_inset Formula 
 \begin{equation}
-\Omega_{2}=2\mathrm{arg}(z_{2}).
+\Omega_{2}=2\mathrm{arg}(Z_{2}).
 \end{equation}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Sumando el área para cada par de triángulos se obtiene 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-A_{x}=\Omega_{1}+\Omega_{2}
+A_{x}=\Omega_{1}+\Omega_{2}.
 \end{equation}
 
 \end_inset
@@ -2334,7 +2349,7 @@ A_{x}=\Omega_{1}+\Omega_{2}
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -2427,7 +2442,7 @@ name "triangles"
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -2441,11 +2456,11 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Descomposición de la retícula cardada bidimensional en triángulos, alternado
+Descomposición de la retícula cuadrada bidimensional en triángulos, alternado
  la dirección de la diagonal.
  Esta descomposición se usa para medir la carga topológica.
- Se puede apreciar cómo el cambio en la orientación de la diagonal evita
- que la predominancia de una dirección preferencial.
+ Se puede apreciar como el cambio en la orientación de la diagonal evita
+ una dirección preferencial.
 \end_layout
 
 \end_inset
@@ -2459,7 +2474,7 @@ Descomposición de la retícula cardada bidimensional en triángulos, alternado
 \end_layout
 
 \begin_layout Standard
-La carga topológica se define como como
+La carga topológica se define como
 \end_layout
 
 \begin_layout Standard
@@ -2470,7 +2485,10 @@ Q[s]=\frac{1}{4\pi}\sum_{x}A_{x}\in\mathbb{Z}.
 
 \end_inset
 
-La simetría del sistema implica
+La energía es invariante al cambio de signo de los elementos de una configuració
+n, por lo que las configuraciones tienen la misma importancia estadística
+ independientemente del signo de la carga topológica, resultando en el valor
+ esperado
 \begin_inset Formula 
 \begin{equation}
 \expval{Q}=0,
@@ -2482,15 +2500,58 @@ por lo que medir los defectos topológicos remanentes requiere de otra cantidad.
 \end_layout
 
 \begin_layout Standard
+Generalizando
+\begin_inset Formula 
+\begin{equation}
+Z(\theta)=\int\mathrm{exp}\left(-\mathcal{H}[s]/T-iQ[s]\theta\right)D\vec{s}.
+\end{equation}
+
+\end_inset
+
+Se define
+\begin_inset Formula 
+\begin{equation}
+F(\theta)=T\ln Z(\theta)
+\end{equation}
+
+\end_inset
+
+donde
+\begin_inset Formula 
+\begin{equation}
+i\pdv{}{\theta}Z(\theta)=\expval{Q}.
+\end{equation}
+
+\end_inset
+
+Si 
+\begin_inset Formula $\theta=0$
+\end_inset
+
+ entonces 
+\begin_inset Formula $\expval{Q}=0$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{equation}
+-\pdv[2]{}{\theta}F(\theta)=\expval{Q^{2}}-\expval{Q}^{2}
+\end{equation}
+
+\end_inset
+
 La susceptibilidad topológica 
 \begin_inset Formula $\chi_{t}$
 \end_inset
 
- describe la respuesta de la carga topológica a una perturbación externa.
- Se define siguiendo la ecuación
+ se define como tomando 
+\begin_inset Formula $\theta=0$
+\end_inset
+
+
 \begin_inset Formula 
 \begin{equation}
-\frac{1}{V}\pdv[2]{}{\theta}\int\mathrm{e}^{-S[\phi]}\mathrm{e}^{iQ[\phi]\theta}\dd\phi\Bigg{|}_{\theta=0}=\frac{1}{V}\expval{Q^{2}}|_{\theta=0}.
+\frac{1}{V}\pdv[2]{}{\theta}Z(\theta)=\frac{1}{V}\expval{Q^{2}}.
 \end{equation}
 
 \end_inset
@@ -2498,12 +2559,34 @@ La susceptibilidad topológica
 El valor esperado del cuadrado de la carga topológica es 
 \begin_inset Formula 
 \begin{equation}
-\expval{Q^{2}}\approx\frac{1}{N}\sum_{i=1}^{N}Q_{i}^{2}.
+\expval{Q^{2}}_{\mathrm{aprox}}=\frac{1}{N}\sum_{i=1}^{N}Q_{i}^{2}.
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\expval{Q^{2}}\simeq\expval{Q^{2}}_{\mathrm{aprox}}\pm\mathrm{error}(Q^{2})
+\end{equation}
+
+\end_inset
+
+Considerando un intervalo de dos veces la desviación estándar dando una
+ certeza del 
+\begin_inset Formula $68.27\%$
+\end_inset
+
+, típicamente
+\begin_inset Formula 
+\begin{equation}
+\lim_{N\rightarrow\infty}\mathrm{error}(Q^{2})=\frac{1}{\sqrt{N}}.
 \end{equation}
 
 \end_inset
 
 El cuadrado de la carga dividido por el volumen es la susceptibilidad topológica
+ y es asintóticamente estable
 \end_layout
 
 \begin_layout Standard
@@ -2518,30 +2601,22 @@ El cuadrado de la carga dividido por el volumen es la susceptibilidad topológic
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Una pregunta crucial respecto a la susceptibilidad topológica es, si es
  un valor finito en el limite al continuo.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 El modelo 2d O(3) presenta libertad asintótica, por lo que los sectores
  topológicos están bien definidos.
  
 \end_layout
 
-\begin_layout Standard
-Definiendo una densidad topológica 
-\begin_inset Formula $q_{x}$
-\end_inset
-
- se puede definir la susceptibilidad topológica como
-\begin_inset Formula 
-\begin{equation}
-\chi_{t}=\sum_{x}\expval{q_{0}q_{x}}.
-\end{equation}
-
-\end_inset
-
+\begin_layout Plain Layout
 Hay una divergencia en el termino 
 \begin_inset Formula $x=0$
 \end_inset
@@ -2562,7 +2637,12 @@ Hay una divergencia en el termino
 
 El consenso respecto a esta pregunta indica que la susceptibilidad topología
  diverge cuando la longitud de correlación diverge en diferentes sistemas
- con la misma clase de universalidad 
+ con la misma clase de universalidad
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset CommandInset citation
 LatexCommand autocite
 key "bietenholz_topological_2018"
