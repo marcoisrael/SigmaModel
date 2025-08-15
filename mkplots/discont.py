@@ -24,6 +24,7 @@ ax.set_xticks([], [])
 ax.set_yticks([], [])
 ax.set_ylabel(r"$M$", fontsize=20)
 ax.set_xlabel(r"$B$", fontsize=20)
+ax.text(-0.6,-0.01,r"$0$",fontsize=16)
 fig.savefig(f"{path}/discont_{1}.pdf", format="pdf", bbox_inches="tight")
 
 fig, ax = plt.subplots()

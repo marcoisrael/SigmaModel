@@ -8,7 +8,7 @@ import argparse
 parser = argparse.ArgumentParser(prog="plot_length")
 parser.add_argument("-alg", "--algorithm", default="lexic_metropolis")
 args = parser.parse_args()
-make_plots = False
+make_plots = True
 os.makedirs("output/plot/length/", exist_ok=True)
 if args.algorithm == "all":
     algs = ["lexic_metropolis", "lexic_glauber",
@@ -56,7 +56,7 @@ for alg in algs:
                     color="red",
                 )
                 ax.plot(x, f(x, *xfit.opt), linewidth=1.8, ls=(0, (3, 3)),color="blue")
-                ax.set_ylabel(r"$\langle \vec{\sigma_i}\cdot\vec{\sigma_1}\rangle$", fontsize=18)
+                ax.set_ylabel(r"$\langle\vec{\sigma_i}\cdot\vec{\sigma_0}\rangle_c$", fontsize=18)
                 ax.set_xlabel(r"$i$", fontsize=18)
                 fig.savefig(
                     f"output/plot/correlation_length/lexic_metropolis_L{LENGTH}_{temp}.png"
