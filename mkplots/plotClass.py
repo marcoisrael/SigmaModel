@@ -45,7 +45,7 @@ def chi2_by_dof(y0, y, yerr, dof):
 
 
 def fix(x, dx):
-    before, after = str(dx).split(".")
+    _, after = str(dx).split(".")
     i = 0
     val = 0
     for d in after:
@@ -82,10 +82,10 @@ class fit:
         # self.error = np.diag(self.cov)
         sigma_err = abs(np.std(residuals))
         pfit = []
-        for i in range(100):
+        for _ in range(100):
             random_delta = np.random.normal(0, sigma_err, len(self.xdata))
             random_ydata = self.ydata+random_delta
-            random_opt, random_cov = curve_fit(
+            random_opt, _ = curve_fit(
                 func,
                 self.xdata,
                 random_ydata,
@@ -94,7 +94,7 @@ class fit:
             pfit.append(random_opt)
         pfit = np.array(pfit)
         
-        self.opt = np.mean(pfit, 0)
+        # self.opt = np.mean(pfit, 0)
         self.error = 2*np.std(pfit, 0)
 
         residuals = self.ydata - func(self.xdata, *self.opt)

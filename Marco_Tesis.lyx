@@ -76,7 +76,9 @@ draw=black]
 \default_output_format default
 \output_sync 0
 \bibtex_command default
-\index_command default
+\index_command makeindex
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref true
@@ -2697,7 +2699,16 @@ donde
 \begin_inset Formula $Z$
 \end_inset
 
- es la función de partición.
+ es la función de partición,
+ 
+\begin_inset Formula $T$
+\end_inset
+
+ es la temperatura y 
+\begin_inset Formula $k_{B}$
+\end_inset
+
+ es la constante de Boltzmann.
  El hamiltoniano de un sistema de espines es de la forma
 \end_layout
 
@@ -2710,15 +2721,19 @@ donde
 \end_inset
 
 dónde 
-\begin_inset Formula $B$
+\begin_inset Formula $B=|\vec{B}|$
 \end_inset
 
  es el campo magnético y 
 \begin_inset Formula $J$
 \end_inset
 
- una constante de acoplamiento.
- 
+ una constante de acoplamiento (por simplicidad establecemos 
+\begin_inset Formula $J=1$
+\end_inset
+
+).
+ La función de partición es
 \begin_inset Formula 
 \begin{equation}
 Z=\sum_{s}\mathrm{e}^{-\mathcal{H}[s]/k_{B}T}.
@@ -2726,16 +2741,23 @@ Z=\sum_{s}\mathrm{e}^{-\mathcal{H}[s]/k_{B}T}.
 
 \end_inset
 
-A partir de la función de partición la magnetización 
+El valor esperado de la magnetización 
 \begin_inset Formula $\expval{M}$
 \end_inset
 
- se de fine como
+ es la derivada de la energía libre 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ respecto a la magnitud del campo magnético 
+\begin_inset Formula $B$
+\end_inset
+
+
 \begin_inset Formula 
-\begin{align}
-\expval{M}= & -\pdv{\mathcal{F}}{B}=\frac{1}{Z}\pdv{Z}{B}\nonumber \\
-= & \frac{1}{Z}\frac{1}{k_{B}T}\sum_{s}M[s]\mathrm{e}^{-\mathcal{H}[s]/k_{B}T}.
-\end{align}
+\begin{equation}
+\expval{M}=-\pdv{\mathcal{F}}{B}=\frac{1}{Z}\pdv{Z}{B}=\frac{1}{Z}\frac{1}{k_{B}T}\sum_{s}M[s]\mathrm{e}^{-\mathcal{H}[s]/k_{B}T}.
+\end{equation}
 
 \end_inset
 
@@ -2743,7 +2765,15 @@ La susceptibilidad magnética
 \begin_inset Formula $\chi_{m}$
 \end_inset
 
- se define 
+ es la derivada del valor esperado de la magnetización 
+\begin_inset Formula $\expval{M}$
+\end_inset
+
+ respecto a 
+\begin_inset Formula $B$
+\end_inset
+
+
 \begin_inset Formula 
 \begin{align}
 \chi_{m}= & \pdv{\expval{M}}{B}\nonumber \\
@@ -2753,25 +2783,38 @@ La susceptibilidad magnética
 
 \end_inset
 
+La energía promedio es la derivada de la energía libre 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
 
-\end_layout
+ respecto a la variable 
+\begin_inset Formula $\beta=1/k_{B}T$
+\end_inset
 
-\begin_layout Standard
-A partir de la función de partición,
- la energía promedio se calcula como
+ 
 \begin_inset Formula 
-\begin{align}
-\expval{\mathcal{H}}= & -\pdv{\ln Z}{\beta}\nonumber \\
-= & \frac{1}{Z}\sum_{s}\mathcal{H}[s]\mathrm{e}^{-\beta\mathcal{H}[s]}\nonumber \\
-= & \frac{1}{Z}\sum_{s}\mathcal{H}[s]\mathrm{e}^{-\mathcal{H}[s]/k_{B}T}.
-\end{align}
+\begin{equation}
+\expval{\mathcal{H}}=-\frac{1}{\beta}\pdv{\mathcal{F}}{\beta}=-\pdv{\ln Z}{\beta}=\frac{1}{Z}\sum_{s}\mathcal{H}[s]\mathrm{e}^{-\beta\mathcal{H}[s]}
+\end{equation}
 
 \end_inset
 
-El calor específico a volumen constante se define como
+El calor específico 
+\begin_inset Formula $c_{B}$
+\end_inset
+
+ es la derivada de la energía media 
+\begin_inset Formula $\expval{\mathcal{H}}$
+\end_inset
+
+ respecto a la temperatura 
+\begin_inset Formula $T$
+\end_inset
+
+
 \begin_inset Formula 
 \begin{align}
-C_{V}= & \pdv{\expval{\mathcal{H}}}{T}\nonumber \\
+c_{B}= & \pdv{\expval{\mathcal{H}}}{T}\nonumber \\
 = & \frac{1}{k_{B}T^{2}}\frac{1}{Z}\sum_{s}\mathcal{H}[s]^{2}\mathrm{e}^{-\mathcal{H}[s]/k_{B}T}-\frac{1}{Z^{2}}\pdv{Z}{T}\sum_{s}\mathcal{H}[s]\mathrm{e}^{-\mathcal{H}[s]/k_{B}T}\nonumber \\
 = & \frac{1}{k_{B}T^{2}}\frac{1}{Z}\sum_{s}\mathcal{H}[s]^{2}\mathrm{e}^{-\mathcal{H}[s]/k_{B}T}-\frac{1}{k_{B}T^{2}}\left(\frac{1}{Z}\sum_{s}\mathcal{H}[s]\mathrm{e}^{-\mathcal{H}[s]/k_{B}T}\right)^{2}\nonumber \\
 = & \frac{1}{k_{B}T^{2}}\left(\expval{\mathcal{H}^{2}}-\expval{\mathcal{H}}^{2}\right).
@@ -2787,9 +2830,9 @@ Transiciones de fase
 \end_layout
 
 \begin_layout Standard
-En la naturaleza hay fenómenos conocidos como transiciones de fase,
- en los que las propiedades de un material cambian bruscamente en ciertas condiciones.
- Describir estos fenómenos es uno de los grandes temas de la física moderna.
+En los fenómenos conocidos como transiciones de fase,
+ las propiedades físicas de un material cambian bruscamente.
+ Una transición de fase ocurre cuando hay una discontinuidad en la energía libre o en una de sus derivadas.
  Un par de ejemplos son:
 \end_layout
 
@@ -2800,12 +2843,6 @@ El cambio de estado líquido a gas de un fluido.
 
 \begin_layout Enumerate
 El cambio del estado paramagnético al ferromagnético en un imán.
-\end_layout
-
-\begin_layout Standard
-A nivel macroscópico,
- en una transición de fase cambian las propiedades físicas de los materiales.
- Una transición de fase ocurre cuando hay una discontinuidad en la energía libre o en una de sus derivadas.
 \end_layout
 
 \begin_layout Standard
@@ -2884,12 +2921,14 @@ name "diag_phase"
 \end_layout
 
 \begin_layout Standard
-Una transición de fase de segundo orden implica una discontinuidad en la segunda derivada de la energía libre del sistema.
- A nivel microscópico un sistema puede pasar de un estado simétrico y con alta energía a otro con menor simetría y energía y menor energía al pasar por debajo de una temperatura crítica 
-\begin_inset Formula $T_{c},$
+Una transición de fase de segundo orden implica una discontinuidad en la segunda derivada de la energía libre.
+ A nivel microscópico,
+ un sistema en un estado simétrico y con alta energía cambia a otro estado con menor simetría y energía al pasar por debajo de una temperatura crítica 
+\begin_inset Formula $T_{c}$
 \end_inset
 
- a este cambio abrupto se le conoce como ruptura de la simetría 
+.
+ A este cambio abrupto se le conoce como ruptura de la simetría 
 \begin_inset CommandInset citation
 LatexCommand autocite
 key "giachetti_berezinskii-kosterlitz-thouless_2021,hinrichsen_non-equilibrium_2000,yeomans_statistical_1992"
@@ -2943,7 +2982,7 @@ placement document
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -3013,7 +3052,7 @@ placement document
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -3129,11 +3168,11 @@ La escala natural de un sistema está determinada por la longitud de correlació
 
 \begin_layout Standard
 En los modelos de espín la función de correlación mide que tan fuertemente se afectan dos espines 
-\begin_inset Formula $\vec{s}_{x},\vec{s}_{y}\in\mathcal{S}^{n-2}$
+\begin_inset Formula $\vec{s}_{x},\vec{s}_{y}\in\mathcal{S}^{2}$
 \end_inset
 
 .
- La función de correlación conectada se define como
+ En el modelo 2d O(3) la función de correlación conectada se define como
 \begin_inset Formula 
 \begin{equation}
 \expval{\vec{s}_{x}\cdot\vec{s}_{y}}_{c}=\expval{\vec{s}_{x}\cdot\vec{s}_{y}}-\expval{\vec{s}_{x}}\cdot\expval{\vec{s}_{y}}.
@@ -3145,17 +3184,17 @@ En los modelos de espín la función de correlación mide que tan fuertemente se
 \end_layout
 
 \begin_layout Standard
-En la practica,
+En la práctica,
  para determinar la longitud de correlación en un volumen 
-\begin_inset Formula $L\times$
+\begin_inset Formula $L\times L$
 \end_inset
 
-L se mapean los espines a una linea 
+ se mapean los espines a una linea 
 \begin_inset Formula 
-\begin{equation}
+\[
 \begin{split}\vec{\sigma}_{i}=\frac{1}{L}\sum_{k=1}^{L-1}\vec{s}_{i,k}\end{split}
 ,
-\end{equation}
+\]
 
 \end_inset
 
@@ -3165,7 +3204,7 @@ L se mapean los espines a una linea
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\expval{\vec{\sigma}_{i}\cdot\vec{\sigma}_{1}}_{c}=A\cosh\left(\frac{i-L/2}{\xi}\right),
+\expval{\vec{\sigma}_{i}\cdot\vec{\sigma}_{1}}_{c}=A\cosh\left(\frac{i-L/2}{\xi}\right),\label{eq:correlacion_conectada}
 \end{equation}
 
 \end_inset
@@ -3175,15 +3214,6 @@ dónde
 \end_inset
 
  es la longitud de correlación.
- La longitud de correlación 
-\begin_inset Formula $\xi$
-\end_inset
-
- diverge a la temperatura crítica 
-\begin_inset Formula $T_{c}$
-\end_inset
-
-.
  Conforme 
 \begin_inset Formula $T$
 \end_inset
@@ -3209,7 +3239,11 @@ En el modelo 2d O(
 \begin_inset Formula $3$
 \end_inset
 
-) la formula se simplifica 
+) con temperatura crítica 
+\begin_inset Formula $T_{c}=0$
+\end_inset
+
+ la formula se simplifica 
 \begin_inset Formula 
 \begin{equation}
 \xi\propto T^{-\nu},\label{eq:length}
@@ -3230,8 +3264,17 @@ status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Graphics
-	filename output/plot/correlation_length/lexic_metropolis_L32_1.0.png
+	filename output/plot/correlation_length/lexic_metropolis_L32_1.0.svg
 	scale 50
 
 \end_inset
@@ -3243,12 +3286,85 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Función de correlación en una retícula de tamaño 
-\begin_inset Formula $L\times L$
+Escala lineal.
+ La función de correlación conectada se ajusta a la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:correlacion_conectada"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
 \end_inset
 
- donde 
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename output/plot/correlation_length/lexic_metropolis_L32_1.0_log.svg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Escala logarítmica.
+ La correlación decae exponencialmente formando dos rectas en la escala logarítmica
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Función de correlación a temperatura 
+\begin_inset Formula $T=1$
+\end_inset
+
+,
+ 
 \begin_inset Formula $L=32$
+\end_inset
+
+ en una retícula de tamaño 
+\begin_inset Formula $L\times L$
 \end_inset
 
 .
@@ -3276,13 +3392,20 @@ name "sec:Universalidad"
 \end_layout
 
 \begin_layout Standard
-Debido a el número de elementos que interactúan en un modelo microscópico realista,
- no es posible hacer predicciones exactas sobre todas las cantidades relevantes.
- El concepto de clases de universalidad fue señalado primeramente por Kadanoff,
- posteriormente en 1970 E.
- Fermi se baso en el trabajo de Grriffiths,
+El concepto de clases de universalidad fue señalado primeramente por Kadanoff en 1966 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "kadanoff_scaling_1966"
+literal "false"
+
+\end_inset
+
+.
+ Se encontró empíricamente una clasificación de sistemas críticos en lo que se definió como clases de universalidad.
+ Posteriormente en 1970 E.
+ Fermi se baso en el trabajo de Griffiths,
  Jasnow y otros investigadores.
- Se estudiaron datos experimentales de diversos materiales cerca de sus respectivos puntos críticos,
+ Estudiaron datos experimentales de diversos materiales cerca de sus respectivos puntos críticos,
  y se encontró que los datos de los diversos sistemas son descritos por la misma función de escalamiento.
  El aparente comportamiento universal motivo a buscar una respuesta para la siguiente cuestión.
 \end_layout
@@ -3328,8 +3451,10 @@ status open
 \end_layout
 
 \begin_layout Standard
-En general la clase de universalidad y el valor de los exponentes críticos no depende de la estructura local de los acoplamientos.
- O dicho de otra forma.
+Debido al número de elementos que interactúan en un modelo microscópico realista,
+ no es posible hacer predicciones exactas sobre todas las cantidades relevantes.
+ En general la clase de universalidad y el valor de los exponentes críticos no depende de la estructura local.
+ Por lo tanto:
  Aunque las interacciones son a nivel local,
  los exponentes críticos dependen solo de la dimensión espacial y las simetrías del sistema.
  
@@ -3340,21 +3465,79 @@ Escalamiento
 \end_layout
 
 \begin_layout Standard
-Existe una gran cantidad de sistemas físicos en diferentes escalas.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The scaling hypothesis has two
+\end_layout
+
+\begin_layout Plain Layout
+categories of predictions,
+ both of which have been remarkably well verified by a wealth
+\end_layout
+
+\begin_layout Plain Layout
+of experimental data on diverse systems.
+ The first category is a set of relations,
+ called
+\end_layout
+
+\begin_layout Plain Layout
+scaling laws,
+ that serve to relate the various critical-point exponents.
+ For example,
+ the
+\end_layout
+
+\begin_layout Plain Layout
+exponents a,
+ 2{3,
+ and y describing the three functions C H ,
+ M2,
+ and XT are related by
+\end_layout
+
+\begin_layout Plain Layout
+the simple scaling law a + 2 {3 + y= 2.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La hipótesis de escalamiento fue desarrollada independientemente por varios investigadores,
+ entre ellos Kadanoff en 1967 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "kadanoff_scaling_1966"
+literal "false"
+
+\end_inset
+
+.
+ Existe una gran cantidad de sistemas físicos en diferentes escalas.
  En sistemas con la misma clase de universalidad,
  se pueden encontrar transformaciones que relacionan un sistema con otro a una escala diferente.
 \end_layout
 
 \begin_layout Standard
-Consideremos un potencial termodinámico
+Consideremos el potencial de Gibbs
 \begin_inset Formula 
 \begin{equation}
-G(H,T)=G(H,\epsilon).
+G(H,T)=G(H,\epsilon),
 \end{equation}
 
 \end_inset
 
-Cerca de el punto crítico existen exponentes 
+donde 
+\begin_inset Formula $\epsilon=(T-T_{c})/T_{c}$
+\end_inset
+
+ es la temperatura reducida.
+ Cerca de un punto crítico existen exponentes 
 \begin_inset Formula $a_{H}$
 \end_inset
 
@@ -3362,7 +3545,7 @@ Cerca de el punto crítico existen exponentes
 \begin_inset Formula $a_{T}$
 \end_inset
 
-tales que se cumple la ecuación
+ tales que se cumple la ecuación
 \begin_inset Formula 
 \begin{equation}
 G\left(\lambda^{a_{H}}H,\lambda^{a_{T}}\epsilon\right)=\lambda G(H,\epsilon),
@@ -3374,45 +3557,60 @@ dónde
 \begin_inset Formula $\lambda\in\mathbb{R}^{+}$
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-M=-\pdv{\mathcal{F}}{B}\Big{|}_{T,B=0}\propto(T_{c}-T)^{\beta},
-\end{equation}
-
+ es un factor de escala.
+ Algunos exponentes críticos relacionadas a las variables termodinámicas de un magneto definen de la manera siguiente:
+ La magnetización se relaciona con la temperatura por el exponente criticó 
+\begin_inset Formula $\mathcal{B}$
 \end_inset
 
 
 \begin_inset Formula 
 \begin{equation}
-\chi=\pdv{M}{B}\Big{|}_{T,B=0}\propto(T_{c}-T)^{\gamma},
+M=-\pdv{\mathcal{F}}{B}\Big{|}_{T,B=0}\propto(T_{c}-T)^{\mathcal{B}},
 \end{equation}
 
+\end_inset
+
+La susceptibilidad isotérmica se relaciona con la temperatura por el exponente criticó 
+\begin_inset Formula $\gamma$
 \end_inset
 
 
 \begin_inset Formula 
 \begin{equation}
-M|_{T=T_{C}}\propto B^{1/\delta},
+\chi_{T}=\pdv{M}{B}\Big{|}_{T,B=0}\propto|T-T|^{\gamma},\quad\mathrm{si}\quad T\lesssim T_{c}.
 \end{equation}
 
+\end_inset
+
+El calor especificó se relaciona con la temperatura por el exponente criticó 
+\begin_inset Formula $\alpha$
 \end_inset
 
 
 \begin_inset Formula 
 \begin{equation}
-C=-T\pdv[2]{\mathcal{F}}{T}\propto(T-T_{c})^{-\alpha},
+c_{B}=-T\pdv[2]{\mathcal{F}}{T}\propto(T-T_{c})^{-\alpha},
 \end{equation}
 
+\end_inset
+
+La longitud de correlación se relaciona con la temperatura por el exponente criticó 
+\begin_inset Formula $\nu$
 \end_inset
 
 
 \begin_inset Formula 
 \begin{equation}
-\xi\propto(T-T_{c})^{-\nu}.
+\xi\propto|T-T_{c}|^{-\nu}.
+\end{equation}
+
+\end_inset
+
+Las variables termodinámicas se relacionan por los exponentes críticos siguiendo la ecuación 
+\begin_inset Formula 
+\begin{equation}
+\alpha+2\mathcal{B}+\gamma=2.
 \end{equation}
 
 \end_inset
@@ -3425,8 +3623,7 @@ Mecanismo de Kibble-Zurek
 \end_layout
 
 \begin_layout Standard
-La ruptura de simetría en un sistema,
- es un fenómeno en el que este pasa de un estado desordenado y simétrico a un estado ordenado con menos simetrías.
+La ruptura de simetría en un sistema es un fenómeno en el que este pasa de un estado desordenado y simétrico a un estado ordenado con menos simetrías.
  Algunos ejemplos son:
 \end_layout
 
@@ -3437,7 +3634,7 @@ Cuando el agua se congela,
 
 \begin_layout Itemize
 En el universo temprano,
- la ruptura de la simetría puede haber conducido a la formación de defectos topológicos como monopolos cuasipuntuales,
+ la ruptura de una simetría puede haber conducido a la formación de defectos topológicos como monopolos cuasipuntuales,
  cuerdas cósmicas lineales o paredes de dominio planares.
 \end_layout
 
@@ -3452,34 +3649,87 @@ He en estado superfluidico,
 \end_inset
 
 .
- La ruptura de la simetría favorece la formación de vórtices.
+ La ruptura de la simetría depende de la densidad de vórtices.
 \end_layout
 
 \begin_layout Standard
-En estos sistemas,
+En los últimos dos ejemplos,
  los defectos topológicos remanentes son objetos inherentemente estables que pueden proporcionar pistas observacionales sobre cómo era el sistema en el momento en que se formaron.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+There is now very good reason to believe that elementary particles and their interactions are described by a spontaneously broken gauge theory.
+ It is a very attractive hypothesis that the weak,
+ electromagnetic and strong interactions are all united at extremely high energies in a grand unified theory [5,
+ 6],
+ described by a group such as SU(5).
+ Then there are at least two distinct stages in the spontaneous symmetry breaking.
+ At a grand unification mass,
+ around 1015 GeV,
+ we have I shall suppose for pedagogical reasons that the spontaneous symmetry breaking mechanism is via T.
+ W.B.
+ Kibble,
+ Some implications of a cosmological phase transition the acquisition of a non-zero vacuum expectation value by a Higgs scaler field.
+ However,
+ this is an inessential assumption.
+ It would really make little difference to our arguments if this fundamental scalar field were replaced by a composite structure,
+ like a Cooper pair [7].
+ Moreover,
+ I shall ignore fermions altogether.
+ Provided the number of species is reasonably small,
+ they have little effect on the qualitative behaviour of the universe in its early stages.
+ Too many fermions,
+ however,
+ would spoil the asymptotic freedom,
+ changing the sign of the renormalization group function f3(g) so that g ~ rather than tending to zero at high energies [8].
+ I shall assume that such a catastrophe does not occur.
+ (If it does,
+ all bets are off:
+ we can calculate nothing at all about the early universe.) Let us consider a typical gauge theory,
+ described by the lagrangian density
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para entender el concepto de ruptura de simetría,
+ consideremos un sistema con la simetría de translación.
+ Por encima de la energía del estado vacío,
+ el sistema permanece invariante a translaciones.
+ Al pasar por debajo de la energía mínima,
+ súbitamente el sistema deja de ser invariante a a translaciones.
+ Esto es ruptura de la simetría de translación.
+ En general el concepto aplica a cualquier simetría de un sistema que se rompe súbitamente por debajo de una energía mínima.
+ Basándose en el concepto de ruptura de simetría Kibble introdujo la idea de fluctuaciones primordiales.
+ En un sistema que pasa continuamente por una ruptura de simetría,
+ un parametro de orden difiere en las regiones no correlaciones.
+ Formando regiones asiladas conocidas como dominios.
+ Dependiendo del sistema estos dominios son defectos tipos de defectos topológicos;
+ pueden ser vórtices,
+ cuerdas cósmicas,
+ monopolos magnéticos etc.
+ 
 \end_layout
 
 \begin_layout Standard
 La esencia del mecanismo de Kibble-Zurek esta en la aleatoriedad en la ruptura de la simetría de dominios en un sistema.
- Estos dominios están determinados por el tiempo de relajación 
+ El tamaño de los dominios está determinado por el tiempo de relajación 
 \begin_inset Formula $\tau$
 \end_inset
 
-,
- la longitud de correlación 
+ y la longitud de correlación 
 \begin_inset Formula $\xi$
 \end_inset
 
- y la carga topológica 
-\begin_inset Formula $\chi_{t}$
-\end_inset
-
 .
- La ley de escalamiento describe en la relación entre los defectos topológicos remanentes respecto a la tasa de enfriamiento en un sistema que pasa por la temperatura crítica.
- En estas transiciones el comportamiento es universal,
+ La ley de escalamiento describe la relación entre los defectos topológicos remanentes respecto a la tasa de enfriamiento en un sistema que pasa por la temperatura crítica.
+ En estas transiciones,
  la clase de universalidad está determinada por propiedades fundamentales como la simetría de un parámetro de orden,
- el rango de interacciones o la dimensionalidad por lo que de gran interés clasificar los diferentes modelos en sus respectivas clases de universalidad 
+ el rango de interacciones o la dimensionalidad por lo que es de gran interés clasificar los diferentes modelos en sus respectivas clases de universalidad 
 \begin_inset CommandInset citation
 LatexCommand autocite
 key "lin_topological_2014"
@@ -3497,7 +3747,7 @@ Evolución del universo temprano
 
 \begin_layout Standard
 Consideremos el universo temprano en expansión.
- En modelos de interacción débil y electromagnetismo,
+ En el sector electrodébil del ME,
  la temperatura crítica es del orden 
 \begin_inset Formula $\sqrt{G_{F}}$
 \end_inset
@@ -3509,16 +3759,12 @@ Consideremos el universo temprano en expansión.
 
  es la constante de Fermi.
  Siguiendo dicha suposición,
- el universo paso por la temperatura crítica entre 
-\begin_inset Formula $10^{-\text{10}}s$
-\end_inset
-
- y 
+ el universo páso por una ruptura de simetría en 
 \begin_inset Formula $10^{-12}s$
 \end_inset
 
 .
- 
+ Kibble propuso que esta ruptura de simetría dio lugar a la formación de defectos topológicos en el universo temprano.
 \end_layout
 
 \begin_layout Standard
@@ -3537,30 +3783,34 @@ Consideremos un campo multi-escalar
 \begin_inset Formula 
 \begin{equation}
 \begin{array}{c}
-\mathcal{L}=\frac{1}{2}\left(D_{\mu}\vec{\phi}\right)^{2}-\frac{1}{8}g^{2}\left(\phi^{2}-\eta^{2}\right)^{2}+\frac{1}{8}\mathrm{Tr}\left(B_{\mu\nu}B^{\mu\nu}\right)\\
-D_{\mu}\left(\vec{\phi}\right)=\left(\partial_{\mu}-qB_{\mu}\right)\text{\ensuremath{\vec{\phi}}}\\
-B_{\mu\nu}=O\mu\nu B\mu\nu-D_{\nu}B\mu+q\left[B_{\mu},B_{\nu}\right].
+\mathcal{L}=\frac{1}{2}D_{\mu}\vec{\phi}D_{\mu}\vec{\phi}-\frac{1}{8}g^{2}\left(\phi^{2}-\eta^{2}\right)^{2}+\frac{1}{8}\mathrm{Tr}\left(B_{\mu\nu}B^{\mu\nu}\right)\\
+D_{\mu}\vec{\phi}=\left(\partial_{\mu}-qB_{\mu}\right)\text{\ensuremath{\vec{\phi}}}\\
+B_{\mu\nu}=D\mu B_{\nu}-D_{\nu}B\mu+q\left[B_{\mu},B_{\nu}\right].
 \end{array}
 \end{equation}
 
 \end_inset
 
-dónde 
-\begin_inset Formula $g,\nu$
+donde 
+\begin_inset Formula $g,q$
 \end_inset
 
  son constantes de acoplamiento.
  A temperatura 
-\begin_inset Formula $T$
+\begin_inset Formula $T=0$
 \end_inset
 
- cero hay una ruptura espontánea de la simetría a O(
+ hay una ruptura espontánea de O(
+\begin_inset Formula $n$
+\end_inset
+
+) la simetría a O(
 \begin_inset Formula $n-1$
 \end_inset
 
 ),
  por lo que la variedad del estado de menor energía es la esfera 
-\begin_inset Formula $\mathcal{S}^{n-1}$
+\begin_inset Formula $\mathcal{S}^{n-2}$
 \end_inset
 
 
@@ -3578,8 +3828,8 @@ Para
 
 .
  por debajo de la temperatura crítica,
- el valor esperado es algún punto en 
-\begin_inset Formula $\mathcal{S}^{n-\text{1}}$
+ el valor esperado corresponde a algún punto en 
+\begin_inset Formula $\mathcal{S}^{n-\text{2}}$
 \end_inset
 
 .
@@ -3608,6 +3858,10 @@ Ningún punto de la esfera tiene preferencia,
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Una posibilidad es la neutralidad del universo respecto a las cargas del campo 
 \begin_inset Formula $\vec{\phi}$
 \end_inset
@@ -3619,7 +3873,11 @@ Una posibilidad es la neutralidad del universo respecto a las cargas del campo
 \end_inset
 
 .
- La otra posibilidad es que el universo podría tener una carga 
+\end_layout
+
+\end_inset
+
+ Una posibilidad es que el universo podría tener una carga 
 \begin_inset Formula $q_{t_{0}}$
 \end_inset
 
@@ -3628,12 +3886,17 @@ Una posibilidad es la neutralidad del universo respecto a las cargas del campo
 \end_inset
 
 .
- En este caso,
- la ruptura de la simetría sería fijado a las condiciones iniciales,
  impidiendo el surgimiento de estructuras de dominio.
- Consideremos el primer caso,
- que permite la formación de dominios.
- El tamaño de estos dominios está determinado por la longitud de correlación
+ Consideremos en cambio que el universo permite la formación de dominios.
+ El tamaño de estos dominios está determinado por la longitud de correlación 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "kibble_topology_1976"
+literal "false"
+
+\end_inset
+
+
 \begin_inset Formula 
 \begin{equation}
 \xi^{-1}\approx g^{2}T.
@@ -3647,10 +3910,15 @@ Una posibilidad es la neutralidad del universo respecto a las cargas del campo
 \begin_layout Standard
 Es interesante revisar las posibles configuraciones geométricas de estos dominios.
  Las transiciones de fase de ruptura de simetría en el universo temprano podrían haber formado estructuras topológicamente estables.
+ Las cuerdas cósmicas son defectos topológicos unidimensionales que resultan de la ruptura de la simetría O(
+\begin_inset Formula $n$
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
-Un problema que surgió al intentar hacer predicciones sobre las cuerdas cósmicas fue estimar cuántas habría.
+Un problema que surgió al intentar hacer predicciones sobre las cuerdas cósmicas fue su estimación.
  Una elección aleatoria de fases debería conducir a una maraña aleatoria de cuerdas,
  caracterizada por una escala de longitud típica 
 \begin_inset Formula $\xi$
@@ -3660,8 +3928,7 @@ Un problema que surgió al intentar hacer predicciones sobre las cuerdas cósmic
 \end_layout
 
 \begin_layout Standard
-Desafortunadamente,
- esa idea no funcionó.
+Desafortunadamente todavía no se han detectado cuerdas cósmicas.
  Las observaciones realizadas por COBE y más recientemente por WMAP 
 \begin_inset CommandInset citation
 LatexCommand autocite
@@ -3673,10 +3940,10 @@ literal "false"
  de la pequeña anisotropía en el fondo cósmico de microondas revelan una escala de distancia preferencial que las cuerdas cósmicas no pueden explicar.
  Afortunadamente,
  existen análogos de cuerdas cósmicas en muchos sistemas de materia condensada,
- incluidos las líneas de vórtice en superfluidos
+ incluidos las líneas de vórtice en superfluidos 
 \begin_inset CommandInset citation
 LatexCommand autocite
-key "kibble_topology_1976,kibble_phase-transition_2007,kibble_implications_1980"
+key "kibble_phase-transition_2007,zurek_cosmological_1985,kibble_implications_1980"
 literal "false"
 
 \end_inset
@@ -3698,9 +3965,9 @@ En 1985,
 \end_inset
 
  podrían probarse aplicándolas al problema de la formación de defectos en una transición de fase de baja temperatura,
- en particular la transición de normal a superfluido en helio líquido.
- Zurek demostró que en una transición de segundo orden,
- se podía obtener una relación de ley de potencia entre 
+ en particular la transición de un fluido normal a un superfluido en helio líquido.
+ Zurek mostró que en una transición de segundo orden,
+ se puede obtener una relación de ley de potencia entre 
 \begin_inset Formula $ξ$
 \end_inset
 
@@ -3709,23 +3976,47 @@ En 1985,
 \end_inset
 
 .
- El parámetro 
+ La tasa de enfriamiento 
 \begin_inset Formula $τ_{\mathrm{cool}}$
 \end_inset
 
- se define de modo que la tasa de cambio de temperatura en el punto crítico sea 
+ se define de modo que la tasa de cambio lineal de temperatura en el punto crítico sea 
 \begin_inset Formula $dT/dt=−T_{c}/τ_{\mathrm{cool}}$
 \end_inset
 
- y el exponente 
+ y el exponente critico 
 \begin_inset Formula $\zeta$
 \end_inset
 
- se pueda calcular en términos de índices críticos conocidos de la transición de fase.
- 
+ se define se pueda calcular en términos de índices críticos y se define como
 \begin_inset Formula 
 \begin{equation}
-\xi\propto\tau_{\mathrm{cool}}^{-\frac{\nu}{1+\nu z}}
+\zeta=\frac{d\nu}{1+\nu z},
+\end{equation}
+
+\end_inset
+
+ donde 
+\begin_inset Formula $\nu$
+\end_inset
+
+ y 
+\begin_inset Formula $z$
+\end_inset
+
+ son exponentes críticos y 
+\begin_inset Formula $d$
+\end_inset
+
+ es la dimensión espacial.
+ La longitud de correlación 
+\begin_inset Formula $\xi$
+\end_inset
+
+ se relaciona con la tasa de enfriamiento siguiendo la expresión
+\begin_inset Formula 
+\begin{equation}
+\xi\propto\tau_{\mathrm{cool}}^{-\zeta}.
 \end{equation}
 
 \end_inset
@@ -3734,14 +4025,22 @@ En 1985,
 \end_layout
 
 \begin_layout Standard
-Existe una analogía entre cuerdas cósmicas y líneas de vórtice.
- En un superfluido,
- tras un súbito decaimiento de presión,
- la fase de la función de onda en el condensado de helio es análoga a la ruptura de simetría del campo de multi-escalar 
+Pasando por un súbito decaimiento de presión,
+ la fase de la función de onda en el condensado de helio 
+\begin_inset Formula $^{4}$
+\end_inset
+
+He es análoga a la ruptura de simetría del campo de multi-escalar 
 \begin_inset Formula $\vec{\phi}\in\mathbb{R}^{2}$
 \end_inset
 
 .
+ Para un superfluido de 
+\begin_inset Formula $^{4}$
+\end_inset
+
+He que pasa por una ruptura de simetría.
+ Existe un análogo a las cuerdas cósmicas presentes en el modelo del universo temprano llamadas lineas de vórtice.
 \end_layout
 
 \begin_layout Standard
@@ -3755,20 +4054,20 @@ V=\alpha\abs{\psi\left(\vec{r}\right)}^{2}+\frac{1}{2}\beta\abs{\psi\left(\vec{r
 \end_inset
 
 dónde 
-\begin_inset Formula $\alpha=\alpha'(T-T_{c})$
+\begin_inset Formula $\alpha'=\alpha(T-T_{c})$
 \end_inset
 
  y 
-\begin_inset Formula $\alpha',\beta$
+\begin_inset Formula $\alpha,\beta$
 \end_inset
 
- son constantes que se deducen a partir del calor especifico.
+ son las exponentes críticos relacionadas al calor especifico .
  Por debajo de la temperatura crítica,
  tras la ruptura de la simetría en el superfluido 
 \begin_inset Formula $\alpha$
 \end_inset
 
- es un valor negativo y el potencial 
+ es un coeficiente negativo y el potencial 
 \begin_inset Formula $V$
 \end_inset
 
@@ -3776,33 +4075,33 @@ dónde
 \end_layout
 
 \begin_layout Standard
-El parámetro de orden de un superfluido puede pensarse como la función de onda del condensado de Bose.
- En este sistema se pueden formar lineas de vórtice cuando el parámetro de orden es un valor complejo
+El parámetro de orden de un superfluido,
+ puede pensarse como la función de onda del condensado de Bose.
+ La fución de onda es de la forma
 \begin_inset Formula 
 \begin{equation}
-\psi=\abs{\psi}e^{i\theta}.
+\psi=\abs{\psi}e^{i\theta}
 \end{equation}
 
 \end_inset
 
-Es una situación análoga al modelo cosmológico y una buena aproximación al superfluido 
-\begin_inset Formula $^{4}$
+ donde 
+\begin_inset Formula $\theta$
 \end_inset
 
-He.
- En particular para un spuerfluido cerca de la temperatura crítica 
+ es una fase relacionada a la velocidad del fluido.
+ En este sistema se pueden formar líneas de vórtices cuando el parámetro de orden es un valor complejo.
+ El resultado da lugar una situación análoga al modelo cosmológico.
+ Pasando por debajo de la temperatura crítica 
 \begin_inset Formula $T_{c}$
 \end_inset
 
-,
-\end_layout
-
-\begin_layout Standard
-Una fracción considerable de los átomos de 
+.
+ Una fracción considerable de los átomos de 
 \begin_inset Formula $^{4}$
 \end_inset
 
-He ocupa un solo estado cuántico a esa temperatura.
+He ocupa un sólo estado cuántico.
  Entonces 
 \begin_inset Formula $\psi$
 \end_inset
@@ -3813,7 +4112,8 @@ He ocupa un solo estado cuántico a esa temperatura.
 \end_inset
 
  representa la densidad de la fracción superfluida.
- Una cuerda,
+ En este caso,
+ una cuerda,
  o cualquiera de sus defectos análogos,
  es un tubo delgado alrededor del cual la fase de 
 \begin_inset Formula $\psi$
@@ -3823,9 +4123,7 @@ He ocupa un solo estado cuántico a esa temperatura.
 \begin_inset Formula $2π$
 \end_inset
 
-.
- En He,
- la velocidad superfluida es proporcional al gradiente de la fase
+ 
 \begin_inset CommandInset citation
 LatexCommand autocite
 key "zurek_cosmological_1985,kosterlitz_long_1972,kosterlitz_nobel_2017"

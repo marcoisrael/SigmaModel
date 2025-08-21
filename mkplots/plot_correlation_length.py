@@ -8,7 +8,6 @@ import argparse
 parser = argparse.ArgumentParser(prog="plot_length")
 parser.add_argument("-alg", "--algorithm", default="lexic_metropolis")
 args = parser.parse_args()
-make_plots = True
 os.makedirs("output/plot/length/", exist_ok=True)
 if args.algorithm == "all":
     algs = ["lexic_metropolis", "lexic_glauber",
@@ -42,28 +41,7 @@ for alg in algs:
             xfit.fiting(f, args={"bounds": ((0, np.inf))})
             psi.append(xfit.opt[1])
             psiErr.append(xfit.error[1])
-            if make_plots:
-                fig, ax = plt.subplots()
-                x = np.linspace(0, LENGTH, 100)
-                ax.errorbar(
-                    data[:, 0],
-                    data[:, 1],
-                    yerr=data[:, 2],
-                    fmt="o",
-                    capsize=3,
-                    elinewidth=1,
-                    markersize=5,
-                    color="red",
-                )
-                ax.plot(x, f(x, *xfit.opt), linewidth=1.8, ls=(0, (3, 3)),color="blue")
-                ax.set_ylabel(r"$\langle\vec{\sigma_i}\cdot\vec{\sigma_0}\rangle_c$", fontsize=18)
-                ax.set_xlabel(r"$i$", fontsize=18)
-                fig.savefig(
-                    f"output/plot/correlation_length/lexic_metropolis_L{LENGTH}_{temp}.png"
-                )
-                print(temp, xfit.opt[1])
-                plt.close()
-
+           
         psi = np.array(psi)
         ax.errorbar(
             T,
