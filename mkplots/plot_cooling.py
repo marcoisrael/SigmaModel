@@ -39,9 +39,10 @@ def f3(x, a, b):
 params = {
         "charge": {"index": 2, "ylabel": r"$\chi_t$", "ylabel2":
                    r"$\chi_{t_f}$", "func": f1},
-    "energy": {"index": 4, "ylabel": r"$h$", "ylabel2":
-               r"$h_f$", "func": f1},
-    "magnet": {"index": 6, "ylabel": r"$M$", "ylabel2": r"$M_f$", "func": f3},
+    "energy": {"index": 4, "ylabel": r"$\langle h \rangle$", "ylabel2":
+               r"$\langle h \rangle_f$", "func": f1},
+    "magnet": {"index": 6, "ylabel": r"$\langle M \rangle$", "ylabel2":
+               r"$\langle M \rangle_f$", "func": f3},
 }
 colors = {8: "red", 10: "blue", 16: "green"}
 lines = {8: (0, (3, 3)), 10: (0, (5, 1)), 16: (0, (5, 5))}
@@ -52,6 +53,7 @@ for alg in algs:
     path = "output/cooling/L64/4-0"
     indexes = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
     fig1, ax1 = plt.subplots()
+    fig3, ax3 = plt.subplots()
     for i in indexes:
         data = np.loadtxt(
             f"{path}/{alg} {i}.csv",
@@ -72,6 +74,17 @@ for alg in algs:
                 markersize=8,
                 label=f"$\\tau_Q={i}$",
             )
+            ax3.errorbar(
+                data[1],
+                data[ob],
+                data[ob + 1],
+                color=colors[i],
+                ls="",
+                marker=markers[i],
+                markersize=8,
+                label=f"$\\tau_Q={i}$",
+            )
+
             # f = lambda x, a, b,c:c/(1+np.exp((x-a)/b))
             # xfit = fit(data[0],data[ob],data[ob+1])
             # xfit.fiting(f)
@@ -80,10 +93,16 @@ for alg in algs:
             # linestyle=lines[i],label=f"$\\tau_{{\\mathrm{{cool}}}}={i}$")
     
     ax1.legend()
-    ax1.set_xlabel(r"$t$", fontsize=18)
+    ax1.set_xlabel(r"$t$[barridos]", fontsize=18)
     ax1.set_ylabel(params[obs]["ylabel"], fontsize=18)
     fig1.savefig(
         f"output/plot/cooling/{obs}_{alg}.pdf", format="pdf", bbox_inches="tight"
+    )
+    ax3.legend()
+    ax3.set_xlabel(r"$T$", fontsize=18)
+    ax3.set_ylabel(params[obs]["ylabel"], fontsize=18)
+    fig3.savefig(
+        f"output/plot/cooling/{obs}_temp_{alg}.pdf", format="pdf", bbox_inches="tight"
     )
 
     X = np.array(X).transpose()
@@ -118,8 +137,11 @@ for alg in algs:
             linewidth=1.8,
             color="tab:blue",
             linestyle=(0,(3,3)),
-            label=params[obs]["ylabel2"]+r", $\zeta=$"+fix(xfit.opt[1],xfit.error[1]),
+            label=params[obs]["ylabel2"],
             )
+    text = r"$\zeta=$"+fix(xfit.opt[1],xfit.error[1])
+    ax2.text(0.96,0.96,text,fontsize=12,ha="right",va="top",transform=ax2.transAxes,
+            bbox=dict(facecolor='none', edgecolor='black'))
     ax2.set_ylabel(params[obs]["ylabel2"], fontsize=20)
     ax2.set_xlabel(r"$\tau_\mathrm{cool}$", fontsize=20)
     ax2.set_yscale("log")
@@ -131,7 +153,7 @@ for alg in algs:
     #     axis.set_major_formatter(formatter)
     #     axis.set_minor_formatter(formatter)
     ax1.legend(fontsize=12)
-    ax2.legend(fontsize=12) 
+    # ax2.legend(fontsize=12) 
     #ax2.set_xticks([8,9,10,11,13,15,18])
     fig2.savefig(
         f"output/plot/cooling/scaling_law_{obs}_{alg}.pdf",

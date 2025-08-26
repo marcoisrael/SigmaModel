@@ -242,18 +242,6 @@ maketitle
 
 \end_layout
 
-\begin_layout Chapter*
-Agradecimientos
-\end_layout
-
-\begin_layout Standard
-Aquí van los agradecimientos.
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -279,6 +267,13 @@ status open
 
 \backslash
 begingroup
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+small
 \end_layout
 
 \begin_layout Plain Layout
@@ -422,7 +417,7 @@ dónde
  es la constante de Boltzmann.
  Usando la función de partición es posible derivar funciones de estado de un sistema como la entropía,
  el valor esperado de la energía interna etc.
- Los métodos de Monte Carlo son una forma práctica de calcular numéricamente las observables derivadas la función de partición.
+ Y afortunadamente los métodos de Monte Carlo son una forma práctica de calcular numéricamente las observables derivadas la función de partición.
 \end_layout
 
 \begin_layout Section
@@ -626,7 +621,7 @@ Consideremos el caso de la partícula libre dónde
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-K\left(q,q';t\right)=\mel{q'}{\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}}{q}.\label{eq:propagador}
+K\left(q,q';t\right):=\mel{q'}{\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}}{q}.\label{eq:propagador}
 \end{equation}
 
 \end_inset
@@ -1051,7 +1046,7 @@ g_{M}=\left(\begin{array}{cccc}
 
 \end_inset
 
- dónde el valor 
+ dónde 
 \begin_inset Formula $-1$
 \end_inset
 
@@ -1484,7 +1479,10 @@ Representación de un espín clásico
 \begin_layout Standard
 Antes que nada,
  es importante definir una notación clara y simple para referir los sitios y los espines.
- Un sitio está dado por su posición en la retícula en dos dimensiones se representa por pares de coordenadas 
+\end_layout
+
+\begin_layout Standard
+Un sitio está dado por su posición en la retícula en dos dimensiones se representa por pares de coordenadas 
 \begin_inset Formula $x=(x_{1},x_{2})$
 \end_inset
 
@@ -1493,7 +1491,11 @@ Antes que nada,
 \end_inset
 
 .
- Un espín 
+ 
+\end_layout
+
+\begin_layout Standard
+Un espín 
 \begin_inset Formula $\vec{s}_{x}$
 \end_inset
 
@@ -1555,7 +1557,11 @@ El modelo 2d O
 
 .
  Cada espín es una fuente de magnetización e interactúa con el resto de espines directa o indirectamente siguiendo un potencial de interacción.
- Típicamente el impacto de un espín decae exponencialmente con la distancia,
+ 
+\end_layout
+
+\begin_layout Standard
+Típicamente el impacto de un espín decae exponencialmente con la distancia,
  como la contribución de los espines lejanos es órdenes de magnitud inferior a la de los vecinos más cercanos,
  se opta por despreciar esas interacciones.
  
@@ -1901,13 +1907,16 @@ Desde un punto de vista microscópico,
  las variables mecánicas dependen de la configuración del sistema.
  A lo largo de un intervalo temporal,
  se espera que un sistema físico pase por múltiples configuraciones.
- Cuando se perturba un sistema en equilibrio,
+\end_layout
+
+\begin_layout Standard
+Cuando se perturba un sistema en equilibrio,
  las variables mecánicas del sistema cambian.
  El tiempo que el sistema tarda en alcanzar nuevamente el equilibrio termodinámico es conocido como tiempo de relajación.
 \end_layout
 
 \begin_layout Standard
-Se busca calcular el promedio de un observable en un sistema en equilibrio termodinámico por un intervalo temporal suficientemente amplio como para reducir las fluctuaciones por debajo de un umbral de error.
+Se busca calcular el promedio de un observable en un sistema en equilibrio termodinámico por un intervalo temporal suficientemente amplio como para reducir las fluctuaciones por debajo de un umbral de error deseado.
  El valor esperado de la observable,
  es el promedio de los valores obtenidos por las configuraciones en el tiempo.
 \end_layout
@@ -2028,8 +2037,7 @@ Considerando un intervalo del
 \end_inset
 
 ,
- como el ancho de una distribución típica,
- el error converge a cero conforme aumenta el numero de mediciones.
+ como el ancho de una distribución típica
 \begin_inset Formula 
 \begin{equation}
 \lim_{N\rightarrow\infty}\mathrm{error}(\mathcal{H})=\frac{1}{\sqrt{N}}.
@@ -2061,7 +2069,11 @@ En el modelo 2d O(
 
 ),
  la temperatura es un parámetro que añade ruido (fluctuaciones que cambian las direcciones de los espines).
- La magnetización 
+ 
+\end_layout
+
+\begin_layout Standard
+La magnetización 
 \begin_inset Formula $M$
 \end_inset
 
@@ -2086,7 +2098,7 @@ M_{\mathrm{max}}=\frac{1}{V}\abs{\sum_{x}\vec{s}_{x}}=\frac{1}{V}\abs{V\vec{s}}=
 \end_layout
 
 \begin_layout Standard
-Se puede medir la magnetización aproximada en un intervalo temporal calculando el promedio de las magnetizaciones en ese intervalo.
+Se puede medir la magnetización de aproximada en un intervalo temporal calculando el promedio de las magnetizaciones en ese intervalo.
  El promedio aproximado de la magnetización es 
 \begin_inset Formula 
 \begin{equation}
@@ -2108,8 +2120,7 @@ Considerando un intervalo del
 \end_inset
 
 ,
- como el ancho de una distribución típica,
- el error converge a cero conforme aumenta el numero de mediciones.
+ como el ancho de una distribución típica
 \begin_inset Formula 
 \begin{equation}
 \lim_{N\rightarrow\infty}\mathrm{error}(M)=\frac{1}{\sqrt{N}}.
@@ -2140,7 +2151,11 @@ En el modelo O(
 \end_inset
 
 .
- En el modelo hay dos simetrías importantes:
+ 
+\end_layout
+
+\begin_layout Standard
+En el modelo hay dos simetrías importantes:
  la primera es la inviariancia de la energía interna por la rotación de espines con el grupo O(
 \begin_inset Formula $3$
 \end_inset
@@ -2607,6 +2622,48 @@ El cuadrado de la carga dividido por el volumen es la susceptibilidad topológic
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Una pregunta crucial respecto a la susceptibilidad topológica es,
+ si es un valor finito en el limite al continuo.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+El modelo 2d O(3) presenta libertad asintótica,
+ por lo que los sectores topológicos están bien definidos.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Hay una divergencia en el termino 
+\begin_inset Formula $x=0$
+\end_inset
+
+.
+ Por otro lado conforme la longitud de correlación aumenta el parametro de escala 
+\begin_inset Formula $L/\xi$
+\end_inset
+
+ aumenta lentamente normalizando la susceptibilidad como 
+\begin_inset Formula 
+\begin{equation}
+\expval{Q^{2}}=L²\chi_{t.}
+\end{equation}
+
+\end_inset
+
+El consenso respecto a esta pregunta indica que la susceptibilidad topología diverge cuando la longitud de correlación diverge en diferentes sistemas con la misma clase de universalidad
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Chapter
@@ -3107,7 +3164,10 @@ La escala natural de un sistema está determinada por la longitud de correlació
 \end_inset
 
 .
- En los modelos de espín la función de correlación mide que tan fuertemente se afectan dos espines 
+\end_layout
+
+\begin_layout Standard
+En los modelos de espín la función de correlación mide que tan fuertemente se afectan dos espines 
 \begin_inset Formula $\vec{s}_{x},\vec{s}_{y}\in\mathcal{S}^{2}$
 \end_inset
 
@@ -3400,41 +3460,51 @@ Debido al número de elementos que interactúan en un modelo microscópico reali
  
 \end_layout
 
-\begin_layout Standard
-Como ejemplo;
- en el modelo 2d O(
-\begin_inset Formula $3$
-\end_inset
-
-) una pregunta crucial respecto a la susceptibilidad topológica es,
- si es un valor finito en el limite al continuo.
- El modelo 2d O(3) presenta libertad asintótica,
- por lo que los sectores topológicos están bien definidos.
-\end_layout
-
-\begin_layout Standard
-Hay una divergencia en el termino 
-\begin_inset Formula $x=0$
-\end_inset
-
-.
- Por otro lado conforme la longitud de correlación aumenta el parametro de escala 
-\begin_inset Formula $L/\xi$
-\end_inset
-
- aumenta lentamente normalizando la susceptibilidad como 
-\begin_inset Formula 
-\begin{equation}
-\expval{Q^{2}}=L²\chi_{t.}
-\end{equation}
-
-\end_inset
-
-El consenso respecto a esta pregunta indica que la susceptibilidad topología diverge cuando la longitud de correlación diverge en diferentes sistemas con la misma clase de universalidad.
-\end_layout
-
 \begin_layout Section
 Escalamiento
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The scaling hypothesis has two
+\end_layout
+
+\begin_layout Plain Layout
+categories of predictions,
+ both of which have been remarkably well verified by a wealth
+\end_layout
+
+\begin_layout Plain Layout
+of experimental data on diverse systems.
+ The first category is a set of relations,
+ called
+\end_layout
+
+\begin_layout Plain Layout
+scaling laws,
+ that serve to relate the various critical-point exponents.
+ For example,
+ the
+\end_layout
+
+\begin_layout Plain Layout
+exponents a,
+ 2{3,
+ and y describing the three functions C H ,
+ M2,
+ and XT are related by
+\end_layout
+
+\begin_layout Plain Layout
+the simple scaling law a + 2 {3 + y= 2.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3553,7 +3623,7 @@ Mecanismo de Kibble-Zurek
 \end_layout
 
 \begin_layout Standard
-La ruptura de simetría en un sistema es un fenómeno en el que este pasa de un estado desordenado y simétrico a un estado ordenado y con menos simetrías.
+La ruptura de simetría en un sistema es un fenómeno en el que este pasa de un estado desordenado y simétrico a un estado ordenado con menos simetrías.
  Algunos ejemplos son:
 \end_layout
 
@@ -3585,21 +3655,55 @@ He en estado superfluidico,
 \begin_layout Standard
 En los últimos dos ejemplos,
  los defectos topológicos remanentes son objetos inherentemente estables que pueden proporcionar pistas observacionales sobre cómo era el sistema en el momento en que se formaron.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+There is now very good reason to believe that elementary particles and their interactions are described by a spontaneously broken gauge theory.
+ It is a very attractive hypothesis that the weak,
+ electromagnetic and strong interactions are all united at extremely high energies in a grand unified theory [5,
+ 6],
+ described by a group such as SU(5).
+ Then there are at least two distinct stages in the spontaneous symmetry breaking.
+ At a grand unification mass,
+ around 1015 GeV,
+ we have I shall suppose for pedagogical reasons that the spontaneous symmetry breaking mechanism is via T.
+ W.B.
+ Kibble,
+ Some implications of a cosmological phase transition the acquisition of a non-zero vacuum expectation value by a Higgs scaler field.
+ However,
+ this is an inessential assumption.
+ It would really make little difference to our arguments if this fundamental scalar field were replaced by a composite structure,
+ like a Cooper pair [7].
+ Moreover,
+ I shall ignore fermions altogether.
+ Provided the number of species is reasonably small,
+ they have little effect on the qualitative behaviour of the universe in its early stages.
+ Too many fermions,
+ however,
+ would spoil the asymptotic freedom,
+ changing the sign of the renormalization group function f3(g) so that g ~ rather than tending to zero at high energies [8].
+ I shall assume that such a catastrophe does not occur.
+ (If it does,
+ all bets are off:
+ we can calculate nothing at all about the early universe.) Let us consider a typical gauge theory,
+ described by the lagrangian density
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Para entender el concepto de ruptura de simetría,
  consideremos un sistema con la simetría de translación.
- El comportamiento esperado es el siguiente:
  Por encima de la energía del estado vacío,
  el sistema permanece invariante a translaciones.
  Al pasar por debajo de la energía mínima,
  súbitamente el sistema deja de ser invariante a a translaciones.
- 
-\end_layout
-
-\begin_layout Standard
-En general el concepto aplica a cualquier simetría de un sistema que se rompe súbitamente por debajo de una energía mínima.
+ Esto es ruptura de la simetría de translación.
+ En general el concepto aplica a cualquier simetría de un sistema que se rompe súbitamente por debajo de una energía mínima.
  Basándose en el concepto de ruptura de simetría Kibble introdujo la idea de fluctuaciones primordiales.
  En un sistema que pasa continuamente por una ruptura de simetría,
  un parametro de orden difiere en las regiones no correlaciones.
@@ -3845,7 +3949,6 @@ literal "false"
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Section
@@ -3862,11 +3965,7 @@ En 1985,
 \end_inset
 
  podrían probarse aplicándolas al problema de la formación de defectos en una transición de fase de baja temperatura,
- en particular la transición de un fluido normal a un superfluido en helio 
-\begin_inset Formula $^{4}$
-\end_inset
-
-He líquido.
+ en particular la transición de un fluido normal a un superfluido en helio líquido.
  Zurek mostró que en una transición de segundo orden,
  se puede obtener una relación de ley de potencia entre 
 \begin_inset Formula $ξ$
@@ -3942,7 +4041,10 @@ He es análoga a la ruptura de simetría del campo de multi-escalar
 
 He que pasa por una ruptura de simetría.
  Existe un análogo a las cuerdas cósmicas presentes en el modelo del universo temprano llamadas lineas de vórtice.
- Cerca de la transición de fase ,
+\end_layout
+
+\begin_layout Standard
+Cerca de la transición de fase ,
  el potencial es de la forma
 \begin_inset Formula 
 \begin{equation}
@@ -4030,7 +4132,6 @@ literal "false"
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Chapter
@@ -4362,7 +4463,7 @@ Metropolis es un algoritmo de actualización local.
 \begin_inset Formula $2$
 \end_inset
 
-d O(
+-d O(
 \begin_inset Formula $3$
 \end_inset
 
@@ -4471,7 +4572,10 @@ La prueba de aceptación se repite para cada espín del volumen.
 \end_inset
 
  de espines en el volumen.
- En el modelo 2d O(
+\end_layout
+
+\begin_layout Standard
+En el modelo 2d O(
 \begin_inset Formula $3$
 \end_inset
 
@@ -4514,11 +4618,23 @@ p[s\rightarrow s']p[s]=p[s'\rightarrow s]p[s'].\label{eq:balance_detallado}
 
 \end_inset
 
+Reordenando términos y dividiendo por 
+\begin_inset Formula $Z$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+p[s\rightarrow s']\frac{\mathrm{e}^{-\beta\mathcal{H}[s]}}{Z}=p[s'\rightarrow s]\frac{\mathrm{e}^{-\beta\mathcal{H}[s']}}{Z}.
+\end{equation}
+
+\end_inset
+
 Se propone la probabilidad de aceptación de algoritmo de Glauber como 
 \begin_inset Formula 
 \begin{align}
 p[s\rightarrow s'] & =\frac{\mathrm{e}^{-\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{-\beta\Delta\mathcal{H}}}\nonumber \\
-= & \frac{\mathrm{e}^{-\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{-\beta\Delta\mathcal{H}}}\frac{\mathrm{e}^{\beta\Delta\mathcal{H}}}{\mathrm{e}^{\beta\Delta\mathcal{H}}}\nonumber \\
+= & \frac{\mathrm{e}^{-\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{-\beta\Delta\mathcal{H}}}\frac{\mathrm{e}^{\beta\Delta\mathcal{H}}}{\mathrm{e}^{\beta\Delta\mathcal{H}}}\\
 = & \frac{\mathrm{e}^{\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{\beta\Delta\mathcal{H}}}\mathrm{e}^{-\beta\Delta\mathcal{H}}\nonumber \\
 = & p[s'\rightarrow s]\mathrm{e}^{-\beta\Delta\mathcal{H}}.
 \end{align}
@@ -4793,7 +4909,10 @@ nolink "false"
 \end_inset
 
 .
- En la variante multi-cluster se forman todos los clústeres posibles.
+\end_layout
+
+\begin_layout Standard
+En la variante multi-cluster se forman todos los clústeres posibles.
  Una vez formados,
  se decide si se aplica la transformación con probabilidad 
 \begin_inset Formula $p_{\mathrm{giro}}=1/2$
@@ -4810,12 +4929,19 @@ Tiempo de auto-correlación
 \begin_layout Standard
 La evolución de un sistema se caracteriza por el tiempo de autocorrelación,
  que mide la velocidad a la que un sistema pasa a un estado estadísticamente independiente.
- En general,
+ 
+\end_layout
+
+\begin_layout Standard
+En general,
  la dinámica desacelera considerablemente cerca de un punto crítico.
  La desaceleración crítica es una barrera inevitable,
  ya que en la realidad se dispone de un tiempo de cómputo finito,
  por lo que es de gran interés entender cómo cambia el tiempo de autocorrelación para las diferentes observables del sistema.
- Consideremos una observable 
+\end_layout
+
+\begin_layout Standard
+Consideremos una observable 
 \begin_inset Formula $A$
 \end_inset
 
@@ -4884,7 +5010,11 @@ donde
 \end_inset
 
 .
- El error depende de las oscilaciones del tiempo de autocorrlación al rededor de 
+ 
+\end_layout
+
+\begin_layout Standard
+El error depende de las oscilaciones del tiempo de autocorrlación al rededor de 
 \begin_inset Formula $\tau_{\mathrm{int}}$
 \end_inset
 
@@ -5190,20 +5320,30 @@ hot-start
 \begin_layout Standard
 En el caso de la carga topológica,
  el tiempo de autocorrelación del algoritmo multi-clúster no puede medirse debido a la eficiencia con la que el algoritmo alcanza la configuración de equilibrio.
- En el caso de los algoritmos de actualización local,
+ 
+\end_layout
+
+\begin_layout Standard
+En el caso de los algoritmos de actualización local,
  se nota la desaceleración crítica cerca de la temperatura 
 \begin_inset Formula $T=0$
 \end_inset
 
 .
  La cual es fuerte para os algoritmos locales en comparacion al algoritmo clúster.
- Los tiempos de autocorrelación se calcularon por ajuste a la función exponencial y por integración,
+\end_layout
+
+\begin_layout Standard
+Los tiempos de autocorrelación se calcularon por ajuste a la función exponencial y por integración,
  ambos resultados fueron consistentes para 
 \begin_inset Formula $T\in\left\{ 0.7,0.8,0.9,1.0,1.2,1.4,1.6,1.8,2.0\right\} $
 \end_inset
 
 .
- Finalmente,
+\end_layout
+
+\begin_layout Standard
+Finalmente,
  se ajustó el tiempo de autocorrelación 
 \begin_inset Formula $\tau$
 \end_inset
@@ -6122,7 +6262,6 @@ Los resultados de tiempo del autocorrelación integrada y por ajuste discrepan f
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Section
@@ -6676,7 +6815,7 @@ Multi-clúster
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6741,7 +6880,7 @@ aleatorio
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7105,6 +7244,23 @@ El exponente crítico dinámico
 \end_inset
 
 
+\shape default
+El exponente crítico de autocorrelación no pudo medirse para el algoritmo multi-clúster,
+ tampoco fue posible calcular el exponente crítico dinámico,
+ en consecuencia en la tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab_exp"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ se excluyen los exponentes críticos para el algoritmo multi-clúster
+\shape italic
+.
 \shape default
 
 \begin_inset Float figure
@@ -7960,8 +8116,6 @@ nolink "false"
 \end_inset
 
 .
- El exponente crítico de autocorrelación no pudo medirse para el algoritmo multi-clúster,
- tampoco fue posible calcular el exponente crítico dinámico.
 \end_layout
 
 \begin_layout Standard
@@ -8066,10 +8220,7 @@ Algoritmos locales
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $2.855(5)$
-\end_inset
-
-
+2.855(5)
 \end_layout
 
 \end_inset
@@ -8086,11 +8237,7 @@ Algoritmos locales
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Promedio de los valores calculados para el exponente crítico 
-\begin_inset Formula $\zeta$
-\end_inset
-
- en el mecanismo de Kibble-Zurek,
+Promedio de los valores calculados para el exponente crítico en el mecanismo de Kibble-Zurek,
  exceptuando el algoritmo de Metropolis aleatorio para la energía y la magnetización.
  Las observables son:
  la susceptibilidad topológica,
@@ -8101,6 +8248,9 @@ Promedio de los valores calculados para el exponente crítico
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
 name "tab_exp2"
@@ -8234,7 +8384,11 @@ Como se hace en las simulaciones en equilibrio,
 \end_inset
 
 .
- En cada enfriamiento se mide una trayectoria para cada observable en función del tiempo de Markov o de manera equivalente en función de la temperatura.
+ 
+\end_layout
+
+\begin_layout Standard
+En cada enfriamiento se mide una trayectoria para cada observable en función del tiempo de Markov o de manera equivalente en función de la temperatura.
 \end_layout
 
 \begin_layout Section
@@ -9353,7 +9507,7 @@ Algoritmo multi-clúster
 
 \begin_layout Plain Layout
 Densidad de energía final 
-\begin_inset Formula $\expval{h}_{f}$
+\begin_inset Formula $\rho_{\mathcal{H}_{f}}$
 \end_inset
 
  respecto a la tasa de cambio de temperatura 
@@ -10212,16 +10366,16 @@ Cada cantidad se expresa en función de las diferentes tasas de enfriamiento
 
 .
  Los resultados para la susceptibilidad topológica llevaron a una ley de escalamiento con exponente 
-\begin_inset Formula $\zeta=0.53(2)$
+\begin_inset Formula $\zeta=0.53(1)$
 \end_inset
 
  para los algoritmos de actualización locales y 
-\begin_inset Formula $\zeta=1.10(6)$
+\begin_inset Formula $\zeta=1.10(8)$
 \end_inset
 
  para el algoritmo multi-cluster.
  Se calculó el exponente 
-\begin_inset Formula $\zeta=2.2(5)$
+\begin_inset Formula $\zeta=1.6(2)$
 \end_inset
 
  indirectamente usando la ec.
@@ -10242,7 +10396,7 @@ nolink "false"
 \begin_layout Standard
 Para la energía,
  los exponentes obtenidos resultaron en 
-\begin_inset Formula $\zeta=0.214(5)$
+\begin_inset Formula $\zeta=0.215(5)$
 \end_inset
 
  para los algoritmos de actualización locales y 
@@ -10251,7 +10405,7 @@ Para la energía,
 
 para el algoritmo multi-cluster.
  Se calculó el exponente 
-\begin_inset Formula $\zeta=2.0(4)$
+\begin_inset Formula $\zeta=1.1(1)$
 \end_inset
 
  indirectamente.
@@ -10260,16 +10414,16 @@ para el algoritmo multi-cluster.
 \begin_layout Standard
 Para la magnetización,
  los exponentes obtenidos resultaron en 
-\begin_inset Formula $\zeta=0.277(5)$
+\begin_inset Formula $\zeta=0.279(6)$
 \end_inset
 
  para los algoritmos de actualización locales y 
-\begin_inset Formula $\zeta=0.630(5)$
+\begin_inset Formula $\zeta=0.279(6)$
 \end_inset
 
  para el algoritmo multi-cluster.
  Se calculó el exponente 
-\begin_inset Formula $\zeta=2.855(5)$
+\begin_inset Formula $\zeta=0.9(1)$
 \end_inset
 
  indirectamente.
@@ -10283,24 +10437,14 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="5">
+<lyxtabular version="3" rows="3" columns="4">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10347,16 +10491,7 @@ status open
 </cell>
 </row>
 <row>
-<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Enfriamientos
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10365,7 +10500,7 @@ Algoritmos locales
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10403,25 +10538,16 @@ Algoritmos locales
 </cell>
 </row>
 <row>
-<cell multirow="4" alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+muti-clúster
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Muti-clúster
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10433,7 +10559,7 @@ Muti-clúster
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10445,95 +10571,11 @@ Muti-clúster
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Formula $0.630(5)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Equilibrio
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Algoritmos locales
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $2.2(5)$
-\end_inset
-
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\nospellcheck off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $2.0(4)$
-\end_inset
-
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\nospellcheck off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $2.855(5)$
 \end_inset
 
 
@@ -10553,11 +10595,7 @@ Algoritmos locales
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Valores de los exponentes críticos 
-\begin_inset Formula $\zeta$
-\end_inset
 
- medidos en los enfriamientos y en el equilibrio.
 \end_layout
 
 \end_inset
@@ -10580,7 +10618,6 @@ Los exponentes críticos
 \end_inset
 
  obtenidos indirectamente resultaron en todos los casos en valores mayores a los exponentes obtenidos en los ajustes.
- 
 \end_layout
 
 \begin_layout Standard
@@ -10620,7 +10657,6 @@ Aunque el modelo 2d O(3) no pasa por la temperatura crítica en los enfriamiento
  compatibles respecto a la misma observable.
  Sin embargo,
  difieren para diferentes observables.
- Por lo anteriormente dicho los algoritmos locales parecen más apropiados para los enfriamientos.
 \end_layout
 
 \begin_layout Standard
@@ -10675,7 +10711,7 @@ Uno de los principales retos para usar los métodos de Monte Carlo en la simulac
 \end_layout
 
 \begin_layout Standard
-Un punto en la esfera 
+Un elemento de la esfera 
 \begin_inset Formula $S^{2}$
 \end_inset
 
@@ -10698,12 +10734,12 @@ dónde
 \begin_inset Formula $\text{\ensuremath{\phi\in[0,2\pi)}}$
 \end_inset
 
- son ámgulos aleatorios.
+son variables aleatorias.
  
 \end_layout
 
 \begin_layout Standard
-Un primer intento para generar puntos aleatorios y uniformemente distribuidos es directamente una distribución aleatoria y uniforme de ángulos 
+Un primer intento para generar vectores aleatorios y uniformemente distribuidos es generar parámetros aleatorios 
 \begin_inset Formula $\theta_{r}\in[0,\pi]$
 \end_inset
 
@@ -10711,9 +10747,9 @@ Un primer intento para generar puntos aleatorios y uniformemente distribuidos es
 \begin_inset Formula $\phi_{r}\in[0,2\pi)$
 \end_inset
 
-.
+ uniformemente distribuidos.
  Sin embargo,
- si se generan puntos aleatorios de esta manera y se representan sobre una esfera,
+ si se generan vectores aleatorios de esta manera y se representan sobre una esfera,
  se observa que la distribución de los vectores es más densa en los polos.
  
 \end_layout
@@ -10731,11 +10767,12 @@ Consideremos ahora una distribución
  Para que se cumpla la condición de uniformidad,
  la densidad de probabilidad debe ser constante,
  con valor 
-\begin_inset Formula $1/4\pi$
+\begin_inset Formula $p=1/4\pi$
 \end_inset
 
-.
- Entonces la integral de la densidad de probabilidad sobre el área de la esfera es
+,
+ entonces,
+ integral de la densidad de probabilidad sobre el área de la esfera es
 \end_layout
 
 \begin_layout Standard
@@ -10767,7 +10804,7 @@ En coordenadas esféricas se tiene
 \begin_layout Standard
 Se separa la distribución de probabilidad de vectores en la esfera,
  en dos distribuciones de probabilidad 
-\begin_inset Formula $U,V$
+\begin_inset Formula $u,v$
 \end_inset
 
  para las variables aleatorias 
@@ -10780,7 +10817,7 @@ Se separa la distribución de probabilidad de vectores en la esfera,
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-U(\theta)=\frac{1}{2}\int_{0}^{\theta}\sin\theta'\dd\theta'=\frac{1}{2}(1-\cos\theta),\qquad V(\phi)=\frac{1}{2\pi}\int_{0}^{\phi}\dd\phi'=\frac{\phi}{2\pi},
+U(\theta)=\frac{1}{2}\int_{0}^{\theta}\sin\theta'\dd\theta'=\frac{1}{2}(1-\cos\theta),\;V(\phi)=\frac{1}{2\pi}\int_{0}^{\phi}\dd\phi'=\frac{\phi}{2\pi},
 \end{equation}
 
 \end_inset
@@ -10800,7 +10837,7 @@ U(\theta)=\frac{1}{2}\int_{0}^{\theta}\sin\theta'\dd\theta'=\frac{1}{2}(1-\cos\t
 \begin_inset Formula 
 \begin{equation}
 \begin{array}{cc}
-\theta=\arccos(1-2u),\qquad & \phi=2\pi v,\end{array}\label{eq:transformaciones}
+\theta=\arccos(1-2u), & \phi=2\pi v,\end{array}\label{eq:transformaciones}
 \end{equation}
 
 \end_inset
@@ -10831,22 +10868,15 @@ Se generan dos números aleatorios
 
 \begin_layout Enumerate
 Se calculan las variables 
-\begin_inset Formula $\theta_{r}=\arccos(1-2u_{r}),\quad\phi_{r}=2\pi v_{r}.$
+\begin_inset Formula $\theta_{r}=\arccos(1-2u_{r}),\phi=2\pi v_{r}.$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Enumerate
-Se calculan las componentes cartesianas y se define el vector
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\vec{s_{r}}=\left(\sin\theta_{r}\cos\text{\ensuremath{\phi_{r}},\ensuremath{\sin\theta_{r}\sin\phi_{r}},\ensuremath{\cos\theta_{r}}}\right).
-\end{equation}
-
+Se calculan las componentes cartesianas y se define el vector 
+\begin_inset Formula $\vec{s_{r}}=\left(\sin\theta_{r}\cos\text{\ensuremath{\phi_{r}},\ensuremath{\sin\theta\sin\phi_{r}},\ensuremath{\cos\theta_{r}}}\right)$
 \end_inset
 
 .
@@ -10982,7 +11012,7 @@ Dada una esfera
 \end_inset
 
 ,
- el siguiente objetivo es generar una distribución de vectores aleatoria y uniformemente distribuida en una región circular 
+ el siguiente objetivo es generar una distribución de vectores aleatoria y uniformemente distribuida en una región circular
 \begin_inset Formula $R$
 \end_inset
 
@@ -11024,7 +11054,7 @@ dónde
 \begin_inset Formula $d(\vec{s},\vec{s}_{0})$
 \end_inset
 
- es la distancia esférica entre 
+ la distancia esférica entre 
 \begin_inset Formula $\vec{s}$
 \end_inset
 
@@ -11037,9 +11067,13 @@ dónde
 \begin_inset Formula $u_{\mathrm{max}}$
 \end_inset
 
- ajusta el área de la esfera que se cubre,
+ ajusta el porcentaje 
+\begin_inset Formula $p$
+\end_inset
+
+ de la esfera que se cubre,
  si 
-\begin_inset Formula $u_{\mathrm{max}}=1$
+\begin_inset Formula $u=1$
 \end_inset
 
  entonces 
@@ -11048,6 +11082,19 @@ dónde
 
  y la región que se cubre es la totalidad de la esfera.
  
+\end_layout
+
+\begin_layout Standard
+Si se quiere cubrir el porcentaje 
+\begin_inset Formula $p$
+\end_inset
+
+ de la esfera,
+ se fija 
+\begin_inset Formula $u_{\mathrm{max}}=p/100$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -11100,7 +11147,7 @@ Se calcula un vector ortonormal al plano formado por
 \end_layout
 
 \begin_layout Enumerate
-Se define el nuevo vector como una rotación de 
+Se hace define el nuevo vector como una rotación de 
 \begin_inset Formula $\vec{s}_{0}$
 \end_inset
 
@@ -11118,7 +11165,7 @@ Se define el nuevo vector como una rotación de
 \end_inset
 
  respecto al vector de referencia 
-\begin_inset Formula $\vec{s}_{0}$
+\begin_inset Formula $\vec{s}_{r}$
 \end_inset
 
  es de la forma
@@ -11135,7 +11182,7 @@ La ventaja de generar vectores en un cono sobre la esfera con esta fórmula es q
 \end_inset
 
  y aplicar una rotación,
- disminuyendo considerablemente el tiempo de cómputo cuando se generan millones de vectores aleatorios.
+ disminuyendo considerablemente el tiempo de cómputo cunado se generan millones de vectores aleatorios.
 \end_layout
 
 \begin_layout Standard
@@ -11203,26 +11250,6 @@ name "chap:Algoritmo-Hoshen-Kopelman"
 \end_layout
 
 \begin_layout Standard
-El algoritmo de Hoshen-Kopelman fue introducido por Joseph Hoshen y Raoul Kopelman en 1976 
-\begin_inset CommandInset citation
-LatexCommand autocite
-key "hoshen_percolation_1976"
-literal "false"
-
-\end_inset
-
-.
- El algoritmo de Hoshen-Kopelman describe cómo etiquetar los sitios de la retícula en sus respectivos clústeres a partir de una función de vínculo.
- Es considerablemente más eficiente que otros métodos de formación de clústeres.
- A diferencia de algoritmos en los que el número de cálculos crece cuadráticamente con el volumen.
- En el caso de Hoshen-Kopelman dicho crecimiento es lineal.
-\begin_inset VSpace defskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Box Shadowbox
 position "t"
 hor_pos "c"
@@ -11259,35 +11286,42 @@ En una retícula de espines clásicos,
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
+El algoritmo de Hoshen-Kopelman fue descrito por Joseph Hoshen y Raoul Kopelman en 1976 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "hoshen_percolation_1976"
+literal "false"
+
 \end_inset
 
-Consideremos una red reticular con una configuración de sitios.
- Un vínculo directo puede ocurrir entre dos sitios vecinos,
+.
+ El algoritmo de Hoshen-Kopelman describe cómo etiquetar los sitios de la retícula en sus respectivos clústeres a partir de una función de vínculo.
+\end_layout
+
+\begin_layout Standard
+El algoritmo de Hoshen-Kopelman es considerablemente más eficiente que otros métodos de formación de clústeres.
+ A diferencia de algoritmos en los que el número de cálculos crece cuadráticamente con el volumen del sistema,
+ en el caso de Hoshen-Kopelman dicho crecimiento es lineal.
+\end_layout
+
+\begin_layout Standard
+Un vínculo directo ocurre entre dos sitios vecinos,
  mientras que un vínculo indirecto se da entre sitios que no son vecinos,
  pero que están conectados a un sitio común.
- 
+ Este tipo de vínculo implica la posibilidad de que dos clústeres inicialmente distintos se unan mediante una conexión entre elementos que pertenecen a cada uno de ellos.
 \end_layout
 
 \begin_layout Standard
 Para empezar,
- se realiza una clasificación de los vínculos en dónde cada sitio 
+ vamos a generar una configuración de vínculos en dónde cada sitio 
 \begin_inset Formula $x$
 \end_inset
 
  indica los vínculos directos.
  Por ejemplo,
  en una retícula cuadrada hay cuatro vecinos más cercanos.
- Para cada vecino un 
-\begin_inset Formula $1$
-\end_inset
-
- indica un vínculo directo,
- mientras que un 
-\begin_inset Formula $0$
-\end_inset
-
- indica que no hay vínculo.
+ Para cada vecino un 1 indica un vínculo directo,
+ mientras que un 0 indica que no hay vínculo.
  La función de vínculo 
 \begin_inset Formula $p(x_{1},x_{2})$
 \end_inset
@@ -11328,7 +11362,7 @@ Si no hay vínculos directos,
 
 \begin_layout Enumerate
 Si hay vínculos directos,
- se pasa al pasa al siguiente sitio.
+ se pasa al paso 2.
 \end_layout
 
 \end_deeper
@@ -11346,7 +11380,7 @@ Se repinten los pasos anteriores etiquetando cada sitio de la retícula en sus r
 \end_layout
 
 \begin_layout Enumerate
-En el proceso de formación de cústeres,
+En el proceso de formación de cústers,
  habrá casos en los que a un sitio le corresponden dos o más etiquetas 
 \begin_inset Formula $\alpha_{1},\dots,\alpha_{n}$
 \end_inset
@@ -11357,12 +11391,12 @@ En el proceso de formación de cústeres,
 \begin_inset Formula $\alpha_{1.}$
 \end_inset
 
- Este tipo de vínculo implica la posibilidad de que dos clústeres inicialmente distintos se unan mediante una conexión entre elementos que pertenecen a cada uno de ellos.
+
 \end_layout
 
 \begin_layout Standard
-Una forma de optimizar la generación de cústeres individuales es la ampliación por capas.
- Es importante diferenciar entre sitios en el interior de un clúster,
+Una forma de optimizar la generación de cústers individuales es la ampliación por capas.
+ Es importante diferenciar entre sitios en el interior de un cúster,
  sitios en la frontera de un clúster y sitios en el interior.
  
 \end_layout
@@ -11383,15 +11417,14 @@ Un sitio esta en el exterior si ninguno de sus vecinos más cercanos pertenece a
 \end_layout
 
 \begin_layout Standard
-Se parte de un clúster individual y se va extendiendo la frontera en cada paso hasta alcanzar el tamaño máximo del clúster,
- transformando los sitios de la frontera en sitios en el interior.
+Se parte de un clúster individual y se va extendiendo una frontera provisional en cada paso hasta alcanzar el tamaño máximo del clúster,
+ en ocasiones transformando a los sitios de la frontera en sitios en el interior.
  
 \end_layout
 
 \begin_layout Standard
-Para evitar que un clúster se extienda indebidamente por el cálculo múltiple de una probabilidad de vínculo,
- solo se calculará una vez un vínculo entre un espín con el clúster.
- Esto se logra etiquetando los espines ya probados con una etiqueta.
+Para evitar que un clúster se extienda indebidamente por el cálculo doble de una probabilidad de vínculo,
+ solo se calculará una vez un vínculo entre dos espines.
 \end_layout
 
 \begin_layout Standard
@@ -11432,15 +11465,15 @@ Si no hay vínculos directos adicionales,
 
 \end_deeper
 \begin_layout Standard
-Este método es especialmente útil en la formación de un clúster.
+Este método es especialmente útil en la formación de un clúster,
+ ya que evita el cálculo de una gran cantidad de vínculos.
 \end_layout
 
 \begin_layout Standard
-La aplicación de este método al los algoritmos multi-clúster y single-cluster,
- permite ahorrar una gran cantidad de cálculos,
- por lo que el poder de cómputo pude usarse en aumentar la estadística de los experimentos y reducir los tiempos de cálculo;
- sin duda,
- es un beneficio que vale la pena a cambio de un poco de programación extra.
+La aplicación de estos métodos al los algoritmos multi-clúster y single-cluster,
+ permiten ahorrar una gran cantidad cálculos,
+ por lo que el poder de cómputo pude usarse en aumentar la estadística de los experimentos y reducir los tiempos de cálculo,
+ sin duda es un beneficio que vale la pena a cambio de un poco de programación extra.
 \end_layout
 
 \begin_layout Standard

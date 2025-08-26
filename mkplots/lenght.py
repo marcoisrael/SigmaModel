@@ -10,10 +10,10 @@ algs = [
         "multi_cluster",
         ]
 names = [
-        "Lexic\nMetropolis",
-        "Random\nMetropolis",
-        "Lexic\nGlauber",
-        "Random\nGlauber",
+        "Metropolis\nLexic",
+        "Metropolis\nAleatorio",
+        "Glauber\nLexic",
+        "Glauber\nAleatorio",
         "Multi\ncluster",
         ]
 T = np.array([0.7,0.8,0.9,1.0])

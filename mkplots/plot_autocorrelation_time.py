@@ -38,7 +38,7 @@ for alg in algs:
     data = np.loadtxt(
         f"output/autocorrelation/{name}_{alg}.csv", skiprows=1, delimiter=","
     )
-    nstart, nend = 6,9
+    nstart, nend = 4,-1
     data = data.transpose()
     x = np.linspace(data[0][0], data[0][-1], 200)
     

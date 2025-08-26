@@ -105,13 +105,14 @@ for alg in algs:
             label=r"$\xi$, $z=$"+fix(xfit.opt[1],xfit.error[1]),
             )
     # text = r"$\xi\propto \tau^{z}$"+"\n"+r"$z$="+fix(xfit.opt[0], xfit.error[0])
-    
-    # ax.text(0.96,0.20,text,fontsize=16,ha="right",va="top",transform=ax.transAxes)
+    text = r"$z=$"+fix(xfit.opt[1],xfit.error[1])
+    ax.text(0.22,0.96,text,fontsize=12,ha="right",va="top",transform=ax.transAxes,
+            bbox=dict(facecolor='none', edgecolor='black'))
     print(alg, fix(xfit.opt[1], xfit.error[1]))
     
     ax.set_xlabel(r"$\tau$", fontsize=18)
     ax.set_ylabel(r"$\xi$", fontsize=18)
-    ax.legend(fontsize=12)
+    # ax.legend(fontsize=12)
     ax.set_yscale("log")
     ax.set_xscale("log")
 
