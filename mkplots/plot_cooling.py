@@ -93,7 +93,7 @@ for alg in algs:
             # linestyle=lines[i],label=f"$\\tau_{{\\mathrm{{cool}}}}={i}$")
     
     ax1.legend()
-    ax1.set_xlabel(r"$t$[barridos]", fontsize=18)
+    ax1.set_xlabel(r"$t$ [barridos]", fontsize=18)
     ax1.set_ylabel(params[obs]["ylabel"], fontsize=18)
     fig1.savefig(
         f"output/plot/cooling/{obs}_{alg}.pdf", format="pdf", bbox_inches="tight"
@@ -140,7 +140,7 @@ for alg in algs:
             label=params[obs]["ylabel2"],
             )
     text = r"$\zeta=$"+fix(xfit.opt[1],xfit.error[1])
-    ax2.text(0.96,0.96,text,fontsize=12,ha="right",va="top",transform=ax2.transAxes,
+    ax2.text(0.24,0.96,text,fontsize=12,ha="right",va="top",transform=ax2.transAxes,
             bbox=dict(facecolor='none', edgecolor='black'))
     ax2.set_ylabel(params[obs]["ylabel2"], fontsize=20)
     ax2.set_xlabel(r"$\tau_\mathrm{cool}$", fontsize=20)

@@ -9424,7 +9424,7 @@ placement document
 alignment document
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -9592,7 +9592,7 @@ placement H
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -9637,7 +9637,7 @@ placement document
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -9675,7 +9675,7 @@ placement document
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -9706,7 +9706,7 @@ placement document
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -9745,7 +9745,7 @@ placement document
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -9782,7 +9782,7 @@ Algoritmo de multi-clúster
 
 \begin_layout Plain Layout
 Magnetización final 
-\begin_inset Formula $m_{f}$
+\begin_inset Formula $\expval{M}_{f}$
 \end_inset
 
  respecto a la tasa de cambio de temperatura 
@@ -11216,53 +11216,11 @@ literal "false"
  Es considerablemente más eficiente que otros métodos de formación de clústeres.
  A diferencia de algoritmos en los que el número de cálculos crece cuadráticamente con el volumen.
  En el caso de Hoshen-Kopelman dicho crecimiento es lineal.
-\begin_inset VSpace defskip
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-\begin_inset Box Shadowbox
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Definición:
- Cúster.
-\end_layout
-
-\begin_layout Plain Layout
-En una retícula de espines clásicos,
- un clúster es un conjunto de sitios enlazados directa o indirectamente.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-Consideremos una red reticular con una configuración de sitios.
+La definición de clúster que consideraremos en este apartado es la mencionada en el capitulo 9 de esta tesis.
+ Consideremos una red reticular con una configuración de sitios.
  Un vínculo directo puede ocurrir entre dos sitios vecinos,
  mientras que un vínculo indirecto se da entre sitios que no son vecinos,
  pero que están conectados a un sitio común.
