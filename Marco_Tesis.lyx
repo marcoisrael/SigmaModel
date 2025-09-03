@@ -21,9 +21,9 @@
 \renewcommand\spanishtablename{Tabla}
 \sloppy
 \author{Marco Israel Rodríguez Cornejo}
-\title{Enfriameintos rapidos del modelo 2d O(3)}
+\title{Enfriameintos rapídos del modelo 2d O(3)}
 \faculty{Facultad de Ciencias}
-\degree{Licenciatura en Fìsica}
+\degree{Licenciatura en Fìsíca}
 \supervisor{Wolfgang Peter Bietenholz}
 \cityandyear{Ciudad Universitaria, CDMX, 2025}
 \logouni{Escudo-UNAM.pdf} 
@@ -242,16 +242,147 @@ maketitle
 
 \end_layout
 
+\begin_layout Standard
+
+\series bold
+\shape smallcaps
+\size large
+\begin_inset VSpace 8cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\shape italic
+\size large
+Este trabajo esta dedicado a mis padres,
+ quienes me motivaron a no rendirme y me apoyaron incondicionalmente.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter*
 Agradecimientos
 \end_layout
 
 \begin_layout Standard
-Aquí van los agradecimientos.
+Agradezco al la Universidad Nacional Autónoma de México,
+ a la Facultad de Ciencias y sus profesores,
+ y al Instituto de Ciencias Nucleares por abrirme sus puertas y darme la oportunidad de realizar este trabajo de titulación.
+ Agradezco DGAPA el apoyo a través del programa de apoyo a proyectos de investigación e innovación tecnológica.
+ Agradezco especialmente a Dr.
+ Wolfgang Bietenholz por guiarme pacientemente a través del largo proceso de investigación,
+ redacción y corrección de esta tesis.
+ Gracias por su guía y constante motivación.
 \begin_inset Newpage pagebreak
 \end_inset
 
 
+\end_layout
+
+\begin_layout Chapter*
+Resumen
+\end_layout
+
+\begin_layout Standard
+En esta tesis se introduce el modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+),
+ los métodos de Monte Carlo y teoría sobre fenómenos críticos.
+ Se describe el mecanismo de Kibble-Zurek y se propone probar si es aplicable al modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+).
+ Con este fin se realizaron simulaciones numéricas en equilibrio y enfriamientos rápidos usando métodos de Monte Carlo en especifico el de Metropolis,
+ y el algoritmo de Glauber,
+ ambos con un orden de selección Lexicográfico y Aleatorio y el algoritmo multi-clúster.
+ En las simulaciones en equilibrio se midieron los siguientes exponentes críticos
+\end_layout
+
+\begin_layout Itemize
+El exponente critico dinámico
+\begin_inset Formula $z$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Longitud de correlación 
+\begin_inset Formula $\nu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Exponente 
+\begin_inset Formula $\nu z$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Exponente 
+\begin_inset Formula $\zeta=2d/(1+\nu z)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En las simulaciones de enfriamientos se midió el exponente 
+\begin_inset Formula $\zeta$
+\end_inset
+
+.
+ El valor obtenido en los enfriamientos para los algoritmos de Metropolis y Glauber resulto en 
+\begin_inset Formula $\zeta=0.53(2)$
+\end_inset
+
+ para la carga topológica,
+ 
+\begin_inset Formula $0.214(5)$
+\end_inset
+
+ para la energía y 
+\begin_inset Formula $0.277(5)$
+\end_inset
+
+para la magnetización.
+ Los restados discreparon con las mediciones del exponente medidas en equilibrio con los valores 
+\begin_inset Formula $2.2(5)$
+\end_inset
+
+ para la carga topológica,
+ 
+\begin_inset Formula $2.0(4)$
+\end_inset
+
+para la energía y 
+\begin_inset Formula $2.855(5)$
+\end_inset
+
+ para la magnetización.
+ Se considerando que el hecho de que modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+) no se puede enfriar por debajo de la temperatura critica es un factor que podría explicar la discrepancia entre las mediciones en el equilibrio respecto a las mediciones de los enfriamientos.
+ A pesar de las discrepancias hay una relación entre la densidad de defectos topológicos remanentes y el cambio en las tasas de enfriamiento como lo propone el mecanismo de Kibble-Zurek.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -324,7 +455,7 @@ Los estados de la materia y sus transiciones de fase son temas de gran interés 
  Tom W.
  Kibble y Wojciech H.
  Zurek se interesaron en el estudio de las clases de universalidad y la formación de defectos topológicos en sistemas al transicionar de fase.
- Como muchos sistemas presentan la ruptura de una simetría pasando por la temperatura crítica,
+ Como muchos sistemas presentan la ruptura de una simetría bajando por la temperatura crítica,
  propusieron que la supervivencia de defectos topológicos se relaciona con la tasa de enfriamiento al que un sistema pasa por la temperatura crítica.
 \end_layout
 
@@ -333,7 +464,7 @@ En estas circunstancias,
  los experimentos se vuelven complejos,
  y la teoría detrás de procesos que involucran interacciones entre un vasto número de partículas resulta demasiado intrincada.
  Para superar estas limitaciones,
- desarrollaron una serie de métodos basados en procesos estocásticos,
+ se desarrollo una serie de métodos basados en procesos estocásticos,
  conocidos como métodos de Monte Carlo.
 \end_layout
 
@@ -348,7 +479,7 @@ literal "false"
 \end_inset
 
 ,
- trabajaban en Los Álamos en el desarrollo de la bomba de hidrógeno.
+ trabajo en Los Álamos en el desarrollo de la bomba de hidrógeno.
  Su trabajo se centró en comprender la física de las interacciones entre la radiación y la materia bajo condiciones extremas,
  tales como explosiones,
  implosiones y la evolución de reacciones nucleares fuera del equilibrio.
@@ -361,14 +492,14 @@ Con el posterior desarrollo de los ordenadores,
 \end_layout
 
 \begin_layout Standard
-En está tesis,
+En esta tesis,
  se aplican los métodos de Monte Carlo al estudio de enfriamientos rápidos de en el modelo 2d O(
 \begin_inset Formula $3$
 \end_inset
 
 ).
  También se realizan simulaciones en y fuera del equilibrio.
- En los experimentos fuera del equilibrio midiendo los defectos topológicos remanentes para diferentes tasas de enfriamiento,
+ En los experimentos númericos fuera del equilibrio se miden los defectos topológicos remanentes para diferentes tasas de enfriamiento,
  esperando resultados compatibles con la ley de escalamiento de Zurek.
 \end_layout
 
@@ -411,7 +542,7 @@ Z=\sum_{\sigma}\mathrm{e}^{-\beta\mathcal{H}[\sigma]},\label{eq:func_part}
 
 \end_inset
 
-dónde 
+donde 
 \begin_inset Formula $\beta=1/k_{B}T$
 \end_inset
 
@@ -436,12 +567,12 @@ Erwin Schrödinger introdujo una ecuación que describe la dinámica de un siste
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-i\hbar\dv{\ket{\psi(t)}}{t}=\mathcal{{\hat{H}}}\ket{\psi(t)},
+i\hbar\pdv{\ket{\psi(t)}}{t}=\mathcal{{\hat{H}}}\ket{\psi(t)},\label{eq:schrodinger}
 \end{equation}
 
 \end_inset
 
-dónde 
+donde 
 \begin_inset Formula $t$
 \end_inset
 
@@ -460,11 +591,11 @@ dónde
 \begin_inset Formula $\hat{\mathcal{H}}$
 \end_inset
 
- es el hamilotonaino del sistema y 
+ es el operador hamilotonaino del sistema y 
 \begin_inset Formula $\ket{\psi(t)}$
 \end_inset
 
- es la función de onda en notación de Dirac.
+ es la función de onda en la notación de Dirac.
 \end_layout
 
 \begin_layout Standard
@@ -499,20 +630,16 @@ Es de interés describir la evolución de una observable
  de un sistema físico descrito en la mecánica clásica por la función hamiltoniana
 \begin_inset Formula 
 \begin{equation}
-\mathcal{H}=\frac{1}{2m}\sum_{i}p_{i}^{2}+V.
+\mathcal{H}=\frac{1}{2m}\sum_{i}p_{i}^{2}+V,
 \end{equation}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Donde 
+donde 
 \begin_inset Formula $p_{i}$
 \end_inset
 
- es la cantidad de movimiento y 
+ es momento y 
 \begin_inset Formula $V$
 \end_inset
 
@@ -522,12 +649,14 @@ el potencial.
  La dinámica de la observable se describe por la ecuación
 \begin_inset Formula 
 \begin{equation}
-\dv{O}{t}=\{\mathcal{H},O\}.
+\dv{O}{t}=\{\mathcal{H},O\},
 \end{equation}
 
 \end_inset
 
- La relación entre la formulación hamiltoniana y la mecánica cuántica es de la forma 
+A la derecha usamos los corchetes de Poisson.
+ En el paso de transición de la mecánica clásica a la mecánica cuántica,
+ se pasa de los corchetes do Poisson de dos funciones a el conmutador de dos operadores siguiendo 
 \begin_inset Formula 
 \begin{equation}
 \{\mathcal{H},O\}\rightarrow-i\hbar[\hat{\mathcal{H}},\hat{O}],
@@ -544,10 +673,7 @@ donde
 \end_inset
 
  son operadores en el espacio de Hilbert.
-\end_layout
-
-\begin_layout Standard
-La dinámica del operador 
+ La dinámica del operador 
 \begin_inset Formula $\hat{O}$
 \end_inset
 
@@ -569,7 +695,7 @@ Para pasar de la formulación de Heisenberg a la formulación de Schrödinger se
 
 \end_inset
 
-dónde 
+donde 
 \begin_inset Formula $\ket{\psi}$
 \end_inset
 
@@ -577,11 +703,8 @@ dónde
 \begin_inset Formula $\ket{\psi(t)}$
 \end_inset
 
- es la función de onda en la formulación de Schrödinger .
-\end_layout
-
-\begin_layout Standard
-Los valores esperados se mantienen invariantes a la transformación
+ es la función de onda en la formulación de Schrödinger.
+ Los valores esperados se mantienen invariantes bajo la transformación
 \begin_inset Formula 
 \begin{equation}
 \ev{\hat{O}(t)}{\psi}=\ev{\hat{O}}{\psi(t)}.
@@ -593,16 +716,20 @@ Un vector de estado
 \begin_inset Formula $\ket{\psi(t)}$
 \end_inset
 
- en la formulación de Schrödinger sigue la ecuación
-\begin_inset Formula 
-\begin{equation}
-\begin{array}{c}
-i\hbar\pdv{}{t}\ket{\psi(t)}=\hat{\mathcal{H}}\ket{\psi(t)}.\end{array}\label{eq:schordinger}
-\end{equation}
+ en la formulación de Schrödinger sigue la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:schrodinger"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
-Consideremos el caso de la partícula libre dónde 
+.
+ Consideremos el caso de una partícula libre donde 
 \begin_inset Formula $\hat{\mathcal{H}}=\frac{\hat{p}^{2}}{2m}$
 \end_inset
 
@@ -611,8 +738,7 @@ Consideremos el caso de la partícula libre dónde
 \begin_inset Formula $\ket{q}$
 \end_inset
 
-,
- la solución a la ecuación de Schrödinger es de la forma 
+ y la solución a la ecuación de Schrödinger es de la forma 
 \begin_inset Formula 
 \begin{equation}
 \braket{q'}{\psi(t)}=\int\mel{q'}{\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}}{q}\braket{q}{\psi}\dd q.
@@ -620,7 +746,7 @@ Consideremos el caso de la partícula libre dónde
 
 \end_inset
 
- Definimos al propagador de la ecuación de Schrödinger
+Definimos al propagador de la ecuación de Schrödinger
 \end_layout
 
 \begin_layout Standard
@@ -631,8 +757,7 @@ K\left(q,q';t\right)=\mel{q'}{\mathrm{e}^{-it\hat{\mathcal{H}}/\hbar}}{q}.\label
 
 \end_inset
 
-El propagador,
- describe la evolución de la función de onda desde el estado 
+El propagador describe la evolución de la función de onda desde el estado 
 \begin_inset Formula $\ket{q}$
 \end_inset
 
@@ -648,15 +773,29 @@ tiempo
 \begin_inset Formula $t$
 \end_inset
 
+,
+ y se obtiene en 
+\begin_inset Formula $d$
+\end_inset
 
+ dimensiones espaciales 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "feynman_space-time_1948"
+literal "false"
+
+\end_inset
+
+.
+ El propagador de una partícula libre es de la forma
 \begin_inset Formula 
 \begin{equation}
-K\left(q,q';t\right)=\left(\frac{m}{2\pi i\hbar t}\right)^{d/2}\mathrm{e}^{iS\left(q,q';t\right)/\hbar}\label{eq:amplitud_probabilidad_clasica}
+K\left(q,q';t\right)=\left(\frac{m}{2\pi i\hbar t}\right)^{1/2}\mathrm{e}^{iS\left(q,q';t\right)/\hbar}\label{eq:amplitud_probabilidad_clasica}
 \end{equation}
 
 \end_inset
 
-dónde 
+donde 
 \begin_inset Formula $S\left(q,q';t\right)$
 \end_inset
 
@@ -673,6 +812,7 @@ dónde
 \end_inset
 
 .
+ Explícitamente la acción es de la forma
 \end_layout
 
 \begin_layout Standard
@@ -683,13 +823,25 @@ S\left(q,q';t\right)=\int_{0}^{t}\frac{m}{2}\dot{q}^{2}\dd\tau=\frac{m}{2t}\left
 
 \end_inset
 
-El propagador de la partícula libre es
+Sustituyendo la acción en la ec.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:amplitud_probabilidad_clasica"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ se tiene
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-K\left(q,q';t\right)=\left(\frac{m}{2\pi i\hbar t}\right)^{d/2}\exp\left(i\frac{m}{2t}(q'-q)^{2}\right).
+estáK\left(q,q';t\right)=\left(\frac{m}{2\pi i\hbar t}\right)^{1/2}\exp\left[i\frac{m}{2t}(q'-q)^{2}\right].
 \end{equation}
 
 \end_inset
@@ -752,7 +904,16 @@ Sean
 \begin_inset Formula $\tau\in\mathbb{R}$
 \end_inset
 
- entonces,
+,
+ entonces 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "trotter_product_1959"
+literal "false"
+
+\end_inset
+
+
 \begin_inset Formula 
 \[
 \mathrm{e}^{-\tau\left(\hat{A}+\hat{B}\right)}=\lim_{n\rightarrow\infty}\left(\mathrm{e}^{-\tau\hat{A}/n}\mathrm{e}^{-\tau\hat{B}/n}\right)^{n}.
@@ -772,31 +933,31 @@ Sean
 \begin_inset VSpace bigskip
 \end_inset
 
-En un caso más general se tiene un hamiltonaino 
-\begin_inset Formula $\hat{\mathcal{H}}=\frac{1}{2m}\sum_{i}\hat{p}_{i}^{2}+\hat{V}$
+En un caso general se tiene un hamiltonaino 
+\begin_inset Formula $\hat{\mathcal{H}}=\hat{\mathcal{H}}_{0}+\hat{V}$
 \end_inset
 
- entonces se tiene 
+ donde 
+\begin_inset Formula $\hat{\mathcal{H}}_{0}=\frac{1}{2m}\sum_{i}\hat{p}_{i}^{2}$
+\end_inset
+
+.
+ El propagador 
+\begin_inset Formula $K\left(q,q';t\right)$
+\end_inset
+
+ cumple con la ecuación de Schrödinger
 \begin_inset Formula 
 \begin{equation}
-i\hbar\dv{t}K\left(q,q';t\right)=\hat{H}K\left(q,q';t\right),
+i\hbar\pdv{t}K\left(q,q';t\right)=\hat{\mathcal{H}}K\left(q,q';t\right).
 \end{equation}
 
 \end_inset
 
-dónde 
-\begin_inset Formula $K\left(q,q';t\right)$
-\end_inset
-
- es el propagador de la ecuación de Schrödinger .
- 
-\end_layout
-
-\begin_layout Standard
 Partiendo de la forma estándar del propagador se tiene
 \begin_inset Formula 
 \begin{equation}
-K\left(q,q';t\right)=\mel**{q'}{\mathrm{e}^{-i\hbar t\left(\hat{H}_{0}+\hat{V}\right)}}{q}.
+K\left(q,q';t\right)=\mel**{q'}{\mathrm{e}^{-i\hbar t\left(\hat{\mathcal{H}}_{0}+\hat{V}\right)}}{q}.
 \end{equation}
 
 \end_inset
@@ -839,7 +1000,7 @@ Las trayectorias se particiónan en
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-K\left(q,q';t\right)=\lim_{n\rightarrow\infty}\int\prod_{j=0}^{n-1}\mel**{q_{j+1}}{\mathrm{e}^{-i\hbar t\hat{\mathcal{H}}_{0}/n}\mathrm{e}^{-i\hbar t\hat{V}/n}}{q_{j}}\dd q_{1}\dots\dd q_{n-1},\label{eq:amplitud_probabilidad_lim}
+K\left(q,q';t\right)=\lim_{n\rightarrow\infty}\int\prod_{j=0}^{n-1}\mel**{q_{j+1}}{\mathrm{e}^{-i\hbar t\hat{\mathcal{H}}_{0}/n}\mathrm{e}^{-i\hbar t\hat{V}/n}}{q_{j}}\dd q_{1}\dots\dd q_{n-1}.\label{eq:amplitud_probabilidad_lim}
 \end{equation}
 
 \end_inset
@@ -878,7 +1039,7 @@ K\left(q,q';t\right)= & \lim_{n\rightarrow\infty}\int\left(\frac{m}{2\pi ia}\rig
 
 \end_inset
 
-dónde 
+donde 
 \begin_inset Formula $a=t/n$
 \end_inset
 
@@ -887,7 +1048,7 @@ dónde
 \end_inset
 
 .
- Observamos que la suma corresponde la integral de Riemann de la acción en el límite
+ Observamos que la suma corresponde a la integral de Riemann de la acción en el límite
 \begin_inset Formula 
 \begin{equation}
 \lim_{n\rightarrow\infty}\sum_{j=0}^{n-1}a\left[\frac{m}{2}\left(\frac{q_{j+1}-q_{j}}{a}\right)^{2}-V\left(q_{j}\right)\right]=\int_{0}^{t}\left[\frac{m}{2}\left(\dv{q}{t'}\right)-V\left(q(t')\right)\right]\dd{t'}.\label{eq:lim_lagrangian}
@@ -903,7 +1064,7 @@ K\left(q,q';t\right)=\sum_{\sigma\in\Omega}\mathrm{e}^{-itS[\sigma]},\label{eq:p
 
 \end_inset
 
-dónde 
+donde 
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -952,6 +1113,10 @@ En esta imagen,
 \begin_inset Formula $q$
 \end_inset
 
+ en el tiempo 
+\begin_inset Formula $0$
+\end_inset
+
  hasta 
 \begin_inset Formula $q'$
 \end_inset
@@ -964,7 +1129,7 @@ En esta imagen,
 \begin_inset Formula $n$
 \end_inset
 
- pasos de tamaño 
+ pasos temporales de tamaño 
 \begin_inset Formula $a$
 \end_inset
 
@@ -1026,19 +1191,17 @@ nolink "false"
 ,
  se vuelve clara la relación entre la mecánica cuántica y la física estadística.
  Una diferencia importante es la unidad imaginaria presente en el propagador de evolución que no aparece en la función de partición,
- mientras que aparece una relacion entre la temperatura y la constante de planck 
+ mientras que aparece una relación entre la temperatura y la constante de Planck 
 \begin_inset Formula $\hbar\rightarrow k_{B}T$
 \end_inset
 
+.
  
 \end_layout
 
 \begin_layout Standard
 La rotación de Wick implica cambiar el eje temporal en el espacio hiperbólico descrito por la métrica de Minkowski por un eje imaginario en el espacio-tiempo.
-\end_layout
-
-\begin_layout Standard
-El tensor métrico del espacio de Minkowski es de la forma
+ El tensor métrico del espacio de Minkowski es de la forma
 \begin_inset Formula 
 \begin{equation}
 g_{M}=\left(\begin{array}{cccc}
@@ -1051,16 +1214,12 @@ g_{M}=\left(\begin{array}{cccc}
 
 \end_inset
 
- dónde el valor 
+ donde el elemento 
 \begin_inset Formula $-1$
 \end_inset
 
  corresponde a la coordenada temporal.
- 
-\end_layout
-
-\begin_layout Standard
-Guido Wick propone la transformación al espacio euclidiano,
+ Guido Wick propuso la transformación al espacio euclidiano,
  cambiando el eje real de la coordenada temporal por un eje imaginario resultando en el tensor euclidiano
 \begin_inset Formula 
 \begin{equation}
@@ -1102,7 +1261,7 @@ nolink "false"
 
 \end_inset
 
- del espacio euclidiano al espacio de Minkowski,
+ del espacio de Minkowski al espacio de euclidiano,
  tenemos que hacer el cambio 
 \begin_inset Formula $t_{E}=it$
 \end_inset
@@ -1121,17 +1280,17 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-La forma del propagador en el espacio de Minkowsi es equivalente a la función de partición definida en mecánica estadística,
- la forma discreta del propagador está dada por la ecuación
+La forma del propagador en el espacio de Minkowski es equivalente a la función de partición definida en mecánica estadística,
+ la forma discreta del propagador es
 \begin_inset Formula 
 \begin{align}
-K\left(q,q';t_{E}\right)= & \lim_{n\rightarrow\infty}\int\left(\frac{m}{2\pi ia}\right)^{n/2}\times\nonumber \\
+K\left(q,q';t_{E}\right)= & \lim_{n\rightarrow\infty}\int\left(\frac{m}{2\pi a}\right)^{n/2}\times\nonumber \\
  & \exp\left\{ a\sum_{j=0}^{n-1}\left[\frac{m}{2}\left(\frac{q_{j+1}-q_{j}}{a}\right)^{2}+V\left(q_{j}\right)\right]\right\} \dd q_{1}\dots\dd q_{n-1},
 \end{align}
 
 \end_inset
 
-dónde 
+donde 
 \begin_inset Formula $\beta=t/n$
 \end_inset
 
@@ -1156,11 +1315,11 @@ K\left(q,q';t_{E}\right)=\sum_{\sigma\in\Omega}\mathrm{e}^{-\beta S[\sigma]},
 
 \end_inset
 
-dónde 
+donde 
 \begin_inset Formula $\Omega$
 \end_inset
 
- es el conjunto de todas las posibles configuraciones de 
+ es el conjunto de todas las posibles trayectorias de 
 \begin_inset Formula $q$
 \end_inset
 
@@ -1179,13 +1338,15 @@ dónde
  
 \begin_inset CommandInset citation
 LatexCommand autocite
-key "wipf_statistical_2013,creutz_statistical_1981"
+key "creutz_statistical_1981,wipf_statistical_2013"
+pretextlist "creutz_statistical_1981"
+posttextlist "creutz_statistical_1981"
 literal "false"
 
 \end_inset
 
 .
- Por simplicidad de ahora en adelante simplificaremos la notación para el tiempo euclidiano refiriéndolo como 
+ Por conveniencia de ahora en adelante simplificaremos la notación para el tiempo euclidiano refiriéndolo como 
 \begin_inset Formula $t$
 \end_inset
 
@@ -1236,7 +1397,7 @@ En el contexto de un modelo O(
 
 .
  Es decir,
- es un elemento de la esfera 
+ corresponde a un punto de la esfera 
 \begin_inset Formula $\mathcal{S}^{n-1}$
 \end_inset
 
@@ -1319,10 +1480,8 @@ Definimos una retícula como un subgrupo discreto del espacio continuo
 Los modelos de retícula son ampliamente usados para describir efectos colectivos.
  En la mayoría de los casos se usan retículas compuestas por repeticiones de estructuras geométricas simples como en los cristales.
  Algunos ejemplos en dos dimensiones son estructuras cuadradas,
- triangulares,
- hexagonales,
- etc.
- En está tesis se hace uso de retículas formadas por hipercubos de dimensión 
+ triangulares o hexagonales.
+ En esta tesis se hace uso de retículas formadas por hipercubos de dimensión 
 \begin_inset Formula $d$
 \end_inset
 
@@ -1338,18 +1497,18 @@ Los modelos de retícula son ampliamente usados para describir efectos colectivo
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathscr{R}^{d}=\left\{ x\in\mathbb{R}^{d}|x=(x_{1}\dots,x_{d})\land x_{i}\in\mathbb{Z}\right\} .
+\mathscr{R}^{d}=\left\{ x\in\mathbb{R}^{d}|x=(x_{1}\dots,x_{d})\land x_{i}\in\mathbb{Z}\forall i\right\} .
 \end{equation}
 
 \end_inset
 
-Fuera de la teoría no es posible computar en retículas infinitas,
+En simulaciones de Monte Carlo no es posible computar en retículas infinitas,
  por lo que se considera un trozo finito 
 \begin_inset Formula $L^{d}$
 \end_inset
 
 .
- De está constricción se obtiene la retícula finita de dimensión 
+ De esta constricción se obtiene la retícula finita de dimensión 
 \begin_inset Formula $d$
 \end_inset
 
@@ -1379,7 +1538,7 @@ Una retícula cortada pierde simetría de translación discreta en los límites 
 \end_inset
 
 En cada sito 
-\begin_inset Formula $x\in\mathscr{T}^{d}$
+\begin_inset Formula $x\in\mathscr{T}_{L}^{d}$
 \end_inset
 
  hay 2d sitios ubicados a una unidad de distancia (dos por cada dimensión).
@@ -1411,7 +1570,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-En dos dimensiones la topología de una retícula finita cuadrada con condiciones de frontera periódicas es un toroide bidimensional.
+En dos dimensiones,
+ la topología de una retícula finita cuadrada con condiciones de frontera periódicas es un toroide bidimensional.
 \end_layout
 
 \end_inset
@@ -1484,11 +1644,12 @@ Representación de un espín clásico
 \begin_layout Standard
 Antes que nada,
  es importante definir una notación clara y simple para referir los sitios y los espines.
- Un sitio está dado por su posición en la retícula en dos dimensiones se representa por pares de coordenadas 
+ Un sitio está dado por su posición en la retícula:
+ En dos dimensiones se representa por pares de coordenadas 
 \begin_inset Formula $x=(x_{1},x_{2})$
 \end_inset
 
- dónde 
+ donde 
 \begin_inset Formula $x_{1},x_{2}\in(1,\dots,L)$
 \end_inset
 
@@ -1513,7 +1674,7 @@ Antes que nada,
 
 \end_inset
 
-en dónde 
+en donde 
 \begin_inset Formula $\theta_{x}\in[0,\pi)$
 \end_inset
 
@@ -1532,7 +1693,7 @@ en dónde
 \end_inset
 
 .
- El estado de un espín se puede describir de manera equivalente con sus coordenadas esféricas 
+ La orientación de un espín se puede describir de manera equivalente con sus coordenadas esféricas 
 \begin_inset Formula $(\theta_{x},\phi_{x})$
 \end_inset
 
@@ -1554,10 +1715,30 @@ El modelo 2d O
 \end_inset
 
 .
- Cada espín es una fuente de magnetización e interactúa con el resto de espines directa o indirectamente siguiendo un potencial de interacción.
- Típicamente el impacto de un espín decae exponencialmente con la distancia,
- como la contribución de los espines lejanos es órdenes de magnitud inferior a la de los vecinos más cercanos,
- se opta por despreciar esas interacciones.
+ Cada espín es una fuente de magnetización e interactúa con el resto de espines directamente o indirectamente siguiendo un acoplamiento.
+ Típicamente el impacto de un espín decae exponencialmente con la distancia.
+ Por argumentos referentes a la clase de universalidad que se discuten el el capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Universalidad"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Como la contribución de los espines lejanos es órdenes de magnitud inferior a la de los vecinos más cercanos,
+\end_layout
+
+\end_inset
+
+optaremos por despreciar esas interacciones.
  
 \end_layout
 
@@ -1570,14 +1751,14 @@ En el modelo 2d O(
 \begin_inset Formula $[s]$
 \end_inset
 
- es el conjunto de estados de los espines en la retícula en el mismo instante 
+ es el conjunto de orientaciones de los espines en la retícula en el mismo instante 
 \begin_inset Formula $t$
 \end_inset
 
 .
  Ejemplos son,
  las configuraciones en las que todos los espines apuntan a la misma dirección o la configuración en la que todos los espines apuntan en direcciones perpendiculares a sus vecinos.
- Cualquier combinación de estados de espines es una configuración.
+ Cualquier combinación de orientaciones de espines es una configuración.
  Dada una configuración 
 \begin_inset Formula $[s]$
 \end_inset
@@ -1586,12 +1767,12 @@ En el modelo 2d O(
  la energía del sistema depende del potencial de interacción del acoplamiento espín a espín descrita por la función hamiltoniana 
 \begin_inset Formula 
 \begin{equation}
-\mathcal{H}[s]=-J\sum_{\expval{x,y}}\vec{s}_{x}\cdot\vec{s}_{y}\label{eq:hamiltoniano_o(n)}
+\mathcal{H}[s]=-J\sum_{\expval{x,y}}\vec{s}_{x}\cdot\vec{s}_{y},\label{eq:hamiltoniano_o(n)}
 \end{equation}
 
 \end_inset
 
-dónde 
+donde 
 \begin_inset Formula $J$
 \end_inset
 
@@ -1600,26 +1781,18 @@ dónde
 \end_inset
 
  son los espines vecinos más cercanos.
- En el caso de una configuración uniforme se deduce de la ec.
- 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:hamiltoniano_o(n)"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-.
  Si todos los espines son paralelos,
  la suma sobre el producto escalar se maximiza,
  el resultado es que la configuración uniforme tiene la menor energía permitida por el modelo 
 \begin_inset Formula $\mathcal{{H}}=-JVd$
 \end_inset
 
-.
+,
+ donde 
+\begin_inset Formula $V=L^{d}$
+\end_inset
+
+ es el volumen de la retícula.
 \end_layout
 
 \begin_layout Standard
@@ -1635,10 +1808,6 @@ Otra forma de expresar el hamitoniano de interacción del modelo es mediante una
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 La ec.
  
 \begin_inset CommandInset ref
@@ -1652,11 +1821,7 @@ nolink "false"
 \end_inset
 
  se puede simplificar considerando las condiciones de frontera.
- 
-\end_layout
-
-\begin_layout Standard
-Si se intercambia y se recorren los índices en el tercer termino de la ec.
+ Si se intercambia y se recorren los índices en el tercer termino de la ec.
  
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -1681,10 +1846,11 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-Separando el primer y el ultimo elemento de la suma sobre 
+Separando el primer y el último elemento de la suma sobre 
 \begin_inset Formula $x_{1}$
 \end_inset
 
+,
  se tiene 
 \begin_inset Formula 
 \begin{align}
@@ -1831,11 +1997,11 @@ La suma recorre todos los sitios en la retícula,
 \end_inset
 
 .
- Por simplicidad de la notación también llamaremos a esta energía 
+ Por simplicidad de la notación también llamaremos de aquí en adelante a esta energía 
 \begin_inset Formula $\mathcal{H}$
 \end_inset
 
- resultando en la ecuación 
+ resultando en
 \begin_inset Formula 
 \begin{equation}
 \mathcal{H}[s]=-\sum_{x}\vec{s}_{x}\cdot\left(\vec{s}_{x+\hat{1}}+\vec{s}_{x+\hat{2}}\right)+2V.\label{eq:hamiltoniano_simplificado}
@@ -1865,7 +2031,7 @@ Describir las propiedades macroscópicas de un material,
 ,
  etc.
  Si una observable,
- como la energía se divide por volumen 
+ como la energía se divide por el volumen 
 \begin_inset Formula $V$
 \end_inset
 
@@ -1886,7 +2052,7 @@ Hay otro tipo de cantidades como la presión
 
 ,
  el campo magnético 
-\begin_inset Formula $B$
+\begin_inset Formula $\vec{B}$
 \end_inset
 
 ,
@@ -1904,44 +2070,6 @@ Desde un punto de vista microscópico,
  Cuando se perturba un sistema en equilibrio,
  las variables mecánicas del sistema cambian.
  El tiempo que el sistema tarda en alcanzar nuevamente el equilibrio termodinámico es conocido como tiempo de relajación.
-\end_layout
-
-\begin_layout Standard
-Se busca calcular el promedio de un observable en un sistema en equilibrio termodinámico por un intervalo temporal suficientemente amplio como para reducir las fluctuaciones por debajo de un umbral de error.
- El valor esperado de la observable,
- es el promedio de los valores obtenidos por las configuraciones en el tiempo.
-\end_layout
-
-\begin_layout Subsection
-Energía
-\end_layout
-
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-La energía de una configuración depende de las diferencias relativas entre espines.
- Consideremos en una configuración 
-\begin_inset Formula $[s]$
-\end_inset
-
- a la que se aplica una rotación por un ángulo 
-\begin_inset Formula $\phi$
-\end_inset
-
- en la misma dirección a todos los espines.
- La transformación mantiene las diferencias relativas entre espines,
- por lo tanto,
- la nueva configuración 
-\begin_inset Formula $[s']$
-\end_inset
-
- está asociada a la misma energía que la configuración 
-\begin_inset Formula $[s]$
-\end_inset
-
-.
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -1989,15 +2117,58 @@ Una cadena de Markov es un proceso estocástico discreto en el que la probabilid
 \end_layout
 
 \begin_layout Standard
+En simulaciones numéricas se busca calcular el promedio de un observable en un sistema en equilibrio termodinámico por un intervalo temporal suficientemente amplio como para reducir las fluctuaciones por debajo de un umbral de error.
+ El valor esperado de la observable es el promedio de los valores obtenidos por las configuraciones en el tiempo de Markov.
+\end_layout
+
+\begin_layout Subsection
+Energía
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+La energía de una configuración depende de las direcciones de los espines espines.
+ Consideremos en una configuración 
+\begin_inset Formula $[s]$
+\end_inset
+
+ a la que se aplica una rotación por un ángulo 
+\begin_inset Formula $\phi$
+\end_inset
+
+ en la misma dirección a todos los espines.
+ La transformación mantiene las diferencias relativas entre espines,
+ por lo tanto,
+ la nueva configuración 
+\begin_inset Formula $[s']$
+\end_inset
+
+ está asociada a la misma energía que la configuración 
+\begin_inset Formula $[s]$
+\end_inset
+
+.
+ E general la energía es invariante a transformaciones del grupo O(
+\begin_inset Formula $n$
+\end_inset
+
+),
+ hecho que le da nombre a estos modelos.
+\end_layout
+
+\begin_layout Standard
 Una configuración es un evento en el sentido estadístico.
  El tiempo de Markov 
 \begin_inset Formula $t_{i}$
 \end_inset
 
- es un parametro que indica la configuración del sistema en el ese instante.
- Un conjunto de configuraciones es una cadena de Markov.
+ es un parámetro asociado a la configuración del sistema en el ese instante.
+ Una cadena de Markov es un conjunto de configuraciones.
  Como cada configuración tiene una energía asociada,
- la energía asociada a las configuraciones es diferente en cada instante 
+ la energía asociada a las configuraciones puede ser diferente en cada instante 
 \begin_inset Formula $t_{i}$
 \end_inset
 
@@ -2006,8 +2177,7 @@ Una configuración es un evento en el sentido estadístico.
 \begin_inset Formula $(t_{1},\dots,t_{N})$
 \end_inset
 
-,
- es de la forma
+ se estima como
 \begin_inset Formula 
 \begin{equation}
 \expval{\mathcal{H}}_{\mathrm{aprox}}=\frac{1}{N}\sum_{i=1}^{N}\mathcal{H}_{i}.
@@ -2015,31 +2185,45 @@ Una configuración es un evento en el sentido estadístico.
 
 \end_inset
 
-La energía real asociada a ese intervalo es el promedio aproximado más la incertidumbre asociada
+La energía real asociada a ese estado es el promedio aproximado más la incertidumbre asociada
 \begin_inset Formula 
 \begin{equation}
-\expval{\mathcal{H}}\simeq\expval{\mathcal{H}}_{\mathrm{aprox}}\pm\mathrm{error}(\mathcal{H}).
+\expval{\mathcal{H}}\simeq\expval{\mathcal{H}}_{\mathrm{aprox}}\pm\mathrm{error}(\mathcal{H})
 \end{equation}
 
 \end_inset
 
-Considerando un intervalo del 
+La incertidumbre se estima como 
+\begin_inset Formula 
+\begin{equation}
+\mathrm{error}(\mathcal{H})=\frac{\mathrm{std(\mathcal{H})}}{\sqrt{N}},
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $\mathit{\mathrm{std}}$
+\end_inset
+
+ es la desviación estándar.
+ Para una medición en un proceso estocástico hay una probabilidad del 
 \begin_inset Formula $68.27\%$
 \end_inset
 
-,
- como el ancho de una distribución típica,
- el error converge a cero conforme aumenta el numero de mediciones.
+ de encontrarse a menos de una desviación estándar de la media de la distribución.
+ Conforme aumenta el número de mediciones aumenta,
+ el error converge a cero y el estimador de la energía converge al valor real 
 \begin_inset Formula 
 \begin{equation}
-\lim_{N\rightarrow\infty}\mathrm{error}(\mathcal{H})=\frac{1}{\sqrt{N}}.
+\lim_{N\rightarrow\infty}\mathrm{error}(\mathcal{H})=\frac{\mathrm{std(\mathcal{H})}}{\sqrt{N}}.
 \end{equation}
 
 \end_inset
 
-La energía es una propiedad extensiva,
- para comparar resultados en retículas de diferentes tamaños es importante considerar la densidad de energía.
- Está se define como el valor esperado de la energía dividida por el volumen
+Al ser una propiedad extensiva,
+ la energía depende del volumen.
+ Para comparar resultados en retículas de diferentes tamaños,
+ se define la densidad de energía como el valor esperado de la energía dividida por el volumen
 \begin_inset Formula 
 \begin{equation}
 \expval{h}=\frac{\expval{\mathcal{H}}}{V}.
@@ -2047,7 +2231,7 @@ La energía es una propiedad extensiva,
 
 \end_inset
 
-
+Comparar valores de la densidad de energía para diferentes tamaños de retícula puede nustra como se
 \end_layout
 
 \begin_layout Subsection
@@ -2295,7 +2479,7 @@ Y_{1} & =\vec{s}_{1}\cdot(\vec{s}_{2}\times\vec{s}_{3}).
 \end_inset
 
 Al ser una esfera unitaria,
- el área del triángulo esférico esta dada por el ángulo solido generado por los espines,
+ el área del triángulo esférico es el ángulo solido generado por los espines,
  defiendo el número complejo 
 \begin_inset Formula $Z_{1}=X_{1}+iY_{1}$
 \end_inset
@@ -2663,7 +2847,7 @@ donde
 
 \end_inset
 
-dónde 
+donde 
 \begin_inset Formula $B=|\vec{B}|$
 \end_inset
 
@@ -2696,7 +2880,7 @@ El valor esperado de la magnetización
 \begin_inset Formula $B$
 \end_inset
 
-
+esta
 \begin_inset Formula 
 \begin{equation}
 \expval{M}=-\pdv{\mathcal{F}}{B}=\frac{1}{Z}\pdv{Z}{B}=\frac{1}{Z}\frac{1}{k_{B}T}\sum_{s}M[s]\mathrm{e}^{-\mathcal{H}[s]/k_{B}T}.
@@ -3149,7 +3333,7 @@ En la práctica,
 
 \end_inset
 
-dónde 
+donde 
 \begin_inset Formula $\xi$
 \end_inset
 
@@ -3434,7 +3618,7 @@ El consenso respecto a esta pregunta indica que la susceptibilidad topología di
 \end_layout
 
 \begin_layout Section
-Escalamiento
+Escalamientoopología diverge cuando la longitud de correlación diverge en diferentes sistemas con la misma 
 \end_layout
 
 \begin_layout Standard
@@ -3483,7 +3667,7 @@ G\left(\lambda^{a_{H}}H,\lambda^{a_{T}}\epsilon\right)=\lambda G(H,\epsilon),
 
 \end_inset
 
-dónde 
+donde 
 \begin_inset Formula $\lambda\in\mathbb{R}^{+}$
 \end_inset
 
@@ -3612,7 +3796,7 @@ En general el concepto aplica a cualquier simetría de un sistema que se rompe s
 \end_layout
 
 \begin_layout Standard
-La esencia del mecanismo de Kibble-Zurek esta en la aleatoriedad en la ruptura de la simetría de dominios en un sistema.
+La esencia del mecanismo de Kibble-Zurek está en la aleatoriedad en la ruptura de la simetría de dominios en un sistema.
  El tamaño de los dominios está determinado por el tiempo de relajación 
 \begin_inset Formula $\tau$
 \end_inset
@@ -3649,7 +3833,7 @@ Consideremos el universo temprano en expansión.
 \end_inset
 
 ,
- dónde 
+ donde 
 \begin_inset Formula $G_{F}$
 \end_inset
 
@@ -3951,7 +4135,7 @@ V=\alpha\abs{\psi\left(\vec{r}\right)}^{2}+\frac{1}{2}\beta\abs{\psi\left(\vec{r
 
 \end_inset
 
-dónde 
+donde 
 \begin_inset Formula $\alpha'=\alpha(T-T_{c})$
 \end_inset
 
@@ -4094,7 +4278,7 @@ Consideremos la cadena de Markov dada por
 \begin_inset Formula $t_{i}$
 \end_inset
 
- dónde 
+ donde 
 \begin_inset Formula $i\in\{1,\dots,N\}$
 \end_inset
 
@@ -4119,7 +4303,7 @@ Consideremos la cadena de Markov dada por
 
 \end_inset
 
-dónde 
+donde 
 \begin_inset Formula $[s]_{i}$
 \end_inset
 
@@ -4231,7 +4415,7 @@ P[s]=\frac{\mathrm{e}^{-\beta\mathcal{H}[s]}}{Z},
 
 \end_inset
 
-dónde 
+donde 
 \begin_inset Formula $\beta=1/T$
 \end_inset
 
@@ -4740,7 +4924,7 @@ Se determinar si el espín
 \begin_inset Formula $\vec{s}_{x}$
 \end_inset
 
- esta enlazado con sus espines vecinos más cercano,
+ está enlazado con sus espines vecinos más cercano,
  dada la probabilidad de vínculo
 \end_layout
 
@@ -4852,7 +5036,7 @@ C_{AA}\left(t\right)=C\mathrm{e}^{-t/\tau_{\mathrm{exp}}}.\label{eq:tau_exp}
 
 \end_inset
 
-dónde 
+donde 
 \begin_inset Formula $\tau_{\mathrm{exp}}$
 \end_inset
 
@@ -4904,7 +5088,7 @@ El tiempo de auto-correlación depende del algoritmo de Monte Carlo particular q
 
 \end_inset
 
-dónde 
+donde 
 \begin_inset Formula $z$
 \end_inset
 
@@ -5166,7 +5350,7 @@ Se calculó el tiempo de autocorrelación en equilibrio térmico para las temper
 \begin_inset Formula $L\times L$
 \end_inset
 
- dónde 
+ donde 
 \begin_inset Formula $L=64$
 \end_inset
 
@@ -6140,7 +6324,7 @@ Se realizó una serie de experimentos numéricos para determinar característica
 \begin_inset Formula $L\times L$
 \end_inset
 
- dónde 
+ donde 
 \begin_inset Formula $L\in\left\{ 32,64,128\right\} $
 \end_inset
 
@@ -7089,7 +7273,7 @@ El exponente crítico dinámico
 \begin_inset Formula $L\times L$
 \end_inset
 
- dónde 
+ donde 
 \begin_inset Formula $L=64$
 \end_inset
 
@@ -10690,7 +10874,7 @@ Un punto en la esfera
 
 \end_inset
 
-dónde 
+donde 
 \begin_inset Formula $\theta\in[0,\pi]$
 \end_inset
 
@@ -10698,7 +10882,7 @@ dónde
 \begin_inset Formula $\text{\ensuremath{\phi\in[0,2\pi)}}$
 \end_inset
 
- son ámgulos aleatorios.
+ son ángulos aleatorios.
  
 \end_layout
 
@@ -10809,7 +10993,7 @@ U(\theta)=\frac{1}{2}\int_{0}^{\theta}\sin\theta'\dd\theta'=\frac{1}{2}(1-\cos\t
 \end_layout
 
 \begin_layout Standard
-dónde 
+donde 
 \begin_inset Formula $u,v\in(0,\text{1})$
 \end_inset
 
@@ -11020,7 +11204,7 @@ R=\left\{ \vec{s}\in\mathcal{S}^{2}|d(\vec{s},\vec{s}_{0})\leq\alpha_{\mathrm{ma
 
 \end_inset
 
-dónde 
+donde 
 \begin_inset Formula $d(\vec{s},\vec{s}_{0})$
 \end_inset
 
@@ -11229,7 +11413,7 @@ La definición de clúster que consideraremos en este apartado es la mencionada 
 
 \begin_layout Standard
 Para empezar,
- se realiza una clasificación de los vínculos en dónde cada sitio 
+ se realiza una clasificación de los vínculos en donde cada sitio 
 \begin_inset Formula $x$
 \end_inset
 
@@ -11336,7 +11520,7 @@ Un sitio está en la frontera si alguno de sus vecinos más cercanos no pertenec
 \end_layout
 
 \begin_layout Itemize
-Un sitio esta en el exterior si ninguno de sus vecinos más cercanos pertenece al cluster.
+Un sitio está en el exterior si ninguno de sus vecinos más cercanos pertenece al cluster.
  
 \end_layout
 
