@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import ticker
 from plotClass import fit, fix
 import os
 import argparse
@@ -100,6 +101,21 @@ for alg in algs:
     ax.legend(fontsize=12)
     ax.set_yscale("log")
     ax.set_xscale("log")
+
+    ax.xaxis.set_major_locator(ticker.LogLocator(base=10.0, subs=[1.0], numticks=10))
+    ax.yaxis.set_major_locator(ticker.LogLocator(base=10.0, subs=[1.0], numticks=10))
+
+    # Ticks menores (ej. 2 y 5 en cada década)
+    ax.xaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=[2.0, 5.0], numticks=10))
+    ax.yaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=[2.0, 5.0], numticks=10))
+
+    # --- FORMATOS ---
+    formatter = ticker.StrMethodFormatter("{x:.1f}")
+    ax.xaxis.set_major_formatter(formatter)
+    ax.yaxis.set_major_formatter(formatter)
+    ax.xaxis.set_minor_formatter(formatter)
+    ax.yaxis.set_minor_formatter(formatter)
+
     fig.savefig(
         f"output/plot/length/length_{alg}.pdf",
         format="pdf",

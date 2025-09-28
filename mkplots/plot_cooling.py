@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from plotClass import fit, fix
 import argparse
-from matplotlib.ticker import ScalarFormatter
+from matplotlib import ticker
 
 parser = argparse.ArgumentParser(prog="autocorrelation")
 parser.add_argument("-alg", "--algorithm", default="lexic_metropolis")
@@ -140,12 +140,27 @@ for alg in algs:
             label=params[obs]["ylabel2"],
             )
     text = r"$\zeta=$"+fix(xfit.opt[1],xfit.error[1])
-    ax2.text(0.24,0.96,text,fontsize=12,ha="right",va="top",transform=ax2.transAxes,
+    ax2.text(0.24,0.94,text,fontsize=12,ha="right",va="top",transform=ax2.transAxes,
             bbox=dict(facecolor='none', edgecolor='black'))
+    # 0.24, 0.94,     0.95, 0.94
     ax2.set_ylabel(params[obs]["ylabel2"], fontsize=20)
     ax2.set_xlabel(r"$\tau_\mathrm{cool}$", fontsize=20)
     ax2.set_yscale("log")
     ax2.set_xscale("log")
+
+    ax2.xaxis.set_major_locator(ticker.LogLocator(base=10.0, subs=[1.0], numticks=10))
+    ax2.yaxis.set_major_locator(ticker.LogLocator(base=10.0, subs=[1.0], numticks=10))
+
+    # Ticks menores (ej. 2 y 5 en cada década)
+    ax2.xaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=[2.0, 5.0], numticks=10))
+    ax2.yaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=[2.0, 5.0], numticks=10))
+
+    # --- FORMATOS ---
+    formatter = ticker.StrMethodFormatter("{x:.0f}")
+    ax2.xaxis.set_major_formatter(formatter)
+    ax2.yaxis.set_major_formatter("{x:.3f}")
+    ax2.xaxis.set_minor_formatter(formatter)
+    ax2.yaxis.set_minor_formatter("{x:.3f}")
 
     # for axis in [ax2.xaxis, ax2.yaxis]:
     #     formatter = ScalarFormatter()

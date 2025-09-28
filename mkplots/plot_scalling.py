@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import ticker
 from plotClass import fit, fix, correlation, obs
-import os
 import argparse
 parser = argparse.ArgumentParser(prog="autocorrelation")
 parser.add_argument("-alg", "--algorithm", default="lexic_metropolis")
@@ -106,8 +106,7 @@ for alg in algs:
             )
     # text = r"$\xi\propto \tau^{z}$"+"\n"+r"$z$="+fix(xfit.opt[0], xfit.error[0])
     text = r"$z=$"+fix(xfit.opt[1],xfit.error[1])
-    ax.text(0.22,0.96,text,fontsize=12,ha="right",va="top",transform=ax.transAxes,
-            bbox=dict(facecolor='none', edgecolor='black'))
+    ax.text(0.24,0.96,text,fontsize=12,ha="right",va="top",transform=ax.transAxes,bbox=dict(facecolor='none', edgecolor='black'))
     print(alg, fix(xfit.opt[1], xfit.error[1]))
     
     ax.set_xlabel(r"$\tau$", fontsize=18)
@@ -116,8 +115,18 @@ for alg in algs:
     ax.set_yscale("log")
     ax.set_xscale("log")
 
-    fig.savefig(
-        f"output/plot/scaling/{alg}_{name}.pdf",
-        format="pdf",
-        bbox_inches="tight"
-    )
+    ax.xaxis.set_major_locator(ticker.LogLocator(base=10.0, subs=[2.0],numticks=8))
+    ax.yaxis.set_major_locator(ticker.LogLocator(base=10.0, subs=[2.0],numticks=6))
+
+    # Ticks menores (ej. 2 y 5 en cada década)
+    ax.xaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=[3,4,6,10,15,20], numticks=8))
+    ax.yaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=[2,4,6,8,10], numticks=6))
+
+    # --- FORMATOS ---
+    formatter = ticker.StrMethodFormatter("{x:.0f}")
+    ax.xaxis.set_major_formatter(formatter)
+    ax.yaxis.set_major_formatter(formatter)
+    ax.xaxis.set_minor_formatter(formatter)
+    ax.yaxis.set_minor_formatter(formatter)
+
+    fig.savefig(f"output/plot/scaling/{alg}_{name}.pdf",format="pdf",bbox_inches="tight")

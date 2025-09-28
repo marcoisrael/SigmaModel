@@ -540,7 +540,7 @@ En sistemas físicos que consisten en un gran número de grados de libertad,
  la función de partición es de la forma
 \begin_inset Formula 
 \begin{equation}
-Z=\sum_{\sigma}\mathrm{e}^{-\beta\mathcal{H}[\sigma]},\label{eq:func_part}
+nmormaZ=\sum_{\sigma}\mathrm{e}^{-\beta\mathcal{H}[\sigma]},\label{eq:func_part}
 \end{equation}
 
 \end_inset
@@ -3873,7 +3873,7 @@ He en estado superfluidico,
 \end_layout
 
 \begin_layout Standard
-Basándose en el concepto de ruptura de simetría Kibble introdujo la idea de fluctuaciones primordiales.
+Basándose en el concepto de ruptura de simetría Tom Kibble introdujo la idea de fluctuaciones primordiales.
  En un sistema que pasa continuamente por una ruptura de simetría,
  un parametro de orden difiere en las regiones no correlaciones.
  Formando regiones asiladas conocidas como dominios.
@@ -3891,6 +3891,46 @@ En el ejemplo del universo temprano,
 
 \begin_layout Section
 Acoplamientos de largo alcance
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "default"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Teorema de Hohenberg–Mermin–Wagner.
+\end_layout
+
+\begin_layout Plain Layout
+En un sistema infinito no hay ruptura espontanea de simentria para 
+\begin_inset Formula $T>0$
+\end_inset
+
+ y 
+\begin_inset Formula $d\leq2$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3943,7 +3983,7 @@ donde
 \end_inset
 
  es un exponente que describe el decaimiento de las interacciones.
- En un sistema con intreacciones 
+ En un sistema con interacciones 
 \end_layout
 
 \begin_layout Section
@@ -3954,7 +3994,7 @@ Evolución del universo temprano
 Consideremos el universo temprano en expansión.
  En el sector electrodébil del ME,
  la temperatura crítica es del orden 
-\begin_inset Formula $\sqrt{G_{F}}$
+\begin_inset Formula $1/\sqrt{G_{F}}$
 \end_inset
 
 ,
@@ -3974,7 +4014,7 @@ Consideremos el universo temprano en expansión.
 
 \begin_layout Standard
 Consideremos un campo multi-escalar 
-\begin_inset Formula $\phi\in\mathbb{R}^{n}$
+\begin_inset Formula $\vec{\phi}\mathbb{R}^{n}$
 \end_inset
 
  con un lagrangiano invariante bajo el grupo ortogonal O(
@@ -3982,15 +4022,28 @@ Consideremos un campo multi-escalar
 \end_inset
 
 ),
+ la matriz antisimétrica 
+\series bold
+
+\begin_inset Formula $B_{\mu}$
+\end_inset
+
+ 
+\series default
+representa un campo de norma dado por el acoplamiento 
+\begin_inset Formula $\frac{1}{2}n(n-1).$
+\end_inset
+
+ El lagrangiano es de la forma
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 \begin{array}{c}
-\mathcal{L}=\frac{1}{2}D_{\mu}\vec{\phi}D_{\mu}\vec{\phi}-\frac{1}{8}g^{2}\left(\phi^{2}-\eta^{2}\right)^{2}+\frac{1}{8}\mathrm{Tr}\left(B_{\mu\nu}B^{\mu\nu}\right)\\
+\mathcal{L}=\frac{1}{2}D_{\mu}\vec{\phi}D_{\mu}\vec{\phi}-\frac{1}{8}g^{2}\left(\vec{\phi}\cdot\vec{\phi}-\eta^{2}\right)^{2}+\frac{1}{8}\mathrm{Tr}\left(B_{\mu\nu}B^{\mu\nu}\right)\\
 D_{\mu}\vec{\phi}=\left(\partial_{\mu}-qB_{\mu}\right)\text{\ensuremath{\vec{\phi}}}\\
-B_{\mu\nu}=D\mu B_{\nu}-D_{\nu}B\mu+q\left[B_{\mu},B_{\nu}\right].
+B_{\mu\nu}=D\mu B_{\nu}-D_{\nu}B\mu+q\left[B_{\mu},B_{\nu}\right],
 \end{array}
 \end{equation}
 
@@ -4009,7 +4062,7 @@ donde
 \begin_inset Formula $n$
 \end_inset
 
-) la simetría a O(
+) l a O(
 \begin_inset Formula $n-1$
 \end_inset
 
@@ -4038,10 +4091,7 @@ Para
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Ningún punto de la esfera tiene preferencia,
+ Ningún punto de esta esfera tiene preferencia,
  y la elección es independiente entre las diferentes regiones del espacio.
  Por lo tanto,
  se espera la formación de dominios con distinto valor esperado de 
@@ -4052,7 +4102,7 @@ Ningún punto de la esfera tiene preferencia,
  variando entre regiones de una manera más o menos aleatoria.
  Al llegar al equilibrio,
  muchas de estas variaciones dejarán de fluctuar,
- acercando el valor esperado de los diferentes dominios al valor constante 
+ acercando el valor esperado de los diferentes dominios a un valor constante 
 \begin_inset Formula $\expval{\vec{\phi}}$
 \end_inset
 
@@ -4063,45 +4113,8 @@ Ningún punto de la esfera tiene preferencia,
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Una posibilidad es la neutralidad del universo respecto a las cargas del campo 
-\begin_inset Formula $\vec{\phi}$
-\end_inset
-
-,
- en cuyo caso no hay problema con la formación de dominios,
- ya que no hay una dirección preferencial hacia algún punto en 
-\begin_inset Formula $\mathcal{S}^{n-1}$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- Una posibilidad es que el universo podría tener una carga 
-\begin_inset Formula $q_{t_{0}}$
-\end_inset
-
- asociada al campo 
-\begin_inset Formula $\vec{\phi}$
-\end_inset
-
-.
- impidiendo el surgimiento de estructuras de dominio.
- Consideremos en cambio que el universo permite la formación de dominios.
- El tamaño de estos dominios está determinado por la longitud de correlación 
-\begin_inset CommandInset citation
-LatexCommand autocite
-key "kibble_topology_1976"
-literal "false"
-
-\end_inset
-
-
+Consideremos el escenario en el que el universo permite la formación de dominios.
+ El tamaño de estos dominios está determinado por la longitud de correlación
 \begin_inset Formula 
 \begin{equation}
 \xi^{-1}\approx g^{2}T.
@@ -4115,7 +4128,7 @@ literal "false"
 \begin_layout Standard
 Es interesante revisar las posibles configuraciones geométricas de estos dominios.
  Las transiciones de fase de ruptura de simetría en el universo temprano podrían haber formado estructuras topológicamente estables.
- Las cuerdas cósmicas son defectos topológicos unidimensionales que resultan de la ruptura de la simetría O(
+ Las cuerdas cósmicas se teorizan defectos topológicos unidimensionales que pueden resultar de la ruptura de la simetría O(
 \begin_inset Formula $n$
 \end_inset
 
@@ -4148,7 +4161,7 @@ literal "false"
  incluidos las líneas de vórtice en superfluidos 
 \begin_inset CommandInset citation
 LatexCommand autocite
-key "kibble_phase-transition_2007,zurek_cosmological_1985,kibble_implications_1980"
+key "kibble_phase-transition_2007,kibble_implications_1980,kibble_topology_1976"
 literal "false"
 
 \end_inset
@@ -4163,14 +4176,9 @@ Experimentos con materia condensada
 
 \begin_layout Standard
 En 1985,
- W.
- Zurek,
+ Wojciech Zurek,
  en Los Álamos,
- sugirió que las ideas sobre cómo calcular 
-\begin_inset Formula $\xi$
-\end_inset
-
- podrían probarse aplicándolas al problema de la formación de defectos en una transición de fase de baja temperatura,
+ sugirió que las ideas de Kibble podrían probarse aplicándolas al problema de la formación de defectos en una transición de fase de baja temperatura,
  en particular la transición de un fluido normal a un superfluido en helio 
 \begin_inset Formula $^{4}$
 \end_inset
@@ -4186,52 +4194,40 @@ He líquido.
 \end_inset
 
 .
- La tasa de enfriamiento 
+ La tasa inversa de enfriamiento 
 \begin_inset Formula $τ_{\mathrm{cool}}$
 \end_inset
 
- se define de modo que la tasa de cambio lineal de temperatura en el punto crítico sea 
-\begin_inset Formula $dT/dt=−T_{c}/τ_{\mathrm{cool}}$
+ se relaciona con la longitud de correlacion siguiendo
+\begin_inset Formula 
+\begin{equation}
+\xi\propto\tau_{\mathrm{cool}}^{-\zeta},
+\end{equation}
+
 \end_inset
 
- y el exponente critico 
+done 
 \begin_inset Formula $\zeta$
 \end_inset
 
- se define se pueda calcular en términos de índices críticos y se define como
+ es un exponente critico.
+ El parámetro de orden de un superfluido,
+ puede pensarse como la función de onda del condensado de Bose.
+ La fase 
+\begin_inset Formula $\theta$
+\end_inset
+
+ de la función de onda es de la forma
 \begin_inset Formula 
 \begin{equation}
-\zeta=\frac{d\nu}{1+\nu z},
+\psi=\abs{\psi}e^{i\theta}
 \end{equation}
 
 \end_inset
 
- donde 
-\begin_inset Formula $\nu$
-\end_inset
-
- y 
-\begin_inset Formula $z$
-\end_inset
-
- son exponentes críticos y 
-\begin_inset Formula $d$
-\end_inset
-
- es la dimensión espacial.
- La longitud de correlación 
-\begin_inset Formula $\xi$
-\end_inset
-
- se relaciona con la tasa de enfriamiento siguiendo la expresión
-\begin_inset Formula 
-\begin{equation}
-\xi\propto\tau_{\mathrm{cool}}^{-\zeta}.
-\end{equation}
-
-\end_inset
-
-
+ En este sistema se pueden formar líneas de vórtices cuando el parámetro de orden es un valor complejo.
+ El resultado da lugar una situación análoga al modelo cosmológico.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -4245,30 +4241,25 @@ He es análoga a la ruptura de simetría del campo de multi-escalar
 \end_inset
 
 .
- Para un superfluido de 
-\begin_inset Formula $^{4}$
-\end_inset
-
-He que pasa por una ruptura de simetría.
  Existe un análogo a las cuerdas cósmicas presentes en el modelo del universo temprano llamadas lineas de vórtice.
  Cerca de la transición de fase ,
  el potencial es de la forma
 \begin_inset Formula 
 \begin{equation}
-V=\alpha\abs{\psi\left(\vec{r}\right)}^{2}+\frac{1}{2}\beta\abs{\psi\left(\vec{r}\right)}^{4},
+V=a\abs{\psi\left(\vec{r}\right)}^{2}+\frac{1}{2}b\abs{\psi\left(\vec{r}\right)}^{4},
 \end{equation}
 
 \end_inset
 
 donde 
-\begin_inset Formula $\alpha'=\alpha(T-T_{c})$
+\begin_inset Formula $a$
 \end_inset
 
  y 
-\begin_inset Formula $\alpha,\beta$
+\begin_inset Formula $b$
 \end_inset
 
- son las exponentes críticos relacionadas al calor específico .
+ son constantes.
  Por debajo de la temperatura crítica,
  tras la ruptura de la simetría en el superfluido 
 \begin_inset Formula $\alpha$
@@ -4278,28 +4269,7 @@ donde
 \begin_inset Formula $V$
 \end_inset
 
- tiene la forma de sombrero.
-\end_layout
-
-\begin_layout Standard
-El parámetro de orden de un superfluido,
- puede pensarse como la función de onda del condensado de Bose.
- La fución de onda es de la forma
-\begin_inset Formula 
-\begin{equation}
-\psi=\abs{\psi}e^{i\theta}
-\end{equation}
-
-\end_inset
-
- donde 
-\begin_inset Formula $\theta$
-\end_inset
-
- es una fase relacionada a la velocidad del fluido.
- En este sistema se pueden formar líneas de vórtices cuando el parámetro de orden es un valor complejo.
- El resultado da lugar una situación análoga al modelo cosmológico.
- Pasando por debajo de la temperatura crítica 
+ tiene la forma de sombrero.Pasando por debajo de la temperatura crítica 
 \begin_inset Formula $T_{c}$
 \end_inset
 
@@ -4825,36 +4795,25 @@ p[s\rightarrow s']p[s]=p[s'\rightarrow s]p[s'].\label{eq:balance_detallado}
 
 Se propone la probabilidad de aceptación de algoritmo de Glauber como 
 \begin_inset Formula 
-\begin{align}
-p[s\rightarrow s'] & =\frac{\mathrm{e}^{-\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{-\beta\Delta\mathcal{H}}}\nonumber \\
-= & \frac{\mathrm{e}^{-\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{-\beta\Delta\mathcal{H}}}\frac{\mathrm{e}^{\beta\Delta\mathcal{H}}}{\mathrm{e}^{\beta\Delta\mathcal{H}}}\nonumber \\
-= & \frac{\mathrm{e}^{\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{\beta\Delta\mathcal{H}}}\mathrm{e}^{-\beta\Delta\mathcal{H}}\nonumber \\
-= & p[s'\rightarrow s]\mathrm{e}^{-\beta\Delta\mathcal{H}}.
-\end{align}
-
-\end_inset
-
-La propuesta cumple la ec.
- 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:balance_detallado"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- que ahora toma la forma
-\begin_inset Formula 
 \begin{equation}
 p[s\rightarrow s']=\frac{\mathrm{e}^{-\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{-\beta\Delta\mathcal{H}}}.
 \end{equation}
 
 \end_inset
 
-De manera similar al algoritmo de Metropolis dada una configuración 
+La probabilidad de aceptación tiene que cumplir la ecuación de balance detallado por lo que se realiza la sustitución directa
+\begin_inset Formula 
+\begin{align}
+p[s\rightarrow s']p[s] & =\frac{\mathrm{e}^{-\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{-\beta\Delta\mathcal{H}}}\frac{\mathrm{e}^{-\beta\mathcal{H}[s]}}{Z}\nonumber \\
+= & \frac{\mathrm{e}^{\beta\Delta\mathcal{H}}}{\mathrm{e}^{\beta\Delta\mathcal{H}}}\left(\frac{\mathrm{e}^{-\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{-\beta\Delta\mathcal{H}}}\frac{\mathrm{e}^{-\beta\mathcal{H}[s]}}{Z}\right)\frac{\mathrm{e}^{\beta\mathcal{H}[s']}}{\mathrm{e}^{\beta\mathcal{H}[s']}}\nonumber \\
+= & \frac{\mathrm{e}^{\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{\beta\Delta\mathcal{H}}}\frac{\mathrm{e}^{-\beta\mathcal{H}[s']}}{Z}\nonumber \\
+= & p[s'\rightarrow s]p[s'],
+\end{align}
+
+\end_inset
+
+llegando a la ecuación de balance detallado.
+ De manera similar al algoritmo de Metropolis dada una configuración 
 \begin_inset Formula $[s]$
 \end_inset
 
@@ -5113,17 +5072,17 @@ nolink "false"
 \end_layout
 
 \begin_layout Section
-Tiempo de autocorrelación
+Tiempo de auto-correlación
 \end_layout
 
 \begin_layout Standard
-La evolución de un sistema se caracteriza por el tiempo de autocorrelación,
+La evolución de un sistema se caracteriza por el tiempo de auto-correlación,
  que mide la velocidad a la que un sistema pasa a un estado estadísticamente independiente.
  En general,
  la dinámica desacelera considerablemente cerca de un punto crítico.
  La desaceleración crítica es una barrera inevitable,
  ya que en la realidad se dispone de un tiempo de cómputo finito,
- por lo que es de gran interés entender cómo cambia el tiempo de autocorrelación para las diferentes observables del sistema.
+ por lo que es de gran interés entender cómo cambia el tiempo de auto-correlación para las diferentes observables del sistema.
  Consideremos una observable 
 \begin_inset Formula $A$
 \end_inset
@@ -5184,7 +5143,7 @@ donde
 \end_inset
 
  tal que,
- el tiempo de autocorrelación oscile al rededor de una constante 
+ el tiempo de auto-correlación oscile al rededor de una constante 
 \begin_inset Formula $\tau_{\mathrm{int}}$
 \end_inset
 
@@ -5193,7 +5152,7 @@ donde
 \end_inset
 
 .
- El error depende de las oscilaciones del tiempo de autocorrlación al rededor de 
+ El error depende de las oscilaciones del tiempo de auto-correlación al rededor de 
 \begin_inset Formula $\tau_{\mathrm{int}}$
 \end_inset
 
@@ -5286,7 +5245,7 @@ En esta sección se reportan mediciones de las diferentes observables que se han
 \begin_inset Formula $3$
 \end_inset
 
-).
+) en equilibrio térmico.
  Para ello,
  se ha escrito un programa en Fortran con rutinas de generación de configuraciones y su actualización en función de la temperatura para cada uno de los algoritmos descritos.
  Algunos términos básicos son:
@@ -5324,8 +5283,13 @@ Actualización.
 
 \begin_layout Itemize
 Barrido de actualizaciones.
- Un barrido es la actualización de 
-\begin_inset Formula $V=L\times L$
+ En una retícula de volumen 
+\begin_inset Formula $V$
+\end_inset
+
+,
+ un barrido es la actualización de 
+\begin_inset Formula $V$
 \end_inset
 
  espines seleccionados en orden lexicográfico,
@@ -5333,8 +5297,104 @@ Barrido de actualizaciones.
 \end_layout
 
 \begin_layout Standard
+Como se ve en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "therm"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ los valores de un sistema fluctúan entre mediciones.
+ Por lo que una medición se calcula a partir del promedio,
+ donde el número de mediciones es suficientemente grande para alcanzar la precisión deseada.
+ Si el ruido termodinámico es fuerte (para 
+\begin_inset Formula $T>2$
+\end_inset
+
+),
+ el estado de equilibrio térmico se alcanza en pocos barridos de actualización y generar configuraciones estadísticamente independientes también requiere pocos barridos.
+ En este escenario las fuertes fluctuaciones requieren una muestra grande de configuraciones para estabilizar el promedio estadístico.
+ En cambio si el ruido termodinámico es bajo (
+\begin_inset Formula $T\leq2$
+\end_inset
+
+),
+ el equilibrio termodinámico y las configuraciones estadísticamente independientes requieren un mayor numero de barridos.
+ En este escenario el bajo ruido termodinámico requiere un numero menor de configuraciones para estabilizar el promedio estadístico pero requiere de un mayor numero de actualizaciones para generar configuraciones estadísticamente independientes.
+ 
+\end_layout
+
+\begin_layout Standard
+Para realizar las simulaciones se requiere determinar la temperatura 
+\begin_inset Formula $T$
+\end_inset
+
+,
+ el tamaño de la retícula 
+\begin_inset Formula $V=L\times L$
+\end_inset
+
+ y el ángulo 
+\begin_inset Formula $\delta$
+\end_inset
+
+ que determina la distancia máxima para el cambio en un espín de la configuración.
+ El programa que se encarga de las simulaciones sigue los siguientes pasos:
+\end_layout
+
+\begin_layout Enumerate
+Se genera una configuración en equilibrio termodinámico a temperatura 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Se realizan suficientes barridos actualización para generar una configuración estadísticamente independiente.
+\end_layout
+
+\begin_layout Enumerate
+Se miden los valores de las observables para la configuración actual.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Si el número de mediciones en menor al número requerido para alcanzar la precisión deseada,
+ se regresa al paso 2.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Si en cambio el numero de mediciones es suficiente se termina el ciclo y se promedian los resultados.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+El ángulo 
+\begin_inset Formula $\delta$
+\end_inset
+
+ afecta el ratio de aceptación,
+ si abarca un área grande sobre la esfera 
+\begin_inset Formula $\mathcal{S}^{2}$
+\end_inset
+
+,
+ entonces el ratio de aceptación es bajo pero cada cambio aceptado es un cambio importante en la configuración.
+ En cambio si el área sobre la esfera es pequeña,
+ el ratio de aceptación aumenta pero los cambios aceptados afectan en menor proporción a la configuración.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
-placement document
+placement H
 alignment document
 wide false
 sideways false
@@ -5357,22 +5417,21 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Termalización de un sistema 2d O(
+Evolución de la densidad energética del modelo a 2d O(
 \begin_inset Formula $3$
 \end_inset
 
-) desde las configuraciones hot-start y cold-start a temperatura 
+) a temperatura 
 \begin_inset Formula $T=1$
 \end_inset
 
-,
- 
-\begin_inset Formula $L=64$
+ y 
+\begin_inset Formula $V=64\times64$
 \end_inset
 
-.
- El eje vertical muestra la densidad energetica 
-\begin_inset Formula $\expval{h}=\expval{\mathcal{H}}/V$
+ desde las configuraciones hot-start y cold-start.
+ El eje vertical muestra la densidad energética 
+\begin_inset Formula $h=\mathcal{H}/V$
 \end_inset
 
 .
@@ -5382,8 +5441,7 @@ Termalización de un sistema 2d O(
 cold-start
 \shape default
 \emph default
-,
- parte de un estado de energía mínima en el que todos los espines están alineados.
+ parte de una configuración espines están alineados.
  La trayectoria 
 \shape italic
 \emph on
@@ -5396,8 +5454,12 @@ hot-start
 \begin_inset Formula $100$
 \end_inset
 
- barridos de actualización,
- ambas trayectorias oscilan alrededor de una energía del sistema termalizadó.
+ barridos,
+ ambas trayectorias oscilan alrededor del valor esperado de la energía del sistema termalizadó 
+\begin_inset Formula $\expval{h}=1.247(1)$
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -5417,38 +5479,70 @@ name "therm"
 
 \end_layout
 
-\begin_layout Standard
-El programa que se encarga de las simulaciones sigue los siguientes pasos:
+\begin_layout Section
+Tiempo de auto-correlación
 \end_layout
 
-\begin_layout Enumerate
-Se genera una configuración en equilibrio termodinámico a temperatura 
-\begin_inset Formula $T$
+\begin_layout Standard
+Se calculó el tiempo de auto-correlación en equilibrio térmico para las temperaturas 
+\begin_inset Formula 
+\[
+T=0.7,0.8,0.9,1.0,1.2,1.4,1.6,1.8,2.0
+\]
+
+\end_inset
+
+ en una retícula de tamaño 
+\begin_inset Formula $V=64\times64$
 \end_inset
 
 .
+ En todos los experimentos numéricos se partió de una configuración inicial 
+\shape italic
+\emph on
+hot-start y se
+\shape default
+\emph default
+ procedió con 
+\begin_inset Formula $10^{4}$
+\end_inset
+
+ barridos de actualización del algoritmo multi-clúster,
+ asegurando una configuración completamente termalizada.
+ El algoritmo alcanza la configuración de equilibrio en pocas actualizaciones,
+ este comportamiento evita medir una desaceleración critica en el rango de temperaturas 
+\begin_inset Formula $T\in[0.7,2.0]$
+\end_inset
+
+.
+ Por los motivos descritos el tiempo de auto-correlación del algoritmo multi-clúster no pudo medirse.
+ Este característica impidió el cálculo del tiempo de auto-correlación en el rango de temperaturas seccionado.
  
-\end_layout
-
-\begin_layout Enumerate
-Se actualiza la configuración.
-\end_layout
-
-\begin_layout Enumerate
-Se miden las observables.
- 
-\end_layout
-
-\begin_layout Enumerate
-Si el número de mediciones en menor al número requerido,
- se regresa al paso 2.
 \end_layout
 
 \begin_layout Standard
-Como se ve en la Figura 
+En el caso de los algoritmos de actualización local,
+ hay una notoria desaceleración crítica en el rango de temperaturas 
+\begin_inset Formula $T\in[0.7,2.0]$
+\end_inset
+
+,
+ por lo que fue posible la medición de el tiempo de auto-correlación para las observables.
+ Los tiempos de auto-correlación se obtuvieron por ajuste a la función exponencial y por integración usando las ecuaciones 
 \begin_inset CommandInset ref
-LatexCommand ref
-reference "therm"
+LatexCommand eqref
+reference "eq:tau_int"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:tau_exp"
 plural "false"
 caps "false"
 noprefix "false"
@@ -5457,67 +5551,13 @@ nolink "false"
 \end_inset
 
 ,
- las observables de un sistema fluctúan entre mediciones.
- Por lo que un resultado se calcula a partir del promedio de un número de mediciones suficientemente grande para alcanzar la precisión deseada.
- 
-\end_layout
-
-\begin_layout Section
-Tiempo de autocorrelación
-\end_layout
-
-\begin_layout Standard
-Se calculó el tiempo de autocorrelación en equilibrio térmico para las temperaturas 
-\begin_inset Formula $T\in\left\{ 0.7,0.8,0.9,1.0\right\} $
-\end_inset
-
- en una retícula de tamaño 
-\begin_inset Formula $L\times L$
-\end_inset
-
- donde 
-\begin_inset Formula $L=64$
-\end_inset
-
-.
- En todos los experimentos numéricos se partió de una configuración inicial 
-\shape italic
-\emph on
-hot-start
-\emph default
-.
-
-\shape default
- Se realizaron 
-\begin_inset Formula $10^{4}$
-\end_inset
-
- barridos de actualización del algoritmo multi-clúster,
- asegurando una configuración completamente termalizada.
-\end_layout
-
-\begin_layout Standard
-En el caso de la carga topológica,
- el tiempo de autocorrelación del algoritmo multi-clúster no puede medirse debido a la eficiencia con la que el algoritmo alcanza la configuración de equilibrio.
- En el caso de los algoritmos de actualización local,
- se nota la desaceleración crítica cerca de la temperatura 
-\begin_inset Formula $T=0$
-\end_inset
-
-.
- La cual es fuerte para os algoritmos locales en comparacion al algoritmo clúster.
- Los tiempos de autocorrelación se calcularon por ajuste a la función exponencial y por integración,
- ambos resultados fueron consistentes para 
-\begin_inset Formula $T\in\left\{ 0.7,0.8,0.9,1.0,1.2,1.4,1.6,1.8,2.0\right\} $
-\end_inset
-
-.
- Finalmente,
- se ajustó el tiempo de autocorrelación 
+ ambos resultados fueron consistentes para los algoritmos de actualización local.
+ Una vez obtenidos las mediciones,
+ se ajustó el tiempo de auto-correlación 
 \begin_inset Formula $\tau$
 \end_inset
 
- en función de la temperatura siguiendo la ecuación 
+ en función de la temperatura siguiendo la relación 
 \begin_inset Formula 
 \begin{equation}
 \tau\propto T^{-\nu z}.
@@ -5525,7 +5565,42 @@ En el caso de la carga topológica,
 
 \end_inset
 
+ En las figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "plot:autocorrelation-time-1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
+\end_inset
+
+,
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "plot:autocorrelation-time-2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "plot:autocorrelation-time-3"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ se muestra el cambio en el tiempo de auto-correlación en función de la temperatura para la carga topológica,
+ la densidad de energía y la magnetización.
 \end_layout
 
 \begin_layout Standard
@@ -5596,7 +5671,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algorimo de Metropolis aleatorio.
+Algoritmo de Metropolis aleatorio.
 \end_layout
 
 \end_inset
@@ -5692,16 +5767,9 @@ Tiempo de autocorrelación de la carga topológica en función de la temperatura
 \begin_inset Formula $V=L\times L$
 \end_inset
 
-.
- Los tiempos de autocorrelación 
-\begin_inset Formula $\tau_{\mathrm{int}}$
-\end_inset
-
- y 
-\begin_inset Formula $\tau_{\mathrm{exp}}$
-\end_inset
-
- se definen en las ec.
+,
+ en la escala log-log.
+ Los tiempos de auto-correlación exponencial e integrado son definidos en las ecs.
  
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -5725,7 +5793,28 @@ nolink "false"
 \end_inset
 
 .
+ Aunque los valores 
+\begin_inset Formula $\tau_{\mathrm{int}}$
+\end_inset
+
+ y 
+\begin_inset Formula $\tau_{\mathrm{exp}}$
+\end_inset
+
+ varían un poco,
+ la inclinación determinada por 
+\begin_inset Formula $\nu z$
+\end_inset
+
+ es consistente para los algoritmos de actualización local.
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "plot:autocorrelation-time-1"
 
 \end_inset
 
@@ -5805,7 +5894,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algorimo de Metropolis aleatorio.
+Algoritmo de Metropolis aleatorio.
 \end_layout
 
 \end_inset
@@ -5892,17 +5981,48 @@ Algoritmo de Gauber aleatorio.
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Tiempo de autocorrelación en función de la temperatura en una retícula de tamaño 
-\begin_inset Formula $L=64$
-\end_inset
-
-,
- 
-\begin_inset Formula $V=L\times L$
+Tiempo de autocorrelación de la energía en función de la temperatura en una retícula de tamaño 
+\begin_inset Formula $V=64\times64$
 \end_inset
 
 .
+ Los valores 
+\begin_inset Formula $\tau_{\mathrm{int}}$
+\end_inset
+
+ y 
+\begin_inset Formula $\tau_{\mathrm{exp}}$
+\end_inset
+
+ son más cercanos en el rengo de temperaturas 
+\begin_inset Formula $T\in[0.7,2.0]$
+\end_inset
+
+,
+ en comparación a las gráficas en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "plot:autocorrelation-time-1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ y la inclinación determinada por 
+\begin_inset Formula $\nu z$
+\end_inset
+
+ es consistente para los algoritmos de actualización local.
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "plot:autocorrelation-time-2"
 
 \end_inset
 
@@ -5982,7 +6102,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algorimo de Metropolis aleatorio.
+Algoritmo de Metropolis aleatorio.
 \end_layout
 
 \end_inset
@@ -6070,16 +6190,36 @@ Algoritmo de Gauber aleatorio.
 
 \begin_layout Plain Layout
 Tiempo de autocorrelación de la magnetización en función de la temperatura en una retícula de tamaño 
-\begin_inset Formula $L=64$
-\end_inset
-
-,
- 
-\begin_inset Formula $V=L\times L$
+\begin_inset Formula $V=64\times64$
 \end_inset
 
 .
+ Los valores 
+\begin_inset Formula $\tau_{\mathrm{int}}$
+\end_inset
+
+ y 
+\begin_inset Formula $\tau_{\mathrm{exp}}$
+\end_inset
+
+ cercanos en el rengo de temperaturas 
+\begin_inset Formula $T\in[0.7,2.0]$
+\end_inset
+
+,
+ y la inclinación determinada por 
+\begin_inset Formula $\nu z$
+\end_inset
+
+ es consistente para los algoritmos de actualización local.
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "plot:autocorrelation-time-3"
 
 \end_inset
 
@@ -6089,6 +6229,26 @@ Tiempo de autocorrelación de la magnetización en función de la temperatura en
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Los resultados para las observables mostraron una consistencia en la inclinación de los ajustes al comparar el tiempo de auto-correlción con la temperatura para los algoritmos de actualización locales.
+\end_layout
+
+\begin_layout Standard
+En la tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:exponentenuz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ se resumen los resultados,
+ se puede ver la como la similitud entre exponentes asociados a los algoritmos de actualización lexicográficos y entre algoritmos de actualización aleatorios.
 \begin_inset Float table
 placement H
 alignment document
@@ -6099,14 +6259,17 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="4">
+<lyxtabular version="3" rows="6" columns="7">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6115,7 +6278,7 @@ Algoritmo
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6127,7 +6290,16 @@ Algoritmo
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6139,11 +6311,112 @@ Algoritmo
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Formula $M$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau_{\mathrm{int}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau_{\mathrm{exp}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau_{\mathrm{int}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau_{\mathrm{exp}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau_{\mathrm{int}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau_{\mathrm{exp}}$
 \end_inset
 
 
@@ -6166,7 +6439,19 @@ Metropolis lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $2.3(3)$
+\begin_inset Formula $2.3(4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2.6(2)$
 \end_inset
 
 
@@ -6186,11 +6471,35 @@ Metropolis lexicográfico
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.6(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Formula $5.7(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5.5(3)$
 \end_inset
 
 
@@ -6225,7 +6534,43 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $2.3(3)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 \begin_inset Formula $3.43(4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.3(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5.4(4)$
 \end_inset
 
 
@@ -6237,7 +6582,7 @@ Metropolis aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $5.4(5)$
+\begin_inset Formula $5.1(4)$
 \end_inset
 
 
@@ -6272,7 +6617,43 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.0(1)$
+\begin_inset Formula $2.6(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.0(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.7(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5.1(1)$
 \end_inset
 
 
@@ -6284,7 +6665,7 @@ Glauber lexicográfico
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $5.1(1)$
+\begin_inset Formula $5.2(3)$
 \end_inset
 
 
@@ -6319,7 +6700,43 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $2.4(3)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 \begin_inset Formula $3.1(2)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.18(6)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5.1(2)$
 \end_inset
 
 
@@ -6331,7 +6748,7 @@ Glauber aleatorio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $5.1(2)$
+\begin_inset Formula $5.6(7)$
 \end_inset
 
 
@@ -6348,6 +6765,20 @@ Glauber aleatorio
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Exponente crítico 
+\begin_inset Formula $\nu z$
+\end_inset
+
+ para el tiempo de auto-correlación.
+ Se toma el promedio entre el exponente para el tiempo de auto-correlación integrado y el ajustado.
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:exponentenuz"
@@ -6357,65 +6788,13 @@ name "tab:exponentenuz"
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Exponente crítico 
-\begin_inset Formula $\nu z$
-\end_inset
-
- para el tiempo de autocorrelación.
- Se toma el promedio entre el exponente para el tiempo de autocorrelación integrado y el ajustado.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-En la tabla 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "tab:exponentenuz"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- se puede ver la similitud entre exponentes para el algoritmo de Mertopolis.
- Para la carga topológica se tienen los valores 
-\begin_inset Formula $2.3(3)$
-\end_inset
-
- y 
-\begin_inset Formula $2.2(3)$
-\end_inset
-
-.
- Para el algoritmo Glauber otros exponentes son 
-\begin_inset Formula $2.5(2)$
-\end_inset
-
- y 
-\begin_inset Formula $2.5(3)$
-\end_inset
-
-.
- Para la energía y la magnetización,
- la discrepancia es mayor.
-\end_layout
-
-\begin_layout Standard
-Los resultados de tiempo del autocorrelación integrada y por ajuste discrepan fuertemente a muy baja temperatura.
+Los resultados de tiempo del auto-correlación integrada y por ajuste discrepan fuertemente a muy baja temperatura.
  Se mantienen cercanas en el rango de temperaturas 
 \begin_inset Formula $T\in[0.7,1]$
 \end_inset
@@ -6694,7 +7073,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoitmo
+Algoritmo
 \shape italic
  multi-clúster
 \end_layout
@@ -7390,7 +7769,7 @@ El exponente crítico dinámico
 \begin_inset Formula $z$
 \end_inset
 
- se obtuvo a partir de las longitudes de correlación y los tiempos de autocorrelación para las temperaturas 
+ se obtuvo a partir de las longitudes de correlación y los tiempos de auto-correlación para las temperaturas 
 \begin_inset Formula $T\in\{0.7,0.8,0.9,1.0\}$
 \end_inset
 
@@ -7483,7 +7862,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algorimo de Metropolis aleatorio.
+Algoritmo de Metropolis aleatorio.
 \end_layout
 
 \end_inset
@@ -7652,7 +8031,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algorimo de Metropolis aleatorio.
+Algoritmo de Metropolis aleatorio.
 \end_layout
 
 \end_inset
@@ -7824,7 +8203,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algorimo de Metropolis aleatorio.
+Algoritmo de Metropolis aleatorio.
 \end_layout
 
 \end_inset
@@ -8269,7 +8648,7 @@ nolink "false"
 \end_inset
 
 .
- El exponente crítico de autocorrelación no pudo medirse para el algoritmo multi-clúster,
+ El exponente crítico de auto-correlación no pudo medirse para el algoritmo multi-clúster,
  tampoco fue posible calcular el exponente crítico dinámico.
 \end_layout
 
@@ -10592,23 +10971,13 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="5">
+<lyxtabular version="3" rows="3" columns="4">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -10656,15 +11025,6 @@ status open
 </cell>
 </row>
 <row>
-<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Enfriamientos
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -10712,16 +11072,7 @@ Algoritmos locales
 </cell>
 </row>
 <row>
-<cell multirow="4" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10730,7 +11081,7 @@ Muti-clúster
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10742,7 +11093,7 @@ Muti-clúster
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10754,95 +11105,11 @@ Muti-clúster
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Formula $0.630(5)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Equilibrio
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Algoritmos locales
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $2.2(5)$
-\end_inset
-
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\nospellcheck off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $2.0(4)$
-\end_inset
-
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\nospellcheck off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $2.855(5)$
 \end_inset
 
 

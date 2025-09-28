@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import ticker
 from plotClass import fit, fix, Algs, obs
 import os, argparse
 from incertidumbres import measure
@@ -35,9 +36,7 @@ for alg in algs:
     L = 64
     fig, ax = plt.subplots()
 
-    data = np.loadtxt(
-        f"output/autocorrelation/{name}_{alg}.csv", skiprows=1, delimiter=","
-    )
+    data = np.loadtxt(f"output/autocorrelation/{name}_{alg}.csv", skiprows=1, delimiter=",")
     nstart, nend = 4,-1
     data = data.transpose()
     x = np.linspace(data[0][0], data[0][-1], 200)
@@ -140,12 +139,22 @@ for alg in algs:
     ax.legend(fontsize=12)
     ax.set_yscale("log")
     ax.set_xscale("log")
+
+    ax.xaxis.set_major_locator(ticker.LogLocator(base=10.0, subs=[2.0],numticks=8))
+    ax.yaxis.set_major_locator(ticker.LogLocator(base=10.0, subs=[2.0],numticks=6))
+
+    # Ticks menores (ej. 2 y 5 en cada década)
+    ax.xaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=[0.7,0.8,0.9,1.0,1.2,1.4,1.6,1.8], numticks=8))
+    ax.yaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=[0.5,1], numticks=6))
+
+    formatter = ticker.StrMethodFormatter("{x:.1f}")
+    ax.xaxis.set_major_formatter(formatter)
+    ax.yaxis.set_major_formatter(formatter)
+    ax.xaxis.set_minor_formatter(formatter)
+    ax.yaxis.set_minor_formatter(formatter)
+
     title = Algs[alg]
     i = obs[name]["sym"]
     #plt.show()
     os.makedirs(f"output/plot/{name}/L{L}/{alg}", exist_ok=True)
-    fig.savefig(
-        f"output/plot/{name}/autocorrelation_{alg}_L{L}_{i}.pdf",
-        format="pdf",
-        bbox_inches="tight",
-    )
+    fig.savefig(f"output/plot/{name}/autocorrelation_{alg}_L{L}_{i}.pdf",format="pdf",bbox_inches="tight")
