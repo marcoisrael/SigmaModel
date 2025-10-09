@@ -19,7 +19,7 @@ else:
 for alg in algs:
     print(alg)
     fig, ax = plt.subplots()
-    T = np.array([0.4,0.5,0.6,0.7,0.8,0.9,1.0,1.2])
+    T = np.array([0.3,0.4,0.5,0.6])
     params = {
         32: {"color": "red", "line": (0, (3, 3)), "marker": "."},
         64: {"color": "blue", "line": (0, (1, 1)), "marker": "+"},
@@ -29,6 +29,8 @@ for alg in algs:
     for LENGTH in [32, 64, 128]:
         psi = []
         psiErr = []
+        if LENGTH==128:
+            T=np.array([0.3,0.4,0.5])
         for temp in T:
             path = f"output/correlation_length/L{LENGTH}/{alg}/{temp}.csv"
             # print(path)
@@ -36,7 +38,6 @@ for alg in algs:
 
             def f(x, a, b):
                 return a * np.exp(-x / b) + a * np.exp((x - LENGTH) / b)
-
             xfit = fit(data[:, 0], data[:, 1], data[:, 2])
 
             xfit.fiting(f, args={"bounds": ((0, np.inf))})
@@ -57,7 +58,7 @@ for alg in algs:
         def f(x, a, b):
             return a*x**-b
 
-        xfit = fit(T[3:7], psi[3:7], psiErr[3:7])
+        xfit = fit(T, psi, psiErr)
         xfit.fiting(f)
 
         ax.errorbar(
@@ -84,18 +85,7 @@ for alg in algs:
             color=params[LENGTH]["color"],
             linestyle=params[LENGTH]["line"],
         )
-   
-    # text = (r"$\xi \propto T^{-\nu}$")
-    #
-    # ax.text(
-    #     0.55,
-    #     0.9,
-    #     text,
-    #     fontsize=16,
-    #     ha="right",
-    #     va="top",
-    #     transform=ax.transAxes,
-    # ) 
+
     ax.set_xlabel(r"$T$", fontsize=18)
     ax.set_ylabel(r"$\xi$", fontsize=18)
     ax.legend(fontsize=12)
@@ -106,7 +96,7 @@ for alg in algs:
     ax.yaxis.set_major_locator(ticker.LogLocator(base=10.0, subs=[1.0], numticks=10))
 
     # Ticks menores (ej. 2 y 5 en cada década)
-    ax.xaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=[2.0, 5.0], numticks=10))
+    ax.xaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=[0.3,0.4,0.5,0.6], numticks=10))
     ax.yaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=[2.0, 5.0], numticks=10))
 
     # --- FORMATOS ---

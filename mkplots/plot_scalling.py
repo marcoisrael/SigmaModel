@@ -11,7 +11,7 @@ args = parser.parse_args()
 name = args.observable
 alg = args.algorithm
 LENGTH = 64
-T = np.array([0.7,0.8,0.9,1.0])
+T = np.array([0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0])
 
 if args.algorithm == "all":
     algs = [
@@ -104,7 +104,7 @@ for alg in algs:
             ls=(0,(3,3)),
             label=r"$\xi$, $z=$"+fix(xfit.opt[1],xfit.error[1]),
             )
-    # text = r"$\xi\propto \tau^{z}$"+"\n"+r"$z$="+fix(xfit.opt[0], xfit.error[0])
+    text = r"$\xi\propto \tau^{z}$"+"\n"+r"$z$="+fix(xfit.opt[0], xfit.error[0])
     text = r"$z=$"+fix(xfit.opt[1],xfit.error[1])
     ax.text(0.24,0.96,text,fontsize=12,ha="right",va="top",transform=ax.transAxes,bbox=dict(facecolor='none', edgecolor='black'))
     print(alg, fix(xfit.opt[1], xfit.error[1]))
@@ -119,7 +119,7 @@ for alg in algs:
     ax.yaxis.set_major_locator(ticker.LogLocator(base=10.0, subs=[2.0],numticks=6))
 
     # Ticks menores (ej. 2 y 5 en cada década)
-    ax.xaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=[3,4,6,10,15,20], numticks=8))
+    ax.xaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=[1,2,3,4,6,8,9,10,12,14,20], numticks=8))
     ax.yaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=[2,4,6,8,10], numticks=6))
 
     # --- FORMATOS ---

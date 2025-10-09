@@ -15,7 +15,7 @@ make_temp_plots = True
 name = args.observable
 alg = args.algorithm
 L = 64
-T = np.array([0.75,0.8,0.85,0.9,1.0,1.2,1.4,1.6,1.8,2.0])
+T = np.array([0.3,0.4,0.5,0.6])
 if args.algorithm == "all":
     algs = [
         "lexic_metropolis",
@@ -117,16 +117,16 @@ for alg in algs:
     tau_exp_error = np.array(tau_exp_error)
     data = np.array([Ti, tau_int, tau_int_error, tau_exp, tau_exp_error]).transpose()
     os.makedirs("output/autocorrelation", exist_ok=True)
-    # np.savetxt(
-    #      f"output/autocorrelation/{name}_{alg}.csv",
-    #      data,
-    #      delimiter=",",
-    #      header="T,tauExp,tauExp_error",
-    #      comments="",
-    #  )
-    # cmd = [
-    #      "/usr/bin/python3",
-    #      "mkplots/plot_autocorrelation_time.py",
-    #      f"-alg {alg} -o {name}"
-    #  ]
-    # os.system(" ".join(cmd))
+    np.savetxt(
+         f"output/autocorrelation/{name}_{alg}.csv",
+         data,
+         delimiter=",",
+         header="T,tauExp,tauExp_error",
+         comments="",
+     )
+    cmd = [
+         "/usr/bin/python3",
+         "mkplots/plot_autocorrelation_time.py",
+         f"-alg {alg} -o {name}"
+     ]
+    os.system(" ".join(cmd))

@@ -37,7 +37,7 @@ for alg in algs:
     fig, ax = plt.subplots()
 
     data = np.loadtxt(f"output/autocorrelation/{name}_{alg}.csv", skiprows=1, delimiter=",")
-    nstart, nend = 4,-1
+    nstart, nend = 0,4
     data = data.transpose()
     x = np.linspace(data[0][0], data[0][-1], 200)
     
@@ -144,7 +144,7 @@ for alg in algs:
     ax.yaxis.set_major_locator(ticker.LogLocator(base=10.0, subs=[2.0],numticks=6))
 
     # Ticks menores (ej. 2 y 5 en cada década)
-    ax.xaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=[0.7,0.8,0.9,1.0,1.2,1.4,1.6,1.8], numticks=8))
+    ax.xaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=[0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0,1.2,1.4,1.6,1.8], numticks=8))
     ax.yaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=[0.5,1], numticks=6))
 
     formatter = ticker.StrMethodFormatter("{x:.1f}")

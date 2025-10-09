@@ -72,7 +72,7 @@ for alg in algs:
                 ls="",
                 marker=markers[i],
                 markersize=8,
-                label=f"$\\tau_Q={i}$",
+                label=r"$\tau_\mathrm{cool}=$"+f"{i}",
             )
             ax3.errorbar(
                 data[1],
@@ -82,7 +82,7 @@ for alg in algs:
                 ls="",
                 marker=markers[i],
                 markersize=8,
-                label=f"$\\tau_Q={i}$",
+                label=r"$\tau_\mathrm{cool}=$"+f"{i}",
             )
 
             # f = lambda x, a, b,c:c/(1+np.exp((x-a)/b))
@@ -140,7 +140,7 @@ for alg in algs:
             label=params[obs]["ylabel2"],
             )
     text = r"$\zeta=$"+fix(xfit.opt[1],xfit.error[1])
-    ax2.text(0.24,0.94,text,fontsize=12,ha="right",va="top",transform=ax2.transAxes,
+    ax2.text(0.95,0.94,text,fontsize=12,ha="right",va="top",transform=ax2.transAxes,
             bbox=dict(facecolor='none', edgecolor='black'))
     # 0.24, 0.94,     0.95, 0.94
     ax2.set_ylabel(params[obs]["ylabel2"], fontsize=20)
