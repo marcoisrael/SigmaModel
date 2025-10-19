@@ -3947,11 +3947,6 @@ Basándose en el concepto de ruptura de simetría Tom Kibble introdujo la idea d
  
 \end_layout
 
-\begin_layout Standard
-En el ejemplo del universo temprano,
- los defectos topológicos remanentes son objetos inherentemente estables que pueden proporcionar pistas observacionales sobre cómo era el sistema en el momento en que se formaron.
-\end_layout
-
 \begin_layout Section
 Acoplamientos de largo alcance
 \begin_inset CommandInset label
@@ -4413,8 +4408,7 @@ Físicos de la Universidad de Lancaster,
 He líquido justo por encima de su temperatura crítica en una cámara que podía expandirse rápidamente.
  La expansión redujo la presión lo suficiente como para impulsar la muestra al estado superfluido.
  Para determinar la densidad de vórtices,
- midieron la atenuación del sonido secundario,
- que es fuertemente absorbido por los vórtices.
+ usaron un método de medición por atenuación de un sonido secundario (que es fuertemente absorbido por los vórtices).
  Los primeros resultados,
  en 1994,
  parecieron mostrar evidencia de la formación de vórtices,
