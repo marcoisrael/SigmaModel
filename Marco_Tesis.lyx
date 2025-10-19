@@ -55,6 +55,11 @@ draw=black]
 \setcounter{tocdepth}{2}
 \end_preamble
 \use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
 \maintain_unincluded_children no
 \language spanish-mexico
 \language_package babel
@@ -108,7 +113,7 @@ draw=black]
 \cite_engine biblatex-natbib
 \cite_engine_type authoryear
 \biblio_style plainnat
-\biblio_options doi=false,url=false,maxbibnames=10,sorting=none
+\biblio_options doi=false,url=false,maxbibnames=4,sorting=none
 \biblatex_bibstyle ieee
 \biblatex_citestyle numeric-comp
 \use_bibtopic false
@@ -261,7 +266,7 @@ maketitle
 \shape italic
 \size large
 Esta tesis esta dedicada a mis padres,
- quienes me motivaron a no rendirme y me apoyaron incondicionalmente.
+ quienes me motivaron a no rendirme y me apoyaron incondicionalmente en este largo recorrido.
 \end_layout
 
 \begin_layout Standard
@@ -276,17 +281,47 @@ Agradecimientos
 \end_layout
 
 \begin_layout Standard
-Agradezco al la Universidad Nacional Autónoma de México,
- a la Facultad de Ciencias y sus profesores,
- y al Instituto de Ciencias Nucleares por abrirme sus puertas y darme la oportunidad de realizar este trabajo de titulación.
- Agradezco a DGAPA por el apoyo a través del programa de apoyo a proyectos de investigación e innovación tecnológica.
- Agradezco especialmente a Dr.
- Wolfgang Bietenholz por guiarme pacientemente a través del largo proceso de investigación,
- redacción y corrección de esta tesis.
- Gracias por su guía y constante motivación.
- Agradezco a los sinodales,
- y a las personas que con su trabajo hace posible la culminación de este trabajo de titulación.
+Quiero extender mis mas sinceros agradecimientos al Dr.
+ Wolfgang Bietenholz por guiarme pacientemente a través del largo proceso de investigación y redacción de esta tesis,
+ su guía y constante motivación me mantuvieron en la dirección correcta durante este largo proceso.
  
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Muchas gracias a la Facultad de Ciencias,
+ por permitirme aprender de tantos excelentes maestros,
+ en sus aulas aprendí lecciones importantes que llevo conmigo para toda la vida.
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Muchas gracias al Instituto de Ciencias Nucleares por abrirme sus puertas y darme las herramientas y recursos realizar este trabajo de titulación,
+ su gente siempre dispuesta a ayudar me hizo sentir bienvenido en mi paso por esta institución.
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Agradezco a DGAPA por el apoyo a través del programa de apoyo a proyectos de investigación e innovación tecnológica,
+ el aporte monetario de este programa me ayudo de una forma importante en la realización de este trabajo.
+ 
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Muchas gracias a los sinodales y a las personas que con su trabajo hicieron posible la culminación de este trabajo de titulación.
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -298,26 +333,36 @@ Resumen
 \end_layout
 
 \begin_layout Standard
-En esta tesis se introduce el modelo 2d O(
-\begin_inset Formula $3$
-\end_inset
-
-),
- los métodos de Monte Carlo y teoría sobre fenómenos críticos.
- Se describe el mecanismo de Kibble-Zurek y se propone probar si es aplicable al modelo 2d O(
+En esta tesis se realizo un trabajo de investigación sobre enfriamientos rápidos en el modelo 2d O(
 \begin_inset Formula $3$
 \end_inset
 
 ).
- Con este fin se reportan los resultados de una serie de simulaciones numéricas en equilibrio y enfriamientos rápidos usando métodos de Monte Carlo en específico el de Metropolis,
- y el algoritmo de Glauber,
- ambos con un orden de selección Lexicográfico y Aleatorio y el algoritmo multi-clúster.
+ Se recopilo información sobre la teoría de integral de trayectorias,
+ fenómenos críticos,
+ los métodos de Monte Carlo y el mecanismo de Kibble-Zurek.
+ Entre estos temas el último es de especial relevancia para la investigación.
+ El mecanismo de Kibble-Zurek describe la relación entre los defectos topológicos remanentes respecto a la tasa de enfriamiento en un sistema que pasa por la temperatura crítica.
+ El objetivo principal de esta tesis es averiguar si el mecanismo de Kibble-Zurek es aplicable al modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+),
+ un factor importante en esta cuestión es que en este modelo modelo no puede haber una ruptura espontánea de simetría con interacciones de rango finito y temperatura 
+\begin_inset Formula $T>0$
+\end_inset
+
+.
+ Para averiguar si el mecanismo de Kibble-Zurek es aplicable a este modelo,
+ se realizaron simulaciones numéricas en equilibrio y simulaciones de enfriamientos rápidos usando métodos de Monte Carlo.
+ Para realizar las simulaciones se aplico el algoritmo de Metropolis en la variantes de selección lexicográfica y aleatoria,
+ el algoritmo de Glauber en las mismas dos variantes y el algoritmo multi-clúster.
  
 \end_layout
 
 \begin_layout Standard
-En las simulaciones en equilibrio se reportan los siguientes exponentes críticos:
- El exponente critico dinámico 
+En las simulaciones en equilibrio se reportaron los siguientes exponentes críticos:
+ el exponente crítico dinámico 
 \begin_inset Formula $z$
 \end_inset
 
@@ -331,56 +376,42 @@ En las simulaciones en equilibrio se reportan los siguientes exponentes crítico
 \begin_inset Formula $\nu z$
 \end_inset
 
- y el exponente 
-\begin_inset Formula $\zeta=2d/(1+\nu z)$
-\end_inset
-
-.
- En las simulaciones de enfriamientos se reporta el exponente 
+ y se usaron en un calculo indirecto del exponente 
 \begin_inset Formula $\zeta$
 \end_inset
 
-.
- El valor obtenido en los enfriamientos para los algoritmos de Metropolis y Glauber resulto en 
-\begin_inset Formula $\zeta=0.53(2)$
-\end_inset
-
  para la carga topológica,
- 
-\begin_inset Formula $0.214(5)$
+ la energía y la magnetización.
+ En las simulaciones de enfriamientos rápidos se midió directamente el exponente 
+\begin_inset Formula $\zeta$
 \end_inset
 
- para la energía y 
-\begin_inset Formula $0.277(5)$
+ para las mismas observables.
+ Los resultados obtenidos a partir de los experimentos en equilibrio resultaron en todos los casos en valores mayores a los exponentes 
+\begin_inset Formula $\zeta$
 \end_inset
 
- para la magnetización.
- Los restados discreparon con las mediciones del exponente medidas en equilibrio con los valores 
-\begin_inset Formula $2.2(5)$
+ obtenidos en los enfriamientos.
+ Se discutió que una posible causa de este resultado es que en los experimentos numéricos realizados,
+ no se cruzó una temperatura crítica,
+ por lo que no hubo una ruptura espontánea de la simetría durante los enfriamientos.
+ La teoría considera una ruptura espontánea a de la simetría en el cálculo de 
+\begin_inset Formula $\zeta$
 \end_inset
 
- para la carga topológica,
- 
-\begin_inset Formula $2.0(4)$
+ para los experimentos numéricos en equilibrio.
+ Así la ausencia del la ruptura espontánea de simetría explica el cambio en la relación entre los defectos topológicos remanentes y las tasa inversas de enfriamiento.
+ A pesar de todo,
+ se observaron tres leyes de escalamiento y todos los enfriamientos condujeren a exponentes 
+\begin_inset Formula $\zeta$
 \end_inset
 
-para la energía y 
-\begin_inset Formula $2.855(5)$
+ compatibles con el mecanismo de Kibble-Zurek,
+ pero las diferencias en la definición de barridos de actualización tuvieron como consecuencia diferencias en los valores de los exponentes 
+\begin_inset Formula $\zeta$
 \end_inset
 
- para la magnetización.
- 
-\end_layout
-
-\begin_layout Standard
-Se discute como el hecho de que el modelo 2d O(
-\begin_inset Formula $3$
-\end_inset
-
-) no se puede enfriar por debajo de la temperatura crítica podría explicar la discrepancia entre las mediciones en el equilibrio respecto a las mediciones de los enfriamientos.
- Finalmente se señala que a pesar de las discrepancias en los valores reportados en el equilibrio respecto a los valores de los enfriamientos,
- hay una relación entre la densidad de defectos topológicos remanentes y el cambio en las tasas de enfriamiento como lo propone el mecanismo de Kibble-Zurek.
- 
+ para los diferentes algoritmos.
 \end_layout
 
 \begin_layout Standard
@@ -437,43 +468,34 @@ Motivación al estudio de sistemas fuera del equilibrio
 La investigación es un proceso largo y requiere gran esfuerzo.
  En la búsqueda de la comprensión de los fenómenos físicos,
  se han desarrollado y aplicado herramientas matemáticas como el cálculo,
- la estadística y la geometría con el fin de crear modelos teóricos para estos fenómenos.
- En el proceso,
- muchos modelos se desechan o se replantean.
- La forma de poner a prueba los modelos teóricos es por medio de experimentos.
- Siempre se busca realizar mejores experimentos y obtener mejores mediciones.
- Las investigaciones continúan de generación en generación,
- refinando la teoría como la experimentación.
- De esta forma,
- el progreso en las investigaciones se encamina en la dirección correcta.
-\end_layout
-
-\begin_layout Standard
-Los estados de la materia y sus transiciones de fase son temas de gran interés en la física.
- Tom Kibble y Wojciech Zurek se interesaron en el estudio de las clases de universalidad el ruptura súbita de la simetría en sistemas al pasar por debajo de una temperatura crítica.
- Kibble propuso una relación entre la tasa de enfriamiento del universo temprano y la densidad remanente de defectos topológicos al pasar por una ruptura súbita de la simetría.
- Zurek aplico el mismo concepto a modelos de materia condensada como el modelo de helio en estado suprefluidico 
+ la estadística y la geometría.
+ Al crear modelos teóricos para estos fenómenos,
+ se desencadeno un proceso en el que los modelos teóricos se ponen a prueba por medio de experimentos y se descartan o replantean en base a los resultados.
+ En este proceso se busca realizar mejores experimentos y obtener mejores mediciones.
+ El proceso es exhaustivo y continua de generación en generación,
+ refinando la teoría y la experimentación.
+ Una de estas lineas de investigación es la relacionada a los estados de la materia y sus transiciones de fase,
+ en este campo aparecen Tom Kibble y Wojciech Zurek.
+ Ambos se interesaron en el estudio de las clases de universalidad,
+ una de sus aportaciones es una ley de escalamiento en sistemas que al pasar por debajo de una temperatura crítica presentan una ruptura súbita de simetría.
+ Kibble propuso una relación entre la tasa inversa de enfriamiento del universo temprano y la densidad remanente de defectos topológicos.
+ Zurek aplico el mismo concepto a modelos de materia condensada como el modelo de helio en estado superfluidico 
 \begin_inset Formula $^{4}$
 \end_inset
 
 He.
- Propusieron que la supervivencia de defectos topológicos la pasar por una ruptura súbita de una simetría,
- se relaciona con la tasa de enfriamiento al que un sistema pasa por la temperatura crítica siguiendo una relación conocida como mecanismo de Kibble-Zurek.
+ Debido a sus aportaciones la relación es conocida como mecanismo de Kibble-Zurek.
 \end_layout
 
 \begin_layout Standard
 Los enfriamientos rápidos son fenómenos fuera del equilibrio termodinámico,
  en estas circunstancias,
- los experimentos se vuelven complejos,
- y la teoría detrás de procesos que involucran interacciones entre un vasto número de partículas resulta demasiado intrincada.
+ la teoría detrás de procesos que involucran interacciones entre un vasto número de partículas resulta demasiado intrincada.
  Para superar estas limitaciones,
  se desarrollo una serie de métodos basados en procesos estocásticos,
  conocidos como métodos de Monte Carlo.
-\end_layout
-
-\begin_layout Standard
-Entre los años 1949 y 1952,
- Un equipo de científicos liderado por Nicholas Metropolis 
+ Entre los años 1949-1952,
+ un equipo de científicos liderado por Nicholas Metropolis 
 \begin_inset CommandInset citation
 LatexCommand autocite
 key "metropolis_equation_1953"
@@ -481,28 +503,29 @@ literal "false"
 
 \end_inset
 
-,
- trabajo en Los Álamos en el desarrollo de la bomba de hidrógeno.
- Su trabajo se centró en comprender la física de las interacciones entre la radiación y la materia bajo condiciones extremas,
- tales como explosiones,
- implosiones y la evolución de reacciones nucleares fuera del equilibrio.
- Su aporte fue posteriormente aplicado a otras áreas de investigación y con el posterior desarrollo de los ordenadores,
- los métodos de Monte Carlo se volvieron herramientas fundamentales en el estudio de sistemas con incontables grados de libertad.
-\end_layout
-
-\begin_layout Standard
-En esta tesis,
- se realizan simulaciones de enfriamientos rápidos el modelo 2d O(
+ se centró en comprender la física de las interacciones entre la radiación y la materia bajo condiciones extremas estudiando la evolución de reacciones nucleares fuera del equilibrio.
+ Sus aportes fue posteriormente aplicados a otras áreas de investigación y con el desarrollo de los ordenadores se volvieron herramientas fundamentales en el estudio de sistemas con incontables grados de libertad.
+ En esta tesis se realizaron simulaciones numéricas de enfriamientos rápidos del modelo 2d O(
 \begin_inset Formula $3$
 \end_inset
 
-).
- También se realizan simulaciones del modelo en equilibrio.
- En los experimentos numéricos fuera del equilibrio se miden los defectos topológicos remanentes para diferentes tasas de enfriamiento,
- esperando resultados compatibles con el mecanismo de Kibble-Zurek.
- La guía en este proceso es el camino dejado por los investigadores en diferentes áreas de la física.
- El hacer un pequeño aporte en este proceso es una de las motivaciones de esta tesis.
+) aplicando los métodos de Montecarlo.
+ La motivación de esta tesis es averiguar si el mecanismo de Kibble-Zurek es aplicable al modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+) y en el proceso hacer un pequeño aporte a la tradición de la búsqueda de una mejor comprensión de los fenómenos físicos.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Una de las motivaciones de esta tesis es hacer un pequeño aporte al proceso de investigación siguiendo el camino dejado por todos los investigadores que aportaron en el pasado hasta el presente.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
@@ -520,11 +543,11 @@ name "chap:Mecánica-estadística-e"
 En sistemas físicos que consisten en un gran número de grados de libertad,
  plantear y resolver las ecuaciones de movimiento para cada variable,
  es en la mayoría de los casos técnicamente imposible.
- Si queremos estudiar estos sistemas,
+ Para estudiar estos sistemas,
  es necesario un enfoque diferente.
  En mecánica estadística,
- se renuncia a conocer la trayectoria exacta de cada elemento.
- A cambio el problema se resuelve con una función de partición.
+ se renuncia a conocer la trayectoria exacta de cada elemento,
+ a cambio la función de partición contiene la información sobre el sistema que permite predecir su evolución.
  La función de partición se define como una suma sobre la energía 
 \begin_inset Formula $\mathcal{H}$
 \end_inset
@@ -548,7 +571,7 @@ Z=\sum_{\sigma}\mathrm{e}^{-\beta\mathcal{H}[\sigma]},\label{eq:func_part}
 \end_inset
 
 donde 
-\begin_inset Formula $\beta=1/k_{B}T$
+\begin_inset Formula $\beta=1/(k_{B}T)$
 \end_inset
 
  y 
@@ -558,7 +581,7 @@ donde
  es la constante de Boltzmann.
  Usando la función de partición es posible derivar funciones de estado de un sistema como la entropía,
  el valor esperado de la energía interna etc.
- Los métodos de Monte Carlo son una forma práctica de calcular numéricamente las observables derivadas la función de partición,
+ Los métodos de Monte Carlo son una forma práctica de calcular numéricamente las observables derivadas de la función de partición,
  proporcionando una opción realista para estudiar sistemas físicos fuera del equilibrio.
 \end_layout
 
@@ -575,7 +598,7 @@ literal "false"
 
 \end_inset
 
- desarrolló su propia formulación de integral de trayectorias después del trabajo previo de Dirac,
+ desarrolló su propia formulación de integral de trayectorias después del trabajo previo de Paul Dirac,
  se preguntó si existía un camino para conectar la mecánica estadística con la mecánica cuántica.
  Feynman encontró una función análoga a la función de partición para sistemas cuánticos.
  
@@ -594,28 +617,28 @@ donde
 \begin_inset Formula $p_{i}$
 \end_inset
 
- es momento y 
+ es el momento asociado a cada partícula en el sistema y 
 \begin_inset Formula $V$
 \end_inset
 
-el potencial.
+ es el potencial de interacción.
  Para describir la evolución de una observable 
 \begin_inset Formula $O$
 \end_inset
 
 ,
  se definen los corchetes de Poisson como invariantes respecto a cualquier transformación canónica.
- La dinámica de la observable se describe por la ecuación (a la derecha de la ecuación usamos los corchetes de Poisson)
+ La dinámica de la observable se describe por la ecuación (en el lado derecho de la ecuación usamos los corchetes de Poisson)
 \begin_inset Formula 
 \begin{equation}
-\dv{O}{t}=\{\mathcal{H},O\}
+\dv{O}{t}=\{\mathcal{H},O\}.
 \end{equation}
 
 \end_inset
 
 En la transición de la mecánica clásica a la mecánica cuántica,
  se realiza una transformación,
- donde las funciones definidas el espacio fase se convierten en operadores definidos en el espacio de Hilbert,
+ donde las funciones definidas en el espacio fase se convierten en operadores definidos en el espacio de Hilbert,
  y los corchetes de Poisson de dos funciones se convierten en el conmutador de dos operadores 
 \begin_inset Formula 
 \begin{equation}
@@ -638,7 +661,7 @@ donde
 \end_inset
 
  sin dependencia temporal explícita,
- sigue la ecuación formulada por Heisenberg
+ sigue la ecuación formulada por Werner Heisenberg
 \begin_inset Formula 
 \begin{equation}
 \dv{\hat{O}}{t}=\frac{i}{\hbar}\left[\hat{\mathcal{H}},\hat{O}\right].\label{eq:formulacion_heisemberg}
@@ -948,7 +971,7 @@ i\hbar\pdv{t}K\left(q,q';t\right)=\hat{\mathcal{H}}K\left(q,q';t\right).
 Partiendo de la forma estándar del propagador se tiene
 \begin_inset Formula 
 \begin{equation}
-K\left(q,q';t\right)=\mel**{q'}{\mathrm{e}^{-i\hbar t\left(\hat{\mathcal{H}}_{0}+\hat{V}\right)}}{q}.
+K\left(q,q';t\right)=\mel**{q'}{\mathrm{e}^{-it\left(\hat{\mathcal{H}}_{0}+\hat{V}\right)/\hbar}}{q}.
 \end{equation}
 
 \end_inset
@@ -956,12 +979,12 @@ K\left(q,q';t\right)=\mel**{q'}{\mathrm{e}^{-i\hbar t\left(\hat{\mathcal{H}}_{0}
 Aplicando el teorema de Trotter se obtiene
 \begin_inset Formula 
 \begin{equation}
-K\left(q,q';t\right)=\lim_{n\rightarrow\infty}\mel**{q'}{\left(\mathrm{e}^{-i\hbar t\hat{\mathcal{H}}_{0}/n}\mathrm{e}^{-i\hbar t\hat{V}/n}\right)^{n}}{q}.
+K\left(q,q';t\right)=\lim_{n\rightarrow\infty}\mel**{q'}{\left(\mathrm{e}^{-it\hat{\mathcal{H}}_{0}/(n\hbar)}\mathrm{e}^{-i\hbar t\hat{V}/(n\hbar)}\right)^{n}}{q}.
 \end{equation}
 
 \end_inset
 
-Las trayectorias se participan en 
+Las trayectorias se particionan en 
 \begin_inset Formula $n$
 \end_inset
 
@@ -985,18 +1008,19 @@ Las trayectorias se participan en
 \begin_inset Formula $q'$
 \end_inset
 
-
+,
+ de modo que el propagador se expresa como
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-K\left(q,q';t\right)=\lim_{n\rightarrow\infty}\int\prod_{j=0}^{n-1}\mel**{q_{j+1}}{\mathrm{e}^{-i\hbar t\hat{\mathcal{H}}_{0}/n}\mathrm{e}^{-i\hbar t\hat{V}/n}}{q_{j}}\dd q_{1}\dots\dd q_{n-1}.\label{eq:amplitud_probabilidad_lim}
+K\left(q,q';t\right)=\lim_{n\rightarrow\infty}\int\prod_{j=0}^{n-1}\mel**{q_{j+1}}{\mathrm{e}^{-it\hat{\mathcal{H}}_{0}/(n\hbar)}\mathrm{e}^{-it\hat{V}/(n\hbar)}}{q_{j}}\dd q_{1}\dots\dd q_{n-1}.\label{eq:amplitud_probabilidad_lim}
 \end{equation}
 
 \end_inset
 
-El beneficio de realizar la partición de las trayectorias es que ahora en cada factor del producto se tiene hamitoniano de una partícula libre.
+El beneficio de realizar la partición de las trayectorias es que ahora en cada factor del producto se tiene el hamitoniano de una partícula libre.
  Aplicando la ec.
  
 \begin_inset CommandInset ref
@@ -1042,7 +1066,7 @@ donde
  Observamos que la suma corresponde a la integral de Riemann de la acción en el límite
 \begin_inset Formula 
 \begin{equation}
-\lim_{n\rightarrow\infty}\sum_{j=0}^{n-1}a\left[\frac{m}{2}\left(\frac{q_{j+1}-q_{j}}{a}\right)^{2}-V\left(q_{j}\right)\right]=\int_{0}^{t}\left[\frac{m}{2}\left(\dv{q}{t'}\right)-V\left(q(t')\right)\right]\dd{t'}.\label{eq:lim_lagrangian}
+\lim_{n\rightarrow\infty}\sum_{j=0}^{n-1}a\left[\frac{m}{2}\left(\frac{q_{j+1}-q_{j}}{a}\right)^{2}-V\left(q_{j}\right)\right]=\int_{0}^{t}\left[\frac{m}{2}\left(\dv{q}{\tau}\right)-V\left(q(\tau)\right)\right]\dd{\tau}.\label{eq:lim_lagrangian}
 \end{equation}
 
 \end_inset
@@ -1050,7 +1074,7 @@ donde
 El propagador se puede expresar como la suma infinita
 \begin_inset Formula 
 \begin{equation}
-K\left(q,q';t\right)=\sum_{\sigma\in\Omega}\mathrm{e}^{-itS[\sigma]},\label{eq:propagador_general}
+K\left(q,q';t\right)=\sum_{\sigma\in\Omega}\mathrm{e}^{itS[\sigma]/\hbar},\label{eq:propagador_general}
 \end{equation}
 
 \end_inset
@@ -1223,7 +1247,7 @@ g_{M}=\left(\begin{array}{cccc}
  Usando el tensor métrico se obtiene la métrica del espacio de Minkowski 
 \begin_inset Formula 
 \begin{equation}
-\dd s^{2}=-\dd t^{2}+\dd x²+\dd y²+\dd z²,
+\dd s^{2}=-\dd t^{2}+\dd x²+\dd y²+\dd z².
 \end{equation}
 
 \end_inset
@@ -1250,7 +1274,7 @@ Usando el tensor métrico se obtiene la métrica del espacio euclidiano
 
 \end_inset
 
-Por conveniencia pasemos la ec.
+Para cambiar la ec.
  
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -1262,7 +1286,7 @@ nolink "false"
 
 \end_inset
 
- del espacio de Minkowski al espacio de euclidiano,
+ del espacio de Minkowski al espacio euclidiano,
  tenemos que hacer el cambio 
 \begin_inset Formula $t_{E}=it$
 \end_inset
@@ -1276,17 +1300,21 @@ nolink "false"
 \begin_inset Formula $t_{E}$
 \end_inset
 
- en el espacio euclidiano.
+ es el tiempo
+\emph on
+ 
+\emph default
+en el espacio euclidiano.
  
 \end_layout
 
 \begin_layout Standard
-La forma del propagador en el espacio de Minkowski es equivalente a la función de partición definida en mecánica estadística,
+Hay que destacar que la forma del propagador en el espacio de Minkowski es equivalente a la función de partición definida en mecánica estadística,
  la forma discreta del propagador es
 \begin_inset Formula 
 \begin{align}
 K\left(q,q';t_{E}\right)= & \lim_{n\rightarrow\infty}\int\left(\frac{m}{2\pi a}\right)^{n/2}\times\nonumber \\
- & \exp\left\{ a\sum_{j=0}^{n-1}\left[\frac{m}{2}\left(\frac{q_{j+1}-q_{j}}{a}\right)^{2}+V\left(q_{j}\right)\right]\right\} \dd q_{1}\dots\dd q_{n-1},
+ & \exp\left\{ -a\sum_{j=0}^{n-1}\left[\frac{m}{2}\left(\frac{q_{j+1}-q_{j}}{a}\right)^{2}+V\left(q_{j}\right)\right]\right\} \dd q_{1}\dots\dd q_{n-1},
 \end{align}
 
 \end_inset
@@ -1300,18 +1328,18 @@ donde
 \begin_inset Formula $n\rightarrow\infty$
 \end_inset
 
-
+ se tiene
 \begin_inset Formula 
 \begin{equation}
-\lim_{n\rightarrow\infty}\sum_{j=0}^{n-1}\beta\left[\frac{m}{2}\left(\frac{q_{j+1}-q_{j}}{\beta}\right)^{2}+V\left(q_{j}\right)\right]=\int_{0}^{t_{E}}\left[\frac{m}{2}\left(\dv{q}{\tau}\right)+V\left(q(\tau)\right)\right]\dd{\tau}.
+\lim_{n\rightarrow\infty}\sum_{j=0}^{n-1}\frac{1}{k_{B}T}\left[\frac{m}{2}\left(\frac{q_{j+1}-q_{j}}{\beta}\right)^{2}+V\left(q_{j}\right)\right]=\int_{0}^{t_{E}}\left[\frac{m}{2}\left(\dv{q}{\tau}\right)+V\left(q(\tau)\right)\right]\dd{\tau}.
 \end{equation}
 
 \end_inset
 
- El equivalente a la función de partición es
+ El propagador de evolución obtenido en cambio al espacio euclidiano es equivalente a la función de partición en mecánica estadística y es de la forma
 \begin_inset Formula 
 \begin{equation}
-K\left(q,q';t_{E}\right)=\sum_{\sigma\in\Omega}\mathrm{e}^{-\beta S[\sigma]},
+K\left(q,q';t_{E}\right)=\sum_{\sigma\in\Omega}\mathrm{e}^{-S[\sigma]/(k_{B}T)},
 \end{equation}
 
 \end_inset
@@ -1347,7 +1375,7 @@ literal "false"
 \end_inset
 
 .
- De aquí en adelante simplificaremos la notación referiremos al tiempo euclidiano 
+ De aquí en adelante simplificaremos la notación refiriendo al tiempo euclidiano 
 \begin_inset Formula $t_{E}$
 \end_inset
 
@@ -1424,7 +1452,12 @@ En el contexto de un modelo O(
 Las propiedades macroscópicas de una amplia gama de materiales pueden describirse mediante modelos de espines.
  En estos modelos,
  propiedades como la energía,
- la magnetización y en ciertos modelos la carga topológica son observables y pueden medirse a partir de las configuraciones de espines.
+ la magnetización y en algunos modelos la carga topológica son observables y pueden medirse a partir de las configuraciones de espines.
+ En este capítulo se discutirá como puede realizarse cada una de estas mediciones en el modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Section
@@ -1488,16 +1521,17 @@ Los modelos de retícula son ampliamente usados para describir efectos colectivo
  En la mayoría de los casos se usan retículas compuestas por repeticiones de estructuras geométricas simples como en los cristales.
  En dos dimensiones se tienen estructuras cuadradas,
  triangulares o hexagonales.
- Una retícula una formada por hipercubos de dimensión 
+ Un tipo de retícula se construye con hipercubos de dimensión 
 \begin_inset Formula $d$
 \end_inset
 
 ,
- se define como el conjunto de sitios en el espacio de dimensión 
+ es el conjunto de sitios en el espacio de dimensión 
 \begin_inset Formula $d$
 \end_inset
 
- cuyas posiciones son coordenadas enteras
+ cuyas posiciones son coordenadas enteras,
+ se define como
 \end_layout
 
 \begin_layout Standard
@@ -1550,7 +1584,7 @@ En cada sito
 
  hay 2d sitios ubicados a una unidad de distancia (dos por cada dimensión).
  El resto de sitios se ubican a una distancia mayor,
- por lo que a esos 2d sitios son los vecinos más cercanos a 
+ por lo que esos 2d sitios son los vecinos más cercanos a 
 \begin_inset Formula $x$
 \end_inset
 
@@ -1635,7 +1669,7 @@ Representación de un espín clásico
 \begin_inset Formula $\mathcal{S}^{2}$
 \end_inset
 
- y su estado está dado por sus coordenadas.
+ y su dirección está dada por sus coordenadas.
 \end_layout
 
 \end_inset
@@ -1652,7 +1686,7 @@ Representación de un espín clásico
 Antes que nada,
  es importante definir una notación clara y simple para referir los sitios y los espines.
  Un sitio está dado por su posición en la retícula:
- En dos dimensiones se representa por pares de coordenadas 
+ en dos dimensiones se representa por pares de coordenadas 
 \begin_inset Formula $x=(x_{1},x_{2})$
 \end_inset
 
@@ -1669,7 +1703,7 @@ Antes que nada,
 \begin_inset Formula $3$
 \end_inset
 
- restringido a las esfera 
+ restringido a la esfera 
 \begin_inset Formula $\mathcal{S}^{2}$
 \end_inset
 
@@ -1690,16 +1724,12 @@ donde
 \begin_inset Formula $\phi_{x}\in[0,2\pi)$
 \end_inset
 
- y 
+,
+ 
 \begin_inset Formula $x$
 \end_inset
 
  indica el sitio en la retícula que ocupa el espín.
- La notación para dar explícitamente las coordenadas de espín es 
-\begin_inset Formula $\vec{s}_{x}=\left(s_{x}^{(1)},s_{x}^{(2)},s_{x}^{(3)}\right)$
-\end_inset
-
-.
  La orientación de un espín se puede describir de manera equivalente con sus coordenadas esféricas 
 \begin_inset Formula $(\theta_{x},\phi_{x})$
 \end_inset
@@ -1730,16 +1760,16 @@ El modelo 2d O(
 \end_inset
 
  acomodados en los sitios de una retícula 
-\begin_inset Formula $x\in\mathscr{T}_{L}^{2}$
+\begin_inset Formula $\mathscr{T}_{L}^{2}$
 \end_inset
 
 .
  Cada espín es una fuente de magnetización e interactúa con el resto de espines directamente o indirectamente siguiendo un acoplamiento.
  Típicamente el impacto de un espín decae exponencialmente con la distancia.
- Por argumentos referentes a la clase de universalidad que se discuten el el capítulo 
+ Por argumentos referentes a la clase de universalidad que se discuten en el capítulo 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Universalidad"
+reference "sec:Acoplamientos-de-largo"
 plural "false"
 caps "false"
 noprefix "false"
@@ -1757,7 +1787,7 @@ Como la contribución de los espines lejanos es órdenes de magnitud inferior a 
 
 \end_inset
 
-optaremos por despreciar esas interacciones.
+optaremos por despreciar interacciones que no correspondan a los espines vecinos más cercanos.
  
 \end_layout
 
@@ -1801,8 +1831,8 @@ donde
 
  son los espines vecinos más cercanos.
  Si todos los espines son paralelos,
- la suma sobre el producto escalar se maximiza,
- el resultado es que la configuración uniforme tiene la menor energía permitida por el modelo,
+ la suma sobre el producto escalar se maximiza resultando en una configuración uniforme,
+ esta tiene asociada la menor energía permitida por el modelo,
  siendo 
 \begin_inset Formula $\mathcal{{H}}=-JVd$
 \end_inset
@@ -1831,7 +1861,7 @@ La ec.
  
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:hamiltoniano_o(n)"
+reference "eq:hamiltoniano_2dO3"
 plural "false"
 caps "false"
 noprefix "false"
@@ -1898,7 +1928,7 @@ Resultando en la identidad
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}-1,x_{2}}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}+1,x_{2}}.\label{eq:equiv1}
+\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1},x_{2}}\cdot\vec{s}_{x_{1}-1,x_{2}}=\sum_{x_{1}=1}^{L}\sum_{x_{2}=1}^{L}\vec{s}_{x_{1}+1,x_{2}}\cdot\vec{s}_{x_{1},x_{2}}.\label{eq:equiv1}
 \end{equation}
 
 \end_inset
@@ -2047,13 +2077,11 @@ Describir las propiedades macroscópicas de un material,
 
 ,
  etc.
- Si una observable,
- como la energía se divide por el volumen 
+ Algunas observables se convierten en densidades asintóticamente estables al dividirse por el volumen 
 \begin_inset Formula $V$
 \end_inset
 
- del sistema,
- se convierte en una densidad asintóticamente estable,
+,
  a estas observables se les conoce como variables intensivas.
 \end_layout
 
@@ -2074,18 +2102,18 @@ Hay otro tipo de cantidades como la presión
 
 ,
  etc.
- Estas variables caracterizan el ambiente en el que el sistema está inmerso.
+ Se les conoce como variables termodinámicas y caracterizan el ambiente en el que el sistema está inmerso.
  En la mayoría de los sistemas,
- las variables mecánicas están bien definidas solo cuando el valor de estas variables se fija.
+ las variables intensivas están bien definidas solo cuando se fijan los valores de las variables termodinámicas.
 \end_layout
 
 \begin_layout Standard
 Desde un punto de vista microscópico,
- las variables mecánicas dependen de la configuración del sistema.
+ las variables termodinamicas dependen de la configuración del sistema.
  A lo largo de un intervalo temporal,
  se espera que un sistema físico pase por múltiples configuraciones.
  Cuando se perturba un sistema en equilibrio,
- las variables mecánicas del sistema cambian.
+ las variables termodinamicas del sistema cambian.
  El tiempo que el sistema tarda en alcanzar nuevamente el equilibrio termodinámico es conocido como tiempo de relajación.
 \begin_inset VSpace bigskip
 \end_inset
@@ -2201,7 +2229,7 @@ Consideremos un sistema en equilibrio termodinámico donde se hace un registro d
 
 .
  El conjunto de configuraciones forma una cadena de Markov,
- por lo tanto la energía promedio se estima como el valor esperado
+ por lo tanto la energía del sistema se estima como el valor esperado aproximado
 \begin_inset Formula 
 \begin{equation}
 \expval{\mathcal{H}}_{\mathrm{aprox}}=\frac{1}{N}\sum_{i=1}^{N}\mathcal{H}_{i}.
@@ -2209,7 +2237,7 @@ Consideremos un sistema en equilibrio termodinámico donde se hace un registro d
 
 \end_inset
 
-La energía real asociada a ese estado es el promedio aproximado más la incertidumbre asociada
+La energía real asociada a ese estado es el valor esperado aproximado más la incertidumbre asociada
 \begin_inset Formula 
 \begin{equation}
 \expval{\mathcal{H}}\simeq\expval{\mathcal{H}}_{\mathrm{aprox}}\pm\mathrm{error}(\mathcal{H}).
@@ -2236,15 +2264,16 @@ donde
 
  de encontrarse a menos de una desviación estándar del valor esperado de la distribución.
  Conforme la estadística aumenta,
- el error converge a cero y el estimador de la energía converge al valor real
+ el error converge a cero 
 \begin_inset Formula 
 \begin{equation}
-\lim_{N\rightarrow\infty}\mathrm{error}(\mathcal{H})=\frac{\mathrm{std(\mathcal{H})}}{\sqrt{N}}.
+\lim_{N\rightarrow\infty}\mathrm{error}(\mathcal{H})=\frac{\mathrm{std(\mathcal{H})}}{\sqrt{N}},
 \end{equation}
 
 \end_inset
 
-Al ser una propiedad extensiva,
+a la vez que el estimador de la energía converge al valor real.
+ Al ser una propiedad extensiva,
  la energía depende del volumen.
  Para comparar resultados en retículas de diferentes tamaños,
  la densidad de energía se define como el valor esperado de la energía dividida por el volumen
@@ -2274,7 +2303,8 @@ En el modelo 2d O(
 \end_inset
 
  es un escalar que depende de la alineación de los espines,
- se define como 
+ esta alineaciones son menos probables si las fluctuaciones generadas por la temperatura son fuertes.
+ Definimos la magnetización como 
 \begin_inset Formula 
 \begin{equation}
 M=\frac{1}{V}\abs{\sum_{x}\vec{s}_{x}}.
@@ -2285,12 +2315,12 @@ M=\frac{1}{V}\abs{\sum_{x}\vec{s}_{x}}.
  La magnetización máxima se alcanza en una configuración de espines alineados 
 \begin_inset Formula 
 \begin{equation}
-M_{\mathrm{max}}=\frac{1}{V}\abs{\sum_{x}\vec{s}_{x}}=\frac{1}{V}\abs{V\vec{s}}=1.
+M_{\mathrm{max}}=\frac{1}{V}\abs{\sum_{x}\vec{s}_{x}}=1.
 \end{equation}
 
 \end_inset
 
-Al igual que se plateo con la energía,
+Al igual que se planteo con la energía,
  consideremos un sistema en equilibrio termodinámico donde se hace un registro de la magnetización en los instantes 
 \begin_inset Formula $(t_{1},\dots,t_{N})$
 \end_inset
@@ -2305,7 +2335,7 @@ Al igual que se plateo con la energía,
 
 \end_inset
 
-El valor real de la magnetización es el valor aproximado más su incertidumbre asociada incertidumbre asociada
+El valor real de la magnetización es el valor aproximado más su incertidumbre asociada
 \begin_inset Formula 
 \begin{equation}
 \expval{M}\simeq\expval{M}_{\mathrm{aprox}}\pm\mathrm{error}(M).
@@ -2321,7 +2351,7 @@ Carga topológica
 \end_layout
 
 \begin_layout Standard
-El índice de una curva cerrada en un plano al rededor de un punto,
+El índice de una curva cerrada en un plano alrededor de un punto,
  es un número entero que describe el número de vueltas orientadas que la curva da alrededor del punto y es invariante a transformaciones continuas de la curva cerrada.
  De forma análoga,
  en el modelo 2d O(
@@ -2334,7 +2364,7 @@ El índice de una curva cerrada en un plano al rededor de un punto,
 
 .
  En el modelo hay dos simetrías importantes:
- la primera es la inviariancia de la energía interna por la rotación de espines con el grupo O(
+ la primera es la invariancia de la energía interna por la rotación de espines con el grupo O(
 \begin_inset Formula $3$
 \end_inset
 
@@ -2384,8 +2414,8 @@ literal "false"
 ).
  Para definir la carga topológica de una configuración,
  se usa un acercamiento geométrico:
- La retícula se divide en plaquetas formadas por cuatro espines,
- esto a su vez se subdividen en dos triángulos,
+ la retícula se divide en plaquetas formadas por cuatro espines,
+ estos a su vez se subdividen en dos triángulos,
  alternando la orientación de la diagonal que divide cada cuadrado para replicar la isotropía discreta en el modelo de espines.
  
 \end_layout
@@ -2469,12 +2499,16 @@ nolink "false"
 
 \end_inset
 
- las plaquetas se dividen en triángulos 
-\begin_inset Formula $1,2$
+ las plaquetas se dividen en triángulos tipo 
+\begin_inset Formula $1$
+\end_inset
+
+ y tipo 
+\begin_inset Formula $2$
 \end_inset
 
 .
- Para los triángulos 
+ Para los triángulos tipo 
 \begin_inset Formula $1$
 \end_inset
 
@@ -2503,7 +2537,7 @@ Y_{1} & =\vec{s}_{1}\cdot(\vec{s}_{2}\times\vec{s}_{3}).
 
 Al ser una esfera unitaria,
  el área del triángulo esférico es el ángulo solido generado por los espines,
- defiendo el número complejo 
+ definiendo el número complejo 
 \begin_inset Formula $Z_{1}=X_{1}+iY_{1}$
 \end_inset
 
@@ -2679,7 +2713,7 @@ status open
 Descomposición de la retícula cuadrada bidimensional en triángulos,
  alternado la dirección de la diagonal.
  Esta descomposición se usa para medir la carga topológica.
- Se puede apreciar como el cambio en la orientación de la diagonal evita una dirección preferencial.
+ El cambio en la orientación de la diagonal evita una dirección preferencial.
 \end_layout
 
 \end_inset
@@ -2709,12 +2743,12 @@ La energía es invariante al cambio de signo de todos los espines de una configu
  resultando en el valor esperado
 \begin_inset Formula 
 \begin{equation}
-\expval{Q}=0,
+\expval{Q}=0.
 \end{equation}
 
 \end_inset
 
-por lo que medir los defectos topológicos requiere de otra cantidad que no se anule con el promedio estadístico.
+Medir los defectos topológicos requiere de otra cantidad que no se anule con el promedio estadístico.
  Se generaliza
 \begin_inset Formula 
 \begin{equation}
@@ -2731,7 +2765,7 @@ donde
 \begin_inset Formula $[s]$
 \end_inset
 
- (esto es similar a la integral de trayectorias descrita en el capitulo 
+ (similar a la integral de trayectorias descrita en el capitulo 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "chap:Mecánica-estadística-e"
@@ -2743,7 +2777,7 @@ nolink "false"
 \end_inset
 
 ).
- La carga topológica se define como
+ En la generalizaron la carga topológica se define como
 \begin_inset Formula 
 \begin{equation}
 i\pdv{}{\theta}Z(\theta)=\expval{Q},
@@ -2751,7 +2785,7 @@ i\pdv{}{\theta}Z(\theta)=\expval{Q},
 
 \end_inset
 
-Si 
+En esta definición si 
 \begin_inset Formula $\theta=0$
 \end_inset
 
@@ -2760,7 +2794,7 @@ Si
 \end_inset
 
  como se tiene en la definición geométrica.
- La energía libre de Helmholtz es 
+ Para definir una cantidad sensible a los cambios de la carga topológica y que no se anule con el promedio estadístico se define una susceptibilidad a partir de la energía libre de Helmholtz 
 \begin_inset Formula 
 \begin{equation}
 \mathcal{F}(\theta)=-T\ln Z(\theta),
@@ -2793,7 +2827,7 @@ A partir de la función de estado la susceptibilidad topológica
 \end_inset
 
 En una cadena de Markov formada por la carga topológica de un conjunto de configuraciones,
- se calcula el valor aproximado del cuadrado de la carga topológica como 
+ se calcula el valor esperado aproximado del cuadrado de la carga topológica como 
 \begin_inset Formula 
 \begin{equation}
 \expval{Q^{2}}_{\mathrm{aprox}}=\frac{1}{N}\sum_{i=1}^{N}Q_{i}^{2}.
@@ -2809,7 +2843,8 @@ El valor real de la susceptibilidad topológica es
 
 \end_inset
 
-La susceptibilidad topológica es asintóticamente estable por lo que también se puede comparar resultados en retículas de diferentes volúmenes
+La susceptibilidad topológica es asintóticamente estable y por definición una variable intensiva,
+ estas propiedades permiten comparar resultados en retículas de diferentes volúmenes.
 \end_layout
 
 \begin_layout Chapter
@@ -2885,7 +2920,7 @@ Se muestra un diagrama de fase típico de un fluido y se delimitan las fronteras
  Solido,
  liquido y gaseoso.
  Cuando se pasa por una frontera en el diagrama,
- hay una transición de fase que percibe como un cambio visible a nivel macroscópico.
+ hay una transición de fase que se percibe como un cambio visible a nivel macroscópico.
  La curva de evaporación termina en una temperatura crítica 
 \begin_inset Formula $T_{c}$
 \end_inset
@@ -2921,7 +2956,7 @@ literal "false"
 \end_inset
 
 .
- A temperatura 
+ En el segundo ejemplo a temperatura 
 \begin_inset Formula $T=0$
 \end_inset
 
@@ -2955,10 +2990,10 @@ literal "false"
 \end_inset
 
 ,
- una transición de fase en un cambio de una fase ordenada a una desordenada.
+ una transición de fase es un cambio de una fase ordenada a una desordenada.
  La fase ordenada es invariante a un grupo de transformaciones.
  La fase desordenada es invariante a un subgrupo del grupo original de transformaciones.
- Las propiedades físicas de un material cambian bruscamente.
+ En la transición de una fase ordenada a una fase desordenada las propiedades físicas de un material cambian bruscamente.
 \end_layout
 
 \begin_layout Standard
@@ -3198,11 +3233,11 @@ donde
 \begin_inset Formula $J$
 \end_inset
 
- una constante de acoplamiento y 
+ es una constante de acoplamiento y 
 \begin_inset Formula $\vec{B}$
 \end_inset
 
- el campo magnético.
+ es el campo magnético.
  Por simplicidad fijaremos 
 \begin_inset Formula $J=1$
 \end_inset
@@ -3219,7 +3254,7 @@ H[s]=-\sum_{\expval{xy}}\vec{s}_{x}\cdot\vec{s}_{y},\quad M[s]=-\vec{B}\cdot\sum
 la función de partición es
 \begin_inset Formula 
 \begin{equation}
-Z=\sum_{s}\mathrm{e}^{-(H[s]+M[s])/k_{B}T}.
+Z=\sum_{s}\mathrm{e}^{-(H[s]+M[s])/(k_{B}T)}.
 \end{equation}
 
 \end_inset
@@ -3239,7 +3274,7 @@ El valor esperado de la magnetización
 
 \begin_inset Formula 
 \begin{equation}
-\expval{M}=-\pdv{\mathcal{F}}{B}=\frac{1}{Z}\sum_{s}M[s]\mathrm{e}^{-(H[s]+M[s])/k_{B}T}.
+\expval{M}=-\pdv{\mathcal{F}}{B}=\frac{1}{Z}\sum_{s}M[s]\mathrm{e}^{-(H[s]+M[s])/(k_{B}T)}.
 \end{equation}
 
 \end_inset
@@ -3259,9 +3294,9 @@ La susceptibilidad magnética
 
 \begin_inset Formula 
 \begin{align}
-\chi_{m}=\frac{1}{V} & \pdv{\expval{M}}{B}\nonumber \\
-=-\frac{1}{V} & \frac{1}{k_{B}T}\left(\frac{1}{Z}\sum_{s}M[s]^{2}\mathrm{e}^{-(H[s]+M[s])/k_{B}T}\right)+\frac{1}{V}\frac{1}{k_{B}T}\left(\frac{1}{Z}\sum_{s}M[s]\mathrm{e}^{-(H[s]+M[s])/k_{B}T}\right)^{2}\nonumber \\
-=\frac{1}{V} & \frac{1}{k_{B}T}\left(\expval{M}^{2}-\expval{M^{2}}\right).
+\chi_{m}= & \frac{1}{V}\pdv{\expval{M}}{B}\nonumber \\
+= & -\frac{1}{V}\frac{1}{k_{B}T}\left(\frac{1}{Z}\sum_{s}M[s]^{2}\mathrm{e}^{-(H[s]+M[s])/(k_{B}T)}\right)+\frac{1}{V}\frac{1}{k_{B}T}\left(\frac{1}{Z}\sum_{s}M[s]\mathrm{e}^{-(H[s]+M[s])/(k_{B}T)}\right)^{2}\nonumber \\
+= & \frac{1}{V}\frac{1}{k_{B}T}\left(\expval{M}^{2}-\expval{M^{2}}\right).
 \end{align}
 
 \end_inset
@@ -3283,7 +3318,7 @@ donde
 \begin_inset Formula $c_{V}$
 \end_inset
 
- es la derivada de la energía media 
+ es la derivada del valor esperado de la energía 
 \begin_inset Formula $\expval{\mathcal{H}}$
 \end_inset
 
@@ -3294,9 +3329,9 @@ donde
 
 \begin_inset Formula 
 \begin{align}
-c_{V}=\frac{1}{V} & \pdv{\expval{\mathcal{H}}}{T}\nonumber \\
-= & -\frac{1}{V}\frac{1}{k_{B}T^{2}}\frac{1}{Z}\sum_{s}\mathcal{H}[s]^{2}\mathrm{e}^{-\mathcal{H}[s]/k_{B}T}+\frac{1}{V}\frac{1}{k_{B}T^{2}}\left(\frac{1}{Z}\sum_{s}\mathcal{H}[s]\mathrm{e}^{-\mathcal{H}[s]/k_{B}T}\right)\nonumber \\
-=\frac{1}{V} & \frac{1}{k_{B}T^{2}}\left(\expval{\mathcal{H}}^{2}-\expval{\mathcal{H}^{2}}\right).
+c_{V}= & \frac{1}{V}\pdv{\expval{\mathcal{H}}}{T}\nonumber \\
+= & -\frac{1}{V}\frac{1}{k_{B}T^{2}}\frac{1}{Z}\sum_{s}\mathcal{H}[s]^{2}\mathrm{e}^{-\mathcal{H}[s]/(k_{B}T)}+\frac{1}{V}\frac{1}{k_{B}T^{2}}\left(\frac{1}{Z}\sum_{s}\mathcal{H}[s]\mathrm{e}^{-\mathcal{H}[s]/(k_{B}T)}\right)\nonumber \\
+= & \frac{1}{V}\frac{1}{k_{B}T^{2}}\left(\expval{\mathcal{H}}^{2}-\expval{\mathcal{H}^{2}}\right).
 \end{align}
 
 \end_inset
@@ -3310,15 +3345,14 @@ Función de correlación
 
 \begin_layout Standard
 En estadística la correlación mide como una variable es afectada por los cambios en otra variable.
- Esta relación entre variables no implica necesariamente una relación causal entre las variables,
- aunque si una variable depende de otra,
- habrá una alta correlación entre variables.
- El nombre de la función que mide la correlación entre variables e función de correlación.
+ Una alta correlación entre variables no implica necesariamente una relación causal,
+ pero si una variable depende de otra habrá una alta correlación entre las variables.
+ El nombre de la función que mide la correlación entre variables es la función de correlación.
  En física estadística se usa la función de correlación para medir la dependencia temporal o espacial entre variables.
 \end_layout
 
 \begin_layout Standard
-La definición más común de una función de correlación es el promedio de conjunto canónico del producto escalar de dos variables aleatorias 
+La definición más común de una función de correlación es el promedio del conjunto canónico del producto escalar de dos variables aleatorias 
 \begin_inset Formula $X_{1},X_{2}$
 \end_inset
 
@@ -3332,6 +3366,10 @@ C(r,\tau)=\expval{X_{1}(R,t)\cdot X_{2}(R+r,t+\tau)}-\expval{X_{1}(R,t)}\expval{
 \end_inset
 
 donde 
+\begin_inset Formula $C(r,\tau)$
+\end_inset
+
+ es la función de correlación y 
 \begin_inset Formula $r$
 \end_inset
 
@@ -3339,8 +3377,7 @@ donde
 \begin_inset Formula $R+t$
 \end_inset
 
- son las posiciones de las variables aleatorias,
- 
+ son las posiciones en los instantes 
 \begin_inset Formula $t$
 \end_inset
 
@@ -3348,11 +3385,7 @@ donde
 \begin_inset Formula $t+\tau$
 \end_inset
 
- el tiempo y 
-\begin_inset Formula $C(r,\tau)$
-\end_inset
-
- es la función de correlación.
+.
  Si no se considera el tiempo en la función de correlación,
  se tiene la función de correlación espacial 
 \begin_inset Formula $C(r,0)$
@@ -3383,7 +3416,7 @@ donde
 \begin_layout Standard
 En la práctica,
  para determinar la longitud de correlación en un volumen 
-\begin_inset Formula $L\times L$
+\begin_inset Formula $V=L\times L$
 \end_inset
 
  se mapean los espines a una linea 
@@ -3419,7 +3452,6 @@ donde
 \begin_inset Formula $T_{c}$
 \end_inset
 
- desde arriba,
  la divergencia de 
 \begin_inset Formula $\xi$
 \end_inset
@@ -3548,7 +3580,7 @@ status open
 \begin_layout Plain Layout
 Escala logarítmica.
  Cerca de las fronteras,
- la correlación decae exponencialmente formando dos rectas.
+ la correlación decae exponencialmente formando dos rectas en la escala logarítmica.
 \end_layout
 
 \end_inset
@@ -3611,7 +3643,7 @@ literal "false"
 \end_inset
 
 .
- Se encontró empíricamente una clasificación de sistemas críticos en lo que se definió como clases de universalidad.
+ Se encontró empíricamente una clasificación de sistemas críticos que se definió como clases de universalidad.
  Posteriormente en 1970 Enrico Fermi se baso en el trabajo de Griffiths,
  Jasnow y otros investigadores.
  Estudiaron datos experimentales de diversos materiales cerca de sus respectivos puntos críticos,
@@ -3627,7 +3659,7 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Box Frameless
+\begin_inset Box Shadowbox
 position "t"
 hor_pos "c"
 has_inner_box 1
@@ -3670,14 +3702,16 @@ Debido al enorme número de elementos que interactúan en un modelo microscópic
 \end_layout
 
 \begin_layout Standard
-El modelo 2d O(3) presenta libertad asintótica y sectores topológicos bien definidos.
+El modelo 2d O(3) pueden surgir preguntas interesantes respecto a la clase de universalidad.
+ Si bien presenta libertad asintótica y sectores topológicos bien definidos.
  Una pregunta crucial respecto su susceptibilidad topológica,
- es si es un valor finito en el limite al continuo.
- Conforme la longitud de correlación aumenta el parametro de escala 
+ es si converge a un valor finito en el limite al continuo.
+ Conforme a la longitud de correlación aumenta,
+ el parametro de escala normalizando 
 \begin_inset Formula $L/\xi$
 \end_inset
 
- normalizando la susceptibilidad como 
+ se relaciona con la susceptibilidad topológica como 
 \begin_inset Formula 
 \begin{equation}
 \chi_{t}=\frac{\expval{Q^{2}}}{L^{2}}
@@ -3741,7 +3775,7 @@ donde
 
  es un factor de escala.
  Algunos exponentes críticos relacionadas a las variables termodinámicas de un magneto se definen de la manera siguiente:
- La magnetización se relaciona con la temperatura por el exponente criticó 
+ la magnetización se relaciona con la temperatura por el exponente criticó 
 \begin_inset Formula $\mathcal{B}$
 \end_inset
 
@@ -3760,7 +3794,7 @@ La susceptibilidad magnética se relaciona con la temperatura por el exponente c
 
 \begin_inset Formula 
 \begin{equation}
-\chi_{T}=\pdv{M}{B}\Big{|}_{B=0}\propto|T-T|^{\gamma},\quad\mathrm{si}\quad T\approx T_{c}.
+\chi_{T}=\pdv{M}{B}\Big{|}_{B=0}\propto|T-T_{c}|^{\gamma},\quad\mathrm{si}\quad T\approx T_{c}.
 \end{equation}
 
 \end_inset
@@ -3845,9 +3879,9 @@ Antes de ahondar en el concepto de ruptura espontánea de una simetría,
  El teorema de Noether dicta que la dinámica de un sistema físico puede ser descrita en términos de leyes de conservación,
  tales como la conservación de energía,
  o la conservación de momento angular.
- Una de las ideas mas profundas de la física es que una cantidad conservada se fundamenta en la simetrías de una ley fundamental.
+ Una de las ideas más profundas de la física es que una cantidad conservada se fundamenta en la simetrías de una ley fundamental.
  Por ejemplo,
- la invariancia de translación se manifiesta cuando las ecuaciones de movimiento so las mismas en cualquier parte del espacio.
+ la invariancia de translación se manifiesta cuando las ecuaciones de movimiento son las mismas en cualquier parte del espacio.
  Esta invariancia implica la conservación del momento.
  El segundo tipo es una simetría de estado,
  se refiere a las simetrías que surgen en las soluciones a una ecuación de movimiento o los estados de un sistema físico.
@@ -3855,7 +3889,7 @@ Antes de ahondar en el concepto de ruptura espontánea de una simetría,
 
 \begin_layout Standard
 La ruptura espontánea de una simetría,
- es una reducción de simetrías al pasar por debajo de la energía del estado vació,
+ es una reducción de simetrías al pasar por debajo de la energía del estado vacío,
  por lo general al pasar por debajo de una temperatura crítica 
 \begin_inset Formula $T_{c}$
 \end_inset
@@ -3886,7 +3920,7 @@ En el helio
 \end_inset
 
 He en estado superfluidico,
- la condensación de Bose-Einstein ocurre alrededor de 
+ la condensación de Bose-Einstein ocurre alrededor de la temperatura 
 \begin_inset Formula $2K$
 \end_inset
 
@@ -3895,15 +3929,15 @@ He en estado superfluidico,
 \begin_inset Formula $T_{c}$
 \end_inset
 
- conduciendo a la posible formación vórtices puntuales y lineas de flujo lineales.
+ conduciendo a la posible formación de vórtices puntuales y lineas de flujo lineales.
 \end_layout
 
 \begin_layout Standard
 Basándose en el concepto de ruptura de simetría Tom Kibble introdujo la idea de fluctuaciones primordiales.
  En un sistema que pasa continuamente por una ruptura de simetría,
- un parametro de orden difiere en las regiones no correlaciones.
+ un parametro de orden difiere en las regiones no correlacionadas.
  Formando regiones asiladas conocidas como dominios.
- Dependiendo del sistema estos dominios son defectos tipos de defectos topológicos;
+ Dependiendo del sistema estos dominios son diferentes tipos de defectos topológicos;
  pueden ser vórtices,
  cuerdas cósmicas,
  monopolos magnéticos etc.
@@ -3917,42 +3951,9 @@ En el ejemplo del universo temprano,
 
 \begin_layout Section
 Acoplamientos de largo alcance
-\end_layout
-
-\begin_layout Standard
-\begin_inset Box Shadowbox
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "default"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-Teorema de Hohenberg–Mermin–Wagner.
-\end_layout
-
-\begin_layout Plain Layout
-En un sistema infinito no hay ruptura espontanea de simentria para 
-\begin_inset Formula $T>0$
-\end_inset
-
- y 
-\begin_inset Formula $d\leq2$
-\end_inset
-
-.
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Acoplamientos-de-largo"
 
 \end_inset
 
@@ -3961,7 +3962,7 @@ En un sistema infinito no hay ruptura espontanea de simentria para
 
 \begin_layout Standard
 La esencia del mecanismo de Kibble-Zurek está en la aleatoriedad en la ruptura de la simetría de dominios en un sistema.
- El tamaño de los dominios está determinado por el tiempo de relajación 
+ El tamaño de los dominios está determinado por el tiempo de auto-correlación 
 \begin_inset Formula $\tau$
 \end_inset
 
@@ -4009,7 +4010,45 @@ donde
 \end_inset
 
  es un exponente que describe el decaimiento de las interacciones.
- En un sistema con interacciones 
+ Aunque pueden surgir ordenes de largo rango a partir de propiedades del sistema distintas a la longitud de correlación,
+ tales como el orden topológico de largo rango,
+ no es el caso para el modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+).
+ David Mermin y Warren Wagner 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "mermin_absence_1966,kosterlitz_long_1972"
+literal "false"
+
+\end_inset
+
+ demostraron que no puede haber una ruptura espontánea de simetría en los modelos 1d O(
+\begin_inset Formula $3$
+\end_inset
+
+) y 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+) con interacciones de rango finito y temperatura 
+\begin_inset Formula $T>0$
+\end_inset
+
+.
+ La idea central de la demostración es que las fluctuaciones térmicas en un sistema 2d en bajas temperaturas son lo suficientemente grandes como para destruir cualquier orden de largo rango.
+ Aunque las interacciones en el modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+) son a nivel local,
+ la clase de universalidad y por lo tanto los valores de los exponentes críticos no dependen de la estructura local,
+ en cambio dependen de la dimensión espacial y las simetrías del parámetro de orden.
+ Usando los argumentos anteriores se sigue que:
+ es más conveniente considerar únicamente los espines vecinos vecinos más cercanos,
+ ya que representan la mayor contribución a la interacción entre espines y no afectan la clase de universalidad del sistema.
 \end_layout
 
 \begin_layout Section
@@ -4017,8 +4056,12 @@ Evolución del universo temprano
 \end_layout
 
 \begin_layout Standard
-Consideremos el universo temprano en expansión.
- En el sector electrodébil del ME,
+En su trabajo Kibble propuso que la ruptura de la simetría SU(
+\begin_inset Formula $2$
+\end_inset
+
+) en el universo temprano en expansión pudo conducir a la formación de defectos topológicos.
+ En el sector electro-débil del Modelo estándar ME,
  la temperatura crítica es del orden 
 \begin_inset Formula $1/\sqrt{G_{F}}$
 \end_inset
@@ -4035,12 +4078,12 @@ Consideremos el universo temprano en expansión.
 \end_inset
 
 .
- Kibble propuso que esta ruptura de simetría dio lugar a la formación de defectos topológicos en el universo temprano.
+ 
 \end_layout
 
 \begin_layout Standard
 Consideremos un campo multi-escalar 
-\begin_inset Formula $\vec{\phi}\mathbb{R}^{n}$
+\begin_inset Formula $\vec{\phi}\in\mathbb{R}^{n}$
 \end_inset
 
  con un lagrangiano invariante bajo el grupo ortogonal O(
@@ -4075,24 +4118,24 @@ B_{\mu\nu}=D\mu B_{\nu}-D_{\nu}B\mu+q\left[B_{\mu},B_{\nu}\right],
 
 \end_inset
 
-donde 
-\begin_inset Formula $g,q$
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+A temperatura 
+\begin_inset Formula $T_{C}$
 \end_inset
 
- son constantes de acoplamiento.
- A temperatura 
-\begin_inset Formula $T=0$
+ hay una ruptura espontánea de O
+\begin_inset Formula $(n)$
 \end_inset
 
- hay una ruptura espontánea de O(
-\begin_inset Formula $n$
+ a O
+\begin_inset Formula $(n-1)$
 \end_inset
 
-) l a O(
-\begin_inset Formula $n-1$
-\end_inset
-
-),
+,
  por lo que la variedad del estado de menor energía es la esfera 
 \begin_inset Formula $\mathcal{S}^{n-2}$
 \end_inset
@@ -4100,12 +4143,18 @@ donde
 
 \end_layout
 
-\begin_layout Standard
-Para 
-\begin_inset Formula $T$
 \end_inset
 
- cerca de la temperatura crítica,
+donde 
+\begin_inset Formula $g,q$
+\end_inset
+
+ son constantes de acoplamiento.
+ Cerca de la temperatura crítica 
+\begin_inset Formula $T_{c}$
+\end_inset
+
+,
  aparecen fluctuaciones fuertes en el campo 
 \begin_inset Formula $\vec{\phi}$
 \end_inset
@@ -4136,10 +4185,6 @@ Para
  La cuestión es,
  si luego del enfriamiento del universo,
  las fronteras entre dominios pueden formar defectos topológicos.
-\end_layout
-
-\begin_layout Standard
-Consideremos el escenario en el que el universo permite la formación de dominios.
  El tamaño de estos dominios está determinado por la longitud de correlación
 \begin_inset Formula 
 \begin{equation}
@@ -4148,13 +4193,9 @@ Consideremos el escenario en el que el universo permite la formación de dominio
 
 \end_inset
 
- 
-\end_layout
-
-\begin_layout Standard
-Es interesante revisar las posibles configuraciones geométricas de estos dominios.
+ Es interesante revisar las posibles configuraciones geométricas de estos dominios.
  Las transiciones de fase de ruptura de simetría en el universo temprano podrían haber formado estructuras topológicamente estables.
- Las cuerdas cósmicas se teorizan defectos topológicos unidimensionales que pueden resultar de la ruptura de la simetría O(
+ Las cuerdas cósmicas se teorizan como defectos topológicos unidimensionales que pueden resultar de la ruptura de la simetría O(
 \begin_inset Formula $n$
 \end_inset
 
@@ -4204,27 +4245,22 @@ Experimentos con materia condensada
 En 1985,
  Wojciech Zurek,
  en Los Álamos,
- sugirió que las ideas de Kibble podrían probarse aplicándolas al problema de la formación de defectos en una transición de fase de baja temperatura,
+ sugirió que las ideas de Kibble podrían aplicarse al problema de la formación de defectos en una transición de fase de baja temperatura,
  en particular la transición de un fluido normal a un superfluido en helio 
 \begin_inset Formula $^{4}$
 \end_inset
 
 He líquido.
  Zurek mostró que en una transición de segundo orden,
- se puede obtener una relación de ley de potencia entre 
+ se puede obtener una relación de ley de potencia entre la longitud de correlación 
 \begin_inset Formula $ξ$
 \end_inset
 
- y 
+ y la tasa inversa de enfriamiento 
 \begin_inset Formula $τ_{\mathrm{cool}}$
 \end_inset
 
-.
- La tasa inversa de enfriamiento 
-\begin_inset Formula $τ_{\mathrm{cool}}$
-\end_inset
-
- se relaciona con la longitud de correlacion siguiendo
+ siguiendo la relación
 \begin_inset Formula 
 \begin{equation}
 \xi\propto\tau_{\mathrm{cool}}^{-\zeta},
@@ -4232,18 +4268,14 @@ He líquido.
 
 \end_inset
 
-done 
+donde 
 \begin_inset Formula $\zeta$
 \end_inset
 
- es un exponente critico.
+ es el exponente del mecanismo de Kibble-Zurek.
  El parámetro de orden de un superfluido,
  puede pensarse como la función de onda del condensado de Bose.
- La fase 
-\begin_inset Formula $\theta$
-\end_inset
-
- de la función de onda es de la forma
+ La función de onda es de la forma
 \begin_inset Formula 
 \begin{equation}
 \psi=\abs{\psi}e^{i\theta}
@@ -4251,6 +4283,15 @@ done
 
 \end_inset
 
+ donde 
+\begin_inset Formula $\theta$
+\end_inset
+
+ en una fase y 
+\begin_inset Formula $\abs{\psi}$
+\end_inset
+
+ es la magnitud de la función de onda.
  En este sistema se pueden formar líneas de vórtices cuando el parámetro de orden es un valor complejo.
  El resultado da lugar una situación análoga al modelo cosmológico.
  
@@ -4287,20 +4328,22 @@ donde
 
  son constantes.
  Por debajo de la temperatura crítica,
- tras la ruptura de la simetría en el superfluido 
-\begin_inset Formula $\alpha$
+ tras la ruptura de la simetría en el superfluido,
+ 
+\begin_inset Formula $a$
 \end_inset
 
  es un coeficiente negativo y el potencial 
 \begin_inset Formula $V$
 \end_inset
 
- tiene la forma de sombrero.Pasando por debajo de la temperatura crítica 
+ tiene la forma de sombrero.
+ Pasando por debajo de la temperatura crítica 
 \begin_inset Formula $T_{c}$
 \end_inset
 
-.
- Una fracción considerable de los átomos de 
+,
+ una fracción considerable de los átomos de 
 \begin_inset Formula $^{4}$
 \end_inset
 
@@ -4438,7 +4481,7 @@ donde
 \end_inset
 
 .
- La desviación estándar de esta suma de valores medios
+ La desviación estándar de la observable es
 \begin_inset Formula 
 \begin{equation}
 \mathrm{std}(O)=\sqrt{\frac{1}{N-1}\text{\ensuremath{\left(\sum_{i=1}^{N}O[s]_{i}^{2}-N\expval{O}_{\mathrm{aplrox}}^{2}\right)}}},
@@ -4460,9 +4503,9 @@ Para una medición en un proceso estocástico hay una probabilidad del
 
  de encontrarse a menos de una desviación estándar del valor esperado de la distribución.
  Conforme la estadística aumenta,
- el error converge a cero y el estimador de la energía converge al valor real.
+ el error converge a cero y el estimador de la observable converge al valor real.
  Si cada medición es estadísticamente independiente,
- conduce al valor esperado de la observable y su error estándar definido por la ecuación
+ conduce al valor esperado de la observable y su error estándar esta definido por la ecuación
 \begin_inset Formula 
 \begin{equation}
 \expval{O}\simeq\expval{O}_{\mathrm{aprox}}\pm\mathrm{error}(O).
@@ -4500,6 +4543,8 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
+
+\series bold
 Definición:
  Variable aleatoria.
 \end_layout
@@ -4580,6 +4625,8 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
+
+\series bold
 Definición:
  Balance Detallado.
 \end_layout
@@ -4736,7 +4783,11 @@ p[s\rightarrow s']=\begin{cases}
 
 \begin_layout Itemize
 Si la energía de la configuración disminuye con el cambio,
- la probabilidad de aceptaciones 1,
+ la probabilidad de aceptación es 
+\begin_inset Formula $"1"$
+\end_inset
+
+,
  y se acepta de inmediato.
 \end_layout
 
@@ -4752,7 +4803,11 @@ Si la energía de la configuración aumenta,
 \end_inset
 
 ,
- entonces la probabilidad de aceptación para las configuraciones que aumentan la energía se acerca a 1,
+ entonces la probabilidad de aceptación para las configuraciones que aumentan la energía se acerca a 
+\begin_inset Formula $"1"$
+\end_inset
+
+,
  resultando en más ruido térmico.
 \end_layout
 
@@ -4768,13 +4823,9 @@ Por otro lado,
 \begin_layout Standard
 A menor temperatura menos fluctuaciones,
  implicando que el sistema se acerca a configuraciones de energía cercanas al mínimo.
- 
-\end_layout
-
-\begin_layout Standard
-La prueba de aceptación se repite para cada espín del volumen.
+ La prueba de aceptación se repite para cada espín del volumen.
  El orden de selección puede ser lexicográfico,
- en la que los espines se eligen siendo un orden basado en las posiciones de la retícula,
+ en el que los espines se eligen siguiendo un orden basado en las posiciones de la retícula,
  o aleatorio,
  donde los espines se eligen al azar.
  Un barrido de actualización corresponde a una unidad de tiempo discreto de Markov para el algoritmo Metropolis e implica que se ha aplicado la probabilidad de aceptación a un número de espines igual al total del volumen 
@@ -4797,6 +4848,14 @@ La prueba de aceptación se repite para cada espín del volumen.
 \Delta\mathcal{H}=\mathcal{H}[s']-\mathcal{H}[s]=\left(\vec{s}_{x}-\vec{s}_{x}^{\,\prime}\right)\cdot\left(\vec{s}_{x+\hat{1}}+\vec{s}_{x-\hat{1}}+\vec{s}_{x+\hat{2}}+\vec{s}_{x-\hat{2}}\right).\label{eq:energy_diff}
 \end{equation}
 
+\end_inset
+
+donde 
+\begin_inset Formula $\hat{1}=(1,0)$
+\end_inset
+
+ y 
+\begin_inset Formula $\hat{2}=(0,1).$
 \end_inset
 
 
@@ -4834,7 +4893,7 @@ p[s\rightarrow s']=\frac{\mathrm{e}^{-\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{-\b
 
 \end_inset
 
-La probabilidad de aceptación tiene que cumplir la ecuación de balance detallado por lo que se realiza la sustitución directa se sigue 
+La probabilidad de aceptación tiene que cumplir la ecuación de balance detallado por lo que se realiza siguiendo la sustitución directa 
 \begin_inset Formula 
 \begin{align}
 p[s\rightarrow s']p[s] & =\frac{\mathrm{e}^{-\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{-\beta\Delta\mathcal{H}}}\frac{\mathrm{e}^{-\beta\mathcal{H}[s]}}{Z}\nonumber \\
@@ -4845,7 +4904,7 @@ p[s\rightarrow s']p[s] & =\frac{\mathrm{e}^{-\beta\Delta\mathcal{H}}}{1+\mathrm{
 
 \end_inset
 
-La sustitución de la probabilidad de aceptación cumple con la ecuación balance detallado por lo que es una probabilidad de aceptación valida.
+La sustitución de la probabilidad de aceptación cumple con la ecuación de balance detallado por lo que es una probabilidad de aceptación valida.
  De manera similar al algoritmo de Metropolis dada una configuración 
 \begin_inset Formula $[s]$
 \end_inset
@@ -4899,7 +4958,7 @@ Si la energía de la configuración disminuye
 
 \begin_layout Standard
 El algoritmo de Glauber es normalmente menos usado que el algoritmo de Metropolis ya que es un poco menos eficiente para termalizar un sistema,
- pero en esta tesis esa característica no es una desventaja ya que se en los capítulos posteriores se realizaran enfriamientos rápidos y una menor eficiencia permite alcanzar una mayor velocidad de enfriamiento en las simulaciones numéricas.
+ pero en esta tesis esa característica no es una desventaja ya que en los capítulos posteriores se realizaran enfriamientos rápidos y una menor eficiencia permite alcanzar una mayor velocidad de enfriamiento en las simulaciones numéricas.
  
 \end_layout
 
@@ -4910,7 +4969,7 @@ Algoritmo clúster
 \begin_layout Standard
 Calcular la diferencia de energía entre configuraciones implica realizar pocos cálculos,
  por lo que los algoritmos de actualización local son eficientes lejos de la temperatura crítica.
- El problema con la temperatura crítica en los algoritmos de actualización locales se hace notar cerca de la temperatura crítica,
+ El problema con la temperatura crítica en los algoritmos de actualización local se hace notar cerca de la temperatura crítica,
  donde disminuye drásticamente el número de cambios que se aceptan.
  Por consecuencia,
  el tiempo de auto-correlación del sistema aumenta.
@@ -4954,6 +5013,8 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
+
+\series bold
 Definición:
  Clúster.
 \end_layout
@@ -4981,24 +5042,12 @@ literal "false"
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Standard
-Consiste en generar clústeres y cambiar la configuración de cada subconjunto de espines a la vez.
+ Consiste en generar clústeres y cambiar la configuración de cada subconjunto de espines a la vez.
  Una de las principales ventajas del algoritmo clúster es que suprime la desaceleración crítica característica de los algoritmos de actualización local.
- 
-\end_layout
-
-\begin_layout Standard
-Un clúster puede estar formado por un único espín si no hay vínculos con sus vecinos,
+ Un clúster puede estar formado por un único espín si no hay vínculos con sus vecinos,
  o puede estar formado por todos los espines de la configuración,
  caso más probable cerca de la temperatura crítica.
- 
-\end_layout
-
-\begin_layout Standard
-Para formar los clústeres primero propone un vector aleatorio 
+ Para formar los clústeres primero propone un vector aleatorio 
 \begin_inset Formula $\vec{w}\in S^{2}$
 \end_inset
 
@@ -5028,7 +5077,7 @@ Para probar el vínculo entre dos espines vecinos
 \end_inset
 
 ,
- se calcula la diferencia en al energía de las configuraciones
+ se calcula la diferencia de energía entre las configuraciones
 \begin_inset Formula 
 \begin{equation}
 \Delta\mathcal{H}_{x,y}=\vec{s}_{x}\,'\cdot\vec{s}_{y}-\vec{s}_{x}\cdot\vec{s}_{y}.
@@ -5055,16 +5104,9 @@ p_{x,y}=\begin{cases}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Se calcula la probabilidad de vínculo,
  con lo que se decide si los espines están enlazados.
-\end_layout
-
-\begin_layout Standard
-Una forma de realizar el proceso de identificación de clústeres es usar el algoritmo de Hoshen-Kopelman que se describe en el apéndice 
+ Una forma de realizar el proceso de identificación de clústeres es usar el algoritmo de Hoshen-Kopelman que se describe en el apéndice 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Algoritmo-Hoshen-Kopelman"
@@ -5080,8 +5122,8 @@ nolink "false"
 
 \begin_layout Standard
 En la variante single-clúster se forma un único clúster alrededor de un espín aleatorio,
- y se cambia la orientación de todos sus espines la vez,
- aplicando transformación 
+ y se cambia la orientación de todos sus espines a la vez,
+ aplicando la transformación 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:wolff"
@@ -5100,7 +5142,7 @@ nolink "false"
 \end_inset
 
 ,
- valor que minimiza el tiempo de auto-correlación del sistema al mantener más menos la mitad de los clústeres y cambiar la configuración de la otra mitad de los clústeres.
+ valor que minimiza el tiempo de auto-correlación del sistema al mantener aproximadamente la mitad de los clústeres y cambiar la configuración de la otra mitad.
 \end_layout
 
 \begin_layout Section
@@ -5118,20 +5160,26 @@ La evolución de un sistema se caracteriza por el tiempo de auto-correlación,
 \end_inset
 
 ,
- como los posibles cambios en la dirección del espín son más cercanos el ratio de aceptación aumenta.
- Aunque el ratio de aceptación puede aumentar considerablemente los cambios en la configuración son menores.
- Aunque el limite en área de selección aumenta el tiempo de auto-correlación,
- la desaceleración crítica es una barrera inevitable.
- Es de gran interés entender cómo cambia el tiempo de auto-correlación para las diferentes observables del sistema.
+ como los posibles cambios en la dirección del espín son más cercanos,
+ entonces el ratio de aceptación aumenta.
+ Aunque limitar en área de selección disminuye el tiempo de auto-correlación,
+ la desaceleración crítica continua siendo es una barrera inevitable.
+ Si bien el ratio de aceptación puede aumentar considerablemente,
+ los cambios en la configuración son menores.
+ 
+\end_layout
+
+\begin_layout Standard
+Es de gran interés entender cómo cambia el tiempo de auto-correlación para las diferentes observables del sistema.
  Consideremos una observable 
 \begin_inset Formula $A$
 \end_inset
 
- y 
+ donde 
 \begin_inset Formula $A_{t}$
 \end_inset
 
- el valor de 
+ es el valor de 
 \begin_inset Formula $A$
 \end_inset
 
@@ -5184,7 +5232,7 @@ donde
 \end_inset
 
  tal que,
- el tiempo de auto-correlación oscile al rededor de una constante 
+ el tiempo de auto-correlación oscile alrededor de una constante 
 \begin_inset Formula $\tau_{\mathrm{int}}$
 \end_inset
 
@@ -5193,14 +5241,14 @@ donde
 \end_inset
 
 .
- El error depende de las oscilaciones del tiempo de auto-correlación al rededor de 
+ El error depende de las oscilaciones del tiempo de auto-correlación alrededor de 
 \begin_inset Formula $\tau_{\mathrm{int}}$
 \end_inset
 
  y es de la forma
 \begin_inset Formula 
 \begin{equation}
-\delta\tau_{\mathrm{inr}}=\sqrt{\frac{2\tau_{\mathrm{int}}}{n}C_{AA}(0)}.
+\delta\tau_{\mathrm{int}}=\sqrt{\frac{2\tau_{\mathrm{int}}}{n}C_{AA}(0)}.
 \end{equation}
 
 \end_inset
@@ -5208,7 +5256,7 @@ donde
 El tiempo de auto-correlación depende del algoritmo de Monte Carlo particular que se use y en general cerca de un punto crítico diverge según la ecuación
 \begin_inset Formula 
 \begin{equation}
-\tau\propto\xi^{-\nu z}
+\tau\propto\xi^{-\nu z},
 \end{equation}
 
 \end_inset
@@ -5287,7 +5335,7 @@ En esta sección se reportan mediciones de las diferentes observables que se han
 \begin_inset Formula $3$
 \end_inset
 
-) en equilibrio térmico.
+) en equilibrio termodinámico.
  Para ello,
  se ha escrito un programa en Fortran con rutinas de generación de configuraciones y su actualización en función de la temperatura para cada uno de los algoritmos descritos.
  Algunos términos básicos son:
@@ -5335,7 +5383,7 @@ Barrido de actualizaciones.
 \end_inset
 
  espines seleccionados en orden lexicográfico,
- aleatorio o por su pertenecía a un clúster.
+ aleatorio o por su pertenencia a un clúster.
 \end_layout
 
 \begin_layout Standard
@@ -5366,8 +5414,10 @@ nolink "false"
 \end_inset
 
 ),
- el equilibrio termodinámico y las configuraciones estadísticamente independientes requieren un mayor numero de barridos.
- En este escenario el bajo ruido termodinámico requiere un numero menor de configuraciones para estabilizar el promedio estadístico pero requiere de un mayor numero de actualizaciones para generar configuraciones estadísticamente independientes.
+ el equilibrio termodinámico y las configuraciones estadísticamente independientes requieren un mayor número de barridos.
+ En este escenario,
+ el bajo ruido termodinámico requiere un número menor de configuraciones para estabilizar el promedio estadístico,
+ pero requiere de un mayor número de actualizaciones para generar configuraciones estadísticamente independientes.
  
 \end_layout
 
@@ -5399,7 +5449,7 @@ Se genera una configuración en equilibrio termodinámico a temperatura
 \end_layout
 
 \begin_layout Enumerate
-Se realizan suficientes barridos actualización para generar una configuración estadísticamente independiente.
+Se realizan suficientes barridos de actualización para generar una configuración estadísticamente independiente.
 \end_layout
 
 \begin_layout Enumerate
@@ -5408,13 +5458,13 @@ Se miden los valores de las observables para la configuración actual.
 
 \begin_deeper
 \begin_layout Enumerate
-Si el número de mediciones en menor al número requerido para alcanzar la precisión deseada,
+Si el número de mediciones es menor al número requerido para alcanzar la precisión deseada,
  se regresa al paso 2.
  
 \end_layout
 
 \begin_layout Enumerate
-Si en cambio el numero de mediciones es suficiente se termina el ciclo y se promedian los resultados.
+Si en cambio el número de mediciones es suficiente se termina el ciclo y se promedian los resultados.
 \end_layout
 
 \end_deeper
@@ -5459,7 +5509,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Evolución de la densidad energética del modelo a 2d O(
+Evolución de la densidad energética del modelo 2d O(
 \begin_inset Formula $3$
 \end_inset
 
@@ -5483,7 +5533,7 @@ Evolución de la densidad energética del modelo a 2d O(
 cold-start
 \shape default
 \emph default
- parte de una configuración espines están alineados.
+ parte de una configuración de espines alineados.
  La trayectoria 
 \shape italic
 \emph on
@@ -5556,14 +5606,14 @@ hot-start y se
 
  barridos de actualización del algoritmo multi-clúster,
  asegurando una configuración completamente termalizada.
- El algoritmo alcanza la configuración de equilibrio en pocas actualizaciones,
+ El algoritmo multi-clúster alcanza la configuración de equilibrio en pocas actualizaciones,
  este comportamiento evita medir una desaceleración critica en el rango de temperaturas 
 \begin_inset Formula $[0.7,2.0]$
 \end_inset
 
 .
  Este característica del algoritmo multi-clúster impidió el cálculo del tiempo de auto-correlación en el rango de temperaturas seccionado para la carga topológica y la energía,
- pero fue posible realizar una medición para la magnetización en el rango de tremperaturas 
+ pero fue posible realizar una medición para la magnetización en el rango de temperaturas 
 \begin_inset Formula $[0.3,0.6]$
 \end_inset
 
@@ -5572,12 +5622,12 @@ hot-start y se
 
 \begin_layout Standard
 En el caso de los algoritmos de actualización local,
- hay una notoria desaceleración crítica en rango de temperaturas 
+ hay una notoria desaceleración crítica en el rango de temperaturas 
 \begin_inset Formula $[0.7,2.0]$
 \end_inset
 
 ,
- por lo que fue posible la medición de el tiempo de auto-correlación para las diferentes observables.
+ por lo que fue posible la medición del tiempo de auto-correlación para las diferentes observables.
  Los tiempos de auto-correlación se obtuvieron por ajuste a la función exponencial y por integración usando las ecuaciones 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -5602,7 +5652,7 @@ nolink "false"
 
 ,
  ambos resultados fueron consistentes para los algoritmos de actualización local.
- Una vez obtenidos las mediciones,
+ Una vez obtenidos los resultados,
  se ajustó el tiempo de auto-correlación 
 \begin_inset Formula $\tau$
 \end_inset
@@ -5805,7 +5855,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Gauber aleatorio.
+Algoritmo de Glauber aleatorio.
 \end_layout
 
 \end_inset
@@ -5822,13 +5872,8 @@ Algoritmo de Gauber aleatorio.
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Tiempo de auto-correlación de la carga topológica en función de la temperatura en una retícula de longitud 
-\begin_inset Formula $L=64$
-\end_inset
-
-,
- 
-\begin_inset Formula $V=L\times L$
+Tiempo de auto-correlación de la carga topológica en función de la temperatura en una retícula de tamaño 
+\begin_inset Formula $V=64\times64$
 \end_inset
 
 ,
@@ -6028,7 +6073,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Gauber aleatorio.
+Algoritmo de Glauber aleatorio.
 \end_layout
 
 \end_inset
@@ -6221,7 +6266,7 @@ placement document
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -6236,7 +6281,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Gauber aleatorio.
+Algoritmo de Glauber aleatorio.
 \end_layout
 
 \end_inset
@@ -6271,7 +6316,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de multi-clúster.
+Algoritmo multi-clúster.
 \end_layout
 
 \end_inset
@@ -6340,7 +6385,7 @@ El número de actualizaciones necesarios para generar una configuración estadí
 \begin_inset Formula $T=0.75$
 \end_inset
 
- para la varga topológica se requieren aproximadamente 
+ para la carga topológica se requieren aproximadamente 
 \begin_inset Formula $40$
 \end_inset
 
@@ -6355,7 +6400,7 @@ El número de actualizaciones necesarios para generar una configuración estadí
 
  barridos.
  En estos resultados,
- la magnetización es de lejos el parametro que requiere más tiempo de auto-correlación.
+ la magnetización es de lejos el parámetro que requiere más barridos de actualización para generar configuraciones estadísticamente independientes.
  En el algoritmo mult-clúster el tiempo de auto-correlación baja drásticamente de 
 \begin_inset Formula $2000$
 \end_inset
@@ -6367,7 +6412,7 @@ El número de actualizaciones necesarios para generar una configuración estadí
  barridos de actualización.
  Aunque la eficiencia del algoritmo multi-clúster evito la medición del tiempo de auto-correlación para la carga topológica y la energía,
  la alta auto-correlación de la magnetización,
- hizo posible la medición el rango de temperaturas 
+ hizo posible la medición en el rango de temperaturas 
 \begin_inset Formula $[0.3,0.6]$
 \end_inset
 
@@ -7020,7 +7065,7 @@ name "tab:exponentenuz"
 \end_layout
 
 \begin_layout Standard
-Los resultados de tiempo del auto-correlación integrada y por ajuste son cercanos en temperaturas 
+Los resultados del tiempo de auto-correlación integrada y por ajuste son cercanos en temperaturas 
 \begin_inset Formula $T\in[0.75,1.0]$
 \end_inset
 
@@ -7060,17 +7105,15 @@ nolink "false"
 \begin_inset Formula $\nu z$
 \end_inset
 
- para algoritmo multi-cluster es considerablemente menor.
- La diferencia en los resultados se explica por que los barridos de actualización que representan le cambio temporal del sistema no son equivalentes.
+ para el algoritmo multi-cluster es considerablemente menor.
+ La diferencia en los resultados se explica por que los barridos de actualización que representan el cambio temporal del sistema no son equivalentes.
  Los barridos son parecidos para los algoritmos de actualización local,
- para estos,
- el numero de espines que cambian en cada barrido depende del ratio de aceptación.
+ donde el número de espines que cambian en cada barrido depende del ratio de aceptación.
  En cambio,
  para el algoritmo muti-clúster los espines actualizados dependen del tamaño promedio de los clústeres.
- Como los barridos son estamentalmente diferentes no es sencillo dar una equivalencia entre barridos de actualización locales y barridos de actualización de multi-clúster.
+ Como los barridos son esencialmente diferentes no es sencillo dar una equivalencia entre barridos de actualización locales y barridos de actualización de multi-clúster.
  Aunque hay variación en los resultados dados por los diferentes algoritmos,
- los resultados son compatibles para los algoritmos de actualización local,
- además en todos los casos se sigue la relación dada por 
+ en todos los casos se sigue la relación dada por 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "ec:autocorrelacion"
@@ -7119,7 +7162,7 @@ hot-start
 multi-clúster
 \shape default
 \emph default
- para asegurar una configuración completamente thermalizada,
+ para asegurar una configuración completamente termalizada,
  luego se actualizo la configuración con 
 \begin_inset Formula $100$
 \end_inset
@@ -7142,7 +7185,7 @@ nolink "false"
 
  se muestra el cambio de la longitud de correlación en función de la temperatura para los algoritmos de actualización.
  En las gráficas se observa como conforme la temperatura baja la longitud de correlación aumenta.
- A partir de los resultados Se ajustaron las longitudes de correlación respecto a la temperatura siguiendo la relación
+ A partir de los resultados se ajustaron las longitudes de correlación respecto a la temperatura siguiendo la relación
 \end_layout
 
 \begin_layout Standard
@@ -7542,7 +7585,8 @@ Exponente crítico
 \begin_inset Formula $\nu$
 \end_inset
 
- para los algoritmos Metropolis y Glauber en las variantes lexicográfica y aleatoria.
+ para los algoritmos Metropolis y Glauber en las variantes lexicográfica,
+ aleatoria y el algoritmo multi-clúester.
  En las gráficas se muestra que los resultados son esencialmente consistentes para 
 \begin_inset Formula $L=32$
 \end_inset
@@ -7570,7 +7614,8 @@ Exponente crítico
 \end_layout
 
 \begin_layout Standard
-Conforme aumenta el tamaño de la retícula en valor de 
+Conforme aumenta el tamaño de la retícula,
+ el valor de 
 \begin_inset Formula $\nu$
 \end_inset
 
@@ -7633,13 +7678,13 @@ nolink "false"
 \begin_inset Formula $L=128$
 \end_inset
 
- .
- La segunda mejor opción es usar el promedio los exponentes críticos para 
+.
+ La segunda mejor opción es usar el promedio de los exponentes críticos para 
 \begin_inset Formula $L=64$
 \end_inset
 
  ya que en esta retícula los resultados son consistentes.
- Realizando el cálculo se obtiene el resultado parra el exponente critico 
+ Realizando el cálculo se obtiene el resultado para el exponente critico 
 \begin_inset Formula $\nu=1.2(3)$
 \end_inset
 
@@ -8017,9 +8062,9 @@ En el tercer experimento numérico,
 
  .
  Como se explico en el primer experimento,
- la eficiencia del algoritmo multi-cúster impidió la medición del tiempo de auto-correlación para la carga topológica y la enria,
+ la eficiencia del algoritmo multi-cúster impidió la medición del tiempo de auto-correlación para la carga topológica y la energía,
  pero si fue posible para la magnetización debido a su alto tiempo de auto-correlación.
- Por ese motivo en esta sección tampoco se considera la carga topológica y la energía en el algoritmo multi-clúster para el cálculo el exponente critico dinámico 
+ Por ese motivo en esta sección tampoco se considera la carga topológica y la energía en el algoritmo multi-clúster para el cálculo del exponente critico dinámico 
 \begin_inset Formula $z$
 \end_inset
 
@@ -8216,7 +8261,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Gauber aleatorio.
+Algoritmo de Glauber aleatorio.
 \end_layout
 
 \end_inset
@@ -8246,6 +8291,7 @@ Tiempo de auto-correlación
 \begin_inset Formula $V=64\times64$
 \end_inset
 
+,
  en el rango de temperaturas 
 \begin_inset Formula $[0.7,1.0]$
 \end_inset
@@ -8417,7 +8463,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Gauber aleatorio.
+Algoritmo de Glauber aleatorio.
 \end_layout
 
 \end_inset
@@ -8451,6 +8497,7 @@ Tiempo de auto-correlación
 \begin_inset Formula $V=64\times64$
 \end_inset
 
+,
  en el rango de temperaturas 
 \begin_inset Formula $[0.7,1.0]$
 \end_inset
@@ -8625,7 +8672,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Gauber aleatorio.
+Algoritmo de Glauber aleatorio.
 \end_layout
 
 \end_inset
@@ -8660,7 +8707,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de multi-clúster.
+Algoritmo multi-clúster.
 \end_layout
 
 \end_inset
@@ -8691,7 +8738,7 @@ Tiempo de auto-correlación
 \end_inset
 
  en una retícula de tamaño 
-\begin_inset Formula $L=64$
+\begin_inset Formula $V=64\times64$
 \end_inset
 
 .
@@ -8699,11 +8746,11 @@ Tiempo de auto-correlación
 \begin_inset Formula $[0.7,1.0]$
 \end_inset
 
-para los algoritmos locales y 
+ para los algoritmos locales y 
 \begin_inset Formula $[0.3,0.9]$
 \end_inset
 
-para el algoritmo multi-clúster.
+ para el algoritmo multi-clúster.
  La relación 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -9123,7 +9170,7 @@ El exponente
 \end_inset
 
 .
- Para los algoritmos Matropolis y Glauber,
+ Para los algoritmos Metropolis y Glauber,
  se promedio entre sus dos variantes para obtener los exponentes 
 \begin_inset Formula $z$
 \end_inset
@@ -9162,12 +9209,12 @@ La relación funciona para una temperatura menor a la critica,
 \begin_inset Formula $\zeta$
 \end_inset
 
- permitiendo comparar su valor en el experimento numérico fuera del equilibrio con la predicción teórica calculada en el experimento numérico el equilibrio.
+ permitiendo comparar su valor en el experimento numérico fuera del equilibrio con la predicción teórica calculada en el experimento numérico en equilibrio.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
-placement document
+placement H
 alignment document
 wide false
 sideways false
@@ -9391,8 +9438,7 @@ nolink "false"
 
 \end_inset
 
- en el mecanismo de Kibble-Zurek,
- exceptuando el algoritmo de Metropolis aleatorio para la energía y la magnetización.
+ en el mecanismo de Kibble-Zurek.
  Las observables son:
  la susceptibilidad topológica,
  la energía y la magnetización.
@@ -9487,7 +9533,7 @@ Una simulación de enfriamiento consta de los siguientes pasos:
 
 \begin_layout Enumerate
 Se genera una configuración en equilibrio termodinámico a temperatura 
-\begin_inset Formula $T$
+\begin_inset Formula $T_{i}$
 \end_inset
 
 .
@@ -9525,8 +9571,8 @@ Si
 \end_layout
 
 \begin_layout Standard
-Como se hace en las simulaciones en equilibrio,
- un valor esperado se aproxima de promediar un número de mediciones suficientemente grande para alcanzar la precisión estadística deseada.
+Al igual que en las simulaciones en equilibrio,
+ el valor esperado aproximado requiere de un número de mediciones suficientemente grande para alcanzar la precisión estadística deseada.
  Se realiza un número 
 \begin_inset Formula $N$
 \end_inset
@@ -9587,8 +9633,12 @@ Para cada experimento numérico se realizaron
 \end_inset
 
 ,
- usando las tasas inversas enfriamiento 
-\begin_inset Formula $\tau_{\mathrm{cool}}\in\left\{ 8,9,10,11,12,13,14,15,16,17,18\right\} $
+ usando las tasas inversas de enfriamiento 
+\begin_inset Formula 
+\[
+\tau_{\mathrm{cool}}=8,9,10,11,12,13,14,15,16,17,18.
+\]
+
 \end_inset
 
 .
@@ -9634,7 +9684,7 @@ nolink "false"
 .
  La magnetización se comporta de una forma diferente,
  conforme disminuye la temperatura la magnetizaron aumenta.
- En un enfriamiento adiabático alcanzaría la magnetización máxima al llegar a la temperatura 
+ En un enfriamiento adiabático el sistema alcanzaría la magnetización máxima al llegar a la temperatura 
 \begin_inset Formula $T=0$
 \end_inset
 
@@ -9688,7 +9738,7 @@ nolink "false"
 \end_inset
 
  se considera la magnetización.
- El ultimo punto en cada trayectoria es el valor final en temperatura 
+ El ultimo punto en cada trayectoria es el valor final en la temperatura 
 \begin_inset Formula $T=0$
 \end_inset
 
@@ -9706,32 +9756,30 @@ nolink "false"
 \begin_inset Formula $\expval{M}_{f}$
 \end_inset
 
+.
  Las trayectorias de las tasas inversas 
 \begin_inset Formula $\tau_{\mathrm{cool}}=8$
 \end_inset
 
- resultan en el valor final más alto en las gráficas para la susceptibilidad topología 
+ resultan en el valor final más alto en las gráficas para la susceptibilidad topológica 
 \begin_inset Formula $\chi_{t}$
 \end_inset
 
 ,
- debido a la velocidad del enfriamiento sectores de la retícula que mantienen una susceptibilidad topológica por encima de cero.
- Conforme la tasa inversa de enfriamiento aumenta las trayectorias se aproximan a las de un enfriamiento adiabático.
+ debido a la velocidad del enfriamiento,
+ se forman sectores de la retícula que mantienen una susceptibilidad topológica por encima de cero.
+ Conforme la tasa inversa de enfriamiento aumenta las trayectorias seguidas por las observables se aproximan a las de un enfriamiento adiabático.
  Las gráficas de la evolución de la energía muestran un comportamiento similar en el que el valor final 
 \begin_inset Formula $\expval{h}_{f}$
 \end_inset
 
  es mayor a cero.
- en el caso de la magnetización los enfriamientos rápidos evitan la formación normal de espines alineados bajando la magnetización final 
+ En el caso de la magnetización los enfriamientos rápidos evitan la formación normal de espines alineados bajando la magnetización final 
 \begin_inset Formula $\expval{M}_{f}$
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Standard
-En la figuras 
+ En la figuras 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "plot:kzm1"
@@ -9765,7 +9813,20 @@ nolink "false"
 
 \end_inset
 
- se muestran los valores finales para las diferentes tasas inversa
+ se muestran los valores finales para las diferentes tasas inversas de enfriamiento.
+ En las gráficas se observa que los resultados siguen la relación 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:kzm-1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -9939,23 +10000,6 @@ name "plot:ev_enfvdtmp"
 \end_layout
 
 \begin_layout Standard
-s de enfriamiento.
- En las gráficas se observa que los resultados siguen la relación 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:kzm-1"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 placement H
 alignment document
@@ -9990,7 +10034,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Metropolis lexicográfico
+Algoritmo de Metropolis lexicográfico.
 \end_layout
 
 \end_inset
@@ -10021,7 +10065,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Metropolis aleatorio
+Algoritmo de Metropolis aleatorio.
 \end_layout
 
 \end_inset
@@ -10065,7 +10109,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Glauber lexicográfico
+Algoritmo de Glauber lexicográfico.
 \end_layout
 
 \end_inset
@@ -10100,7 +10144,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Glauber aleatorio
+Algoritmo de Glauber aleatorio.
 \end_layout
 
 \end_inset
@@ -10140,7 +10184,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo multi-clúster
+Algoritmo multi-clúster.
 \end_layout
 
 \end_inset
@@ -10161,16 +10205,16 @@ Algoritmo multi-clúster
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Evolución de los enfriamientos de la susceptibilidad topológica 
+Evolución de la susceptibilidad topológica 
 \begin_inset Formula $\chi_{t}$
 \end_inset
 
- respecto a al tiempo de Markov 
+ respecto al tiempo de Markov 
 \begin_inset Formula $t$
 \end_inset
 
  en unidades de barridos.
- En las diferentes tasas inversas de enfriamiento 
+ En las tasas inversas de enfriamiento 
 \begin_inset Formula $\tau_{\mathrm{cool}}\in\{8,10,16\}$
 \end_inset
 
@@ -10229,7 +10273,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Metropolis lexicográfico
+Algoritmo de Metropolis lexicográfico.
 \end_layout
 
 \end_inset
@@ -10263,7 +10307,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Metropolis aleatorio
+Algoritmo de Metropolis aleatorio.
 \end_layout
 
 \end_inset
@@ -10298,7 +10342,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Glauber lexicográfico
+Algoritmo de Glauber lexicográfico.
 \end_layout
 
 \end_inset
@@ -10333,7 +10377,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Glauber aleatorio
+Algoritmo de Glauber aleatorio.
 \end_layout
 
 \end_inset
@@ -10372,7 +10416,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo multi-clúster
+Algoritmo multi-clúster.
 \end_layout
 
 \end_inset
@@ -10393,7 +10437,8 @@ Susceptibilidad topológica final
 \begin_inset Formula $\chi_{t_{f}}$
 \end_inset
 
- respecto a la tasa de cambio de temperatura 
+ vs.
+ la tasa inversa de enfriamiento 
 \begin_inset Formula $\tau_{\mathrm{cool}}$
 \end_inset
 
@@ -10452,7 +10497,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Metropolis lexicográfico
+Algoritmo de Metropolis lexicográfico.
 \end_layout
 
 \end_inset
@@ -10483,7 +10528,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Metropolis aleatorio
+Algoritmo de Metropolis aleatorio.
 \end_layout
 
 \end_inset
@@ -10523,7 +10568,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Glauber lexicográfico
+Algoritmo de Glauber lexicográfico.
 \end_layout
 
 \end_inset
@@ -10554,7 +10599,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Glauber aleatorio
+Algoritmo de Glauber aleatorio.
 \end_layout
 
 \end_inset
@@ -10590,7 +10635,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo multi-clúster
+Algoritmo multi-clúster.
 \end_layout
 
 \end_inset
@@ -10607,16 +10652,16 @@ Algoritmo multi-clúster
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Evolución de los enfriamientos de la densidad de energía 
+Evolución de la densidad de energía 
 \begin_inset Formula $\expval{\mathcal{H}}$
 \end_inset
 
- al tiempo de Markov 
+ respecto al tiempo de Markov 
 \begin_inset Formula $t$
 \end_inset
 
  en unidades de barridos.
- En los diferentes tasas inversas de enfriamiento 
+ Para las tasas inversas de enfriamiento 
 \begin_inset Formula $\tau_{\mathrm{cool}}\in\{8,10,16\}$
 \end_inset
 
@@ -10672,7 +10717,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Metropolis lexicográfico
+Algoritmo de Metropolis lexicográfico.
 \end_layout
 
 \end_inset
@@ -10706,7 +10751,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Metropolis aleatorio
+Algoritmo de Metropolis aleatorio.
 \end_layout
 
 \end_inset
@@ -10741,7 +10786,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Glauber lexicográfico
+Algoritmo de Glauber lexicográfico.
 \end_layout
 
 \end_inset
@@ -10776,7 +10821,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Glauber aleatorio
+Algoritmo de Glauber aleatorio.
 \end_layout
 
 \end_inset
@@ -10815,7 +10860,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo multi-clúster
+Algoritmo multi-clúster.
 \end_layout
 
 \end_inset
@@ -10896,7 +10941,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Metropolis lexicográfico
+Algoritmo de Metropolis lexicográfico.
 \end_layout
 
 \end_inset
@@ -10967,7 +11012,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Glauber lexicográfico
+Algoritmo de Glauber lexicográfico.
 \end_layout
 
 \end_inset
@@ -10998,7 +11043,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Glauber aleatorio
+Algoritmo de Glauber aleatorio.
 \end_layout
 
 \end_inset
@@ -11034,7 +11079,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo multi-clúster
+Algoritmo multi-clúster.
 \end_layout
 
 \end_inset
@@ -11055,12 +11100,12 @@ Evolución de los enfriamientos de la magnetización
 \begin_inset Formula $\expval{M}$
 \end_inset
 
- al tiempo de Markov 
+ respecto al tiempo de Markov 
 \begin_inset Formula $t$
 \end_inset
 
  en unidades de barridos.
- En los diferentes tasas inversas de enfriamiento 
+ Para las tasas inversas de enfriamiento 
 \begin_inset Formula $\tau_{\mathrm{cool}}\in\{4,6,8\}$
 \end_inset
 
@@ -11116,7 +11161,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Metropolis lexicográfico
+Algoritmo de Metropolis lexicográfico.
 \end_layout
 
 \end_inset
@@ -11150,7 +11195,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Metropolis aleatorio
+Algoritmo de Metropolis aleatorio.
 \end_layout
 
 \end_inset
@@ -11185,7 +11230,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Glauber lexicográfico
+Algoritmo de Glauber lexicográfico.
 \end_layout
 
 \end_inset
@@ -11220,7 +11265,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de Glauber aleatorio
+Algoritmo de Glauber aleatorio.
 \end_layout
 
 \end_inset
@@ -11259,7 +11304,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Algoritmo de multi-clúster
+Algoritmo multi-clúster.
 \end_layout
 
 \end_inset
@@ -11280,7 +11325,8 @@ Magnetización final
 \begin_inset Formula $\expval{M}_{f}$
 \end_inset
 
- respecto a la tasa inversas de enfriamiento 
+ vs.
+ la tasa inversas de enfriamiento 
 \begin_inset Formula $\tau_{\mathrm{\mathrm{cool}}}$
 \end_inset
 
@@ -11322,14 +11368,15 @@ nolink "false"
 \end_inset
 
  es menor para los algoritmos de actualización local,
- los valores más bajos se obtienen del ajuste para la energía final en las dos variantes del algoritmo de Galauber.
+ los valores más bajos se obtienen del ajuste para la energía final en las dos variantes del algoritmo de Glauber.
  En contraste el valor mas alto es el ajuste de la susceptibilidad topológica final para el algoritmo multi-clúster.
  También se observa que los ajustes son compatibles entre las dos variantes del algoritmo de Metropolis para la susceptibilidad topológica,
  la energía y la magnetización.
- De la misma manera los ajustes de las dos variantes del algoritmo Glauber son compatibles par las tres observables indicando que la inclinación del ajuste depende del algoritmo de actualización,
- este resultado refuerza la idea de que la discrepancia en los resultados se debe a la diferencia en el comportamiento de los barrido de actualización de los diferentes algoritmos,
- aunque las variantes lexicográfica y aleatoria cambian el orden de selección de los espines en una configuración,
- el cambio de el tempo de auto-correlación con la temperatura es similar para las dos variantes .
+ De la misma manera los ajustes de las dos variantes del algoritmo Glauber,
+ son compatibles para las tres observables indicando que la inclinación del ajuste depende del algoritmo de actualización.
+ Este resultado refuerza la idea de que la discrepancia en los resultados se debe a la diferencia en el comportamiento de los barridos de actualización de los diferentes algoritmos.
+ Aunque las variantes lexicográfica y aleatoria cambian el orden de selección de los espines,
+ el cambio del tempo de auto-correlación con la temperatura es similar para las dos variantes.
  
 \begin_inset Float table
 placement H
@@ -11645,8 +11692,8 @@ Exponentes críticos
 \begin_inset Formula $\zeta$
 \end_inset
 
- respecto a la susceptibilidad topológica,
- la energía y la magnetización para los diferentes algoritmos.
+ de la susceptibilidad topológica,
+ la energía y la magnetización en los diferentes algoritmos.
 \end_layout
 
 \end_inset
@@ -11678,7 +11725,7 @@ Se realizaron simulaciones del modelo 2d O(3),
  Glauber lexicográfico,
  Glauber aleatorio y multi-cluster.
  Se realizaron dos tipos de experimentos numéricos,
- el primer consistió en simulaciones numéricas en equilibrio,
+ el primer tipo consistió en simulaciones numéricas en equilibrio,
  se midieron los exponentes 
 \begin_inset Formula $\nu z$
 \end_inset
@@ -11693,15 +11740,15 @@ Se realizaron simulaciones del modelo 2d O(3),
 \end_inset
 
 .
- Se obtuvo un resultado consistente de el exponente 
+ Se obtuvo un resultado consistente del exponente 
 \begin_inset Formula $\nu=1.2(4)$
 \end_inset
 
- consistente para todos los algoritmos de actualización.
+ para todos los algoritmos de actualización.
  Usando los exponentes críticos se calculo el mecanismo de Kibble-Zurek y se obtuvieron los resultados de la tabla 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab_exp2-1"
+reference "tab_exp2"
 plural "false"
 caps "false"
 noprefix "false"
@@ -11719,254 +11766,11 @@ nolink "false"
 \begin_inset Formula $\nu z$
 \end_inset
 
- y del exponente critico dinámico 
+ y del exponente crítico dinámico 
 \begin_inset Formula $z$
 \end_inset
 
-.
- 
-\begin_inset Float table
-placement document
-alignment document
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="4">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Algoritmo
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $Q$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\mathcal{H}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $M$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Metropolis
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $1.3(4)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $1.2(6)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $1.5(8)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Glauber
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $1.5(4)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $1.3(4)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $1.6(5)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Multi-clúster
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $0.7(4)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Promedio de los valores calculados para el exponente crítico 
-\begin_inset Formula $\zeta$
-\end_inset
-
- usando la ec.
- 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:kzm"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "tab_exp2-1"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
+ usando el algoritmo multi-clúster.
  
 \end_layout
 
@@ -11992,7 +11796,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Algoritmo
 \end_layout
 
 \end_inset
@@ -12190,7 +11994,7 @@ Valores de los exponentes críticos
 \begin_inset Formula $\zeta$
 \end_inset
 
- medidos en los enfriamientos y en el equilibrio.
+ medidos en los enfriamientos.
 \end_layout
 
 \end_inset
@@ -12246,9 +12050,9 @@ Los exponentes
 \end_inset
 
 .
- Aunque el modelo 2d O(3) no pasa por la temperatura crítica en los enfriamientos,
+ Aunque el modelo 2d O(3) no permite el paso por debajo de la temperatura crítica,
  fue posible ajustar una ley de escalamiento para las observables de susceptibilidad topológica,
- energía y magnetización.
+ energía y magnetización en los enfriamientos .
  Los resultados para las diferentes observables cumplieron con la relación 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -12274,14 +12078,21 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-En el caso del algoritmo multi-cluster no fue posible medir un exponente crítico dinámico por la efectividad de termalización.
- En los los experimentos numéricos se observo que la alta eficiencia del algoritmo multi-cúster dificulta la medición de algunos exponente críticos además los enfriamientos rápidos en bajas tasa de enfriamientos son equivalentes a tasas elevada de enfriamiento de los algoritmos locales,
- considerando estas desventajas los algoritmos locales parecen más apropiados para los enfriamientos.
+En el caso del algoritmo multi-cluster no fue posible medir un exponente crítico dinámico 
+\begin_inset Formula $z$
+\end_inset
+
+ para la carga topológica y la magnetización debido a su efectividad.
+ La información sobre el tiempo de auto-correlación recopilada en los experimentos numéricos,
+ indica que la alta eficiencia del algoritmo multi-cúster dificulta la medición de algunos exponentes críticos.
+ Además,
+ los enfriamientos rápidos en bajas tasa de enfriamiento del algoritmo multi-cluster son equivalentes a tasas elevadas de enfriamiento en los algoritmos locales,
+ considerando estas características los algoritmos locales parecen más apropiados para la simulación de enfrentamientos rápidos.
  No fue posible calcular el exponente 
 \begin_inset Formula $\zeta$
 \end_inset
 
- a partir de los experimento en equilibrio para la susceptibilidad topológica y la energía en el multi-clúster,
+ a partir de los experimentos en equilibrio de la susceptibilidad topológica y la energía para el algoritmo multi-clúster,
  por lo que no se pudo confirmar una compatibilidad entre los resultados obtenidos en equilibrio y los enfriamientos.
  Sin embargo,
  sí fue posible medir el exponente crítico 
@@ -12294,12 +12105,12 @@ En el caso del algoritmo multi-cluster no fue posible medir un exponente crític
 
 .
  En resumen se observaron tres leyes de escalamiento,
- los enfriamientos todos condujeren exponentes 
+ todos los enfriamientos condujeren a exponentes 
 \begin_inset Formula $\zeta$
 \end_inset
 
- compatibles compatibles con el mecanismo de Kibble-Zurek,
- pero las diferencias en la definición de barridos de actualización tuvo como consecuencia diferencias en los valores de los exponentes 
+ compatibles con el mecanismo de Kibble-Zurek,
+ pero las diferencias en la definición de barridos de actualización tuvieron como consecuencia diferencias en los valores de los exponentes 
 \begin_inset Formula $\zeta$
 \end_inset
 
@@ -12336,10 +12147,7 @@ Uno de los principales retos para usar los métodos de Monte Carlo en la simulac
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Un punto en la esfera 
+ Un punto en la esfera 
 \begin_inset Formula $S^{2}$
 \end_inset
 
@@ -12363,16 +12171,17 @@ donde
 \end_inset
 
  son ángulos esféricos aleatorios.
- 
-\end_layout
+ Un primer intento para generar puntos aleatorios y uniformemente distribuidos,
+ es generar una distribución aleatoria y uniforme de ángulos 
+\begin_inset Formula $\theta_{r},\phi_{r}$
+\end_inset
 
-\begin_layout Standard
-Un primer intento para generar puntos aleatorios y uniformemente distribuidos es directamente una distribución aleatoria y uniforme de ángulos 
-\begin_inset Formula $\theta_{r}\in[0,\pi]$
+ en los intervalos 
+\begin_inset Formula $[0,\pi]$
 \end_inset
 
  y 
-\begin_inset Formula $\phi_{r}\in[0,2\pi)$
+\begin_inset Formula $[0,2\pi)$
 \end_inset
 
 .
@@ -12438,11 +12247,7 @@ U(\theta)=\frac{1}{2}\int_{0}^{\theta}\sin\theta'\dd\theta'=\frac{1}{2}(1-\cos\t
 \begin_inset Formula $u,v$
 \end_inset
 
- tales que su función de distribución son las variables aleatorias 
-\begin_inset Formula $\theta,\phi$
-\end_inset
-
-.
+ tales que su función de distribución son las variables aleatorias
 \end_layout
 
 \begin_layout Standard
@@ -12463,11 +12268,7 @@ donde
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Standard
-Recapitulando los pasos para generar un vector aleatorio en la esfera son los siguientes:
+ Recapitulando los pasos para generar un vector aleatorio en la esfera son los siguientes:
 \end_layout
 
 \begin_layout Enumerate
@@ -12498,7 +12299,7 @@ Se calculan las componentes cartesianas y se define el vector
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -12603,12 +12404,13 @@ Transformación de las variables
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-En la figura (a) se tiene una distribución de puntos homogénea y aleatoria,
- la distribución se mapea a la distribución de la figura (b) en las variables 
+En la figura (a) se tiene una distribución de puntos uniforme y aleatoria,
+ la distribución (a) se mapea en la figura (b) en las variables 
 \begin_inset Formula $\theta,\phi$
 \end_inset
 
- se obtiene es una distribución es la que genera vectores aleatorios y uniformemente distribuidos en la esfera.
+,
+ de esta forma se obtiene la distribución que genera vectores aleatorios y uniformemente distribuidos en la esfera.
 \end_layout
 
 \end_inset
@@ -12665,10 +12467,6 @@ donde
 \end_inset
 
  y 
-\begin_inset Formula $\vec{s}_{0}$
-\end_inset
-
- de la esfera es con centro en 
 \begin_inset Formula $\vec{s}_{0}$
 \end_inset
 
@@ -12824,10 +12622,10 @@ Rotación de un espín
 
 .
  El espín resultante cae dentro del cono delimitado por 
-\begin_inset Formula $\alpha_{max}$
+\begin_inset Formula $\alpha_{\mathrm{max}}$
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
@@ -12869,16 +12667,15 @@ literal "false"
 
 \begin_layout Standard
 La definición de clúster que consideraremos en este apartado es la mencionada en el Capítulo 9 de esta tesis.
- Consideremos una red reticular con una configuración de sitios.
+ Consideremos una red reticular con una configuración de espines asociados a cada sitio.
  Un vínculo directo puede ocurrir entre dos sitios vecinos,
- mientras que un vínculo indirecto se da entre sitios que no son vecinos,
- pero que están conectados a un sitio común.
+ mientras que un vínculo indirecto se da entre sitios que no son vecinos pero que están conectados a un sitio común.
  
 \end_layout
 
 \begin_layout Standard
 Para empezar,
- se realiza una clasificación en al que se indican los vínculos para cada sitio 
+ se realiza una clasificación en la que se indican los vínculos para cada sitio 
 \begin_inset Formula $x$
 \end_inset
 
@@ -12935,21 +12732,21 @@ Si no hay vínculos directos,
 
 \begin_layout Enumerate
 Si hay vínculos directos,
- se pasa al siguiente sitio.
+ continua al paso 2.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
 Se comprueban los vínculos directos de los sitios vecinos.
  Todos los espines enlazados en la comprobación se etiquetan con un identificador 
-\begin_inset Formula $\alpha_{i}$
+\begin_inset Formula $\alpha$
 \end_inset
 
  correspondiente a un clúster.
 \end_layout
 
 \begin_layout Enumerate
-Se repinten los pasos anteriores etiquetando cada sitio de la retícula en sus respectivos clústeres.
+Se repiten los pasos anteriores etiquetando cada sitio de la retícula en sus respectivos clústeres.
 \end_layout
 
 \begin_layout Enumerate
@@ -12959,7 +12756,7 @@ En el proceso de formación de cústeres,
 \end_inset
 
 ,
- ya que hay un vínculo indirecto entre clústeres.
+ ya que hay un vínculo indirecto entre los clústeres.
  Los clústeres correspondientes se fusionan en uno y se les asigna la etiqueta 
 \begin_inset Formula $\alpha_{1.}$
 \end_inset
@@ -12968,7 +12765,7 @@ En el proceso de formación de cústeres,
 \end_layout
 
 \begin_layout Standard
-Una forma de optimizar la identificaron de cústeres individuales es la ampliación por capas.
+Una forma de optimizar la identificación de cústeres individuales es la ampliación por capas.
  Es importante diferenciar entre sitios en el interior de un clúster,
  sitios en la frontera de un clúster y sitios en el interior.
  
@@ -12992,17 +12789,10 @@ Un sitio está en el exterior si ninguno de sus vecinos más cercanos pertenece 
 \begin_layout Standard
 Se parte de un clúster individual y se va extendiendo la frontera en cada paso hasta alcanzar el tamaño máximo del clúster,
  transformando los sitios de la frontera en sitios en el interior.
- 
-\end_layout
-
-\begin_layout Standard
-Para evitar que un clúster se extienda indebidamente por el cálculo múltiple de una probabilidad de vínculo,
+ Para evitar que un clúster se extienda indebidamente por el cálculo múltiple de una probabilidad de vínculo,
  solo se calculará una vez un vínculo entre un espín con el clúster.
  Esto se logra etiquetando los espines ya probados con una etiqueta.
-\end_layout
-
-\begin_layout Standard
-El proceso es el siguiente:
+ El proceso es el siguiente:
 \end_layout
 
 \begin_layout Enumerate
@@ -13040,10 +12830,7 @@ Si no hay vínculos directos adicionales,
 \end_deeper
 \begin_layout Standard
 Este método es especialmente útil en la formación de un único clúster.
-\end_layout
-
-\begin_layout Standard
-La aplicación de este método al los algoritmos multi-clúster y single-cluster permite ahorrar una gran cantidad de cálculos,
+ La aplicación de este método al los algoritmos multi-clúster y single-cluster permite ahorrar una gran cantidad de cálculos,
  por lo que el poder de cómputo pude usarse en aumentar la estadística de los experimentos y reducir los tiempos de cálculo;
  sin duda,
  es un beneficio que vale la pena a cambio de un poco de programación extra.
