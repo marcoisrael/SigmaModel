@@ -281,7 +281,7 @@ Agradecimientos
 \end_layout
 
 \begin_layout Standard
-Quiero extender mis mas sinceros agradecimientos al Dr.
+Quiero extender mis más sinceros agradecimientos al Dr.
  Wolfgang Bietenholz por guiarme pacientemente a través del largo proceso de investigación y redacción de esta tesis,
  su guía y constante motivación me mantuvieron en la dirección correcta durante este largo proceso.
  
@@ -341,14 +341,15 @@ En esta tesis se realizo un trabajo de investigación sobre enfriamientos rápid
  Se recopilo información sobre la teoría de integral de trayectorias,
  fenómenos críticos,
  los métodos de Monte Carlo y el mecanismo de Kibble-Zurek.
- Entre estos temas el último es de especial relevancia para la investigación.
- El mecanismo de Kibble-Zurek describe la relación entre los defectos topológicos remanentes respecto a la tasa de enfriamiento en un sistema que pasa por la temperatura crítica.
+ Entre estos temas el último es de especial relevancia,
+ el mecanismo de Kibble-Zurek describe la relación entre los defectos topológicos remanentes respecto a la tasa de enfriamiento en un sistema que pasa por la temperatura crítica.
  El objetivo principal de esta tesis es averiguar si el mecanismo de Kibble-Zurek es aplicable al modelo 2d O(
 \begin_inset Formula $3$
 \end_inset
 
-),
- un factor importante en esta cuestión es que en este modelo modelo no puede haber una ruptura espontánea de simetría con interacciones de rango finito y temperatura 
+).
+ Un factor importante para esta cuestión,
+ es que en este modelo modelo no puede haber una ruptura espontánea de simetría con interacciones de rango finito y temperatura 
 \begin_inset Formula $T>0$
 \end_inset
 
@@ -376,11 +377,13 @@ En las simulaciones en equilibrio se reportaron los siguientes exponentes críti
 \begin_inset Formula $\nu z$
 \end_inset
 
- y se usaron en un calculo indirecto del exponente 
+.
+ Los exponentes medidos se usaron para realizar un cálculo indirecto del exponente 
 \begin_inset Formula $\zeta$
 \end_inset
 
- para la carga topológica,
+.
+ Se cálculo el valor del exponente para la carga topológica,
  la energía y la magnetización.
  En las simulaciones de enfriamientos rápidos se midió directamente el exponente 
 \begin_inset Formula $\zeta$
@@ -4056,6 +4059,14 @@ Evolución del universo temprano
 \end_layout
 
 \begin_layout Standard
+En el universo primitivo,
+ la ruptura de la simetría pudo haber conducido a la formación de defectos topológicos como monopolos puntuales,
+ cuerdas cósmicas lineales o paredes de dominio planares.
+ Estos defectos son importantes porque son objetos inherentemente estables que podrían haber sobrevivido para proporcionar pistas observacionales sobre cómo era el universo en el momento en que se formaron.
+ 
+\end_layout
+
+\begin_layout Standard
 En su trabajo Kibble propuso que la ruptura de la simetría SU(
 \begin_inset Formula $2$
 \end_inset
@@ -4104,21 +4115,19 @@ representa un campo de norma dado por el acoplamiento
 \end_inset
 
  El lagrangiano es de la forma
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
-\begin{array}{c}
-\mathcal{L}=\frac{1}{2}D_{\mu}\vec{\phi}D_{\mu}\vec{\phi}-\frac{1}{8}g^{2}\left(\vec{\phi}\cdot\vec{\phi}-\eta^{2}\right)^{2}+\frac{1}{8}\mathrm{Tr}\left(B_{\mu\nu}B^{\mu\nu}\right)\\
-D_{\mu}\vec{\phi}=\left(\partial_{\mu}-qB_{\mu}\right)\text{\ensuremath{\vec{\phi}}}\\
-B_{\mu\nu}=D\mu B_{\nu}-D_{\nu}B\mu+q\left[B_{\mu},B_{\nu}\right],
-\end{array}
-\end{equation}
+\begin{align}
+\mathcal{L}= & \frac{1}{2}D_{\mu}\vec{\phi}D_{\mu}\vec{\phi}-\frac{1}{8}g^{2}\left(\vec{\phi}\cdot\vec{\phi}-\eta^{2}\right)^{2}+\frac{1}{8}\mathrm{Tr}\left(B_{\mu\nu}B^{\mu\nu}\right),\nonumber \\
+D_{\mu}\vec{\phi}= & \left(\partial_{\mu}-qB_{\mu}\right)\text{\ensuremath{\vec{\phi}}},\nonumber \\
+B_{\mu\nu}= & D\mu B_{\nu}-D_{\nu}B\mu+q\left[B_{\mu},B_{\nu}\right],
+\end{align}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -4160,13 +4169,13 @@ donde
 \end_inset
 
 .
- por debajo de la temperatura crítica,
+ Por debajo de la temperatura crítica,
  el valor esperado corresponde a algún punto en 
 \begin_inset Formula $\mathcal{S}^{n-\text{2}}$
 \end_inset
 
-.
- Ningún punto de esta esfera tiene preferencia,
+,
+ ningún punto de esta esfera tiene preferencia,
  y la elección es independiente entre las diferentes regiones del espacio.
  Por lo tanto,
  se espera la formación de dominios con distinto valor esperado de 
@@ -4200,16 +4209,29 @@ donde
 \end_inset
 
 ).
-\end_layout
-
-\begin_layout Standard
-Un problema que surgió al intentar hacer predicciones sobre las cuerdas cósmicas fue su estimación.
+ Un problema que surgió al intentar hacer predicciones sobre las cuerdas cósmicas fue su estimación.
  Una elección aleatoria de fases debería conducir a una maraña aleatoria de cuerdas,
  caracterizada por una escala de longitud típica 
 \begin_inset Formula $\xi$
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+Los monopolos solían ser un problema serio para los teóricos.
+ Aparecen en casi todas las teorías de gran unificación y deberían haber sobrevivido en cantidades mucho mayores que las permitidas por los límites observacionales.
+ Pero en 1981,
+ Alan Guth del MIT y otros resolvieron el problema postulando la idea de la inflación:
+ una expansión rápida y acelerada del universo que diluyó efectivamente el número de monopolos observables.
+ La inflación,
+ que también resuelve varios otros problemas,
+ es ahora una parte ampliamente aceptada del modelo cosmológico estándar.
+ Si se formaron después de un período de inflación,
+ como sugieren muchos modelos,
+ podrían haber sobrevivido en cantidades suficientes para mostrar efectos interesantes.
+ En la década de 1980,
+ los investigadores estaban particularmente entusiasmados con la sugerencia de que las cuerdas cósmicas podrían explicar las pequeñas perturbaciones de densidad primordiales a partir de las cuales surgieron las galaxias y los cúmulos de galaxias.
 \end_layout
 
 \begin_layout Standard
@@ -4379,6 +4401,65 @@ literal "false"
 
 .
  
+\end_layout
+
+\begin_layout Standard
+Físicos de la Universidad de Lancaster,
+ en el Reino Unido,
+ utilizaron una muestra de 
+\begin_inset Formula $⁴$
+\end_inset
+
+He líquido justo por encima de su temperatura crítica en una cámara que podía expandirse rápidamente.
+ La expansión redujo la presión lo suficiente como para impulsar la muestra al estado superfluido.
+ Para determinar la densidad de vórtices,
+ midieron la atenuación del sonido secundario,
+ que es fuertemente absorbido por los vórtices.
+ Los primeros resultados,
+ en 1994,
+ parecieron mostrar evidencia de la formación de vórtices,
+ pero no fueron concluyentes porque la vorticidad podría haberse formado por otros mecanismos,
+ en particular la turbulencia generada por la inyección de fluido durante el proceso de expansión.
+ El diseño experimental se mejoró para evitar estos problemas,
+ pero el experimento mejorado,
+ publicado en 1998,
+ no mostró signos de formación de vórtices.
+ Actualmente se cree que los vórtices simplemente desaparecen demasiado rápido como para ser vistos.
+ Sin embargo,
+ la historia es muy diferente en los experimentos con el isótopo más ligero,
+ el 
+\begin_inset Formula $³$
+\end_inset
+
+He 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "bunkov_spin_1996"
+literal "false"
+
+\end_inset
+
+.
+ Este es un material ,
+ que se vuelve superfluido a una temperatura mucho más baja,
+ alrededor de 
+\begin_inset Formula $2mK$
+\end_inset
+
+.
+ Presenta tres fases superfluidas distintas con diferentes propiedades de simetría y una familia de defectos entre los que se encuentran los vórtices.
+ Los experimentos demostraron formación de vórtices.
+ Sin embargo,
+ solo proporcionaron evidencia indirecta sobre la dependencia de la densidad de vórtices con la tasa inversa de enfriamiento,
+ ya que solo se podían lograr pequeños cambios en la tasa variando parámetros externos como la temperatura y la presión de fondo 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "kibble_phase-transition_2007"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Chapter
@@ -4743,7 +4824,7 @@ nolink "false"
  
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 El algoritmo de actualización actúa sobre cada espín 
 \begin_inset Formula $\vec{s}_{x}\in[s]$
 \end_inset
@@ -4812,8 +4893,7 @@ Si la energía de la configuración aumenta,
 \end_layout
 
 \begin_layout Itemize
-Por otro lado,
- si 
+Si 
 \begin_inset Formula $\beta\rightarrow\infty$
 \end_inset
 
@@ -4839,7 +4919,7 @@ A menor temperatura menos fluctuaciones,
 
 ),
  la diferencia de energía en términos de los espines 
-\begin_inset Formula $\vec{s}_{x}\in\mathcal{S}^{2}$
+\begin_inset Formula $\vec{s}_{x}$
 \end_inset
 
  es
@@ -4858,7 +4938,12 @@ donde
 \begin_inset Formula $\hat{2}=(0,1).$
 \end_inset
 
-
+ El ratio de aceptación de el algoritmo de Metropolis es el número de cambios aceptados dividido por el volumen.
+ La diferencia de la energía para cada cambio en la configuración requiere de pocos cálculos lo que hace al algoritmo de Metropolis muy eficiente si el ratio de aceptación es alto.
+ Pero si hay una desaceleración critica,
+ en temperaturas cerca de un punto crítico el ratio de aceptación puede bajar hasta el punto en el que obtener cambios significativos en la configuración requiera de un número inmenso de barridos de actualización.
+ En simulaciones en equilibrio termodinámico esta es una desventaja,
+ pero en simulaciones de enfriamientos esta es una característica que simula la dinámica de muchos sistemas físicos reales.
 \end_layout
 
 \begin_layout Section
@@ -4893,10 +4978,11 @@ p[s\rightarrow s']=\frac{\mathrm{e}^{-\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{-\b
 
 \end_inset
 
-La probabilidad de aceptación tiene que cumplir la ecuación de balance detallado por lo que se realiza siguiendo la sustitución directa 
+La probabilidad de aceptación tiene que cumplir la ecuación de balance detallado,
+ para comprobar la condición se realiza la sustitución directa 
 \begin_inset Formula 
 \begin{align}
-p[s\rightarrow s']p[s] & =\frac{\mathrm{e}^{-\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{-\beta\Delta\mathcal{H}}}\frac{\mathrm{e}^{-\beta\mathcal{H}[s]}}{Z}\nonumber \\
+p[s\rightarrow s']p[s]= & \frac{\mathrm{e}^{-\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{-\beta\Delta\mathcal{H}}}\frac{\mathrm{e}^{-\beta\mathcal{H}[s]}}{Z}\nonumber \\
 = & \frac{\mathrm{e}^{\beta\Delta\mathcal{H}}}{\mathrm{e}^{\beta\Delta\mathcal{H}}}\left(\frac{\mathrm{e}^{-\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{-\beta\Delta\mathcal{H}}}\frac{\mathrm{e}^{-\beta\mathcal{H}[s]}}{Z}\right)\frac{\mathrm{e}^{\beta\mathcal{H}[s']}}{\mathrm{e}^{\beta\mathcal{H}[s']}}\nonumber \\
 = & \frac{\mathrm{e}^{\beta\Delta\mathcal{H}}}{1+\mathrm{e}^{\beta\Delta\mathcal{H}}}\frac{\mathrm{e}^{-\beta\mathcal{H}[s']}}{Z}\nonumber \\
 = & p[s'\rightarrow s]p[s'].
@@ -4958,12 +5044,20 @@ Si la energía de la configuración disminuye
 
 \begin_layout Standard
 El algoritmo de Glauber es normalmente menos usado que el algoritmo de Metropolis ya que es un poco menos eficiente para termalizar un sistema,
- pero en esta tesis esa característica no es una desventaja ya que en los capítulos posteriores se realizaran enfriamientos rápidos y una menor eficiencia permite alcanzar una mayor velocidad de enfriamiento en las simulaciones numéricas.
+ pero en enfriamientos rápidos esa característica no es una desventaja.
+ En los capítulos posteriores se realizaran enfriamientos rápidos y los resultados muestran es que una menor eficiencia permite alcanzar una mayor velocidad de enfriamiento en las simulaciones numéricas.
  
 \end_layout
 
 \begin_layout Section
 Algoritmo clúster
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Algoritmo-clúster"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4972,7 +5066,7 @@ Calcular la diferencia de energía entre configuraciones implica realizar pocos 
  El problema con la temperatura crítica en los algoritmos de actualización local se hace notar cerca de la temperatura crítica,
  donde disminuye drásticamente el número de cambios que se aceptan.
  Por consecuencia,
- el tiempo de auto-correlación del sistema aumenta.
+ el tiempo de auto-correlación (la función de correlación temporal) del sistema aumenta.
  A este fenómeno se le conoce como desaceleración crítica.
  Para estudiar sistemas en equilibrio cerca de la temperatura crítica hay una opción más conveniente.
  Se trata de aplicar un algoritmo que actualice clústeres de espines en vez de espines individues 
@@ -5143,6 +5237,8 @@ nolink "false"
 
 ,
  valor que minimiza el tiempo de auto-correlación del sistema al mantener aproximadamente la mitad de los clústeres y cambiar la configuración de la otra mitad.
+ Una pregunta que surge es si el algoritmo multi-clúster puede suprimir por completo la desaceración critica del sistema,
+ esta pregunta se puede responder midiendo el tiempo de auto-correlación para temperaturas cercanas a la temperatura crítica y midiendo la relación de esta variable con la temperatura.
 \end_layout
 
 \begin_layout Section
@@ -5162,10 +5258,10 @@ La evolución de un sistema se caracteriza por el tiempo de auto-correlación,
 ,
  como los posibles cambios en la dirección del espín son más cercanos,
  entonces el ratio de aceptación aumenta.
- Aunque limitar en área de selección disminuye el tiempo de auto-correlación,
- la desaceleración crítica continua siendo es una barrera inevitable.
  Si bien el ratio de aceptación puede aumentar considerablemente,
- los cambios en la configuración son menores.
+ los cambios en la configuración considerablemente son menores en cada actualización.
+ Por lo tanto aunque limitar en área de selección disminuye el tiempo de auto-correlación,
+ la desaceleración crítica continua siendo es una barrera inevitable.
  
 \end_layout
 
@@ -5337,8 +5433,8 @@ En esta sección se reportan mediciones de las diferentes observables que se han
 
 ) en equilibrio termodinámico.
  Para ello,
- se ha escrito un programa en Fortran con rutinas de generación de configuraciones y su actualización en función de la temperatura para cada uno de los algoritmos descritos.
- Algunos términos básicos son:
+ se escribió un programa en Fortran con rutinas de generación de configuraciones y su actualización en función de la temperatura para cada uno de los algoritmos descritos.
+ Algunos términos usados en este capítulo son:
 \end_layout
 
 \begin_layout Itemize
@@ -5413,16 +5509,14 @@ nolink "false"
 \begin_inset Formula $T\leq2$
 \end_inset
 
-),
- el equilibrio termodinámico y las configuraciones estadísticamente independientes requieren un mayor número de barridos.
- En este escenario,
- el bajo ruido termodinámico requiere un número menor de configuraciones para estabilizar el promedio estadístico,
- pero requiere de un mayor número de actualizaciones para generar configuraciones estadísticamente independientes.
+) se requiere un número menor de configuraciones para estabilizar el promedio estadístico.
+ En cambio alcanzar el equilibrio termodinámico y generar configuraciones estadísticamente independientes,
+ son tareas que requieren un mayor número de barridos.
  
 \end_layout
 
 \begin_layout Standard
-Para realizar las simulaciones se requiere determinar la temperatura 
+Para realizar las simulaciones numéricas en equilibrio se requiere fijar la temperatura 
 \begin_inset Formula $T$
 \end_inset
 
@@ -5432,10 +5526,10 @@ Para realizar las simulaciones se requiere determinar la temperatura
 \end_inset
 
  y el ángulo 
-\begin_inset Formula $\delta$
+\begin_inset Formula $\alpha_{\mathrm{max}}$
 \end_inset
 
- que determina la distancia máxima para el cambio en un espín de la configuración.
+ (determina la distancia máxima para el cambio en un espín de la configuración).
  El programa que se encarga de las simulaciones sigue los siguientes pasos:
 \end_layout
 
@@ -5470,18 +5564,31 @@ Si en cambio el número de mediciones es suficiente se termina el ciclo y se pro
 \end_deeper
 \begin_layout Standard
 El ángulo 
-\begin_inset Formula $\delta$
+\begin_inset Formula $\alpha_{\mathrm{max}}$
 \end_inset
 
- afecta el ratio de aceptación,
- si abarca un área grande sobre la esfera 
+ afecta el ratio de aceptación al definir si se abarca un área grande sobre la esfera 
 \begin_inset Formula $\mathcal{S}^{2}$
 \end_inset
 
+ o un área limitada.
+ En temperaturas 
+\begin_inset Formula $T<1$
+\end_inset
+
 ,
- entonces el ratio de aceptación es bajo pero cada cambio aceptado es un cambio importante en la configuración.
+ si el área permitida es amplia entonces el ratio de aceptación es bajo pero cada cambio aceptado es un cambio importante en la configuración.
  En cambio si el área sobre la esfera es pequeña,
  el ratio de aceptación aumenta pero los cambios aceptados afectan en menor proporción a la configuración.
+ En las simulaciones se opto por ajustar el valor de 
+\begin_inset Formula $\alpha_{\mathrm{max}}$
+\end_inset
+
+ de modo que el ratio de aceptación se mantuviera en un valor aproximado de 
+\begin_inset Formula $0.8$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -5584,7 +5691,7 @@ Se realizó una serie de experimentos numéricos para determinar característica
  En el primer experimento se calculó el tiempo de auto-correlación en equilibrio térmico para las temperaturas 
 \begin_inset Formula 
 \[
-T=0.75,0.8,0.9,1.0,1.2,1.4,1.6,1.8,2.0
+T=0.75,0.8,0.9,1.0,1.2,1.4,1.6,1.8,2.0,
 \]
 
 \end_inset
@@ -6400,13 +6507,13 @@ El número de actualizaciones necesarios para generar una configuración estadí
 
  barridos.
  En estos resultados,
- la magnetización es de lejos el parámetro que requiere más barridos de actualización para generar configuraciones estadísticamente independientes.
+ la magnetización es de lejos la observable que requiere más barridos de actualización para generar configuraciones estadísticamente independientes.
  En el algoritmo mult-clúster el tiempo de auto-correlación baja drásticamente de 
 \begin_inset Formula $2000$
 \end_inset
 
  a 
-\begin_inset Formula $40$
+\begin_inset Formula $24$
 \end_inset
 
  barridos de actualización.
@@ -7081,7 +7188,7 @@ nolink "false"
 \end_inset
 
 .
- Se observo que las inclinaciones mas bajas son las relacionadas a la carga topológica y las más altas,
+ Se observo que las inclinaciones más bajas son las relacionadas a la carga topológica y las más altas,
  las asociadas a la magnetización.
  Este resultado muestra que la carga topológica 
 \begin_inset Formula $Q$
@@ -7659,7 +7766,7 @@ nolink "false"
 \end_inset
 
 .
- En contraste los resultados para 
+ En cambio los resultados para 
 \begin_inset Formula $L=128$
 \end_inset
 
@@ -7668,13 +7775,13 @@ nolink "false"
 \begin_inset Formula $L=128$
 \end_inset
 
- requiere de un número considerablemente mayor de actualizaciones entre cada medición para obtener configuraciones estadísticamente independientes en bajas temperaturas.
+ requiere de un número considerablemente mayor de actualizaciones entre cada medición para obtener configuraciones estadísticamente independientes.
  Si el espaciado de 
 \begin_inset Formula $100$
 \end_inset
 
  barridos entre cada configuración no fue suficiente,
- entonces el promedio de longitud de correlación entre configuraciones parcialmente relacionadas afecta los resultados para 
+ entonces se mide un promedio de longitud de correlación entre configuraciones parcialmente relacionadas afectando los resultados para 
 \begin_inset Formula $L=128$
 \end_inset
 
@@ -9193,18 +9300,7 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-La relación funciona para una temperatura menor a la critica,
- por lo que no es sorpresa que no se cumpla en el modelo 2d O(
-\begin_inset Formula $3$
-\end_inset
-
-),
- ya que no hay ruptura espontánea de simetría para 
-\begin_inset Formula $T>0$
-\end_inset
-
-.
- Aun así los valores obtenidos son compatibles entre los algoritmos Metropolis y Glauber.
+Los valores obtenidos son compatibles entre los algoritmos Metropolis y Glauber.
  En el siguiente capitulo se medirá directamente el exponente 
 \begin_inset Formula $\zeta$
 \end_inset
@@ -9440,7 +9536,7 @@ nolink "false"
 
  en el mecanismo de Kibble-Zurek.
  Las observables son:
- la susceptibilidad topológica,
+ la carga topológica,
  la energía y la magnetización.
  
 \end_layout
@@ -9505,7 +9601,7 @@ La variable
 
 .
  Conforme avanza el tiempo de Markov en el rango 
-\begin_inset Formula $t\in[0,\tau_{\mathrm{cool}}]$
+\begin_inset Formula $t\in[\tau_{\mathrm{cool}},0]$
 \end_inset
 
 ,
@@ -9573,7 +9669,7 @@ Si
 \begin_layout Standard
 Al igual que en las simulaciones en equilibrio,
  el valor esperado aproximado requiere de un número de mediciones suficientemente grande para alcanzar la precisión estadística deseada.
- Se realiza un número 
+ En este caso se realiza un número 
 \begin_inset Formula $N$
 \end_inset
 
@@ -9582,8 +9678,7 @@ Al igual que en las simulaciones en equilibrio,
 \end_inset
 
 .
- En cada enfriamiento,
- se mide una trayectoria para cada observable en función del tiempo de Markov o de manera equivalente en función de la temperatura.
+ Finalmente se promedia una trayectoria para cada observable en función del tiempo de Markov o de manera equivalente en función de la temperatura.
 \end_layout
 
 \begin_layout Section
@@ -9641,10 +9736,7 @@ Para cada experimento numérico se realizaron
 
 \end_inset
 
-.
- En cada enfriamiento se midió la susceptibilidad topológica,
- la energía y la magnetización.
- En la figura 
+En la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "plot:ev_enfvdtmp"
@@ -10214,7 +10306,7 @@ Evolución de la susceptibilidad topológica
 \end_inset
 
  en unidades de barridos.
- En las tasas inversas de enfriamiento 
+ Se mustran las tasas inversas de enfriamiento 
 \begin_inset Formula $\tau_{\mathrm{cool}}\in\{8,10,16\}$
 \end_inset
 
@@ -10443,6 +10535,7 @@ Susceptibilidad topológica final
 \end_inset
 
 .
+ Hay una relación entre las susceptibilidad topológica remanente y la tasa inversa de enfriamiento como se teoriza en el mecanismo de Kibble-Zurek.
 \end_layout
 
 \end_inset
@@ -10660,8 +10753,7 @@ Evolución de la densidad de energía
 \begin_inset Formula $t$
 \end_inset
 
- en unidades de barridos.
- Para las tasas inversas de enfriamiento 
+ en unidades de barridos para las tasas inversas de enfriamiento 
 \begin_inset Formula $\tau_{\mathrm{cool}}\in\{8,10,16\}$
 \end_inset
 
@@ -10887,6 +10979,9 @@ Densidad de energía final
 \end_inset
 
 .
+ Hay una relación entre la supervivencia de sectores en la retícula,
+ con energía mayor al valor esperado equilibrio termodinámico y la tasa inversa de enfriamiento,
+ la relación cumple con el mecanismo de Kibble-Zurek.
 \end_layout
 
 \end_inset
@@ -11104,8 +11199,7 @@ Evolución de los enfriamientos de la magnetización
 \begin_inset Formula $t$
 \end_inset
 
- en unidades de barridos.
- Para las tasas inversas de enfriamiento 
+ en unidades de barridos para las tasas inversas de enfriamiento 
 \begin_inset Formula $\tau_{\mathrm{cool}}\in\{4,6,8\}$
 \end_inset
 
@@ -11331,6 +11425,9 @@ Magnetización final
 \end_inset
 
 .
+ Debido a regiones en la retícula con energía mayor a la esperada,
+ aparecen sectores con magnetización menor a la esperada en el equilibrio,
+ la supervivencia de estas regiones en función de la tasa inversa de enfriamiento cumple la predicción del mecanismo de Kibble-Zurek.
 \end_layout
 
 \end_inset
@@ -11363,20 +11460,54 @@ nolink "false"
 \end_inset
 
 .
- En los resultados se observa que el exponente crítico 
+ Se observa que el exponente crítico 
 \begin_inset Formula $\zeta$
 \end_inset
 
  es menor para los algoritmos de actualización local,
  los valores más bajos se obtienen del ajuste para la energía final en las dos variantes del algoritmo de Glauber.
- En contraste el valor mas alto es el ajuste de la susceptibilidad topológica final para el algoritmo multi-clúster.
- También se observa que los ajustes son compatibles entre las dos variantes del algoritmo de Metropolis para la susceptibilidad topológica,
+ En contraste el valor más alto es el ajuste de la susceptibilidad topológica final para el algoritmo multi-clúster.
+ También se observa que los ajustes son compatibles entre las dos variantes del algoritmo de Metropolis.
+ Esto se cumple para la susceptibilidad topológica,
  la energía y la magnetización.
  De la misma manera los ajustes de las dos variantes del algoritmo Glauber,
  son compatibles para las tres observables indicando que la inclinación del ajuste depende del algoritmo de actualización.
- Este resultado refuerza la idea de que la discrepancia en los resultados se debe a la diferencia en el comportamiento de los barridos de actualización de los diferentes algoritmos.
- Aunque las variantes lexicográfica y aleatoria cambian el orden de selección de los espines,
+ 
+\end_layout
+
+\begin_layout Standard
+Aunque las variantes lexicográfica y aleatoria cambian el orden de selección de los espines,
  el cambio del tempo de auto-correlación con la temperatura es similar para las dos variantes.
+ Este resultado refuerza la idea de que la discrepancia en los resultados se debe a la diferencia en el comportamiento de los barridos de actualización de los diferentes algoritmos.
+ 
+\end_layout
+
+\begin_layout Standard
+En los enfriamientos no se obtuvo una ley de escalamiento sino tres,
+ una para cada observable,
+ además los resultados no son compatibles con los exponentes medidos en las simulaciones en equilibrio.
+ La ecuación 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:kzm"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ se define para sistemas que al bajar por una temperatura critica presentan una ruptura espontánea de simetría,
+ no es sorpresa que no se cumpla en el modelo 2d O(
+\begin_inset Formula $3$
+\end_inset
+
+),
+ ya que no hay ruptura espontánea de simetría para 
+\begin_inset Formula $T>0$
+\end_inset
+
+.
  
 \begin_inset Float table
 placement H
@@ -11745,7 +11876,7 @@ Se realizaron simulaciones del modelo 2d O(3),
 \end_inset
 
  para todos los algoritmos de actualización.
- Usando los exponentes críticos se calculo el mecanismo de Kibble-Zurek y se obtuvieron los resultados de la tabla 
+ Usando los exponentes críticos se cálculo el mecanismo de Kibble-Zurek y se obtuvieron los resultados de la tabla 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab_exp2"
@@ -11758,7 +11889,18 @@ nolink "false"
 
 .
  Los resultados fueron compatibles entre los algoritmos de actualización local.
- En cambio la eficiencia del algoritmo multi-clúster impidió el cálculo de 
+ 
+\end_layout
+
+\begin_layout Standard
+En el caso del algoritmo multi-cluster no fue posible medir un exponente crítico dinámico 
+\begin_inset Formula $z$
+\end_inset
+
+ para la carga topológica y la magnetización debido a su efectividad.
+ La información sobre el tiempo de auto-correlación recopilada en los experimentos numéricos,
+ indica que la alta eficiencia del algoritmo multi-cúster dificulta la medición de algunos exponentes críticos.
+ La eficiencia del algoritmo multi-clúster impidió el cálculo de 
 \begin_inset Formula $\zeta$
 \end_inset
 
@@ -11771,7 +11913,6 @@ nolink "false"
 \end_inset
 
  usando el algoritmo multi-clúster.
- 
 \end_layout
 
 \begin_layout Standard
@@ -12025,7 +12166,7 @@ El segundo tipo de experimentos numéricos se realizo fuera del equilibrio termo
 
 ) de las trayectorias de evolución y se gráficaron los valores finales vs.
  las tasas de enfriamiento.
- A partir de los resultados se calculo el valor 
+ A partir de los resultados se cálculo el valor 
 \begin_inset Formula $\zeta$
 \end_inset
 
@@ -12052,7 +12193,7 @@ Los exponentes
 .
  Aunque el modelo 2d O(3) no permite el paso por debajo de la temperatura crítica,
  fue posible ajustar una ley de escalamiento para las observables de susceptibilidad topológica,
- energía y magnetización en los enfriamientos .
+ energía y magnetización en los experimentos numéricos fuera del equilibrio.
  Los resultados para las diferentes observables cumplieron con la relación 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -12069,25 +12210,12 @@ nolink "false"
 \begin_inset Formula $\zeta$
 \end_inset
 
- compatibles respecto a la misma observable pero difieren entre los diferentes algoritmos.
- Sin embargo los resultados son cercanos para los algoritmos de actualización local,
+ que difieren entre los diferentes algoritmos sin embargo los son cercanos para los algoritmos de actualización local,
  es un resultado esperado ya los barridos de actualización son similares entre los algoritmos Metropolis y Glauber.
  En cambio en el algoritmo multi-cúster se definen barridos de actualización fundamentalmente diferentes,
- no hay una equivalencia obvia entre los barridos de actualización locales y multi-clúster.
- 
-\end_layout
-
-\begin_layout Standard
-En el caso del algoritmo multi-cluster no fue posible medir un exponente crítico dinámico 
-\begin_inset Formula $z$
-\end_inset
-
- para la carga topológica y la magnetización debido a su efectividad.
- La información sobre el tiempo de auto-correlación recopilada en los experimentos numéricos,
- indica que la alta eficiencia del algoritmo multi-cúster dificulta la medición de algunos exponentes críticos.
- Además,
- los enfriamientos rápidos en bajas tasa de enfriamiento del algoritmo multi-cluster son equivalentes a tasas elevadas de enfriamiento en los algoritmos locales,
- considerando estas características los algoritmos locales parecen más apropiados para la simulación de enfrentamientos rápidos.
+ no hay una equivalencia obvia entre los barridos de actualización locales y multi-clúster,
+ pero se sabe que los enfriamientos rápidos en bajas tasa de enfriamiento del algoritmo multi-cluster son equivalentes a tasas elevadas de enfriamiento en los algoritmos locales.
+ Considerando estas características los algoritmos locales parecen más apropiados para la simulación de enfrentamientos rápidos.
  No fue posible calcular el exponente 
 \begin_inset Formula $\zeta$
 \end_inset
@@ -12099,11 +12227,9 @@ En el caso del algoritmo multi-cluster no fue posible medir un exponente crític
 \begin_inset Formula $\zeta$
 \end_inset
 
- para la magnetización resultando en una ley de escalamiento para enfriamientos en el rango de temperaturas 
-\begin_inset Formula $[4,0]$
-\end_inset
-
-.
+ para la magnetización a partir de las simulaciones en equilibrio,
+ resultando en una ley de escalamiento comparable con el valor obtenido en los experimentos numéricos fuera del equilibrio,
+ los resultados son compatibles pero no se puede decir si se trata de una coincidencia o un resultado replicable para las otras observables.
  En resumen se observaron tres leyes de escalamiento,
  todos los enfriamientos condujeren a exponentes 
 \begin_inset Formula $\zeta$
@@ -12192,7 +12318,7 @@ donde
 \end_layout
 
 \begin_layout Standard
-Consideremos ahora una distribución 
+Consideremos una distribución 
 \begin_inset Formula $f$
 \end_inset
 
@@ -12666,7 +12792,18 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-La definición de clúster que consideraremos en este apartado es la mencionada en el Capítulo 9 de esta tesis.
+La definición de clúster que consideraremos en este apartado es la mencionada en el Capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Algoritmo-clúster"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ de esta tesis.
  Consideremos una red reticular con una configuración de espines asociados a cada sitio.
  Un vínculo directo puede ocurrir entre dos sitios vecinos,
  mientras que un vínculo indirecto se da entre sitios que no son vecinos pero que están conectados a un sitio común.
@@ -12750,23 +12887,22 @@ Se repiten los pasos anteriores etiquetando cada sitio de la retícula en sus re
 \end_layout
 
 \begin_layout Enumerate
-En el proceso de formación de cústeres,
- habrá casos en los que a un sitio le corresponden dos o más etiquetas 
+En los casos en los que a un sitio le corresponden dos o más etiquetas 
 \begin_inset Formula $\alpha_{1},\dots,\alpha_{n}$
 \end_inset
 
 ,
  ya que hay un vínculo indirecto entre los clústeres.
  Los clústeres correspondientes se fusionan en uno y se les asigna la etiqueta 
-\begin_inset Formula $\alpha_{1.}$
+\begin_inset Formula $\alpha_{1.}<\alpha_{i}$
 \end_inset
 
- Este tipo de vínculo implica la posibilidad de que dos clústeres inicialmente distintos se unan mediante una conexión entre elementos que pertenecen a cada uno de ellos.
+.
 \end_layout
 
 \begin_layout Standard
 Una forma de optimizar la identificación de cústeres individuales es la ampliación por capas.
- Es importante diferenciar entre sitios en el interior de un clúster,
+ En este caso es importante diferenciar entre sitios en el interior de un clúster,
  sitios en la frontera de un clúster y sitios en el interior.
  
 \end_layout
@@ -12787,11 +12923,13 @@ Un sitio está en el exterior si ninguno de sus vecinos más cercanos pertenece 
 \end_layout
 
 \begin_layout Standard
-Se parte de un clúster individual y se va extendiendo la frontera en cada paso hasta alcanzar el tamaño máximo del clúster,
- transformando los sitios de la frontera en sitios en el interior.
+Se parte de un clúster individual y se siguen los pasos descritos anteriormente con los espines en la frontera del clúster.
+ El proceso se repite,
+ en cada iteración se va extendiendo la frontera transformando los sitios de la frontera en sitios en el interior hasta alcanzar el tamaño máximo del clúster.
  Para evitar que un clúster se extienda indebidamente por el cálculo múltiple de una probabilidad de vínculo,
  solo se calculará una vez un vínculo entre un espín con el clúster.
- Esto se logra etiquetando los espines ya probados con una etiqueta.
+ Esto se logra etiquetando los espines ya probados con una etiqueta,
+ luego se evita probar vínculos con espines ya etiquetados como no vinculados al clúster.
  El proceso es el siguiente:
 \end_layout
 
@@ -12806,7 +12944,7 @@ Se selecciona un sitio aleatorio
 
 \begin_layout Enumerate
 Todos los espines enlazados en la comprobación se etiquetan con un identificador 
-\begin_inset Formula $\alpha_{i}$
+\begin_inset Formula $\alpha$
 \end_inset
 
  correspondiente a un clúster.
@@ -12830,10 +12968,8 @@ Si no hay vínculos directos adicionales,
 \end_deeper
 \begin_layout Standard
 Este método es especialmente útil en la formación de un único clúster.
- La aplicación de este método al los algoritmos multi-clúster y single-cluster permite ahorrar una gran cantidad de cálculos,
- por lo que el poder de cómputo pude usarse en aumentar la estadística de los experimentos y reducir los tiempos de cálculo;
- sin duda,
- es un beneficio que vale la pena a cambio de un poco de programación extra.
+ La aplicación de algoritmo Hoshen-Kopelman al los algoritmos multi-clúster y single-cluster permite ahorrar una gran cantidad de cálculos,
+ por lo que el poder de cómputo pude usarse en aumentar la estadística de los experimentos y reducir los tiempos de cálculo.
 \end_layout
 
 \begin_layout Standard
